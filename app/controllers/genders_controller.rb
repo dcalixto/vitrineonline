@@ -6,6 +6,10 @@ class GendersController < ApplicationController
     if request.path != gender_path(@gender)
       redirect_to @gender, status: :moved_permanently
     end
+ 
+  ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
+    @suggestions = Product.unscoped.for_ids_with_order(ids)
+  
   end
 
 end

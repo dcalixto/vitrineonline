@@ -9,7 +9,11 @@ class CategoriesController < ApplicationController
   #  if request.path != category_path(@category)
    #   redirect_to @category, status: :moved_permanently
     #end
-    end
+   
+  ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
+    @suggestions = Product.unscoped.for_ids_with_order(ids)
+  
+  end
 
  
 

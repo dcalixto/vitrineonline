@@ -1,24 +1,5 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* glue: 0.11.1 hash: 4ee7a4151f */
+/* glue: 0.11.1 hash: 8ec5d1eb17 */
         .sprite-icons-paypal_cards,
 .sprite-icons-logo_big,
 .sprite-icons-paypal_protect,
@@ -54,7 +35,7 @@
 .sprite-icons-small_avatar {
             background-image: url('icons.png');
             background-repeat: no-repeat;
-            display: inline-block;
+             display: inline-block;
 
         }
         
@@ -66,49 +47,50 @@
         
         .sprite-icons-logo_big {
             background-position: 0 -110px;
-            width: 287px;
-            height: 41px;
+            width: 288px;
+            height: 40px;
         }
         
         .sprite-icons-paypal_protect {
-            background-position: 0 -151px;
+            background-position: 0 -150px;
             width: 280px;
             height: 50px;
         }
         
         .sprite-icons-paypal-icon {
-            background-position: 0 -201px;
+            background-position: 0 -200px;
             width: 191px;
             height: 29px;
         }
         
         .sprite-icons-paypal_icon2 {
-            background-position: 0 -230px;
+            background-position: 0 -229px;
             width: 163px;
             height: 50px;
         }
         
         .sprite-icons-logo {
-            background-position: -163px -230px;
-            width: 147px;
-            height: 22px;
+            background-position: -163px -229px;
+            width: 149px;
+            height: 21px;
+            margin-top:3px
         }
         
         .sprite-icons-fb_button {
-            background-position: 0 -280px;
+            background-position: 0 -279px;
             width: 120px;
             height: 32px;
         }
         
         .sprite-icons-5star {
-            background-position: -191px -201px;
+            background-position: -191px -200px;
             width: 100px;
             height: 20px;
         }
         
         .sprite-icons-logo_small {
-            background-position: -163px -252px;
-            width: 98px;
+            background-position: -163px -250px;
+            width: 99px;
             height: 14px;
         }
         
@@ -230,7 +212,7 @@
             background-position: -399px -69px;
             width: 15px;
             height: 15px;
-                                    margin-top:7px;
+                                           margin-top:7px;
  margin-left:10px;
      position: absolute;
      left: 0;
@@ -261,6 +243,11 @@ top: 0;
             width: 14px;
             height: 13px;
         }
+
+
+
+
+
 
 
 
