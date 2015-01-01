@@ -72,14 +72,14 @@
         <hr class="line"></hr>
 
         <span>Preço:
-          <%= number_to_currency(@product.price, :unit => "R$") %></span>
+          <strong><%= number_to_currency(@product.price, :unit => "R$") %></strong></span>
       </li>
 
 
       <li>
 
         <span>Disponíveis:
-          <%= @product.quantity%>
+          <strong><%= @product.quantity%></strong>
         </span>
       </li>
 
@@ -88,7 +88,8 @@
       <% @product.vitrine.policy.shippings.each do |shipping| %>
       <li>
         <span>Envio:
-          <%= shipping.kind %></span>
+          <strong><%= shipping.kind %>
+          </strong></span>
       </li>
       <% end %>
 
@@ -98,6 +99,15 @@
           <b class="span">
             #<%= @product.id %></b>
         </li>
+        <li>
+          Site:
+          <% if @product.vitrine.marketing.url%>
+        <%=link_to  "#{@product.vitrine.marketing.url}", url_with_protocol(@product.vitrine.marketing.url), :target => '_blank' %>
+        <% end %>
+        </li>
+
+        <li><%=@product.get_likes.size%> Curtidas</li>
+
     </ul>
 
 
@@ -120,6 +130,8 @@
 <div class="box10">
 
   <div class="block">
+    <%= social_share_button_tag(truncate(@product.vitrine.name, :length => 20), :url => url_for(:action => :show, :id => @product.vitrine.id, :only_path => false))  %>
+
     <div class="tip_box">
     <div class="content">
 
@@ -161,15 +173,27 @@
           <li>
 
 
-  <%= link_to "Adicionar a lista de desejos", mark_product_path(@product.id),  method: :put %>
+
+
+
+
+
+
 
           </li>
           <% end %>
+
+          <% unless @current_user.voted_up_on?@product %>
+          <li><%= link_to "Curtir",  like_product_path(@product.id), method: :put %></li>
+          <% end %>
         </ul>
-        <%= social_share_button_tag(truncate(@product.vitrine.name, :length => 20), :url => url_for(:action => :show, :id => @product.vitrine.id, :only_path => false))  %>
+
 
 
       </div>
+
+
+
 
       <div class="horizontal_buttons">
         <ul>

@@ -45,7 +45,8 @@
 *= require breakpoints
 *= require dropzone
 *= require markdown
-
+*= require stretchtext
+*= require jquery.slinky
  */
 
 

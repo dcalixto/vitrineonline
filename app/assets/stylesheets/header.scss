@@ -63,7 +63,7 @@ $desktop: min-width 1200px;
     border-bottom: 1px solid #e5e5e5;
     width:100%;
     display: block;
-    overflow:auto;
+
 }
 
 
@@ -72,19 +72,19 @@ $desktop: min-width 1200px;
 @include breakpoint($mobile) {
 
   .blue_bar, .inner_blue, .inner_bar {
-      height:50px;
-    background:#2565CC;
+      height:55px;
+    background:#5371af;
     display:block;
 
 
 
   }
-     .inner_search, .inner_icons{
+     .inner_search, .inner_icons, .inner_tab, .inner_blue_icons{
       margin: 0px auto;
       min-width: 320px;
       max-width: 1000px;
       box-sizing: border-box;
-     overflow: auto;
+
     }
 
     .logo {
@@ -94,7 +94,7 @@ $desktop: min-width 1200px;
       width:130px;
       height:40px;
     display: block;
-    background:url(/assets/logo_mobile.png) no-repeat;
+
 
     }
     }
@@ -102,13 +102,13 @@ $desktop: min-width 1200px;
 
 
 @include breakpoint($tablet) {
-  .blue_bar {
+  .blue_bar, .inner_blue {
       height:50px;
-  background:#2565CC
+  background:#5371af
 
 
   }
-  .inner_bar, .inner_search, .inner_icons {
+  .inner_bar, .inner_search, .inner_icons, .inner_blue_icons {
     margin: 0px auto;
     min-width: 768px;
     max-width: 1000px;
@@ -124,7 +124,7 @@ $desktop: min-width 1200px;
     width:130px;
     height:40px;
   display: block;
-  background:url(/assets/logo_mobile.png) no-repeat;
+
 
   }
 
@@ -132,13 +132,13 @@ $desktop: min-width 1200px;
 
 
 @include breakpoint($notebook) {
-  .blue_bar {
-      height:50px;
-  background:#2565CC
+  .blue_bar, .inner_blue {
+      height:55px;
+  background:#5371af
 
 
   }
-  .inner_bar,  .inner_search, .inner_icons  {
+  .inner_bar,  .inner_search, .inner_icons, .inner_blue_icons  {
     margin: 0px auto;
     min-width: 992px;
     max-width: 1000px;
@@ -153,7 +153,7 @@ $desktop: min-width 1200px;
   width:130px;
   height:40px;
   display: block;
-  background:url(/assets/logo_mobile.png) no-repeat;
+
 
   }
 
@@ -161,14 +161,14 @@ $desktop: min-width 1200px;
 }
 
 @include breakpoint($desktop){
-  .blue_bar {
-      height:50px;
-  background:#2565CC
+  .blue_bar, .inner_blue {
+      height:55px;
+  background:#5371af
 
 
   }
 
-  .inner_bar, .inner_search, .inner_icons {
+  .inner_bar, .inner_search, .inner_icons, .inner_blue_icons {
     margin: 0px auto;
     min-width: 1200px;
       max-width: 1200px;

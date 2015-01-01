@@ -47,9 +47,9 @@ resources :favorites, only:[:index ] do
 
   collection do
 
-     match '/products' => 'favorites#products', via: [:get, :post], as: :products
+    # match '/products' => 'favorites#products', via: [:get, :post], as: :products
 
-   match '/vitrines' => 'favorites#vitrines', via: [:get, :post], as: :vitrines
+   #match '/vitrines' => 'favorites#vitrines', via: [:get, :post], as: :vitrines
 
 get :products
 get :vitrines
@@ -57,11 +57,11 @@ get :vitrines
 
 
 
-member do
-  match 'unmark_product', to: 'favorites#unmark_product'
+#member do
+#  match 'unmark_product', to: 'favorites#unmark_product'
 
-   match 'unmark_vitrine', to: 'favorites#unmark_vitrine'
-end
+  # match 'unmark_vitrine', to: 'favorites#unmark_vitrine'
+#end
 end
 
 
@@ -146,7 +146,7 @@ end
       get :update_vitrine_select, as: :update_vitrine_select
       put 'like', to: 'vitrines#upvote'
       put 'dislike', to: 'vitrines#downvote'
-      match 'mark', to: 'vitrines#mark'
+      #match 'mark', to: 'vitrines#mark'
    match :report
       get :tag
       match :feedbacks

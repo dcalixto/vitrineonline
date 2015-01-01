@@ -46,7 +46,7 @@
 
       <tbody>
 
-        <% current_user.find_liked_items.each do |vitrine| %>
+        <% @user_likes.each do |vitrine| %>
         <tr>
           <td class="stock_td">
             <%= link_to  vitrine_path(vitrine.id) do %>
@@ -83,7 +83,7 @@
   <div class="block_pagination">
     <hr class="line"></hr>
     <div class="digg_pagination">
-      <%= will_paginate  @current_user.get_up_voted,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
+      <%= will_paginate  @user_likes,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
 
     </div>
   </div>

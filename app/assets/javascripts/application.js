@@ -18,12 +18,13 @@
 //= Markdown.Converter
 //= Markdown.Editor
 //= Markdown.Sanitizer
-
+//= stretchtext
 //= dropzone_banner
 //= tipsy
 
 
 //= require_tree .
+
 
 
 
@@ -79,8 +80,8 @@ $(document).ready(function() {
   $(".content-slider").lightSlider({
     loop: false,
     keyPress: true,
-    auto: true,
-  pause: 7000,
+    auto: false
+  /*pause: 7000,*/
   });
 });
 

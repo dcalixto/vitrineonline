@@ -15,29 +15,7 @@
     <div class="content">
         <%= current_user.favorite_products.count %>
         Produtos favoritados</h4>
-      <table class="block_search">
-        <tr>
-          <td>
 
-           <%= search_form_for @q, url:  products_favorites_path, method: :post  do |f| %>
-
-            <%= f.text_field :id_cont %>
-            <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-            <% end %>
-          </td>
-          <td class="sort">
-
-            Ordernar Por
-            <%= sort_link @q, :price,  "Preço" %>
-            |
-            <%= sort_link @q, :created_at, "Data" %>
-            |
-            <%= sort_link @q, :quantity, "Quantidade" %>
-
-          </td>
-        </tr>
-      </table>
 
       <table class="zebra_branca margin_top" id="stock_vitrine">
 
@@ -57,11 +35,11 @@
 
         <tbody>
 
- <% @favorite_products.each do |product| %>
+  <% @product_likes.each do |product| %>
 <tr>
   <td class="stock_td">
     <%= link_to  product_path(product.id) do %>
-    <%= image_tag product.f1.url(:small).to_s %>
+    <#%= image_tag product.images.first.url(:small).to_s %>
     <%=  product.name %>
     <% end %>
   </td>
@@ -107,7 +85,7 @@
 </td>
 
   <td>
-       <%= button_to "Remover", unmark_product_favorite_path(product.id), method: :get, :class=>"btn_grey btn_small" %>
+       <#%= button_to "Remover", unmark_product_favorite_path(product.id), method: :get, :class=>"btn_grey btn_small" %>
 
      </td>
 
@@ -122,7 +100,7 @@
     <div class="block_pagination">
       <hr class="line"></hr>
       <div class="digg_pagination">
-        <%= will_paginate @favorite_products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
+        <%= will_paginate @product_likes,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
 
       </div>
     </div>
