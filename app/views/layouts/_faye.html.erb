@@ -1,0 +1,69 @@
+<% cache "vofaserver" do %>
+<%= subscribe_to "/user/#{current_user.id}" %>
+<% end %>
+<script type="text/javascript">
+  $(function () {
+    PrivatePub
+      .subscribe('/user/<%=current_user.id%>', function (data, channel) {
+        console.log(data);
+        messageReceived(data);
+      });
+
+    function messageReceived(data) {
+      var $messages = $('#menu-messages');
+      var addToMenu = !isViewingConvo(data.conversation.id) && !isConvoIndex();
+      var newText = "";
+
+      if (addToMenu) {
+        var currentString = $messages.text();
+        var match = currentString.match(/Messages \((.+)\)/);
+        if (match === null) {
+          newText = "Mensagens (1)";
+        } else {
+          var currentNumber = match[1];
+          var newNumber = parseInt(currentNumber) + 1;
+          newText = 'Mensagens (' + newNumber + ')';
+        }
+
+        $messages.text(newText);
+        if (!$messages.hasClass('new-messages'))
+          $messages.addClass('new-messages')
+      }
+
+      if (isViewingConvo(data.conversation.id)) {
+        addMessageToConvo(data);
+      } else if (isConvoIndex()) {
+        updateOrAddConvo(data);
+      }
+    }
+
+    function updateOrAddConvo(data) {
+      var convosDiv = $('div#message_list');
+
+      $.get('/conversations/' + data.conversation.id + '/participants', function (pdata) {
+        var convoUl = $('ul#conversation_' + data.conversation.id);
+        if (convoUl.length == 0) {
+          convoUl = $('<ul class="message_item unread" id="conversation_' + data.conversation.id + '"></ul>');
+          convosDiv.prepend(convoUl);
+        }
+        convoUl.html(pdata);
+      });
+    }
+
+    function addMessageToConvo(data) {
+      var conversationList = $('.chatboxcontent');
+      $.get('/conversations/' + data.conversation.id + '/messages/' + data.message.id, function (mdata) {
+        conversationList.prepend(mdata);
+      });
+    }
+
+    function isConvoIndex() {
+      return $('div#message_list').length > 0
+    }
+
+    function isViewingConvo(conversation_id) {
+      return $('div#conversation_' + conversation_id).length > 0
+    }
+
+  });
+</script>

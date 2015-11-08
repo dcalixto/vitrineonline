@@ -1,0 +1,11 @@
+<div class="box6">
+
+  <div class="block">
+    Produto Vendido em
+    <%= @last_transaction.created_at.strftime('%d/%m/%Y') if @last_transaction %>
+    <br/>
+    <%= image_tag @product_data.f1.url(:small).to_s %>
+
+  </div>
+
+</div>

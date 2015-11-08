@@ -1,0 +1,126 @@
+/* MENU INDEX */
+
+#menu-box {
+  padding: 0;
+  margin-top: 20px;
+  padding: 0;
+  margin-bottom: 50px;
+  margin-bottom: 7px;
+  position: relative;
+  width: auto;
+  word-wrap: break-word;
+  color: #004B91;
+  border: solid 1px #ddd;
+    border-radius: 3px;
+}
+#ajuda-menu {
+  border: 1px solid #dee1ea;
+  padding: 0;
+  background: #ffffff;
+}
+#ajuda-menu h1 {
+  color: #111;
+  margin-top: 10px;
+}
+.h1_menu {
+  border-bottom: 1px dotted #ccc;
+}
+#menu-b, #menu-box, #menu-feedback, #menu-loja li a {
+  display: block;
+}
+
+/* --------------------------------------- */
+
+#menu-b li:hover > a {
+  display: block;
+  text-decoration: none;
+  color: #295e9f;
+}
+#menu-box li:hover > a {
+  display: block;
+  text-decoration: none;
+  color: #295e9f;
+}
+#menu-feedback li:hover > a {
+  display: block;
+  text-decoration: none;
+  color: #295e9f;
+}
+#menu-loja li:hover > a {
+  display: block;
+  text-decoration: none;
+  color: #295e9f;
+}
+#menu-b a, #menu-box a, #menu-feedback a, #menu-loja a {
+  color: #777;
+  color: #004B91;
+  color: #333;
+  /*border-bottom:1px solid #ddd*/
+}
+#menu-b h2, #menu-box h2, #menu-feedback h2, #menu-loja h2 {
+  font-weight: bold;
+  font-size: 15px;
+}
+#menu-box h1, #menu-box h2, #menu-feedback h2, #menu-loja h1 {
+  font-size: 18px;
+  margin-bottom: 4px;
+  /*font-weight: bold;*/
+  padding-left: 5px;
+  color: #333;
+  display: block;
+}
+#menu-box a, #menu-feedback a {
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+
+/* HELP MENU */
+
+#ajuda-menu li {
+  margin: 10px
+}
+#ajuda-menu h1 {
+  letter-spacing: 1px;
+  padding-left: 10px;
+}
+#ajuda-menu a {
+  color: #333;
+}
+.ajuda-link {
+  color: #333;
+}
+.ajuda-container {
+  border: solid 1px #E1E1E1;
+  padding: 45px;
+}
+.notica-verde {
+  background: #27B751;
+  color: #fff;
+  padding: 2px;
+}
+.notica-laranja {
+  background: #FFB74E;
+  color: #fff;
+  padding: 2px;
+}
+.notica-vermelha {
+  background: #FF0004;
+  color: #fff;
+  padding: 2px;
+}
+.ajuda-container li {
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+.h1do {
+  color: #5ea00d;
+}
+.h1notdo {
+  color: #cd3310;
+}
+.menu_content {
+  padding: 5px 7px;
+}

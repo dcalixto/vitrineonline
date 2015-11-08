@@ -1,0 +1,35 @@
+<% title  "Alterar Password" %>
+
+<%= render "shared/user_menu" %>
+
+<div class="box5">
+
+  <div class="block  margin_top">
+    <h1>Alterar Password</h1>
+
+
+  <div class="content">
+    <%= render 'shared/flash_messages' %>
+    <%= render 'shared/error_messages', :target => @password_form %>
+
+    <p class="tip">De preferência a um password alfanumérico</p>
+
+
+
+      <%= semantic_form_for @password_form, url: user_passwords_path, method: :post  do |f| %>
+      <%= f.inputs do %>
+      <%= f.input :original_password,  :as => :password,  :label => "Password Atual", :required=>true  %>
+
+      <%= f.input :new_password, :as => :password, :label =>  "Novo Password",:required=>true %>
+      <%= f.input :new_password_confirmation , :as => :password, :label =>  "Confirmar", :required=>true %>
+
+      <%= f.actions do %>
+      <%= f.action :submit, :label => "Confirmar", :button_html => { :class => "btn", :id => "password_submit"} %>
+      <% end %>
+      <% end %>
+      <% end %>
+
+    </div>
+  </div>
+
+</div>

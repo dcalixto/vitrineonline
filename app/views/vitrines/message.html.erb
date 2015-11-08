@@ -1,0 +1,18 @@
+<div class="block">
+  <h4>Mensagem</h4>
+
+  <div class="content">
+    <% @conversation = Conversation.new %>
+    <%= form_for @conversation do |f| %>
+    <div class="doubt">
+      <%= hidden_field :conversation_participants, :boutique_id, :value => @vitrine.user_id %>
+      <ul>
+        <li><%= text_area :message, :body, :rows => 3 %></li>
+
+      </ul>
+    </div>
+    <div><%= f.button 'Enviar', :class => 'btn' %></div>
+
+    <% end %>
+  </div>
+</div>

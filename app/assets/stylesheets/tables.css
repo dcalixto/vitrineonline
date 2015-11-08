@@ -1,0 +1,56 @@
+.zebra_branca th, .zebra_index th, .zebra_vitrine th {
+  padding: 3px 3px 9px;
+  text-align: left;
+  vertical-align: middle;
+}
+.zebra_branca th {
+  padding: 7px 5px;
+  font-size: 11px;
+  text-align: left;
+  color: #111;
+  border: solid 1px #f9f2da;
+  background: #fffed1;
+}
+.zebra_vitrine th {
+  font-size: 11px;
+  text-align: left;
+  color: #111;
+  background: #edeff0
+}
+.zebra_branca td, .zebra_vitrine td {
+  max-width: 150px;
+}
+.zebra_branca td, .zebra_index td, .zebra_vitrine td {
+  padding: 5px;
+  text-align: left;
+  vertical-align: middle;
+  word-break: break-word;
+}
+.zebra_branca tr, .zebra_index tr, .zebra_vitrine tr {
+  width: 100%;
+  padding: 0;
+}
+.zebra_branca tr td, .zebra_index tr td, .zebra_vitrine tr td {
+  /*border-bottom: solid 1px #dddddd;*/
+}
+.zebra_branca tbody tr:nth-child(odd) td, .zebra_index tbody tr:nth-child(odd) td, .zebra_vitrine tbody tr:nth-child(odd) td {
+  background-color: #fff;
+}
+.invoice_show td {
+  vertical-align: top;
+}
+.zebra_branca, .zebra_index, .zebra_vitrine, .invoice_show {
+  border-spacing: 0;
+  padding: 0;
+  border-collapse: collapse;
+  width: 100%
+}
+.zebra_branca ul, .zebra_index ul, .zebra_vitrine ul {
+  float: left;
+}
+.zebra_branca ul li span {
+  font-weight: bold;
+}
+.lista-preco_stock span {
+  color: #900
+}

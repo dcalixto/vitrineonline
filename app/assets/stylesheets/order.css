@@ -1,0 +1,119 @@
+.cart {
+  width: 100%;
+  clear: both;
+  border-collapse: collapse;
+  background: none repeat scroll 0% 0% #fff;
+  font-size: 13px;
+  border-bottom: solid 1px #ddd;
+}
+.cart img {
+  vertical-align: top;
+}
+.cart th {
+  padding: 7px 5px;
+  font-size: 12px;
+  text-align: left;
+  color: #111;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 10px 2px 13px;
+}
+.cart body td {
+  padding: 20px 5px 15px;
+  background: none repeat scroll 0% 0% #FFF;
+  color: #585A5D;
+}
+.cart tbody td {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 10px;
+}
+.cart tbody tr {
+  margin-bottom: 5px;
+  border-bottom: 1px solid #D5D5D5;
+  padding-left: 10px;
+}
+.checkout_product, .checkout_address, .checkout_total {
+  width: 100%;
+  clear: both;
+  background: none repeat scroll 0% 0% #fff;
+  font-size: 13px;
+  border-collapse: separate;
+}
+.checkout_product td, .checkout_address td, .checkout_total td {
+  padding: 5px;
+}
+.checkout_product th, .checkout_address th, .checkout_total th {
+  padding: 7px 5px;
+  font: bold 17px Arial, sans-serif;
+  text-decoration: none;
+  margin: 6px 0 0 10px;
+  text-align: left;
+  color: #111;
+  border-bottom: 1px solid #ddd
+}
+.checkout tbody td {
+  padding: 20px 5px 15px;
+  vertical-align: center;
+  background: none repeat scroll 0% 0% #FFF;
+  font-size: 13px;
+  width: 200px;
+  word-wrap: break-word;
+  -ms-word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+.checkout tbody td {}
+.checkout tbody tr {
+  margin-bottom: 5px;
+  border-right: 1px solid #e8e8e8;
+  border-left: 1px solid #e8e8e8;
+}
+.checkout tfoot {
+  padding: 0px 20px 10px 0px;
+  text-align: right;
+  border-bottom: 1px solid #ccc;
+}
+.checkout tfoot tr {
+  text-align: right;
+}
+.checkout_total #orderTotal .sum {
+  font-weight: bold;
+}
+.checkout_total #orderTotal td {
+  /*  background:#d6eaf6;*/
+  color: #2c5987;
+}
+.checkout_total tfoot .sum {
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+#orderTotal .amt {
+  font: 24px Arial, sans-serif;
+  font-weight: bold
+}
+#orderTotal td {
+  background-color: #FFF;
+}
+td.amt {
+  font-size: 12px;
+  font-weight: bold;
+}
+.amt {
+  text-align: right;
+  background: #fff;
+}
+.checkout .checkout_bottom {
+  background: #fff
+}
+.checkout_total .subtotal {
+  color: #ff5300
+}
+.checkout .shipping_cost {
+  width: 50px
+}
+.checkout {
+  border: solid 1px #f3f3f3
+}

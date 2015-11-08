@@ -1,0 +1,53 @@
+<% product = order.product %>
+
+<% unless order.status.nil? %>
+
+<th>Vendido Em</th>
+
+<th>Produto</th>
+<th>Frete</th>
+
+<th>Quantidade</th>
+
+<th>Comprador</th>
+
+<tr>
+
+  <% if order.seller == current_boutique %>
+
+  <td><%= order.transaction.created_at.strftime('%d/%m/%Y') %></td>
+
+  <td>
+    <% if params[:status] == Order.statuses[0] %>
+    <br/>
+    <%= link_to 'Change', sent_order_path(order) %>
+    status to 'Sent to customer'.
+    <% end %>
+
+  </td>
+  <td>
+
+    <ul>
+      <li><%= link_to  product_path(product.id) do %>
+        <%= image_tag product.f1.url(:table).to_s %>
+        <%=  product.name %></li>
+      <% end %>
+      <li><%= number_to_currency product.price %></li>
+    </ul>
+
+  </td>
+  <td>
+    <ul>
+      <li><%= order.shipping_method %></li>
+      <li><%= number_to_currency order.shipping_cost %></li>
+    </ul>
+  </td>
+  <td><%= order.quantity %></td>
+
+  <td>
+    <%= link_to order.buyer.name, user_path(order.buyer.id) %></td>
+  <% end %>
+
+  <% end %>
+
+</tr>

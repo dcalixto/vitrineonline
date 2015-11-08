@@ -1,0 +1,41 @@
+<% product = order.product %>
+
+<div class="transaction">
+  <table class="zebra_stock">
+    <thead>
+      <tr class="header">
+        <th scope="col">Comentário</th>
+        <th scope="col">De</th>
+        <th scope="col">Data</th>
+        <th scope="col">Produto</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+      <% unless order.status.nil? %>
+
+      <tr>
+        <td></td>
+
+        <% if params[:action] == "buyer" %>
+        <td><%= order.seller.name %></td>
+        <% elsif params[:action] == "seller" %>
+        <td><%= order.buyer.name %></td>
+        <%end %>
+        <td>
+          <%= order.transaction.created_at.strftime('%d/%m/%Y') %></td>
+
+        <td><%= image_tag product.f1.url(:table).to_s %>
+
+          <%= link_to product.name, product_path(product.id) %>
+        </td>
+
+      </tr>
+
+      <% end %>
+
+    </tbody>
+  </table>
+
+</div>

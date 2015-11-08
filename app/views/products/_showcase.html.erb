@@ -1,0 +1,33 @@
+<div id="showcase">
+  <ul>
+    <li>
+      <a href="<%= @product.f1.url.to_s %>">
+        <%= image_tag(@product.f1.url(:small).to_s, :class => 'thumbnail circle', :'data-zoom-href' => @product.f1.url(:big).to_s) %>
+      </a>
+    </li>
+   
+    <% unless @product.f2.blank? %>
+
+    <li>
+      <a href="<%= @product.f2.url.to_s %>">
+        <%= image_tag(@product.f2.url(:small).to_s, :class => 'thumbnail circle', :'data-zoom-href' => @product.f2.url(:big).to_s) %>
+      </a>
+    </li>
+       <% end %>
+
+    <% unless @product.f3.blank? %>
+        <li>
+          <a href="<%= @product.f3.url.to_s %>">
+            <%= image_tag(@product.f3.url(:small).to_s, :class => 'thumbnail circle', :'data-zoom-href' => @product.f3.url(:big).to_s) %>
+          </a>
+        </li>
+    <% end %>
+    <% unless @product.f4.blank? %>
+        <li>
+          <a href="<%= @product.f4.url.to_s %>">
+            <%= image_tag(@product.f4.url(:small).to_s, :class => 'thumbnail circle', :'data-zoom-href' => @product.f4.url(:big).to_s) %>
+          </a>
+        </li>
+    <% end %>
+  </ul>
+</div>

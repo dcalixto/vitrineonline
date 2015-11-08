@@ -1,0 +1,5 @@
+<#% if current_user.boutique.marketing.present? %> 
+  <#%= link_to "Criar", edit_marketing_path(current_user.boutique.marketing)%>
+<#% else  %>
+  <#%= link_to "Criar", new_marketing_path(@marketing)%>
+<#% end %>

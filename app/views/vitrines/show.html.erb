@@ -1,0 +1,195 @@
+<% title  @vitrine.name %>
+<div class="box1">
+  <div class=" margin_top">
+    <% breadcrumb :vitrine, @vitrine %>
+    <%= render 'shared/flash_messages' %>
+    <%= render 'announcements/announcement_for_all' %>
+  </div>
+</div>
+<div class="box10">
+
+  <div class="block margin_top">
+  <div class="content">
+
+    <ul class="list">
+      <li>
+        <%=link_to(image_tag(@vitrine.logo.url(:thumb).to_s), vitrine_path(@vitrine)) %>
+      </li>
+      <li>
+        <h1>
+          <%=link_to vitrine_path(@vitrine) do %>
+          <%=@vitrine.name %>
+          <% end %>
+        </h1>
+      </li>
+      <li>
+        Dono(a)&nbsp;
+        <%=link_to user_path(@vitrine.user) do %>
+        <%=@vitrine.user.name %>
+        <% end %>
+      </li>
+      <% if @vitrine.user.city%>
+      <li>
+        <span>
+          <%= @vitrine.city.name %>,</span>
+        <b>
+          <%= @vitrine.state.code %></b>
+      </li>
+      <% end %>
+      <% if @vitrine.feedbacks %>
+      <li>
+
+        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+        <%=@total_from_buyers %>
+      
+      </li>
+      <% end %>
+    </ul>
+
+  </div>
+</div>
+
+</div>
+
+<div class="box5 margin_top">
+  <!-- Slideshow 1 -->
+  <ul class="slide" id="slider1">
+    <li>
+      <%= image_tag('slider1.jpg')  %>
+    </li>
+    <li><%= image_tag('slider4.jpg')  %></li>
+    <li><%= image_tag('slider3.jpg')  %></li>
+  </ul>
+</div>
+
+
+<div class="box1">
+
+  <div class="block">
+    <h1>Produtos Adicionados</h1>
+
+
+  <div class="content">
+
+
+    <div class="subcontent_top">
+      <h4>Total
+        <%= @vitrine.products.count %>
+        Produtos</h4>
+      <table class="block_search">
+        <tr>
+          <td>
+
+            <%= search_form_for @q, url: products_search_vitrines_path, method: :post  do |f| %>
+
+            <%= f.text_field :id_cont %>
+            <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+            <% end %>
+          </td>
+          <td class="sort">
+
+            Ordernar por
+            <%= sort_link @q, :price, "Preço" %>
+            |
+            <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
+          </td>
+        </tr>
+      </table>
+
+      <div class="products">
+        <ul>
+          <%= render :partial => 'vitrines/product', :collection => @products%>
+        </ul>
+      </div>
+
+    <div class="block_pagination">
+      <div class="digg_pagination">
+        <%= will_paginate @products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+    <div class="subcontent">
+      <h4>Avaliação da
+        <%=@vitrine.name %></h4>
+      <table class="block_search">
+        <tr>
+          <td>
+
+            <%= search_form_for @q, url: feedbacks_search_vitrines_path, method: :post  do |f| %>
+
+            <%= f.text_field :id_cont %>
+            <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+            <% end %>
+          </td>
+          <td class="sort">
+
+            Ordenar por
+            <%= sort_link @q, :created_at, "Data" %>
+            |
+            <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
+          </td>
+        </tr>
+      </table>
+
+      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+      <%= render :partial => 'feedbacks/feedbacks' %>
+    </div>
+
+
+
+
+
+
+    <div class="subcontent">
+      <h4>Forma de Pagamento</h4>
+      <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+      <% unless @vitrine.policy.blank? %>
+    </div>
+
+
+
+
+    <div class="subcontent">
+          <h4>Garantia</h4>
+      <p><%= markdown(@vitrine.policy.guarantee) %></p>
+      <% end %>
+      <% unless @vitrine.policy.shippings.blank? %>
+      <b>Formas de Envio</b>
+      <ul>
+        <% @vitrine.policy.shippings.each do |shipping| %>
+        <li><%= shipping.kind %></li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+
+
+
+    <div class="subcontent">
+      <div class="block_message">
+        <h4>Mensagem</h4>
+        <% @conversation = Conversation.new %>
+        <%= form_for @conversation do |f| %>
+        <div class="doubt">
+          <%= hidden_field :conversation_participants, :boutique_id, :value => @vitrine.user_id %>
+          <ul>
+            <li><%= text_area :message, :body, :rows => 3 %></li>
+          </ul>
+        </div>
+        <div><%= f.button 'Enviar', :class => 'btn_grey' %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

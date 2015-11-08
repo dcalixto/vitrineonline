@@ -1,0 +1,14 @@
+<li >
+<div class="avatar">
+  <%= link_to(image_tag(message.user.avatar.url(:message).to_s), user_path(message.user)) %>
+</div>
+<div class="chatboxmessagecontent">
+  <%= link_to user_path(message.user) do %>
+  <%= message.user.name %>
+  <%= message.user.surname %>
+  <% end %>
+  <p><%= message.body %></p>
+
+  <%= timeago_tag(message.created_at, :nojs => true, :date_only => false) %>
+</div>
+</li>

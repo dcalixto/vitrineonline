@@ -1,0 +1,15 @@
+<div class="box6">
+  <div class="error">
+    <%= image_tag('logo_big.png', :alt =>'logo')  %>
+    <h1>Proibido.</h1>
+
+    <% if @exception %>
+
+    <p><%= @exception.message %></p>
+
+    <% else %>
+    <p>Você não está autorizado a executar essa ação.</p>
+    <% end %>
+
+  </div>
+</div>

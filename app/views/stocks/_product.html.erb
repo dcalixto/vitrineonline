@@ -1,0 +1,50 @@
+<tr>
+  <td class="stock_td">
+    <%= link_to  product_path(product.id) do %>
+    <%= image_tag product.f1.url(:table).to_s %>
+    <%=  product.name %>
+    <% end %>
+  </td>
+
+  <td><%= product.id %></td>
+  <td class="lista-preco_stock">
+    <span>
+      <b><%=  number_to_currency(product.price, :unit => "R$") %></b>
+    </span>
+  </td>
+  <td>
+    <% if product.vitrine.policy %>
+
+    <%= product.vitrine.policy.paypal%>
+    <% end %>
+
+  </td>
+
+  <td>
+    <ul>
+      <% if product.vitrine.policy %>
+
+      <% product.vitrine.policy.shippings.each do |shipping| %>
+      <li><%= shipping.kind %></li>
+      <% end %>
+      <% end %>
+    </ul>
+  </td>
+
+  <td>
+    <% if product.quantity %>
+    <%=product.quantity %>
+
+    <% end %>
+
+  </td>
+
+  <td>
+    <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+
+  </td>
+  <td><%= button_to  'Editar', edit_product_path(product), :class => 'btn_grey btn_small', :method => "get"  %></td>
+
+  <td><%= button_to 'Remover', vitrine_stock_path(product), :action => "destroy",  :class => "btn_red btn_small", :method => :delete  %></td>
+
+</tr>

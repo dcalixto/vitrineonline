@@ -1,0 +1,38 @@
+<% title "Editar #{@product.name}" %>
+
+<%= render "shared/vitrine_menu" %>
+
+<div class="box4">
+  <%= render 'shared/flash_messages' %>
+  <%= render 'shared/error_messages', :target => @product %>
+
+  <%= semantic_form_for @product  do |p| %>
+  <%= p.inputs do %>
+
+  <!-- Categoria -->
+
+  <!-- Seção-->
+  <div class="block margin_top">
+    <h4>
+      <%= link_to @product.name, product_path(@product) %>
+    </h4>
+
+    <div class="content">
+
+      <%= p.input :quantity, :label =>"Quantidade", :as => :number %>
+      <span>
+        <b>Tamanho</b>
+      </span>
+      <%= p.input :sizes, :as => :check_boxes,  :collection => Size.select('id, size as name'), :label => '' %>
+      <span>
+        <b>Cor</b>
+      </span>
+      <%= p.input :colors, :as => :check_boxes, :collection => Color.order(:name), :label => '' %>
+      <%= p.actions do %>
+      <%= p.action :submit, :label => "Atualizar", :button_html => { :class => "btn"} %>
+      <% end %>
+      <% end %>
+      <% end %>
+
+    </div>
+  </div>

@@ -1,0 +1,88 @@
+<% title "Sacola" %>
+<div class="box3">
+  <div class="flash_box">
+    <%= render 'shared/flash_messages' %>
+  </div>
+
+  <div class="block margin_top">
+      <% unless  @orders.nil? or  @orders.empty?  %>
+      <div class="content">
+<h1>Sacola</h1>
+
+
+
+</div>
+      <% else %>
+      <div class="content">
+      <h1>Sua sacola está vazia</h1>
+
+      <p>Busque ótimos produtos</p>
+      <%= link_to "Procurar", products_path  %>
+
+
+
+  </div>
+      <% end %>
+
+    <% unless  @orders.nil? or  @orders.empty?  %>
+
+    <table class="cart">
+      <thead>
+        <tr>
+          <th>
+
+            Produto
+          </th>
+          <th></th>
+
+          <th>
+            Quantidade
+          </th>
+          <th>
+            Preço
+          </th>
+          <th>
+            Subtotal
+          </th>
+          <th>
+            Prosseguir
+          </th>
+
+        </tr>
+      </thead>
+      <%end %>
+      <%= render partial: 'orders/order', collection: @orders unless  @orders.nil? or  @orders.empty?  %>
+
+      <% unless  @orders.nil? or  @orders.empty?  %>
+
+    </table>
+    <% end%>
+
+
+  <% if current_user and current_user.cart %>
+
+  <div class="block_pagination">
+    <div class="digg_pagination">
+
+      <%= will_paginate @orders,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+
+    </div>
+
+  </div>
+  <%end %>
+</div>
+  </div>
+
+
+<div class="box11">
+  <div class="tip_box">
+
+    <h4>
+      <span><%="#{order_count}" %></span>
+      Itens</h4>
+
+    <h1>Total:
+      <%= number_to_currency order_subtotal %></h1>
+  </div>
+
+</div>

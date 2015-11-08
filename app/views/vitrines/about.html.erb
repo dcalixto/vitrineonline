@@ -1,0 +1,12 @@
+<!--  Sobre -->
+<div class="block">
+  <h4>Sobre</h4>
+
+  <% if @vitrine.about? %>
+  <div class="content">
+
+    <div class="about"><%= markdown(@vitrine.about) %></div>
+
+  </div>
+  <% end %>
+</div>

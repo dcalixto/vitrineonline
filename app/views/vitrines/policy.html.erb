@@ -1,0 +1,28 @@
+<div class="block">
+  <h4>Forma de Pagamento</h4>
+
+  <div class="content">
+
+    <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+
+    <% unless @vitrine.policy.blank? %>
+
+  </div>
+</div>
+<div class="block">
+
+  <h4>Garantia</h4>
+  <div class="content">
+    <p><%= markdown(@vitrine.policy.guarantee) %></p>
+    <% end %>
+    <% unless @vitrine.policy.shippings.blank? %>
+
+    <b>Formas de Envio</b>
+    <ul>
+      <% @vitrine.policy.shippings.each do |shipping| %>
+      <li><%= shipping.kind %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+</div>

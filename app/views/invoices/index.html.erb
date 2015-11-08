@@ -1,0 +1,47 @@
+<% title "Fatura" %>
+<%= render "shared/vitrine_menu" %>
+<div class="box3">
+
+
+
+  <div class="flash_box">
+
+    <%= render 'shared/flash_messages' %>
+</div>
+
+
+    <div class="block  margin_top">
+          <h1>Fatura</h1>
+    <div class="content">
+
+      <table class="zebra_branca margin_top">
+        <thead>
+          <tr>
+            <th>Trasação</th>
+            <th>Comissão</th>
+            <th class="sort">Ordernar Por
+              <%= sort_link @q, :invoice_created_at, "Data" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @invoices.each do |invoice| %>
+          <tr>
+            <% unless invoice.status.nil? %>
+            <td><%= link_to "Trasação # #{invoice.id}", vitrine_invoice_path(current_vitrine, invoice.id) %></td>
+            <td><%= number_to_currency invoice.store_fee %></td>
+            <td><%= invoice.created_at.strftime('%d/%m/%Y') %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="block_pagination">
+      <div class="digg_pagination">
+        <%= will_paginate @invoices,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+      </div>
+    </div>
+  </div>
+</div>

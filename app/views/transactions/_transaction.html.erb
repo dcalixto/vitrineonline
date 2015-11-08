@@ -1,0 +1,43 @@
+
+    
+
+<#% product = order.product %>
+ 
+<th>Trasação</th>
+<th>Produto</th>
+<th>Quantidade</th>
+<th>Data</th>
+<th>Comissão</th>
+
+
+<tr>
+
+  <#% unless order.status.nil? %>
+ <#% if order.seller == current_boutique %>
+  <td># <%=transaction.id %></td>
+
+    <td>
+      
+
+      <ul>
+        <li><3%= link_to  product_path(product.id) do %>
+        <3%= image_tag product.f1.url(:table).to_s %>
+        <3%=  product.name %></li>
+      
+    </ul>
+    <3% end %>
+  </td>
+
+
+     <td><3%= order.quantity %></td>
+<td><%= transaction.created_at.strftime('%d/%m/%Y') %></td>
+<td>  <%= number_to_currency transaction.store_fee %></td>
+ <#% end %>
+  <#% end %>
+</tr>
+
+
+
+
+
+

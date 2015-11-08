@@ -1,0 +1,23 @@
+<div id="drop">
+
+  <div class="inner_drop">
+    <!-- Mulé -->
+    <div class="inner_links">
+      <% @genders.each do |gender| %>
+
+      <%= link_to   gender.gender,  gender_path(:id => gender.id) %>
+      <span></span>
+      <% end %>
+
+      <% @categories.each do |c| %>
+
+      <%= link_to   c.name, category_path(:id => c.id )  %>
+      <span></span>
+
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+<!-- Fim -->

@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /carts
+Disallow: /signup
+Disallow: /login
+Disallow: /users/password_resets/new
+Disallow: /vitrines
+Disallow: /conversations
+Disallow: /users

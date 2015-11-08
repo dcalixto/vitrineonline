@@ -1,0 +1,32 @@
+<% title "Menssagens" %>
+
+<div class="box3">
+
+  <div class="block margin_top">
+    <%= render 'shared/flash_messages' %>
+    <%= render 'shared/error_messages', :target => @conversation  %>
+
+  </div>
+
+  <div class="block margin_top">
+    <h1>Conversa</h1>
+
+    <div class="chatboxcontent" id="conversation_<%= @conversation.id %>">
+      <%= render partial: 'messages/message', collection: @messages  %>
+    </div>
+
+    <div class="chatboxinput">
+      <%= semantic_form_for  [@conversation,  @new_message] do |f| %>
+
+      <%= f.inputs do %>
+      <%= f.input :body, :as => :text, :placeholder => false, :label => false %>
+      <%= f.actions do %>
+      <%= f.action :submit, :label => "Enviar", :button_html => { :class => "btn"} %>
+      <% end %>
+      <% end %>
+      <% end %>
+
+    </div>
+  </div>
+
+</div>

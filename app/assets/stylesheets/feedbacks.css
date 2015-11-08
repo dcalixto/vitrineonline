@@ -1,0 +1,42 @@
+
+.feedback-container .feedback-container table, .feedback_view_selector {
+  width: 100%;
+}
+.no_awaiting {
+  border: #dadbd6 solid 1px;
+  text-align: center;
+  height: 30px;
+  padding-top: 6px;
+  margin-top: 6px;
+}
+.awaiting_feedback_table td, .completed_feedback_table td {
+  padding: 4px;
+}
+.awaiting_feedback_table .comment_tr td {
+  padding-bottom: 20px;
+  border-bottom: solid 1px #ddd;
+}
+.awaiting_feedback_table input[type="radio"] {
+  vertical-align: middle;
+}
+.awaiting_feedback_table textarea {
+  width: 60%;
+  height: 60px;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.completed_feedback_table thead td {
+  border: #eee 1px solid;
+  vertical-align: middle;
+}
+.completed_feedback_table tbody td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.completed_feedback_table .comment {
+  width: 45%;
+}
+.feedback_view_selector {
+  margin-bottom: 12px;
+  text-align: center;
+}

@@ -1,0 +1,64 @@
+<% if params[:status].nil? || params[:status] == Order.statuses[0] %>
+<% title "Itens Vendidos" %>
+<% end %>
+<% if params[:status].nil? || params[:status] == Order.statuses[1] %>
+<% title "Itens Enviados" %>
+<% end %>
+<%= render "shared/vitrine_menu" %>
+
+<div class="box5">
+    <div class="flash_box">
+      <%= render 'shared/flash_messages' %>
+    </div>
+
+  <div class="block  margin_top">
+
+
+
+    <%= "<h1>Produtos Vendidos </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+    <%= "<h1>Produtos Enviados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
+
+
+    <div class="content">
+      <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
+      </p>
+      <% if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+
+      <table class="block_search">
+        <tr>
+
+          <td class="sort">
+            Ordenar por
+            <%= sort_link @q, :created_at, "Data" %>
+            |
+            <%= sort_link @q, :transaction_status, "Pagamento" %>
+          </td>
+        </tr>
+      </table>
+
+      <% end %>
+      <%if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
+
+      <table class="block_search">
+        <tr>
+
+          <td class="sort">
+            Ordenar por
+            <%= sort_link @q, :created_at, "Data" %>
+            |
+            <%= sort_link @q, :track_number, "Rastreamento" %>
+          </td>
+        </tr>
+      </table>
+
+      <% end %>
+
+      <%= render  partial: 'orders/order', collection: @orders %>
+    </div>
+    <div class="block_pagination">
+      <div class="digg_pagination">
+        <%= will_paginate @orders, previous_label: h('« Voltar'), next_label: h('Próximo »') %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="box1">
+
+  <div class="block">
+
+    <div class="search_block">
+
+      <div class="field">
+
+        <%= search_form_for @q,remote: true, url: products_vitrine_path, id: "search_box" do |f| %>
+        <%= f.search_field :name_cont, :id => "search" %>
+
+        <%= button_tag "", :class =>"search_btn", :name => nil %>
+        <% end %>
+
+      </div>
+
+    </div>
+    <div class="content">
+
+      <div class="vitrine">
+
+        <% if @products.present? %>
+        <% @products.each do |product|%>
+        <div class="expositor">
+          <ul class="lista-thumb">
+
+            <li><%= link_to(image_tag(product.f1.url(:thumb).to_s), product_url(product)) %>
+            </li>
+          </ul>
+          <ul class="lista-detalhes">
+            <li class="lista-product" title="<%=product.name %>"><%= link_to product.name, product_path(product) %></li>
+            <li class="lista-preco">
+              <span><%= number_to_currency product.price %></span>
+            </li>
+            <li class="lista-time">
+              <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+
+            </li>
+
+          </ul>
+        </div>
+
+        <% end %>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="block_pagination">
+      <div class="digg_pagination">
+        <%= will_paginate @products, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+
+      </div>
+    </div>
+
+  </div>

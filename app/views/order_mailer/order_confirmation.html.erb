@@ -1,0 +1,73 @@
+<%= image_tag 'logo.png' %>
+<br/>
+<br/>
+Olá,
+<%= @order.buyer.name %>
+<br/>
+Notificação da compra:
+<br/>
+<br/>
+Data da compra:
+<b>
+  <%= @order.created_at.strftime('%B %d, %Y %H:%M') %>
+</b>
+<br/>
+<br/>
+<b>Endereço de Entrega:</b>
+<br/>
+<%= @buyer.full_name %>
+<br/>
+<%= @buyer.user_address if @buyer.address %>
+<br/>
+<%= @buyer.user_neighborhood if @buyer.neighborhood%>
+<br/>
+<%= @buyer.user_city if @buyer.city and @buyer.state %>
+<br/>
+<%= @buyer.user_postal_code if  @buyer.postal_code %>
+<br/>
+<%= @buyer.user_address_supplement if @buyer.address_supplement %>
+<br/>
+Envio:
+<%= @order.shipping_method %>
+<br/>
+<br/>
+<b>Detalhes:</b>
+<br/>
+<table border="1" cellpadding="8">
+  <tr>
+    <td>#</td>
+    <td>Item</td>
+    <td>Preço</td>
+    <td>Quantidade</td>
+    <td>Preço</td>
+  </tr>
+  <tr>
+    <td><%= @order.quantity %></td>
+    <td><%= @order.product.name %></td>
+    <td><%= number_to_currency @order.product.price %></td>
+    <td><%= @order.quantity %></td>
+    <td><%= number_to_currency @order.quantity * @order.product.price %></td>
+  </tr>
+</table>
+<br/>
+<br/>
+<b>Total:</b>
+<br/>
+<table cellpadding="5">
+  <tr>
+    <td>Preço:</td>
+    <td><%= number_to_currency @order.quantity * @order.product.price %></td>
+  </tr>
+  <tr>
+    <td>Envio:</td>
+    <td><%= number_to_currency @order.shipping_cost %></td>
+  </tr>
+  <tr>
+    <td>
+      <b>Total:</b>
+    </td>
+    <td>
+      <b><%= number_to_currency(@order.quantity * @order.product.price + @order.shipping_cost) %></b>
+    </td>
+  </tr>
+</table>

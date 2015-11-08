@@ -1,0 +1,55 @@
+/* GALERIA DE PRODUTOS */
+
+
+/* ANNOUNCEMENT  */
+
+#announcement {
+  background-color: #bc200a;
+  padding: 7px;
+  margin-bottom: 5px;
+  text-align: left;
+  color: #fff;
+  font-size: 13px;
+}
+#announcement a {
+  font-size: 13px;
+  margin-left: 5px;
+  color: #fff;
+  float: right;
+}
+.info {
+  background: #fff;
+  border: solid 1px #ddd
+}
+
+/*  ADD vitrine IMG */
+
+.searchResults .vitrine {
+  width: 170px;
+  margin-bottom: 35px;
+  padding: 15px 12px 0 13px;
+  float: left;
+}
+/*.vitrine {
+  position: relative;
+  display: block;
+  width: 136px;
+  padding: 0 18px;
+  text-align: center;
+  float: left;
+  line-height: 16px;
+}
+.vitrine:hover {
+  text-decoration: none
+}
+.vitrine img {
+  display: block;
+  text-decoration: none;
+}
+.vitrine span {
+  display: block;
+  width: 100%;
+  margin: 1px 0;
+  text-decoration: underline;
+  font-size: 1.1em;
+}*/

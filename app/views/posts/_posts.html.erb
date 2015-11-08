@@ -1,0 +1,33 @@
+<% @posts.each do |post| %>
+<div class="post">
+  <div class="author_box">
+    <%= image_tag post.user.avatar.post %>
+    <%= link_to post.user.full_name, user_path(post.user) %>
+  </div>
+  <div class="content_box">
+    <div class="text">
+      <%= post.text.gsub(/[\n]/, '<br/>').html_safe %>
+    </div>
+    <div>
+      <%= image_tag post.image.big if post.image.present? %>
+    </div>
+    <div class="options">
+      <%= social_share_button_tag(truncate(post.text, :length => 20), :url => url_for(:action => :show, :id => post.id, :only_path => false)) %>
+    </div>
+    <div class="comments" id="comments<%= post.id %>">
+      <%= render :partial => 'comments', :locals => {post: post} %>
+    </div>
+    <% if current_user %>
+    <div class="controls">
+      <%= hidden_field_tag 'post_id', post.id %>
+      <%= text_field_tag 'comment_input', '', :class => 'comment_input', :placeholder => 'Escreva um comentário...' %>
+      <br/>
+
+    </div>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<script type="text/javascript">
+  bind_comment_handler();
+</script>

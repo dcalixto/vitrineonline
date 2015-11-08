@@ -1,0 +1,76 @@
+<%# product = order.product %>
+<div class="transaction">
+  <table class="zebra_stock">
+    <thead>
+      <tr class="header">
+        <th scope="col">produto
+        </th>
+        <th scope="col">Preço</th>
+        <th scope="col">Envio</th>
+        <th scope="col">Qtd</th>
+        <th scope="col">Data</th>
+        <th scope="col">Código</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td><%= image_tag product.f1.url(:table).to_s %></td>
+
+        <td><%= link_to product.name, product_path(product.id) %></td>
+
+        <td>
+          <strong>Quantidade:</strong>
+          <%= order.quantity %></td>
+        <td>
+          <strong>Preço:</strong>
+          <%= number_to_currency(order.total_price) %></td>
+
+      </tr>
+
+      <% unless order.status.nil? %>
+      Pago em:
+      <%= order.transaction.created_at.strftime('%d/%m/%Y') %>
+      <% if params[:status] == Order.statuses[1] %>
+
+      Enviado em:<%= order.transaction.shipped_at.strftime('%d/%m/%Y')  %>
+      <% end %>
+      <% if params[:status] == Order.statuses[2] %>
+      Recebido em:<%= order.transaction.received_at.strftime('%d/%m/%Y')  %>
+
+      <% end %>
+
+      <% if order.seller == current_boutique %>
+
+      Comissão
+      <%= number_to_currency order.transaction.store_fee %>
+
+      Código
+      <%= order.transaction.transaction_id %>
+
+      Forma de envio<%= order.shipping_method %>
+
+      Preço
+      <%= number_to_currency order.shipping_cost %>
+      <% if params[:status] == Order.statuses[0] %>
+
+      <%= link_to 'Change', sent_order_path(order) %>
+      status to 'Sent to customer'.
+      <% end %>
+      <% else %>
+      <% if params[:status] == Order.statuses[1] %>
+
+      <%= link_to 'Change', delivered_order_path(order) %>
+      status to 'Delivered'.
+      <% end %>
+
+      <% end %>
+
+      <% end %>
+
+    </tbody>
+  </table>
+
+</div>
+<!--PAGINATION -->
+<%= will_paginate orders, previous_label: h("« Voltar"), next_label: h("Próximo »") %>

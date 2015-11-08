@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang=pt-BR>
+
+<head>
+  <meta charset=utf-8>
+  <meta http-equiv=X-UA-Compatible content="IE=Edge;chrome=1">
+  <meta name=viewport content="width=device-width, initial-scale=1.0">
+  <%=favicon_link_tag %>
+    <meta name=robots content="noodp,noydir" />
+    <%=display_meta_tags(default_meta_tags) %>
+      <%=canonical_link_tag %>
+        <% set_meta_tags :og=> {
+      :site_name => "Vitrineonline",
+      :locale => "pt_PT",
+      :url => "http://www.vitrineonline.com"
+    }
+    %>
+
+          <meta property=fb:app_id content=166642276860638 />
+          <meta name=google-site-verification content=Dl2kWPSdv0m1b_iGqTBmnv-GyydEZdoH0p4ZoOjLsBM />
+
+          <% cache "cs" do %>
+            <%=stylesheet_link_tag "application" %>
+              <% end %>
+                <%=csrf_meta_tags %>
+</head>
+
+<body>
+
+
+  <div id=header>
+
+    <div id=bottom_ribbon>
+      <div class=inner_bar>
+        <% cache "logo" do %>
+          <div id="logo">
+            <%= link_to root_url do %>
+              <%= content_tag(:span, nil, :class =>'logo') %>
+                <% end %>
+          </div>
+          <% end %>
+
+            <% cache "busca" do %>
+              <%= render "layouts/search" %>
+                <% end %>
+
+                  <%= render "layouts/shop_cart" %>
+
+                    <% if current_user %>
+                      <%=render :partial=> "layouts/left_nav" %>
+                        <%end %>
+
+
+                          <div class="log_topbar">
+
+
+                            <ul>
+                              <% if current_user %>
+
+                                <li class="top_avatar" title="<%=current_user.name %>">
+                                  <%= link_to user_path(current_user) do %>
+
+                                    <%= image_tag(current_user.avatar.url(:small).to_s) %>
+
+
+                                      <%= current_user.name %>
+
+                                </li>
+                                <%end%>
+
+                                  <li class="padding_top">
+                                    <%=link_to "Conta", edit_user_path(current_user)%>
+
+                                      <span></span>
+
+                                  </li>
+
+                                  <li class="padding_top">
+                                    <%= link_to 'Sair', session_path(current_user),  method: :delete %>
+                                      <span></span>
+
+                                  </li>
+
+                                  <% else %>
+
+
+
+                                    <li>
+                                      <%= link_to "Segurança",  page_path("seguranca")%>
+
+                                    </li>
+
+
+                                    <li>
+                                      <%= link_to 'Ajuda?',  page_path("comprar")%>
+                                        <span></span>
+                                    </li>
+
+                                    <li>
+                                      <%=  link_to 'Abrir Conta', signup_path %>
+
+
+                                        <span></span>
+
+                                    </li>
+
+                                    <li>
+                                      <%= link_to "Entrar com facebook",  "/auth/facebook"  %>
+                                        <span></span>
+
+                                    </li>
+
+
+
+                                    <li>
+                                      <%=  link_to 'Entrar',  login_path %>
+                                        <span></span>
+
+                                    </li>
+                                    <% end %>
+                            </ul>
+
+                          </div>
+
+      </div>
+    </div>
+
+
+
+    <% cache "drop" do %>
+      <%=render "layouts/drop" %>
+        <% end %>
+
+  </div>
+
+  <div id=container>
+    <%= breadcrumbs separator: "&rsaquo;" %>
+      <%=yield %>
+  </div>
+
+  <% cache "footer" do %>
+    <%=render "layouts/footer" %>
+      <% end %>
+
+
+        <% cache "js" do %>
+          <%=jquery_include_tag :google %>
+            <%=javascript_include_tag "application" %>
+              <% end %>
+                <% if logado? %>
+                  <%=render "layouts/faye" %>
+                    <%end %>
+                      <%=render "layouts/analytics" %>
+</body>
+
+</html>

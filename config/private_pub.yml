@@ -1,0 +1,10 @@
+production:
+  server: "http://vofayeserver.herokuapp.com/faye"
+  secret_token: "d2f2f7d32e82677504b3bf101b09be369eb2139"
+  signature_expiration: 86400 # one day
+
+
+development:
+  server: "http://vofayeserver.herokuapp.com/faye"
+  secret_token: "d2f2f7d32e82677504b3bf101b09be369eb2139"
+  signature_expiration: 86400 # one day

@@ -1,0 +1,186 @@
+<% title "Checkout" %>
+<div class="box2">
+  <div class="breadcrumb margin_top">
+    <h2>
+      <strong>Detalhes para Entrega</strong>
+      &gt; Confirmar e Pagar</h2>
+  </div>
+</div>
+<div class="box4">
+  <%= render 'shared/flash_messages' %>
+  <%= render 'shared/error_messages', :target => @order %>
+  <div class="block_empty margin_top">
+    <table class="checkout_product">
+      <% product = @order.product %>
+      <thead>
+        <tr>
+          <th>
+            Item
+          </th>
+          <th>
+            Sumário
+          </th>
+          <th>
+            Endereço de Entrega
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td >
+            <%= image_tag product.f1.url(:thumb).to_s %>
+          </td>
+          <td class="sumary">
+            <ul>
+              <li>
+                <%= link_to product.name, product_path(product.id) %></li>
+              <li>Genero
+                <b>
+                  <#%= @order.gender.gender %></b>
+                </li>
+                <li>Categoria
+                  <b>
+                    <#%= @order.category.name %></b>
+                  </li>
+                  <li>Subcategoria
+                    <b>
+                      <#%= @order.subcategory.name %></b>
+                    </li>
+                    <li>Tamanho
+                      <b>
+                        <#%= @order.size.size %></b>
+                      </li>
+                      <li>Cor
+                        <b>
+                          <#%= @order.color.name %></b>
+                        </li>
+                        <li>Material
+                          <b>
+                            <#%= @order.material.name %></b>
+                          </li>
+                          <li>Marca
+                            <b>
+                              <#%= @order.brand.name %></b>
+                            </li>
+                            <li>Condição
+                              <b>
+                                <#%= @order.condition.condition %></b>
+                              </li>
+                              <li>Vitrine
+                                <%= link_to @order.seller.vitrine_name, vitrine_path(@order.seller) %></li>
+                              <li>Quantidade
+                                <b><%= @order.quantity %></b>
+                              </li>
+                              <li>Preço
+                                <b class="lista-preco"><%= number_to_currency @order.total_price %></b>
+                              </li>
+                            </ul>
+                          </td>
+                          <td >
+                            <ul >
+                              <li><%= current_user.full_name %></li>
+                              <%unless current_user.user_address.nil? %>
+                              <li>
+                                <%= current_user.user_address %></li>
+                              <% end %>
+                              <%unless current_user.user_address.nil? %>
+                              <li>
+                                <%= current_user.user_neighborhood %></li>
+                              <% end %>
+                              <%unless current_user.city.nil? %>
+                              <li>
+                                <%= current_user.city.name %>
+                              </li>
+                              <% end %>
+                              <%unless current_user.state.nil? %>
+                              <li>
+                                <%= current_user.state.name %>
+                              </li>
+                              <% end %>
+                              <%unless current_user.postal_code.nil? %>
+                              <li><%= current_user.user_postal_code %></li>
+                              <% end%>
+                            </ul>
+                          </td>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="box10">
+                    <div class="block_empty margin_top">
+                      <table class="checkout_total">
+                        <thead>
+                          <tr>
+                            <th>
+                              Total
+                            </th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tr class="subtotal">
+                          <td >
+                            Subtotal (<%= @order.quantity %>
+                            Item)
+                          </td>
+                          <td>
+                            <b><%= number_to_currency @order.total_price %></b>
+                          </td>
+                        </tr>
+                        <tr class="shipping_cost">
+                          <td >
+                            Frete
+                          </td>
+                          <td>
+                            <% unless @order.shipping_cost.nil? %>
+                            <b>
+                              <%= number_to_currency( @order.shipping_cost) %></b>
+                            <% end %>
+                          </td>
+                        </tr>
+                        <tr class="checkout_bottom">
+                          <td>
+                            Selecione o Frete
+                          </td>
+                          <td>
+                            <%= form_for @order, html: { class: 'form-inline' } do |f| %>
+                            <%unless @order.product.vitrine.policy.shippings.blank? %>
+                            <%= f.select :shipping_method,
+                  @order.product.vitrine.policy.shippings.map(&:kind),
+                  {}, { class: 'input-small' } %>
+                            <% end %>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Custo
+                          </td>
+                          <td>
+                            <b>R$</b><%= f.text_field :shipping_cost, class: "shipping_cost" %>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <%= f.submit "Calcular", class: "btn" %>
+                            <% end %>
+                          </td>
+                        </tr>
+                        <tr id="orderTotal">
+                          <td class="sum">
+                            Total
+                          </td>
+                          <td class="amt">
+                            <% unless @order.shipping_cost.nil? %>
+                            <%= number_to_currency(@order.total_price + @order.shipping_cost) %>
+                            <% end %>
+                          </td>
+                        </tr>
+                        <tr class="checkout_bottom">
+                          <td></td>
+                          <td id="pay_cell">
+                            <%= button_to("Comprar", buy_order_path(@order), method: :get, class: 'btn_orange') unless @order.shipping_cost.nil? %>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>

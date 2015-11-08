@@ -1,0 +1,74 @@
+/* Smartphones (portrait and landscape) ----------- */
+
+body, html {
+  height: 100%;
+  min-width: 320px;
+}
+#container {
+  min-height: 1500px;
+  background: none repeat scroll 0% 0%;
+  margin: 0px auto;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  max-width: 1000px;
+  min-width: 960px;
+  line-height: 1.34;
+}
+.box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13, .box14 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+  float: left;
+  border: solid 1px blue;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+}
+.box1 {
+  width: 100%;
+}
+.box2 {
+  width: 91.66666667%;
+}
+.box3 {
+  width: 83.33333333%;
+}
+.box4 {
+  width: 75%;
+}
+.box5 {
+  width: 66.66666667%;
+}
+.box6 {
+  width: 58.33333333%;
+}
+.box7 {
+  width: 50%;
+}
+.box8 {
+  width: 41.66666667%;
+}
+.box9 {
+  width: 33.33333333%;
+}
+.box10 {
+  width: 25%;
+}
+.box11 {
+  width: 16.66666667%;
+}
+.box12 {
+  width: 8.33333333%;
+}
+#container:before, #container:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+#container:after {
+  clear: both
+}

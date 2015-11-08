@@ -1,0 +1,327 @@
+<% title @product.name%>
+<%description @product.name  %>
+<% keywords  @product.meta_keywords %>
+
+<div class="box1">
+  <% breadcrumb :product, @product %>
+  <div class="margin_top">
+    <%= render 'shared/flash_messages' %>
+
+  </div>
+</div>
+
+<!-- Imagens do product   -->
+
+<div class="box7">
+  <h1 id="item_name"><%= @product.name %></h1>
+  <div class="">
+    <%= render_showcase %>
+
+    <div id="placeholder">
+
+      <%= image_tag @product.f1.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
+
+    </div>
+
+  </div>
+</div>
+
+<%= form_tag buy_now_to_carts_path(@product) do %>
+<div class="box7">
+
+  <div >
+
+    <ul>
+
+      <li>
+        <div >
+          <p><% if @product.detail.present? %>
+            <%= markdown(@product.detail) %>
+            <% end %></p>
+        </div>
+      </li>
+
+      <!-- Fim-->
+
+      <!--Descrição   -->
+
+      <li>
+
+        <h3 id="item_price"><%= number_to_currency(@product.price, :unit => "R$") %></h3>
+      </li>
+
+      <% if @product.vitrine.feedbacks %>
+
+      <%=link_to  feedbacks_product_path(:id=> @product.id)  do %>
+
+      <li>
+        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>">
+          <span class="feedCounter"><%= @total_feedbacks %></span>
+        </div>
+
+      </li>
+      <% end %>
+
+      <% end %>
+
+      <li>
+        <span class="span">ID</span>
+        <b class="span">
+          #<%= @product.id %></b>
+      </li>
+      <li>Por
+        <%=link_to @product.vitrine.user.name, vitrine_path(@product.vitrine),  :title => "Nome" %></li>
+
+    </ul>
+
+    <div class="left_info item_information">
+      <ul>
+        <li >
+          <b>Quantidade</b>&nbsp;
+
+          <%= select_tag  :quantity, options_for_select((1..@product.quantity).collect{ |q| [q, q]}) %>
+
+        </li>
+        <li >
+          <b>Cor</b>&nbsp;
+
+          <%= select_tag :color_id, options_for_select(@colors_for_dropdown.unshift(['Selecionar Cor', nil])) %>
+
+        </li>
+        <li>
+          <b>Tamanho</b>&nbsp;
+
+          <%= select_tag :size_id, options_for_select(@sizes_for_dropdown.unshift(['Selecionar Tamanho', nil]))%>
+
+        </li>
+      </ul>
+    </div>
+
+    <div class="horizontal_buttons">
+      <ul>
+        <li>
+
+          <% if current_user %>
+          <%if @product.buyable?(current_user) %>
+
+          <div class="buy_now">
+
+            <%= button_to( "Comprar", buy_now_to_carts_path(@product), :class => 'btn_orange  btn_big', :'data-submit-form' => true)  %>
+
+          </div>
+
+        </li>
+
+        <li>
+
+          <div class="add_to_car">
+
+            <%= button_to("Adicionar a sacola",add_to_carts_path(@product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
+
+            <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
+            <%end %>
+
+          </div>
+
+          <%end %>
+
+          <%end %>
+
+        </li>
+      </ul>
+
+      <%end %>
+
+    </div>
+
+  </div>
+
+  <div class="block">
+    <%= link_to  "https://www.paypal.com/br"  do %>
+
+    <%= content_tag(:span, nil, :class => 'paypal_protect') %>
+
+    <% end %>
+
+    Saiba mais em:
+    <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+  </div>
+
+  <!-- Fim-->
+</div>
+
+<div class="box1">
+  <div class="divider_bottom"></div>
+
+  <div class="block">
+
+    <h4>Especificações</h4>
+
+    <div class="content">
+
+      <div class="left_info">
+        <ul>
+
+          <li>
+            <span>Condição
+            </span>
+            <b><%= @product.condition.condition %></b>
+          </li>
+          <% if @product.material.present? %>
+
+          <li>
+            <span>Material</span>
+            <b><%= @product.material.name %></b>
+          </li>
+          <% end %>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="box1">
+  <div class="block">
+    <div class="divider_bottom"></div>
+    <h4>Sobre</h4>
+
+    <div class="content">
+
+      <p><% if @product.detail.present? %>
+        <%= markdown(@product.detail) %>
+        <% end %></p>
+    </div>
+
+  </div>
+</div>
+
+<div class="box1">
+
+  <div class="block">
+    <div class="divider_bottom"></div>
+
+    <h4>Forma de Pagamento</h4>
+    <div class="content">
+      <%= link_to  "https://www.paypal.com/br"  do %>
+
+      <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+      <% end %>
+
+      <% unless @product.vitrine.policy.blank? %>
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="divider_bottom"></div>
+
+    <h4>Envio</h4>
+    <div class="content">
+
+      <ul>
+
+        <li>
+          <%= content_tag(:span, nil, :class => 'shipping') %>
+        </li>
+
+        <% @product.vitrine.policy.shippings.each do |shipping| %>
+        <li>
+          <b><%= shipping.kind %></b>
+        </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="divider_bottom"></div>
+
+    <h4>Garantias</h4>
+    <div class="content">
+
+      <p><%= markdown(@product.vitrine.policy.guarantee) %></p>
+      <% unless @product.vitrine.policy.shippings.blank? %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="box1">
+  <div class="block">
+    <div class="divider_bottom"></div>
+
+    <h4>Avaliação</h4>
+
+    <table class="block_search">
+      <tr>
+        <td>
+
+          <%= search_form_for @q, url: feedbacks_search_products_path, method: :post  do |f| %>
+
+          <%= f.text_field :id_cont %>
+          <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+          <% end %>
+        </td>
+        <td class="sort">
+
+          Ordernar por
+          <%= sort_link @q, :created_at, "Data" %>
+        </td>
+      </tr>
+    </table>
+
+    <div class="content">
+      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+      <%= render :partial => 'feedbacks/feedbacks' %>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class="box1">
+
+  <div class="block">
+    <div class="block_message">
+
+      <h4>Dúvidas?</h4>
+
+      <% @conversation = Conversation.new %>
+
+      <%= form_for @conversation do |f| %>
+      <div class="doubt">
+        <%= hidden_field :conversation_participants, :user_id, :value => @product.vitrine.user_id %>
+        <ul>
+          <li><%= text_area :message, :body, :rows => 3 %></li>
+
+        </ul>
+      </div>
+      <%= f.button 'Enviar', :class => 'btn_grey' %>
+
+      <% end %>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class="box1">
+
+<#%= recommender.similarities_for("product-1", with_scores: true) %>
+
+
+
+
+
+</div>

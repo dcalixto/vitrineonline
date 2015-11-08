@@ -1,0 +1,40 @@
+<div id="footer">
+
+  <div class="inner_footer">
+
+    <div id="footer-copy">
+      <% cache "logo_bottom" do %>
+      <%= link_to root_url do %>
+      <%= content_tag(:span, nil, :id =>"footer-logo") %>
+      <% end %>
+      <% end %>
+      <p>Vitrineonline &copy; 2015
+      </p>
+    </div>
+
+    <ul id="footer-links">
+      <li><%= link_to 'Termos e Condições', page_path('termos') %></li>
+      <li><%= link_to 'Privacidade', page_path('privacidade')%></li>
+      <li><%= link_to 'Contato', contacts_path  %></li>
+      <li class="invisible"><%= link_to 'Oportunidades', page_path('oportunidades')%></li>
+      <li><%= link_to 'Sobre', page_path('sobre')%></li>
+      <li>
+        <%= link_to "Anúncios e Descontos",  page_path("descontos")%>
+      </li>
+      <li>
+        <%= link_to "Avaliação",  page_path("avaliacao")%>
+      </li>
+      <li>
+        <%= link_to "Segurança",  page_path("seguranca")%>
+      </li>
+      <li>
+        <%= link_to  "https://www.paypal.com/br"  do %>
+
+        <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+        <% end %>
+      </li>
+    </ul>
+
+  </div>
+
+</div>

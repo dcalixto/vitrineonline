@@ -1,0 +1,33 @@
+<% title "Fatura" %>
+
+<%= render "shared/boutique_menu" %>
+
+<div class="box4">
+  <%= render 'shared/flash_messages' %>
+
+  <div class="block">
+
+    <h4>Fatura</h4>
+    <div class="content">
+
+    
+
+    <table class="zebra_branca">
+      <tbody >
+
+        <% @transactions.each do |e| %>
+        <tr>
+          <td>
+            <%=  e.id%></td>
+
+        </td>
+      </tr>
+
+      <% end %>
+
+    </tbody>
+  </table>
+
+</div>
+</div>
+</div>

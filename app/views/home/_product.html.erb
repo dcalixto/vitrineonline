@@ -1,0 +1,49 @@
+<div class="list_view">
+
+  <%= link_to  product_path(product.id) do %>
+  <%= image_tag product.f1.url(:table).to_s %>
+
+  <% end %>
+
+  <div class="list_details">
+    <ul>
+      <li>
+        <h3 class="name">
+          <%= link_to  product_path(product.id)  do %>
+          <%= product.name %>
+          <% end%>
+        </h3>
+      </li>
+      <li class="price">
+        <b ><%=  number_to_currency(product.price, :unit => "R$") %></b>
+      </li>
+
+      <li class="lista-time">
+        <%= link_to  vitrine_path(product.vitrine.id)  do %>
+        Por
+        <%= product.vitrine.name %>
+        <% end%>
+        <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+      </li>
+
+      <li>
+        <% if product.feedbacks %>
+        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+        <%= @total_feedbacks %>
+        <% end %>
+      </li>
+      <li>
+        Votos
+        <%= product.get_likes.size %>
+      </li>
+
+      <li><%= link_to "Votar", like_product_path(product.id), method: :put %>
+        <%= link_to "Desvotar", dislike_product_path(product.id), method: :put %>
+      </li>
+    </ul>
+  </div>
+
+  <p></p>
+
+</div>

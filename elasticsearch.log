@@ -1,0 +1,5 @@
+# 2013-08-13 10:01:06:626 [HEAD] ("boutiques")
+#
+curl -I "http://localhost:9200"
+
+# 2013-08-13 10:01:06:639 [Errno::ECONNREFUSED]

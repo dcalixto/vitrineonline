@@ -1,0 +1,132 @@
+/* BLACK TOPBAR  */
+
+.info_area span {
+  border-right: 1px solid #6b6b6b;
+  line-height: 0.2em;
+  height: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px
+}
+.inner {
+  clear: both;
+  margin: 0px auto;
+  max-width: 1000px;
+  min-width: 960px;
+  box-sizing: border-box;
+  margin: 0px auto !important;
+}
+.inner:before, .inner:after {
+  content: "";
+  display: table;
+}
+
+/* LOGO */
+
+#logo {
+  float: left;
+  display: block;
+  vertical-align: middle;
+  margin-top: 8px
+}
+#logo a {
+  margin-top: 0;
+  cursor: pointer;
+  text-align: right;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: auto auto;
+  display: block;
+  outline: medium none;
+  overflow: hidden;
+  text-indent: -999px;
+  white-space: nowrap;
+  z-index: 2;
+}
+#logo a:hover span {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
+/* MENU DA BUSCA */
+
+.logo {
+  width: 190px;
+  height: 40px;
+  display: block;
+  background: url(/assets/logo.png) no-repeat;
+  margin-top: 2px
+}
+
+/* SEARCH  */
+
+.sell_button {
+  vertical-align: baseline;
+  height: 40px;
+  z-index: 100;
+  padding: 0;
+  float: right;
+}
+
+/*  TOP BAR USER LOG IN */
+
+.log_topbar {
+  float: right;
+  overflow: auto;
+  vertical-align: baseline;
+  width: auto;
+  position: relative;
+  margin-top: 15px
+}
+.log_topbar li, .info_area li {
+  float: left;
+  margin-right: 5px;
+  margin-left: 7px;
+  vertical-align: middle;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+.log_topbar ul li a, .info_area ul li a {
+  display: block;
+  vertical-align: middle;
+  float: right;
+}
+.help {
+  margin-right: 10px;
+  font-size: 13px;
+  margin-top: 10px
+}
+.log_topbar ul, .info_area ul {
+  display: block;
+  vertical-align: middle;
+  float: right;
+  list-style: outside none none;
+}
+.top_links {
+  padding-top: 8px;
+  float: right
+}
+.log_topbar span {
+  border-right: 1px solid #fff;
+  line-height: 0.2em;
+  height: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px
+}
+.info_area {
+  font-family: tahoma;
+  font-size: 12px;
+  color: #D91B00;
+  text-align: right;
+  line-height: 17px;
+  font-weight: normal;
+  float: left;
+  position: relative;
+  margin-top: 5px;
+}
+.log_topbar img {
+  width: 20px;
+  /* you can use % */
+  height: auto;
+}

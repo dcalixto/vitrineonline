@@ -1,0 +1,62 @@
+.post_form_content {
+  float: left;
+  margin-right: 8px;
+  text-align: right;
+}
+.post_form_content textarea {
+  width: 300px;
+  min-height: 140px;
+}
+.post {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-top: 1px solid #ddd;
+  padding-top: 8px;
+}
+.post .author_box a {
+  vertical-align: top;
+  font-size: 16px;
+  margin-left: 5px;
+  color: #333;
+  font-weight: bold;
+}
+.post .author_box img {
+  float: left;
+  padding: 3px;
+}
+.post .content_box {
+  margin-left: 120px;
+}
+.post .content_box .text {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.post .content_box .options {
+  margin-top: 5px;
+}
+.post .controls input[type="text"] {
+  margin-top: 2px;
+  width: 400px;
+  height: 18px;
+}
+.post .controls span {
+  padding-left: 4px;
+  font-size: 11px;
+}
+.post .comments {
+  margin-top: 5px;
+}
+.post .comments img {
+  float: left;
+  margin-right: 4px;
+}
+.post .comments .comment {
+  margin-top: 2px;
+  border-bottom: 1px dotted #aaaaaa;
+  /*background:#eef3ed;*/
+  min-height: 50px;
+  width: 410px;
+}
+.comment:hover {
+  background: #fafafa;
+}

@@ -1,0 +1,63 @@
+<% title "Categoria" %>
+<div class="box1">
+  <% breadcrumb :category, @category %>
+</div>
+
+<%= render "shared/filtro_product" %>
+
+<!-- VITRINE-->
+<div class="box3">
+  <div class="block header">
+
+    <h1><%= @products.current_page %>
+      de
+      <%= @products.total_pages %>
+      no Total
+      <span class="orange"><%= @products.total_entries %></span>
+      Itens</h1>
+    <div class="content">
+
+      <div class="vitrine">
+
+        <% if @products.present? %>
+        <% @products.each do |product|%>
+
+        <div class="expositor">
+          <ul class="lista-thumb">
+
+            <li><%= link_to(image_tag(product.f1.url(:thumb).to_s), product_url(product), :crop => :fill) %>
+            </li>
+          </ul>
+          <ul class="lista-detalhes">
+            <li class="lista-product" title="<%=product.name %>"><%= link_to product.name, product_path(product) %></li>
+            <li class="lista-preco">
+              <span><%= number_to_currency product.price %></span>
+            </li>
+            <li class="lista-time">
+              <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+
+            </li>
+
+            <li >Por
+              <%= link_to product.vitrine.name, vitrine_path(product.vitrine.id) %></li>
+
+          </ul>
+        </div>
+
+        <% end %>
+
+        <% end %>
+      </div>
+
+    </div>
+    <div class="block_pagination">
+      <div class="digg_pagination">
+        <%= will_paginate @products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
