@@ -10,4 +10,7 @@ module ProductsHelper
   def render_showcase
     render partial: 'showcase'
   end
+
+
+  include ActsAsTaggableOn::TagsHelper
 end

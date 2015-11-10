@@ -29,6 +29,44 @@
                "data-pre" => @product.tags.map(&:attributes).to_json %>
 </div>
 
+
+
+<div class="subcontent">
+
+  <h4>Especificações</h4>
+
+     <span><b>Tamanho</b></span>
+
+
+
+
+     <%= hidden_field_tag "product[size_ids][]", nil %>
+     <% Size.all.each do |size| %>
+     <%= check_box_tag "product[size_ids][]", size.id, @product.size_ids.include?(size.id), id: dom_id(size) %>
+     <%= label_tag dom_id(size), size.size %><br>
+     <% end %>
+
+
+     <span><b>Cor</b></span>
+     <%= hidden_field_tag "product[color_ids][]", nil %>
+     <% Color.all.each do |color| %>
+     <%= check_box_tag "product[color_ids][]", color.id, @product.color_ids.include?(color.id), id: dom_id(color) %>
+     <%= label_tag dom_id(color), color.name %><br>
+     <% end %>
+     <ul>
+     <b>Material</b>&nbsp;
+     <%=  p.collection_select :material_id, Material.all, :id, :name %>
+     </li>
+     <li>
+        <b>Condição</b>&nbsp;
+        <#%=  p.collection_select :condition_id, Condition.all, :id, :name %>
+     </li>
+   </div>
+
+
+
+
+
   <div class="content">
 
 <%= p.input :quantity, :label =>"Quantidade", :as => :number %>

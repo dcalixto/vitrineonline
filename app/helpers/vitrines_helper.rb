@@ -1,4 +1,5 @@
 module VitrinesHelper
+include ActsAsTaggableOn::TagsHelper
   def current_vitrine
     @current_vitrine ||= current_user.vitrine
   end

@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
     respond_to do |format|
-      format.html { render 'feedbacks', layout: false }
+      format.html { render 'feedbacks'}
     end
   end
 
@@ -91,7 +91,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user][:avatar_id])
+    if @user.update_attributes(params[:user])
       redirect_to(action: :edit, id: @user, only_path: true)
       flash[:notice] = 'Conta atualiazada'
     else

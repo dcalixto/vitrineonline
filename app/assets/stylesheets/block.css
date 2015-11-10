@@ -53,7 +53,8 @@
   display: block;
   overflow: hidden;
   border:solid 1px #ddd;
-  background:#ddd;
+
+  background-color: #F7F7F7;
     border-radius: 3px;
 }
 .block_search {
@@ -96,7 +97,7 @@
 .block h1 {
   margin-left: 3px;
   margin-top: 3px;
-  color: #111;
+  color: #3459A8;
   font-size: 24px
 }
 .block h4 {

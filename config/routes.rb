@@ -22,6 +22,7 @@ Vitrineonline::Application.routes.draw do
 
     collection do
       post '/:id', to: 'users#show', as: :feedbacks_search
+    post '/:id/feedbacks', to: 'users#feedbacks', as: :search_feedbacks
     end
   end
 
@@ -59,7 +60,7 @@ Vitrineonline::Application.routes.draw do
       post '/:id', to: 'vitrines#show', as: :products_search
       match '/:id/stocks', to: 'stocks#index', as: :search_stocks
       match '/:id/views', to: 'views#index', as: :views_search
-
+    post '/:id/feedbacks', to: 'vitrines#feedbacks', as: :search_feedbacks
     end
 
     member do
@@ -67,6 +68,7 @@ Vitrineonline::Application.routes.draw do
       get :update_vitrine_select, as: :update_vitrine_select
       put 'like', to: 'vitrines#upvote'
       put 'dislike', to: 'vitrines#downvote'
+        get :tag
     end
 
     resources :policies, only: [:edit, :update]
@@ -114,6 +116,7 @@ Vitrineonline::Application.routes.draw do
       post :purchased
       post :sent
       post :sold
+      post '/:id', to: 'orders#purchased', as: :orders_search
     end
   end
 
@@ -138,6 +141,7 @@ Vitrineonline::Application.routes.draw do
       get :sold_info
       get :buyer
       get :seller
+      get :tag
       get :feedbacks
       get :next_step
       put 'like', to: 'products#upvote'
@@ -147,6 +151,7 @@ Vitrineonline::Application.routes.draw do
     collection do
       get :created_at
       post '/:id', to: 'products#show', as: :feedbacks_search
+        post '/:id/feedbacks', to: 'products#feedbacks', as: :search_feedbacks
     end
 
     resources(:steps,

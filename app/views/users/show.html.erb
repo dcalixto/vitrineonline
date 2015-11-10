@@ -28,11 +28,14 @@
       </li>
       <% end %>
       <li>
+        <% if @user.feedbacks %>
 
+        <%=link_to  feedbacks_user_path(:id=>@user.id)  do %>
         <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>">
           <span class="feedCounter"><%=@total_from_sellers %></span>
         </div>
-      
+<% end %>
+<% end %>
       </li>
     </ul>
 
@@ -63,10 +66,13 @@
           <td class="sort">
 
             Ordernar por
-            <%= sort_link @q, :created_at, "Data" %>
+              <%= sort_link @q, :created_at, "Data" %>
+            |
+            <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
           </td>
         </tr>
       </table>
+
 
       <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>"></div>
       <%= render :partial => 'feedbacks/feedbacks' %>

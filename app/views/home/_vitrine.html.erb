@@ -6,7 +6,7 @@
     <ul>
 
       <li>
-        <h3 class="name">
+        <h3 >
           <%= link_to  vitrine_path(vitrine.id)  do %>
           <%= vitrine.name %>
           <% end%>
@@ -26,6 +26,11 @@
 </div>
         <% end %>
       </li>
+
+      <li class="lista-time">
+
+      <%= timeago_tag(vitrine.created_at, :nojs => true, :date_only => false)%>
+      </li>
       <li>
         Votos
         <%= vitrine.get_likes.size %>
@@ -35,10 +40,7 @@
         <%= link_to "Desvotar", dislike_vitrine_path(vitrine.id), method: :put %>
       </li>
 
-      <li class="lista-time">
 
-      <%= timeago_tag(vitrine.created_at, :nojs => true, :date_only => false)%>
-      </li>
 
 
     </ul>

@@ -136,7 +136,7 @@
 
   </div>
 
-  <div class="block">
+  <div class="content">
     <%= link_to  "https://www.paypal.com/br"  do %>
 
     <%= content_tag(:span, nil, :class => 'paypal_protect') %>
@@ -150,14 +150,15 @@
   <!-- Fim-->
 </div>
 
-<div class="box1">
-  <div class="divider_bottom"></div>
+<div class="box3">
+
 
   <div class="block">
-
+    <h1>Informações</h1>
+  <div class="content">
     <h4>Especificações</h4>
 
-    <div class="content">
+    <div class="subcontent_top">
 
       <div class="left_info">
         <ul>
@@ -165,7 +166,7 @@
           <li>
             <span>Condição
             </span>
-            <b><%= @product.condition.condition %></b>
+            <b><%= @product.condition.name %></b>
           </li>
           <% if @product.material.present? %>
 
@@ -181,29 +182,20 @@
 
     </div>
 
-  </div>
 
-</div>
-
-<div class="box1">
-  <div class="block">
-    <div class="divider_bottom"></div>
+    <div class="subcontent">
     <h4>Sobre</h4>
 
-    <div class="content">
+
 
       <p><% if @product.detail.present? %>
         <%= markdown(@product.detail) %>
         <% end %></p>
-    </div>
 
-  </div>
 </div>
 
-<div class="box1">
+    <div class="subcontent">
 
-  <div class="block">
-    <div class="divider_bottom"></div>
 
     <h4>Forma de Pagamento</h4>
     <div class="content">
@@ -215,14 +207,13 @@
       <% unless @product.vitrine.policy.blank? %>
       <% end %>
 
-    </div>
+
   </div>
 
-  <div class="block">
-    <div class="divider_bottom"></div>
+    <div class="subcontent">
 
     <h4>Envio</h4>
-    <div class="content">
+
 
       <ul>
 
@@ -237,25 +228,21 @@
         <% end %>
       </ul>
 
-    </div>
+
   </div>
 
-  <div class="block">
-    <div class="divider_bottom"></div>
+    <div class="subcontent">
 
     <h4>Garantias</h4>
-    <div class="content">
+
 
       <p><%= markdown(@product.vitrine.policy.guarantee) %></p>
       <% unless @product.vitrine.policy.shippings.blank? %>
       <% end %>
-    </div>
-  </div>
+
 </div>
 
-<div class="box1">
-  <div class="block">
-    <div class="divider_bottom"></div>
+    <div class="subcontent">
 
     <h4>Avaliação</h4>
 
@@ -271,27 +258,26 @@
           <% end %>
         </td>
         <td class="sort">
-
           Ordernar por
-          <%= sort_link @q, :created_at, "Data" %>
+            <%= sort_link @q, :created_at, "Data" %>
+          |
+          <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
         </td>
       </tr>
     </table>
 
-    <div class="content">
+
       <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
       <%= render :partial => 'feedbacks/feedbacks' %>
 
-    </div>
-  </div>
+
+
 
 </div>
 
 
-<div class="box1">
-
-  <div class="block">
+<div class="subcontent">
     <div class="block_message">
 
       <h4>Dúvidas?</h4>
@@ -299,27 +285,28 @@
       <% @conversation = Conversation.new %>
 
       <%= form_for @conversation do |f| %>
-      <div class="doubt">
+
         <%= hidden_field :conversation_participants, :user_id, :value => @product.vitrine.user_id %>
         <ul>
           <li><%= text_area :message, :body, :rows => 3 %></li>
 
         </ul>
-      </div>
+
       <%= f.button 'Enviar', :class => 'btn_grey' %>
 
       <% end %>
 
     </div>
-  </div>
 
+<#%= recommender.similarities_for("product-1", with_scores: true) %>
 </div>
 
 
-<div class="box1">
+</div>
+</div>
 
-<#%= recommender.similarities_for("product-1", with_scores: true) %>
 
+</div>
 
 
 

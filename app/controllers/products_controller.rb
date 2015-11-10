@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'product_recommender'
+#require 'product_recommender'
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
@@ -14,23 +14,10 @@ class ProductsController < ApplicationController
 
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
-  #  @subcategories = Subcategory.all
+
   end
 
-  # def update_category_select
-  #  @catagories = Category.where("gender_id = ?", params[:gender_id])
-  #     respond_to do |format|
-  #     format.js
-  #  end
-  # end
 
-  # def update_subcategory_select
-
-  # @subcategories = Subcategory.where("category_id = ?", params[:category_id])
-  # respond_to do |format|
-  # format.js
-  # end
-  # end
 
   def upvote
     @product = Product.find(params[:id])
@@ -55,11 +42,11 @@ class ProductsController < ApplicationController
 end
 
   def edit
-    @product = Product.cached_find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.cached_find(params[:id])
+    @product = Product.find(params[:id])
     if @product.update_attributes(params[:product])
       expire_fragment('product_show', 'product')
       redirect_to(action: :show, id: @product, only_path: true)
@@ -75,14 +62,14 @@ end
     @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
     @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
-     @colors_for_dropdown = @product.colors.product(:name).collect{ |co| [co.name, co.id]}
-  #  @colors_for_dropdown = @product.colors.collect { |co| [co.name, co.id] }
+  #   @colors_for_dropdown = @product.colors.product(:name).collect{ |co| [co.name, co.id]}
+    @colors_for_dropdown = @product.colors.collect { |co| [co.name, co.id] }
     @sizes_for_dropdown = @product.sizes.collect { |s| [s.size, s.id] }
 
     @q = Feedback.by_participant(@product, Feedback::FROM_BUYERS).ransack(params[:q])
-    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page]) # .product('created_at DESC')
+    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 
-similiar_products = ProductRecommender.instance.similarities_for("product-1")
+#similiar_products = ProductRecommender.instance.similarities_for("product-1")
   end
 
   def feedbacks
@@ -93,13 +80,14 @@ similiar_products = ProductRecommender.instance.similarities_for("product-1")
     end
 
     unless @product.nil?
-      @feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').paginate(page: params[:page])
+      
+        @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
+  @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+
       @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
     end
 
-    respond_to do |format|
-      format.html { render 'feedbacks', layout: false }
-    end
+
   end
 
   # def create
@@ -114,8 +102,10 @@ similiar_products = ProductRecommender.instance.similarities_for("product-1")
 
   def create
     @product = current_vitrine.products.build(params[:product])
-    if @product.save #(validate: false)
-      redirect_to wizard_path(steps.first, product_id: @product.id)
+    if @product.save
+      #redirect_to wizard_path(steps.first, product_id: @product.id)
+
+ redirect_to product_step_path(@product, Product.form_steps.first)
     else
       render :new
         end
@@ -123,7 +113,7 @@ similiar_products = ProductRecommender.instance.similarities_for("product-1")
 
   def destroy
     @product = Product.find(params[:id])
-    Product.tire.index.remove @product
+
     if @product.destroy
       expire_fragment('product')
       flash[:success] = "#{(@product.name)} removido"
@@ -134,16 +124,25 @@ similiar_products = ProductRecommender.instance.similarities_for("product-1")
     render json: Product.search(params[:query], fields: [{ name: :text_start }], limit: 10).map(&:name)
     end
 
-  def sold_info
-    @product_data = ProductData.find(params[:id])
+
+
+
+
+
+
+
+
+  protected
+ def sold_info
+       @product_data = ProductData.find(params[:id])
     @last_transaction = Transaction.joins(:product).where('products.product_id = ?', @product_data.id).product('transactions.created_at desc').first
   end
 
-  protected
+
 
   def log_impression
     begin
-      @product = Product.cached_find(params[:id])
+      @product = Product.find(params[:id])
     rescue
       @product = nil
     end
@@ -160,7 +159,7 @@ similiar_products = ProductRecommender.instance.similarities_for("product-1")
         @product.impressions.create(ip_address: ip_addr)
       end
     else
-      redirect_to action: :sold_info
+    #  redirect_to action: :sold_info
     end
   end
 

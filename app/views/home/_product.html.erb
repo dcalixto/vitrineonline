@@ -8,7 +8,7 @@
   <div class="list_details">
     <ul>
       <li>
-        <h3 class="name">
+        <h3 >
           <%= link_to  product_path(product.id)  do %>
           <%= product.name %>
           <% end%>
@@ -33,17 +33,10 @@
         <%= @total_feedbacks %>
         <% end %>
       </li>
-      <li>
-        Votos
-        <%= product.get_likes.size %>
-      </li>
 
-      <li><%= link_to "Votar", like_product_path(product.id), method: :put %>
-        <%= link_to "Desvotar", dislike_product_path(product.id), method: :put %>
-      </li>
     </ul>
   </div>
 
-  <p></p>
+
 
 </div>

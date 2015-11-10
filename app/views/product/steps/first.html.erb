@@ -1,10 +1,13 @@
-<strong>Nome e Descrição</strong>
+<strong>Passo 2</strong>
 &gt; Postar
 <%= form_for @product, method: :put, url: wizard_path do |p| %>
 
 <div class="block">
-  <h4>Fotos</h4>
+<h1>Imagens e especifiações</h1>
   <div class="content">
+      <div class="subcontent_top">
+
+        <h4>Fotos</h4>
     <div class="product_img">
       <!-- Fotos  -->
       <ul>
@@ -23,14 +26,28 @@
       </ul>
       <div class="clearfix"></div>
     </div>
-  </div>
-</div>
-<!-- Fim -->
-<!--Nome, Descrição e palavras chave -->
 
-<div class="block">
+    <p class="tip">Adicione no mínimo 2 fotos</p>
+    <p class="tip">
+      Se você tem dúvida de como tirar suas fotos acesse o link
+      <%= link_to 'Fotografia', page_path('fotografia') %></p>
+  </div>
+
+  <div class="subcontent">
+    <h4>Estilos</h4>
+    <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
+    </p>
+
+    <%= p.text_field :tag_list,
+                 :id => "product_tags",
+                 "data-pre" => @product.tags.map(&:attributes).to_json %>
+  </div>
+
+
+
+  <div class="subcontent">
   <h4>Especificação</h4>
-  <div class="content">
+
     <span>
       <b>Tamanho</b>
     </span>
@@ -53,7 +70,7 @@
     </li>
     <li>
       <b>Condição</b>&nbsp;
-      <%=  p.collection_select :condition_id, Condition.all, :id, :condition %>
+      <%=  p.collection_select :condition_id, Condition.all, :id, :name %>
     </li>
     <li>
       <b>Marca</b>&nbsp;
@@ -62,15 +79,12 @@
   </ul>
 </div>
 </div>
-
-<div class="block">
-<h4>Preço e Quantidade</h4>
-<div class="content">
-  <%= p.number_field :quantity, :label =>"Quantidade" %>
-  <%= p.text_field :price, :label =>"Preço R$" %>
-
-</div>
+<p>
+  Adicione apenas as medidas pertinente ao produto OBS: Todas as medidas serão em Centímetros Comprimento: 67,5cm
+</p>
 </div>
 
-<%= p.submit 'Vender', :class =>"btn" %>
+
+
+<%= p.submit 'Vender', :class =>"btn_orange btn_big" %>
 <% end %>

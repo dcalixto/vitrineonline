@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151108074446) do
+ActiveRecord::Schema.define(:version => 20151109212816) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -253,10 +253,6 @@ ActiveRecord::Schema.define(:version => 20151108074446) do
     t.integer  "category_id",                                                 :null => false
     t.integer  "gender_id",                                                   :null => false
     t.integer  "subcategory_id",                                              :null => false
-    t.integer  "color_id",                                                    :null => false
-    t.integer  "size_id",                                                     :null => false
-    t.integer  "material_id",                                                 :null => false
-    t.integer  "brand_id",                                                    :null => false
     t.string   "meta_keywords"
     t.datetime "created_at",                                                  :null => false
     t.datetime "updated_at",                                                  :null => false
@@ -264,6 +260,10 @@ ActiveRecord::Schema.define(:version => 20151108074446) do
     t.string   "name"
     t.decimal  "price",          :precision => 9, :scale => 2
     t.integer  "quantity",                                     :default => 0
+    t.integer  "color_id"
+    t.integer  "size_id"
+    t.integer  "material_id"
+    t.integer  "brand_id"
   end
 
   add_index "product_data", ["category_id"], :name => "index_product_data_on_category_id"
@@ -283,9 +283,6 @@ ActiveRecord::Schema.define(:version => 20151108074446) do
     t.text     "detail"
     t.integer  "category_id",                                                            :null => false
     t.integer  "subcategory_id",                                                         :null => false
-    t.integer  "material_id",                                                            :null => false
-    t.integer  "size_id",                                                                :null => false
-    t.integer  "color_id",                                                               :null => false
     t.integer  "gender_id"
     t.integer  "brand_id"
     t.string   "meta_keywords"
@@ -304,6 +301,9 @@ ActiveRecord::Schema.define(:version => 20151108074446) do
     t.integer  "cached_weighted_total",                                 :default => 0
     t.float    "cached_weighted_average",                               :default => 0.0
     t.integer  "condition_id"
+    t.integer  "size_id"
+    t.integer  "color_id"
+    t.integer  "material_id"
   end
 
   add_index "products", ["cached_votes_down"], :name => "index_products_on_cached_votes_down"
@@ -314,10 +314,7 @@ ActiveRecord::Schema.define(:version => 20151108074446) do
   add_index "products", ["cached_weighted_score"], :name => "index_products_on_cached_weighted_score"
   add_index "products", ["cached_weighted_total"], :name => "index_products_on_cached_weighted_total"
   add_index "products", ["category_id"], :name => "index_products_on_category_id"
-  add_index "products", ["color_id"], :name => "index_products_on_color_id"
   add_index "products", ["current_step"], :name => "index_products_on_current_step"
-  add_index "products", ["material_id"], :name => "index_products_on_material_id"
-  add_index "products", ["size_id"], :name => "index_products_on_size_id"
   add_index "products", ["slug"], :name => "index_products_on_slug"
   add_index "products", ["vitrine_id"], :name => "index_products_on_vitrine_id"
 

@@ -8,13 +8,13 @@ class CreateProductData < ActiveRecord::Migration
       t.string   "slug"
       t.integer  "vitrine_id",                                                  :null => false
       t.text     "detail"
-      t.integer  "category_id",                                                 :null => false
-      t.integer  "gender_id",                                                   :null => false
-      t.integer  "subcategory_id",                                              :null => false
-      t.integer  "color_id",                                                    :null => false
-      t.integer  "size_id",                                                     :null => false
-      t.integer  "material_id",                                                 :null => false
-      t.integer  "condition_id",                                                 :null => false
+      t.integer  "category_id",                                                
+      t.integer  "gender_id",
+      t.integer  "subcategory_id",
+      t.integer  "color_id",
+      t.integer  "size_id",
+      t.integer  "material_id",
+      t.integer  "condition_id",
       t.integer  "brand_id",
       t.string   "meta_keywords"
       t.datetime "created_at",                                                  :null => false

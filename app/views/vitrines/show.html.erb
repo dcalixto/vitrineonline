@@ -37,11 +37,13 @@
       </li>
       <% end %>
       <% if @vitrine.feedbacks %>
-      <li>
 
+
+      <li>
+  <%=link_to  feedbacks_vitrine_path(:id=>@vitrine.id)  do %>
         <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
         <%=@total_from_buyers %>
-      
+  <% end %>
       </li>
       <% end %>
     </ul>
@@ -63,7 +65,7 @@
 </div>
 
 
-<div class="box1">
+<div class="box3">
 
   <div class="block">
     <h1>Produtos Adicionados</h1>
@@ -193,3 +195,12 @@
   </div>
 </div>
 </div>
+
+
+<div class="box11">
+  <div class="subcontent">
+    <span class="tags">
+   <%= @vitrine.products.tag_list %>
+ </span>
+    </div>
+  </div>

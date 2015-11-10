@@ -18,6 +18,8 @@ class VitrinesController < ApplicationController
 
     @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
     @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
+
+
        end
 
   def feedbacks
@@ -28,7 +30,7 @@ class VitrinesController < ApplicationController
     @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
 
     respond_to do |format|
-      format.html { render 'feedbacks', layout: false }
+      format.html { render 'feedbacks' }
     end
   end
 
@@ -51,6 +53,15 @@ class VitrinesController < ApplicationController
     @vitrine.downvote_from current_user
     redirect_to :back
   end
+
+
+  def tags
+    @vitrine = Vitrine.find(params[:id])
+  @tags = ActsAsTaggableOn::Tag.where("tags.name LIKE ?", "%#{params[:q]}%")
+  respond_to do |format|
+  format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name }}}
+  end
+end
 
   def create
     @vitrine = current_user.build_vitrine(params[:vitrine])

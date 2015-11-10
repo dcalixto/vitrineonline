@@ -27,6 +27,8 @@ class Vitrine < ActiveRecord::Base
 
   acts_as_votable
 
+
+
   def vitrine_name
     "#{name}"
   end
