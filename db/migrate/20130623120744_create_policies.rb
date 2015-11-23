@@ -6,6 +6,6 @@ class CreatePolicies < ActiveRecord::Migration
       t.text     :guarantee
       t.timestamps
     end
-    add_index :policies, :vitrine_id
+    add_index :policies, :vitrine_id, :unique => true
   end
 end

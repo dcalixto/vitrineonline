@@ -1,7 +1,8 @@
 # encoding: utf-8
+require 'product_recommender'
 class VitrinesController < ApplicationController
-  before_filter :authorize, :correct_vitrine, only: [:edit, :update]
-  before_filter :log_view, only: [:show]
+  #before_filter :authorize, :correct_vitrine, only: [:edit, :update]
+  #before_filter :log_view, only: [:show]
 
   def show
     @vitrine = Vitrine.find(params[:id])
@@ -11,16 +12,18 @@ class VitrinesController < ApplicationController
     end
     canonical_url url_for(@vitrine)
     @total_from_buyers = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).count
-    @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
+  #  @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
 
     @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
     @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
 
     @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
-    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
+  #  @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 15).order('created_at DESC')
 
 
-       end
+    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 25)
+
+  end
 
   def feedbacks
     @vitrine = Vitrine.find(params[:id])
@@ -63,6 +66,17 @@ class VitrinesController < ApplicationController
   end
 end
 
+
+def mark
+    @user = current_user
+    @vitrine = Vitrine.find(params[:id])
+    current_user.mark_as_favorite @vitrine
+    redirect_to :back
+  end
+
+
+
+
   def create
     @vitrine = current_user.build_vitrine(params[:vitrine])
     if @vitrine.save
@@ -77,13 +91,28 @@ end
   def update
     @vitrine = current_vitrine
     if @vitrine.update_attributes(params[:vitrine])
-      expire_fragment('vitrine')
+     
       redirect_to(action: 'edit', id: @vitrine, only_path: true)
       flash[:notice] = "#{(@vitrine.name)} atualiazada"
     else
       render :edit
     end
   end
+
+
+ def links
+   @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0])
+   
+ 
+       respond_to do |format|
+      format.html { render 'links', :layout=> false}
+    end
+  end
+
+
+
+
+
 
   def sales_report
     end_time = Time.now
@@ -119,7 +148,7 @@ end
     end
   end
 
-
+protected
 
   def prepare_stats(start_time, end_time, product_id = nil)
     if product_id.nil?
@@ -144,31 +173,6 @@ end
      @vitrine.views.create(:ip_address => ip_addr)
    end
  end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

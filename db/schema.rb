@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151109212816) do
+ActiveRecord::Schema.define(:version => 20151118185408) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -479,6 +479,9 @@ ActiveRecord::Schema.define(:version => 20151109212816) do
     t.integer  "cached_weighted_score",   :default => 0
     t.integer  "cached_weighted_total",   :default => 0
     t.float    "cached_weighted_average", :default => 0.0
+    t.string   "b1"
+    t.string   "b2"
+    t.string   "b3"
   end
 
   add_index "vitrines", ["cached_votes_down"], :name => "index_vitrines_on_cached_votes_down"

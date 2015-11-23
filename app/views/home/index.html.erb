@@ -1,39 +1,115 @@
+
+<%= render "layouts/left_links" %>
+
 <div class="box5">
-  <div class="block margin_top">
+  <div class="margin_top">
+    <div class="flash_box">
     <%= render 'shared/flash_messages' %>
-    <h4>Produtos em destaque</h4>
-    <div class="content">
-      <div class="searchResults">
-        <%= render :partial => 'product', :collection => @products  %>
-      </div>
+   
     </div>
-  </div>
-  <div class="block">
-    <h4>Vitrines em destaque</h4>
-    <div class="content">
-      <div class="searchResults">
-        <ul>
-          <%= render :partial => 'vitrine', :collection => @vitrines  %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="box9 margin_top">
-  <div class="block margin_top">
-    <h4>Produtos mais populares</h4>
-    <div class="content">
-      <% Product.order(:cached_votes_up).each do |product| %>
-      <%= link_to(image_tag(product.f1.url(:table).to_s), product_url(product.id)) %>
-      <% end %>
-    </div>
-  </div>
-  <div class="block margin_top">
-    <h4>Vitrines mais populares</h4>
-    <div class="content">
+
+
+    <div class="subcontent_top">
+
+                 <h1>Em destaque</h1>
+
+
+                 <div id="searchResults">
+
+                   <%= render :partial => 'product', :collection => @products  %>
+                 </div>
+              </div>
+
+   
+   </div>
+ </div>
+
+
+ <div class="box11">
+  <div class="margin_top">
+
+    <div class="subcontent_top">
+         <h1>Em destaque</h1>
+<ul  class="content-slider-vertical">
       <% Vitrine.order(:cached_votes_up).each do |vitrine| %>
-      <%= link_to(image_tag(vitrine.logo.url(:thumb).to_s), vitrine_url(vitrine.id)) %>
-      <% end %>
+        <li> <%= link_to(image_tag(vitrine.logo.url(:thumb).to_s), vitrine_url(vitrine.id)) %></li>
+    <% end %>
+</ul>.
     </div>
+ 
+
+      
   </div>
-</div>
+    </div>
+
+
+
+      <div class="box1">
+    <h1>Melhor avaliados</h1>
+
+
+
+
+    <div class="subcontent_top">
+      
+    
+          <ul class="content-slider">
+            
+               <% Product.order(@average_rating_from_buyers).each do |product| %>
+        <li><%= link_to(image_tag(product.f1.url(:thumb).to_s), product_url(product.id)) %></li>
+    <% end %>.
+                        </ul>
+        
+                
+ 
+ </div>
+
+
+   </div>
+
+
+<div class="box1">
+    <h1>Mais populares</h1>
+
+      <div class="subcontent_top">
+<ul class="content-slider">
+      <% Product.order(:cached_votes_up).each do |product| %>
+        <li> <%= link_to(image_tag(product.f1.url(:thumb).to_s), product_url(product.id)) %></li>
+      <% end %>.
+     
+</ul>
+      </div>
+
+   </div>
+
+
+    <div class="box1">
+    <h1>Melhor avaliadas</h1>
+
+    <div class="subcontent_top">
+      <ul class="content-slider">
+<% Vitrine.order(@average_rating_from_buyers).each do |vitrine| %>
+  <li><%= link_to(image_tag(vitrine.logo.url(:thumb).to_s), vitrine_url(vitrine.id)) %></li>
+      <% end %>..
+      </ul>
+    </div>
+
+   </div>
+
+
+     <div class="box1">
+    <h1>Mais populares</h1>
+
+    <div class="subcontent_top">
+      <ul  class="content-slider">
+<% Vitrine.order(:cached_votes_up).each do |vitrine| %>
+  <li><%= link_to(image_tag(vitrine.logo.url(:thumb).to_s), vitrine_url(vitrine.id)) %></li>
+<% end %>..
+      </ul>
+    </div>
+
+   </div>
+
+
+
+  

@@ -10,7 +10,7 @@ class Feedback < ActiveRecord::Base
 
   NOT_RATED = 0
 
-  self.per_page = 10
+  self.per_page = 20
 
   attr_accessible :buyer_comment, :seller_comment, :buyer_rating, :seller_rating, :buyer_feedback_date, :seller_feedback_date
 

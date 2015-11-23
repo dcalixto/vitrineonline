@@ -18,6 +18,7 @@ Vitrineonline::Application.routes.draw do
       post :feedbacks
       get :update_city_select, as: :update_city_select
       get :products
+      get :links
     end
 
     collection do
@@ -26,15 +27,31 @@ Vitrineonline::Application.routes.draw do
     end
   end
 
+# FAVORITES
+resources :favorites, only:[:index ] do
+
+  collection do
+
+match '/favorites', to: 'favorites#index', as: :search_favorites
+get :products
+get :vitrines
+  end
+member do
+  match 'unmark', to: 'favorites#unmark'
+end
+end
 
 
-  # FEEDBACK
+
+  # FEEDBACKS
   resources :feedbacks, only: [:create] do
     collection do
       get :completed
       post :completed
       get :awaiting
+      get :links
     end
+
   end
 
   resources :password_resets, only: [:new, :create, :update, :edit]
@@ -44,7 +61,9 @@ Vitrineonline::Application.routes.draw do
 
     member do
       get :participants
-      get :fail
+      get :fail    
+        get :links
+    
     end
 
     collection do
@@ -68,7 +87,9 @@ Vitrineonline::Application.routes.draw do
       get :update_vitrine_select, as: :update_vitrine_select
       put 'like', to: 'vitrines#upvote'
       put 'dislike', to: 'vitrines#downvote'
-        get :tag
+      match 'mark', to: 'vitrines#mark'
+
+      get :tag
     end
 
     resources :policies, only: [:edit, :update]
@@ -133,6 +154,8 @@ Vitrineonline::Application.routes.draw do
   #  get 'products/update_category_select/:id', :controller=>'products', :action => 'update_category_select'
   #  get 'products/update_subcategory_select/:id', :controller=>'products', :action => 'update_subcategory_select'
 
+
+  get 'tags/tag' => 'products#index', :as => :tag
   get 'products/tags' => 'products#tags', :as => :tags
 
   resources :products do
@@ -146,13 +169,18 @@ Vitrineonline::Application.routes.draw do
       get :next_step
       put 'like', to: 'products#upvote'
       put 'dislike', to: 'products#downvote'
+      match 'mark', to: 'products#mark'
+
     end
 
     collection do
       get :created_at
       post '/:id', to: 'products#show', as: :feedbacks_search
-        post '/:id/feedbacks', to: 'products#feedbacks', as: :search_feedbacks
+     post '/:id/feedbacks', to: 'products#feedbacks', as: :search_feedbacks
+      get 'search'
+
     end
+
 
     resources(:steps,
               controller: 'product/steps',

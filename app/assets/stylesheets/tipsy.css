@@ -101,3 +101,65 @@
   border-top-color: transparent;
   border-bottom-color: transparent;
 }
+
+
+
+
+
+.wrap_tip {
+  min-width:350px
+}
+
+
+
+.subcontent_tip {
+  content: '';
+  display: block;
+  background: #fff;
+  padding: 10px 10px 10px;
+  overflow: auto;
+
+border-top:solid 1px #ddd
+
+}
+.content_tip {
+  content: '';
+  display: block;
+  background: #fff;
+    overflow: auto;
+
+
+}
+
+.header_tip {  content: '';
+  display: block;
+  background: #fff;
+  overflow: auto;
+}
+
+
+.header_tip h4 {color:#555;font-size:13px;font-weight:bold;padding:5px;float:left}
+
+
+.header_tip  ul
+{
+margin: 0;
+padding:10px;
+list-style-type: none;
+float:right
+}
+
+.header_tip ul li { display: inline; }
+
+.user_tip {
+  content: '';
+  display: block;
+  background: #fff;
+  padding: 10px 10px 10px;
+  overflow: auto;
+
+
+}
+
+
+

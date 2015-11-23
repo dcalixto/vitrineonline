@@ -6,18 +6,65 @@
 //= require FileAPI.min
 //= require morris.min
 //= require raphael.min
-
 //= require tipsy
 //= require jquery.fancybox.pack
 //= require jquery.raty
 //= require responsiveslides.min
 //= require typeahead
-//= require jquery-ttooltip
 //= require jquery.tokeninput
+//= require jquery.webui-popover
+//= require lightslider.min
+
 //= require_tree .
 
 
 // TIPSY
+
+
+
+
+//$('.ttooltip').webuiPopover({
+  //  type:'async',
+    //url:'/feedbacks/links',
+
+
+
+ //closeable:true,
+   //                     padding:false,
+     //                   cache:false,
+
+
+//});
+
+
+
+
+$(document).ready(function() {
+$(".content-slider").lightSlider({
+                loop:true,
+                keyPress:true,
+                auto:true
+               
+            });
+});
+
+
+
+$(document).ready(function() {
+$(".content-slider-vertical").lightSlider({
+                loop:true,
+                 vertical:true,
+                verticalHeight:500,
+                 auto:true,
+                 pager: false
+
+               
+            });
+});
+
+
+
+
 
 
 $(document).ready(function() {
@@ -25,6 +72,10 @@ $(document).ready(function() {
     gravity: 'n'
   });
 });
+
+
+
+
 
 
 // PRODUCT IMAGE THUMBNAILS, GALLERY AND ZOOM
@@ -300,12 +351,6 @@ $(function() {
 
 
 
-
-
-
-
-
-
 // $('form').submit(function() {
 //   var valuesToSubmit = $(this).serialize();
 //   $.ajax({
@@ -368,3 +413,8 @@ $(function() {
 
 
 //});
+//
+//
+//
+//
+

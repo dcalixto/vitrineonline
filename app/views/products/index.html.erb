@@ -3,18 +3,15 @@
   <% breadcrumb :products, @products %>
 </div>
 
-<%= render "shared/filtro_product" %>
+<#%= render "shared/filtro_product" %>
 
 <!-- VITRINE-->
 <div class="box3">
-  <div class="block header">
+  <div class="subcontent_top">
 
-    <h1><%= @products.current_page %>
-      de
-      <%= @products.total_pages %>
-      no Total
-      <span class="orange"><%= @products.total_entries %></span>
-      Itens</h1>
+    <p>
+          <span class="orange"><%= @products.total_entries %></span>
+      Produtos achados</p>
     <div class="content">
 
       <div class="searchResults">
@@ -37,14 +34,14 @@
           </thead>
 
           <tbody>
-            <% if @products.present? %>
-            <% @products.limit(22).all.each do |product|%>
+           
+            <% @products.each do |product|%>
 
             <tr>
 
               <td class="stock_td">
                 <%= link_to  product_path(product.id) do %>
-                <%= image_tag product.f1.url(:table).to_s %>
+                <%= image_tag product.f1.url(:small).to_s %>
                 <%=  product.name %>
                 <% end %>
               </td>
@@ -87,8 +84,7 @@
             </tr>
 
             <% end %>
-            <% end %>
-
+         
           </tbody>
 
         </table>

@@ -1,34 +1,40 @@
-<div class="list_view <%= product.id %>">
 
-  <%= link_to(image_tag(product.f1.url(:small).to_s), product_url(product.id), :class=>"thumbnail") %>
+<%= link_to  product_path(product.id), :class=>"product" do %> 
+            
+  <%= image_tag product.f1.url(:small).to_s, :class=>"productImg" %>
 
-  <div class="list_details">
-    <ul>
-      <li>
-        <h3 class="name">
-          <%= link_to  product_path(product.id)  do %>
-          <%= product.name %>
-          <% end%>
-        </h3>
-      </li>
-      <li class="price">
-        <b ><%=  number_to_currency(product.price, :unit => "R$") %></b>
-      </li>
+                
+  <span class="productName"> <%= product.name %></span>
+          
+       
 
-      <li class="lista-time">
+            <span class="price"><%=  number_to_currency(product.price, :unit => "R$") %></span>
+ <% if product.feedbacks %>
 
-        Em
-        <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
-      </li>
+   <div class="productFeeback">
+     
+     <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
-      <li>
-        <% if product.feedbacks %>
-        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+            <%= @total_feedbacks %>
+            
+            </div>
+                 <% end %>
 
-        <%= @total_feedbacks %>
-        <% end %>
-      </li>
 
-    </ul>
-  </div>
-</div>
+         
+            <span class="lista-time">
+              <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+            </span>
+
+                     
+      
+        
+
+      <% end %>
+
+
+
+
+
+
+

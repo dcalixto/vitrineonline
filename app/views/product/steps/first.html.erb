@@ -1,6 +1,6 @@
 <strong>Passo 2</strong>
 &gt; Postar
-<%= form_for @product, method: :put, url: wizard_path do |p| %>
+<%= form_for @product, method: :put, url: wizard_path,  :html => {:multipart => true} do |p| %>
 
 <div class="block">
 <h1>Imagens e especifiações</h1>
@@ -8,7 +8,9 @@
       <div class="subcontent_top">
 
         <h4>Fotos</h4>
-    <div class="product_img">
+<%= image_tag @product.f1.url(:thumb).to_s %>
+
+    <div class="product_img_box">
       <!-- Fotos  -->
       <ul>
         <li>

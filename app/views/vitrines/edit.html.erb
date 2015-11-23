@@ -38,14 +38,14 @@
 
     <div class="subcontent">
         <h4>Banner 1</h4>
-      <%= form_for @vitrine, :url => vitrine_path, :method => :put,  :html => {:multipart => true} do |b1| %>
+      <%= form_for @vitrine, :url => vitrine_path(current_vitrine), :method => :put,  :html => {:multipart => true} do |b1| %>
       <ul>
         <li>
           <%= image_tag @vitrine.b1.url(:small).to_s %></li>
         </ul>
         <ul class="image_info">
           <li>
-            <div id="upload-banner-container"></div>
+            <div id="upload-b1-container"></div>
           </li>
         </ul>
         <%= b1.button "Salvar", :class => 'btn' %>
@@ -64,7 +64,7 @@
           </ul>
           <ul class="image_info">
             <li>
-              <div id="upload-banner-2-container"></div>
+              <div id="upload-b2-container"></div>
             </li>
           </ul>
           <%= b2.button "Salvar", :class => 'btn' %>
@@ -82,14 +82,39 @@
             </ul>
             <ul class="image_info">
               <li>
-                <div id="upload-banner-3-container"></div>
+                <div id="upload-b3-container"></div>
               </li>
             </ul>
             <%= b3.button "Salvar", :class => 'btn' %>
             <% end %>
           </div>
 
-          </div>
+    </div>
+
+
+
+<div class="subcontent">
+    <h4>Sobre</h4>
+
+          <%= form_for @vitrine, :url => vitrine_path, :method => :put do |a| %>
+
+    <p class="tip">Descreva sua vitrine</p>
+
+      <div id="notes-bar"></div>
+      <%= a.text_area :about, :id => "notes", :placeholder => "Sobre"%>
+      <div id="notes-preview"></div>
+      <%= a.submit "Salvar", :class => 'btn' %>
+  <% end %>
+
+  </div>
+
+
+
+
+
+
+
+
         </div>
                 </div>
       <div class="box11">

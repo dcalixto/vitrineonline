@@ -48,6 +48,20 @@ class ConversationsController < ApplicationController
     render partial: 'participants', locals: { conversation: @conversation }
   end
 
+ def links
+    @conversations = current_user.active_conversations
+       .includes(:conversation_participants,:display_message).order('conversations.updated_at DESC') 
+       respond_to do |format|
+      format.html { render 'links', :layout=> false}
+    end
+  end
+
+
+
+
+
+
+
   def new
     # @conversation = Conversation.find(params[:id])
     if current_user

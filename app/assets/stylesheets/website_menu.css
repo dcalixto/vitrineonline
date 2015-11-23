@@ -124,3 +124,20 @@
 .menu_content {
   padding: 5px 7px;
 }
+
+
+
+.left_links ul { 
+margin: 0; /* retira o recuo para alguns browsers */ 
+padding:0; /* retira o recuo para outros browsers */ 
+overflow: auto;
+}
+
+.left_links li {
+       height: 30px;
+    width: 150px;
+           float:left;
+           display:block; 
+}
+
+

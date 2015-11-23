@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :last_read_messages_at
       t.datetime :login_at
       t.string   :avatar
+      t.string   :banner
       t.string   :slug
       t.string   :name,                                     :null => false
       t.string   :surname,                                  :null => false

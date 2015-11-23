@@ -12,8 +12,12 @@ class Product::StepsController < ApplicationController
   def update
     @product = Product.find(params[:product_id])
 
-     @product.update_attributes(params[:product])
-     render_wizard @product
+    if @product.update_attributes(params[:product])
+ 
+     redirect_to vitrine_stocks_path(current_vitrine.id)
+    else
+          render_wizard @product
+    end
   end
 
 

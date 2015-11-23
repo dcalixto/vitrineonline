@@ -1,13 +1,9 @@
 # encoding: utf-8
+require 'carrierwave/orm/activerecord'
 
 class B1Uploader < CarrierWave::Uploader::Base
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+   include CarrierWave::MiniMagick
   include Sprockets::Helpers::RailsHelper
-  # include CarrierWave::ImageOptimizer
-
-  # Choose what kind of storage to use for this uploader:
 
   storage :file
 
@@ -25,7 +21,7 @@ class B1Uploader < CarrierWave::Uploader::Base
    end
 
   version :thumb do
-    process resize_to_fit: [1252, 280]
+    process resize_to_fit: [800, 280]
     process quality: 80
 
     process :strip

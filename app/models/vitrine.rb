@@ -20,13 +20,23 @@ class Vitrine < ActiveRecord::Base
 
   belongs_to :city
   belongs_to :state
- markable_as :favorite
-  usar_como_cnpj_ou_cpf :codigo
+
 
   mount_uploader :logo, LogoUploader
+   mount_uploader :b1, B1Uploader
+    mount_uploader :b2, B2Uploader
+ mount_uploader :b3, B3Uploader
+  
+ 
+
+
+
+
+ markable_as :favorite
+  #usar_como_cnpj_ou_cpf :codigo
+
 
   acts_as_votable
-
 
 
   def vitrine_name
@@ -70,21 +80,12 @@ class Vitrine < ActiveRecord::Base
   validates :name, uniqueness: { case_sensitive: false },
                    length: { within: 1..70 }
 
-  attr_accessible :name, :about, :logo, :banner, :website, :ad, :slogan,
-                  :address, :neighborhood, :postal_code, :codigo
+  attr_accessible :name, :about, :logo, :b1,  :b2, :b3, :website, :ad, :slogan,
+                  :address, :neighborhood, :postal_code, :code, :about
 
-   require 'file_size_validator'
-
-   validates :b1,:b2, :b3,:logo,
-    :file_size => {
-    :maximum => 2.megabytes.to_i
-   }
+   
 
 
-   mount_uploader :b1, B1Uploader
-    mount_uploader :b2, B2Uploader
- mount_uploader :b3, B3Uploader
-mount_uploader :logo, LogoUploader
 
 
   # CACHE

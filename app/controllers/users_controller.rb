@@ -34,6 +34,24 @@ class UsersController < ApplicationController
     end
   end
 
+
+ def links
+    @user = User.find(params[:id])
+
+  if current_user.cart
+       @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0])
+    
+        end 
+
+
+      respond_to do |format|
+      format.html { render 'links', :layout=> false}
+    end
+  end
+
+
+
+
   def new
     @user = User.new
     @vitrine = Vitrine.new
@@ -70,13 +88,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def message
-    @user = User.find(params[:id])
-    respond_to do |format|
-      # format.json {render :layout => (!request.xhr?)}
-      format.html { render 'message', layout: false }
-    end
-  end
+ 
 
   def products
     @vitrine = Vitrine.find(params[:id])
@@ -91,6 +103,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+     @states = State.all
+    @cities = City.where('state_id = ?', State.first.id)
     if @user.update_attributes(params[:user])
       redirect_to(action: :edit, id: @user, only_path: true)
       flash[:notice] = 'Conta atualiazada'

@@ -2,7 +2,7 @@
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
   protect_from_forgery except: [:ipn_notification]
-  before_filter :set_search
+
 
 
 
@@ -12,6 +12,8 @@ class OrdersController < ApplicationController
   def purchased
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
+    
+      
       @q = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).ransack(params[:q])
     #  @q = Order.joins(:user, :cart).where('status = ?', current_user.id, cart.id, params[:status] || Order.statuses[0]).ransack(params[:q])
       @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
@@ -21,7 +23,10 @@ class OrdersController < ApplicationController
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
+   
+    
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
+  
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
   end
 
@@ -140,9 +145,5 @@ class OrdersController < ApplicationController
 
 
 
-  def set_search
-  @search = Order.search(params[:q])
-  end
-
-
+ 
 end

@@ -15,8 +15,7 @@ class CreateProductData < ActiveRecord::Migration
       t.integer  "size_id",
       t.integer  "material_id",
       t.integer  "condition_id",
-      t.integer  "brand_id",
-      t.string   "meta_keywords"
+      t.integer  "brand_id", 
       t.datetime "created_at",                                                  :null => false
       t.datetime "updated_at",                                                  :null => false
       t.string   "status"
@@ -26,13 +25,13 @@ class CreateProductData < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :product_data, :vitrine_id
-    add_index :product_data, :category_id
-    add_index :product_data, :subcategory_id
-    add_index :product_data, :gender_id
-    add_index :product_data, :color_id
-    add_index :product_data, :size_id
-    add_index :product_data, :material_id
-    add_index :product_data, :condition_id
+    add_index :product_data, :vitrine_id, :unique => true
+    add_index :product_data, :category_id, :unique => true
+    add_index :product_data, :subcategory_id, :unique => true
+    add_index :product_data, :gender_id, :unique => true
+    add_index :product_data, :color_id, :unique => true
+    add_index :product_data, :size_id, :unique => true
+    add_index :product_data, :material_id, :unique => true
+    add_index :product_data, :condition_id, :unique => true
   end
 end

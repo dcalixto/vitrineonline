@@ -2,19 +2,15 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.22'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-# EVENTS
-
 # SEARCH
 
 gem 'will_paginate'
 gem 'ransack'
 gem 'acts-as-taggable-on', '~> 3.4'
-gem 'searchkick', github: 'ankane/searchkick'
-
+gem 'searchkick'
+  
 # MISC
+
 gem 'friendly_id'
 gem 'mail_form'
 gem 'annotate' # , :git => 'git://github.com/ctran/annotate_models.git'
@@ -29,7 +25,7 @@ gem 'counter_culture', '~> 0.1.33'
 
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'shareable'
-gem 'recommendify'
+
 gem 'predictor'
 
 # CPF CNPJ
@@ -56,7 +52,7 @@ gem 'formtastic' # ,  github: 'justinfrench/formtastic'
 
 # ANALYS
 
-gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
 gem 'mina-newrelic'
 
 # MARKUP LANGUAGE
@@ -79,7 +75,7 @@ gem 'secure_headers'
 
 # IMAGE
 
-gem 'carrierwave'
+gem 'carrierwave','~> 0.9.0'
 gem 'mini_magick'
 gem 'fog'
 
@@ -106,6 +102,8 @@ gem 'dalli-elasticache'
 gem 'rails-timeago'
 gem 'private_pub'
 gem 'thin'
+
+# SEO
 gem 'meta-tags', require: 'meta_tags'
 gem 'canonical_dude'
 

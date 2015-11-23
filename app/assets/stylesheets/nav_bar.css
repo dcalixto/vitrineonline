@@ -23,7 +23,7 @@
   box-sizing: border-box;
 }
 #bottom_ribbon {
-  height: 55px;
+  height: 50px;
   box-sizing: border-box;
   z-index: 2;
   display: block;
@@ -35,15 +35,15 @@
   box-sizing: border-box;
   margin: 0px auto !important;
   width: 100%;
-  background-color: #344597;
-  background-color: #f1f1f1;
-  border-bottom: 1px solid #EBEBEB;
-  background: #42599c;
-  background: #3c549c;
-  background: #124F9E;
-  background-color: #F1F1F1;
-  border-bottom: 1px solid #E5E5E5;
-  border-color: #E5E5E5;
+ 
+ 
+background:#F1F1F1;
+
+border-color: #E5E5E5;
+background:#1236A1;
+background:#F1F1F1;
+
+
 }
 
 /*  ICON BAR NAVIGATION */

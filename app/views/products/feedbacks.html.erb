@@ -1,3 +1,7 @@
+<% title @product.name%>
+<%description @product.feedbacks  %>
+<% keywords  @product.feedbacks %>
+
 <div class="box3">
 <div class="block margin_top">
   <h1>Avaliações</h1>
@@ -5,7 +9,7 @@
   <div class="content">
       <div class="subcontent_top">
     <%= link_to  product_path(@product.id) do %>
-    <%= image_tag @product.f1.url(:table).to_s %>
+    <%= image_tag @product.f1.url(:thumb).to_s %>
 
     <% end %>
 

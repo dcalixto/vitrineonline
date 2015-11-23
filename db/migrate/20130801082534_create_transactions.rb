@@ -7,6 +7,6 @@ class CreateTransactions < ActiveRecord::Migration
       t.string     :status
       t.timestamps
     end
-    add_index :transactions, :order_id
+    add_index :transactions, :order_id, :unique => true
   end
 end

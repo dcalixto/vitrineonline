@@ -52,11 +52,11 @@
   white-space: normal;
   display: block;
   overflow: hidden;
-  border:solid 1px #ddd;
+    border: 1px solid #dadbd6;
+   
+             border-radius: 3px;
 
-  background-color: #F7F7F7;
-    border-radius: 3px;
-}
+   }
 .block_search {
   background-color: #F5F5F5;
   border-bottom: 1px solid #D7D7D7;
@@ -97,8 +97,9 @@
 .block h1 {
   margin-left: 3px;
   margin-top: 3px;
-  color: #3459A8;
-  font-size: 24px
+  color: #5a5552;
+  font-size: 24px;
+  padding:10px
 }
 .block h4 {
   line-height: 26px;
@@ -117,7 +118,7 @@
   background: #fff;
   padding: 10px 10px 10px;
   overflow: auto;
-  border-top:solid 1px #ddd
+ 
 }
 
 .subcontent {

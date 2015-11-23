@@ -1,12 +1,23 @@
 # encoding: utf-8
-#require 'product_recommender'
+require 'product_recommender'
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
 
   def index
-    @products = Product.search # (params)
+@products = Product.search
+  
   end
+
+
+def search
+ @search = Product.search do
+    fulltext params[:search]
+    end
+  @products = @search.results
+  
+end
+
 
   def new
     @product = Product.new
@@ -28,6 +39,13 @@ class ProductsController < ApplicationController
   def downvote
     @product = Product.find(params[:id])
     @product.downvote_from current_user
+    redirect_to :back
+  end
+
+  def mark
+    @user = current_user
+    @product = Product.find(params[:id])
+    current_user.mark_as_favorite @product
     redirect_to :back
   end
 
@@ -69,7 +87,6 @@ end
     @q = Feedback.by_participant(@product, Feedback::FROM_BUYERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 
-#similiar_products = ProductRecommender.instance.similarities_for("product-1")
   end
 
   def feedbacks
@@ -80,7 +97,7 @@ end
     end
 
     unless @product.nil?
-      
+
         @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
   @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 

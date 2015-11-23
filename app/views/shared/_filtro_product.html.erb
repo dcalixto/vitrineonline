@@ -3,29 +3,29 @@
 
   <h1>Filtrar por</h1>
 
+  
+ 
   <div class="filtro">
-    <h2>Genero</h2>
+    <h2>Vitrines</h2>
     <ul>
-      <% @products.aggs['gender']['terms'].each do |aggs| %>
+      <% @products.facets['vitrine']['terms'].each do |facets| %>
       <li>
-        <%
-               gender = Gender.find(aggs['term'])
-               params_to_merge = controller.controller_name == GendersController.controller_name ? {id: gender.slug} : {gender_id: aggs['term']}
-            %>
-        <%= link_to_if params[:id] != gender.slug && params[:gender_id] != aggs['term'].to_s, gender.gender, params.merge(params_to_merge) %>
-        <%= aggs['count'] %>
+        <%= link_to_unless_current Vitrine.find(facets['term']).vitrine_name, params.merge(vitrine_id: facets['term']) %>
+        <%= facets['count'] %>
       </li>
       <% end %>
     </ul>
   </div>
 
+
+
   <div class="filtro">
     <h2>Vitrines</h2>
     <ul>
-      <% @products.aggs['vitrine']['terms'].each do |aggs| %>
+      <% @products.facets['vitrine']['terms'].each do |facets| %>
       <li>
-        <%= link_to_unless_current Vitrine.find(aggs['term']).vitrine_name, params.merge(vitrine_id: aggs['term']) %>
-        <%= aggs['count'] %>
+        <%= link_to_unless_current Vitrine.find(facets['term']).vitrine_name, params.merge(vitrine_id: facets['term']) %>
+        <%= facets['count'] %>
       </li>
       <% end %>
     </ul>
@@ -35,10 +35,10 @@
     <h2>Categoria</h2>
     <ul>
       <ul>
-        <% @products.aggs['category']['terms'].each do |aggs| %>
+        <% @products.facets['category']['terms'].each do |facets| %>
         <li>
-          <%= link_to_unless_current Category.find(aggs['term']).name, params.merge({(controller.controller_name == CategoriesController.controller_name ? :id: :category_id) => aggs['term']}) %>
-          <#%= aggs['count'] %></li>
+          <%= link_to_unless_current Category.find(facets['term']).name, params.merge({(controller.controller_name == CategoriesController.controller_name ? :id: :category_id) => facets['term']}) %>
+          <#%= facets['count'] %></li>
           <% end %>
         </ul>
       </div>
@@ -47,10 +47,10 @@
         <h2>Tipo</h2>
         <ul>
           <ul>
-            <% @products.aggs['subcategory']['terms'].each do |aggs| %>
+            <% @products.facets['subcategory']['terms'].each do |facets| %>
             <li>
-              <%= link_to_unless_current Subcategory.find(aggs['term']).name, params.merge({(controller.controller_name == Categories::SubcategoriesController.controller_name ? :id: :subcategory_id) => aggs['term']}) %>
-              <%= aggs['count'] %>
+              <%= link_to_unless_current Subcategory.find(facets['term']).name, params.merge({(controller.controller_name == Categories::SubcategoriesController.controller_name ? :id: :subcategory_id) => facets['term']}) %>
+              <%= facets['count'] %>
             </li>
             <% end %>
           </ul>
@@ -59,10 +59,10 @@
         <div class="filtro">
           <h2>Tamamho</h2>
           <ul>
-            <% @products.aggs['size']['terms'].each do |aggs| %>
+            <% @products.facets['size']['terms'].each do |facets| %>
             <li>
-              <%= link_to_unless_current ProducstSizes.find(aggs['term']).size, params.merge(products_sizes_size_id: aggs['term']) %>
-              <#%= aggs['count'] %></li>
+              <%= link_to_unless_current ProducstSizes.find(facets['term']).size, params.merge(products_sizes_size_id: facets['term']) %>
+              <#%= facets['count'] %></li>
               <% end %>
             </ul>
           </div>
@@ -70,10 +70,10 @@
           <div class="filtro">
             <h2>Cor</h2>
             <ul>
-              <% @products.aggs['color']['terms'].each do |aggs| %>
+              <% @products.facets['color']['terms'].each do |facets| %>
               <li>
-                <%= link_to_unless_current Color.find(aggs['term']).name, params.merge(color_id: aggs['term']) %>
-                <#%= aggs['count'] %></li>
+                <%= link_to_unless_current Color.find(facets['term']).name, params.merge(color_id: facets['term']) %>
+                <#%= facets['count'] %></li>
                 <% end %>
               </ul>
             </div>
@@ -81,10 +81,10 @@
             <div class="filtro">
               <h2>Material</h2>
               <ul>
-                <% @products.aggs['material']['terms'].each do |aggs| %>
+                <% @products.facets['material']['terms'].each do |facets| %>
                 <li>
-                  <%= link_to_unless_current Material.find(aggs['term']).name, params.merge(material_id: aggs['term']) %>
-                  <%= aggs['count'] %>
+                  <%= link_to_unless_current Material.find(facets['term']).name, params.merge(material_id: facets['term']) %>
+                  <%= facets['count'] %>
                 </li>
                 <% end %>
               </ul>
@@ -93,10 +93,10 @@
             <div class="filtro">
               <h2>Condição</h2>
               <ul>
-                <% @products.aggs['condition']['terms'].each do |aggs| %>
+                <% @products.facets['condition']['terms'].each do |facets| %>
                 <li>
-                  <%= link_to_unless_current Condition.find(aggs['term']).condition, params.merge(condition_id: aggs['term']) %>
-                  <%= aggs['count'] %>
+                  <%= link_to_unless_current Condition.find(facets['term']).condition, params.merge(condition_id: facets['term']) %>
+                  <%= facets['count'] %>
                 </li>
                 <% end %>
               </ul>
@@ -105,10 +105,10 @@
             <div class="filtro">
               <h2>Marca</h2>
               <ul>
-                <% @products.aggs['brand']['terms'].each do |aggs| %>
+                <% @products.facets['brand']['terms'].each do |facets| %>
                 <li>
-                  <%= link_to_unless_current Brand.find(aggs['term']).name, params.merge(brand_id: aggs['term']) %>
-                  <%= aggs['count'] %>
+                  <%= link_to_unless_current Brand.find(facets['term']).name, params.merge(brand_id: facets['term']) %>
+                  <%= facets['count'] %>
                 </li>
                 <% end %>
               </ul>

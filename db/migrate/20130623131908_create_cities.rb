@@ -5,6 +5,6 @@ class CreateCities < ActiveRecord::Migration
       t.integer :state_id
       t.timestamps
     end
-      add_index :cities, :state_id
+      add_index :cities, :state_id, :unique => true
   end
 end

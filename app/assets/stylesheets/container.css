@@ -1,9 +1,15 @@
 /* Smartphones (portrait and landscape) ----------- */
 
 body, html {
-  height: 100%;
+
   min-width: 320px;
+
+
+
 }
+
+
+
 #container {
   min-height: 1500px;
   background: none repeat scroll 0% 0%;
@@ -11,7 +17,7 @@ body, html {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  max-width: 1000px;
+  /*max-width: 1000px;*/
   min-width: 960px;
   line-height: 1.34;
 }

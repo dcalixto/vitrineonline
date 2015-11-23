@@ -6,15 +6,14 @@
     <%= render 'announcements/announcement_for_all' %>
   </div>
 </div>
+
+
 <div class="box10">
 
   <div class="block margin_top">
   <div class="content">
-
+   <%=link_to(image_tag(@vitrine.logo.url(:thumb).to_s), vitrine_path(@vitrine)) %>
     <ul class="list">
-      <li>
-        <%=link_to(image_tag(@vitrine.logo.url(:thumb).to_s), vitrine_path(@vitrine)) %>
-      </li>
       <li>
         <h1>
           <%=link_to vitrine_path(@vitrine) do %>
@@ -23,37 +22,67 @@
         </h1>
       </li>
       <li>
-        Dono(a)&nbsp;
-        <%=link_to user_path(@vitrine.user) do %>
-        <%=@vitrine.user.name %>
-        <% end %>
-      </li>
-      <% if @vitrine.user.city%>
-      <li>
-        <span>
-          <%= @vitrine.city.name %>,</span>
-        <b>
-          <%= @vitrine.state.code %></b>
-      </li>
+         <% if @vitrine.user.city%>
+
+        <span>  <%= @vitrine.city.name %>,</span>
       <% end %>
-      <% if @vitrine.feedbacks %>
+
+        <% if @vitrine.user.state %>
+        <b>
+          <%= @vitrine.user.state.code %>        </b>
+         <% end %>
+
+      </li>
+           <li>
+        <% if @vitrine.feedbacks %>
 
 
-      <li>
-  <%=link_to  feedbacks_vitrine_path(:id=>@vitrine.id)  do %>
+        <%=link_to  feedbacks_vitrine_path(:id=>@vitrine.id)  do %>
         <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
         <%=@total_from_buyers %>
   <% end %>
-      </li>
-      <% end %>
+<% end %>
+</li>
+
+<% unless @vitrine.marked_as_favorite? %>
+        <li><%= link_to "Favoritar", mark_vitrine_path(@vitrine.id), method: :put, :class => "btn_grey btn_small" %>
+
+        </li>
+<% end %>
+
     </ul>
 
-  </div>
-</div>
+    <div class="divider_bottom"></div>
+
+    <h4>Usuário</h4>
+
+     <%=link_to(image_tag(@vitrine.user.avatar.url(:thumb).to_s), user_path(@vitrine.user)) %>
+  </div >
 
 </div>
+</div>
 
-<div class="box5 margin_top">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="box4 margin_top">
   <!-- Slideshow 1 -->
   <ul class="slide" id="slider1">
     <li>
@@ -65,10 +94,19 @@
 </div>
 
 
+<div class="box4">
+  <div class="block">
+    <h1>Sobre</h1>
+    <div class="content">
+      
+      <p><%= markdown(@vitrine.about) %></p>
+    </div>
+  </div>
+</div>
+
 <div class="box3">
 
-  <div class="block">
-    <h1>Produtos Adicionados</h1>
+      <h1>Produtos Adicionados</h1>
 
 
   <div class="content">
@@ -99,11 +137,11 @@
         </tr>
       </table>
 
-      <div class="products">
-        <ul>
+ <div id="searchResults"> 
+
           <%= render :partial => 'vitrines/product', :collection => @products%>
-        </ul>
-      </div>
+
+     </div> 
 
     <div class="block_pagination">
       <div class="digg_pagination">
@@ -111,17 +149,22 @@
 
       </div>
     </div>
-  </div>
+ 
+ </div>
+    </div>
+
+
+  <div class="block">
+    <h1>Especificações da <%=@vitrine.name%></h1>
+
+
+  <div class="content">
 
 
 
-
-
-
-
-    <div class="subcontent">
-      <h4>Avaliação da
-        <%=@vitrine.name %></h4>
+    <div class="subcontent_top">
+      <h4>Avaliações
+       </h4>
       <table class="block_search">
         <tr>
           <td>
@@ -196,11 +239,60 @@
 </div>
 </div>
 
+<div class="box11">
+<div class="subcontent_top margin_top">
+<h4>Produtos Similares</h4>
+<#%ProductRecommender.instance.similarities_for("product-3").each do |item| %>
+<#%  ProductRecommender.instance.similarities_for("product-#{@products.id}").each do |item| %> 
+  
+  <#%= raw item.map { |t| link_to t, product_path(t) }.join(', ') %> 
+
+
+
+<#% end %>
+
+
+
+    </div>
+    </div>
+
 
 <div class="box11">
-  <div class="subcontent">
+  <div class="subcontent_top">
+    <h4>Estilos</h4>
     <span class="tags">
-   <%= @vitrine.products.tag_list %>
+                <% @vitrine.products.order.each do |product| %>
+         <%=  raw product.tag_list.map {|t| link_to t, tag_path(t)} %>
+
+         <% end %>
+
  </span>
     </div>
   </div>
+
+
+
+
+  <div class="box1">
+    <div class="block">
+      
+      <h1>Vitrines similares</h1>
+   
+      
+      <div class="content">
+  
+ <% ProductRecommender.instance.similarities_for("vitrine-1").each do |item| %>
+
+      <%= link_to  product_path("#{item}")  do %>
+      <%= "#{item}" %>
+      <% end%>
+
+
+    <% end %>
+
+
+
+  </div>
+      </div>
+    </div>
+   

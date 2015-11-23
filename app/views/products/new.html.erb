@@ -11,10 +11,11 @@
 </div>
 
 
-  <%= form_for @product  do |p| %>
-  <div class="block margin_top">
+  <%= form_for @product, :html => {:multipart => true}  do |p| %>
+  <div class="margin_top">
     <h1>Adicionar Produto</h1>
 <div class="content">
+
 
 
   <div class="subcontent_top">

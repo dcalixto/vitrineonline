@@ -10,6 +10,7 @@
 
 
 *= require_self
+
 *= require morris
 *= require chat
 *= require nav_bar
@@ -24,7 +25,6 @@
 *= require normalize
 *= require order
 *= require tables
-
 *= require footer
 *= require tipsy
 *= require header
@@ -37,12 +37,13 @@
 *= require drop_down
 *= require search
 *= require details
-*= jquery-ttooltip
 *= require jquery.fancybox
 *= require jquery.raty
 *= require responsiveslides
 *= require select
 *= require token-input
+*= require jquery.webui-popover
+*= require lightslider.min
 
 
  */
@@ -69,3 +70,5 @@
 .error p, .error h1, .error h2 {
   margin-top: 10px
 }
+
+
