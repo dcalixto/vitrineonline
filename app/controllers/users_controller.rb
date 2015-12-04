@@ -10,9 +10,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     canonical_url url_for(@user)
 
-
-
-
     @total_from_sellers = Feedback.by_participant(@user, Feedback::FROM_SELLERS).count
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
     # @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
@@ -26,8 +23,7 @@ class UsersController < ApplicationController
     # @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
 
     @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
-    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
-
+    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
     respond_to do |format|
       format.html { render 'feedbacks'}
@@ -50,7 +46,9 @@ class UsersController < ApplicationController
   end
 
 
-
+def index
+  @users = User.all.paginate(per_page: 22, page: params[:page])
+end
 
   def new
     @user = User.new

@@ -1,14 +1,24 @@
-<div class="user_tip">
-<ul>
- 
 
-            <%=link_to "Conta", edit_user_path(current_user)%>
-                           
-<div class="footer_tip">
+<div id="wrap_tip">
+  <div class="content_tip">
 
-                <%= link_to 'Sair',  session_path(current_user),   method: :delete %>
-                                  
+   
+           <h4>Conta</h4>  
+          <ul>
+                          <li>
+
+                   <%=link_to "Conta", edit_user_path(current_user)%>
+              </li>
+              <li>
+
+                  <%= link_to 'Sair',  session_path(current_user),   method: :delete %>
+              </li>
+          </ul>
+
+             
+
+
+</div>
 </div>
 
 
-</div>

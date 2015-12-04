@@ -74,7 +74,9 @@ def mark
     redirect_to :back
   end
 
-
+def index
+  @vitrines = Vitrine.all.paginate(per_page: 22, page: params[:page])
+end
 
 
   def create

@@ -42,7 +42,7 @@
 .inner_footer {
   clear: both;
   margin: 0px auto;
-  max-width: 1000px;
+max-width: 1000px;
   min-width: 960px;
 }
 .inner_footer:before, .inner_footer:after {

@@ -1,21 +1,25 @@
+
 <% title "Favoritos" %>
 <%= render "shared/favorites_menu" %>
+<!--STOCK OF ITEMS  -->
+<div class="box5">
+  <div class="flash_box">
+    <%= render 'shared/flash_messages' %>
+  </div>
 
-<div class="box3">
   <div class="block margin_top">
-    <h1>Produtos Favoritos</h1>
-    <div class="content">
+    <h1>Produtos adicionados</h1>
 
-      <h4>Total
+
+
+    <div class="content">
         <%= current_user.favorite_products.count %>
         Produtos favoritados</h4>
-
-        <div class="header"></div>
       <table class="block_search">
         <tr>
           <td>
 
-            <%= search_form_for @q, url:  search_favorites_favorites_path, method: :post  do |f| %>
+           <%= search_form_for @q, url:  search_favorites_favorites_path, method: :post  do |f| %>
 
             <%= f.text_field :id_cont %>
             <%= f.submit "Buscar", :class=>"btn_grey" %>
@@ -35,80 +39,79 @@
         </tr>
       </table>
 
-      <div class="subcontent_top">
+      <table class="zebra_branca margin_top" id="stock_vitrine">
 
-        <% @favorite_products.each do |p| %>
-        <div class="product_row">
+        <thead>
+          <tr class="header">
+            <th scope="col">Produto</th>
+            <th scope="col">Código</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Avaliação</th>
+            <th scope="col">Postado em</th>
+            <th scope="col">Remover</th>
 
-          <div class="product_img">
-            <%= link_to  product_path(p.id) do %>
-            <%= image_tag p.f1.url(:small).to_s %>
+          </tr>
+        </thead>
 
-            <% end %>
-          </div>
+        <tbody>
 
-          <div class="product_link">
+ <% @favorite_products.each do |product| %>
+<tr>
+  <td class="stock_td">
+    <%= link_to  product_path(product.id) do %>
+    <%= image_tag product.f1.url(:small).to_s %>
+    <%=  product.name %>
+    <% end %>
+  </td>
 
-            <%= link_to  product_path(p.id)  do %>
-            <%= p.name %>
-            <% end%>
+  <td><%= product.id %></td>
+  <td class="lista-preco_stock">
+    <span>
+      <b><%=  number_to_currency(product.price, :unit => "R$") %></b>
+    </span>
+  </td>
+ 
 
-            <% if p.feedbacks %>
+  <td>
+      <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}) %>
+
+  </td>
+  <td>
+      <% if product.feedbacks %>
             <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
             <%= @total_feedbacks %>
             <% end %>
 
-            <% if current_user %>
-            <%if p.buyable?(current_user) %>
+  </td>
+  <td>
+    <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
 
-            <div class="add_to_car">
-
-              <%= button_to("Adicionar a sacola",add_to_carts_path(p), :class => 'btn btn_big', :'data-submit-form' => true) do %>
-
-              <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
-              <%end %>
-
-            </div>
-
-            <%end %>
-
-            <%end %>
-
-          </div>
-          <div class="product_price">
-
-            <b ><%=  number_to_currency(p.price, :unit => "R$") %></b>
-
-          </div>
-          <div class="product_qty">
-            <%= select_tag  :quantity, options_for_select((1..p.quantity).collect{ |q| [q, q]}) %>
-          </div>
-
-          <div class="product_time">
-
-            <span class="lista-time">
-              <%= timeago_tag(p.created_at, :nojs => true, :date_only => false)%></span>
-
-          </div>
+  </td>
 
 
-<div class="product_unmark">
-    <%= button_to "Desfavoritar", unmark_favorite_path(p.id), method: :get, :class=>"btn_red btn_small" %>
-  </div>
-        </div>
+  <td>
+       <%= button_to "Remover", unmark_product_favorite_path(product.id), method: :get, :class=>"btn_red btn_small" %>
 
-        <% end %>
-      </div>
+     </td>
+
+</tr>
+ <% end %>
+
+        </tbody>
+      </table>
+
     </div>
 
+    <div class="block_pagination">
+      <hr class="line"></hr>
+      <div class="digg_pagination">
+        <%= will_paginate @favorite_products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
 
-        <div class="block_pagination">
-          <hr class="line"></hr>
-          <div class="digg_pagination">
-            <%= will_paginate @favorite_products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
-
-          </div>
-        </div>
-  </div>
+      </div>
+    </div>
 </div>
+
+</div>
+

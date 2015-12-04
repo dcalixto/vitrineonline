@@ -1,5 +1,6 @@
 <% title "Menssagens Index" %>
-
+<div class="box12">
+</div>
 <div class="box7">
   <div class="block margin_top">
 
@@ -27,8 +28,15 @@
   </div>
 </div>
 
-<div class="box13">
+<a id='addChat' href="#">Add Chat</a>
+    <div id="chat"></div>
 
-  <%= link_to("Nova Mensagem", "#",    :class=> "chatbox_button")  %>
 
+<div class="box10">
+  
+  
+ 
+ <%=button_to "Nova Mensagem", chatbox_conversations_path,  :class =>"ttooltip btn_grey btn_big",  :method => "get", :data => {:url => "/conversations/chatbox"}   %>
+         
+ 
 </div>

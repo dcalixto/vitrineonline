@@ -21,7 +21,7 @@ class Product < ActiveRecord::Base
 has_many :sizeship
 has_many :sizes, through: :sizeship
 
- accepts_nested_attributes_for :sizeship, :sizes
+ accepts_nested_attributes_for :sizes, :sizeship
   has_many :impressions, dependent: :destroy
 
   attr_accessible :f1, :f2, :f3, :f4, :name, :detail, :price, :color_id, :gender_id,
@@ -56,6 +56,9 @@ has_many :sizes, through: :sizeship
 
   #
 
+  #include Elasticsearch::Model 
+#include Elasticsearch::Model::Callbacks
+#include Elasticsearch::Persistence::Model
 
 
   markable_as :favorite
@@ -141,12 +144,233 @@ has_many :sizes, through: :sizeship
 
  
 
-searchkick
+after_touch :reindex
 
-def search_data
-    {
-      name: name
+
+
+
+ searchkick  word_start: [:name],
+            suggest: ["name"],
+             highlight: [:name],
+           merge_mappings: true, mappings: {
+           product: {
+            properties: {
+            name: {type: "string", analyzer: "keyword", boost: 100},
+            id: {type: "long"},
+            price: {type: "long"},
+            vitrine_id: {type: "long"},
+            brand_id: {type: "long" },
+           condition_id: {type: "long"},
+            category_id: {type: "long" },
+            subcategory_id: {type: "long"},
+
+      }
+    }
+  }
+ 
+
+
+
+
+
+
+  def self.aggs_search(params)
+  query = params[:query].presence || "*"
+ conditions = {}
+  conditions[:name] = params[:name] if params[:name].present?
+ 
+  products = Product.search  query, where: conditions,
+
+    
+         
+     
+    aggs: {
+        names: {
+            terms: { field: "names" }
        }
-  end
+    },
+ 
+# aggs: [:names],
+
+  smart_aggs: false, page: params[:page], suggest: true, highlight: true,
+  per_page: 10
+  
+  products
+
+
+
+
 
 end
+
+#def search_data
+   # {
+   #     name: name,
+   #     price: price,
+   #     vitrine_id: vitrine_id,
+   #     created_at: created_at,
+   #     category_id: category_id,
+    #    subcategory_id: subcategory_id,
+   #     size_id: sizes.map(&:id),
+    #    color_id: colors.map(&:id),
+    #    condition_id:  condition_id,
+    #    brand_id: brand_id,
+        
+
+            
+  #  
+ #   }
+#end
+
+
+
+
+ # mapping do
+  #  indexes :id, type: 'integer'
+   # indexes :name, :analyzer => 'snowball', :boost => 100
+    # indexes :gender_id, type: 'integer'
+   # indexes :gender_gender, :as => 'gender.gender'
+    #indexes :vitrine_id, type: 'integer'
+   # indexes :vitrine_name, :as => 'vitrine.name'
+  #  indexes :category_id, type: 'integer'
+ #   indexes :category_name, :as => 'category.name'
+ #   indexes :subcategory_id, type: 'integer'
+ #   indexes :subcategory_name, :as => 'subcategory.name'
+   # indexes :color_id, type: 'integer'
+   # indexes :color_name, :as => 'color.name'
+   # indexes :size_id, type: 'integer'
+   # indexes :size, :as => 'size.size if size'
+  #  indexes :material_id, type: 'integer'
+  #  indexes :material_name, :as => 'material.name'
+  #  indexes :condition_id, type: 'integer'
+  #  indexes :condition_condition, :as => 'condition.condition'
+  #  indexes :brand_id, type: 'integer'
+  #  indexes :brand_name, :as => 'brand.name if brand'
+      
+  
+ # end
+
+  #def self.search(params)
+    ##tire.search(:load => true, page: params[:page], per_page: 2 ) do
+   #   query { string params[:query], default_operator: 'AND'} if params[:query].present?
+    #  #filter :range, created_at: {lte: Time.zone.now}
+     # filter :term, gender_id: params[:gender_id] if params[:gender_id].present?
+      #filter :term, vitrine_id: params[:vitrine_id] if params[:vitrine_id].present?
+      #filter :term, category_id: params[:category_id] if params[:category_id].present?
+      #filter :term, subcategory_id: params[:subcategory_id] if params[:subcategory_id].present?
+     # filter :term, color_id: params[:color_id] if params[:color_id].present?
+      #filter :term, size_id: params[:size_id] if params[:size_id].present?
+      #filter :term, material_id: params[:material_id] if params[:material_id].present?
+      #filter :term, condition_id: params[:condition_id] if params[:condition_id].present?
+    #  filter :term, brand_id: params[:brand_id] if params[:brand_id].present?
+
+
+    #  aggs :gender do
+    #    terms :gender_id
+    #  end
+
+    #  aggs :vitrine do
+     #   terms :vitrine_id
+    #  end
+
+    #  aggs :category do
+     #   terms :category_id
+    #  end
+
+    #  aggs :subcategory do
+    #    terms :subcategory_id
+    #  end
+
+    # aggs :color do
+     #   terms :color_id
+    #  end
+
+    #  aggs :size do
+    #    terms :size_id
+    #  end
+
+   #  aggs :material do
+   #     terms :material_id
+   #   end
+
+   #   aggs :condition do
+   #     terms :condition_id
+   #   end
+
+   #   aggs :brand do
+   #     terms :brand_id
+   #   end
+   
+
+    #end
+ # end
+
+
+
+
+ # settings index: {number_of_shards: 1} do
+
+   #   mappings dynamic: 'false' do
+   #   indexes :name,  :type => 'string'
+  #    indexes :category_name, :type => 'string'
+ #     indexes :subcategory_name, :type => 'string'
+   #   indexes :material_name, :type => 'string'
+ #      indexes :condition_condition, :type => 'string'
+   #    indexes :brand_name, :type => 'string'
+    #  indexes :vitrine_id, :type => 'string'
+   
+    
+    
+  #  end
+#  end
+
+
+#  def self.search(query)
+  #  __elasticsearch__.search(
+  #          {
+    #    query: {
+     #     query_string: {
+     #       query: query,
+      #      fuzziness: 2,
+     #       default_operator: "AND",
+     #       fields: ['name^10', 'price', 'vitrine_name', 'id']
+    #      }
+     #   },
+
+# aggs: {genders: { terms: { field: :gender} }},
+ #aggregations:  {categories: { terms: { field: :category_id} }},
+#  aggs:  {subcategories: { terms: { field: :name} }},
+ # aggs:  {materials: { terms: { field: :name} }},
+ #aggs:  {conditions: { terms: { field: :condition} }},
+# aggs:  {brands: { terms: { field: :name} }},
+#  aggs: {avg_price: { avg: { field: :price } } },
+
+  #      highlight: {
+ #         pre_tags: ['<em>'],
+   #       post_tags: ['</em>'],
+  #        fields: {
+    #        name: {},
+     #       description: {}
+     #     }
+   #     }
+  #    }
+  #  )
+ # end
+
+
+
+ 
+#Product.__elasticsearch__.client.indices.delete index: Product.index_name rescue nil
+
+# Create the new index with the new mapping
+#Product.__elasticsearch__.client.indices.create \
+  #index: Product.index_name,
+ # body: { settings: Product.settings.to_hash, mappings: Product.mappings.to_hash }
+
+# Index all article records from the DB to Elasticsearch
+#Product.import(force: true)
+
+
+ end
+
+

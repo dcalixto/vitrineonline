@@ -1,12 +1,16 @@
 <% title  "Mudar Password" %>
+<div class="box12">
+     </div>
+  
 
 <div class="box3">
-
-  <div class="block_border">
-
-    <%= render 'shared/error_messages', :target => @user %>
+  <div class="flash_box">
+       <%= render 'shared/error_messages', :target => @user %>
     <%= render 'shared/flash_messages' %>
-    <h4>Mudar Password</h4>
+  </div>
+  <div class="block">
+
+     <h4>Mudar Password</h4>
     <div class="content">
 
       <%= semantic_form_for @user, :url => password_reset_path(params[:id]), :method => :put  do |f| %>

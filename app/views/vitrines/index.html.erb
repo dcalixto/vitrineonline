@@ -1,92 +1,73 @@
-<% title "Lojas" %>
+<% title "Vitrines" %>
 <div class="box1">
   <%= render 'shared/flash_messages' %>
 
-  <% breadcrumb :vitrine, @vitrine %>
+  <% breadcrumb :vitrines, @vitrines %>
 </div>
 
-<div class="box1">
+<div class="box5">
 
   <div class="block">
-
-    <div class="">
-      <h4>
-        <%= @vitrine.total_entries %>
-        Lojas</h4>
-    </div>
-
-    <div class="filtro">
-
-      <ul>
-        <% @vitrine.facets['kind']['terms'].each do |facet| %>
-        <li>
-          <%= link_to_unless_current BoutiqueKind.find(facet['term']).kind, params.merge({(controller.controller_name == BoutiqueKindsController.controller_name ? :id: :kind_id) => facet['term']}) %>
-          <%= facet['count'] %>
-          <% if params[:kind_id] == facet['term'].to_s %>
-          <% end %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="search_block">
-
-      <%= form_tag boutiques_path, method: :get, :id => "search_box" do %>
-
-      <%= search_field_tag :query, params[:query],  :id => "search" %>
-
-      <%= button_tag "", :class =>"search_btn", :name => nil %>
-      <% end %>
-
-    </div>
-
+    <h1>Vitrines</h1>
     <div class="content">
+    
 
-      <% @vitrine.each  do |vitrine| %>
+  
 
-      <div class="boutique_list">
+  <% @vitrines.each  do |vitrine| %>
+<%= link_to  vitrine_path(vitrine.id), :class=>"product" do %> 
+            
+  <%= image_tag vitrine.logo.url(:thumb).to_s, :class=>"productImg" %>
 
-        <%= link_to(image_tag(vitrine.logo.url(:thumb_edit).to_s),boutique_url(vitrine.id),  :crop => :fill) %>
+                
+  <span class="productName"> <%= vitrine.name %></span>
+          
+       
+ <% if vitrine.feedbacks %>
 
-        <ul class="boutique_details">
-          <li title="<%= vitrine.name %>">
-            <%= link_to  boutique_path(vitrine.id) do %>
-            <%=  vitrine.name %>
+   <div class="productFeeback">
+     
+     <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
-            <% end %>
-          </li>
+            <%= @total_feedbacks %>
+            
+            </div>
+                 <% end %>
 
-          <li>
 
+         
+            <span class="lista-time">
+              <%= timeago_tag(vitrine.created_at, :nojs => true, :date_only => false)%>
+            </span>
+
+                      
+      
+            <span class="by">Dono: <%= vitrine.user.name %></span>
+ 
+            <span>
             <% if vitrine.marketing.present? %>
             <p title="<%= vitrine.marketing.slogan  %>"><%= vitrine.marketing.slogan %></p>
+            </span>
+          <% end %>
 
-            <% end %>
-          </li>
 
-          <li>
-            <span>Itens</span>
+             <% if vitrine.marketing.url? %>
 
-            <b><%= vitrine.products.count %></b>
-          </li>
+                     <span>Site: <%= link_to vitrine.marketing.url,  boutique.marketing.url%></span>
 
-          <% unless vitrine.marketing.url.blank? %>
-
-          <li title="<%= vitrine.marketing.url %>">
-            <span>Site
-              <%= link_to vitrine.marketing.url,  boutique.marketing.url%></span>
-          </li>
+                        </span>
 
           <% end %>
 
-        </ul>
 
-      </div>
+          <% end %>
 
-      <% end %>
+   <% end %>
 
-    </div>
-    <div class="block_pagination">
+</div>
+  </div>
+
+<div class="block_pagination">
       <div class="digg_pagination">
         <%= will_paginate @vitrine,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
 
@@ -96,4 +77,5 @@
 
   </div>
 
-</div>
+
+   

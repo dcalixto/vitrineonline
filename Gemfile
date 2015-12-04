@@ -7,8 +7,11 @@ gem 'rails', '3.2.22'
 gem 'will_paginate'
 gem 'ransack'
 gem 'acts-as-taggable-on', '~> 3.4'
-gem 'searchkick'
-  
+gem 'searchkick',  github: "ankane/searchkick"
+
+
+
+
 # MISC
 
 gem 'friendly_id'

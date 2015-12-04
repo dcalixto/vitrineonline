@@ -53,7 +53,7 @@
   display: block;
   overflow: hidden;
     border: 1px solid #dadbd6;
-   
+  background-color: #F1F1F1; 
              border-radius: 3px;
 
    }

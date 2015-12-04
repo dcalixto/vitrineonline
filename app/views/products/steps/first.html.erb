@@ -3,7 +3,7 @@
 
 <%= render "shared/vitrine_menu" %>
 
-<div class="box4" >
+<div class="box5" >
 <%= render 'shared/flash_messages' %>
 <%= render 'shared/error_messages', :target => @product %>
 
@@ -14,7 +14,7 @@
 
 
 <!-- Seção-->
-<div class="block margin_top">
+<div class="content margin_top">
   <h4>
 <%= link_to @product.name, product_path(@product) %>
 </h4>
@@ -28,6 +28,9 @@
                :id => "product_tags",
                "data-pre" => @product.tags.map(&:attributes).to_json %>
 </div>
+
+
+
 
 
 

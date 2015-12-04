@@ -49,8 +49,9 @@
                   <%= render "layouts/shop_cart" %>
 
                     <% if current_user %>
-                      <%=render :partial=> "layouts/left_nav" %>
-                        <%end %>
+                               <%=render :partial=> "layouts/left_nav" %>           
+                        <%=render :partial=> "layouts/sell_button" %>
+                    <%end %>
 
 
                           <div class="log_topbar">
@@ -74,7 +75,7 @@
 
                                 <li class="padding_top">
 
- <%= link_to "Conta", edit_user_path(current_user), :class =>"ttooltip", :data => { :content => 'ajax', :footer => 'Sair' }  %>
+                                  <%= link_to "Conta", edit_user_path(current_user), :class =>"ttooltip",   :data => {:url => "/users/#{current_user.id}/links"}    %>
 
                                       <span></span>
 

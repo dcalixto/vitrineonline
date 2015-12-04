@@ -3,7 +3,7 @@
   <% breadcrumb :products, @products %>
 </div>
 
-<#%= render "shared/filtro_product" %>
+ <%= render 'shared/filtro_product' %>
 
 <!-- VITRINE-->
 <div class="box3">
@@ -16,78 +16,49 @@
 
       <div class="searchResults">
 
-        <table class="zebra_vitrine" id="products_vitrine">
-
-          <thead>
-            <tr class="header">
-              <th scope="col">Popularidade</th>
-
-              <th scope="col">Produto</th>
-              <th scope="col">Preço</th>
-              <th scope="col">Vitrine</th>
-              <th scope="col">Restando</th>
-              <th scope="col">Avaliação</th>
-
-              <th scope="col">Postado em</th>
-
-            </tr>
-          </thead>
-
-          <tbody>
+       
            
             <% @products.each do |product|%>
 
-            <tr>
 
-              <td class="stock_td">
-                <%= link_to  product_path(product.id) do %>
-                <%= image_tag product.f1.url(:small).to_s %>
-                <%=  product.name %>
-                <% end %>
-              </td>
+<%= link_to  product_path(product.id), :class=>"product" do %> 
+            
+  <%= image_tag product.f1.url(:small).to_s, :class=>"productImg" %>
 
-              <td class="lista-preco_stock">
-                <span>
-                  <b><%=  number_to_currency(product.price, :unit => "R$") %></b>
-                </span>
-              </td>
+                
+  <span class="productName"> <%= product.name %></span>
+          
+       
 
-              <td>
+            <span class="price"><%=  number_to_currency(product.price, :unit => "R$") %></span>
+ <% if product.feedbacks %>
 
-                <%= link_to  vitrine_path(product.vitrine.id) do %>
-                <%= product.vitrine.name %>
-                <% end %>
+   <div class="productFeeback">
+     
+     <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
-              </td>
+            <%= @total_feedbacks %>
+            
+            </div>
+                 <% end %>
 
-              <td>
-                <% if product.quantity %>
-                <%=product.quantity %>
 
-                <% end %>
-
-              </td>
-
-              <td>
-                <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
-                <%= content_tag(:span, nil) do%>
-
-                <%= @total_feedbacks %>
-                <% end %>
-              </td>
-
-              <td>
-                <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
-
-              </td>
-
-            </tr>
-
-            <% end %>
          
-          </tbody>
+            <span class="lista-time">
+              <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+            </span>
 
-        </table>
+                     
+      
+            <span class="by">Por <%= product.vitrine.name %></span>
+
+      <% end %>
+
+
+ <% end %>
+
+
+
 
       </div>
 

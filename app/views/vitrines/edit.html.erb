@@ -16,9 +16,11 @@
 
 
       <div class="subcontent_top" >
+  <h4>Logo</h4>
 
-        <h4>
-          <%= link_to @vitrine.user.name, vitrine_path(current_vitrine) %></h4>
+  <%= link_to @vitrine.user.name, vitrine_path(current_vitrine) %>
+
+  
         <%= form_for @vitrine, :url => vitrine_path(current_vitrine), :method => :put,  :html => {:multipart => true} do |logo| %>
         <%= image_tag current_vitrine.logo.url(:thumb).to_s %>
         <ul class="image_info">
@@ -34,61 +36,26 @@
     </div>
 
 
-
-
     <div class="subcontent">
-        <h4>Banner 1</h4>
-      <%= form_for @vitrine, :url => vitrine_path(current_vitrine), :method => :put,  :html => {:multipart => true} do |b1| %>
-      <ul>
-        <li>
-          <%= image_tag @vitrine.b1.url(:small).to_s %></li>
-        </ul>
-        <ul class="image_info">
-          <li>
-            <div id="upload-b1-container"></div>
-          </li>
-        </ul>
-        <%= b1.button "Salvar", :class => 'btn' %>
-        <% end %>
-      </div>
-
-
-
-
-      <div class="subcontent">
-          <h4>Banner 2</h4>
-        <%= form_for @vitrine, :url => vitrine_path, :method => :put,  :html => {:multipart => true} do |b2| %>
-        <ul>
-          <li>
-            <%= image_tag @vitrine.b2.url(:small).to_s %></li>
-          </ul>
-          <ul class="image_info">
+      <h1>Banners</h2>
+      <div class="product_img">
+         <!-- Fotos  -->
+         <ul>
             <li>
-              <div id="upload-b2-container"></div>
+               <div id="upload-b1-container"></div>
             </li>
-          </ul>
-          <%= b2.button "Salvar", :class => 'btn' %>
-          <% end %>
-        </div>
-
-
-      <div class="subcontent">
-        <h4>Banner 3</h4>
-
-          <%= form_for @vitrine, :url => vitrine_path, :method => :put,  :html => {:multipart => true} do |b3| %>
-          <ul>
             <li>
-              <%= image_tag @vitrine.b3.url(:small).to_s %></li>
-            </ul>
-            <ul class="image_info">
-              <li>
-                <div id="upload-b3-container"></div>
-              </li>
-            </ul>
-            <%= b3.button "Salvar", :class => 'btn' %>
-            <% end %>
-          </div>
+               <div id="upload-b2-container"></div>
+            </li>
+            <li>
+               <div id="upload-b3-container"></div>
+            </li>
+                     </ul>
+         <div class="clearfix"></div>
+      </div>
+   </div>
 
+  
     </div>
 
 

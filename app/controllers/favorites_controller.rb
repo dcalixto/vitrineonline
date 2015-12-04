@@ -13,10 +13,19 @@ def vitrines
  @favorite_vitrines = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
 end
 
-  def unmark
+  def unmark_product
     @user = current_user
     @product = Product.find(params[:id])
     @product.users_have_marked_as_favorite.delete @user
     redirect_to :back
   end
+
+  def unmark_vitrine
+    @user = current_user
+    @vitrine = Vitrine.find(params[:id])
+    @vitrine.users_have_marked_as_favorite.delete @user
+    redirect_to :back
+  end
+
+
 end

@@ -1,0 +1,45 @@
+
+<div class="box5">
+  <div class="block">
+    <h1>Usuários</h1>
+<div class="content">
+
+<% @users.each do |user|%>
+<%= link_to  user_path(user.id), :class=>"product" do %> 
+            
+  <%= image_tag user.avatar.url(:thumb).to_s, :class=>"productImg" %>
+
+                
+  <span class="productName"> <%= user.name %></span>
+          
+       
+ <% if user.feedbacks %>
+
+   <div class="productFeeback">
+     
+     <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>"></div>
+
+            <%= @total_feedbacks %>
+            
+            </div>
+                 <% end %>
+
+
+         
+            <span class="lista-time">
+              <%= timeago_tag(user.created_at, :nojs => true, :date_only => false)%>
+            </span>
+
+                      <% if user.vitrine %>
+
+      
+            <span class="by">Vitrine <%= user.vitrine.name %></span>
+  <% end %>
+
+      <% end %>
+
+    <% end %>
+
+</div>
+  </div>
+</div>

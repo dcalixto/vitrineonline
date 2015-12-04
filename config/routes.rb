@@ -37,7 +37,9 @@ get :products
 get :vitrines
   end
 member do
-  match 'unmark', to: 'favorites#unmark'
+  match 'unmark_product', to: 'favorites#unmark_product'
+
+   match 'unmark_vitrine', to: 'favorites#unmark_vitrine'
 end
 end
 
@@ -62,12 +64,13 @@ end
     member do
       get :participants
       get :fail    
-        get :links
-    
+            
     end
 
     collection do
-      get :chatbox, action: 'chatbox'
+      get :chatbox
+      get :links
+
     end
   end
 

@@ -9,12 +9,11 @@
 //= require tipsy
 //= require jquery.fancybox.pack
 //= require jquery.raty
-//= require responsiveslides.min
 //= require typeahead
 //= require jquery.tokeninput
 //= require jquery.webui-popover
 //= require lightslider.min
-
+//= require jquery.chatbox
 //= require_tree .
 
 
@@ -23,20 +22,30 @@
 
 
 
-//$('.ttooltip').webuiPopover({
-  //  type:'async',
-    //url:'/feedbacks/links',
 
 
 
- //closeable:true,
-   //                     padding:false,
-     //                   cache:false,
+$('.ttooltip').webuiPopover({
+    type:'async',
+   /*url:'/feedbacks/links',*/
 
 
-//});
 
 
+                        padding:false,
+                       cache:false,
+
+
+});
+
+$('.ttooltip2').webuiPopover({
+ 
+trigger:'hover',
+                        padding:false,
+                       cache:false,
+
+
+});
 
 
 $(document).ready(function() {
@@ -48,7 +57,14 @@ $(".content-slider").lightSlider({
             });
 });
 
-
+$(document).ready(function() {
+$(".box-slider").lightSlider({
+                loop:true,
+                keyPress:true,
+                auto:true,
+                 item:1,
+            });
+});
 
 $(document).ready(function() {
 $(".content-slider-vertical").lightSlider({
@@ -289,15 +305,6 @@ $(document).ready(function() {
 
 
 
-// Slideshow 2
-$("#slider1").responsiveSlides({
-  auto: true,
-  pager: true,
-  speed: 300,
-  maxwidth: 540
-});
-
-
 $(function() {
   return $(document).on('change', '#states_select', function(evt) {
     return $.ajax('update_city_select', {
@@ -348,6 +355,9 @@ $(function() {
     animateDropdown: false
   });
 });
+
+
+
 
 
 
@@ -417,4 +427,18 @@ $(function() {
 //
 //
 //
+
+
+
+ $(document).ready(function() {
+       var counter = 1, 
+        offset = 0;
+        chatbox_manager = new ChatboxManager();
+       $('#addChat').on('click', function(e) {
+         var id = 'chat_' + counter.toString();
+         var title = 'User ' + counter.toString();
+         chatbox_manager.addBox(id, title);
+         counter ++;       
+       });
+    });
 

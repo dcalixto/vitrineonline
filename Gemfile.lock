@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/ankane/searchkick.git
+  revision: b015097030b7b244603c99409edb317fef4954e6
+  specs:
+    searchkick (1.0.3)
+      activemodel
+      elasticsearch (>= 1)
+      hashie
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -141,7 +150,7 @@ GEM
       multi_json (>= 1.0.0)
       rack (>= 1.0.0)
       websocket-driver (>= 0.5.1)
-    faye-websocket (0.10.1)
+    faye-websocket (0.10.2)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
     fission (0.5.0)
@@ -185,15 +194,14 @@ GEM
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
       ipaddress (~> 0.8)
-    fog-brightbox (0.9.0)
+    fog-brightbox (0.10.1)
       fog-core (~> 1.22)
       fog-json
       inflecto (~> 0.0.2)
-    fog-core (1.34.0)
+    fog-core (1.35.0)
       builder
       excon (~> 0.45)
       formatador (~> 0.2)
-      mime-types
     fog-dynect (0.0.2)
       fog-core
       fog-json
@@ -312,13 +320,13 @@ GEM
       mina (>= 0.3.0)
       newrelic_rpm (>= 3.6.0)
     mini_magick (4.3.6)
-    mini_portile (0.6.2)
+    mini_portile2 (2.0.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     newrelic_rpm (3.14.0.305)
-    nokogiri (1.6.6.4)
-      mini_portile (~> 0.6.0)
+    nokogiri (1.6.7)
+      mini_portile2 (~> 2.0.0.rc2)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -420,10 +428,6 @@ GEM
       tilt (~> 1.3)
     sax-machine (0.2.1)
       nokogiri (~> 1.6.0)
-    searchkick (1.0.2)
-      activemodel
-      elasticsearch (>= 1)
-      hashie
     secure_headers (2.4.3)
       user_agent_parser
     sexp_processor (4.6.0)
@@ -538,7 +542,7 @@ DEPENDENCIES
   rubocop
   ruby_gntp
   sass-rails
-  searchkick
+  searchkick!
   secure_headers
   shareable
   sqlite3

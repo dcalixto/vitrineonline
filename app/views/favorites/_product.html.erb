@@ -1,0 +1,41 @@
+<tr>
+  <td class="stock_td">
+    <%= link_to  product_path(product.id) do %>
+    <%= image_tag product.f1.url(:small).to_s %>
+    <%=  product.name %>
+    <% end %>
+  </td>
+
+  <td><%= product.id %></td>
+  <td class="lista-preco_stock">
+    <span>
+      <b><%=  number_to_currency(product.price, :unit => "R$") %></b>
+    </span>
+  </td>
+ 
+
+  <td>
+      <%= select_tag  :quantity, options_for_select((1..p.quantity).collect{ |q| [q, q]}) %>
+
+  </td>
+  <td>
+      <% if product.feedbacks %>
+            <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+            <%= @total_feedbacks %>
+            <% end %>
+
+  </td>
+  <td>
+    <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+
+  </td>
+
+
+  <td>
+       <%= button_to "Remover", unmark_product_favorite_path(p.id), method: :get, :class=>"btn_red btn_small" %>
+
+     </td>
+
+</tr>
+

@@ -15,11 +15,11 @@
    <%=link_to(image_tag(@vitrine.logo.url(:thumb).to_s), vitrine_path(@vitrine)) %>
     <ul class="list">
       <li>
-        <h1>
+       
           <%=link_to vitrine_path(@vitrine) do %>
           <%=@vitrine.name %>
           <% end %>
-        </h1>
+      
       </li>
       <li>
          <% if @vitrine.user.city%>
@@ -39,27 +39,32 @@
 
         <%=link_to  feedbacks_vitrine_path(:id=>@vitrine.id)  do %>
         <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
-        <%=@total_from_buyers %>
+       
+        Avaliações <%=@total_from_buyers %>
   <% end %>
 <% end %>
 </li>
 
-<% unless @vitrine.marked_as_favorite? %>
-        <li><%= link_to "Favoritar", mark_vitrine_path(@vitrine.id), method: :put, :class => "btn_grey btn_small" %>
+<li>
 
-        </li>
-<% end %>
+<span>Dono(a): <%=link_to @vitrine.user.name, user_path(@vitrine.user) %></span>
+</li>
+
+<% unless @vitrine.marked_as_favorite? %>
+        <li><%= link_to "Adicionar as Favoritas", mark_vitrine_path(@vitrine.id), method: :put %>  </li>
+
+      
+      <% end %>
+
+
 
     </ul>
 
-    <div class="divider_bottom"></div>
-
-    <h4>Usuário</h4>
-
-     <%=link_to(image_tag(@vitrine.user.avatar.url(:thumb).to_s), user_path(@vitrine.user)) %>
-  </div >
+  
 
 </div>
+</div>
+
 </div>
 
 
@@ -84,7 +89,7 @@
 
 <div class="box4 margin_top">
   <!-- Slideshow 1 -->
-  <ul class="slide" id="slider1">
+ <ul  class="box-slider">
     <li>
       <%= image_tag('slider1.jpg')  %>
     </li>
@@ -103,6 +108,35 @@
     </div>
   </div>
 </div>
+
+
+<div class="box11">
+<div class="subcontent_top margin_top">
+<h4>Produtos Similares</h4>
+<#%ProductRecommender.instance.similarities_for("product-3").each do |item| %>
+<#%  ProductRecommender.instance.similarities_for("product-#{@products.id}").each do |item| %> 
+  
+  <#%= raw item.map { |t| link_to t, product_path(t) }.join(', ') %> 
+
+
+
+<#% end %>
+
+
+    <h4>Estilos</h4>
+    <span class="tags">
+           
+<% @vitrine.products.each do |tag| %>
+<%= raw link_to tag.name, tags_path(:tag => tag.name) %>
+<% end %>
+
+   
+
+ </span>
+    </div>
+  </div>
+
+
 
 <div class="box3">
 
@@ -238,37 +272,6 @@
   </div>
 </div>
 </div>
-
-<div class="box11">
-<div class="subcontent_top margin_top">
-<h4>Produtos Similares</h4>
-<#%ProductRecommender.instance.similarities_for("product-3").each do |item| %>
-<#%  ProductRecommender.instance.similarities_for("product-#{@products.id}").each do |item| %> 
-  
-  <#%= raw item.map { |t| link_to t, product_path(t) }.join(', ') %> 
-
-
-
-<#% end %>
-
-
-
-    </div>
-    </div>
-
-
-<div class="box11">
-  <div class="subcontent_top">
-    <h4>Estilos</h4>
-    <span class="tags">
-                <% @vitrine.products.order.each do |product| %>
-         <%=  raw product.tag_list.map {|t| link_to t, tag_path(t)} %>
-
-         <% end %>
-
- </span>
-    </div>
-  </div>
 
 
 

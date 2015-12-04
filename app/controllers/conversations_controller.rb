@@ -58,6 +58,16 @@ class ConversationsController < ApplicationController
 
 
 
+ def chatbox
+    if current_user
+   @conversation = Conversation.new
+             respond_to do |format|
+      format.html { render 'chatbox', :layout=> false}
+    end
+             
+  end
+
+  end
 
 
 

@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :products do
-  link 'Itens', products_path
+  link 'Produtos', products_path
 end
 
 crumb :product do |product|

@@ -1,10 +1,19 @@
+
+<div class="box1">
+
 <strong>Passo 2</strong>
 &gt; Postar
-<%= form_for @product, method: :put, url: wizard_path,  :html => {:multipart => true} do |p| %>
+</div>
+<div class="box5">
 
-<div class="block">
-<h1>Imagens e especifiações</h1>
+
+
   <div class="content">
+
+    <%= form_for @product, method: :put, url: wizard_path,  :html => {:multipart => true} do |p| %>
+
+  <h1>Imagens e especifiações</h1>
+
       <div class="subcontent_top">
 
         <h4>Fotos</h4>
@@ -35,6 +44,19 @@
       <%= link_to 'Fotografia', page_path('fotografia') %></p>
   </div>
 
+
+    <div class="subcontent_top">
+
+
+  <h4>Mais informações</h4>
+          <div id="notes-bar"></div>
+
+          <%= p.text_area :detail,  :id => 'notes', :label =>"Descrição"%>
+          <div id="notes-preview"></div>
+
+       
+
+  </div>
   <div class="subcontent">
     <h4>Estilos</h4>
     <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
@@ -84,9 +106,13 @@
 <p>
   Adicione apenas as medidas pertinente ao produto OBS: Todas as medidas serão em Centímetros Comprimento: 67,5cm
 </p>
-</div>
 
 
 
 <%= p.submit 'Vender', :class =>"btn_orange btn_big" %>
 <% end %>
+
+</div>
+
+</div>
+
