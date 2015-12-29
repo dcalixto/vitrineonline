@@ -113,8 +113,6 @@ end
 
   def destroy
     if @user.destroy
-      User.tire.index.remove @user
-      Vitrine.tire.index.remove @vitrine
       cookies.delete(:auth_token)
       redirect_to root_path
       flash[:success] = 'Conta deletada'

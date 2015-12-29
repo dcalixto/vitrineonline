@@ -144,29 +144,19 @@ has_many :sizes, through: :sizeship
 
  
 
-after_touch :reindex
+  after_touch :reindex
 
 
-
-
- searchkick  word_start: [:name],
-            suggest: ["name"],
+  searchkick word_start: [:name],
+             suggest: ["name"],
              highlight: [:name],
-           merge_mappings: true, mappings: {
-           product: {
-            properties: {
-            name: {type: "string", analyzer: "keyword", boost: 100},
-            id: {type: "long"},
-            price: {type: "long"},
-            vitrine_id: {type: "long"},
-            brand_id: {type: "long" },
-           condition_id: {type: "long"},
-            category_id: {type: "long" },
-            subcategory_id: {type: "long"},
-
+             merge_mappings: true, mappings: {
+          product: {
+              properties: {
+                  name: {type: "string", analyzer: "keyword", boost: 100}
+              }
+          }
       }
-    }
-  }
  
 
 
@@ -175,52 +165,44 @@ after_touch :reindex
 
 
   def self.aggs_search(params)
-  query = params[:query].presence || "*"
- conditions = {}
-  conditions[:name] = params[:name] if params[:name].present?
+    query = params[:query].presence || "*"
+    conditions = {}
+    conditions[:gender_id] = params[:gender_id] if params[:gender_id].present?
+    conditions[:vitrine_id] = params[:vitrine_id] if params[:vitrine_id].present?
+    conditions[:category_id] = params[:category_id] if params[:category_id].present?
+    conditions[:subcategory_id] = params[:subcategory_id] if params[:subcategory_id].present?
+    conditions[:size_id] = params[:size_id] if params[:size_id].present?
+    conditions[:color_id] = params[:color_id] if params[:color_id].present?
+    conditions[:material_id] = params[:material_id] if params[:material_id].present?
+    conditions[:condition_id] = params[:condition_id] if params[:condition_id].present?
+    conditions[:brand_id] = params[:brand_id] if params[:brand_id].present?
+    conditions[:quantity] = {gt: 0} # quantity should be greather than 0
  
-  products = Product.search  query, where: conditions,
+    products = Product.search query, fields: [{name: :word_start}], where: conditions,
 
-    
-         
-     
-    aggs: {
-        names: {
-            terms: { field: "names" }
-       }
-    },
- 
-# aggs: [:names],
-
-  smart_aggs: false, page: params[:page], suggest: true, highlight: true,
-  per_page: 10
+    aggs: [:gender_id, :vitrine_id, :category_id, :subcategory_id, :size_id, :color_id, :material_id, :condition_id, :brand_id],
+    page: params[:page], suggest: true, highlight: true, per_page: 10
   
-  products
-
-
-
-
-
+    products
 end
 
-#def search_data
-   # {
-   #     name: name,
-   #     price: price,
-   #     vitrine_id: vitrine_id,
-   #     created_at: created_at,
-   #     category_id: category_id,
-    #    subcategory_id: subcategory_id,
-   #     size_id: sizes.map(&:id),
-    #    color_id: colors.map(&:id),
-    #    condition_id:  condition_id,
-    #    brand_id: brand_id,
-        
-
-            
-  #  
- #   }
-#end
+  def search_data
+    {
+        name: name,
+        price: price,
+        quantity: quantity,
+        gender_id: gender_id,
+        vitrine_id: vitrine_id,
+        category_id: category_id,
+        subcategory_id: subcategory_id,
+        size_id: size_id,
+        color_id: color_id,
+        material_id: material_id,
+        condition_id: condition_id,
+        brand_id: brand_id,
+        created_at: created_at
+    }
+  end
 
 
 
