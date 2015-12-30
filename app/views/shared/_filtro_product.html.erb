@@ -72,7 +72,7 @@
       <ul>
         <% @products.aggs['size_id']['buckets'].each do |bucket| %>
           <li>
-            <%= link_to_unless_current ProducstSizes.find(bucket['key']).size, params.merge(products_sizes_size_id: bucket['key']) %> <%= bucket['doc_count'] %>
+            <%= link_to_unless_current Size.find(bucket['key']).size, params.merge(size_id: bucket['key']) %> <%= bucket['doc_count'] %>
           </li>
         <% end %>
       </ul>
