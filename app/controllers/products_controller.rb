@@ -1,26 +1,11 @@
 # encoding: utf-8
-require 'product_recommender'
-
 #require 'elasticsearch/persistence/model'
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
 
   def index
-
-
-#  query = params[:query].presence || "*"
- # @products = Product.search(query,
-    #                            suggest: true,
-     #                          per_page: 20,
-     #                          aggs: [:name, :vitrine_id, :category_id,:price, :subcategory_id])
-#query = params[:query].presence || "*"
-
-@products = Product.aggs_search(params)
-
-
-
-
+    @products = Product.aggs_search(params)
   end
 
 
@@ -29,7 +14,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @genders = Gender.all
-
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
 

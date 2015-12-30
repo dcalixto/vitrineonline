@@ -8,14 +8,14 @@ class CreateProductData < ActiveRecord::Migration
       t.string   "slug"
       t.integer  "vitrine_id",                                                  :null => false
       t.text     "detail"
-      t.integer  "category_id",                                                
-      t.integer  "gender_id",
-      t.integer  "subcategory_id",
-      t.integer  "color_id",
-      t.integer  "size_id",
-      t.integer  "material_id",
-      t.integer  "condition_id",
-      t.integer  "brand_id", 
+      t.integer  "category_id"                                                
+      t.integer  "gender_id"
+      t.integer  "subcategory_id"
+      t.integer  "color_id"
+      t.integer  "size_id"
+      t.integer  "material_id"
+      t.integer  "condition_id"
+      t.integer  "brand_id"
       t.datetime "created_at",                                                  :null => false
       t.datetime "updated_at",                                                  :null => false
       t.string   "status"

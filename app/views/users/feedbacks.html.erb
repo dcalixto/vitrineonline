@@ -14,17 +14,21 @@
 
 
 
-</div>
+      </div>
+        <% if @user.vitrine  %>
+
   <div class="subcontent">
-        <li class="lista-time">
-          <%= link_to  vitrine_path(@user.vitrine.id)  do %>
+    <li class="lista-time">
+              <%= link_to  vitrine_path(@user.vitrine.id)  do %>
 
           <%= image_tag @user.vitrine.logo.url(:thumb).to_s %>
           <% end%>
           Criada em:
           <%= timeago_tag(@user.vitrine.created_at, :nojs => true, :date_only => false)%>
-        </li>
+  
+    </li>
 </div>
+  <% end%>
 
 
 

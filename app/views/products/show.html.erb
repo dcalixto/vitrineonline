@@ -247,7 +247,7 @@
             <li>
               <span>Condição
               </span>
-              <b><%= @product.condition.name %></b>
+              <b><%= @product.condition.condition %></b>
             </li>
             <% if @product.material.present? %>
 
@@ -382,14 +382,14 @@
   <div class="margin_top">
     <h1>Sugestoes</h1>
     <div class="subcontent_top">
-   <% ProductRecommender.instance.similarities_for("product-3").each do |item| %>
+   <#% ProductRecommender.instance.similarities_for("product-3").each do |item| %>
 
-      <%= link_to  product_path("#{item}")  do %>
-      <%= "#{item}" %>
-      <% end%>
+      <#%= link_to  product_path("#{item}")  do %>
+      <#%= "#{item}" %>
+      <#% end%>
 
 
-    <% end %>
+    <#% end %>
 </div>
 </div>
 </div>
@@ -404,11 +404,11 @@
       <div class="content">
   
 
-<%  ProductRecommender.instance.similarities_for("product-3").each do |item| %> 
-  <%= link_to product_path(item) do  %> 
-    <%= "#{item}" %>
-<% end %>
-<% end %>
+<#%  ProductRecommender.instance.similarities_for("product-3").each do |item| %> 
+  <#%= link_to product_path(item) do  %> 
+    <#%= "#{item}" %>
+<#% end %>
+<#% end %>
 
 
 
@@ -427,14 +427,14 @@
       
       <div class="content">
   
- <% ProductRecommender.instance.similarities_for("vitrine-1").each do |item| %>
+ <#% ProductRecommender.instance.similarities_for("vitrine-1").each do |item| %>
 
-      <%= link_to  vitrine_path("#{item}")  do %>
-      <%= @product.vitrine.name %>
-      <% end%>
+      <#%= link_to  vitrine_path("#{item}")  do %>
+      <#%= @product.vitrine.name %>
+      <#% end%>
 
 
-    <% end %>
+    <#% end %>
 
 
   </div>
