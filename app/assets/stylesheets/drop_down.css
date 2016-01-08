@@ -33,14 +33,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     border-top: 1px solid rgba(0,0,0,.17);
     border-bottom: 1px solid rgba(0,0,0,.1);
     white-space: nowrap;
-background:#fff
+background:#3fa1df
 }
 #drop a {
   margin-right: 5px;
   margin-left: 5px;
   font-size: 12px;
   margin-left: 5px;
-  color: #333;
+  color: #fff;
 
 }
 .left_links {
@@ -74,7 +74,7 @@ background:#fff
 .inner_drop {
   margin: 0px auto;
   min-width: 960px;
-max-width: 1000px;
+
 
   box-sizing: border-box;
   margin: 0px auto !important;

@@ -194,6 +194,16 @@ end
 
   end
 
+
+  namespace :dynamic_selectable do
+    get 'categories/:category_id/subcategories', to: 'category_subcategories#index', as: :category_subcategories
+    get 'gender/:gender_id/categories', to: 'gender_categories#index', as: :gender_categories
+  end
+
+
+
+
+
   resources :home, only: [:index]
 
   # FOOTERS & TOP NAV

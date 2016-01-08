@@ -7,6 +7,14 @@ GIT
       elasticsearch (>= 1)
       hashie
 
+GIT
+  remote: https://github.com/dcalixto/dynamic_selectable.git
+  revision: 546717f51ff2ff3ea30c59fe8fd2ad32cb6f6040
+  specs:
+    dynamic_selectable (1.0.0)
+      coffee-script (~> 2.3)
+      rails (~> 3.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -515,6 +523,7 @@ DEPENDENCIES
   dalli
   dalli-elasticache
   delayed_job_active_record
+  dynamic_selectable!
   fog
   formtastic
   friendly_id

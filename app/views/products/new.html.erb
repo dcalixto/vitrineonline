@@ -63,6 +63,31 @@
       </ul>
 
 
+
+
+
+    <div class="form-group">
+      <%= p.label :gender_id %>
+      <%= dynamic_collection_select :gender_id, :category, Gender.all, :id, :gender,
+        { include_blank: true, submit_with_form: true }, { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= p.label :category_id %>
+      <%= dynamic_collection_select :category_id, :subcategory, [], :id, :name,
+        { include_blank: true, submit_with_form: true }, { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= p.label :subcategory_id %>
+      <%= p.collection_select :subcategory_id, [], :id, :name, {}, { class: 'form-control' } %>
+    </div>
+
+
+
+
+
+
   </div>
 
 

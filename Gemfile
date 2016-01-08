@@ -28,7 +28,7 @@ gem 'counter_culture', '~> 0.1.33'
 
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'shareable'
-
+gem 'dynamic_selectable', git: 'https://github.com/dcalixto/dynamic_selectable.git'
 gem 'predictor'
 
 # CPF CNPJ

@@ -14,6 +14,7 @@
 //= require jquery.webui-popover
 //= require lightslider.min
 //= require jquery.chatbox
+//= require jquery-dynamic-selectable
 //= require_tree .
 
 
