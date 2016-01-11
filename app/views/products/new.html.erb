@@ -36,57 +36,22 @@
 <div class="subcontent">
     <h4>Selecione as categorias</h4>
 
-
-      <ul>
-        <li>
-
- <b>Genero</b>&nbsp;
-  <%=  p.collection_select :gender_id, Gender.all, :id, :gender %>
-        </li>
-
-        <li>
-
- <b>Categoria</b>&nbsp;
-  <%=  p.collection_select :category_id, Category.all, :id, :name %>
-
-
-        </li>
-
-
-
-
-        <li>
- <b>Subcategoria</b>&nbsp;
-
-  <%=  p.collection_select :subcategory_id, Subcategory.all, :id, :name %>
-        </li>
-      </ul>
-
-
-
-
-
     <div class="form-group">
-      <%= p.label :gender_id %>
-      <%= dynamic_collection_select :gender_id, :category, Gender.all, :id, :gender,
+      <%= p.label :gender_id, 'Genero' %>&nbsp;
+      <%= dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender,
         { include_blank: true, submit_with_form: true }, { class: 'form-control' } %>
     </div>
 
     <div class="form-group">
-      <%= p.label :category_id %>
-      <%= dynamic_collection_select :category_id, :subcategory, [], :id, :name,
+      <%= p.label :category_id, 'Categoria' %>&nbsp;
+      <%= dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name,
         { include_blank: true, submit_with_form: true }, { class: 'form-control' } %>
     </div>
 
     <div class="form-group">
-      <%= p.label :subcategory_id %>
+      <%= p.label :subcategory_id, 'Subcategoria' %>&nbsp;
       <%= p.collection_select :subcategory_id, [], :id, :name, {}, { class: 'form-control' } %>
     </div>
-
-
-
-
-
 
   </div>
 
