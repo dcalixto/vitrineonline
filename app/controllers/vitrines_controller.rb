@@ -23,6 +23,9 @@ class VitrinesController < ApplicationController
 
     @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 25)
 
+    # similarities from another vitrines
+    ids = ProductRecommender.instance.predictions_for(@vitrine.id, matrix_label: :vitrines)
+    @similarities = Product.unscoped.for_ids_with_order(ids)
   end
 
   def feedbacks

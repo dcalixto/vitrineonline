@@ -382,14 +382,12 @@
   <div class="margin_top">
     <h1>Sugestoes</h1>
     <div class="subcontent_top">
-   <#% ProductRecommender.instance.similarities_for("product-3").each do |item| %>
-
-      <#%= link_to  product_path("#{item}")  do %>
-      <#%= "#{item}" %>
-      <#% end%>
-
-
-    <#% end %>
+      <% @suggestions.each do |item| %>
+        <%= link_to product_path(item) do  %>
+          <%= image_tag item.f1.url(:small).to_s %>
+          <%= item.name %>
+        <% end %>
+      <% end %>
 </div>
 </div>
 </div>
@@ -402,13 +400,13 @@
    
       
       <div class="content">
-  
 
-<#%  ProductRecommender.instance.similarities_for("product-3").each do |item| %> 
-  <#%= link_to product_path(item) do  %> 
-    <#%= "#{item}" %>
-<#% end %>
-<#% end %>
+<%  @similarities.each do |item| %>
+  <%= link_to product_path(item) do  %>
+    <%= image_tag item.f1.url(:small).to_s %>
+    <%= item.name %>
+  <% end %>
+<% end %>
 
 
 
@@ -426,15 +424,13 @@
    
       
       <div class="content">
-  
- <#% ProductRecommender.instance.similarities_for("vitrine-1").each do |item| %>
 
-      <#%= link_to  vitrine_path("#{item}")  do %>
-      <#%= @product.vitrine.name %>
-      <#% end%>
-
-
-    <#% end %>
+        <%  @similarities_for_vitrine.each do |item| %>
+            <%= link_to product_path(item) do  %>
+                <%= image_tag item.f1.url(:small).to_s %>
+                <%= item.name %>
+            <% end %>
+        <% end %>
 
 
   </div>
