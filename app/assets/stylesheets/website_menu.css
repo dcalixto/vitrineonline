@@ -10,9 +10,8 @@
   width: auto;
   word-wrap: break-word;
   color: #004B91;
-  border: solid 1px #ddd;
-    border-radius: 3px;
-}
+  border-right: solid 1px #ddd;
+    }
 #ajuda-menu {
   border: 1px solid #dee1ea;
   padding: 0;

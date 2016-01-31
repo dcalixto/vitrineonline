@@ -30,19 +30,11 @@
   margin-bottom: 10px;
   width: 180px;
 }
-#footer-logo {
-  background: url(/assets/logo13sb.png) no-repeat;
-  display: block;
-  height: 25px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  text-indent: -9999em;
-  width: 100px;
-}
+
 .inner_footer {
   clear: both;
   margin: 0px auto;
-
+    max-width: 1110px;
   min-width: 960px;
 }
 .inner_footer:before, .inner_footer:after {

@@ -74,7 +74,7 @@ background:#3fa1df
 .inner_drop {
   margin: 0px auto;
   min-width: 960px;
-
+    max-width: 1110px;
 
   box-sizing: border-box;
   margin: 0px auto !important;

@@ -51,11 +51,18 @@
 /* MENU DA BUSCA */
 
 .logo {
-  width: 190px;
-  height: 40px;
-  display: block;
-  background: url(/assets/logo.png) no-repeat;
-  margin-top: 2px
+   display: block;
+
+  
+  background-position: 0 -121px;
+           
+            width: 170px;
+            height: 26px;
+
+  margin-top: 10px;
+background-image: url('icons.png'); 
+
+
 }
 
 /* SEARCH  */
@@ -90,7 +97,8 @@
   display: block;
   vertical-align: middle;
   float: right;
-  color:#fff
+  color:#fff;
+  font-weight:bold
 }
 .help {
   margin-right: 10px;

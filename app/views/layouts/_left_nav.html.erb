@@ -9,7 +9,7 @@
         <% if new_messages? %>
         <%= content_tag(:span, "#{num_new_messages}", :class => "alert" ) %>
         <%=link_to( conversations_path, :title => "Mensagem", :class =>"ttooltip",  :data => {:url => "/conversations/links"} ) do %>
-        <%= content_tag( :i,nil, :class => "message_icon")  %>
+        <%= content_tag( :i,nil, :class => "sprite-icons-message")  %>
         <%end%>
 
         <% else %>
@@ -63,11 +63,11 @@
       <li >
 
         <% if current_vitrine %>
-        <%=link_to( edit_vitrine_path(current_vitrine), :title => "Vitrine", :class =>"ttooltip2", :data => { :content => 'ajax'} ) do %>
+        <%=link_to( edit_vitrine_path(current_vitrine), :title => "Vitrine", :class =>"ttooltip2" ) do %>
         <%= content_tag( :i,nil, :class => "boutique_icon")  %>
         <%end%>
         <% else %>
-        <%=link_to new_vitrine_path,:title => "Criar Vitrine" do %>
+        <%=link_to new_vitrine_path,:title => "Criar Vitrine",  :class =>"ttooltip2" do %>
         <%= content_tag( :i,nil, :class => "boutique_icon")  %>
         <%end%>
         <% end %>

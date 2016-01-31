@@ -127,7 +127,7 @@
     <span class="tags">
            
 <% @vitrine.products.each do |tag| %>
-<%= raw link_to tag.name, tags_path(:tag => tag.name) %>
+<%= raw tag.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 <% end %>
 
    

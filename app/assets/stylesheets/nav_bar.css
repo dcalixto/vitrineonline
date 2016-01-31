@@ -3,7 +3,7 @@
 .inner_bar {
   margin: 0px auto;
   min-width: 960px;
- 
+    max-width: 1110px; 
 
   box-sizing: border-box;
   overflow: auto;
@@ -37,7 +37,7 @@
   box-sizing: border-box;
   margin: 0px auto !important;
   width: 100%;
-      background-color: #185cb4;
+      background-color: #2860a8;
 
 }
 

@@ -11,14 +11,16 @@ class OrdersController < ApplicationController
 
   def purchased
     if current_user.cart
-      # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
-    
-      
-      @q = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).ransack(params[:q])
-    #  @q = Order.joins(:user, :cart).where('status = ?', current_user.id, cart.id, params[:status] || Order.statuses[0]).ransack(params[:q])
-      @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+       @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 10, :page => params[:page])    
+     
 
-    end
+    
+    
+
+      #@q = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).ransack(params[:q])
+    #  @q = Order.joins(:user, :cart).where('status = ?', current_user.id, cart.id, params[:status] || Order.statuses[0]).ransack(params[:q])
+      #@orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+       end
   end
 
   def sold
@@ -27,7 +29,7 @@ class OrdersController < ApplicationController
     
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
   
-    @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+    @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
   end
 
   def checkout
@@ -121,8 +123,11 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     transaction = Transaction.find_by_id(params[:id])
 
-    @q = Order.where('status = ?', params[:status] || Order.statuses[0]).ransack(params[:q])
-    @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+      @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[1]).paginate(:per_page => 10, :page => params[:page])   
+
+
+   # @q = Order.where('status = ?', params[:status] || Order.statuses[1]).ransack(params[:q])
+   # @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
 
     if order
       order.status = Order.statuses[1]

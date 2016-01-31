@@ -4,7 +4,7 @@
   float: left;
   display: block;
   /*border:solid 1px red;*/
-  margin-top: 5px;
+  margin-top: 10px;
   margin-left: 5px
 }
 #search_box .wrapper {
@@ -58,9 +58,9 @@ background:#FFCE3E;
 border-radius: 0 3px 3px 0;
     color: #666;
   cursor: pointer;
-  height: 38px;
+ 
   text-align: center;
-  width: 40px;
+ 
     padding: 0;
     box-shadow: none;
   top: 0px;
@@ -68,57 +68,54 @@ border-radius: 0 3px 3px 0;
   border: 1px solid #f5c63c;
 background:#FFDC32;
 border:1px solid #FFDC32;
-
-position: absolute;
-background-position: 13px 10px;
  width: 40px;
   height: 38px;
-background-image: url("http://static.mlstatic.com/org-img/commons/assets/sprite.png?v1");
-background-repeat: no-repeat;
-display: inline-block;
-vertical-align: middle;
+
+position: absolute;
+    display: inline-block;
+
 text-indent: -9999px;
 
 z-index: 1;
 
 
- -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+
   font-size: 12px;
   font-family: arial, helvetica, sans-serif;
   padding: 5px 15px 5px 15px;
   text-decoration: none;
   display: inline-block;
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
-  font-weight: bold;
+
+
 
 
 
 
 
     }
- #search_box .search_icon {
- /* position: relative;
-  right: 0;
-  top: 0;
-  width: 40px;
-  height: 38px;
-  background-image: url(http://static.mlstatic.com/org-img/commons/assets/sprite.png?v1);
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIyMXB4IiBoZWlnaHQ9IjIxcHgiIHZpZXdCb3g9IjAgMCAyMSAyMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjEgMjEiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0yMC41MjksMTguMDA1bC01LjAyMi01LjAwOWMtMC4wNTktMC4wNTktMC4xMjItMC4xMDQtMC4xODUtMC4xNDhjMC44NDgtMS4yOTksMS4zNDUtMi44NDYsMS4zNDUtNC41MTJjMC00LjU3Ni0zLjcxOS04LjI4NS04LjMwOS04LjI4NWMtNC41ODgsMC04LjMwOSwzLjcwOS04LjMwOSw4LjI4NXMzLjcyMSw4LjI4NSw4LjMwOSw4LjI4NWMxLjY2OSwwLDMuMjIyLTAuNDk2LDQuNTI1LTEuMzRjMC4wNDksMC4wNjEsMC4wOTQsMC4xMjUsMC4xNDgsMC4xODJsNS4wMjEsNS4wMWMwLjM0NSwwLjM0MiwwLjc5MSwwLjUxMiwxLjIzNywwLjUxMmMwLjQ0NywwLDAuODk2LTAuMTcsMS4yMzgtMC41MTJDMjEuMjExLDE5Ljc5MSwyMS4yMTEsMTguNjg4LDIwLjUyOSwxOC4wMDV6IE04LjM1OCwxNC4wMDRjLTMuMTM1LDAtNS42ODUtMi41NDMtNS42ODUtNS42NjhzMi41NS01LjY2OCw1LjY4NS01LjY2OGMzLjEzNCwwLDUuNjg2LDIuNTQzLDUuNjg2LDUuNjY4UzExLjQ5MiwxNC4wMDQsOC4zNTgsMTQuMDA0eiIvPjwvc3ZnPg==) 50%;
- 
-
-  
-  color: transparent;
-  display: inline-block;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  text-indent: -9999px;
-*/
 
 
+
+#search_box .search_icon {
+
+   width: 21px;
+            height: 21px; 
+    display: inline-block;
+
+     color: transparent;
+background-position: -210px -147px;
+background-image: url("icons.png");
+    background-repeat: repeat-x;
+margin-top:7px;
+margin-left:7px;
+    position: absolute;
+    left: 0;
+    top: 0;
 
 }
+
+
+
 
 
 a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {

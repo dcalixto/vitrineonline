@@ -134,13 +134,13 @@ end
     end
 
     collection do
-      get :sold
-      get :purchased
-      get :sent
-      post :purchased
-      post :sent
-      post :sold
-      post '/:id', to: 'orders#purchased', as: :orders_search
+       match :sold
+       match :purchased
+       match :sent
+     # post :purchased
+     # post :sent
+      #post :sold
+     # post '/:id', to: 'orders#purchased', as: :orders_search
     end
   end
 

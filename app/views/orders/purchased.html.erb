@@ -22,35 +22,9 @@
 
     <div class="content">
 
-      <% if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
 
-      <table class="block_search">
-        <tr>
 
-          <td class="sort">
-
-            Ordenar por
-            <%= sort_link [@q], :created_at, "Data" %>
-          </td>
-        </tr>
-      </table>
-
-      <% end %>
-
-      <%if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
-
-      <table class="block_search">
-        <tr>
-
-          <td class="sort">
-
-            Ordenar por
-            <%= sort_link @q, :created_at, "Data" %>
-          </td>
-        </tr>
-      </table>
-
-      <% end %>
+   
 
       <%= render  partial: 'orders/order', collection: @orders %>
 

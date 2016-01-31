@@ -16,35 +16,7 @@
 .user_bar li:nth-child(3n+1) {
   padding-right: 5px;
 }
-.paypal_logo {
-  display: block;
-  height: 40px;
-  width: 200px;
-  background: url(/assets/paypal-icon.png) no-repeat;
-}
-.paypal_svg {
-  display: block;
-  background: url(/assets/paypal_svg.svg) no-repeat;
-  background-size: contain;
-}
-.paypal {
-  display: block;
-  background: url(/assets/paypal.jpg) no-repeat;
-  height: 41px;
-  width: 150px;
-}
-.shipping {
-  display: block;
-  height: 85px;
-  width: 256px;
-  background: url(/assets/shipping.png) no-repeat;
-}
-.paypal_protect {
-  display: block;
-  height: 50px;
-  width: 286px;
-  background: url(/assets/paypal_protect.png) no-repeat;
-}
+
 
 /* =Showcase produto */
 
@@ -59,13 +31,22 @@
   color: #000000;
 }
 #marketing span {
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxMXB4IiB2aWV3Qm94PSIwIDAgMTYgMTEiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE2IDExIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiM3RkM0MkEiIGQ9Ik0xNS42NDgsMC4yOTdjLTAuNDA4LTAuMzAzLTEuMDctMC4zMDEtMS40NzcsMC4wMDRMNS4yMDMsNy4wNDNsLTMuMDgtMS44OTINCglDMS42OTcsNC44OSwxLjA3Myw0Ljg1NCwwLjU5Miw1LjA5OEMwLjAwNSw1LjM5Mi0wLjE0OSw1Ljk4NywwLjI0Nyw2LjQyNGwzLjUxLDMuODc3YzAuMTIzLDAuMTM0LDAuMjgxLDAuMjU5LDAuNDY2LDAuMzU5DQoJYzAuODY2LDAuNDcyLDIuMDc4LDAuMzI4LDIuNzA4LTAuMzE2bDAuMDgtMC4wODNsOC43NDYtOC45NTNDMTYuMDU4LDEuMDAzLDE2LjAyMSwwLjU3MiwxNS42NDgsMC4yOTd6Ii8+DQo8L3N2Zz4NCg==') no-repeat;
+  background-image: url("icons.png"); 
+  
   width: 16px;
   height: 12px;
   float: left;
   margin-top: 3px;
-  margin-right: 8px
+  margin-right: 8px;
+ background-position: -231px -147px;
+            width: 16px;
+            height: 11px;
 }
+
+
+
+
+
 #marketing h1 {
   padding-top: 5px;
   padding-bottom: 7px;
