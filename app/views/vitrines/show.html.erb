@@ -113,15 +113,12 @@
 <div class="box11">
 <div class="subcontent_top margin_top">
 <h4>Produtos Similares</h4>
-<#%ProductRecommender.instance.similarities_for("product-3").each do |item| %>
-<#%  ProductRecommender.instance.similarities_for("product-#{@products.id}").each do |item| %> 
-  
-  <#%= raw item.map { |t| link_to t, product_path(t) }.join(', ') %> 
-
-
-
-<#% end %>
-
+  <%  @similarities.each do |item| %>
+      <%= link_to product_path(item) do  %>
+          <%= image_tag item.f1.url(:small).to_s %>
+          <%= item.name %>
+      <% end %>
+  <% end %>
 
     <h4>Estilos</h4>
     <span class="tags">
@@ -272,22 +269,4 @@
   </div>
 </div>
 </div>
-
-
-
-
-  <div class="box1">
-    <div class="block">
-      
-      <h1>Vitrines similares</h1>
-   
-      
-      <div class="content">
-
-
-
-
-  </div>
-      </div>
-    </div>
    

@@ -110,6 +110,11 @@ has_many :sizes, through: :sizeship
 
  # default_scope -> { order(:cached_votes_up) }
 
+  scope :for_ids_with_order, ->(ids) {
+    order = ids.blank? ? nil : "(#{ids.map{|i| "id=#{i}"}.join(',')}) DESC"
+    where(:id => ids).order(order)
+  }
+
   # GET VISITOR ID
   def impression_count
     impressions.count
@@ -145,6 +150,14 @@ has_many :sizes, through: :sizeship
  
 
   after_touch :reindex
+
+  after_commit ->(product) {
+    ProductRecommender.delay.add_product(product)
+  }, :if => :persisted?
+
+  after_commit ->(product) {
+    ProductRecommender.delay.delete_product(product)
+  }, on: :destroy
 
 
   searchkick word_start: [:name],

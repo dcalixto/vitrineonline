@@ -78,6 +78,16 @@ end
     @q = Feedback.by_participant(@product, Feedback::FROM_BUYERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 
+    # suggestions for current visitor
+    ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
+    @suggestions = Product.unscoped.for_ids_with_order(ids)
+
+    # similarities for current product
+    ids = ProductRecommender.instance.similarities_for(@product.id)
+    @similarities = Product.unscoped.for_ids_with_order(ids)
+
+    # similarities for current product in product's vitrine (same ids but filter by vitrine)
+    @similarities_for_vitrine = Product.unscoped.where(:vitrine_id => @product.vitrine_id).for_ids_with_order(ids)
   end
 
   def feedbacks

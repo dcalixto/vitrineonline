@@ -29,6 +29,10 @@ scope :awaiting_feedback, ->(user) { joins('left join feedbacks on feedbacks.id 
 
   after_update :create_product_data
 
+  after_commit ->(order) {
+    ProductRecommender.delay.add_order(order)
+  }, on: :create
+
   def create_product_data
     if status == Order.statuses[0]
       pr_id = product.id
