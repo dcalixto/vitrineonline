@@ -61,10 +61,7 @@
     <h4>Estilos</h4>
     <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
     </p>
-
-    <%= p.text_field :tag_list,
-                 :id => "product_tags",
-                 "data-pre" => @product.tags.map(&:attributes).to_json %>
+    <%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
   </div>
 
 

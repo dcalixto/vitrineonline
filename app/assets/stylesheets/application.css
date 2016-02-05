@@ -44,6 +44,7 @@
 *= require token-input
 *= require jquery.webui-popover
 *= require lightslider.min
+*= require select2
 
 
  */

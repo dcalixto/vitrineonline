@@ -123,8 +123,8 @@
     <h4>Estilos</h4>
     <span class="tags">
            
-<% @vitrine.products.each do |tag| %>
-<%= raw link_to tag.name, tags_path(:tag => tag.name) %>
+<% @vitrine.tag_list.each do |tag| %>
+  <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
 <% end %>
 
    

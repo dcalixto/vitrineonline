@@ -15,17 +15,16 @@
 //= require lightslider.min
 //= require jquery.chatbox
 //= require jquery-dynamic-selectable
+//= require select2
 //= require_tree .
 
 
+// SELECT2 (TAGS)
+$(function() {
+    $('#product_tags').select2({tags: true})
+});
+
 // TIPSY
-
-
-
-
-
-
-
 $('.ttooltip').webuiPopover({
     type:'async',
    /*url:'/feedbacks/links',*/
