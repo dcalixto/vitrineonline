@@ -18,6 +18,8 @@
   float: left
 }
 #shopcart a {
+   margin-top: 7px;
+
   display: block;
   vertical-align: top;
   float: right;

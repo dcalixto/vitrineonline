@@ -156,7 +156,8 @@ border:solid #cc1e1e; -webkit-border-radius: 3px; -moz-border-radius: 3px;border
   float: right;
   vertical-align: baseline;
   float: left;
-  margin-top: 7px
+  margin-top: 13px;
+  margin-left:10px;
 }
 .horizontal_buttons {
   vertical-align: baseline;

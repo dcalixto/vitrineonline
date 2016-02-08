@@ -59,7 +59,7 @@
             width: 170px;
             height: 26px;
 
-  margin-top: 10px;
+  margin-top: 15px;
 background-image: url('icons.png'); 
 
 
@@ -83,7 +83,7 @@ background-image: url('icons.png');
   vertical-align: baseline;
   width: auto;
   position: relative;
-  margin-top: 15px
+  margin-top: 25px
 }
 .log_topbar li, .info_area li {
   float: left;

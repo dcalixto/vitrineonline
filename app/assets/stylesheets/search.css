@@ -4,7 +4,7 @@
   float: left;
   display: block;
   /*border:solid 1px red;*/
-  margin-top: 10px;
+  margin-top: 13px;
   margin-left: 5px
 }
 #search_box .wrapper {
@@ -53,7 +53,6 @@ white-space: nowrap;
 }
 #search_box button {
   position: absolute;
-background:#FFCE3E;
 -webkit-border-radius: 0 3px 3px 0;
 border-radius: 0 3px 3px 0;
     color: #666;
@@ -65,9 +64,8 @@ border-radius: 0 3px 3px 0;
     box-shadow: none;
   top: 0px;
  
-  border: 1px solid #f5c63c;
-background:#FFDC32;
-border:1px solid #FFDC32;
+ background:#ffd65e;
+border:1px solid #ffd65e;
  width: 40px;
   height: 38px;
 
