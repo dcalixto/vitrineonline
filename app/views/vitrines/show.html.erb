@@ -123,8 +123,13 @@
     <h4>Estilos</h4>
     <span class="tags">
            
+<<<<<<< HEAD
 <% @vitrine.products.each do |tag| %>
 <%= raw tag.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+=======
+<% @vitrine.tag_list.each do |tag| %>
+  <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
+>>>>>>> 01dcfdbe3f809582d3aac99cb304e79727a23eff
 <% end %>
 
    

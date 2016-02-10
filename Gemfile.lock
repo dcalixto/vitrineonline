@@ -445,6 +445,8 @@ GEM
       nokogiri (~> 1.6.0)
     secure_headers (2.4.4)
       user_agent_parser
+    select2-rails (4.0.1)
+      thor (~> 0.14)
     sexp_processor (4.6.0)
     shareable (1.1.4)
       actionpack (>= 3.0.0)
@@ -561,6 +563,7 @@ DEPENDENCIES
   sass-rails
   searchkick!
   secure_headers
+  select2-rails
   shareable
   sqlite3
   test-unit (~> 3.0)

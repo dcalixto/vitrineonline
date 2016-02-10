@@ -44,11 +44,8 @@ class ProductsController < ApplicationController
 
 
   def tags
-  @tags = ActsAsTaggableOn::Tag.where("tags.name LIKE ?", "%#{params[:q]}%")
-  respond_to do |format|
-  format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name }}}
+    @products = Product.tagged_with(params[:tag]).where(:vitrine_id => params[:vitrine]).paginate(per_page: 20, page: params[:page])
   end
-end
 
   def edit
     @product = Product.find(params[:id])

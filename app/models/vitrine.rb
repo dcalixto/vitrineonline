@@ -71,6 +71,11 @@ class Vitrine < ActiveRecord::Base
     "#{name}"
   end
 
+  def tag_list
+    # collect tags for current vitrine (through taggings->products->vitrine association)
+    ActsAsTaggableOn::Tag.joins(:taggings).joins("inner join products on products.id = taggings.taggable_id and taggings.taggable_type = 'Product'").where('products.vitrine_id = ?', id).group('tags.id').order(:name)
+  end
+
 
   before_create :build_default_models
 

@@ -20,6 +20,7 @@ gem 'annotate' # , :git => 'git://github.com/ctran/annotate_models.git'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'gretel'
 gem 'test-unit', '~> 3.0'
+gem 'select2-rails'
 
 # MODEL
 gem 'goldiloader'

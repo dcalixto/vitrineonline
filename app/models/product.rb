@@ -45,8 +45,6 @@ has_many :sizes, through: :sizeship
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags
 
-  acts_as_taggable_on :tags # Tagging products
-
   # validates :name,      :presence => true, :if => :active_or_name?
   #  validates :two,     :presence => true, :if => :active_or_two?
   #  validates :preview,  :presence => true, :if => :active_or_preview?
