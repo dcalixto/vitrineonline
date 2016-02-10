@@ -128,7 +128,7 @@ border-top:solid 1px #ddd
   background: #fff;
     overflow: auto;
 
-
+padding:10px
 }
 
 .header_tip {  content: '';
@@ -162,4 +162,12 @@ float:right
 }
 
 
+.content_tip ul {
+ 
+margin-left:5px
+}
 
+.content_tip li {
+ 
+margin-bottom:5px
+}
