@@ -39,6 +39,8 @@ gem 'act_as_cnpj_cpf'
 # AMAZON EC2
 gem 'open4'
 gem 'mina'
+#gem 'mina-faye'
+gem 'mina-newrelic'
 
 # WISHLIST
 
@@ -56,8 +58,6 @@ gem 'formtastic' # ,  github: 'justinfrench/formtastic'
 
 # ANALYS
 
-#gem 'newrelic_rpm'
-gem 'mina-newrelic'
 
 # MARKUP LANGUAGE
 gem 'redcarpet'
