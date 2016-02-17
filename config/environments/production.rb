@@ -14,7 +14,7 @@ Vitrineonline::Application.configure do
   # config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
   # config.action_controller.asset_host = "http://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
   # config.action_controller.asset_host = 'http://vitrineonline.s3-website-sa-east-1.amazonaws.com/'
-  config.action_controller.asset_host = 'https://vitrineonline.s3.amazonaws.com'
+  config.action_controller.asset_host = 'http://d3b3egntec0p17.cloudfront.net'
 
   # config.action_controller.asset_host = 'http://d1i1l9nsrsn9c2.cloudfront.net'
   endpoint    = 'vitrineonline.kdngig.cfg.use1.cache.amazonaws.com:11211'
