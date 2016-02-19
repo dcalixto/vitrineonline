@@ -122,7 +122,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'therubyracer'
-#  gem 'asset_sync'
+ gem 'asset_sync'
   gem 'uglifier', '>= 1.0.3'
 end
 
