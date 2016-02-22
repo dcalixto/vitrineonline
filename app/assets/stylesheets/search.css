@@ -4,7 +4,7 @@
   float: left;
   display: block;
   /*border:solid 1px red;*/
-  margin-top: 13px;
+  margin-top: 5px;
   margin-left: 5px
 }
 #search_box .wrapper {
@@ -57,13 +57,13 @@ white-space: nowrap;
 border-radius: 0 3px 3px 0;
     color: #666;
   cursor: pointer;
- 
+
   text-align: center;
- 
+
     padding: 0;
     box-shadow: none;
   top: 0px;
- 
+
  background:#ffd65e;
 border:1px solid #ffd65e;
  width: 40px;
@@ -97,7 +97,7 @@ z-index: 1;
 #search_box .search_icon {
 
    width: 21px;
-            height: 21px; 
+            height: 21px;
     display: inline-block;
 
      color: transparent;

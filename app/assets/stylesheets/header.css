@@ -53,15 +53,15 @@
 .logo {
    display: block;
 
-  
+
   background-position: 0 -121px;
-           
-            width: 170px;
-            height: 26px;
 
-  margin-top: 15px;
-background-image: url('icons.png'); 
+  width: 170px;
+  height: 26px;
 
+  margin-top: 5px;
+background-image: url('icons.png');
+;
 
 }
 

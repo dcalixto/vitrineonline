@@ -34,8 +34,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     border-bottom: 1px solid rgba(0,0,0,.1);
     white-space: nowrap;
 background:#3fa1df;
-  background-color: #fff;
-      
+
+            background-color: #f1f1f1;
 
 }
 #drop a {

@@ -2,7 +2,12 @@
 require 'will_paginate/array'
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  ensure_security_headers
+  SecureHeaders::Configuration.default do |config|
+    config.csp = {
+      default_src: %w('self'),
+      script_src: %w(vitrineonline.com)
+    }
+  end
 
   include SessionsHelper
   include VitrinesHelper

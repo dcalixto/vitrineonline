@@ -22,8 +22,9 @@ production:
   adapter: postgresql
   database: vitrineonline_production
   username: ubuntu
-  password: 152567 
+  password: 152567
   encoding: unicode
+  host: 52.91.76.215
   pool: 5
 
   

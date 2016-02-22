@@ -17,9 +17,9 @@ Vitrineonline::Application.configure do
   #config.action_controller.asset_host = 'http://d3b3egntec0p17.cloudfront.net'
 #config.action_controller.asset_host = "https://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
   config.action_controller.asset_host = 'http://vitrineonline.s3.amazonaws.com'
-  endpoint    = 'vitrineonline.kdngig.cfg.use1.cache.amazonaws.com:11211'
-  elasticache = Dalli::ElastiCache.new(endpoint)
-  config.cache_store = :dalli_store, elasticache.servers, { expires_in: 1.day, compress: true }
+  #endpoint    = 'vitrineonline.kdngig.cfg.use1.cache.amazonaws.com:11211'
+#  elasticache = Dalli::ElastiCache.new(endpoint)
+  #config.cache_store = :dalli_store, elasticache.servers, { expires_in: 1.day, compress: true }
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = false
