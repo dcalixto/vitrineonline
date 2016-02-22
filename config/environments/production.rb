@@ -11,15 +11,11 @@ Vitrineonline::Application.configure do
   config.assets.compile = true
   # Compress JavaScripts and CSS
   config.assets.compress = true
-  # config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
-  # config.action_controller.asset_host = "http://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
-  # config.action_controller.asset_host = 'http://vitrineonline.s3-website-sa-east-1.amazonaws.com/'
-  #config.action_controller.asset_host = 'http://d3b3egntec0p17.cloudfront.net'
-#config.action_controller.asset_host = "https://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
+
   config.action_controller.asset_host = 'http://vitrineonline.s3.amazonaws.com'
-  #endpoint    = 'vitrineonline.kdngig.cfg.use1.cache.amazonaws.com:11211'
-#  elasticache = Dalli::ElastiCache.new(endpoint)
-  #config.cache_store = :dalli_store, elasticache.servers, { expires_in: 1.day, compress: true }
+  endpoint    = 'vitrineonline.kdngig.cfg.use1.cache.amazonaws.com:11211'
+  elasticache = Dalli::ElastiCache.new(endpoint)
+  config.cache_store = :dalli_store, elasticache.servers, { expires_in: 1.day, compress: true }
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = false
@@ -33,8 +29,7 @@ Vitrineonline::Application.configure do
   config.active_support.deprecation = :notify
 
   # config.action_mailer.default_url_options = { :host => 'shielded-eyrie-5443.herokuapp.com' }
-  #config.action_mailer.asset_host = 'https://vitrineonline.s3.amazonaws.com'
- #config.action_mailer.asset_host = "https://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
+
 config.action_controller.asset_host = 'http://vitrineonline.s3.amazonaws.com'
 
   ActionMailer::Base.smtp_settings = {

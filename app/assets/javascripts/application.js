@@ -39,7 +39,7 @@ $('.ttooltip').webuiPopover({
 });
 
 $('.ttooltip2').webuiPopover({
- 
+
 trigger:'hover',
                         padding:false,
                        cache:false,
@@ -53,7 +53,7 @@ $(".content-slider").lightSlider({
                 loop:true,
                 keyPress:true,
                 auto:true
-               
+
             });
 });
 
@@ -74,7 +74,7 @@ $(".content-slider-vertical").lightSlider({
                  auto:true,
                  pager: false
 
-               
+
             });
 });
 
@@ -361,84 +361,14 @@ $(function() {
 
 
 
-// $('form').submit(function() {
-//   var valuesToSubmit = $(this).serialize();
-//   $.ajax({
-//   type: "POST",
-//   url: $(this).attr('action'), //sumbits it to the given url of the form
-//   data: valuesToSubmit,
-//   dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
-// }).success(function(json){
-//     console.log("success", json);
-// });
-// return false; // prevents normal behaviour
-// });
-
-
-//$(document).ready(
-//    function(){
-//         $("a.message_link").bind("ajax:success",
-//                function(evt, data, status, xhr){
-//                     $("#response").html(data); // in case data is html. (_*.html.erb)
-//      }).bind("ajax:error", function(evt, xhr, status, error){
-//              console.log('server error' + error );
-//    });
-//});
-
-
-
-
-
-
-
-// GENDER ON PRODUCT
-
-
-
-
-//$(document).ready(function() {
-//    $("input[type='radio'][name='product[gender_id]']").click(function() {
-//        var gender = $("input[type='radio'][name='product[gender_id]']:checked").val();
-
-//        jQuery.get('/products/update_category_select/' + gender, function(data){
-//          $("#productCategories").html(data);
-
-
-//
-//           $('#product_category_id').change(function() {
-
-//                var category = $('select#product_category_id :selected').val();
-
-//                if(category == "") category="0";
-
-//                jQuery.get('/products/update_subcategory_select/' + category, function(data){
-//                    $("#productSubcategories").html(data);
-//                })
-//                return false;
-//            });
-
-
-//        })
-//    });
-
-
-//});
-//
-//
-//
-//
-
-
-
  $(document).ready(function() {
-       var counter = 1, 
+       var counter = 1,
         offset = 0;
         chatbox_manager = new ChatboxManager();
        $('#addChat').on('click', function(e) {
          var id = 'chat_' + counter.toString();
          var title = 'User ' + counter.toString();
          chatbox_manager.addBox(id, title);
-         counter ++;       
+         counter ++;
        });
     });
-

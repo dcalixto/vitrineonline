@@ -75,7 +75,7 @@ gem 'prawn'#, '1.0.0.rc2'
 # ADMIN & SECURITY
 
 gem 'validate_url'
-gem 'secure_headers'
+#gem 'secure_headers'
 
 # IMAGE
 
