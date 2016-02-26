@@ -18,7 +18,7 @@ Vitrineonline::Application.configure do
   config.cache_store = :dalli_store, elasticache.servers, { expires_in: 1.day, compress: true }
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = false
 
   # See everything in the log (default is :info)
   config.log_level = :debug
@@ -30,7 +30,7 @@ Vitrineonline::Application.configure do
 
   # config.action_mailer.default_url_options = { :host => 'shielded-eyrie-5443.herokuapp.com' }
 
-config.action_controller.asset_host = 'http://vitrineonline.s3.amazonaws.com'
+#config.action_controller.asset_host = 'http://vitrineonline.s3.amazonaws.com'
 
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.gmail.com',
