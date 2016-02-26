@@ -20,22 +20,16 @@
 
 
 
-background: rgb(255,255,255);
-background: -moz-linear-gradient(top,  rgb(255,255,255) 0%, rgb(243,243,243) 50%, rgb(237,237,237) 51%, rgb(255,255,255) 100%);
-background: -webkit-linear-gradient(top,  rgb(255,255,255) 0%,rgb(243,243,243) 50%,rgb(237,237,237) 51%,rgb(255,255,255) 100%);
-background: linear-gradient(to bottom,  rgb(255,255,255) 0%,rgb(243,243,243) 50%,rgb(237,237,237) 51%,rgb(255,255,255) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
 
 
     overflow: hidden;
-    border-bottom: 1px solid #e7e7e7;
-    border-top: 1px solid #e7e7e7;
+
     border-top: 1px solid rgba(0,0,0,.17);
     border-bottom: 1px solid rgba(0,0,0,.1);
     white-space: nowrap;
-background:#3fa1df;
 
-            background-color: #f1f1f1;
+
+            background-color: #63ABF9;
 
 }
 #drop a {
@@ -43,7 +37,7 @@ background:#3fa1df;
   margin-left: 5px;
   font-size: 12px;
   margin-left: 5px;
-  color: #333;
+  color: #fff;
 
 }
 .left_links {

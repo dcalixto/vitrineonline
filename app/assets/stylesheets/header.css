@@ -62,7 +62,11 @@
   margin-top: 5px;
 background-image: url('icons.png');
 ;
+width:180px;
+height:40px;
 
+display: block;
+background:url(/assets/logo.png) no-repeat;
 }
 
 /* SEARCH  */
