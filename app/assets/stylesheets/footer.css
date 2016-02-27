@@ -20,6 +20,11 @@
   float: left;
   width: 230px;
 }
+
+#security_footer {
+  float: right;
+  width: 230px;
+}
 #footer-links {
   float: left;
   margin-bottom: 0;

@@ -1,5 +1,5 @@
 /* glue: 0.11.1 hash: a070bc4bf1 */
-        .sprite-icons-paypal_protect,
+.sprite-icons-paypal_protect,
 .sprite-icons-logo_big,
 .sprite-icons-paypal-icon,
 .sprite-icons-logo,
@@ -19,103 +19,103 @@
             background-repeat: no-repeat;
             display:inline-block;
         }
-        
+
         .sprite-icons-paypal_protect {
             background-position: 0 0;
             width: 280px;
             height: 50px;
         }
-        
+
         .sprite-icons-logo_big {
             background-position: 0 -50px;
             width: 269px;
             height: 42px;
         }
-        
+
         .sprite-icons-paypal-icon {
             background-position: 0 -92px;
             width: 191px;
             height: 29px;
         }
-        
+
         .sprite-icons-logo {
             background-position: 0 -121px;
             width: 170px;
             height: 26px;
         }
-        
+
         .sprite-icons-paypal {
             background-position: 0 -147px;
             width: 150px;
             height: 41px;
         }
-        
+
         .sprite-icons-logo_small {
             background-position: -170px -121px;
             width: 99px;
             height: 16px;
         }
-        
+
         .sprite-icons-shipping {
             background-position: 0 -188px;
             width: 82px;
             height: 53px;
         }
-        
+
         .sprite-icons-paypal_logo {
             background-position: -191px -92px;
             width: 65px;
             height: 23px;
         }
-        
+
         .sprite-icons-message {
             background-position: -150px -147px;
             width: 30px;
             height: 26px;
         }
-        
+
         .sprite-icons-boutique {
             background-position: -180px -147px;
             width: 30px;
             height: 25px;
         }
-        
+
         .sprite-icons-feedback {
             background-position: -82px -188px;
             width: 29px;
             height: 28px;
         }
-        
+
         .sprite-icons-favoritos {
             background-position: -111px -188px;
             width: 29px;
             height: 26px;
         }
-        
+
         .sprite-icons-sacola {
             background-position: -256px -92px;
             width: 24px;
             height: 19px;
         }
-        
+
         .sprite-icons-lupa {
             background-position: -210px -147px;
             width: 21px;
             height: 21px;
         }
-        
+
         .sprite-icons-criar-check {
             background-position: -231px -147px;
             width: 16px;
             height: 11px;
         }
-        
+
         .sprite-icons-ir-loja {
             background-position: -150px -173px;
             width: 15px;
             height: 14px;
         }
-        
+
         @media screen and (-webkit-min-device-pixel-ratio: 1.0), screen and (min--moz-device-pixel-ratio: 1.0), screen and (-o-min-device-pixel-ratio: 100/100), screen and (min-device-pixel-ratio: 1.0), screen and (min-resolution: 1.0dppx) {
             .sprite-icons-paypal_protect,
     .sprite-icons-logo_big,
@@ -141,18 +141,18 @@
         }
 .message_icon {
   background-image: url('icons.png');
-  
-  
+
+
   background-position: -150px -147px;
             width: 30px;
             height: 26px;
   display: inline-block;
-} 
+}
 
 
 .feedback_icon {
  background-image: url('icons.png');
-  
+
    background-position: -82px -188px;
             width: 29px;
             height: 28px;
@@ -172,7 +172,7 @@
 
  .favorite_icon {
  background-image: url('icons.png');
-  
+
   background-position: -111px -188px;
             width: 29px;
             height: 26px;
@@ -183,7 +183,7 @@ display: inline-block;
 
 .go_boutique_icon {
   background-image: url('icons.png');
-  
+
   background-position: -150px -173px;
             width: 15px;
             height: 14px;
@@ -198,6 +198,15 @@ display: inline-block;
             height: 29px;
    background-image: url('icons.png');
 }
+
+
+.comodo {
+  display: block;
+  background: url(/assets/comodo_secure_100x85_white.png) no-repeat;
+  height: 85px;
+  width: 100px;
+}
+
 .paypal_svg {
   display: block;
   background: url(/assets/paypal_svg.svg) no-repeat;
@@ -245,5 +254,3 @@ background-position: 0 0;
   overflow: hidden;
   text-indent: -9999em;
  }
-
-
