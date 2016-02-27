@@ -1,85 +1,70 @@
+<table class="zebra_vitrine" id="products_vitrine">
 
+  <thead>
+    <tr class="header">
+      <th scope="col">Item</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Envio</th>
+      <th scope="col">Restando</th>
+      <th scope="col">Avaliação</th>
 
-<table  id="products_vitrine" class="zebra_vitrine"    >
+      <th scope="col">Postado em</th>
 
-   
-      <thead>
-      <tr class="header">
-        <th scope="col">Item</th>
-                <th  scope="col">Preço</th>
-                  <th  scope="col">Envio</th>
-              <th  scope="col">Restando</th>
- <th  scope="col">Avaliação</th>
+    </tr>
+  </thead>
 
-          <th  scope="col">Postado em</th>
-         
-        </tr>
-      </thead>
+  <tbody>
 
-            
-            
-            
-      <tbody>
+    <% @vitrine.products.each do |product|%>
 
-      
-        <% @vitrine.products.each do |product|%>
-         
-                 <tr>
-            <td class="stock_td">
-              <%= link_to  product_path(product.id) do %>
-                <%= image_tag product.f1.url(:table).to_s %>
-                <%=  product.name %>
-              <% end %>
-            </td>
-           
-                      <td  class="lista-preco_stock"><span><b><%=  number_to_currency(product.price, :unit => "R$") %></b></span></td>
-
-
-
-
-            <td> 
-              <ul>
-                <% if product.vitrine.policy %>
-
-                  <% product.vitrine.policy.shippings.each do |shipping| %>
-                    <li><%= shipping.kind %></li>
-                  <% end %>
-                <% end %>
-              </ul> 
-            </td>
-
-
- <td> 
-                <% if product.quantity %> 
-                <%=product.quantity %>
-
-                  <% end %>
-       
-            </td>
-
-            <td>
-               <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
- <%= content_tag(:span, nil) do%>
-
-   <%= @total_feedbacks %>
- <% end %>
-            </td>
-
-
-           
-            
-                <td>              
-               <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
-
-
-              </td>
-                      </tr>
+    <tr>
+      <td class="stock_td">
+        <%= link_to  product_path(product.id) do %>
+        <%= image_tag product.f1.url(:table).to_s %>
+        <%=  product.name %>
         <% end %>
- 
-      </tbody>
- 
+      </td>
 
-    </table>
+      <td class="lista-preco_stock">
+        <span>
+          <b><%=  number_to_currency(product.price, :unit => "R$") %></b>
+        </span>
+      </td>
 
+      <td>
+        <ul>
+          <% if product.vitrine.policy %>
 
-    
+          <% product.vitrine.policy.shippings.each do |shipping| %>
+          <li><%= shipping.kind %></li>
+          <% end %>
+          <% end %>
+        </ul>
+      </td>
+
+      <td>
+        <% if product.quantity %>
+        <%=product.quantity %>
+
+        <% end %>
+
+      </td>
+
+      <td>
+        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+        <%= content_tag(:span, nil) do%>
+
+        <%= @total_feedbacks %>
+        <% end %>
+      </td>
+
+      <td>
+        <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+
+      </td>
+    </tr>
+    <% end %>
+
+  </tbody>
+
+</table>

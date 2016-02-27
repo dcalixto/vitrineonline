@@ -7,89 +7,67 @@
   </div>
 </div>
 
-
 <div class="box10">
 
   <div class="block margin_top">
-  <div class="content">
-   <%=link_to(image_tag(@vitrine.logo.url(:thumb).to_s), vitrine_path(@vitrine)) %>
-    <ul class="list">
-      <li>
-       
+    <div class="content">
+      <%=link_to(image_tag(@vitrine.logo.url(:thumb).to_s), vitrine_path(@vitrine)) %>
+      <ul class="list">
+        <li>
+
           <%=link_to vitrine_path(@vitrine) do %>
           <%=@vitrine.name %>
           <% end %>
-      
-      </li>
-      <li>
-         <% if @vitrine.user.city%>
 
-        <span>  <%= @vitrine.city.name %>,</span>
-      <% end %>
+        </li>
+        <li>
+          <% if @vitrine.user.city%>
 
-        <% if @vitrine.user.state %>
-        <b>
-          <%= @vitrine.user.state.code %>        </b>
-         <% end %>
+          <span>
+            <%= @vitrine.city.name %>,</span>
+          <% end %>
 
-      </li>
-           <li>
-        <% if @vitrine.feedbacks %>
+          <% if @vitrine.user.state %>
+          <b>
+            <%= @vitrine.user.state.code %>
+          </b>
+          <% end %>
 
+        </li>
+        <li>
+          <% if @vitrine.feedbacks %>
 
-        <%=link_to  feedbacks_vitrine_path(:id=>@vitrine.id)  do %>
-        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
-       
-        Avaliações <%=@total_from_buyers %>
-  <% end %>
-<% end %>
-</li>
+          <%=link_to  feedbacks_vitrine_path(:id=>@vitrine.id)  do %>
+          <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
-<li>
+          Avaliações
+          <%=@total_from_buyers %>
+          <% end %>
+          <% end %>
+        </li>
 
-<span>Dono(a): <%=link_to @vitrine.user.name, user_path(@vitrine.user) %></span>
-</li>
+        <li>
 
-<% unless @vitrine.marked_as_favorite? %>
-        <li><%= link_to "Adicionar as Favoritas", mark_vitrine_path(@vitrine.id), method: :put %>  </li>
+          <span>Dono(a):
+            <%=link_to @vitrine.user.name, user_path(@vitrine.user) %></span>
+        </li>
 
-      
-      <% end %>
+        <% unless @vitrine.marked_as_favorite? %>
+        <li><%= link_to "Adicionar as Favoritas", mark_vitrine_path(@vitrine.id), method: :put %>
+        </li>
 
+        <% end %>
 
+      </ul>
 
-    </ul>
-
-  
+    </div>
+  </div>
 
 </div>
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div class="box4 margin_top">
   <!-- Slideshow 1 -->
- <ul  class="box-slider">
+  <ul class="box-slider">
     <li>
       <%= image_tag('slider1.jpg')  %>
     </li>
@@ -98,55 +76,46 @@
   </ul>
 </div>
 
-
 <div class="box4">
   <div class="block">
     <h1>Sobre</h1>
     <div class="content">
-      
+
       <p><%= markdown(@vitrine.about) %></p>
     </div>
   </div>
 </div>
 
-
 <div class="box11">
-<div class="subcontent_top margin_top">
-<h4>Produtos Similares</h4>
-  <%  @similarities.each do |item| %>
-      <%= link_to product_path(item) do  %>
-          <%= image_tag item.f1.url(:small).to_s %>
-          <%= item.name %>
-      <% end %>
-  <% end %>
+  <div class="subcontent_top margin_top">
+    <h4>Produtos Similares</h4>
+    <%  @similarities.each do |item| %>
+    <%= link_to product_path(item) do  %>
+    <%= image_tag item.f1.url(:small).to_s %>
+    <%= item.name %>
+    <% end %>
+    <% end %>
 
     <h4>Estilos</h4>
     <span class="tags">
-           
-<<<<<<< HEAD
-<% @vitrine.products.each do |tag| %>
-<%= raw tag.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-=======
-<% @vitrine.tag_list.each do |tag| %>
-  <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
->>>>>>> 01dcfdbe3f809582d3aac99cb304e79727a23eff
-<% end %>
 
-   
+      <% @vitrine.products.each do |tag| %>
+      <%= raw tag.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 
- </span>
-    </div>
+      <% @vitrine.tag_list.each do |tag| %>
+      <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
+
+      <% end %>
+
+    </span>
   </div>
-
-
+</div>
 
 <div class="box3">
 
-      <h1>Produtos Adicionados</h1>
-
+  <h1>Produtos Adicionados</h1>
 
   <div class="content">
-
 
     <div class="subcontent_top">
       <h4>Total
@@ -173,105 +142,91 @@
         </tr>
       </table>
 
- <div id="searchResults"> 
+      <div id="searchResults">
 
-          <%= render :partial => 'vitrines/product', :collection => @products%>
-
-     </div> 
-
-    <div class="block_pagination">
-      <div class="digg_pagination">
-        <%= will_paginate @products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
+        <%= render :partial => 'vitrines/product', :collection => @products%>
 
       </div>
-    </div>
- 
- </div>
-    </div>
 
+      <div class="block_pagination">
+        <div class="digg_pagination">
+          <%= will_paginate @products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <div class="block">
-    <h1>Especificações da <%=@vitrine.name%></h1>
+    <h1>Especificações da
+      <%=@vitrine.name%></h1>
 
+    <div class="content">
 
-  <div class="content">
+      <div class="subcontent_top">
+        <h4>Avaliações
+        </h4>
+        <table class="block_search">
+          <tr>
+            <td>
 
+              <%= search_form_for @q, url: feedbacks_search_vitrines_path, method: :post  do |f| %>
 
+              <%= f.text_field :id_cont %>
+              <%= f.submit "Buscar", :class=>"btn_grey" %>
 
-    <div class="subcontent_top">
-      <h4>Avaliações
-       </h4>
-      <table class="block_search">
-        <tr>
-          <td>
+              <% end %>
+            </td>
+            <td class="sort">
 
-            <%= search_form_for @q, url: feedbacks_search_vitrines_path, method: :post  do |f| %>
+              Ordenar por
+              <%= sort_link @q, :created_at, "Data" %>
+              |
+              <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
+            </td>
+          </tr>
+        </table>
 
-            <%= f.text_field :id_cont %>
-            <%= f.submit "Buscar", :class=>"btn_grey" %>
+        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+        <%= render :partial => 'feedbacks/feedbacks' %>
+      </div>
 
-            <% end %>
-          </td>
-          <td class="sort">
+      <div class="subcontent">
+        <h4>Forma de Pagamento</h4>
+        <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+        <% unless @vitrine.policy.blank? %>
+      </div>
 
-            Ordenar por
-            <%= sort_link @q, :created_at, "Data" %>
-            |
-            <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
-          </td>
-        </tr>
-      </table>
-
-      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
-      <%= render :partial => 'feedbacks/feedbacks' %>
-    </div>
-
-
-
-
-
-
-    <div class="subcontent">
-      <h4>Forma de Pagamento</h4>
-      <%= content_tag(:span, nil, :class => 'paypal_logo') %>
-      <% unless @vitrine.policy.blank? %>
-    </div>
-
-
-
-
-    <div class="subcontent">
-          <h4>Garantia</h4>
-      <p><%= markdown(@vitrine.policy.guarantee) %></p>
-      <% end %>
-      <% unless @vitrine.policy.shippings.blank? %>
-      <b>Formas de Envio</b>
-      <ul>
-        <% @vitrine.policy.shippings.each do |shipping| %>
-        <li><%= shipping.kind %></li>
+      <div class="subcontent">
+        <h4>Garantia</h4>
+        <p><%= markdown(@vitrine.policy.guarantee) %></p>
         <% end %>
-      </ul>
-      <% end %>
-    </div>
+        <% unless @vitrine.policy.shippings.blank? %>
+        <b>Formas de Envio</b>
+        <ul>
+          <% @vitrine.policy.shippings.each do |shipping| %>
+          <li><%= shipping.kind %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
 
-
-
-    <div class="subcontent">
-      <div class="block_message">
-        <h4>Mensagem</h4>
-        <% @conversation = Conversation.new %>
-        <%= form_for @conversation do |f| %>
-        <div class="doubt">
-          <%= hidden_field :conversation_participants, :boutique_id, :value => @vitrine.user_id %>
-          <ul>
-            <li><%= text_area :message, :body, :rows => 3 %></li>
-          </ul>
+      <div class="subcontent">
+        <div class="block_message">
+          <h4>Mensagem</h4>
+          <% @conversation = Conversation.new %>
+          <%= form_for @conversation do |f| %>
+          <div class="doubt">
+            <%= hidden_field :conversation_participants, :boutique_id, :value => @vitrine.user_id %>
+            <ul>
+              <li><%= text_area :message, :body, :rows => 3 %></li>
+            </ul>
+          </div>
+          <div><%= f.button 'Enviar', :class => 'btn_grey' %></div>
+          <% end %>
         </div>
-        <div><%= f.button 'Enviar', :class => 'btn_grey' %></div>
-        <% end %>
       </div>
     </div>
   </div>
 </div>
-</div>
-   

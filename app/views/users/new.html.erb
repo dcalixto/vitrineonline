@@ -2,7 +2,6 @@
 
 <!--MARKETING  -->
 
-
 <div class="box8">
   <div class="margin_top" id="marketing">
     <h1>A Vitrineonline ajudará você a:</h1>
@@ -26,34 +25,33 @@
   <div class="block margin_top">
     <h1>Criar Conta
     </h1>
-  <div class="content">
+    <div class="content">
 
+      <%= semantic_form_for(@user)  do |f| %>
+      <%= f.inputs do %>
+      <%= f.input :name,  :label => "Nome",:required=>true %>
+      <%= f.input :surname, :label => "Sobrenome", :required=>true %>
 
-    <%= semantic_form_for(@user)  do |f| %>
-    <%= f.inputs do %>
-    <%= f.input :name,  :label => "Nome",:required=>true %>
-    <%= f.input :surname, :label => "Sobrenome", :required=>true %>
+      <%= f.input :email, :as => :email, :label => "Email",:required=>true %>
+      <%= f.input :password, :as => :password, :label =>  "Password", :required=>true %>
 
-    <%= f.input :email, :as => :email, :label => "Email",:required=>true %>
-    <%= f.input :password, :as => :password, :label =>  "Password", :required=>true %>
+      <%= f.input :password_confirmation, :as => :password, :label => "Confirmar Password", :required=>true   %>
 
-    <%= f.input :password_confirmation, :as => :password, :label => "Confirmar Password", :required=>true   %>
-
-    <%= f.input :gender, :as => :radio, :label => false,
+      <%= f.input :gender, :as => :radio, :label => false,
         :collection => [["Masculino", "M"], ["Feminino", "F"], ["Prefiro não dizer", "I"]], :required=>true %>
 
-    <div class="acordo">
-      <p>Clicando em criar conta você estará aceitando nossos
-        <%= link_to 'Termos e Condições', page_path('termos') %>, nossa
-        <%= link_to 'Políticas de Privacidade', page_path('privacidade')%>
-        e declarando que tem ao menos 18 anos de idade.</p>
-    </div>
+      <div class="acordo">
+        <p>Clicando em criar conta você estará aceitando nossos
+          <%= link_to 'Termos e Condições', page_path('termos') %>, nossa
+          <%= link_to 'Políticas de Privacidade', page_path('privacidade')%>
+          e declarando que tem ao menos 18 anos de idade.</p>
+      </div>
 
-    <%= f.actions do %>
-    <%= f.action :submit, :label => "Criar Conta", :button_html => { :class => "btn_orange btn_big"} %>
-    <% end %>
-    <% end %>
-    <% end %>
-  </div>
+      <%= f.actions do %>
+      <%= f.action :submit, :label => "Criar Conta", :button_html => { :class => "btn_orange btn_big"} %>
+      <% end %>
+      <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

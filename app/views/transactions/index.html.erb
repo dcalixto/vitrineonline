@@ -10,24 +10,22 @@
     <h4>Fatura</h4>
     <div class="content">
 
-    
+      <table class="zebra_branca">
+        <tbody >
 
-    <table class="zebra_branca">
-      <tbody >
+          <% @transactions.each do |e| %>
+          <tr>
+            <td>
+              <%=  e.id%></td>
 
-        <% @transactions.each do |e| %>
-        <tr>
-          <td>
-            <%=  e.id%></td>
+          </td>
+        </tr>
 
-        </td>
-      </tr>
+        <% end %>
 
-      <% end %>
+      </tbody>
+    </table>
 
-    </tbody>
-  </table>
-
-</div>
+  </div>
 </div>
 </div>

@@ -1,13 +1,13 @@
 <div class="box6">
 
   <div class="block">
-      <h1>Produto Vendido em   <%= @last_transaction.created_at.strftime('%d/%m/%Y') if @last_transaction %></h1>
+    <h1>Produto Vendido em
+      <%= @last_transaction.created_at.strftime('%d/%m/%Y') if @last_transaction %></h1>
     <div class="content">
 
+      <%= image_tag @product_data.f1.url(:small).to_s %>
 
-    <%= image_tag @product_data.f1.url(:small).to_s %>
+    </div>
 
   </div>
-
-</div>
 </div>

@@ -1,88 +1,82 @@
 <div id="tip">
 
-<div class="wrap_tip">
-  <div class="content_tip">
+  <div class="wrap_tip">
+    <div class="content_tip">
 
       <div class="header_tip">
 
-           <h4>Avaliação</h4>  
-          <ul>
-                          <li>
+        <h4>Avaliação</h4>
+        <ul>
+          <li>
 
-                  <%=link_to "Em espera", awaiting_feedbacks_path %>
-              </li>
-              <li>
+            <%=link_to "Em espera", awaiting_feedbacks_path %>
+          </li>
+          <li>
 
-                  <%=link_to "Completas", completed_feedbacks_path %>
-              </li>
-          </ul>
+            <%=link_to "Completas", completed_feedbacks_path %>
+          </li>
+        </ul>
 
-             
-  </div>
-
-
-    <div class="subcontent_tip">
-
-     
-      <% if @awaiting_feedbacks_orders.count == 0 %>
-      <div class="no_awaiting">
-        <%= 'Você não tem espera de avaliações.' %>
       </div>
-      <% end %>
-      <table class="awaiting_feedback_table">
-        <% @awaiting_feedbacks_orders.each do |order| %>
-        <% product = order.product %>
-        <% who = current_user.id == order.buyer.id ? 'buyer_' : 'seller_' %>
-        <%= form_tag({action: :create}) do %>
-        <%= hidden_field_tag :order_id, order.id %>
-        <%= hidden_field_tag "feedback[#{who}feedback_date]", DateTime.now %>
-        <%= hidden_field_tag "feedback[#{who}rating]", 0, :id => "feedback_#{order.id}_score" %>
-        <tr>
-          <td>
-            <%= image_tag(product.f1.url(:table).to_s, :alt => product.name) %>
-            <%= link_to product.name, product_path(product), :title => product.name %>
-            <br/>
-            <% if order.buyer == current_user %>
-            Comprado de
-            <%= link_to order.seller.name, vitrine_path(order.seller) %>
-            Por
-            <%= number_to_currency product.price %>
-            <% else %>
-            Vendido para
-            <%= link_to order.buyer.full_name, user_path(order.buyer) %>
-            <% end %>
-            Em
-            <%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %>
-            <br/>
-            <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
+
+      <div class="subcontent_tip">
+
+        <% if @awaiting_feedbacks_orders.count == 0 %>
+        <div class="no_awaiting">
+          <%= 'Você não tem espera de avaliações.' %>
+        </div>
+        <% end %>
+        <table class="awaiting_feedback_table">
+          <% @awaiting_feedbacks_orders.each do |order| %>
+          <% product = order.product %>
+          <% who = current_user.id == order.buyer.id ? 'buyer_' : 'seller_' %>
+          <%= form_tag({action: :create}) do %>
+          <%= hidden_field_tag :order_id, order.id %>
+          <%= hidden_field_tag "feedback[#{who}feedback_date]", DateTime.now %>
+          <%= hidden_field_tag "feedback[#{who}rating]", 0, :id => "feedback_#{order.id}_score" %>
+          <tr>
+            <td>
+              <%= image_tag(product.f1.url(:table).to_s, :alt => product.name) %>
+              <%= link_to product.name, product_path(product), :title => product.name %>
+              <br/>
+              <% if order.buyer == current_user %>
+              Comprado de
+              <%= link_to order.seller.name, vitrine_path(order.seller) %>
+              Por
+              <%= number_to_currency product.price %>
+              <% else %>
+              Vendido para
+              <%= link_to order.buyer.full_name, user_path(order.buyer) %>
+              <% end %>
+              Em
+              <%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %>
+              <br/>
+              <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
+            </td>
+          </tr>
+          <tr class="comment_tr">
+            <td>
+              <%= text_area_tag "feedback[#{who}comment]" %>
+              <%= submit_tag 'Avaliar', :class => 'btn' %>
+            </td>
+          </tr>
+          <% end %>
+          <% end %>
+          <tr>
+            <td></div>
+
           </td>
         </tr>
-        <tr class="comment_tr">
-          <td>
-            <%= text_area_tag "feedback[#{who}comment]" %>
-            <%= submit_tag 'Avaliar', :class => 'btn' %>
-          </td>
-        </tr>
-        <% end %>
-        <% end %>
-        <tr>
-          <td></div>
-        
+      </table>
+      <script language="JavaScript">
+        fade_flash();
+      </script>
 
-      </td>
-    </tr>
-  </table>
-  <script language="JavaScript">
-    fade_flash();
-  </script>
+    </div>
+
+    <div class="footer_tip"></div>
 
   </div>
-
-
-  <div class="footer_tip">
-  </div>
-
-</div>
 </div>
 
 </div>

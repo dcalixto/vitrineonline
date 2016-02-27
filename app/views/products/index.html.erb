@@ -3,62 +3,50 @@
   <% breadcrumb :products, @products %>
 </div>
 
- <%= render 'shared/filtro_product' %>
+<%= render 'shared/filtro_product' %>
 
 <!-- VITRINE-->
 <div class="box3">
   <div class="subcontent_top">
 
     <p>
-          <span class="orange"><%= @products.total_entries %></span>
+      <span class="orange"><%= @products.total_entries %></span>
       Produtos achados</p>
     <div class="content">
 
       <div class="searchResults">
 
-       
-           
-            <% @products.each do |product|%>
+        <% @products.each do |product|%>
 
+        <%= link_to  product_path(product.id), :class=>"product" do %>
 
-<%= link_to  product_path(product.id), :class=>"product" do %> 
-            
-  <%= image_tag product.f1.url(:small).to_s, :class=>"productImg" %>
+        <%= image_tag product.f1.url(:small).to_s, :class=>"productImg" %>
 
-                
-  <span class="productName"> <%= product.name %></span>
-          
-       
+        <span class="productName">
+          <%= product.name %></span>
 
-            <span class="price"><%=  number_to_currency(product.price, :unit => "R$") %></span>
- <% if product.feedbacks %>
+        <span class="price"><%=  number_to_currency(product.price, :unit => "R$") %></span>
+        <% if product.feedbacks %>
 
-   <div class="productFeeback">
-     
-     <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+        <div class="productFeeback">
 
-            <%= @total_feedbacks %>
-            
-            </div>
-                 <% end %>
+          <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
+          <%= @total_feedbacks %>
 
-         
-            <span class="lista-time">
-              <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
-            </span>
+        </div>
+        <% end %>
 
-                     
-      
-            <span class="by">Por <%= product.vitrine.name %></span>
+        <span class="lista-time">
+          <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+        </span>
 
-      <% end %>
+        <span class="by">Por
+          <%= product.vitrine.name %></span>
 
+        <% end %>
 
- <% end %>
-
-
-
+        <% end %>
 
       </div>
 

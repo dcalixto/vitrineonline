@@ -1,19 +1,19 @@
 <% title  "Configurar Conta" %>
 <%= render "shared/user_menu" %>
 <div class="box5">
-<div class="margin_top">
-  <%= render 'shared/flash_messages' %>
-  <%= render 'shared/error_messages', :target => @user %>
+  <div class="margin_top">
+    <%= render 'shared/flash_messages' %>
+    <%= render 'shared/error_messages', :target => @user %>
 
-</div>
+  </div>
 </div>
 <div class="box5">
   <div class="block margin_top">
     <h1>Configuração
     </h1>
     <div class="content">
-  <div class="subcontent_top">
-      <h4>Avatar</h4>
+      <div class="subcontent_top">
+        <h4>Avatar</h4>
 
         <%= form_for @user,  :url => user_path, :method => :put, :html => {:multipart => true} do |avatar| %>
 
@@ -32,15 +32,10 @@
         </ul>
         <%= avatar.button "Salvar", :class => "btn" %>
         <% end %>
-</div>
-
-
-
+      </div>
 
       <div class="subcontent">
-  <h4>Email</h4>
-
-
+        <h4>Email</h4>
 
         <p class="tip">Seu email atual</p>
 
@@ -56,15 +51,10 @@
 
       </div>
 
+      <div class="subcontent">
+        <h4>Endereço</h4>
 
-
-
-    <div class="subcontent">
-  <h4>Endereço</h4>
-
-
-
-      <p class="tip">Adicione o seu endereço de entrega para facilitar a vida do vendedor</p>
+        <p class="tip">Adicione o seu endereço de entrega para facilitar a vida do vendedor</p>
 
         <%= semantic_form_for @user do |form| %>
         <%= form.inputs do %>
@@ -85,11 +75,9 @@
 
       </div>
 
-<div class="subcontent">
+      <div class="subcontent">
 
-  <h4>Encerrar Conta</h4>
-
-
+        <h4>Encerrar Conta</h4>
 
         <p>
           <b>O que acontece quando você fechar sua conta?</b>
@@ -103,7 +91,7 @@
         <%= button_to 'Encerrar',  current_user, :data => { :confirm => 'Confirmar?' }, method: :delete, :class => 'btn_red' %>
       </div>
 
-  </div>
+    </div>
   </div>
 
   <div class="box11">

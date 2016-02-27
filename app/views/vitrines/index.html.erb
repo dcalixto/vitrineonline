@@ -10,72 +10,61 @@
   <div class="block">
     <h1>Vitrines</h1>
     <div class="content">
-    
 
-  
+      <% @vitrines.each  do |vitrine| %>
+      <%= link_to  vitrine_path(vitrine.id), :class=>"product" do %>
 
-  <% @vitrines.each  do |vitrine| %>
-<%= link_to  vitrine_path(vitrine.id), :class=>"product" do %> 
-            
-  <%= image_tag vitrine.logo.url(:thumb).to_s, :class=>"productImg" %>
+      <%= image_tag vitrine.logo.url(:thumb).to_s, :class=>"productImg" %>
 
-                
-  <span class="productName"> <%= vitrine.name %></span>
-          
-       
- <% if vitrine.feedbacks %>
+      <span class="productName">
+        <%= vitrine.name %></span>
 
-   <div class="productFeeback">
-     
-     <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+      <% if vitrine.feedbacks %>
 
-            <%= @total_feedbacks %>
-            
-            </div>
-                 <% end %>
+      <div class="productFeeback">
 
+        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
-         
-            <span class="lista-time">
-              <%= timeago_tag(vitrine.created_at, :nojs => true, :date_only => false)%>
-            </span>
-
-                      
-      
-            <span class="by">Dono: <%= vitrine.user.name %></span>
- 
-            <span>
-            <% if vitrine.marketing.present? %>
-            <p title="<%= vitrine.marketing.slogan  %>"><%= vitrine.marketing.slogan %></p>
-            </span>
-          <% end %>
-
-
-             <% if vitrine.marketing.url? %>
-
-                     <span>Site: <%= link_to vitrine.marketing.url,  boutique.marketing.url%></span>
-
-                        </span>
-
-          <% end %>
-
-
-          <% end %>
-
-   <% end %>
-
-</div>
-  </div>
-
-<div class="block_pagination">
-      <div class="digg_pagination">
-        <%= will_paginate @vitrine,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+        <%= @total_feedbacks %>
 
       </div>
+      <% end %>
 
-    </div>
+      <span class="lista-time">
+        <%= timeago_tag(vitrine.created_at, :nojs => true, :date_only => false)%>
+      </span>
+
+      <span class="by">Dono:
+        <%= vitrine.user.name %></span>
+
+      <span>
+        <% if vitrine.marketing.present? %>
+        <p title="<%= vitrine.marketing.slogan  %>"><%= vitrine.marketing.slogan %></p>
+      </span>
+      <% end %>
+
+      <% if vitrine.marketing.url? %>
+
+      <span>Site:
+        <%= link_to vitrine.marketing.url,  boutique.marketing.url%></span>
+
+    </span>
+
+    <% end %>
+
+    <% end %>
+
+    <% end %>
+
+  </div>
+</div>
+
+<div class="block_pagination">
+  <div class="digg_pagination">
+    <%= will_paginate @vitrine,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
 
   </div>
 
+</div>
 
-   
+</div>

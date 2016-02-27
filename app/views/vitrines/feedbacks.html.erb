@@ -1,32 +1,28 @@
 <div class="box3">
-<div class="block margin_top">
-  <h1>Avaliações</h1>
+  <div class="block margin_top">
+    <h1>Avaliações</h1>
 
-  <div class="content">
+    <div class="content">
 
-    <div class="subcontent_top">
-          <li class="lista-time">
-            <%= link_to  vitrine_path(@vitrine.id)  do %>
+      <div class="subcontent_top">
+      <li class="lista-time">
+        <%= link_to  vitrine_path(@vitrine.id)  do %>
 
-            <%= image_tag @vitrine.logo.url(:thumb).to_s %>
-            <% end%>
-            Criada em:
-            <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => false)%>
-          </li>
-  </div>
+        <%= image_tag @vitrine.logo.url(:thumb).to_s %>
+        <% end%>
+        Criada em:
+        <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => false)%>
+      </li>
+    </div>
 
-      <div class="subcontent">
-    <%= link_to  user_path(@vitrine.user.id) do %>
-    <%= image_tag @vitrine.user.avatar.url(:small).to_s %>
-    Criado em:
-          <%= timeago_tag(@vitrine.user.created_at, :nojs => true, :date_only => false)%>
-    <% end %>
+    <div class="subcontent">
+      <%= link_to  user_path(@vitrine.user.id) do %>
+      <%= image_tag @vitrine.user.avatar.url(:small).to_s %>
+      Criado em:
+      <%= timeago_tag(@vitrine.user.created_at, :nojs => true, :date_only => false)%>
+      <% end %>
 
-
-
-</div>
-
-
+    </div>
 
     <table class="block_search">
       <tr>
@@ -42,13 +38,12 @@
         <td class="sort">
 
           Ordernar por
-            <%= sort_link @q, :created_at, "Data" %>
+          <%= sort_link @q, :created_at, "Data" %>
           |
           <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
         </td>
       </tr>
     </table>
-
 
     <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 

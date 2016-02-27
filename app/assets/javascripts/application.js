@@ -9,7 +9,7 @@
 //= require tipsy
 //= require jquery.fancybox.pack
 //= require jquery.raty
-
+//= require typeahead
 //= require jquery.tokeninput
 //= require jquery.webui-popover
 //= require lightslider.min
@@ -19,7 +19,7 @@
 //= require_tree .
 
 
-//// require typeahead
+//// r
 
 // SELECT2 (TAGS)
 $(function() {
@@ -341,10 +341,10 @@ $(function() {
 
 
 
-/*$("#query").typeahead({
+$("#query").typeahead({
   name: "product",
   remote: "/products/autocomplete?query=%QUERY"
-});*/
+});
 
 
 

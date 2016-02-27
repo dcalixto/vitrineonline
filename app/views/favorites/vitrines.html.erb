@@ -1,7 +1,3 @@
-
-
-
-
 <% title "Favoritos" %>
 <%= render "shared/favorites_menu" %>
 <!--STOCK OF ITEMS  -->
@@ -13,90 +9,84 @@
   <div class="block margin_top">
     <h1>Vitrines adicionadas</h1>
 
-
-
     <div class="content">
-        <%= current_user.favorite_vitrines.count %>
-        Vitrines favoritadas</h4>
-      <table class="block_search">
-        <tr>
-          <td>
+      <%= current_user.favorite_vitrines.count %>
+      Vitrines favoritadas</h4>
+    <table class="block_search">
+      <tr>
+        <td>
 
-           <%= search_form_for @q, url:  search_favorites_favorites_path, method: :post  do |f| %>
+          <%= search_form_for @q, url:  search_favorites_favorites_path, method: :post  do |f| %>
 
-            <%= f.text_field :id_cont %>
-            <%= f.submit "Buscar", :class=>"btn_grey" %>
+          <%= f.text_field :id_cont %>
+          <%= f.submit "Buscar", :class=>"btn_grey" %>
 
-            <% end %>
-          </td>
-          <td class="sort">
+          <% end %>
+        </td>
+        <td class="sort">
 
-            Ordernar Por
-                     <%= sort_link @q, :created_at, "Data" %>
-          
-          </td>
+          Ordernar Por
+          <%= sort_link @q, :created_at, "Data" %>
+
+        </td>
+      </tr>
+    </table>
+
+    <table class="zebra_branca margin_top" id="stock_vitrine">
+
+      <thead>
+        <tr class="header">
+          <th scope="col">Vitrine</th>
+          <th scope="col">Avaliação</th>
+          <th scope="col">Postado em</th>
+          <th scope="col">Remover</th>
+
         </tr>
-      </table>
+      </thead>
 
-      <table class="zebra_branca margin_top" id="stock_vitrine">
+      <tbody>
 
-        <thead>
-          <tr class="header">
-            <th scope="col">Vitrine</th>
-            <th scope="col">Avaliação</th>
-            <th scope="col">Postado em</th>
-            <th scope="col">Remover</th>
-
-          </tr>
-        </thead>
-
-        <tbody>
-
-  <% @favorite_vitrines.each do |vitrine| %>
-<tr>
-  <td class="stock_td">
-  <%= link_to  vitrine_path(vitrine.id) do %>
+        <% @favorite_vitrines.each do |vitrine| %>
+        <tr>
+          <td class="stock_td">
+            <%= link_to  vitrine_path(vitrine.id) do %>
             <%= image_tag vitrine.logo.url(:thumb).to_s %>
 
             <% end %>
-  </td>
+          </td>
 
-
-  <td>
-      <% if vitrine.feedbacks %>
+          <td>
+            <% if vitrine.feedbacks %>
             <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
             <%= @total_feedbacks %>
             <% end %>
 
-  </td>
-  <td>
-    <%= timeago_tag(vitrine.created_at, :nojs => true, :date_only => false)%>
+          </td>
+          <td>
+            <%= timeago_tag(vitrine.created_at, :nojs => true, :date_only => false)%>
 
-  </td>
+          </td>
 
+          <td>
+            <%= button_to "Remover", unmark_vitrine_favorite_path(p.id), method: :get, :class=>"btn_red btn_small" %>
+          </td>
 
-  <td>
-      <%= button_to "Remover", unmark_vitrine_favorite_path(p.id), method: :get, :class=>"btn_red btn_small" %>
-     </td>
+        </tr>
+        <% end %>
 
-</tr>
- <% end %>
+      </tbody>
+    </table>
 
-        </tbody>
-      </table>
+  </div>
+
+  <div class="block_pagination">
+    <hr class="line"></hr>
+    <div class="digg_pagination">
+      <%= will_paginate  @favorite_vitrines,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
 
     </div>
-
-    <div class="block_pagination">
-      <hr class="line"></hr>
-      <div class="digg_pagination">
-        <%= will_paginate  @favorite_vitrines,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
-
-      </div>
-    </div>
+  </div>
 </div>
 
 </div>
-
-

@@ -5,13 +5,19 @@
   var chart;
   var week_stats = <%= @week_stats.to_json.html_safe %>;
   var month_stats = <%= @month_stats.to_json.html_safe %>;
-  var draw_chart = function ()
-  {
-    chart = Morris.Line({element: 'visitors_chart', data: week_stats, xkey: 'day', ykeys: ['count'], labels: ['Visitantes'], lineColors: ['#365d98'], pointFillColors: ['#225198']});
+  var draw_chart = function () {
+    chart = Morris.Line({
+      element: 'visitors_chart',
+      data: week_stats,
+      xkey: 'day',
+      ykeys: ['count'],
+      labels: ['Visitantes'],
+      lineColors: ['#365d98'],
+      pointFillColors: ['#225198']
+    });
   };
 
-  var chart_options = function ()
-  {
+  var chart_options = function () {
     chart.setData($(this).val() == 0
       ? week_stats
       : month_stats);
@@ -22,101 +28,91 @@
 
   <div class="block  margin_top">
     <div class="flash_box">
-    <%= render 'shared/flash_messages' %>
-  </div>
-
-
+      <%= render 'shared/flash_messages' %>
+    </div>
 
     <h1>Visualizações</h1>
 
+    <div class="content">
 
-        <div class="content">
+      <div class="subcontent_top">
+        <p class="tip">A visualisação lhe ajudará a compreender e posicionar melhor sua vitrine e produtos</p>
 
-                <div class="subcontent_top">
-    <p class="tip">A visualisação lhe ajudará a compreender e posicionar melhor sua vitrine e produtos</p>
+        <h4><%=link_to current_vitrine.name, vitrine_path(current_vitrine),  :title => "Nome" %></h4>
 
+        <!-- CHART CONTAINER  -->
+        <div id="visitors_chart"></div>
+        <!-- View options  -->
+        <div class="tip_box">
+          <div id="visitors_chart_options">
+            <strong>&nbsp;Período:</strong>
+            <select id="chart_options" name="chart_options">
+              <option value="0">Semana Passada</option>
+              <option value="1">Mês Passado</option>
+            </select>
+            <br/><br/>
+          </div>
 
-
-    <h4><%=link_to current_vitrine.name, vitrine_path(current_vitrine),  :title => "Nome" %></h4>
-
-
-      <!-- CHART CONTAINER  -->
-      <div id="visitors_chart"></div>
-      <!-- View options  -->
-      <div class="tip_box">
-        <div id="visitors_chart_options">
-          <strong>&nbsp;Período:</strong>
-          <select id="chart_options" name="chart_options">
-            <option value="0">Semana Passada</option>
-            <option value="1">Mês Passado</option>
-          </select>
-          <br/><br/>
         </div>
-
       </div>
-  </div>
 
+      <div class="subcontent">
+        <table class="block_search">
+          <tr>
+            <td>
 
+              <%= search_form_for @q, url:  views_search_vitrines_path, method: :post  do |f| %>
 
-  <div class="subcontent">
-      <table class="block_search">
-        <tr>
-          <td>
+              <%= f.text_field :id_cont %>
+              <%= f.submit "Buscar", :class=>"btn_grey" %>
 
-            <%= search_form_for @q, url:  views_search_vitrines_path, method: :post  do |f| %>
+              <% end %>
+            </td>
+            <td class="sort">
 
-            <%= f.text_field :id_cont %>
-            <%= f.submit "Buscar", :class=>"btn_grey" %>
+              Ordernar Por
+              <%= sort_link @q, :impression,  "Visualisações" %>
+              |
+              <%= sort_link @q, :created_at, "Data" %>
+            </td>
+          </tr>
+        </table>
+
+        <table class="zebra_branca">
+          <tbody>
+            <th>Produto</th>
+            <th>Visitantes</th>
+
+            <% @products.each do |e| %>
+            <tr>
+              <td>
+                <%= link_to  product_path(e.id) do %>
+                <%= image_tag e.f1.url(:small).to_s %>
+                <%=  e.name %>
+                <% end %>
+
+              </td>
+
+              <td>
+                <b><%= e.impression_count %></b>
+              </td>
+            </tr>
 
             <% end %>
-          </td>
-          <td class="sort">
 
-            Ordernar Por
-            <%= sort_link @q, :impression,  "Visualisações" %>
-            |
-            <%= sort_link @q, :created_at, "Data" %>
-          </td>
-        </tr>
-      </table>
+          </tbody>
+        </table>
 
+        <!--SLOGAN  -->
+      </div>
+      <div class="block_pagination">
+        <hr class="line"></hr>
+        <div class="digg_pagination">
+          <%= will_paginate @products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
 
-
-    <table class="zebra_branca">
-      <tbody>
-        <th>Produto</th>
-        <th>Visitantes</th>
-
-        <% @products.each do |e| %>
-        <tr>
-          <td>
-            <%= link_to  product_path(e.id) do %>
-            <%= image_tag e.f1.url(:small).to_s %>
-            <%=  e.name %>
-            <% end %>
-
-          </td>
-
-          <td>
-            <b><%= e.impression_count %></b>
-          </td>
-        </tr>
-
-        <% end %>
-
-      </tbody>
-    </table>
-
-    <!--SLOGAN  -->
-  </div>
-  <div class="block_pagination">
-    <hr class="line"></hr>
-    <div class="digg_pagination">
-      <%= will_paginate @products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
-
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
-<!-- PAGINATION-->
+  <!-- PAGINATION-->
 </div>

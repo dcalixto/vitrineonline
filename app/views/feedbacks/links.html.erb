@@ -1,27 +1,24 @@
 <div id="wrap_tip">
   <div class="content_tip">
 
-      <div class="header_tip">
+    <div class="header_tip">
 
-           <h4>Avaliações</h4>  
-          <ul>
-                          <li>
+      <h4>Avaliações</h4>
+      <ul>
+        <li>
 
-                  <%=link_to "Em espera", awaiting_feedbacks_path %>
-              </li>
-              <li>
+          <%=link_to "Em espera", awaiting_feedbacks_path %>
+        </li>
+        <li>
 
-                  <%=link_to "Completas", completed_feedbacks_path %>
-              </li>
-          </ul>
+          <%=link_to "Completas", completed_feedbacks_path %>
+        </li>
+      </ul>
 
-             
-  </div>
-
+    </div>
 
     <div class="subcontent_tip">
 
-     
       <% if @awaiting_feedbacks_orders.count == 0 %>
       <div class="no_awaiting">
         <%= 'Você não tem espera de avaliações.' %>
@@ -65,21 +62,17 @@
         <% end %>
         <tr>
           <td></div>
-        
 
-      </td>
-    </tr>
-  </table>
-  <script language="JavaScript">
-    fade_flash();
-  </script>
+        </td>
+      </tr>
+    </table>
+    <script language="JavaScript">
+      fade_flash();
+    </script>
 
   </div>
 
-
-  <div class="footer_tip">
-  </div>
+  <div class="footer_tip"></div>
 
 </div>
 </div>
-

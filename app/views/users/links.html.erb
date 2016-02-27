@@ -1,28 +1,21 @@
-
 <div id="wrap_tip">
   <div class="content_tip">
 
-   
-                      <ul>
+    <ul>
 
-                 <li>
- <%= link_to 'Ajuda?',  page_path("comprar")%> </li>
+      <li>
+        <%= link_to 'Ajuda?',  page_path("comprar")%>
+      </li>
 
+      <li>
 
-                          <li>
+        <%=link_to "Conta", edit_user_path(current_user)%>
+      </li>
+      <li>
 
-                   <%=link_to "Conta", edit_user_path(current_user)%>
-              </li>
-              <li>
+        <%= link_to 'Sair',  session_path(current_user),   method: :delete %>
+      </li>
+    </ul>
 
-                  <%= link_to 'Sair',  session_path(current_user),   method: :delete %>
-              </li>
-          </ul>
-
-             
-
-
+  </div>
 </div>
-</div>
-
-

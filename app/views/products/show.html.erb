@@ -12,29 +12,24 @@
 
 <!-- Imagens do product   -->
 
-
-
 <div class="box9">
-   
 
-    <div id="placeholder">
+  <div id="placeholder">
 
-      <%= image_tag @product.f1.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
- <%= render_showcase %>
-    </div>
-
+    <%= image_tag @product.f1.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
+    <%= render_showcase %>
   </div>
 
-
-
+</div>
 
 <div class="box8">
   <div class"content">
 
-   <ul>
-     <li><h1 id="item_name"><%= @product.name %></h1></li>
+    <ul>
+      <li>
+        <h1 id="item_name"><%= @product.name %></h1>
+      </li>
 
-   
       <!-- Fim-->
 
       <!--Descrição   -->
@@ -45,7 +40,8 @@
 
       <li>
         <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>">
-          <span class="feedCounter"><%= @total_feedbacks %> Avaliações</span>
+          <span class="feedCounter"><%= @total_feedbacks %>
+            Avaliações</span>
         </div>
 
       </li>
@@ -54,36 +50,33 @@
       <% end %>
 
       <li>
- <hr class="line"></hr>
+        <hr class="line"></hr>
 
- <span>Preço: <%= number_to_currency(@product.price, :unit => "R$") %></span>
+        <span>Preço:
+          <%= number_to_currency(@product.price, :unit => "R$") %></span>
       </li>
-     <li>
+      <li>
 
-       <span>Disponíveis: <%= @product.quantity%> </span>
+        <span>Disponíveis:
+          <%= @product.quantity%>
+        </span>
       </li>
-
-<li>
-
-       <span>Desconto:<%= number_to_currency(@product.price, :unit => "R$") %> </span>
-      </li>
-
-   
-
-      
-            <% @product.vitrine.policy.shippings.each do |shipping| %>
-            <li>
-              <span>Envio: <%= shipping.kind %></span>
-            </li>
-            <% end %>
-        
-      
-      
-      
-  
 
       <li>
-                <span class="span">ID</span>
+
+        <span>Desconto:<%= number_to_currency(@product.price, :unit => "R$") %>
+        </span>
+      </li>
+
+      <% @product.vitrine.policy.shippings.each do |shipping| %>
+      <li>
+        <span>Envio:
+          <%= shipping.kind %></span>
+      </li>
+      <% end %>
+
+      <li>
+        <span class="span">ID</span>
         <b class="span">
           #<%= @product.id %></b>
       </li>
@@ -94,7 +87,7 @@
 
   </div>
 
-    <div class="content">
+  <div class="content">
     <%= link_to  "https://www.paypal.com/br"  do %>
 
     <%= content_tag(:span, nil, :class => 'paypal_protect') %>
@@ -105,105 +98,92 @@
     <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
   </div>
 
-
-
- </div>
-
-
-
-
-
-
-
-
+</div>
 
 <%= form_tag buy_now_to_carts_path(@product) do %>
 <div class="box10">
 
-  <div class="block" >
-  <div class="content" >
+  <div class="block">
+    <div class="content">
 
-    <ul>
-
-          <!-- Fim-->
-
-      <!--Descrição   -->
-
-      <li>
-
-        <h3 id="item_price"><%= number_to_currency(@product.price, :unit => "R$") %></h3>
-      </li>
-
-         </ul>
-
-    <div class="left_info item_information">
       <ul>
-        <li >
-          <b>Quantidade</b>&nbsp;
 
-          <%= select_tag  :quantity, options_for_select((1..@product.quantity).collect{ |q| [q, q]}) %>
+        <!-- Fim-->
 
-        </li>
-        <li >
-          <b>Cor</b>&nbsp;
+        <!--Descrição   -->
 
-          <%= select_tag :color_id, options_for_select(@colors_for_dropdown.unshift(['Selecionar Cor', nil])) %>
-
-        </li>
         <li>
-          <b>Tamanho</b>&nbsp;
 
-          <%= select_tag :size_id, options_for_select(@sizes_for_dropdown.unshift(['Selecionar Tamanho', nil]))%>
-
+          <h3 id="item_price"><%= number_to_currency(@product.price, :unit => "R$") %></h3>
         </li>
 
-<% unless @product.marked_as_favorite? %>
-        <li><%= link_to "Adicionar a lista de desejos", mark_product_path(@product.id), method: :put %>
-
-        </li>
-<% end %>
       </ul>
 
+      <div class="left_info item_information">
+        <ul>
+          <li >
+            <b>Quantidade</b>&nbsp;
 
+            <%= select_tag  :quantity, options_for_select((1..@product.quantity).collect{ |q| [q, q]}) %>
 
-    </div>
+          </li>
+          <li >
+            <b>Cor</b>&nbsp;
 
-    <div class="horizontal_buttons">
-      <ul>
-        <li>
+            <%= select_tag :color_id, options_for_select(@colors_for_dropdown.unshift(['Selecionar Cor', nil])) %>
 
-          <% if current_user %>
-          <%if @product.buyable?(current_user) %>
+          </li>
+          <li>
+            <b>Tamanho</b>&nbsp;
 
-          <div class="buy_now">
+            <%= select_tag :size_id, options_for_select(@sizes_for_dropdown.unshift(['Selecionar Tamanho', nil]))%>
 
-            <%= button_to( "Comprar", buy_now_to_carts_path(@product), :class => 'btn_orange  btn_big', :'data-submit-form' => true)  %>
+          </li>
 
-          </div>
+          <% unless @product.marked_as_favorite? %>
+          <li><%= link_to "Adicionar a lista de desejos", mark_product_path(@product.id), method: :put %>
 
-        </li>
+          </li>
+          <% end %>
+        </ul>
 
-        <li>
+      </div>
 
-          <div class="add_to_car">
+      <div class="horizontal_buttons">
+        <ul>
+          <li>
 
-            <%= button_to("Adicionar a sacola",add_to_carts_path(@product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
+            <% if current_user %>
+            <%if @product.buyable?(current_user) %>
 
-            <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
+            <div class="buy_now">
+
+              <%= button_to( "Comprar", buy_now_to_carts_path(@product), :class => 'btn_orange  btn_big', :'data-submit-form' => true)  %>
+
+            </div>
+
+          </li>
+
+          <li>
+
+            <div class="add_to_car">
+
+              <%= button_to("Adicionar a sacola",add_to_carts_path(@product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
+
+              <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
+              <%end %>
+
+            </div>
+
             <%end %>
 
-          </div>
+            <%end %>
 
-          <%end %>
+          </li>
+        </ul>
 
-          <%end %>
-
-        </li>
-      </ul>
-
-      
+      </div>
     </div>
-</div>
 
   </div>
 
@@ -216,21 +196,19 @@
   <div class="margin_top">
     <h1>Confira também</h1>
 
-        <div class="subcontent_top">
-      
-    
-          <ul class="content-slider">
-            
-               <% @product.vitrine.products.each do |product| %>
-        <li><%= link_to(image_tag(product.f1.url(:thumb).to_s), product_url(product.id)) %></li>
-    <% end %>.
-                        </ul>
-        
-                
- </div>
-</div>
+    <div class="subcontent_top">
 
- </div>
+      <ul class="content-slider">
+
+        <% @product.vitrine.products.each do |product| %>
+        <li><%= link_to(image_tag(product.f1.url(:thumb).to_s), product_url(product.id)) %></li>
+        <% end %>.
+      </ul>
+
+    </div>
+  </div>
+
+</div>
 
 <div class="box3">
 
@@ -375,65 +353,52 @@
 
 </div>
 
-
-
-
 <div class="box11">
   <div class="margin_top">
     <h1>Sugestoes</h1>
     <div class="subcontent_top">
       <% @suggestions.each do |item| %>
-        <%= link_to product_path(item) do  %>
-          <%= image_tag item.f1.url(:small).to_s %>
-          <%= item.name %>
-        <% end %>
+      <%= link_to product_path(item) do  %>
+      <%= image_tag item.f1.url(:small).to_s %>
+      <%= item.name %>
       <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-
 
 <div class="box1">
-    <div class="block">
-      
-      <h1>Produtos similares</h1>
-   
-      
-      <div class="content">
+  <div class="block">
 
-<%  @similarities.each do |item| %>
-  <%= link_to product_path(item) do  %>
-    <%= image_tag item.f1.url(:small).to_s %>
-    <%= item.name %>
-  <% end %>
-<% end %>
+    <h1>Produtos similares</h1>
 
+    <div class="content">
 
+      <%  @similarities.each do |item| %>
+      <%= link_to product_path(item) do  %>
+      <%= image_tag item.f1.url(:small).to_s %>
+      <%= item.name %>
+      <% end %>
+      <% end %>
 
-  </div>
-      </div>
     </div>
-
-
-
-
- <div class="box1">
-    <div class="block">
-      
-      <h1>Vitrines similares</h1>
-   
-      
-      <div class="content">
-
-        <%  @similarities_for_vitrine.each do |item| %>
-            <%= link_to product_path(item) do  %>
-                <%= image_tag item.f1.url(:small).to_s %>
-                <%= item.name %>
-            <% end %>
-        <% end %>
-
-
   </div>
-      </div>
+</div>
+
+<div class="box1">
+  <div class="block">
+
+    <h1>Vitrines similares</h1>
+
+    <div class="content">
+
+      <%  @similarities_for_vitrine.each do |item| %>
+      <%= link_to product_path(item) do  %>
+      <%= image_tag item.f1.url(:small).to_s %>
+      <%= item.name %>
+      <% end %>
+      <% end %>
+
     </div>
-   
+  </div>
+</div>

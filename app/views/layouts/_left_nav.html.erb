@@ -3,7 +3,7 @@
 
   <div class="left_nav_list">
 
-    <ul class="bala" >
+    <ul class="bala">
 
       <li>
         <% if new_messages? %>
@@ -15,74 +15,64 @@
         <% else %>
 
         <%=link_to( conversations_path, :id => "menu-messages", :title => "Mensagem",  :class =>"ttooltip",  :data => {:url => "/conversations/links"} ) do %>
-         
-          
-          <%= content_tag( :i,nil, :class => "message_icon")  %>
-    
-     
-      
-      <%end%>
+
+        <%= content_tag( :i,nil, :class => "message_icon")  %>
+
+        <%end%>
         <% end %>
       </li>
 
       <li>
-      <% if new_feedback? %>
+        <% if new_feedback? %>
         <%= content_tag(:span, "#{num_new_feedback}", :class => "alert") %>
-        <#%=link_to( awaiting_feedbacks_path, :id => "menu-messages", :title => "Avaliação", :class =>"ttooltip", :data => { :content => 'ajax'} ) do %>
-      
-        <#%=link_to( completed_feedbacks_path, :id => "menu-messages", :title => "Avaliação", :class =>"ttooltip", :data => { :content => 'ajax'} ) do %>
-       
+        <#%=link_to( awaiting_feedbacks_path, :id =>
+          "menu-messages", :title => "Avaliação", :class =>"ttooltip", :data => { :content => 'ajax'} ) do %>
 
-        <%=link_to( links_feedback_path, :id => "menu-messages", :title => "Avaliação", :class =>"ttooltip", :data => {:url => '/feebacks/links'} ) do %>
-      
-  
+          <#%=link_to( completed_feedbacks_path, :id =>
+            "menu-messages", :title => "Avaliação", :class =>"ttooltip", :data => { :content => 'ajax'} ) do %>
 
-                   
-          <%= content_tag( :i,nil, :class => "feedback_icon")  %>
-        <%end%>
-        <% else %>
+            <%=link_to( links_feedback_path, :id => "menu-messages", :title => "Avaliação", :class =>"ttooltip", :data => {:url => '/feebacks/links'} ) do %>
 
-               
-        <%=link_to( links_feedbacks_path, :id => "menu-messages", :title => "Avaliação", :class =>"ttooltip",  :data => {:url => '/feedbacks/links'} ) do %>
-      
+            <%= content_tag( :i,nil, :class => "feedback_icon")  %>
+            <%end%>
+            <% else %>
 
-          
-          <%= content_tag( :i,nil, :class => "feedback_icon")  %>
-        <%end%>
-        <% end %>
-      </li>
+            <%=link_to( links_feedbacks_path, :id => "menu-messages", :title => "Avaliação", :class =>"ttooltip",  :data => {:url => '/feedbacks/links'} ) do %>
 
+            <%= content_tag( :i,nil, :class => "feedback_icon")  %>
+            <%end%>
+            <% end %>
+          </li>
 
-<li>
+          <li>
 
+            <%=link_to(products_favorites_path, :title => "Favoritos", :class =>"ttooltip2") do %>
+            <%= content_tag( :i,nil, :class => "favorite_icon")  %>
+            <%end%>
+          </li>
+          <li >
 
-  <%=link_to(products_favorites_path, :title => "Favoritos", :class =>"ttooltip2") do %>
-  <%= content_tag( :i,nil, :class => "favorite_icon")  %>
-  <%end%>
-</li>
-      <li >
+            <% if current_vitrine %>
+            <%=link_to( edit_vitrine_path(current_vitrine), :title => "Vitrine", :class =>"ttooltip2" ) do %>
+            <%= content_tag( :i,nil, :class => "boutique_icon")  %>
+            <%end%>
+            <% else %>
+            <%=link_to new_vitrine_path,:title => "Criar Vitrine",  :class =>"ttooltip2" do %>
+            <%= content_tag( :i,nil, :class => "boutique_icon")  %>
+            <%end%>
+            <% end %>
 
-        <% if current_vitrine %>
-        <%=link_to( edit_vitrine_path(current_vitrine), :title => "Vitrine", :class =>"ttooltip2" ) do %>
-        <%= content_tag( :i,nil, :class => "boutique_icon")  %>
-        <%end%>
-        <% else %>
-        <%=link_to new_vitrine_path,:title => "Criar Vitrine",  :class =>"ttooltip2" do %>
-        <%= content_tag( :i,nil, :class => "boutique_icon")  %>
-        <%end%>
-        <% end %>
+          </li>
 
-      </li>
+        </ul>
 
-    </ul>
-
-  </div>
-</div>
-<% if current_vitrine %>
-<div id="sell_button">
-  <%= button_to "Vender", new_product_path,  :class => 'btn_orange btn_small', :method => "get"
+      </div>
+    </div>
+    <% if current_vitrine %>
+    <div id="sell_button">
+      <%= button_to "Vender", new_product_path,  :class => 'btn_orange btn_small', :method => "get"
   %>
-</div>
+    </div>
 
-<% end %>
-<!-- Fim -->
+    <% end %>
+    <!-- Fim -->
