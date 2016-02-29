@@ -11,7 +11,7 @@ gem 'searchkick',  github: "ankane/searchkick"
 
 
 #ADMIN
-gem "administrate", "~> 0.1.4"
+#gem "administrate", "~> 0.1.4"
 
 # MISC
 
