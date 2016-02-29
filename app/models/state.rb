@@ -8,13 +8,13 @@ class State < ActiveRecord::Base
 
   accepts_nested_attributes_for :users
 
-  after_commit :flush_cache
+#  after_commit :flush_cache
 
-  def self.cached_find(id)
-    Rails.cache.fetch([name, id], expires_in: 5.minutes) { find(id) }
-  end
+#  def self.cached_find(id)
+#    Rails.cache.fetch([name, id], expires_in: 5.minutes) { find(id) }
+#  end
 
-  def flush_cache
-    Rails.cache.delete([self.class.name, id])
-  end
+#  def flush_cache
+#    Rails.cache.delete([self.class.name, id])
+#  end
 end
