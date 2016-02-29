@@ -23,8 +23,6 @@ production:
   database: vitrineonline_production
   username: ubuntu
   password: 152567
-  encoding: unicode
-  host: 52.91.76.215
+  encoding: Unicode
+  host: localhost
   pool: 5
-
-  

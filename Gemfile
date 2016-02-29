@@ -10,7 +10,8 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'searchkick',  github: "ankane/searchkick"
 
 
-
+#ADMIN
+gem "administrate", "~> 0.1.4"
 
 # MISC
 
