@@ -2,7 +2,7 @@ class State < ActiveRecord::Base
   # attr_accessible :title, :body
   #
   #
-  attr_accessible  :name
+  attr_accessible  :code,:name
   has_many :cities
   has_many :users
 
