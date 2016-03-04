@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
               maximum: 1.megabytes.to_i
             }
 
-  validates_format_of :postal_code, with: /\A(\d{5})([-]{0,1})(\d{3})\Z/, allow_blank: true
+
 
   #after_commit :flush_cache
 
