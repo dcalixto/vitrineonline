@@ -82,7 +82,7 @@ gem 'validate_url'
 
 gem 'carrierwave','~> 0.9.0'
 gem 'mini_magick'
-gem 'fog'
+#gem 'fog'
 
 # RATING PLUGIN
 

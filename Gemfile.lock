@@ -520,7 +520,6 @@ DEPENDENCIES
   dalli-elasticache
   delayed_job_active_record
   dynamic_selectable!
-  fog
   formtastic
   friendly_id
   goldiloader
