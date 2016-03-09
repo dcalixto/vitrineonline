@@ -5688,7 +5688,8 @@ g.categories.create(:name => "Roupas Equipamentos")
 
 
 
-m = Category.where(:name => "Roupas")
+
+m = Category.find_by_name("Roupas")
 m.subcategories.create(:name => "Camisas" )
 m.subcategories.create(:name => "Bermudas e Shorts" )
 m.subcategories.create(:name => "Calças")
@@ -5698,7 +5699,7 @@ m.subcategories.create(:name => "Regatas" )
 m.subcategories.create(:name => "Casacos e Jaquetas" )
 
 
-m = Category.where(:name => "Calçados")
+m = Category.find_by_name("Calçados")
 m.subcategories.create(:name => "Tênis" )
 m.subcategories.create(:name => "Botas" )
 m.subcategories.create(:name => "Sneakers")
@@ -5708,7 +5709,7 @@ m.subcategories.create(:name => "Sapatos" )
 m.subcategories.create(:name => "Sandálias e Chinelos" )
 
 
-m = Category.where(:name => "Acessórios")
+m = Category.find_by_name("Acessórios")
 m.subcategories.create(:name => "Alargadores" )
 m.subcategories.create(:name => "Anéis" )
 m.subcategories.create(:name => "Brincos")
@@ -5728,13 +5729,13 @@ m.subcategories.create(:name => "Pulseiras" )
 m.subcategories.create(:name => "Tornozeleiras" )
 
 
-m = Category.where(:name => "Roupas Íntimas")
+m = Category.find_by_name("Roupas Íntimas")
 m.subcategories.create(:name => "Cuecas" )
 m.subcategories.create(:name => "Meias" )
 m.subcategories.create(:name => "Pijamas")
 m.subcategories.create(:name => "Roupões" )
 
-m = Category.where(:name => "Roupas Social")
+m = Category.find_by_name("Roupas Social")
 m.subcategories.create(:name => "Camisas" )
 m.subcategories.create(:name => "Ternos" )
 m.subcategories.create(:name => "Gravatas")
@@ -5742,14 +5743,14 @@ m.subcategories.create(:name => "Calças" )
 m.subcategories.create(:name => "Sapatos")
 
 
-m = Category.where(:name => "Roupas Esportivas")
+m = Category.find_by_name("Roupas Esportivas")
 m.subcategories.create(:name => "Camisas" )
 m.subcategories.create(:name => "Bermudas" )
 m.subcategories.create(:name => "Casacos e Jaquetas")
 m.subcategories.create(:name => "Bolsas e Mochilas" )
 m.subcategories.create(:name => "Leggings" )
 
-m = Category.where(:name => "Equipamentos")
+m = Category.find_by_name("Equipamentos")
 m.subcategories.create(:name => "Capacetes" )
 m.subcategories.create(:name => "Neoprenes" )
 m.subcategories.create(:name => "Decks")
@@ -5768,16 +5769,6 @@ m.subcategories.create(:name => "Cotoveleiras" )
 
 
 
-
-
-
-
-
-
-
-
-
-
 g = Gender.create(:gender => 'Feminino')
 g.categories.create(:name => "Roupas")
 g.categories.create(:name => "Calçados")
@@ -5790,7 +5781,7 @@ g.categories.create(:name => "Equipamentos")
 
 
 
-f = Category.where(:name => "Roupas")
+f = Category.find_by_name("Roupas")
 f.subcategories.create(:name => "Camisas" )
 f.subcategories.create(:name => "Bermudas e Shorts" )
 f.subcategories.create(:name => "Calças")
@@ -5800,7 +5791,7 @@ f.subcategories.create(:name => "Regatas" )
 f.subcategories.create(:name => "Casacos e Jaquetas" )
 
 
-f = Category.where(:name => "Calçados")
+f = Category.find_by_name("Calçados")
 f.subcategories.create(:name => "Tênis" )
 f.subcategories.create(:name => "Botas" )
 f.subcategories.create(:name => "Sneakers")
@@ -5810,7 +5801,7 @@ f.subcategories.create(:name => "Sapatos" )
 f.subcategories.create(:name => "Sandálias e Chinelos" )
 
 
-f = Category.where(:name => "Acessórios")
+f = Category.find_by_name("Acessórios")
 f.subcategories.create(:name => "Alargadores" )
 f.subcategories.create(:name => "Anéis" )
 f.subcategories.create(:name => "Brincos")
@@ -5830,13 +5821,13 @@ f.subcategories.create(:name => "Pulseiras" )
 f.subcategories.create(:name => "Tornozeleiras" )
 
 
-f = Category.where(:name => "Roupas Íntimas")
+f = Category.find_by_name("Roupas Íntimas")
 f.subcategories.create(:name => "Cuecas" )
 f.subcategories.create(:name => "Meias" )
 f.subcategories.create(:name => "Pijamas")
 f.subcategories.create(:name => "Roupões" )
 
-f = Category.where(:name => "Roupas Social")
+f = Category.find_by_name("Roupas Social")
 f.subcategories.create(:name => "Camisas" )
 f.subcategories.create(:name => "Ternos" )
 f.subcategories.create(:name => "Gravatas")
@@ -5844,14 +5835,14 @@ f.subcategories.create(:name => "Calças" )
 f.subcategories.create(:name => "Sapatos")
 
 
-f = Category.where(:name => "Roupas Esportivas")
+f = Category.find_by_name("Roupas Esportivas")
 f.subcategories.create(:name => "Camisas" )
 f.subcategories.create(:name => "Bermudas" )
 f.subcategories.create(:name => "Casacos e Jaquetas")
 f.subcategories.create(:name => "Bolsas e Mochilas" )
 f.subcategories.create(:name => "Leggings" )
 
-f = Category.where(:name => "Equipamentos")
+f = Category.find_by_name("Equipamentos")
 f.subcategories.create(:name => "Capacetes" )
 f.subcategories.create(:name => "Neoprenes" )
 f.subcategories.create(:name => "Decks")
@@ -5879,7 +5870,7 @@ g.categories.create(:name => "Roupas Social")
 g.categories.create(:name => "Roupas Esportivas")
 
 
-im = Category.where(:name => "Roupas")
+im = Category.find_by_name("Roupas")
 im.subcategories.create(:name => "Camisas" )
 im.subcategories.create(:name => "Bermudas e Shorts" )
 im.subcategories.create(:name => "Calças")
@@ -5889,7 +5880,7 @@ im.subcategories.create(:name => "Regatas" )
 im.subcategories.create(:name => "Casacos e Jaquetas" )
 
 
-im = Category.where(:name => "Calçados")
+im = Category.find_by_name( "Calçados")
 im.subcategories.create(:name => "Tênis" )
 im.subcategories.create(:name => "Botas" )
 im.subcategories.create(:name => "Sneakers")
@@ -5899,7 +5890,7 @@ im.subcategories.create(:name => "Sapatos" )
 im.subcategories.create(:name => "Sandálias e Chinelos" )
 
 
-im = Category.where(:name => "Acessórios")
+im = Category.find_by_name("Acessórios")
 im.subcategories.create(:name => "Alargadores" )
 im.subcategories.create(:name => "Anéis" )
 im.subcategories.create(:name => "Brincos")
@@ -5919,13 +5910,13 @@ im.subcategories.create(:name => "Pulseiras" )
 im.subcategories.create(:name => "Tornozeleiras" )
 
 
-im = Category.where(:name => "Roupas Íntimas")
+im = Category.find_by_name( "Roupas Íntimas")
 im.subcategories.create(:name => "Cuecas" )
 im.subcategories.create(:name => "Meias" )
 im.subcategories.create(:name => "Pijamas")
 im.subcategories.create(:name => "Roupões" )
 
-im = Category.where(:name => "Roupas Social")
+im = Category.find_by_name("Roupas Social")
 im.subcategories.create(:name => "Camisas" )
 im.subcategories.create(:name => "Ternos" )
 im.subcategories.create(:name => "Gravatas")
@@ -5933,14 +5924,14 @@ im.subcategories.create(:name => "Calças" )
 im.subcategories.create(:name => "Sapatos")
 
 
-im = Category.where(:name => "Roupas Esportivas")
+im = Category.find_by_name("Roupas Esportivas")
 im.subcategories.create(:name => "Camisas" )
 im.subcategories.create(:name => "Bermudas" )
 im.subcategories.create(:name => "Casacos e Jaquetas")
 im.subcategories.create(:name => "Bolsas e Mochilas" )
 im.subcategories.create(:name => "Leggings" )
 
-im = Category.where(:name => "Equipamentos")
+im = Category.find_by_name( "Equipamentos")
 im.subcategories.create(:name => "Capacetes" )
 im.subcategories.create(:name => "Neoprenes" )
 im.subcategories.create(:name => "Decks")
@@ -5969,7 +5960,7 @@ g.categories.create(:name => "Roupas Esportivas")
 
 
 
-imf = Category.where(:name => "Roupas")
+imf = Category.find_by_name( "Roupas")
 imf.subcategories.create(:name => "Camisas" )
 imf.subcategories.create(:name => "Bermudas e Shorts" )
 imf.subcategories.create(:name => "Calças")
@@ -5979,7 +5970,7 @@ imf.subcategories.create(:name => "Regatas" )
 imf.subcategories.create(:name => "Casacos e Jaquetas" )
 
 
-imf = Category.where(:name => "Calçados")
+imf = Category.find_by_name( "Calçados")
 imf.subcategories.create(:name => "Tênis" )
 imf.subcategories.create(:name => "Botas" )
 imf.subcategories.create(:name => "Sneakers")
@@ -5989,7 +5980,7 @@ imf.subcategories.create(:name => "Sapatos" )
 imf.subcategories.create(:name => "Sandálias e Chinelos" )
 
 
-imf = Category.where(:name => "Acessórios")
+imf = Category.find_by_name( "Acessórios")
 imf.subcategories.create(:name => "Alargadores" )
 imf.subcategories.create(:name => "Anéis" )
 imf.subcategories.create(:name => "Brincos")
@@ -6009,13 +6000,13 @@ imf.subcategories.create(:name => "Pulseiras" )
 imf.subcategories.create(:name => "Tornozeleiras" )
 
 
-imf = Category.where(:name => "Roupas Íntimas")
+imf = Category.find_by_name( "Roupas Íntimas")
 imf.subcategories.create(:name => "Cuecas" )
 imf.subcategories.create(:name => "Meias" )
 imf.subcategories.create(:name => "Pijamas")
 imf.subcategories.create(:name => "Roupões" )
 
-imf = Category.where(:name => "Roupas Social")
+imf = Category.find_by_name( "Roupas Social")
 imf.subcategories.create(:name => "Camisas" )
 imf.subcategories.create(:name => "Ternos" )
 imf.subcategories.create(:name => "Gravatas")
@@ -6023,14 +6014,14 @@ imf.subcategories.create(:name => "Calças" )
 imf.subcategories.create(:name => "Sapatos")
 
 
-imf = Category.where(:name => "Roupas Esportivas")
+imf = Category.find_by_name("Roupas Esportivas")
 imf.subcategories.create(:name => "Camisas" )
 imf.subcategories.create(:name => "Bermudas" )
 imf.subcategories.create(:name => "Casacos e Jaquetas")
 imf.subcategories.create(:name => "Bolsas e Mochilas" )
 imf.subcategories.create(:name => "Leggings" )
 
-imf = Category.where(:name => "Equipamentos")
+imf = Category.find_by_name("Equipamentos")
 imf.subcategories.create(:name => "Capacetes" )
 imf.subcategories.create(:name => "Neoprenes" )
 imf.subcategories.create(:name => "Decks")

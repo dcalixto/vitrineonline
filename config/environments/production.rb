@@ -11,11 +11,8 @@ Vitrineonline::Application.configure do
   config.assets.compile = true
   # Compress JavaScripts and CSS
   config.assets.compress = true
+config.cache_store = :dalli_store
 
-  config.action_controller.asset_host = 'http://vitrineonline.s3.amazonaws.com'
-  #endpoint    = 'vitrineonline.kdngig.cfg.use1.cache.amazonaws.com:11211'
-#  elasticache = Dalli::ElastiCache.new(endpoint)
-  #config.cache_store = :dalli_store, elasticache.servers, { expires_in: 1.day, compress: true }
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = false

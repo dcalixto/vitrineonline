@@ -4,11 +4,11 @@ class Gender < ActiveRecord::Base
 
   has_many :categories
   has_many :subcategories, through: :categories
-  has_many :products 
+  has_many :products
   accepts_nested_attributes_for :categories
   accepts_nested_attributes_for :products
   accepts_nested_attributes_for :subcategories
-  attr_accessible :gender #:categories_attributes, :items_attributes,
+  attr_accessible :gender, :categories_attributes, :subcategories_attributes
 
 
 end

@@ -13,7 +13,7 @@ require 'mina/newrelic'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, '52.91.76.215'
+set :domain, '52.87.228.48'
 set :deploy_to, '/home/ubuntu/vitrineonline'
 set :user, 'ubuntu' # Optional
 set :identity_file, '~/.ec2/gsg-keypair'
