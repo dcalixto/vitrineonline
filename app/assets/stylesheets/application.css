@@ -26,7 +26,7 @@
 *= require order
 *= require tables
 *= require footer
-*= require tipsy
+*= require custom_popover
 *= require header
 *= require icons
 *= require product
@@ -39,7 +39,6 @@
 *= require details
 *= require jquery.fancybox
 *= require jquery.raty
-*= require responsiveslides
 *= require select
 *= require token-input
 *= require jquery.webui-popover
@@ -71,7 +70,3 @@
 .error p, .error h1, .error h2 {
   margin-top: 10px
 }
-
-
-
-

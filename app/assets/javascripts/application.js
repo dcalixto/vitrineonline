@@ -6,14 +6,14 @@
 //= require FileAPI.min
 //= require morris.min
 //= require raphael.min
-//= require tipsy
+
 //= require jquery.fancybox.pack
 //= require jquery.raty
 //= require typeahead
 //= require jquery.tokeninput
 //= require jquery.webui-popover
 //= require lightslider.min
-//= require jquery.chatbox
+
 //= require jquery-dynamic-selectable
 //= require select2
 //= require_tree .
@@ -85,17 +85,6 @@ $(".content-slider-vertical").lightSlider({
 
 
 
-$(document).ready(function() {
-  $('.balao li a').tipsy({
-    gravity: 'n'
-  });
-});
-
-
-
-
-
-
 // PRODUCT IMAGE THUMBNAILS, GALLERY AND ZOOM
 $(document).ready(function() {
   $('.thumbnail').on("click", function(e) {
@@ -130,19 +119,7 @@ $(document).ready(function() {
   }
 });
 
-// META-TAGS
-//$(document).ready(function() {
 
-  //$('#tags').tagsInput({
-    //height: '100px',
-    //width: '60%',
-    //interactive: true,
-    //defaultText: 'Adicione',
-    //minChars: 0,
-    //maxChars: 500
-
-  //});
-//});
 
 
 // FLASH NOTICE ANIMATION
@@ -306,7 +283,7 @@ $(document).ready(function() {
 });
 
 
-
+// USER-SELECT-CITY
 $(function() {
   return $(document).on('change', '#states_select', function(evt) {
     return $.ajax('update_city_select', {
@@ -327,7 +304,7 @@ $(function() {
 });
 
 
-
+// PAGINTAION AND RANSACK
 $(function() {
   $(".sort_links a, #content .digg_pagination a").live("click", function() {
     $.getScript(this.href);
@@ -340,13 +317,14 @@ $(function() {
 });
 
 
-
+// SEARCH AUTOCOMPLETE
 $("#query").typeahead({
   name: "product",
   remote: "/products/autocomplete?query=%QUERY"
 });
 
 
+// TOKEN INPUT TAGS
 
 $(function() {
   $("#product_tags").tokenInput("/products/tags.json", {
@@ -357,20 +335,3 @@ $(function() {
     animateDropdown: false
   });
 });
-
-
-
-
-
-
- $(document).ready(function() {
-       var counter = 1,
-        offset = 0;
-        chatbox_manager = new ChatboxManager();
-       $('#addChat').on('click', function(e) {
-         var id = 'chat_' + counter.toString();
-         var title = 'User ' + counter.toString();
-         chatbox_manager.addBox(id, title);
-         counter ++;
-       });
-    });
