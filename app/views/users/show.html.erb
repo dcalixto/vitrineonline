@@ -10,12 +10,12 @@
     <%=link_to(image_tag(@user.avatar.url(:thumb).to_s), user_path(@user)) %>
     <ul class="list">
       <li>
-       
+
           <%=link_to user_path(@user) do %>
           <%=@user.name %>
           <%=@user.surname %>
           <% end %>
-      
+
       </li>
       <% if @user.city%>
       <li>
@@ -31,20 +31,23 @@
         <% if @user.feedbacks %>
 
         <%=link_to  feedbacks_user_path(:id=>@user.id)  do %>
-        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>">
-          <span class="feedCounter"><%=@total_from_sellers %> Avaliações</span>
-        </div>
+        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>">  </div>
+              <div><%=@total_from_sellers %></div>
 <% end %>
 <% end %>
       </li>
 <% if @user.vitrine %>
-      <li><span>Vitrine:<%=link_to @user.vitrine.name, vitrine_path(@user.vitrine) %></span>
+      <li><span>Vitrine <%=link_to @user.vitrine.name, vitrine_path(@user.vitrine) %></span>
       <%end %>
+      <li>
+      <%= social_share_button_tag(truncate(@user.name, :length => 20), :url => url_for(:action => :show, :id => @user.id, :only_path => false))  %>
+    </li>
+
     </ul>
 
  </div>
 
-    
+
 </div>
 </div>
 

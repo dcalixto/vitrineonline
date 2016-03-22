@@ -1,5 +1,5 @@
 # encoding: utf-8
-#require 'elasticsearch/persistence/model'
+
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
@@ -8,18 +8,12 @@ class ProductsController < ApplicationController
     @products = Product.aggs_search(params)
   end
 
-
-
-
   def new
     @product = Product.new
     @genders = Gender.all
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
-
   end
-
-
 
   def upvote
     @product = Product.find(params[:id])
@@ -40,11 +34,8 @@ class ProductsController < ApplicationController
     redirect_to :back
   end
 
-
-
-
   def tags
-    @products = Product.tagged_with(params[:tag]).where(:vitrine_id => params[:vitrine]).paginate(per_page: 20, page: params[:page])
+    @products = Product.tagged_with(params[:tag]).where(vitrine_id: params[:vitrine]).paginate(per_page: 20, page: params[:page])
   end
 
   def edit
@@ -56,7 +47,7 @@ class ProductsController < ApplicationController
     if @product.update_attributes(params[:product])
       expire_fragment('product_show', 'product')
       redirect_to(action: :show, id: @product, only_path: true)
-      flash[:success] = "#{(@product.name)} atualizado"
+      flash[:success] = "#{@product.name} atualizado"
     else
       render :edit
     end
@@ -68,7 +59,7 @@ class ProductsController < ApplicationController
     @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
     @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
-  #   @colors_for_dropdown = @product.colors.product(:name).collect{ |co| [co.name, co.id]}
+    #   @colors_for_dropdown = @product.colors.product(:name).collect{ |co| [co.name, co.id]}
     @colors_for_dropdown = @product.colors.collect { |co| [co.name, co.id] }
     @sizes_for_dropdown = @product.sizes.collect { |s| [s.size, s.id] }
 
@@ -84,7 +75,7 @@ class ProductsController < ApplicationController
     @similarities = Product.unscoped.for_ids_with_order(ids)
 
     # similarities for current product in product's vitrine (same ids but filter by vitrine)
-    @similarities_for_vitrine = Product.unscoped.where(:vitrine_id => @product.vitrine_id).for_ids_with_order(ids)
+    @similarities_for_vitrine = Product.unscoped.where(vitrine_id: @product.vitrine_id).for_ids_with_order(ids)
   end
 
   def feedbacks
@@ -96,13 +87,11 @@ class ProductsController < ApplicationController
 
     unless @product.nil?
 
-        @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
-  @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+      @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
+      @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 
       @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
     end
-
-
   end
 
   # def create
@@ -118,9 +107,9 @@ class ProductsController < ApplicationController
   def create
     @product = current_vitrine.products.build(params[:product])
     if @product.save
-      #redirect_to wizard_path(steps.first, product_id: @product.id)
+      # redirect_to wizard_path(steps.first, product_id: @product.id)
 
- redirect_to product_step_path(@product, Product.form_steps.first)
+      redirect_to product_step_path(@product, Product.form_steps.first)
     else
       render :new
         end
@@ -131,7 +120,7 @@ class ProductsController < ApplicationController
 
     if @product.destroy
       expire_fragment('product')
-      flash[:success] = "#{(@product.name)} removido"
+      flash[:success] = "#{@product.name} removido"
     end
   end
 
@@ -139,21 +128,12 @@ class ProductsController < ApplicationController
     render json: Product.search(params[:query], fields: [{ name: :text_start }], limit: 10).map(&:name)
     end
 
-
-
-
-
-
-
-
-
   protected
- def sold_info
-       @product_data = ProductData.find(params[:id])
+
+  def sold_info
+    @product_data = ProductData.find(params[:id])
     @last_transaction = Transaction.joins(:product).where('products.product_id = ?', @product_data.id).product('transactions.created_at desc').first
-  end
-
-
+   end
 
   def log_impression
     begin
@@ -173,8 +153,6 @@ class ProductsController < ApplicationController
       else
         @product.impressions.create(ip_address: ip_addr)
       end
-    else
-    #  redirect_to action: :sold_info
     end
   end
 

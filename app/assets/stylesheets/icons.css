@@ -1,4 +1,280 @@
-/* glue: 0.11.1 hash: a070bc4bf1 */
+
+/* glue: 0.11.1 hash: 32b880df0c */
+        .sprite-icons-paypal_protect,
+.sprite-icons-logo_big,
+.sprite-icons-paypal-icon,
+.sprite-icons-logo,
+.sprite-icons-paypal,
+.sprite-icons-comodo_secure_100x85_white,
+.sprite-icons-logo_small,
+.sprite-icons-shipping,
+.sprite-icons-paypal_logo,
+.sprite-icons-1457991940_pinterest_circle,
+.sprite-icons-1457991929_twitter_circle,
+.sprite-icons-1457991913_youtube_circle,
+.sprite-icons-1457991892_facebook_circle,
+.sprite-icons-1457991976_instagram_circle_color,
+.sprite-icons-boutique,
+.sprite-icons-sacola,
+.sprite-icons-message,
+.sprite-icons-favoritos,
+.sprite-icons-feedback,
+.sprite-icons-lupa,
+.sprite-icons-star-on,
+.sprite-icons-star-off,
+.sprite-icons-star-half,
+.sprite-icons-criar-check,
+.sprite-icons-ir-loja {
+            background-image: url('icons.png');
+            background-repeat: no-repeat;
+        }
+
+        .sprite-icons-paypal_protect {
+            background-position: 0 0;
+            width: 280px;
+            height: 50px;
+        }
+
+        .sprite-icons-logo_big {
+            background-position: 0 -50px;
+            width: 266px;
+            height: 42px;
+        }
+
+        .sprite-icons-paypal-icon {
+            background-position: 0 -92px;
+            width: 191px;
+            height: 29px;
+        }
+
+        .sprite-icons-logo {
+            background-position: 0 -121px;
+            width: 169px;
+            height: 26px;
+        }
+
+        .sprite-icons-paypal {
+            background-position: 0 -147px;
+            width: 150px;
+            height: 41px;
+        }
+
+        .sprite-icons-comodo_secure_100x85_white {
+            background-position: 0 -188px;
+            width: 100px;
+            height: 85px;
+        }
+
+        .sprite-icons-logo_small {
+            background-position: -169px -121px;
+            width: 94px;
+            height: 16px;
+        }
+
+        .sprite-icons-shipping {
+            background-position: -100px -188px;
+            width: 82px;
+            height: 53px;
+        }
+
+        .sprite-icons-paypal_logo {
+            background-position: -191px -92px;
+            width: 65px;
+            height: 23px;
+        }
+
+        .sprite-icons-1457991940_pinterest_circle {
+            background-position: -150px -147px;
+            width: 32px;
+            height: 32px;
+        }
+
+        .sprite-icons-1457991929_twitter_circle {
+            background-position: -182px -147px;
+            width: 32px;
+            height: 32px;
+        }
+
+        .sprite-icons-1457991913_youtube_circle {
+            background-position: -214px -147px;
+            width: 32px;
+            height: 32px;
+        }
+
+        .sprite-icons-1457991892_facebook_circle {
+            background-position: -246px -147px;
+            width: 32px;
+            height: 32px;
+        }
+
+        .sprite-icons-1457991976_instagram_circle_color {
+            background-position: -182px -188px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .sprite-icons-boutique {
+            background-position: -212px -188px;
+            width: 25px;
+            height: 20px;
+        }
+
+        .sprite-icons-sacola {
+            background-position: -256px -92px;
+            width: 24px;
+            height: 19px;
+        }
+
+        .sprite-icons-message {
+            background-position: -237px -188px;
+            width: 23px;
+            height: 20px;
+        }
+
+        .sprite-icons-favoritos {
+            background-position: -182px -218px;
+            width: 23px;
+            height: 20px;
+        }
+
+        .sprite-icons-feedback {
+            background-position: -100px -241px;
+            width: 22px;
+            height: 22px;
+        }
+
+        .sprite-icons-lupa {
+            background-position: -122px -241px;
+            width: 21px;
+            height: 21px;
+        }
+
+        .sprite-icons-star-on {
+            background-position: -263px -121px;
+            width: 16px;
+            height: 15px;
+        }
+
+        .sprite-icons-star-off {
+            background-position: -260px -188px;
+            width: 16px;
+            height: 15px;
+        }
+
+        .sprite-icons-star-half {
+            background-position: -205px -218px;
+            width: 16px;
+            height: 15px;
+        }
+
+        .sprite-icons-criar-check {
+            background-position: -221px -218px;
+            width: 16px;
+            height: 11px;
+        }
+
+        .sprite-icons-ir-loja {
+            background-position: -143px -241px;
+            width: 15px;
+            height: 14px;
+        }
+
+
+
+
+        .message_icon {
+          background-image: url('icons.png');
+
+
+          background-position: -237px -188px;
+          width: 23px;
+          height: 20px;
+          display: inline-block;
+        }
+
+
+        .feedback_icon {
+         background-image: url('icons.png');
+
+         background-position: -100px -241px;
+         width: 22px;
+         height: 22px;
+
+          display: inline-block;
+        }
+
+        .boutique_icon {
+            background-image: url('icons.png');
+
+            background-position: -212px -188px;
+            width: 25px;
+            height: 20px;
+          display: inline-block;
+        }
+
+
+         .favorite_icon {
+         background-image: url('icons.png');
+
+         background-position: -182px -218px;
+         width: 23px;
+         height: 20px;
+        display: inline-block;
+
+          }
+
+
+        .go_boutique_icon {
+          background-image: url('icons.png');
+
+          background-position: -150px -173px;
+                    width: 15px;
+                    height: 14px;
+          display: inline-block;
+        }
+
+
+
+
+
+        @media screen and (-webkit-min-device-pixel-ratio: 1.0), screen and (min--moz-device-pixel-ratio: 1.0), screen and (-o-min-device-pixel-ratio: 100/100), screen and (min-device-pixel-ratio: 1.0), screen and (min-resolution: 1.0dppx) {
+            .sprite-icons-paypal_protect,
+    .sprite-icons-logo_big,
+    .sprite-icons-paypal-icon,
+    .sprite-icons-logo,
+    .sprite-icons-paypal,
+    .sprite-icons-comodo_secure_100x85_white,
+    .sprite-icons-logo_small,
+    .sprite-icons-shipping,
+    .sprite-icons-paypal_logo,
+    .sprite-icons-1457991940_pinterest_circle,
+    .sprite-icons-1457991929_twitter_circle,
+    .sprite-icons-1457991913_youtube_circle,
+    .sprite-icons-1457991892_facebook_circle,
+    .sprite-icons-1457991976_instagram_circle_color,
+    .sprite-icons-boutique,
+    .sprite-icons-sacola,
+    .sprite-icons-message,
+    .sprite-icons-favoritos,
+    .sprite-icons-feedback,
+    .sprite-icons-lupa,
+    .sprite-icons-star-on,
+    .sprite-icons-star-off,
+    .sprite-icons-star-half,
+    .sprite-icons-criar-check,
+    .sprite-icons-ir-loja {
+                background-image: url('icons.png');
+                -webkit-background-size: 280px 273px;
+                -moz-background-size: 280px 273px;
+                background-size: 280px 273px;
+            }
+        }
+
+
+
+
+
+
 .sprite-icons-paypal_protect,
 .sprite-icons-logo_big,
 .sprite-icons-paypal-icon,
@@ -139,56 +415,6 @@
                 background-size: 280px 241px;
             }
         }
-.message_icon {
-  background-image: url('icons.png');
-
-
-  background-position: -150px -147px;
-            width: 30px;
-            height: 26px;
-  display: inline-block;
-}
-
-
-.feedback_icon {
- background-image: url('icons.png');
-
-   background-position: -82px -188px;
-            width: 29px;
-            height: 28px;
-
-  display: inline-block;
-}
-
-.boutique_icon {
-    background-image: url('icons.png');
-
- background-position: -180px -147px;
-            width: 30px;
-            height: 25px;
-  display: inline-block;
-}
-
-
- .favorite_icon {
- background-image: url('icons.png');
-
-  background-position: -111px -188px;
-            width: 29px;
-            height: 26px;
-display: inline-block;
-
-  }
-
-
-.go_boutique_icon {
-  background-image: url('icons.png');
-
-  background-position: -150px -173px;
-            width: 15px;
-            height: 14px;
-  display: inline-block;
-}
 
 
 .paypal_logo {

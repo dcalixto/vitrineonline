@@ -25,15 +25,19 @@
 <div class="box8">
   <div class"content">
 
-    <ul>
-      <li>
+
+      <div>
         <h1 id="item_name"><%= @product.name %></h1>
-      </li>
+      </div>
+      <div>Por
+        <%=link_to @product.vitrine.name, vitrine_path(@product.vitrine),  :title => "Nome" %>
+      </div>
+
 
       <!-- Fim-->
 
       <!--Descrição   -->
-
+    <ul>
       <% if @product.vitrine.feedbacks %>
 
       <%=link_to  feedbacks_product_path(:id=> @product.id)  do %>
@@ -55,6 +59,8 @@
         <span>Preço:
           <%= number_to_currency(@product.price, :unit => "R$") %></span>
       </li>
+
+
       <li>
 
         <span>Disponíveis:
@@ -62,11 +68,7 @@
         </span>
       </li>
 
-      <li>
 
-        <span>Desconto:<%= number_to_currency(@product.price, :unit => "R$") %>
-        </span>
-      </li>
 
       <% @product.vitrine.policy.shippings.each do |shipping| %>
       <li>
@@ -75,15 +77,14 @@
       </li>
       <% end %>
 
-      <li>
-        <span class="span">ID</span>
-        <b class="span">
-          #<%= @product.id %></b>
-      </li>
-      <li>Por
-        <%=link_to @product.vitrine.user.name, vitrine_path(@product.vitrine),  :title => "Nome" %></li>
 
+
+          <span class="span">ID</span>
+          <b class="span">
+            #<%= @product.id %></b>
+        </li>
     </ul>
+
 
   </div>
 
@@ -146,6 +147,8 @@
           </li>
           <% end %>
         </ul>
+        <%= social_share_button_tag(truncate(@product.vitrine.name, :length => 20), :url => url_for(:action => :show, :id => @product.vitrine.id, :only_path => false))  %>
+
 
       </div>
 
@@ -193,32 +196,70 @@
 <%end %>
 
 <div class="box1">
-  <div class="margin_top">
-    <h1>Confira também</h1>
+  <div class="block">
+    <h2>Clientes que viram este produto também viram</h2>
 
-    <div class="subcontent_top">
 
       <ul class="content-slider">
 
-        <% @product.vitrine.products.each do |product| %>
-        <li><%= link_to(image_tag(product.f1.url(:thumb).to_s), product_url(product.id)) %></li>
-        <% end %>.
-      </ul>
+            <% @suggestions.each do |item| %>
+              <li>
+            <%= link_to product_path(item) do  %>
+            <%= image_tag item.f1.url(:thumb).to_s %>
+            <%= item.name %>
+              <%= item.price %>
+            <% end %>
+            </li>
+            <% end %>
+  </ul>
 
-    </div>
+
+
+
   </div>
 
 </div>
 
-<div class="box3">
+<div class="box1">
+  <div class="block">
+
+  <h2>Clientes que comprarm este produto também compraram</h2>
+
+  <ul class="content-slider">
+
+      <%  @similarities.each do |item| %>
+        <li>
+      <%= link_to product_path(item) do  %>
+      <%= image_tag item.f1.url(:thumb).to_s %>
+      <%= item.name %>
+
+        <%= item.price %>
+      <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+
+  </div>
+</div>
+
+
+
+<div class="box1">
 
   <div class="block">
-    <h1>Informações</h1>
-    <div class="content">
-      <h4>Especificações</h4>
+      <div class="content">
+            <div class="subcontent_top">
+    <h2>Descrições do Produto</h2>
+    <p><% if @product.detail.present? %>
+      <%= markdown(@product.detail) %>
+      <% end %></p>
+    </div>
 
-      <div class="subcontent_top">
 
+
+      <div class="subcontent">
+<h2>Detalhes do produto</h2>
         <div class="left_info">
           <ul>
 
@@ -241,18 +282,11 @@
 
       </div>
 
-      <div class="subcontent">
-        <h4>Mais Informações</h4>
 
-        <p><% if @product.detail.present? %>
-          <%= markdown(@product.detail) %>
-          <% end %></p>
-
-      </div>
 
       <div class="subcontent">
 
-        <h4>Forma de Pagamento</h4>
+        <h2>Formas de Pagamento</h2>
         <div class="content">
           <%= link_to  "https://www.paypal.com/br"  do %>
 
@@ -266,7 +300,7 @@
 
         <div class="subcontent">
 
-          <h4>Envio</h4>
+          <h2>Formas de Envio</h2>
 
           <ul>
 
@@ -285,7 +319,7 @@
 
         <div class="subcontent">
 
-          <h4>Garantias</h4>
+          <h2>Garantias do Vendedor </h2>
 
           <p><%= markdown(@product.vitrine.policy.guarantee) %></p>
           <% unless @product.vitrine.policy.shippings.blank? %>
@@ -295,7 +329,7 @@
 
         <div class="subcontent">
 
-          <h4>Avaliações</h4>
+          <h2>Avaliação dos clientes</h2>
 
           <table class="block_search">
             <tr>
@@ -326,7 +360,7 @@
         <div class="subcontent">
           <div class="block_message">
 
-            <h4>Dúvidas?</h4>
+            <h2>Entrar em contato com o vendedor</h2>
 
             <% @conversation = Conversation.new %>
 
@@ -353,52 +387,25 @@
 
 </div>
 
-<div class="box11">
-  <div class="margin_top">
-    <h1>Sugestoes</h1>
-    <div class="subcontent_top">
-      <% @suggestions.each do |item| %>
-      <%= link_to product_path(item) do  %>
-      <%= image_tag item.f1.url(:small).to_s %>
-      <%= item.name %>
-      <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
+
+
 
 <div class="box1">
   <div class="block">
 
-    <h1>Produtos similares</h1>
 
-    <div class="content">
+  <h2>Produtos similares a esta vitrine</h2>
 
-      <%  @similarities.each do |item| %>
-      <%= link_to product_path(item) do  %>
-      <%= image_tag item.f1.url(:small).to_s %>
-      <%= item.name %>
-      <% end %>
-      <% end %>
-
-    </div>
-  </div>
-</div>
-
-<div class="box1">
-  <div class="block">
-
-    <h1>Vitrines similares</h1>
-
-    <div class="content">
-
+  <ul class="content-slider">
       <%  @similarities_for_vitrine.each do |item| %>
-      <%= link_to product_path(item) do  %>
+
+    <li>  <%= link_to product_path(item) do  %>
       <%= image_tag item.f1.url(:small).to_s %>
       <%= item.name %>
+      <%= item.price %>
       <% end %>
+    </li>
       <% end %>
-
-    </div>
+</ul>
   </div>
 </div>

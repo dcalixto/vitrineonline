@@ -1,0 +1,43 @@
+<div class="list_view <%= vitrine.id %>">
+
+  <%= link_to(image_tag(vitrine.logo.url(:thumb).to_s), vitrine_url(vitrine.id), :class=>"thumbnail") %>
+
+  <div class="list_details">
+    <ul>
+
+      <li>
+        <h3 >
+          <%= link_to  vitrine_path(vitrine.id)  do %>
+          <%= vitrine.name %>
+          <% end%>
+        </h3>
+      </li>
+
+      <li>
+
+        <% if vitrine.feedbacks %>
+
+        <div class="feedback_box">
+          <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+          <%=@total_from_buyers %>
+
+        </div>
+        <% end %>
+      </li>
+
+      <li class="lista-time">
+
+        <%= timeago_tag(vitrine.created_at, :nojs => true, :date_only => false)%>
+      </li>
+      <li>
+        Votos
+        <%= vitrine.get_likes.size %>
+      </li>
+
+      <li><%= link_to "Votar", like_vitrine_path(vitrine.id), method: :put %>
+        <%= link_to "Desvotar", dislike_vitrine_path(vitrine.id), method: :put %>
+      </li>
+
+    </ul>
+  </div>
+</div>

@@ -13,6 +13,8 @@
 
 *= require morris
 *= require chat
+*= require social-share-button
+*= require help
 *= require nav_bar
 *= require block
 *= require img_preview
@@ -32,9 +34,8 @@
 *= require product
 *= require vitrine
 *= require will_paginate
-*= require wmd
 *= require shopcart
-*= require drop_down
+*= require link_bar
 *= require search
 *= require details
 *= require jquery.fancybox
@@ -44,9 +45,11 @@
 *= require jquery.webui-popover
 *= require lightslider.min
 *= require select2
-
-
+*= require dropTab
+*= require dropzone
+*= require simplemde.min
  */
+
 
 .title {
   border-bottom: 1px solid #000;
@@ -70,3 +73,7 @@
 .error p, .error h1, .error h2 {
   margin-top: 10px
 }
+
+
+
+.list a {font-size:12px}

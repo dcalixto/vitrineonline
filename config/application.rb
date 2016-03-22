@@ -44,5 +44,19 @@ module Vitrineonline
     config.assets.precompile += ['jquery.js']
 
     config.assets.version = '1.0'
+
+    config.action_dispatch.default_headers = {
+      'X-Frame-Options' => 'SAMEORIGIN',
+      'X-XSS-Protection' => '1; mode=block',
+      'X-Content-Type-Options' => 'nosniff'
+    }
+
+  
+
+#config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'SAMEORIGIN'})
+
+
+
+
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151230144919) do
+ActiveRecord::Schema.define(:version => 20160319044738) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(:version => 20151230144919) do
   end
 
   add_index "announcements", ["vitrine_id"], :name => "index_announcements_on_vitrine_id"
+
+  create_table "banners", :force => true do |t|
+    t.string   "img"
+    t.integer  "vitrine_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "banners", ["vitrine_id"], :name => "index_banners_on_vitrine_id"
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -336,6 +345,20 @@ ActiveRecord::Schema.define(:version => 20151230144919) do
   add_index "products_sizes", ["product_id", "size_id"], :name => "index_products_sizes_on_product_id_and_size_id"
   add_index "products_sizes", ["product_id"], :name => "index_products_sizes_on_product_id"
 
+  create_table "reports", :force => true do |t|
+    t.integer  "reportable_id"
+    t.string   "reportable_type"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.integer  "vitrine_id"
+    t.text     "content"
+    t.string   "category"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "reports", ["reportable_id", "reportable_type"], :name => "index_reports_on_reportable_id_and_reportable_type"
+
   create_table "shipmen", :force => true do |t|
     t.integer  "policy_id",   :null => false
     t.integer  "shipping_id", :null => false
@@ -484,6 +507,7 @@ ActiveRecord::Schema.define(:version => 20151230144919) do
     t.integer  "cached_weighted_score",   :default => 0
     t.integer  "cached_weighted_total",   :default => 0
     t.float    "cached_weighted_average", :default => 0.0
+    t.string   "banner"
   end
 
   add_index "vitrines", ["cached_votes_down"], :name => "index_vitrines_on_cached_votes_down"

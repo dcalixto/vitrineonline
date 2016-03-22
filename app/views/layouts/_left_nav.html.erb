@@ -1,7 +1,7 @@
 <!-- User-nav -->
-<div id="left_nav">
+<div id="user_nav">
 
-  <div class="left_nav_list">
+  <div class="user_nav_list">
 
     <ul class="bala">
 
@@ -25,19 +25,15 @@
       <li>
         <% if new_feedback? %>
         <%= content_tag(:span, "#{num_new_feedback}", :class => "alert") %>
-        <#%=link_to( awaiting_feedbacks_path, :id =>
-          "menu-messages", :title => "Avaliação", :class =>"ttooltip", :data => { :content => 'ajax'} ) do %>
 
-          <#%=link_to( completed_feedbacks_path, :id =>
-            "menu-messages", :title => "Avaliação", :class =>"ttooltip", :data => { :content => 'ajax'} ) do %>
 
-            <%=link_to( links_feedback_path, :id => "menu-messages", :title => "Avaliação", :class =>"ttooltip", :data => {:url => '/feebacks/links'} ) do %>
+            <%=link_to( awaiting_feedbacks_path,   :class =>"ttooltip", :data => {:url => '/feebacks/links'} ) do %>
 
             <%= content_tag( :i,nil, :class => "feedback_icon")  %>
             <%end%>
             <% else %>
 
-            <%=link_to( links_feedbacks_path, :id => "menu-messages", :title => "Avaliação", :class =>"ttooltip",  :data => {:url => '/feedbacks/links'} ) do %>
+            <%=link_to( completed_feedbacks_path, :class =>"ttooltip",  :data => {:url => '/feedbacks/links'} ) do %>
 
             <%= content_tag( :i,nil, :class => "feedback_icon")  %>
             <%end%>

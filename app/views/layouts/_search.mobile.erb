@@ -1,0 +1,11 @@
+<div id="search_container_mobile ">
+  <%= form_tag products_path,method: :get, :id => "search_box_mobile" do %>
+  <div class="wrapper_mobile">
+    <%= text_field_tag :query, params[:query],  :id => "search_mobile" %><%= button_tag "", :class =>"search_btn_mobile", :name => nil do %>
+    <%= content_tag( :i,nil, :class => "search_icon_mobile")  %>
+  
+    <% end %>
+  </div>
+  <% end %>
+
+</div>

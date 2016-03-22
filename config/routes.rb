@@ -63,8 +63,8 @@ end
 
     member do
       get :participants
-      get :fail    
-            
+      get :fail
+
     end
 
     collection do
@@ -96,6 +96,7 @@ end
     end
 
     resources :policies, only: [:edit, :update]
+    resources :banners, only: [:new, :create]
     resources :stocks, only: [:index, :destroy]
     resources :views, only: [:index]
     resources :announcements, only: [:new, :create]
@@ -137,18 +138,33 @@ end
        match :sold
        match :purchased
        match :sent
-     # post :purchased
-     # post :sent
-      #post :sold
-     # post '/:id', to: 'orders#purchased', as: :orders_search
+
     end
   end
 
   resources :transactions, only: [:index, :show]
 
   # CATEGORIES
-  resources :genders, only: [:show]
-  resources :categories, only: [:show]
+  resources :genders, only: [:show] do
+    collection do
+
+      get :links
+
+    end
+
+  end
+
+
+  resources :categories, only: [:show]  do
+    collection do
+
+      get :links
+
+    end
+
+  end
+
+
   namespace :categories, as: '' do
     resources :subcategories, only: [:show]
   end

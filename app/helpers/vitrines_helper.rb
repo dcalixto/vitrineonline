@@ -1,3 +1,4 @@
+# encoding: utf-8
 module VitrinesHelper
 include ActsAsTaggableOn::TagsHelper
   def current_vitrine

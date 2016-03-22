@@ -27,111 +27,55 @@
   </head>
 
   <body>
+    <div id=header>
 
-    <div id=root>
-      <div id=header>
-
-        <div id=bottom_ribbon>
-          <div class=inner_bar>
-            <% cache "logo" do %>
-            <div id="logo">
-              <%= link_to root_url do %>
-              <%= content_tag(:span, nil, :class =>'logo') %>
-              <% end %>
-            </div>
+      <div id=bottom_ribbon>
+        <div class=inner_bar>
+          <% cache "logo" do %>
+          <div id="logo">
+            <%= link_to root_url do %>
+            <%= content_tag(:span, nil, :class =>'logo') %>
             <% end %>
-
-            <% cache "busca" do %>
-            <%= render "layouts/search" %>
-            <% end %>
-
-            <%= render "layouts/shop_cart" %>
-
-            <% if current_user %>
-            <%=render :partial=> "layouts/left_nav" %>
-            <%=render :partial=> "layouts/sell_button" %>
-            <%end %>
-
-            <div class="log_topbar">
-
-              <ul>
-                <% if current_user %>
-
-                <li class="top_avatar" title="<%=current_user.name %>">
-                  <%= link_to user_path(current_user) do %>
-
-                  <%= image_tag(current_user.avatar.url(:small).to_s) %>
-
-                  <%= current_user.name %>
-
-                </li>
-                <%end%>
-
-                <li class="padding_top">
-
-                  <%= link_to "Conta", edit_user_path(current_user), :class =>"ttooltip", :title => "Conta",   :data => {:url => "/users/#{current_user.id}/links"}    %>
-
-                  <span></span>
-
-                </li>
-
-                <% else %>
-
-                <li>
-                  <%= link_to 'Ajuda?',  page_path("comprar")%>
-
-                </li>
-
-                <li>
-                  <%=  link_to 'Abrir Conta', signup_path %>
-
-                  <span></span>
-
-                </li>
-
-                <li>
-                  <%= link_to "Entrar com facebook",  "/auth/facebook"  %>
-                  <span></span>
-
-                </li>
-
-                <li>
-                  <%=  link_to 'Entrar',  login_path %>
-                  <span></span>
-
-                </li>
-                <% end %>
-              </ul>
-
-            </div>
-
           </div>
+          <% end %>
+
+          <% cache "busca" do %>
+          <%= render "layouts/search" %>
+          <% end %>
+
+          <%= render "layouts/shop_cart" %>
+
+          <% if current_user %>
+          <%=render :partial=> "layouts/left_nav" %>
+          <%end %>
+
+          <%=render "layouts/log_topbar" %>
+
+          <% cache "drop" do %>
+          <%=render "layouts/drop" %>
+          <% end %>
+
         </div>
 
-        <% cache "drop" do %>
-        <%=render "layouts/drop" %>
+        <div id="container">
+          <%= breadcrumbs separator: "&rsaquo;" %>
+          <%=yield %>
+        </div>
+
+        <% cache "footer" do %>
+        <%=render "layouts/footer" %>
         <% end %>
 
-      </div>
+        <% cache "js" do %>
+        <%=jquery_include_tag :google %>
+        <%=javascript_include_tag "application" %>
+        <% end %>
 
-      <div id=container>
-        <%= breadcrumbs separator: "&rsaquo;" %>
-        <%=yield %>
-      </div>
+        <% if logado? %>
+        <%=render "layouts/faye" %>
+        <%end %>
 
-      <% cache "footer" do %>
-      <%=render "layouts/footer" %>
-      <% end %>
-    </div>
+        <%=render "layouts/analytics" %>
+      </body>
 
-    <% cache "js" do %>
-    <%=jquery_include_tag :google %>
-    <%=javascript_include_tag "application" %>
-    <% end %>
-    <% if logado? %>
-    <%=render "layouts/faye" %>
-    <%end %>
-    <%=render "layouts/analytics" %>
-  </body>
-
-</html>
+    </html>

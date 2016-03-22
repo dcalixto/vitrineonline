@@ -8,60 +8,50 @@
 
   <div class="block  margin_top">
 
-    <h1>Configuração</h1>
+    <h1>Configuração <%= link_to @vitrine.user.name, vitrine_path(current_vitrine) %> </h1>
 
     <div class="content">
 
       <div class="subcontent_top">
-        <h4>Logo</h4>
 
-        <%= link_to @vitrine.user.name, vitrine_path(current_vitrine) %>
+        <h2>Logo</h2>
 
-        <%= form_for @vitrine, :url => vitrine_path(current_vitrine), :method => :put,  :html => {:multipart => true} do |logo| %>
-        <%= image_tag current_vitrine.logo.url(:thumb).to_s %>
         <ul class="image_info">
           <li>
-            <div id="upload-logo-container"></div>
+  <%= image_tag current_vitrine.logo.url(:thumb).to_s %>
           </li>
           <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
           <li class="tip">O logo será redimencionanda para 245 x 135 de altura</li>
         </ul>
 
-        <%= logo.button "Salvar", :class => 'btn' %>
+        <%= form_for(@vitrine, :url => vitrine_path(current_vitrine), :method => :put, html: { multipart: true, class: "dropzone"}) do |logo|  %>
+
+
+          <div class="fallback">
+
+            <%= logo.file_field :logo %><br>
+            <%= logo.submit "Salvar" %>
+          </div>
         <% end %>
+
+
+
+
       </div>
 
-      <div class="subcontent">
-        <h1>Banners</h2>
-        <div class="product_img">
-          <!-- Fotos  -->
-          <ul>
-            <li>
-              <div id="upload-b1-container"></div>
-            </li>
-            <li>
-              <div id="upload-b2-container"></div>
-            </li>
-            <li>
-              <div id="upload-b3-container"></div>
-            </li>
-          </ul>
-          <div class="clearfix"></div>
-        </div>
-      </div>
 
-    </div>
+
 
     <div class="subcontent">
-      <h4>Sobre</h4>
+      <h2>Sobre</h2>
 
       <%= form_for @vitrine, :url => vitrine_path, :method => :put do |a| %>
 
       <p class="tip">Descreva sua vitrine</p>
 
-      <div id="notes-bar"></div>
-      <%= a.text_area :about, :id => "notes", :placeholder => "Sobre"%>
-      <div id="notes-preview"></div>
+
+      <%= a.text_area :about, :id => "vitrine_about", :placeholder => "Sobre"%>
+
       <%= a.submit "Salvar", :class => 'btn' %>
       <% end %>
 
@@ -69,11 +59,12 @@
 
   </div>
 </div>
+</div>
 <div class="box11">
 
   <div class="tip_box">
-    <h4>Endereço</h4>
-    <h4><%= current_vitrine.name %></h4>
+    <h2>Endereço</h2>
+    <h2><%= current_vitrine.name %></h2>
     <ul>
       <li>
         <%=  current_user.address %>

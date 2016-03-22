@@ -1,3 +1,4 @@
+# encoding: utf-8
 class TransactionsController < ApplicationController
   before_filter :authorize
   def index

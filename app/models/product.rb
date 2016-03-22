@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
   belongs_to :subcategory
   has_many :orders
   has_many :feedbacks, through: :orders
- 
+ has_many :reports, as: :reportable
   belongs_to :gender
   belongs_to :material
   belongs_to :condition
@@ -33,14 +33,14 @@ has_many :sizes, through: :sizeship
   validates :price, presence: true
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  
-  
+
+
   mount_uploader :f1, F1Uploader
   mount_uploader :f2, F2Uploader
   mount_uploader :f3, F3Uploader
   mount_uploader :f4, F4Uploader
-  
-  
+
+
   acts_as_votable
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags
@@ -54,59 +54,27 @@ has_many :sizes, through: :sizeship
 
   #
 
-  #include Elasticsearch::Model 
+  #include Elasticsearch::Model
 #include Elasticsearch::Model::Callbacks
 #include Elasticsearch::Persistence::Model
 
 
   markable_as :favorite
-  
+
   cattr_accessor :form_steps do
      %w(first)
    end
 
    attr_accessor :form_step
 
-   #validates :name, :owner_name, presence: true, if: -> { required_for_step?(:identity) }
-   #validates :identifying_characteristics, :colour, presence: true, if: -> { required_for_step?(:characteristics) }
-   #validates :special_instructions, presence: true, if: -> { required_for_step?(:instructions) }
+  
 
    def required_for_step?(step)
      return true if form_step.nil?
      return true if self.form_steps.index(step.to_s) <= self.form_steps.index(form_step)
    end
 
-  # validates :name, presence: true, if: -> { required_for_step?(:first) }
-  # validates :color,  presence: true, if: -> { required_for_step?(:second) }
-  # validates :image, presence: true, if: -> { required_for_step?(:preview) }
 
-  # def required_for_step?(step)
-  #  return true if form_step.nil?
-  #  return true if self.form_steps.index(step.to_s) <= self.form_steps.index(form_step)
-  # end
-
-  #  def active_or_name?
-  #  (status || '').include?('name') || active?
-  # end
-
-  #    def active_or_price?
-  #      state.include?('two') || active?
-  #    end
-
-  #    def active_or_category?
-  #      state.include?('preview') || active?
-  #    end
-
-  # def self.by_price(price)
-  #  return scoped unless price.present?
-  # end
-
-  # def self.by_buyer_rating(buyer_rating)
-  #  return scoped unless buyer_rating.present?
-  #  where("eedbacks.buyer_rating =?", buyer_rating)
-  # end
-
- # default_scope -> { order(:cached_votes_up) }
 
   scope :for_ids_with_order, ->(ids) {
     order = ids.blank? ? nil : "(#{ids.map{|i| "id=#{i}"}.join(',')}) DESC"
@@ -145,7 +113,7 @@ has_many :sizes, through: :sizeship
   #    :maximum => 2.megabytes.to_i
   #  }
 
- 
+
 
   after_touch :reindex
 
@@ -168,7 +136,7 @@ has_many :sizes, through: :sizeship
               }
           }
       }
- 
+
 
 
 
@@ -188,12 +156,12 @@ has_many :sizes, through: :sizeship
     conditions[:condition_id] = params[:condition_id] if params[:condition_id].present?
     conditions[:brand_id] = params[:brand_id] if params[:brand_id].present?
     conditions[:quantity] = {gt: 0} # quantity should be greather than 0
- 
+
     products = Product.search query, fields: [{name: :word_start}], where: conditions,
 
     aggs: [:gender_id, :vitrine_id, :category_id, :subcategory_id, :size_id, :color_id, :material_id, :condition_id, :brand_id],
     page: params[:page], suggest: true, highlight: true, per_page: 10
-  
+
     products
 end
 
@@ -220,5 +188,3 @@ end
 
 
  end
-
-

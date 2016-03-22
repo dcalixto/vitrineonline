@@ -1,42 +1,34 @@
 <% title "Menssagens Index" %>
-<div class="box12">
-</div>
-<div class="box7">
+
+<div class="box1">
   <div class="block margin_top">
 
-    <h1>Caixa de Entrada</h1>
-    <div class="chatboxhead">
 
+    <div class="chatboxhead">
+  <h1>Caixa de Entrada</h1>
       Ordenar por:
       <%= sort_link @q, :created_at, "Data" %>
+
+       <%=button_to "Nova Mensagem", chatbox_conversations_path,  :class =>"ttooltip btn_grey btn_big",  :method => "get", :data => {:url => "/conversations/chatbox"}   %>
+
     </div>
     <div class="chatboxcontent" id="message_list">
 
       <%= render partial: 'conversation', :collection => @conversations %>
 
-    </div>
 
-    <%= will_paginate(@conversations ) %>
+
+</div>
+
+<div class="block_pagination">
+  <div class="digg_pagination">
+    <%= will_paginate @conversations,:container => false,
+    previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......",
+    :inner_window => 1, :outer_window => 1 %>
 
   </div>
 
 </div>
 
-<div class="box8">
-  <div id="response">
-    <%= render partial: 'messages/message', :collection => @messages %>
-  </div>
 </div>
-
-
-    <div id="chat"></div>
-
-
-<div class="box10">
-  
-  
- 
- <%=button_to "Nova Mensagem", chatbox_conversations_path,  :class =>"ttooltip btn_grey btn_big",  :method => "get", :data => {:url => "/conversations/chatbox"}   %>
-         
- 
 </div>

@@ -1,0 +1,29 @@
+<div id="bottom_ribbon">
+  <div class=inner_bar>
+
+    <% cache "logo" do %>
+    <div id="logo">
+      <%= link_to root_url do %>
+      <%= content_tag(:span, nil, :class =>'logo_mobile') %>
+      <% end %>
+    </div>
+    <% end %>
+
+
+
+
+    <%= render "layouts/shop_cart" %>
+
+    <% if current_user %>
+    <%=render :partial=> "layouts/left_nav" %>
+    <%end %>
+
+    <%=render "layouts/log_topbar" %>
+
+
+
+</div>
+<% cache "busca" do %>
+<%= render "layouts/search" %>
+<% end %>
+</div>

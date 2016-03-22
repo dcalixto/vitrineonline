@@ -1,3 +1,4 @@
+# encoding: utf-8
 module PoliciesHelper
   def correct_policy
     @policy = Policy.find(params[:id])

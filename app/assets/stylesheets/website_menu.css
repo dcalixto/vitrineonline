@@ -42,12 +42,12 @@
 }
 #menu-feedback li:hover > a {
   display: block;
-  text-decoration: none;
+  text-decoration: underline;
   color: #295e9f;
 }
 #menu-loja li:hover > a {
   display: block;
-  text-decoration: none;
+  text-decoration: underline;
   color: #295e9f;
 }
 #menu-b a, #menu-box a, #menu-feedback a, #menu-loja a {
@@ -61,7 +61,7 @@
   font-size: 15px;
 }
 #menu-box h1, #menu-box h2, #menu-feedback h2, #menu-loja h1 {
-  font-size: 18px;
+  font-size: 15px;
   margin-bottom: 4px;
   /*font-weight: bold;*/
   padding-left: 5px;
@@ -126,9 +126,9 @@
 
 
 
-.left_links ul { 
-margin: 0; /* retira o recuo para alguns browsers */ 
-padding:0; /* retira o recuo para outros browsers */ 
+.left_links ul {
+margin: 0; /* retira o recuo para alguns browsers */
+padding:0; /* retira o recuo para outros browsers */
 overflow: auto;
 }
 
@@ -136,7 +136,5 @@ overflow: auto;
        height: 30px;
     width: 150px;
            float:left;
-           display:block; 
+           display:block;
 }
-
-

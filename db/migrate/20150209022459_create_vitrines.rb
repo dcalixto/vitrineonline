@@ -3,9 +3,6 @@ class CreateVitrines < ActiveRecord::Migration
     create_table :vitrines do |t|
 
       t.string   :logo
-      t.string   :b1
-      t.string   :b2
-      t.string   :b3
       t.string   :slogan
       t.string   :slug
       t.string   :url
@@ -13,12 +10,12 @@ class CreateVitrines < ActiveRecord::Migration
       t.string   :name
       t.text     :about
       t.integer  :user_id,          :null => false
-     
-      
-      
+
+
+
       t.timestamps
     end
-    add_index :vitrines, :slug, :unique => true
+    add_index :vitrines
     add_index :vitrines, :user_id, :unique => true
 
   end

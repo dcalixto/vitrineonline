@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         cookies.permanent[:auth_token] = user.auth_token
 
       else
-        cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, secure: !(Rails.env.test? || Rails.env.development?) }
+        cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, :httponly => true, secure: !(Rails.env.test? || Rails.env.development?) }
 
       end
       redirect_to root_url # , :notice => "Logado!"

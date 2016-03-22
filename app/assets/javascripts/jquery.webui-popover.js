@@ -211,7 +211,7 @@
             if (this._opened) {
                 return;
             }
-            // use cache by default, if not cache setted  , reInit the contents 
+            // use cache by default, if not cache setted  , reInit the contents
             if (!this.getCache() || !this._poped || this.content === '') {
                 this.content = '';
                 this.setTitle(this.getTitle());
@@ -320,7 +320,7 @@
                 var $arrow = this.$target.find('.arrow');
                 $arrow.removeAttr('style');
                 if (postionInfo.arrowOffset) {
-                    //hide the arrow if offset is negative 
+                    //hide the arrow if offset is negative
                     if (postionInfo.arrowOffset.left === -1 || postionInfo.arrowOffset.top === -1) {
                         $arrow.hide();
                     } else {

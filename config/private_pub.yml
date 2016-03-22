@@ -1,10 +1,15 @@
+#production:
+#  server: "http://52.91.76.215/faye"
+#  secret_token: "d2f2f7d32e82677504b3bf101b09be369eb2139"
+#  signature_expiration: 86400 # one day
+
+
 production:
-  server: "http://52.91.76.215/faye"
+  server: "http://localhost:9292/faye"
   secret_token: "d2f2f7d32e82677504b3bf101b09be369eb2139"
   signature_expiration: 86400 # one day
 
-
 development:
-  server: "http://52.91.76.215/faye"
+  server: "http://localhost:9292/faye"
   secret_token: "d2f2f7d32e82677504b3bf101b09be369eb2139"
   signature_expiration: 86400 # one day

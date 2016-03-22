@@ -11,7 +11,7 @@ Vitrineonline::Application.configure do
   config.assets.compile = true
   # Compress JavaScripts and CSS
   config.assets.compress = true
-config.cache_store = :dalli_store
+  config.cache_store = :dalli_store
 
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.

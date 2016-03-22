@@ -1,0 +1,126 @@
+/* glue: 0.11.1 hash: 1910e0a8e3 */
+        .sprite-icons-notdo9,
+.sprite-icons-notdo7,
+.sprite-icons-notdo6,
+.sprite-icons-notdo5,
+.sprite-icons-notdo3,
+.sprite-icons-notdo2,
+.sprite-icons-notdo1,
+.sprite-icons-do9,
+.sprite-icons-do8,
+.sprite-icons-do7,
+.sprite-icons-do5,
+.sprite-icons-do4,
+.sprite-icons-do10,
+.sprite-icons-do1 {
+            background-image: url('help.png');
+            background-repeat: no-repeat;
+            display: block
+        }
+
+        .sprite-icons-notdo9 {
+            background-position: 0 0;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-notdo7 {
+            background-position: -319px 0;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-notdo6 {
+            background-position: -638px 0;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-notdo5 {
+            background-position: 0 -463px;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-notdo3 {
+            background-position: -319px -463px;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-notdo2 {
+            background-position: -638px -463px;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-notdo1 {
+            background-position: -957px 0;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-do9 {
+            background-position: -957px -463px;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-do8 {
+            background-position: -1276px 0;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-do7 {
+            background-position: -1276px -463px;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-do5 {
+            background-position: 0 -926px;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-do4 {
+            background-position: -319px -926px;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-do10 {
+            background-position: -638px -926px;
+            width: 319px;
+            height: 463px;
+        }
+
+        .sprite-icons-do1 {
+            background-position: -957px -926px;
+            width: 319px;
+            height: 463px;
+          
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio: 1.0), screen and (min--moz-device-pixel-ratio: 1.0), screen and (-o-min-device-pixel-ratio: 100/100), screen and (min-device-pixel-ratio: 1.0), screen and (min-resolution: 1.0dppx) {
+            .sprite-icons-notdo9,
+    .sprite-icons-notdo7,
+    .sprite-icons-notdo6,
+    .sprite-icons-notdo5,
+    .sprite-icons-notdo3,
+    .sprite-icons-notdo2,
+    .sprite-icons-notdo1,
+    .sprite-icons-do9,
+    .sprite-icons-do8,
+    .sprite-icons-do7,
+    .sprite-icons-do5,
+    .sprite-icons-do4,
+    .sprite-icons-do10,
+    .sprite-icons-do1 {
+                background-image: url('help.png');
+                -webkit-background-size: 1595px 1389px;
+                -moz-background-size: 1595px 1389px;
+                background-size: 1595px 1389px;
+            }
+        }

@@ -1,3 +1,4 @@
+ #encoding: utf-8
 class Categories::SubcategoriesController < ApplicationController
   def show
     @subcategory = Subcategory.find(params[:id])

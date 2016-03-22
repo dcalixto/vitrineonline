@@ -10,5 +10,4 @@ class Gender < ActiveRecord::Base
   accepts_nested_attributes_for :subcategories
   attr_accessible :gender, :categories_attributes, :subcategories_attributes
 
-
 end

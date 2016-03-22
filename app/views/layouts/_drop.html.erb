@@ -1,23 +1,25 @@
-<div id="drop">
-
-  <div class="inner_drop">
-    <!-- Mulé -->
+<div class="link_bar">
+  <div class="inner_bar">
     <div class="inner_links">
-      <% @genders.each do |gender| %>
 
-      <%= link_to   gender.gender,  gender_path(:id => gender.id) %>
-      <span></span>
-      <% end %>
+      <div class="menu_link nav">
+        <% @genders.each do |gender| %>
+        <%= link_to  gender.gender,  gender_path(:id => gender.id), :class => "tab"  %>
+        <div class="panel boxShadow" style="width:260px">
+          <ul>
+            <% gender.categories.first(5).each do |c| %>
+            <li><%= link_to   c.name,  category_path(:id => c.id)  %></li>
 
-      <% @categories.each do |c| %>
-
-      <%= link_to   c.name, category_path(:id => c.id )  %>
-      <span></span>
-
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+      <% @categories.first(5).each do |c| %>
+      <%= link_to   c.name,  category_path(:id => c.id), :class =>"ttooltip3", :data => {:url => '/categories/links'}  %>
       <% end %>
     </div>
   </div>
-
 </div>
 
 <!-- Fim -->

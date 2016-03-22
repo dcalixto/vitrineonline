@@ -1,8 +1,6 @@
 <% title "Menssagens" %>
-<div class="box11">
-</div>
 
-<div class="box3">
+<div class="box1">
 
   <div class="flash_box margin_top">
     <%= render 'shared/flash_messages' %>
@@ -11,7 +9,14 @@
   </div>
 
   <div class="block margin_top">
+
+
+    <div class="chatboxhead">
     <h1>Conversa</h1>
+
+    </div>
+
+
 
     <div class="chatboxcontent" id="conversation_<%= @conversation.id %>">
       <%= render partial: 'messages/message', collection: @messages  %>

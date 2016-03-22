@@ -5,6 +5,6 @@ class CreateImpressions < ActiveRecord::Migration
       t.integer :product_id, :null => false
       t.timestamps
     end
-     add_index :impressions, :product_id, :unique => true
+     add_index :impressions, :product_id
   end
 end

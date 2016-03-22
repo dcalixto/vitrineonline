@@ -9,12 +9,17 @@ gem 'ransack'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'searchkick',  github: "ankane/searchkick"
 
+# MOBILE
+#gem 'mobylette'
+gem 'mobile-fu'
 
 #ADMIN
 #gem "administrate", "~> 0.1.4"
 
 # MISC
+gem 'deadweight'
 
+gem 'csscss'
 gem 'friendly_id'
 gem 'mail_form'
 gem 'annotate' # , :git => 'git://github.com/ctran/annotate_models.git'
@@ -40,14 +45,13 @@ gem 'act_as_cnpj_cpf'
 # AMAZON EC2
 gem 'open4'
 gem 'mina'
-#gem 'mina-faye'
 gem 'mina-newrelic'
 
 # WISHLIST
 
 gem 'markable'
 
-# CORREIOS
+# SHIPPING
 gem 'correios-frete'
 
 # COMMENTABLE SYSTEM
@@ -55,14 +59,14 @@ gem 'correios-frete'
 gem 'acts_as_commentable'
 
 # FORM
-gem 'formtastic' # ,  github: 'justinfrench/formtastic'
+gem 'formtastic', :git => 'git://github.com/dcalixto/formtastic.git', :branch => '3.1.3'
 
 # ANALYS
 
 
 # MARKUP LANGUAGE
 gem 'redcarpet'
-gem 'wmd-rails'
+
 
 # FACEBOOK AUTH
 
@@ -83,7 +87,7 @@ gem 'validate_url'
 gem 'carrierwave','~> 0.9.0'
 gem 'mini_magick'
 #gem 'fog'
-
+gem 'dropzonejs-rails'
 # RATING PLUGIN
 
 gem 'jquery-raty-rails'
@@ -96,12 +100,12 @@ gem 'delayed_job_active_record'
 gem 'high_voltage' # , '~> 2.1.0'
 
 # FACEBOOK SHARE
-# gem 'social-share-button'
+ gem 'social-share-button', git: 'https://github.com/dcalixto/social-share-button.git'
 
 # CACHE
 gem 'memcachier'
 gem 'dalli'
-gem 'dalli-elasticache'
+#gem 'dalli-elasticache'
 
 # MESSAGE
 gem 'rails-timeago'
@@ -145,4 +149,4 @@ group :production do
 end
 
 gem 'wicked'
-# gem 'debugger'
+#gem 'debugger'

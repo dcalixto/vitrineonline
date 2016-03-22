@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class OrderMailer < ActionMailer::Base
-  default from: 'VITRINEONLINE'
+  default from: 'Vitrineonline'
 
   def order_confirmation(order)
     @order = order

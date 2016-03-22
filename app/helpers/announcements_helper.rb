@@ -1,3 +1,4 @@
+ #encoding: utf-8
 module AnnouncementsHelper
   def announcement_hidden?(current_announcement)
     cookies["announcement_#{current_announcement.created_at}"] == 'hidden'

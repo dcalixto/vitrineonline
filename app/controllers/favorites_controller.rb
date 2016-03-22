@@ -1,17 +1,14 @@
+# encoding: utf-8
 class FavoritesController < ApplicationController
- 
-  
   def products
-
-  
-  @q = current_user.favorite_products.ransack(params[:q])
-  @favorite_products = @q.result(distinct: true).paginate(page: params[:page], per_page: 1)
-
+    @q = current_user.favorite_products.ransack(params[:q])
+    @favorite_products = @q.result(distinct: true).paginate(page: params[:page], per_page: 1)
   end
-def vitrines
+
+  def vitrines
     @q = current_user.favorite_vitrines.ransack(params[:q])
- @favorite_vitrines = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
-end
+    @favorite_vitrines = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
+  end
 
   def unmark_product
     @user = current_user
@@ -26,6 +23,4 @@ end
     @vitrine.users_have_marked_as_favorite.delete @user
     redirect_to :back
   end
-
-
 end

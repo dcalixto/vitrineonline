@@ -1,3 +1,4 @@
+ #encoding: utf-8
 module DynamicSelectable
   class GenderCategoriesController < SelectController
     def index

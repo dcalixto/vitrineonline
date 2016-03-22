@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   #caches_action :edit, layout: false
 
 
-
   def show
     @user = User.find(params[:id])
     canonical_url url_for(@user)
@@ -33,13 +32,6 @@ class UsersController < ApplicationController
 
  def links
     @user = User.find(params[:id])
-
-  if current_user.cart
-       @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0])
-    
-        end 
-
-
       respond_to do |format|
       format.html { render 'links', :layout=> false}
     end
@@ -84,9 +76,11 @@ end
     respond_to do |format|
       format.js
     end
+
+
   end
 
- 
+
 
   def products
     @vitrine = Vitrine.find(params[:id])
@@ -104,7 +98,7 @@ end
      @states = State.all
     @cities = City.where('state_id = ?', State.first.id)
     if @user.update_attributes(params[:user])
-      redirect_to(action: :edit, id: @user, only_path: true)
+      redirect_to(action: :edit, id: @user, only_path: true, format: :html)
       flash[:notice] = 'Conta atualiazada'
     else
       render :edit

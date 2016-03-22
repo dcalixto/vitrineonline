@@ -7,4 +7,10 @@ class GendersController < ApplicationController
       redirect_to @gender, status: :moved_permanently
     end
   end
+
+  def links
+    respond_to do |format|
+      format.html { render 'links', layout: false }
+    end
+      end
 end

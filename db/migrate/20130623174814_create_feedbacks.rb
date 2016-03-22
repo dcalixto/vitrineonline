@@ -12,8 +12,8 @@ class CreateFeedbacks < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :feedbacks, :user_id, :unique => true
-    add_index :feedbacks, :vitrine_id, :unique => true
+    add_index :feedbacks, :user_id
+    add_index :feedbacks, :vitrine_id
 
   end
 end

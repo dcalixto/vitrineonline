@@ -22,17 +22,17 @@ class CreateOrders < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :orders, :product_id, :unique => true
-    add_index :orders, :cart_id, :unique => true
-    add_index :orders, :seller_id, :unique => true
-    add_index :orders, :buyer_id, :unique => true
-    add_index :orders, :feedback_id, :unique => true
-    add_index :orders, :size_id, :unique => true
-    add_index :orders, :color_id, :unique => true
-    add_index :orders, :gender_id, :unique => true
-    add_index :orders, :category_id, :unique => true
-    add_index :orders, :subcategory_id, :unique => true
-    add_index :orders, :condition_id, :unique => true
-    add_index :orders, :material_id, :unique => true
+    add_index :orders, :product_id
+    add_index :orders, :cart_id
+    add_index :orders, :seller_id
+    add_index :orders, :buyer_id
+    add_index :orders, :feedback_id
+    add_index :orders, :size_id
+    add_index :orders, :color_id
+    add_index :orders, :gender_id
+    add_index :orders, :category_id
+    add_index :orders, :subcategory_id
+    add_index :orders, :condition_id
+    add_index :orders, :material_id
   end
 end

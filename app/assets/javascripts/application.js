@@ -1,87 +1,89 @@
 //= require jquery_ujs
 //= require jquery.timeago
-//= require wmd/wmd
-//= require wmd/showdown
 //= require private_pub
-//= require FileAPI.min
 //= require morris.min
 //= require raphael.min
-
 //= require jquery.fancybox.pack
 //= require jquery.raty
 //= require typeahead
 //= require jquery.tokeninput
 //= require jquery.webui-popover
 //= require lightslider.min
-
 //= require jquery-dynamic-selectable
 //= require select2
+//= require social-share-button
+//= require dropzone
+//= require simplemde.min
 //= require_tree .
 
 
-//// r
+
 
 // SELECT2 (TAGS)
-$(function() {
-    $('#product_tags').select2({tags: true})
+$(document).ready(function() {
+  $('#product_tags').select2({
+    tags: true
+  })
 });
 
-// TIPSY
+// WEBUI-POPOVER
+
+
+
+
+$(document).ready(function() {
 $('.ttooltip').webuiPopover({
-    type:'async',
-   /*url:'/feedbacks/links',*/
-
-
-
-
-                        padding:false,
-                       cache:false,
+  type: 'async',
+  /*url:'/feedbacks/links',*/
+  padding: false,
+  cache: false,
 
 
 });
-
+});
+$(document).ready(function() {
 $('.ttooltip2').webuiPopover({
-
-trigger:'hover',
-                        padding:false,
-                       cache:false,
+  trigger: 'hover',
+  padding: false,
+  cache: false,
 
 
 });
-
-
-$(document).ready(function() {
-$(".content-slider").lightSlider({
-                loop:true,
-                keyPress:true,
-                auto:true
-
-            });
 });
 
+
+
+// LIGHTSLIDER
+
 $(document).ready(function() {
-$(".box-slider").lightSlider({
-                loop:true,
-                keyPress:true,
-                auto:true,
-                 item:1,
-            });
+  $(".content-slider").lightSlider({
+    loop: true,
+    keyPress: true,
+    auto: true
+
+  });
 });
 
 $(document).ready(function() {
-$(".content-slider-vertical").lightSlider({
-                loop:true,
-                 vertical:true,
-                verticalHeight:500,
-                 auto:true,
-                 pager: false
-
-
-            });
+  $(".box-slider").lightSlider({
+    loop: true,
+    keyPress: true,
+    auto: true,
+    item: 1,
+  });
 });
 
+$(document).ready(function() {
+  $(".content-slider-vertical").lightSlider({
+    loop: true,
+    vertical: true,
+    verticalHeight: 500,
+    auto: true,
+    pager: false
 
 
+  });
+});
 
 
 
@@ -106,18 +108,43 @@ $(document).ready(function() {
 });
 
 
-// WMD-EDITOR
+// SimpleMDE-EDITOR
+
 
 $(document).ready(function() {
-  if ($('#notes-bar').length > 0) {
-    new WMDEditor({
-      input: "notes",
-      button_bar: "notes-bar",
-      preview: "notes-preview",
-      buttons: "bold italic  blockquote ol ul  heading hr"
-    });
-  }
+var simplemde = new SimpleMDE({ element: document.getElementById("vitrine_about"),
+showIcons: ["table", "horizontal-rule"],
+hideIcons: ["guide"],
+spellChecker: false,
+toolbarTips: false,
+
+ });
 });
+$(document).ready(function() {
+var simplemde = new SimpleMDE({ element: document.getElementById("vitrine_garantia"),
+
+showIcons: ["table", "horizontal-rule"],
+hideIcons: ["guide"],
+spellChecker: false,
+toolbarTips: false,
+
+
+ });
+});
+
+
+$(document).ready(function() {
+var simplemde = new SimpleMDE({ element: document.getElementById("vitrine_anuncio"),
+
+showIcons: ["table", "horizontal-rule"],
+hideIcons: ["guide"],
+spellChecker: false,
+toolbarTips: false,
+
+
+ });
+});
+
 
 
 
@@ -143,11 +170,80 @@ $(".flash-message").ajaxComplete(function(event, request) {
 });
 
 
+// CHARTS
+$(document).ready(function() {
+  if (typeof(draw_chart) != 'undefined')
+    draw_chart();
+  if (typeof(chart_options) != 'undefined' && $('#chart_options').length > 0)
+    $('#chart_options').change(chart_options);
+});
+
+
+// STARS RATING
+$(document).ready(function() {
+  $('.feedback_stars_rating').raty({
+    path: '/assets'
+  });
+});
+
+
 // FILE UPLOAD
 
-$(document).ready(function() {
+
+$(document).ready(function(){
+	// disable auto discover
+	Dropzone.autoDiscover = false;
 
 
+	var avatarDropzone = new Dropzone (".dropzone", {
+		maxFilesize: 2, // Set the maximum file size to 256 MB
+     maxFiles: 1,
+      dictDefaultMessage: "Solte suas imagens aqui",
+		paramName: "user[avatar]", // Rails expects the file upload to be something like model[field_name]
+		addRemoveLinks: true, // Don't show remove links on dropzone itself.
+   dictRemoveFile: 'Remover'
+  });
+
+	//dropzone.on("success", function(file) {
+	//	this.removeFile(file)
+		/*$.getScript("/edit")*/
+	//})
+
+
+  var logoDropzone = new Dropzone (".dropzone", {
+		maxFilesize: 2, // Set the maximum file size to 256 MB
+     maxFiles: 1,
+      dictDefaultMessage: "Solte suas imagens aqui",
+		paramName: "vitrine[logo]", // Rails expects the file upload to be something like model[field_name]
+		addRemoveLinks: true, // Don't show remove links on dropzone itself.
+   dictRemoveFile: 'Remover'
+  });
+
+  //dropzone.on("success", function(file) {
+  //	this.removeFile(file)
+    /*$.getScript("/edit")*/
+  //})
+
+  var bannerDropzone = new Dropzone (".dropzone", {
+		maxFilesize: 2, // Set the maximum file size to 256 MB
+     maxFiles: 3,
+      dictDefaultMessage: "Solte suas imagens aqui",
+		paramName: "banner[img]", // Rails expects the file upload to be something like model[field_name]
+		addRemoveLinks: true, // Don't show remove links on dropzone itself.
+   dictRemoveFile: 'Remover'
+  });
+
+
+});
+
+$('#banner').dropzone({// PDF dropzone element
+  maxFilesize: 2, // Set the maximum file size to 256 MB
+   maxFiles: 3,
+    dictDefaultMessage: "Solte suas imagens aqui",
+  paramName: "banner[img]", // Rails expects the file upload to be something like model[field_name]
+  addRemoveLinks: true, // Don't show remove links on dropzone itself.
+ dictRemoveFile: 'Remover'
+    // rest of code
 });
 
 // CUSTOM FORM SUBMIT
@@ -158,14 +254,8 @@ $(document).ready(function() {
   });
 });
 
-// CHARTS
 
-$(document).ready(function() {
-  if (typeof(draw_chart) != 'undefined')
-    draw_chart();
-  if (typeof(chart_options) != 'undefined' && $('#chart_options').length > 0)
-    $('#chart_options').change(chart_options);
-});
+
 
 // POSTS
 var bind_comment_handler = function() {
@@ -196,41 +286,10 @@ $(document).ready(function() {
   bind_comment_handler();
 });
 
-// method moved here to use on any page
-var createUploadWithPreviewBox = function(container, inputName) {
-  var previewBoxWidth = 250;
-  var previewBoxHeight = 250;
 
-  var input = $("<input type='file'>");
-  input.attr('name', inputName);
-
-  var preview = $('<div>').addClass('preview-container');
-  preview.append(input);
-  container.append(preview);
-
-  input.bind('change', function(evt) {
-    var targetInput = $(this);
-    var files = FileAPI.getFiles(evt);
-    FileAPI.each(files, function(file) {
-      if (/image/.test(file.type)) {
-        FileAPI.Image(file).resize(previewBoxWidth, previewBoxHeight, {
-          preview: true
-        }).get(function(error, image) {
-          if (error) {
-            console.log('Error: ' + error);
-          } else {
-            targetInput.addClass('hidden');
-            preview.append(image);
-          }
-        });
-      }
-    });
-  });
-};
 
 
 // ANNOUNCEMENT
-
 
 function hideAnnouncement(announcement_created_at) {
   createCookie(announcement_created_at, 'hidden', 365);
@@ -250,7 +309,6 @@ function createCookie(name, value, days) {
 
 
 // MENU CHOOSEN BRANDS ON NEW PRODUCT
-
 
 $(document).ready(function() {
   $("#notificationLink").click(function() {
@@ -275,12 +333,6 @@ $(document).ready(function() {
 //JQUERU CHAINED SELECTS
 
 
-// STARS RATING
-$(document).ready(function() {
-  $('.feedback_stars_rating').raty({
-    path: '/assets'
-  });
-});
 
 
 // USER-SELECT-CITY

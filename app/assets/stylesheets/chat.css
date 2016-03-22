@@ -29,8 +29,8 @@
 }
 .chatboxcontent {
   font-family: arial, sans-serif;
-  height: 380px;
-  width: 380px;
+  height: 400px;
+  width: 100%;
   overflow-y: auto;
   padding: 7px;
   border-left: 1px solid #cccccc;
@@ -39,6 +39,7 @@
   background: #f9f9f9;
   line-height: 1.3em;
   list-style: none;
+     overflow-y: scroll;
 }
 .chatboxcontent li {
   padding: 0.5rem;

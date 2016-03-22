@@ -13,33 +13,38 @@
     </h1>
     <div class="content">
       <div class="subcontent_top">
-        <h4>Avatar</h4>
+        <h2>Avatar</h2>
 
-        <%= form_for @user,  :url => user_path, :method => :put, :html => {:multipart => true} do |avatar| %>
 
-        <ul>
-          <li>
-            <%= image_tag @user.avatar.url(:thumb).to_s %>
-          </li>
-        </ul>
+<div class="preview-template">
+<%= image_tag @user.avatar.url(:thumb).to_s %>
+</div>
 
-        <ul class="upload_button">
-          <li>
-            <div id="upload-avatar-container"></li>
-            <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
+<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
 
+
+
+        <%= form_for(@user, :method => :put, html: { multipart: true, class: "dropzone"}) do |f|  %>
+
+
+
+
+          <div class="fallback">
+
+            <%= f.file_field :avatar %><br>
+            <%= f.submit "Salvar" %>
           </div>
-        </ul>
-        <%= avatar.button "Salvar", :class => "btn" %>
         <% end %>
+
+
       </div>
 
       <div class="subcontent">
-        <h4>Email</h4>
+        <h2>Email</h2>
 
         <p class="tip">Seu email atual</p>
 
-        <%= semantic_form_for @user do |em| %>
+        <%= semantic_form_for(@user, html: { id: 'email' }) do |em| %>
         <%= em.inputs do %>
         <%= em.input :email, :as => :email, :label =>  "Email" %>
         <%= em.input :email_confirmation,  :as => :email, :label => "Confirmar Email" %>
@@ -52,11 +57,11 @@
       </div>
 
       <div class="subcontent">
-        <h4>Endereço</h4>
+        <h2>Endereço</h2>
 
         <p class="tip">Adicione o seu endereço de entrega para facilitar a vida do vendedor</p>
 
-        <%= semantic_form_for @user do |form| %>
+        <%= semantic_form_for(@user, html: { id: 'address' }) do |form| %>
         <%= form.inputs do %>
         <%= form.input :address,  :label => "Endereço" %>
         <%= form.input :neighborhood,  :label =>  "Bairro"%>
@@ -68,7 +73,7 @@
     :input_html => { :id => "cities_select"}, :prompt => 'Selecionar Cidade'  %>
 
         <%= form.actions do %>
-        <%= form.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <%= form.action(:submit, :label => "Salvar",  :button_html => { :class => "btn", id: 'button_address'}) %>
         <% end %>
         <% end %>
         <% end %>
@@ -77,7 +82,7 @@
 
       <div class="subcontent">
 
-        <h4>Encerrar Conta</h4>
+        <h2>Encerrar Conta</h2>
 
         <p>
           <b>O que acontece quando você fechar sua conta?</b>
@@ -93,12 +98,12 @@
 
     </div>
   </div>
-
+  </div>
   <div class="box11">
 
     <div class="tip_box">
-      <h4>Endereço</h4>
-      <h4><%= current_user.name %><% current_user.surname%></h4>
+      <h2>Endereço</h2>
+      <h2><%= current_user.name %><% current_user.surname%></h2>
 
       <ul>
         <li>

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class UserMailer < ActionMailer::Base
-  default from: 'VITRINEONLINE'
+  default from: 'Vitrineonline'
 
   def password_reset(user)
     @user = user

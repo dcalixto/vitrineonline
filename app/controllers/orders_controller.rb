@@ -4,18 +4,9 @@ class OrdersController < ApplicationController
   protect_from_forgery except: [:ipn_notification]
 
 
-
-
-
-
-
   def purchased
     if current_user.cart
-       @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 10, :page => params[:page])    
-     
-
-    
-    
+       @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 10, :page => params[:page])
 
       #@q = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).ransack(params[:q])
     #  @q = Order.joins(:user, :cart).where('status = ?', current_user.id, cart.id, params[:status] || Order.statuses[0]).ransack(params[:q])
@@ -25,10 +16,9 @@ class OrdersController < ApplicationController
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
-   
-    
+
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
-  
+
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
   end
 
@@ -123,7 +113,7 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     transaction = Transaction.find_by_id(params[:id])
 
-      @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[1]).paginate(:per_page => 10, :page => params[:page])   
+      @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[1]).paginate(:per_page => 10, :page => params[:page])
 
 
    # @q = Order.where('status = ?', params[:status] || Order.statuses[1]).ransack(params[:q])
@@ -149,6 +139,4 @@ class OrdersController < ApplicationController
   end
 
 
-
- 
 end

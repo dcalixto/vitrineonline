@@ -28,22 +28,24 @@
         <div class="form-group">
           <%= p.label :gender_id, 'Genero' %>&nbsp;
           <%= dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender,
-        { include_blank: true, submit_with_form: true }, { class: 'form-control' } %>
+        { include_blank: false, submit_with_form: true, :prompt => 'Selecionar Genero'  }, { class: 'form-control' } %>
         </div>
 
         <div class="form-group">
           <%= p.label :category_id, 'Categoria' %>&nbsp;
           <%= dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name,
-        { include_blank: true, submit_with_form: true }, { class: 'form-control' } %>
+        { include_blank: false, submit_with_form: true, :prompt => 'Selecionar Categoria'  }, { class: 'form-control' } %>
         </div>
 
         <div class="form-group">
           <%= p.label :subcategory_id, 'Subcategoria' %>&nbsp;
-          <%= p.collection_select :subcategory_id, [], :id, :name, {}, { class: 'form-control' } %>
+          <%= p.collection_select :subcategory_id, [], :id, :name,  {include_blank: false, :prompt => 'Selecionar Subcategoria'}, { class: 'form-control' } %>
         </div>
 
       </div>
 
+
+  
       <div class="subcontent">
 
         <h4>Preço e Quantidade</h4>

@@ -7,7 +7,17 @@
   </div>
 </div>
 
-<div class="box10">
+<div class="box1">
+  <!-- Slideshow 1 -->
+  <ul class="box-slider">
+  <% @vitrine.banners.last(3).each do |i| %>
+<li> <%= image_tag(i.img.url(:thumb).to_s) %></li>
+<% end %>
+</ul>
+
+</div>
+
+<div class="box5">
 
   <div class="block margin_top">
     <div class="content">
@@ -40,16 +50,15 @@
           <%=link_to  feedbacks_vitrine_path(:id=>@vitrine.id)  do %>
           <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
-          Avaliações
-          <%=@total_from_buyers %>
+          <div><%=@total_from_buyers %></div>
           <% end %>
           <% end %>
         </li>
 
         <li>
 
-          <span>Dono(a):
-            <%=link_to @vitrine.user.name, user_path(@vitrine.user) %></span>
+          <span>Dono(a) <%=link_to @vitrine.user.name, user_path(@vitrine.user) %></span>
+
         </li>
 
         <% unless @vitrine.marked_as_favorite? %>
@@ -57,7 +66,9 @@
         </li>
 
         <% end %>
-
+        <li>
+        <%= social_share_button_tag(truncate(@vitrine.user.name, :length => 20), :url => url_for(:action => :show, :id => @vitrine.user.id, :only_path => false))  %>
+</li>
       </ul>
 
     </div>
@@ -65,20 +76,11 @@
 
 </div>
 
-<div class="box4 margin_top">
-  <!-- Slideshow 1 -->
-  <ul class="box-slider">
-    <li>
-      <%= image_tag('slider1.jpg')  %>
-    </li>
-    <li><%= image_tag('slider4.jpg')  %></li>
-    <li><%= image_tag('slider3.jpg')  %></li>
-  </ul>
-</div>
 
-<div class="box4">
+
+<div class="box9">
   <div class="block">
-    <h1>Sobre</h1>
+    <h2>Sobre a <%=@vitrine.name %></h2>
     <div class="content">
 
       <p><%= markdown(@vitrine.about) %></p>
@@ -86,41 +88,45 @@
   </div>
 </div>
 
-<div class="box11">
+<div class="box1">
+  <div class="block">
+  <h2>Estilos e Categorias da <%=@vitrine.name %></h2>
+  <span class="tags">
+
+    <% @vitrine.products.each do |tag| %>
+    <%= raw tag.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+  <% end %>
+    <% @vitrine.tag_list.each do |tag| %>
+    <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
+
+    <% end %>
+
+  </span>
+</div>
+</div>
+<div class="box1">
   <div class="subcontent_top margin_top">
-    <h4>Produtos Similares</h4>
+    <h2>Produtos Similares aos da <%= @vitrine.name %></h2>
     <%  @similarities.each do |item| %>
     <%= link_to product_path(item) do  %>
     <%= image_tag item.f1.url(:small).to_s %>
     <%= item.name %>
+    <%= item.price %>
     <% end %>
     <% end %>
 
-    <h4>Estilos</h4>
-    <span class="tags">
 
-      <% @vitrine.products.each do |tag| %>
-      <%= raw tag.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-<% end %>
-      <% @vitrine.tag_list.each do |tag| %>
-      <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
-
-      <% end %>
-
-    </span>
   </div>
 </div>
 
-<div class="box3">
+<div class="box1">
 
-  <h1>Produtos Adicionados</h1>
+
 
   <div class="content">
 
     <div class="subcontent_top">
-      <h4>Total
-        <%= @vitrine.products.count %>
-        Produtos</h4>
+  <h2>Produtos Adicionados recentemente pela <%=@vitrine.name %></h2>
       <table class="block_search">
         <tr>
           <td>
@@ -142,6 +148,12 @@
         </tr>
       </table>
 
+
+  <p>Total
+    <%= @vitrine.products.count %>
+    Produtos</p>
+
+
       <div id="searchResults">
 
         <%= render :partial => 'vitrines/product', :collection => @products%>
@@ -159,14 +171,13 @@
   </div>
 
   <div class="block">
-    <h1>Especificações da
-      <%=@vitrine.name%></h1>
+
 
     <div class="content">
 
       <div class="subcontent_top">
-        <h4>Avaliações
-        </h4>
+        <h2>Avaliações recebidas recentemente
+        </h2>
         <table class="block_search">
           <tr>
             <td>
@@ -193,13 +204,32 @@
       </div>
 
       <div class="subcontent">
-        <h4>Forma de Pagamento</h4>
+        <h2>Formas de Pagamentos disponível</h2>
         <%= content_tag(:span, nil, :class => 'paypal_logo') %>
         <% unless @vitrine.policy.blank? %>
       </div>
 
       <div class="subcontent">
-        <h4>Garantia</h4>
+
+        <h2>Formas de Envio disponível</h2>
+
+        <ul>
+
+          <li>
+            <%= content_tag(:span, nil, :class => 'shipping') %>
+          </li>
+
+          <% @vitrine.policy.shippings.each do |shipping| %>
+          <li>
+            <b><%= shipping.kind %></b>
+          </li>
+          <% end %>
+        </ul>
+
+      </div>
+
+      <div class="subcontent">
+        <h2>Garantias Oferecidas pelo Vendedor</h2>
         <p><%= markdown(@vitrine.policy.guarantee) %></p>
         <% end %>
         <% unless @vitrine.policy.shippings.blank? %>

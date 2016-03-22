@@ -10,11 +10,11 @@
   <div class="block margin_top">
 
     <h1>Política</h1>
-    <%= form_for @policy, :url => vitrine_policy_path, :method => :put do |p| %>
+
 
     <div class="content">
       <div class="subcontent_top">
-        <h4>Pagamento</h4>
+        <h2>Pagamento</h2>
         <ul>
           <li>
             <!--PAYPAL -->
@@ -32,8 +32,12 @@
 
           <li class="space"></li>
           <li>
+              <%= form_for @policy, :url => vitrine_policy_path(@policy), :method => :put do |e| %>
             <%= label_tag :paypal, "Paypal", :class=>"label" %>
-            <%= p.email_field :paypal %>
+            <%= e.email_field :paypal %>
+
+            <%= e.submit "Salvar", :class => 'btn' %>
+                <% end %>
           </li>
         </ul>
 
@@ -41,29 +45,34 @@
 
       <div class="subcontent">
 
-        <h4>Envio</h4>
+        <h2>Envio</h2>
         <p class="tip">Indique as formas de envio disponível</p>
+          <%= form_for @policy, :url => vitrine_policy_path, :method => :put do |s| %>
         <%= content_tag(:span, nil, :class => 'shipping') %>
         <%= hidden_field_tag "policy[shipping_ids][]", nil %>
         <% Shipping.all.each do |shipping| %>
         <%= check_box_tag "policy[shipping_ids][]", shipping.id, @policy.shipping_ids.include?(shipping.id), id: dom_id(shipping)%>
         <%= label_tag dom_id(shipping), shipping.kind %>
         <% end %>
-
+        <%= s.submit "Salvar", :class => 'btn' %>
+            <% end %>
       </div>
       <div class="subcontent">
-        <h4>Garantias</h4>
+        <h2>Garantias</h2>
+
 
         <p class="tip">Garantias como prazo de devoluação e cancelamento do pedido são sempre bem vindos</p>
 
-        <div id="notes-bar"></div>
-        <%= p.text_area :guarantee, :id => "notes", :placeholder => "Garantias"%>
-        <div id="notes-preview"></div>
+        <%= form_for @policy, :url => vitrine_policy_path, :method => :put do |p| %>
+
+        <%= p.text_area :guarantee, :id => "vitrine_garantia", :placeholder => "Garantias"%>
+
         <%= p.submit "Salvar", :class => 'btn' %>
+            <% end %>
 
       </div>
     </div>
   </div>
-  <% end %>
+
 </div>
 <!-- FIM DO CONTAINER-->

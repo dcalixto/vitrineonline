@@ -3,11 +3,37 @@ require 'will_paginate/array'
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  #include Mobylette::RespondToMobileRequests
+
+ has_mobile_fu
 
   include SessionsHelper
   include VitrinesHelper
   include AnnouncementsHelper
 
+
+  before_filter :strict_transport_security
+   def strict_transport_security
+     if request.ssl?
+       response.headers['Strict-Transport-Security'] = "max-age=31536000; includeSubDomains"
+     end
+   end
+
+   before_filter :no_store_cache
+     after_filter :no_store_cache
+
+     def no_store_cache
+       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+       response.headers["Pragma"] = "no-cache"
+       response.headers["Expires"] = '-1'
+     end
+
+
+     #before_filter :set_csp
+
+    # def set_csp
+    #   response.headers['Content-Security-Policy'] = "default-src *; script-src https://assets.example.com; style-src https://assets.example.com"
+    # end
 
 
   private
@@ -83,7 +109,6 @@ class ApplicationController < ActionController::Base
 
   def load_categories
     @genders = Gender.all
-    # @categories = Category.all   #includes(:subcategories).all
     @categories = Category.includes(:subcategories).all
   end
 
@@ -91,7 +116,6 @@ class ApplicationController < ActionController::Base
     if current_user.present? && current_user.banned?
       remove_user
       flash[:error] = 'Esta conta foi banida por violar os termos de uso e privacidade'
-
     end
   end
 end

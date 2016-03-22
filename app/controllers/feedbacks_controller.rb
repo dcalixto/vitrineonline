@@ -18,14 +18,13 @@ class FeedbacksController < ApplicationController
 
   def awaiting
     @awaiting_feedbacks_orders = Order.awaiting_feedback(current_user).paginate(page: params[:page], per_page: 22)
-  
     @feedback = Feedback.new
   end
 
 
  def links
 
-    @awaiting_feedbacks_orders = Order.awaiting_feedback(current_user)  
+    @awaiting_feedbacks_orders = Order.awaiting_feedback(current_user)
        respond_to do |format|
       format.html { render 'links', :layout=> false}
     end

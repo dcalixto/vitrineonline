@@ -20,18 +20,20 @@
 
 
 
+
+
+    <%= form_for@announcement, :url => vitrine_announcements_path, :method => :post  do |ad| %>
     <p class="tip">Utilize esse epaço para informar sobre alguma oferta ou novidade na página da sua vitrine</p>
     <p class="tip">Uma vez fechado o anúncio não aparecerá mais</p>
 
 
- <%= semantic_form_for @announcement, :url => vitrine_announcements_path, :method => :post  do |ad| %>
-    <%= ad.inputs do %>
-      <%= ad.input :body, :as => :text,  :label =>  "Anúncio" %>
-            <%= ad.actions do %>
-        <%= ad.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-      <% end %>
+    <%= ad.text_area :body, :id => "vitrine_anuncio", :placeholder => "Anúncio"%>
+
+    <%= ad.submit "Salvar", :class => 'btn' %>
     <% end %>
-  <% end %>
+
+
+
 
 
 </div>

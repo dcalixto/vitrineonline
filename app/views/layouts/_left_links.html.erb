@@ -3,20 +3,13 @@
   <div class="left_links">
     <ul>
       <% @genders.each do |gender| %>
-
       <li>
         <h1><%= link_to   gender.gender,  gender_path(:id => gender.id) %></h1>
       </li>
-
       <%  gender.categories.each do |c| %>
       <li>
         <h2><%= link_to   c.name, category_path(:id => c.id )  %></h2>
       </li>
-
-      <%  c.subcategories.each do |s| %>
-      <li><%= link_to   s.name, subcategory_path(:id => s.id )  %></li>
-      <% end %>
-
       <% end %>
 
       <% end %>

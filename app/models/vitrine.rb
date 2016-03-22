@@ -7,7 +7,7 @@ class Vitrine < ActiveRecord::Base
   has_one :policy, dependent: :destroy
 
   has_many :products, dependent: :destroy
-
+has_many :reports, as: :reportable
   has_one :marketing, dependent: :destroy
   has_many :views, dependent: :destroy
 
@@ -17,17 +17,19 @@ class Vitrine < ActiveRecord::Base
   has_many :invoices, through: :orders, source: :transaction
 
   has_many :announcements, dependent: :destroy
+  has_many :banners, dependent: :destroy
 
   belongs_to :city
   belongs_to :state
 
 
   mount_uploader :logo, LogoUploader
+  #mount_uploader :banner, BannerUploader
    mount_uploader :b1, B1Uploader
     mount_uploader :b2, B2Uploader
  mount_uploader :b3, B3Uploader
-  
- 
+
+
 
 
 
@@ -79,16 +81,16 @@ class Vitrine < ActiveRecord::Base
 
   before_create :build_default_models
 
-  accepts_nested_attributes_for :policy, :products,
+  accepts_nested_attributes_for :policy, :products, :banners,
                                 :marketing, allow_destroy: true
 
   validates :name, uniqueness: { case_sensitive: false },
                    length: { within: 1..70 }
 
-  attr_accessible :name, :about, :logo, :b1,  :b2, :b3, :website, :ad, :slogan,
+  attr_accessible :name, :about, :logo, :b1, :banner, :b2, :b3, :website, :ad, :slogan,
                   :address, :neighborhood, :postal_code, :code, :about
 
-   
+
 
 
 

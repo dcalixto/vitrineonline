@@ -1,0 +1,172 @@
+
+.boxShadow {
+  border-left: solid 1px #eee;
+  box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.5);
+  padding: 5px 0;
+  border-right: solid 1px #aaa;
+  border-bottom: solid 1px #aaa;
+  -moz-box-shadow: 2px 2px 2px #d4d4d4;
+  -webkit-box-shadow: 2px 2px 2px #d4d4d4;
+  box-shadow: 2px 2px 2px #d4d4d4;
+  background: #f1eabe;
+  z-index: 20;
+  height: 400px;
+  margin: 0px auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  border-image: none;
+}
+
+/*--------------------------------------------------------------------------------*/
+
+.menu_link {
+  clear: both;
+  width: auto;
+  bottom: 0;
+  left: 0;
+  margin-left: -2px;
+  margin-top: 1px;
+  z-index: 20;
+}
+.menu_link li {
+  float: left;
+  position: relative;
+  margin-right: -1px;
+  margin-right: 3px;
+}
+.menu_link li.home span {
+  text-indent: -9999px;
+  display: block;
+  width: 27px;
+  height: 35px;
+  cursor: pointer;
+}
+.menu_link li a {
+  color: #000000;
+}
+.menu_link .tab {
+  float: left;
+  display: block;
+  padding: 11px 0;
+  font-size: 12px;
+
+  font-weight: bold;
+  color: #333;
+}
+.menu_link .tab span {
+  margin: 0 6px;
+}
+.menu_link li .tab .new {
+  font: 10px Tahoma, Sans-Serif;
+  color: #f00;
+  font-weight: bold;
+  margin: 3px 9px 0 -8px;
+  display: inline-block;
+  vertical-align: top;
+  z-index: 20;
+}
+.menu_link .tab span.selected {
+  border-bottom: 1px solid #000
+}
+.menu_link .panel {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  background: #fff;
+  border-top: 4px solid #fff;
+  margin-top: 3px;
+  width: 500px;
+  z-index: 20000;
+}
+.menu_link .divider {
+  border-right: 1px dotted #fff;
+  border-left: 1px solid #9c9a9c;
+  min-height: 230px;
+  float: left;
+  overflow: hidden;
+}
+.menu_link .divider:first-child {
+  border-left: 0
+}
+.menu_link .divider h3 {
+  font-family: Georgia, Serif;
+  font-weight: normal;
+  border-bottom: 1px dashed #ccc;
+  font-size: 11px;
+  padding: 10px;
+  text-transform: uppercase;
+  color: #231f20;
+}
+.menu_link .divider h4 {
+  font-weight: bold;
+  font-family: Tahoma, Sans-Serif;
+  color: #000;
+  padding: 10px 10px 0;
+}
+.menu_link .divider ul, .menu_link .divider .subMenu {
+  margin: 0px 10px;
+  float: left;
+  clear: left;
+  width: 145px;
+  list-style: outside none none;
+  vertical-align: top;
+  display: inline-block;
+}
+.menu_link .divider .subMenu {
+  margin: 0
+}
+.menu_link .divider .floatMenu {
+  float: left;
+  clear: none;
+}
+.menu_link .divider li {
+  line-height: 1.2;
+  min-height: 11px;
+  float: none;
+  width: 150px;
+  display: block;
+  margin: 0 0 4px 0;
+  background: none;
+  color: #231f20;
+}
+.menu_link .divider li.newline {
+  float: left
+}
+.menu_link .divider a {
+  color: #231f20
+}
+.menu_link .divider a.sale {
+  color: #f00
+}
+body.sale-off .sale-only {
+  display: none!important
+}
+.menu_link .sell .panel, .menu_link .inspire .panel, .menu_link .boutiques .panel {
+  width: 167px
+}
+.menu_link .sell .panel.wide {
+  width: 334px
+}
+.menu_link li:hover {
+  z-index: 1000;
+  background: #fff;
+}
+.menu_link li:hover li {
+  background: #fff none
+}
+.menu_link li.home:hover span {
+  color: #fff;
+}
+.menu_link li:hover .tab span {
+  color: #333;
+  border-bottom: 1px solid #fff;
+}
+.menu_link li:hover .panel {
+  left: 0;
+  top: 34px;
+  z-index: 20;
+}
+.tab:hover {
+  text-decoration: none
+}
