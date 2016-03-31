@@ -4,6 +4,6 @@ class CreateCarts < ActiveRecord::Migration
       t.references :user
       t.timestamps
     end
-    add_index :carts, :user_id, :unique => true
+    add_index :carts, :user_id 
   end
 end

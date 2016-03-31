@@ -1,12 +1,7 @@
 class CreateProductData < ActiveRecord::Migration
   def change
     create_table :product_data do |t|
-      t.string   "f1"
-      t.string   "f2"
-      t.string   "f3"
-      t.string   "f4"
-      t.string   "images"
-      t.string   "slug"
+     t.string   "slug"
       t.integer  "vitrine_id",                                                  :null => false
       t.text     "detail"
       t.integer  "category_id"

@@ -2,8 +2,7 @@ class CreateVitrines < ActiveRecord::Migration
   def change
     create_table :vitrines do |t|
 
-      t.string   :logo
-      t.string   :slogan
+      t.string   :logo 
       t.string   :slug
       t.string   :url
       t.string   :code
@@ -14,8 +13,8 @@ class CreateVitrines < ActiveRecord::Migration
       t.string   :neighborhood
       t.string   :postal_code
       t.string   :address_supplement
-      t.float :latitude
-      t.float :longitude
+      t.float    :latitude
+      t.float    :longitude
 
       t.timestamps
     end

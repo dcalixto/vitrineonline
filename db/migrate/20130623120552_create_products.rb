@@ -2,10 +2,6 @@ class CreateProducts < ActiveRecord::Migration
   def change
     create_table :products do |t|
       t.integer  :vitrine_id,                                                  :null => false
-      t.string   :f1
-      t.string   :f2
-      t.string   :f3
-      t.string   :f4
       t.string   :slug
       t.string   :name,                                                        :null => false
       t.decimal  :price,                                          :precision => 9, :scale => 2
@@ -21,6 +17,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string   :meta_keywords
       t.integer  :quantity,                                                     :default => 0
       t.string   :status
+      t.string   :current_step
       t.timestamps
     end
     add_index :products, :slug
