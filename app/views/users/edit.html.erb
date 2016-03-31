@@ -19,10 +19,10 @@
 
 <div class="subcontent_top">
 
-
+<%  unless current_user.city.blank? %>
  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x150&sensor=false&zoom=16&markers=#{ current_user.address}" %>
 
-
+<% end %>
 
   </div>
 
