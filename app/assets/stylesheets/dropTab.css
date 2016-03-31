@@ -203,8 +203,8 @@ border-image: none;
       background: #fff;
       border-top: 4px solid #fff;
 margin-top:3px;
-      min-width: 300px;
-          min-height: 300px;
+      min-width: 700px;
+          min-height: 500px;
       z-index: 20000;
   }
 

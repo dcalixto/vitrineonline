@@ -41,7 +41,7 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
 
 
  markable_as :favorite
-usar_como_cnpj_ou_cpf :codigo
+#usar_como_cnpj_ou_cpf :codigo
 
 
 
