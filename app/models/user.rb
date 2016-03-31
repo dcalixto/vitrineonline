@@ -55,6 +55,13 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
   after_validation :fetch_address
 
 
+  include PgSearch
+  pg_search_scope :search, against: [:name],
+    using: {tsearch: {dictionary: "english"}},
+    associated_against: {vitrine: :name}
+
+
+
   def full_name
     "#{name} #{surname}"
   end

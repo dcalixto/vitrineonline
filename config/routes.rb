@@ -14,8 +14,8 @@ Vitrineonline::Application.routes.draw do
   #resources :send_code, only: [:new, :create]
   #post 'send_codes/verify' => "send_codes#verify"
 
-  
-  
+
+
 
   resources :reports, only: [:new, :create]
 
@@ -34,12 +34,11 @@ Vitrineonline::Application.routes.draw do
 
     collection do
             match '/:id' => 'users#show', via: [:get, :post], as: :feedbacks
-
-
        match '/:id/feedbacks' => 'users#feedbacks', via: [:get, :post], as: :search_feedbacks
+  #  match '/' => 'users#index', via: [:get, :post], as: :search
 
+ match 'set_search' => 'users#set_search', :via => [:get, :post], :as => :set_search
 
-    match '/' => 'users#index', via: [:get, :post], as: :search
     end
 
 
@@ -201,17 +200,9 @@ match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :s
   resources :transactions, only: [:index, :show]
 
   # CATEGORIES
-  resources :genders, only: [:show] do
+  resources :genders, only: [:show]
 
-
-  end
-
-
-  resources :categories, only: [:show]  do
-
-
-  end
-
+  resources :categories, only: [:show]
 
   namespace :categories, as: '' do
     resources :subcategories, only: [:show]

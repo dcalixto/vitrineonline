@@ -305,6 +305,10 @@ GEM
       jsonschema (~> 2.0.0)
     pdf-core (0.6.1)
     pg (0.18.4)
+    pg_search (1.0.5)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyamorous (1.3.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
@@ -506,6 +510,7 @@ DEPENDENCIES
   open4
   paypal_adaptive
   pg
+  pg_search
   prawn
   predictor
   premailer

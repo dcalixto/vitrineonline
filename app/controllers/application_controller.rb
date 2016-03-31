@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
   include AnnouncementsHelper
 
 
+
+
+
+
   before_filter :strict_transport_security
    def strict_transport_security
      if request.ssl?

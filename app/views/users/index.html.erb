@@ -7,12 +7,13 @@
         <tr>
           <td>
 
-            <%= search_form_for @q, url: search_users_path, method: :post  do |f| %>
 
-            <%= f.text_field :name_cont %>
-            <%= f.submit "Buscar", :class=>"btn_grey" %>
+            <%= form_tag users_path, method: :get do %>
 
-            <% end %>
+            <%= text_field_tag :query, params[:query] %>
+               <%= submit_tag "Buscar", name: nil, :class=>"btn_grey"%>
+
+<% end %>
           </td>
 
         </tr>

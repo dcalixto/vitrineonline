@@ -25,6 +25,7 @@ gem 'will_paginate'
 gem 'ransack'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'searchkick',  github: "ankane/searchkick"
+gem 'pg_search'
 
 #CHART
 gem "chartkick"

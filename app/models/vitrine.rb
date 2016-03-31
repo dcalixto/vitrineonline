@@ -24,14 +24,14 @@ has_many :reports, as: :reportable
 
 
   mount_uploader :logo, LogoUploader
- 
 
- 
+
+
 
 reverse_geocoded_by :latitude, :longitude do |obj, results|
     if geo = results.first
       # populate your model
-      
+
        obj.user.city.name    = geo.city
       obj.user.state.code = geo.state_code
       obj.postal_code = geo.postal_code
@@ -44,7 +44,18 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
 usar_como_cnpj_ou_cpf :codigo
 
 
+
+
+
   acts_as_votable
+
+
+  include PgSearch
+  pg_search_scope :search, against: [:name],
+    using: {tsearch: {dictionary: "english"}},
+    associated_against: {user: :name}
+
+
 
 
   def vitrine_name
