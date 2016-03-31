@@ -17,7 +17,7 @@ margin: 0;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
        max-width: 1000px;
-display: block
+display: block;
     line-height: 1.34;
   }
 
@@ -60,7 +60,7 @@ display: block
     -moz-box-sizing: content-box;
     box-sizing: content-box;
        max-width: 1000px;
-display: block
+display: block;
     line-height: 1.34;
   }
 
@@ -101,7 +101,7 @@ display: block
     -moz-box-sizing: content-box;
     box-sizing: content-box;
        max-width: 1000px;
-display: block
+display: block;
     line-height: 1.34;
   }
 
