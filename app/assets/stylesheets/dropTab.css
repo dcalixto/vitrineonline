@@ -302,13 +302,12 @@ margin-top:3px;
 
 
            color:#fff;
+}
 
 
 
 
-
-
-      #main-nav {border:solid 1px #000;width:70%;overflow:visible}
+#main-nav {border:solid 1px #000;width:70%;overflow:visible}
 
     #main-nav  .parentnav :hover { background: #fff  }
 

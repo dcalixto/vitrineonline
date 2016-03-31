@@ -234,9 +234,9 @@ color: #888
 
 
 
-@media (max-width: 551px) { /* ((100+5+5)x5)+1 */
+@media (max-width: 551px) {
     .product {
-        width: 440px; /* (100+5+5)x4 */
+        width: 440px;
     }
 }
 @media (max-width: 441px) {
@@ -248,3 +248,4 @@ color: #888
     .product {
         width: 220px;
     }
+  }

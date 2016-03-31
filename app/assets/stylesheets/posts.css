@@ -20,10 +20,7 @@
   color: #333;
   font-weight: bold;
 }
-.post .author_box img {
-  float: left;
-  padding: 3px;
-}
+
 .post .content_box {
   margin-left: 120px;
 }

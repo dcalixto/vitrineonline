@@ -109,7 +109,6 @@
     -moz-border-radius: 3px;
     border-radius: 3px;
     font-size: 12px;
-    font-family: arial,helvetica,sans-serif;
     padding: 10px;
     text-decoration: none;
     display: inline-block;
@@ -140,11 +139,8 @@
 
 
 
-#shop_button a  {
-    color: #fff;
-}
 
-#sell_button {
+.sell_button {
 
     vertical-align: baseline;
     float: left;
@@ -154,7 +150,7 @@
 
 
 
-#sell_button_mobile {
+.sell_button_mobile {
 
     vertical-align: baseline;
     float: left;
