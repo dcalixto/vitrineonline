@@ -1,7 +1,7 @@
 class CreateProductData < ActiveRecord::Migration
   def change
     create_table :product_data do |t|
-     t.string   "slug"
+      t.string   "slug"
       t.integer  "vitrine_id",                                                  :null => false
       t.text     "detail"
       t.integer  "category_id"
@@ -20,7 +20,7 @@ class CreateProductData < ActiveRecord::Migration
       t.integer  "quantity",                                     :default => 0
       t.timestamps
     end
-
+    add_index :product_data, :slug
     add_index :product_data, :vitrine_id
     add_index :product_data, :category_id
     add_index :product_data, :subcategory_id
