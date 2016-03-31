@@ -81,7 +81,6 @@
         <%= semantic_form_for(@user, html: { id: 'address' }) do |form| %>
         <%= form.inputs do %>
         <%= form.input :address,  :label => "Endereço" %>
-        <%= form.input :street,  :label => "Rua" %>
         <%= form.input :neighborhood,  :label =>  "Bairro"%>
         <%= form.input :postal_code,  :label =>  "CEP"%>
         <%= form.input :address_supplement, :as=> :text,  :label => "Complemento" %>

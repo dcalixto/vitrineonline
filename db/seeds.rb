@@ -7321,28 +7321,7 @@ brand_list = [
 ["Zero Restriction"],
 ["Zobha"],
 ["Zoot Sports"],
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+]
 
 brand_list.each do |name|
   Brand.create( name: name )
