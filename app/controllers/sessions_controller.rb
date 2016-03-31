@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
       if user.email_confirmed
         logar user
 
-      elsif
-      params[:remember_me]
-      cookies.permanent[:auth_token] = user.auth_token
+    #  elsif
+    #  params[:remember_me]
+    #  cookies.permanent[:auth_token] = user.auth_token
 
       else
 

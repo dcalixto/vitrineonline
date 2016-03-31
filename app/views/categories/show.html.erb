@@ -20,7 +20,7 @@
 
         <%= link_to  product_path(product.id), :class=>"product" do %>
 
-        <%= image_tag product.f1.url(:small).to_s, :class=>"productImg" %>
+        <%= image_tag product.images.first.url(:small).to_s, :class=>"productImg" %>
 
         <span class="productName">
           <%= product.name %></span>

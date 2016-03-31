@@ -1,7 +1,9 @@
 <tr>
   <td class="stock_td">
     <%= link_to  product_path(product.id) do %>
-    <%= image_tag product.f1.url(:small).to_s %>
+      <%if product.images.present? %>
+    <%= image_tag product.images.first.url(:small).to_s %>
+    <% end %>
     <%=  product.name %>
     <% end %>
   </td>

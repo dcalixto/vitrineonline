@@ -1,7 +1,7 @@
 .wmd-panel
 {
 	min-width: 100px;
-	background-color: #f3f3f3;
+	background-color: rgb(240,243,247);
 	padding:10px;
 	border:solid 1px #eee;
 	-webkit-border-radius: 3px;
@@ -58,8 +58,8 @@ border-radius: 3px;
 }
 
 .wmd-button {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     padding-left: 2px;
     padding-right: 3px;
     position: absolute;

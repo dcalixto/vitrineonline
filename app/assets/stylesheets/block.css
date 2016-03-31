@@ -60,8 +60,9 @@
 
 .block_search {
     background-color:
-rgb(221,227,241);
-    border-bottom: 1px solid rgb(87,94,111);
+rgb(240,243,247);
+    border-bottom: 1px solid rgb(
+217,222,233);
     margin-bottom: 5px;
 
     border-spacing: 5px;

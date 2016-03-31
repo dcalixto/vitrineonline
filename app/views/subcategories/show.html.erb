@@ -25,7 +25,7 @@
         <div class="expositor">
           <ul class="lista-thumb">
 
-            <li><%= link_to(image_tag(product.f1.url(:thumb).to_s), product_url(product), :crop => :fill) %>
+            <li><%= link_to(image_tag(product.images.first.url(:thumb).to_s), product_url(product), :crop => :fill) %>
             </li>
           </ul>
           <ul class="lista-detalhes">

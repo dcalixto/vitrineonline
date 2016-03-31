@@ -57,6 +57,10 @@
         <%=javascript_include_tag "application" %>
         <% end %>
 
+        <% cache "facebook" do %>
+        <%=render "layouts/facebook" %>
+        <% end %>
+
 
         <% if logado? %>
         <%=render "layouts/faye" %>

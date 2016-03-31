@@ -70,12 +70,13 @@
   <!-- Slideshow 1 -->
   <div class="block">
     <div class="content">
+      <%if @vitrine.banners.present? %>
   <ul class="box-slider">
   <% @vitrine.banners.last(3).each do |i| %>
 <li> <%= image_tag(i.img.url(:thumb).to_s) %></li>
 <% end %>
 </ul>
-
+<% end %>
 </div>
 </div>
 </div>

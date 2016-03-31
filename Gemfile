@@ -25,7 +25,7 @@ gem 'will_paginate'
 gem 'ransack'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'searchkick',  github: "ankane/searchkick"
-gem 'pg_search'
+
 
 #CHART
 gem "chartkick"
@@ -112,6 +112,8 @@ gem 'active_model_otp'
 gem 'rack-attack'
 gem 'geocoder'
 gem 'twilio-ruby'
+gem 'rack-secure_headers', git: 'https://github.com/dcalixto/rack-secure_headers.git'
+
 # IMAGE
 
 gem 'carrierwave','~> 0.9.0'

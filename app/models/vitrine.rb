@@ -50,10 +50,7 @@ usar_como_cnpj_ou_cpf :codigo
   acts_as_votable
 
 
-  include PgSearch
-  pg_search_scope :search, against: [:name],
-    using: {tsearch: {dictionary: "english"}},
-    associated_against: {user: :name}
+
 
 
 
