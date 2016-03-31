@@ -7,19 +7,10 @@
   </div>
 </div>
 
-<div class="box1">
-  <!-- Slideshow 1 -->
-  <ul class="box-slider">
-  <% @vitrine.banners.last(3).each do |i| %>
-<li> <%= image_tag(i.img.url(:thumb).to_s) %></li>
-<% end %>
-</ul>
 
-</div>
+<div class="box10">
 
-<div class="box5">
-
-  <div class="block margin_top">
+  <div class="block">
     <div class="content">
       <%=link_to(image_tag(@vitrine.logo.url(:thumb).to_s), vitrine_path(@vitrine)) %>
       <ul class="list">
@@ -47,7 +38,7 @@
         <li>
           <% if @vitrine.feedbacks %>
 
-          <%=link_to  feedbacks_vitrine_path(:id=>@vitrine.id)  do %>
+          <%=link_to  feedbacks_vitrines_path(@vitrine)  do %>
           <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
           <div><%=@total_from_buyers %></div>
@@ -75,16 +66,27 @@
   </div>
 
 </div>
+<div class="box4">
+  <!-- Slideshow 1 -->
+  <div class="block">
+    <div class="content">
+  <ul class="box-slider">
+  <% @vitrine.banners.last(3).each do |i| %>
+<li> <%= image_tag(i.img.url(:thumb).to_s) %></li>
+<% end %>
+</ul>
 
-
-
-<div class="box9">
+</div>
+</div>
+</div>
+<div class="box1">
   <div class="block">
     <h2>Sobre a <%=@vitrine.name %></h2>
     <div class="content">
 
       <p><%= markdown(@vitrine.about) %></p>
     </div>
+    <hr class="line"></hr>
   </div>
 </div>
 
@@ -102,7 +104,9 @@
     <% end %>
 
   </span>
+    <hr class="line"></hr>
 </div>
+
 </div>
 <div class="box1">
   <div class="subcontent_top margin_top">
@@ -115,7 +119,7 @@
     <% end %>
     <% end %>
 
-
+  <hr class="line"></hr>
   </div>
 </div>
 
@@ -131,7 +135,7 @@
         <tr>
           <td>
 
-            <%= search_form_for @q, url: products_search_vitrines_path, method: :post  do |f| %>
+            <%= search_form_for @q, url: products_vitrines_path, method: :post  do |f| %>
 
             <%= f.text_field :id_cont %>
             <%= f.submit "Buscar", :class=>"btn_grey" %>
@@ -182,7 +186,7 @@
           <tr>
             <td>
 
-              <%= search_form_for @q, url: feedbacks_search_vitrines_path, method: :post  do |f| %>
+              <%= search_form_for @q, url: feedbacks_vitrines_path, method: :post  do |f| %>
 
               <%= f.text_field :id_cont %>
               <%= f.submit "Buscar", :class=>"btn_grey" %>
@@ -250,14 +254,50 @@
           <div class="doubt">
             <%= hidden_field :conversation_participants, :boutique_id, :value => @vitrine.user_id %>
             <ul>
-              <li><%= text_area :message, :body, :rows => 3 %></li>
+              <li><%= text_area :message, :body, :rows => 3, class: 'form-control',data: { emojiable: true } %></li>
             </ul>
           </div>
           <div><%= f.button 'Enviar', :class => 'btn_grey' %></div>
           <% end %>
         </div>
       </div>
+
+
     </div>
   </div>
 
 </div>
+
+
+
+
+      <div class="box1">
+        <div class="block">
+
+          <div class="content">
+
+            <div class="subcontent">
+          <h2>Veja Também</h2>
+
+
+            <ul class="content-slider">
+
+                  <% @suggestions.each do |item| %>
+                    <li>
+                  <%= link_to product_path(item) do  %>
+                  <%= image_tag item.f1.url(:thumb).to_s %>
+                  <%= item.name %>
+                    <%= item.price %>
+                  <% end %>
+                  </li>
+                  <% end %>
+        </ul>
+
+
+      </div>
+
+    </div>
+
+        </div>
+
+      </div>

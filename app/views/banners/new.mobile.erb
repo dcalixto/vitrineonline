@@ -1,0 +1,55 @@
+<% title  "Banners" %>
+<%= render "shared/vitrine_menu" %>
+
+
+<div class="box5">
+  <div class="flash_box">
+  <%= render 'shared/flash_messages' %>
+ <%= render 'shared/error_messages', :target => @banner  %>
+ </div>
+
+
+  <div class="block  margin_top">
+
+
+<h1>Banners</h1>
+
+  <div class="content">
+    <ul class="box-slider">
+    <% current_vitrine.banners.last(3).each do |i| %>
+  <li> <%= image_tag(i.img.url(:thumb).to_s) %></li>
+  <% end %>
+  </ul>
+
+
+
+    <p class="tip">Utilize esse epaço para informar sobre alguma oferta ou novidade na página da sua vitrine</p>
+    <p class="tip">Uma vez fechado o anúncio não aparecerá mais</p>
+
+
+
+    <%= form_for(@banner, :url => vitrine_banners_path, :method => :post, html: { multipart: true, id: "banner", class: "dropzone"}) do |banner|  %>
+
+
+            <div class="fallback">
+
+              <%= banner.file_field :img %><br>
+              <%= banner.submit "Salvar" %>
+            </div>
+
+
+
+
+
+  <% end %>
+</div>
+
+
+ <!--SLOGAN  -->
+
+
+
+
+
+    </div>
+</div>

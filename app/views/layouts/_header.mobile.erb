@@ -1,29 +1,48 @@
-<div id="bottom_ribbon">
+
   <div class=inner_bar>
+
+
 
     <% cache "logo" do %>
     <div id="logo">
       <%= link_to root_url do %>
-      <%= content_tag(:span, nil, :class =>'logo_mobile') %>
+      <%= content_tag(:span, nil, :class =>'logo') %>
       <% end %>
     </div>
     <% end %>
 
 
-
-
     <%= render "layouts/shop_cart" %>
 
-    <% if current_user %>
-    <%=render :partial=> "layouts/left_nav" %>
-    <%end %>
+    <%=render  :partial=>"layouts/links_topbar" %>
 
-    <%=render "layouts/log_topbar" %>
+    </div>
 
 
+
+
+    <div class="inner_icons">
+
+
+      <div class="menu-trigger">Clique aqui</div>
+
+
+      <div class="mobile_nav">
+
+          <% if current_user %>
+          <%=render :partial=> "layouts/user_nav" %>
+          <%end %>
 
 </div>
-<% cache "busca" do %>
-<%= render "layouts/search" %>
-<% end %>
-</div>
+
+      </div>
+
+
+
+
+
+    <div class="inner_search">
+        <% cache "busca" do %>
+        <%= render  :partial=> "layouts/search" %>
+        <% end %>
+      </div>

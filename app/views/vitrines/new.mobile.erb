@@ -1,0 +1,46 @@
+<% title "Criar Vitrine" %>
+
+<!--NEW vitrine  -->
+<div class="box5">
+  <%= render 'shared/flash_messages' %>
+
+  <%= render 'shared/error_messages', :target => @vitrine %>
+</div>
+
+<div class="box5">
+
+  <%= semantic_form_for @vitrine  do |f| %>
+
+  <div class="block margin_top">
+    <h1>Criar Vitrine</h1>
+
+    <div class="content">
+
+      <div class="subcontent_top">
+        <h4>Nome e Sobre</h4>
+        <p class="tip">
+          Uma vez dado o name da vitrine não há mais troca
+
+        </p>
+
+        <%= f.inputs do %>
+        <%= f.input :name,  :label => "Nome",:required=>true %>
+
+      </div>
+
+      <div class="subcontent">
+        <h4>CPF OU CNPJ</h4>
+
+        <%= f.input :code,  :label => "CPF OU CNPJ",:required=>true %>
+
+      </div>
+
+    </div>
+
+  </div>
+  <%= f.actions do %>
+  <%= f.action :submit, :label => "Criar Vitrine", :button_html => { :class => "btn btn_big"} %>
+  <% end %>
+  <% end %>
+  <% end %>
+</div>

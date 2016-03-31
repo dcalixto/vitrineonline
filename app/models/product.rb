@@ -9,6 +9,7 @@ class Product < ActiveRecord::Base
   belongs_to :category
   belongs_to :subcategory
   has_many :orders
+  has_many :images,  dependent: :destroy
   has_many :feedbacks, through: :orders
  has_many :reports, as: :reportable
   belongs_to :gender
@@ -16,12 +17,18 @@ class Product < ActiveRecord::Base
   belongs_to :condition
   belongs_to :brand
 
-  has_and_belongs_to_many :colors
+  #has_and_belongs_to_many :colors
   #has_and_belongs_to_many :sizes
 has_many :sizeship
 has_many :sizes, through: :sizeship
 
- accepts_nested_attributes_for :sizes, :sizeship
+has_many :colorship
+has_many :colors, through: :colorship
+
+
+ accepts_nested_attributes_for :sizes, :sizeship, :colors, :colorship, :images
+attr_accessible :images_attributes
+
   has_many :impressions, dependent: :destroy
 
   attr_accessible :f1, :f2, :f3, :f4, :name, :detail, :price, :color_id, :gender_id,
@@ -35,14 +42,10 @@ has_many :sizes, through: :sizeship
 
 
 
-  mount_uploader :f1, F1Uploader
-  mount_uploader :f2, F2Uploader
-  mount_uploader :f3, F3Uploader
-  mount_uploader :f4, F4Uploader
 
+#mount_uploader :image, ImageUploader
 
   acts_as_votable
-
   acts_as_taggable # Alias for acts_as_taggable_on :tags
 
   # validates :name,      :presence => true, :if => :active_or_name?
@@ -52,11 +55,7 @@ has_many :sizes, through: :sizeship
 
   # scope :open_orders, -> { where(workflow_state: "open") }
 
-  #
 
-  #include Elasticsearch::Model
-#include Elasticsearch::Model::Callbacks
-#include Elasticsearch::Persistence::Model
 
 
   markable_as :favorite
@@ -67,7 +66,7 @@ has_many :sizes, through: :sizeship
 
    attr_accessor :form_step
 
-  
+
 
    def required_for_step?(step)
      return true if form_step.nil?
@@ -93,6 +92,9 @@ has_many :sizes, through: :sizeship
     quantity * price
   end
 
+
+
+# CHECK IF CAN BUY
   def buyable?(user)
     if user.cart
       orders = user.cart.orders.where('seller_id = ?', vitrine.id)

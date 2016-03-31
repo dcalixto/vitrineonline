@@ -8,9 +8,4 @@ class GendersController < ApplicationController
     end
   end
 
-  def links
-    respond_to do |format|
-      format.html { render 'links', layout: false }
-    end
-      end
 end

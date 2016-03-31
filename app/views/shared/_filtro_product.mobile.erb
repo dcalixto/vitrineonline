@@ -1,0 +1,136 @@
+<!-- Filtro -->
+<div class="box11">
+
+  <h3>
+    Filtrar por&nbsp;&nbsp;&nbsp;
+    <%= link_to 'Limpar', request.path %>
+  </h3>
+
+  <%if @products.aggs['gender_id']['buckets'].present? %>
+    <div class="filtro">
+      <h3>Genero</h3>
+      <ul>
+        <% @products.aggs['gender_id']['buckets'].each do |bucket| %>
+            <li>
+              <%
+                 gender = Gender.find(bucket['key'])
+                 params_to_merge = controller.controller_name == GendersController.controller_name ? {id: gender.slug} : {gender_id: bucket['key']}
+              %>
+              <%= link_to_if params[:id] != gender.slug && params[:gender_id] != bucket['key'].to_s, gender.gender, params.merge(params_to_merge) %> <%= bucket['doc_count'] %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%if @products.aggs['vitrine_id']['buckets'].present? %>
+    <div class="filtro">
+      <h3>Vitrines</h3>
+      <ul>
+        <% @products.aggs['vitrine_id']['buckets'].each do |bucket| %>
+          <li>
+            <%= link_to_unless_current Vitrine.find(bucket['key']).vitrine_name, params.merge(vitrine_id: bucket['key']) %> <%= bucket['doc_count'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%if @products.aggs['category_id']['buckets'].present? %>
+    <div class="filtro">
+      <h3>Categoria</h3>
+      <ul>
+        <% @products.aggs['category_id']['buckets'].each do |bucket| %>
+          <li>
+            <%
+              category = Category.find(bucket['key'])
+              params_to_merge = controller.controller_name == CategoriesController.controller_name ? {id: category.slug} : {category_id: bucket['key']}
+            %>
+            <%= link_to_if params[:id] != category.slug && params[:category_id] != bucket['key'].to_s, category.name, params.merge(params_to_merge) %> <%= bucket['doc_count'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%if @products.aggs['subcategory_id']['buckets'].present? %>
+    <div class="filtro">
+      <h3>Tipo</h3>
+      <ul>
+        <% @products.aggs['subcategory_id']['buckets'].each do |bucket| %>
+          <li>
+            <%= link_to_unless_current Subcategory.find(bucket['key']).name, params.merge({(controller.controller_name == Categories::SubcategoriesController.controller_name ? :id: :subcategory_id) => bucket['key']}) %>  <%= bucket['doc_count'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%if @products.aggs['size_id']['buckets'].present? %>
+    <div class="filtro">
+      <h3>Tamamho</h3>
+      <ul>
+        <% @products.aggs['size_id']['buckets'].each do |bucket| %>
+          <li>
+            <%= link_to_unless_current Size.find(bucket['key']).size, params.merge(size_id: bucket['key']) %> <%= bucket['doc_count'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%if @products.aggs['color_id']['buckets'].present? %>
+    <div class="filtro">
+      <h3>Cor</h3>
+      <ul>
+        <% @products.aggs['color_id']['buckets'].each do |bucket| %>
+          <li>
+            <%= link_to_unless_current Color.find(bucket['key']).name, params.merge(color_id: bucket['key']) %> <%= bucket['doc_count'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%if @products.aggs['material_id']['buckets'].present? %>
+    <div class="filtro">
+      <h3>Material</h3>
+      <ul>
+        <% @products.aggs['material_id']['buckets'].each do |bucket| %>
+          <li>
+            <%= link_to_unless_current Material.find(bucket['key']).name, params.merge(material_id: bucket['key']) %> <%= bucket['doc_count'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%if @products.aggs['condition_id']['buckets'].present? %>
+    <div class="filtro">
+      <h3>Condição</h3>
+      <ul>
+        <% @products.aggs['condition_id']['buckets'].each do |bucket| %>
+          <li>
+            <%= link_to_unless_current Condition.find(bucket['key']).condition, params.merge(condition_id: bucket['key']) %> <%= bucket['doc_count'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%if @products.aggs['brand_id']['buckets'].present? %>
+    <div class="filtro">
+      <h3>Marca</h3>
+      <ul>
+        <% @products.aggs['brand_id']['buckets'].each do |bucket| %>
+          <li>
+            <%= link_to_unless_current Brand.find(bucket['key']).name, params.merge(brand_id: bucket['key']) %> <%= bucket['doc_count'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+</div>
+
+<!--Fim -->

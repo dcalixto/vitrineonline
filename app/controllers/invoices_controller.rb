@@ -2,9 +2,8 @@ class InvoicesController < ApplicationController
   before_filter :authorize_vitrine, only: [:index, :show]
 
   def index
-    # @invoices = current_vitrine.invoices.paginate(:page => params[:page], :per_page => 10)
     @q = current_vitrine.invoices.ransack(params[:q])
-    @invoices = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+    @invoices = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
     render :index
    end
 

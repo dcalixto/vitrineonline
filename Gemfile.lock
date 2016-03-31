@@ -1,6 +1,14 @@
 GIT
-  remote: git://github.com/ankane/searchkick.git
-  revision: 7a197b386a21d78115dea72c9cd2e123b3c8da53
+  remote: git://github.com/dcalixto/formtastic.git
+  revision: 51589ebc49430dc5168e060b0cc4b9a0ed8b90c1
+  branch: 3.1.3
+  specs:
+    formtastic (3.1.3)
+      actionpack (>= 3.2.13)
+
+GIT
+  remote: https://github.com/ankane/searchkick.git
+  revision: 1f76d066f83bc0ad5e6748e116748909cb1f0f9a
   specs:
     searchkick (1.2.1)
       activemodel
@@ -8,12 +16,11 @@ GIT
       hashie
 
 GIT
-  remote: git://github.com/dcalixto/formtastic.git
-  revision: 51589ebc49430dc5168e060b0cc4b9a0ed8b90c1
-  branch: 3.1.3
+  remote: https://github.com/dcalixto/delayed_job.git
+  revision: 401f43e076c25559ec65fdfa611a0d94b7b29eb1
   specs:
-    formtastic (3.1.3)
-      actionpack (>= 3.2.13)
+    delayed_job (4.1.1)
+      activesupport (>= 3.0, < 5.1)
 
 GIT
   remote: https://github.com/dcalixto/dynamic_selectable.git
@@ -51,6 +58,9 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
+    active_model_otp (1.2.0)
+      activemodel
+      rotp
     activemodel (3.2.22)
       activesupport (= 3.2.22)
       builder (~> 3.0.0)
@@ -107,6 +117,7 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
+    chartkick (1.4.2)
     coderay (1.1.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -118,10 +129,9 @@ GEM
     colorize (0.7.7)
     configatron (4.5.0)
     cookiejar (0.3.0)
-    correios-frete (1.9.4)
-      log-me (~> 0.0.10)
-      nokogiri (~> 1.6.2)
-      sax-machine (~> 0.2.1)
+    correios-frete (1.1.0)
+      nokogiri
+      sax-machine
     counter_culture (0.1.34)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -138,11 +148,12 @@ GEM
       css_parser (~> 1.2.6)
       nokogiri
     debug_inspector (0.0.2)
-    delayed_job (4.1.1)
-      activesupport (>= 3.0, < 5.0)
     delayed_job_active_record (4.1.0)
       activerecord (>= 3.0, < 5)
       delayed_job (>= 3.0, < 5)
+    dotenv (2.0.1)
+    dotenv-rails (2.0.1)
+      dotenv (= 2.0.1)
     dropzonejs-rails (0.7.3)
       rails (> 3.1)
     elasticsearch (1.0.15)
@@ -166,6 +177,8 @@ GEM
     execjs (2.6.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.10.0)
+      faraday (>= 0.7.4, < 0.10)
     faye (1.1.2)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
@@ -177,20 +190,32 @@ GEM
     faye-websocket (0.10.3)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
+    feedjira (2.0.0)
+      faraday (~> 0.9)
+      faraday_middleware (~> 0.9)
+      loofah (~> 2.0)
+      sax-machine (~> 1.0)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
+    garelic (0.2.1)
+    geocoder (1.3.1)
     git-version-bump (0.15.1)
     goldiloader (0.0.10)
       activerecord (>= 3.2, < 5.1)
       activesupport (>= 3.2, < 5.1)
     gretel (3.0.8)
       rails (>= 3.2.0)
+    groupdate (2.5.2)
+      activesupport (>= 3)
     haml (4.0.7)
       tilt
     hashie (3.4.3)
     high_voltage (2.4.0)
     highline (1.7.8)
+    hightop (0.1.4)
+      activerecord
     hike (1.2.3)
+    htmlentities (4.3.4)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     journey (1.0.4)
@@ -206,16 +231,30 @@ GEM
     json (1.8.3)
     jsonschema (2.0.2)
     jwt (1.5.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     libv8 (3.16.14.13)
-    log-me (0.0.10)
+    lograge (0.3.6)
+      actionpack (>= 3)
+      activesupport (>= 3)
+      railties (>= 3)
+    loofah (2.0.3)
+      nokogiri (>= 1.5.9)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mail_form (1.5.1)
       actionmailer (>= 3.2, < 5)
       activemodel (>= 3.2, < 5)
+    mail_view (2.0.4)
+      tilt
     markable (0.1.4)
       rails (>= 3.1)
+    md_emoji (1.0.2)
+      railties (>= 3.1.0)
+      redcarpet (>= 2.0)
     memcachier (0.0.2)
     meta-tags (2.1.0)
       actionpack (>= 3.0.0)
@@ -230,7 +269,7 @@ GEM
     mina-newrelic (0.0.3)
       mina (>= 0.3.0)
       newrelic_rpm (>= 3.6.0)
-    mini_magick (4.4.0)
+    mini_magick (4.5.1)
     mini_portile2 (2.0.0)
     mobile-fu (1.3.1)
       rack-mobile-detect
@@ -238,7 +277,7 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    newrelic_rpm (3.15.0.314)
+    newrelic_rpm (3.15.1.316)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     oauth2 (1.1.0)
@@ -257,7 +296,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     open4 (1.3.4)
-    parser (2.3.0.6)
+    parser (2.3.0.7)
       ast (~> 2.2)
     parslet (1.7.1)
       blankslate (>= 2.0, <= 4.0)
@@ -276,9 +315,14 @@ GEM
       ttfunk (~> 1.4.0)
     predictor (2.3.1)
       redis (>= 3.0.0)
+    premailer (1.7.9)
+      css_parser (>= 1.1.9)
+      htmlentities (>= 4.0.0)
     private_pub (1.0.3)
       faye
     rack (1.4.7)
+    rack-attack (4.4.1)
+      rack
     rack-cache (1.6.1)
       rack (>= 0.4)
     rack-contrib (1.4.0)
@@ -324,8 +368,11 @@ GEM
     redcarpet (3.3.4)
     redis (3.2.2)
     ref (2.0.0)
-    rubocop (0.38.0)
-      parser (>= 2.3.0.6, < 3.0)
+    rollbar (2.8.3)
+      multi_json
+    rotp (2.1.1)
+    rubocop (0.39.0)
+      parser (>= 2.3.0.7, < 3.0)
       powerpack (~> 0.1)
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.7)
@@ -343,8 +390,7 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    sax-machine (0.2.1)
-      nokogiri (~> 1.6.0)
+    sax-machine (1.3.2)
     select2-rails (4.0.1.1)
       thor (~> 0.14)
     sexp_processor (4.7.0)
@@ -362,7 +408,7 @@ GEM
     sqlite3 (1.3.11)
     temple (0.7.6)
     terminal-table (1.5.2)
-    test-unit (3.1.7)
+    test-unit (3.1.8)
       power_assert
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
@@ -377,10 +423,13 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.4.0)
-    tzinfo (0.3.47)
-    uglifier (2.7.2)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
+    twilio-ruby (4.11.1)
+      builder (>= 2.1.2)
+      jwt (~> 1.0)
+      multi_json (>= 1.3.0)
+    tzinfo (0.3.48)
+    uglifier (3.0.0)
+      execjs (>= 0.3.0, < 3)
     unicode-display_width (1.0.2)
     uniform_notifier (1.9.0)
     validate_url (1.0.2)
@@ -398,6 +447,7 @@ PLATFORMS
 
 DEPENDENCIES
   act_as_cnpj_cpf
+  active_model_otp
   acts-as-taggable-on (~> 3.4)
   acts_as_commentable
   acts_as_votable (~> 0.10.0)
@@ -409,6 +459,7 @@ DEPENDENCIES
   bullet
   canonical_dude
   carrierwave (~> 0.9.0)
+  chartkick
   coffee-rails
   configatron
   correios-frete
@@ -416,21 +467,32 @@ DEPENDENCIES
   csscss
   dalli
   deadweight
+  delayed_job!
   delayed_job_active_record
+  dotenv-rails
   dropzonejs-rails
   dynamic_selectable!
+  feedjira
   formtastic!
   friendly_id
+  garelic
+  geocoder
   goldiloader
   gretel
+  groupdate
   high_voltage
+  hightop
   jquery-rails
   jquery-rails-cdn
   jquery-raty-rails
   jquery-ui-rails
   json
+  letter_opener
+  lograge
   mail_form
+  mail_view (~> 2.0.4)
   markable
+  md_emoji
   memcachier
   meta-tags
   meta_request
@@ -438,6 +500,7 @@ DEPENDENCIES
   mina-newrelic
   mini_magick
   mobile-fu
+  newrelic_rpm
   oj
   omniauth-facebook
   open4
@@ -445,12 +508,15 @@ DEPENDENCIES
   pg
   prawn
   predictor
+  premailer
   private_pub
+  rack-attack
   rails (= 3.2.22)
   rails-timeago
   rails_mail_preview
   ransack
   redcarpet
+  rollbar (~> 2.8.3)
   rubocop
   ruby_gntp
   sass-rails
@@ -462,6 +528,7 @@ DEPENDENCIES
   test-unit (~> 3.0)
   therubyracer
   thin
+  twilio-ruby
   uglifier (>= 1.0.3)
   validate_url
   wicked

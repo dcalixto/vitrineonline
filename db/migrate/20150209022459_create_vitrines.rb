@@ -10,8 +10,12 @@ class CreateVitrines < ActiveRecord::Migration
       t.string   :name
       t.text     :about
       t.integer  :user_id,          :null => false
-
-
+      t.string   :address
+      t.string   :neighborhood
+      t.string   :postal_code
+      t.string   :address_supplement
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

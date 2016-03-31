@@ -59,8 +59,9 @@
 }
 
 .block_search {
-    background-color: #F5F5F5;
-    border-bottom: 1px solid #D7D7D7;
+    background-color:
+rgb(221,227,241);
+    border-bottom: 1px solid rgb(87,94,111);
     margin-bottom: 5px;
 
     border-spacing: 5px;
@@ -69,7 +70,7 @@
 
 .sort {
     color: #666;
-  
+
 }
 
 .block_message {

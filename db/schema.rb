@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160319044738) do
+ActiveRecord::Schema.define(:version => 20160330015458) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -21,6 +21,27 @@ ActiveRecord::Schema.define(:version => 20160319044738) do
   end
 
   add_index "announcements", ["vitrine_id"], :name => "index_announcements_on_vitrine_id"
+
+  create_table "audits", :force => true do |t|
+    t.integer  "auditable_id"
+    t.string   "auditable_type"
+    t.integer  "associated_id"
+    t.string   "associated_type"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "username"
+    t.string   "action"
+    t.text     "audited_changes"
+    t.integer  "version",         :default => 0
+    t.string   "comment"
+    t.string   "remote_address"
+    t.datetime "created_at"
+  end
+
+  add_index "audits", ["associated_id", "associated_type"], :name => "associated_index"
+  add_index "audits", ["auditable_id", "auditable_type"], :name => "auditable_index"
+  add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
+  add_index "audits", ["user_id", "user_type"], :name => "user_index"
 
   create_table "banners", :force => true do |t|
     t.string   "img"
@@ -81,6 +102,16 @@ ActiveRecord::Schema.define(:version => 20160319044738) do
 
   add_index "colors_products", ["product_id", "color_id"], :name => "index_colors_products_on_product_id_and_color_id"
   add_index "colors_products", ["product_id"], :name => "index_colors_products_on_product_id"
+
+  create_table "colorships", :force => true do |t|
+    t.integer  "product_id", :null => false
+    t.integer  "color_id",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "colorships", ["color_id"], :name => "index_colorships_on_color_id"
+  add_index "colorships", ["product_id"], :name => "index_colorships_on_product_id"
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -161,6 +192,16 @@ ActiveRecord::Schema.define(:version => 20160319044738) do
 
   add_index "genders", ["slug"], :name => "index_genders_on_slug"
 
+  create_table "images", :force => true do |t|
+    t.string   "img"
+    t.integer  "product_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "foto"
+  end
+
+  add_index "images", ["product_id"], :name => "index_images_on_product_id"
+
   create_table "impressions", :force => true do |t|
     t.string   "ip_address"
     t.integer  "product_id", :null => false
@@ -210,6 +251,25 @@ ActiveRecord::Schema.define(:version => 20160319044738) do
 
   add_index "messages", ["conversation_id"], :name => "index_messages_on_conversation_id"
   add_index "messages", ["conversation_participant_id"], :name => "index_messages_on_conversation_participant_id"
+
+  create_table "notable_requests", :force => true do |t|
+    t.string   "note_type"
+    t.text     "note"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.text     "action"
+    t.integer  "status"
+    t.text     "url"
+    t.string   "request_id"
+    t.string   "ip"
+    t.text     "user_agent"
+    t.text     "referrer"
+    t.text     "params"
+    t.decimal  "request_time"
+    t.datetime "created_at"
+  end
+
+  add_index "notable_requests", ["user_id", "user_type"], :name => "index_notable_requests_on_user_id_and_user_type"
 
   create_table "orders", :force => true do |t|
     t.integer  "cart_id"
@@ -359,6 +419,20 @@ ActiveRecord::Schema.define(:version => 20160319044738) do
 
   add_index "reports", ["reportable_id", "reportable_type"], :name => "index_reports_on_reportable_id_and_reportable_type"
 
+  create_table "send_codes", :force => true do |t|
+    t.string   "account_sid"
+    t.string   "auth_token"
+    t.string   "client"
+    t.string   "t_phone"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "send_codes", ["account_sid"], :name => "index_send_codes_on_account_sid"
+  add_index "send_codes", ["auth_token"], :name => "index_send_codes_on_auth_token"
+  add_index "send_codes", ["client"], :name => "index_send_codes_on_client"
+  add_index "send_codes", ["t_phone"], :name => "index_send_codes_on_t_phone"
+
   create_table "shipmen", :force => true do |t|
     t.integer  "policy_id",   :null => false
     t.integer  "shipping_id", :null => false
@@ -468,6 +542,13 @@ ActiveRecord::Schema.define(:version => 20160319044738) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
+    t.boolean  "email_confirmed",       :default => false
+    t.string   "confirm_token"
+    t.string   "otp_secret_key"
+    t.integer  "otp_counter"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "street"
   end
 
   add_index "users", ["auth_token"], :name => "index_users_on_auth_token", :unique => true
@@ -508,6 +589,12 @@ ActiveRecord::Schema.define(:version => 20160319044738) do
     t.integer  "cached_weighted_total",   :default => 0
     t.float    "cached_weighted_average", :default => 0.0
     t.string   "banner"
+    t.string   "address"
+    t.string   "neighborhood"
+    t.string   "postal_code"
+    t.text     "address_supplement"
+    t.float    "longitude"
+    t.float    "latitude"
   end
 
   add_index "vitrines", ["cached_votes_down"], :name => "index_vitrines_on_cached_votes_down"

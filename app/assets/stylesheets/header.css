@@ -1,5 +1,46 @@
 /* BLACK TOPBAR  */
 
+
+.blue_bar {
+    background:#284070;
+    height:50px;
+
+    background:#336ec2;
+    background:#2a5db6;
+    background:#4c63a9;
+    background: rgb(
+
+      87,94,111)
+}
+
+.icons_bar {
+
+
+    background: rgb(
+
+      124,134,158);
+    height:40px;
+    border-bottom:solid 1px #ddd;
+    width:100%
+}
+#header {
+
+
+
+  display: block;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  list-style: outside none none;
+  box-sizing: border-box;
+  margin: 0px auto;
+  width: 100%;
+
+  padding-bottom:10px
+}
+
+
+
+
 .info_area span {
   border-right: 1px solid #6b6b6b;
   line-height: 0.2em;
@@ -10,37 +51,107 @@
 }
 
 
-/*.inner {
-  clear: both;
-  margin: 0px auto;
-  max-width: 1000px;
-  min-width: 960px;
-  box-sizing: border-box;
-  margin: 0px auto !important;
-}*/
-.inner:before, .inner:after {
+.inner_bar:before, .inner_bar:after {
   content: "";
   display: table;
+
+}
+
+.inner_search:before, , .inner_search:after {
+  content: "";
+  display: table;
+
+}
+
+.inner_icons:before, .inner_icons:after {
+  content: "";
+  display: table;
+
 }
 
 
-@media (min-width: 768px) {
 
-  .inner {
+@media (min-width: 320px) {
+  .inner_bar, .inner_search, .inner_icons{
     margin: 0px auto;
-    min-width: 750px;
-      max-width: 1000px;
+    min-width: 320px;
+    box-sizing: border-box;
+   overflow: auto;
+  }
 
+
+  .logo {
+     display: block;
+    margin-top: 10px;
+margin-left:10px;
+    width:130px;
+    height:40px;
+  display: block;
+  background:url(/assets/logo_mobile.png) no-repeat;
+
+  }
+
+
+  }
+
+
+
+
+@media (min-width: 480px) {
+  .inner_bar, .inner_search, .inner_icons {
+    margin: 0px auto;
+    min-width: 460px;
     box-sizing: border-box;
     overflow: auto;
   }
 
+
+  .logo {
+     display: block;
+    margin-top: 10px;
+
+    width:130px;
+    height:40px;
+  display: block;
+  background:url(/assets/logo_mobile.png) no-repeat;
+
   }
-}
+
+
+
+  }
+
+@media (min-width: 768px) {
+
+  .inner_bar,  .inner_search, .inner_icons  {
+    margin: 0px auto;
+    min-width: 750px;
+    box-sizing: border-box;
+  overflow: auto;
+  }
+
+
+  .logo {
+     display: block;
+      margin-top: 10px;
+  width:130px;
+  height:40px;
+  display: block;
+  background:url(/assets/logo_mobile.png) no-repeat;
+
+  }
+
+
+
+
+
+
+  }
+
 @media (min-width: 992px) {
 
 
-  .inner {
+  .inner_bar, .inner_search, .inner_icons {
     margin: 0px auto;
     min-width: 970px;
       max-width: 1000px;
@@ -48,7 +159,24 @@
     box-sizing: border-box;
     overflow: auto;
   }
+
+  .logo {
+     display: block;
+
+
+  width:180px;
+  height:50px;
+
+  display: block;
+  background:url(/assets/logo.png) no-repeat;
+
+  }
+
+
+
 }
+
+
 
 /* LOGO */
 
@@ -56,7 +184,7 @@
   float: left;
   display: block;
   vertical-align: middle;
-  margin-top: 3px
+
 }
 #logo a {
   margin-top: 0;
@@ -71,6 +199,9 @@
   text-indent: -999px;
   white-space: nowrap;
   z-index: 2;
+
+  width:180px;
+  height: 50px;
 }
 #logo a:hover span {
   opacity: 0.6;
@@ -79,17 +210,6 @@
 
 /* MENU DA BUSCA */
 
-.logo {
-   display: block;
-  margin-top: 0px;
-
-width:180px;
-height:50px;
-
-display: block;
-background:url(/assets/logo.png) no-repeat;
-
-}
 
 
 
@@ -113,7 +233,7 @@ background:url(/assets/logo.png) no-repeat;
   vertical-align: baseline;
   width: auto;
   position: relative;
-  margin-top: 25px
+  margin-top: 15px
 }
 .log_topbar li, .info_area li {
   float: left;
@@ -127,7 +247,7 @@ background:url(/assets/logo.png) no-repeat;
   display: block;
   vertical-align: middle;
   float: right;
-  color:#fff;
+
   font-weight:bold
 }
 .help {
@@ -146,7 +266,7 @@ background:url(/assets/logo.png) no-repeat;
   float: right
 }
 .log_topbar span {
-  border-right: 1px solid #fff;
+  border-right: 1px solid blue;
   line-height: 0.2em;
   height: 10px;
   display: inline-block;
@@ -154,11 +274,7 @@ background:url(/assets/logo.png) no-repeat;
   margin-right: 10px
 }
 
-.log_topbar img {
-  width: 20px;
-  /* you can use % */
-  height: auto;
-}
+
 
 
 

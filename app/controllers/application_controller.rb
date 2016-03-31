@@ -29,12 +29,6 @@ class ApplicationController < ActionController::Base
      end
 
 
-     #before_filter :set_csp
-
-    # def set_csp
-    #   response.headers['Content-Security-Policy'] = "default-src *; script-src https://assets.example.com; style-src https://assets.example.com"
-    # end
-
 
   private
 
@@ -108,7 +102,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def load_categories
-    @genders = Gender.all
+    @genders = Gender.includes(:categories).all
     @categories = Category.includes(:subcategories).all
   end
 

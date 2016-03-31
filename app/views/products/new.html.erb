@@ -10,10 +10,43 @@
     <%= render 'shared/error_messages', :target => @product %>
   </div>
 
-  <%= form_for @product, :html => {:multipart => true}  do |p| %>
   <div class="block margin_top">
     <h1>Adicionar Produto</h1>
     <div class="content">
+
+
+
+
+      <div class="subcontent_top">
+
+        <h2>Imagens</h2>
+
+        <ul class="image_info">
+          <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
+          <li class="tip">As imagens serão redimencionandas para 245 x 135 de altura</li>
+        </ul>
+
+  <%= form_for @product, :html => {:multipart => true,class: "dropzone"}  do |p| %>
+
+
+ <%= p.fields_for(:images,  html: { id: "images",class: "dropzone"}) do |i| %>
+     <div class="fallback">
+
+            <%= i.file_field :foto,  name: "images[foto]" %><br>
+            <%= i.submit "Salvar" %>
+          </div>
+    <% end %>
+
+
+
+
+
+
+
+      </div>
+
+
+
 
       <div class="subcontent_top">
 
@@ -45,7 +78,7 @@
       </div>
 
 
-  
+
       <div class="subcontent">
 
         <h4>Preço e Quantidade</h4>

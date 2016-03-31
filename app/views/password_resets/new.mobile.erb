@@ -1,0 +1,29 @@
+<% title "Recuperar Password" %>
+<!-- Recuperar Senha  -->
+
+<div class="box12">
+     </div>
+
+
+
+<div class="box3">
+  <%= render 'shared/flash_messages' %>
+  <div class="block margin_top">
+
+
+    <h4>Recuperar Senha</h4>
+
+    <div class="content">
+      Coloque seu email e nós lhe enviaremos um link para fazer uma nova senha
+
+      <%= form_tag password_resets_path, :method => :post do %>
+
+      <%= label_tag :email, "Email", :class=>"label" %>
+      <%= email_field_tag :email, params[:email], :id => "UserEmail" %>
+      <%= submit_tag "Enviar", :class => "btn" %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+<!-- Fim-->

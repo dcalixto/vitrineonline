@@ -17,20 +17,24 @@
 
   <div class="content">
 
-
-
-
-
-
-    <%= form_for@announcement, :url => vitrine_announcements_path, :method => :post  do |ad| %>
     <p class="tip">Utilize esse epaço para informar sobre alguma oferta ou novidade na página da sua vitrine</p>
     <p class="tip">Uma vez fechado o anúncio não aparecerá mais</p>
+    <p clas="tip">Para inserir emojis no texto acesse
+      <%= link_to  "http://www.emoji-cheat-sheet.com"   %></p>
+          <div class="wmd-panel">
+        <div id="wmd-button-bar"></div>
+          <%= form_for  @announcement, :url => vitrine_announcements_path, :method => :post  do |ad| %>
 
 
-    <%= ad.text_area :body, :id => "vitrine_anuncio", :placeholder => "Anúncio"%>
 
-    <%= ad.submit "Salvar", :class => 'btn' %>
-    <% end %>
+
+          <%= ad.text_area :body, :id => "wmd-input", :class=> "wmd-input", :placeholder => "Anúncios"%>
+
+          <%= ad.submit "Salvar", :class => 'btn' %>
+          <% end %>
+     <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+
+    </div>
 
 
 

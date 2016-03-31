@@ -2,12 +2,12 @@
 class FavoritesController < ApplicationController
   def products
     @q = current_user.favorite_products.ransack(params[:q])
-    @favorite_products = @q.result(distinct: true).paginate(page: params[:page], per_page: 1)
+    @favorite_products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
   end
 
   def vitrines
     @q = current_user.favorite_vitrines.ransack(params[:q])
-    @favorite_vitrines = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
+    @favorite_vitrines = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
   end
 
   def unmark_product

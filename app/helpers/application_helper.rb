@@ -78,9 +78,13 @@ module ApplicationHelper
     if text.blank?
       nil
     else
-      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(
-                                           hard_wrap: true, filter_html: true, safe_links_only: true),
-                                         no_intraemphasis: true, autolink: true)
+      markdown = Redcarpet::Markdown.new(MdEmoji::Render, :no_intra_emphasis => true,
+      hard_wrap: true, filter_html: true, safe_links_only: true,
+      no_intraemphasis: true, autolink: true)
+
+    #  markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(
+                                        #   hard_wrap: true, filter_html: true, safe_links_only: true),
+                                        # no_intraemphasis: true, autolink: true)
       markdown.render(text).html_safe
  end
     end

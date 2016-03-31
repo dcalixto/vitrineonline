@@ -1,7 +1,8 @@
 # require 'sidekiq'
+require File.join File.dirname(__FILE__), 'send_code'
 class User < ActiveRecord::Base
   extend FriendlyId
-  # include Sidekiq::Extensions
+
 
   friendly_id :name, use: [:slugged, :history]
 
@@ -10,13 +11,15 @@ class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
 
   after_commit :send_user_welcome, on: :create
-  #after_destroy { tire.update_index }
+
+#after_commit :confirmation_token, on: :create
+
+before_create :confirmation_token
+
 
 
   has_one :vitrine, dependent: :destroy
   has_one :cart, dependent: :destroy
-  # geocoded_by :address
-  # after_validation :geocode, :if => :address_changed?
 
   has_many :orders, foreign_key: 'buyer_id'
   belongs_to :city, touch: true
@@ -26,12 +29,31 @@ class User < ActiveRecord::Base
   has_many :conversations,
            through: :conversation_participants
 
+has_many :reports                 # Allow user to report others
+ has_many :reports, as: :reportable # Allow user to be reported as well
+
   has_many :feedbacks
 
   has_many :comments
 
   acts_as_voter
   acts_as_marker
+
+
+ has_one_time_password
+
+
+reverse_geocoded_by :latitude, :longitude do |obj, results|
+    if geo = results.first
+      # populate your model
+
+       obj.city.name    = geo.city
+      obj.state.code = geo.state_code
+      obj.postal_code = geo.postal_code
+         end
+  end
+  after_validation :fetch_address
+
 
   def full_name
     "#{name} #{surname}"
@@ -68,26 +90,15 @@ class User < ActiveRecord::Base
   validates_format_of :postal_code, with: /\A(\d{5})([-]{0,1})(\d{3})\Z/, allow_blank: true
 
   validates :avatar,
-            #:presence => true,
             file_size: {
-              maximum: 1.megabytes.to_i
+              maximum: 2.megabytes.to_i
             }
 
 
 
-  #after_commit :flush_cache
-
-  #def self.cached_find(id)
-  #  Rails.cache.fetch([name, id], expires_in: 30.minutes) { find(id) }
-   #end
-
-  #def flush_cache
-  #  Rails.cache.delete([self.class.name, id])
-  #end
-
   accepts_nested_attributes_for :vitrine, allow_destroy: true
 
-  attr_accessible :email, :email_confirmation, :password, :password_confirmation, :name,
+  attr_accessible :email, :confirm_token,:email_confirmation, :email_confirmed, :password, :password_confirmation, :name,
                   :surname,  :avatar, :avatar_id, :gender, :vitrine_attributes, :address, :state_id,
                   :city_id, :postal_code, :neighborhood, :address_supplement, :about
 
@@ -108,10 +119,29 @@ class User < ActiveRecord::Base
                     email: true,
                     on: :update
 
-  def send_user_welcome
-    UserMailer.delay_until(10.seconds.from_now, retry: false).user_welcome(self)
-  end
+#  def send_user_welcome
+#   UserMailer.delay_until(1.seconds.from_now, retry: false).user_welcome(self)
+#  end
 
+
+#Two Factor Authentication
+
+# def authenticate(email, password)
+  #  if email.eql?(self.email) && password.eql?(self.password)
+#      send_auth_code
+  #  end
+#  end
+
+#  def send_auth_code
+#    SendCode.new.send_sms(:to => self.phone, :body => "Codigo #{self.otp_code}")
+#  end
+
+
+
+
+ def send_user_welcome
+   UserMailer.user_welcome(self).deliver
+ end
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_at = Time.zone.now
@@ -145,9 +175,27 @@ class User < ActiveRecord::Base
     end while User.exists?(column => self[column])
   end
 
+
+
+
+
+  def email_activate
+      self.email_confirmed = true
+      self.confirm_token = nil
+      save!(:validate => false)
+    end
+
   private
 
   def is_password_validation_needed?
     new_record? || password
   end
+
+
+  def confirmation_token
+        if self.confirm_token.blank?
+            self.confirm_token = SecureRandom.urlsafe_base64.to_s
+        end
+end
+
 end

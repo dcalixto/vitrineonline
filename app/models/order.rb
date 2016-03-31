@@ -39,14 +39,11 @@ scope :awaiting_feedback, ->(user) { joins('left join feedbacks on feedbacks.id 
       data = ProductData.find_by_id(pr_id)
       if data.nil?
         attrs = product.attributes
-        attrs.delete('f1')
-        attrs.delete('f2')
-        attrs.delete('f3')
-        attrs.delete('f4')
+        attrs.images.first.delete('foto')
         attrs.delete('created_at')
         attrs.delete('updated_at')
         data = ProductData.create(attrs)
-        data.f1 = product.f1
+        data.f1 = product.images.first
         data.save
       end
     end

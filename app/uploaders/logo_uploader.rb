@@ -37,6 +37,13 @@ class LogoUploader < CarrierWave::Uploader::Base
     process :strip
    end
 
+
+   version :mobile do
+    process resize_to_fit: [126, 64]
+    process quality: 80
+
+    process :strip
+   end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list

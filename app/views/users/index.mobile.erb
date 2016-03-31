@@ -1,0 +1,63 @@
+<div class="box1">
+  <div class="block">
+    <h1>Usuários</h1>
+    <div class="content">
+
+      <table class="block_search">
+        <tr>
+          <td>
+
+            <%= search_form_for @q, url: search_users_path, method: :post  do |f| %>
+
+            <%= f.text_field :name_cont %>
+            <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+            <% end %>
+          </td>
+
+        </tr>
+      </table>
+
+
+
+      <% @users.each do |user|%>
+      <%= link_to  user_path(user.id), :class=>"product" do %>
+
+      <%= image_tag user.avatar.url(:small).to_s %>
+
+      <span class="productName">
+        <%= user.name %></span>
+
+      <% if user.feedbacks %>
+
+      <div class="productFeeback">
+
+        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>"></div>
+
+        <%= @total_feedbacks %>
+
+      </div>
+      <% end %>
+
+
+
+      <% if user.vitrine %>
+
+      <span class="by">Vitrine
+        <%= user.vitrine.name %></span>
+      <% end %>
+
+      <% end %>
+
+      <% end %>
+
+    </div>
+    <div class="block_pagination">
+      <div class="digg_pagination">
+        <%= will_paginate @users,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+
+      </div>
+    </div>
+  </div>
+
+</div>

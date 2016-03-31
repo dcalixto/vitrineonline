@@ -13,6 +13,13 @@ Vitrineonline::Application.configure do
   config.assets.compress = true
   config.cache_store = :dalli_store
 
+  config.lograge.enabled = true
+
+ config.lograge.custom_options = lambda do |event|
+   options = event.payload.slice(:request_id, :user_id, :visit_id)
+   options[:params] = event.payload[:params].except("controller", "action")
+   options
+ end
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = false

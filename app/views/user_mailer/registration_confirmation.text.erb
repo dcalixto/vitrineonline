@@ -1,0 +1,5 @@
+Olá <%= @user.name %>,
+
+Obrigado por se Registrar! Para confirmar sua conta clique no link abaixo.
+
+<%= confirm_email_user_url(@user.confirm_token) %>

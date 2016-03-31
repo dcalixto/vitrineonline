@@ -1,0 +1,49 @@
+<% title  "Anúncios" %>
+<%= render "shared/vitrine_menu" %>
+
+
+<div class="box5">
+  <div class="flash_box">
+  <%= render 'shared/flash_messages' %>
+ <%= render 'shared/error_messages', :target => @announcement  %>
+ </div>
+
+
+  <div class="block  margin_top">
+<%= render 'announcements/announcement_for_boutique'  %>
+
+
+<h1>Anúncio</h1>
+
+  <div class="content">
+
+
+
+
+
+
+    <%= form_for@announcement, :url => vitrine_announcements_path, :method => :post  do |ad| %>
+    <p class="tip">Utilize esse epaço para informar sobre alguma oferta ou novidade na página da sua vitrine</p>
+    <p class="tip">Uma vez fechado o anúncio não aparecerá mais</p>
+
+
+    <%= ad.text_area :body, :id => "vitrine_anuncio", :placeholder => "Anúncio"%>
+
+    <%= ad.submit "Salvar", :class => 'btn' %>
+    <% end %>
+
+
+
+
+
+</div>
+
+
+ <!--SLOGAN  -->
+
+
+
+
+
+    </div>
+</div>

@@ -9,7 +9,7 @@
     <li>
       <div ><input class="span5" id="conversation_username" name="conversation_participant[name]" placeholder="Para: Nome" type="text"/>
 
-        <%= text_area :message, :body, :class => "span5", :rows => 5, :placeholder => "Mensagem" %>
+        <%= text_area :message, :body,  class: 'form-control span5',data: { emojiable: true }, :rows => 5, :placeholder => "Mensagem" %>
       </div>
     </li>
   </ul>

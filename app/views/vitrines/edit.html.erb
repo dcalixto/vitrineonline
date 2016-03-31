@@ -12,7 +12,17 @@
 
     <div class="content">
 
-      <div class="subcontent_top">
+<div class="subcontent_top">
+
+
+ <%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x150&sensor=false&zoom=16&markers=#{ current_vitrine.address}" %>
+
+
+
+  </div>
+
+
+      <div class="subcontent">
 
         <h2>Logo</h2>
 
@@ -45,19 +55,47 @@
     <div class="subcontent">
       <h2>Sobre</h2>
 
+
+  <p class="tip">Descreva sua vitrine</p>
+<p clas="tip">Para inserir emojis no texto acesse
+  <%= link_to  "http://www.emoji-cheat-sheet.com"   %></p>
+
+      <div class="wmd-panel">
+    <div id="wmd-button-bar"></div>
       <%= form_for @vitrine, :url => vitrine_path, :method => :put do |a| %>
-
-      <p class="tip">Descreva sua vitrine</p>
-
-
-      <%= a.text_area :about, :id => "vitrine_about", :placeholder => "Sobre"%>
+      <%= a.text_area :about, :id => "wmd-input", :class=> "wmd-input", :placeholder => "Sobre"%>
 
       <%= a.submit "Salvar", :class => 'btn' %>
       <% end %>
+ <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
 
-    </div>
+</div>
+
 
   </div>
+
+
+
+  <div class="subcontent">
+    <h2>Endereço</h2>
+
+    <p class="tip">Fique a vontade para atualizar o endereço de sua vitrine</p>
+
+    <%= semantic_form_for(@vitrine, html: { id: 'address_vitrine' }) do |form| %>
+    <%= form.inputs do %>
+    <%= form.input :address,  :label => "Endereço" %>
+    <%= form.input :neighborhood,  :label =>  "Bairro"%>
+    <%= form.input :postal_code,  :label =>  "CEP"%>
+    <%= form.input :address_supplement, :as=> :text,  :label => "Complemento" %>
+    <%= form.actions do %>
+    <%= form.action(:submit, :label => "Salvar",  :button_html => { :class => "btn", id: 'button_address'}) %>
+    <% end %>
+    <% end %>
+    <% end %>
+
+  </div>
+
+</div>
 </div>
 </div>
 <div class="box11">
@@ -67,13 +105,19 @@
     <h2><%= current_vitrine.name %></h2>
     <ul>
       <li>
-        <%=  current_user.address %>
+
+        <%=  current_vitrine.address %>
+
       </li>
       <li>
-        <%= current_user.neighborhood %>
+
+        <%= current_vitrine.neighborhood %>
+
       </li>
       <li>
-        <%= current_user.postal_code %>
+
+        <%= current_vitrine.postal_code %>
+
       <li>
         <% unless current_user.city.blank? %>
       <li><%=  current_user.city.name %>

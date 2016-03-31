@@ -21,25 +21,39 @@
     <meta content=Dl2kWPSdv0m1b_iGqTBmnv-GyydEZdoH0p4ZoOjLsBM name=google-site-verification/>
 
     <% cache "cs" do %>
-    <%=stylesheet_link_tag "mobile.css" %>
-
+    <%=stylesheet_link_tag "application" %>
     <% end %>
     <%=csrf_meta_tags %>
   </head>
 
   <body>
-    <div id="header">
 
+
+
+    <div id=header>
   <%= render "layouts/header" %>
-
-
-
 
         </div>
 
-        <div id="container" data-role="page">
+        <div id="container">
           <%= breadcrumbs separator: "&rsaquo;" %>
           <%=yield %>
+
+
+          <% cache "drop" do %>
+          <div class="box1">
+          <div class="tab_ba">
+
+          <%=render "layouts/drop" %>
+
+              </div>
+  </div>
+
+          <% end %>
+
+
+
+
         </div>
 
         <% cache "footer" do %>

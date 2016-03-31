@@ -5,11 +5,31 @@
   <% breadcrumb :vitrines, @vitrines %>
 </div>
 
-<div class="box5">
+<div class="box1">
 
   <div class="block">
     <h1>Vitrines</h1>
     <div class="content">
+      <table class="block_search">
+        <tr>
+          <td>
+
+            <%= search_form_for @q, url: search_vitrines_path, method: :post  do |f| %>
+
+            <%= f.text_field :name_cont %>
+            <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+            <% end %>
+          </td>
+
+        </tr>
+      </table>
+
+
+
+
+
+
 
       <% @vitrines.each  do |vitrine| %>
       <%= link_to  vitrine_path(vitrine.id), :class=>"product" do %>
@@ -30,9 +50,7 @@
       </div>
       <% end %>
 
-      <span class="lista-time">
-        <%= timeago_tag(vitrine.created_at, :nojs => true, :date_only => false)%>
-      </span>
+
 
       <span class="by">Dono:
         <%= vitrine.user.name %></span>

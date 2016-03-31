@@ -249,7 +249,7 @@ fieldset {
 
 textarea {
   resize: vertical;
-  min-height: 150px;
+  min-height: 100px;
 }
 
 /* ==========================================================================

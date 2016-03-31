@@ -1,0 +1,45 @@
+<% title  "Slogan & Site" %>
+<%= render "shared/vitrine_menu" %>
+<div class="box5">
+
+  <div class="flash_box">
+    <%= render 'shared/flash_messages' %>
+    <%= render 'shared/error_messages', :target => @marketing  %>
+  </div>
+  <div class="block  margin_top">
+    <h1>Slogan & Site</h1>
+    <div class="content">
+      <div class="subcontent_top">
+
+        <h4>Slogan</h4>
+
+        <p class="tip">Slogan ou frase de efeito é uma frase de fácil memorização que resume as características de um produto ou serviço
+        </p>
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |mrkt| %>
+        <%= mrkt.inputs do %>
+        <%= mrkt.input :slogan, :as => :text,:label =>  "Slogan" %>
+        <%= mrkt.actions do %>
+        <%= mrkt.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+
+      <div class="subcontent">
+        <h4>Site</h4>
+
+        <p class="tip">Se tua boutique não tiver site tu pode adicionar o facebook da sua vitrine</p>
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |url| %>
+        <%= url.inputs do %>
+        <%= url.input :url, :label => "Site da sua vitrine" %>
+        <%= url.actions do %>
+        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,6 +12,8 @@ module ProductsHelper
     render partial: 'showcase'
   end
 
+
+
   def options_for_tags(product_tags)
     (ActsAsTaggableOn::Tag.most_used(30) + product_tags).map(&:name).uniq.sort
   end

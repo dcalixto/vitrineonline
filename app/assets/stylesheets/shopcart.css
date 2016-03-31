@@ -7,10 +7,10 @@
 #shopcart {
   /* margin-left: 40px;*/
   width: auto;
-  height: 30px;
-  float: left;
+
+  float: right;
   margin-right: 10px;
-  margin-left: 50px;
+  margin-left: 20px;
   margin-top: 5px;
   display:block
 }
@@ -47,6 +47,10 @@
 
 
 
+.shopcart_button:hover {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
 
 .shopcart_button::-moz-focus-inner {
   border: 0;

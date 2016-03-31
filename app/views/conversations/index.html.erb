@@ -5,14 +5,35 @@
 
 
     <div class="chatboxhead">
-  <h1>Caixa de Entrada</h1>
-      Ordenar por:
-      <%= sort_link @q, :created_at, "Data" %>
+  <h2>Menssagens</h2>
 
-       <%=button_to "Nova Mensagem", chatbox_conversations_path,  :class =>"ttooltip btn_grey btn_big",  :method => "get", :data => {:url => "/conversations/chatbox"}   %>
+  <table class="block_search">
+    <tr>
+      <td>
+
+        <%= search_form_for @q, url: search_conversations_path, method: :post  do |f| %>
+
+        <%= f.text_field :created_at_cont %>
+        <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+        <% end %>
+      </td>
+      <td class="sort">
+
+        Ordernar por
+          <%= sort_link @q, :created_at, "Data" %>
+
+      </td>
+      <td>
+        <%=button_to "Nova Mensagem", new_conversation_path,  :class =>"ttooltip btn_grey btn_big",  :method => "get", :data => {:url => "/conversations/chatbox"}   %>
+</td>
+    </tr>
+  </table>
+
+
 
     </div>
-    <div class="chatboxcontent" id="message_list">
+    <div class="messagebox" id="message_list">
 
       <%= render partial: 'conversation', :collection => @conversations %>
 

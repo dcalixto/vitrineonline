@@ -1,5 +1,17 @@
-#search_container {
-  width: 28%;
+
+.inner_mobile {
+
+  with:100%;
+
+  display: block;
+  background:#333;
+
+}
+
+
+
+#search_container_mobile {
+  width: 90%;
   height: 38px;
   float: left;
   display: block;
@@ -7,19 +19,33 @@
   margin-top: 5px;
   margin-left: 5px
 }
-#search_box .wrapper {
-  width: 100%;
+
+
+#search_container {
+  width: 30%;
+  height: 35px;
+   max-width: none;
+   overflow: auto;
+  float: left;
+  display: block;
+  border:solid 1px red;
+  margin-top: 5px;
+  margin-left: 5px
+}
+#search_box .wrapper, #search_box_mobile .wrapper {
+  width: 85%;
   position: relative;
   -moz-border-top-colors: none;
   -moz-border-right-colors: none;
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
   border-image: none;
+   max-width: none;
 }
-#search_box input {
+#search_box input, #search_box_mobile input  {
   zoom: 1;
-  width: 99%;
-  height: 35px;
+  width: 95%;
+
 -webkit-border-radius: 3px 0 0 3px;
 border-radius: 3px 0 0 3px;
   outline: 0;
@@ -50,8 +76,11 @@ border-radius: 3px 0 0 3px;
   line-height: 0;
 overflow: visible;
 white-space: nowrap;
+ max-width: none;
 }
-#search_box button {
+
+
+#search_box button, #search_box_mobile button {
   position: absolute;
 -webkit-border-radius: 0 3px 3px 0;
 border-radius: 0 3px 3px 0;
@@ -64,8 +93,8 @@ border-radius: 0 3px 3px 0;
     box-shadow: none;
   top: 0px;
 
- background:#f5bd72;
-border:1px solid #f5bd72;
+ background:rgb(239,194,59);
+border:1px solid rgb(239,194,59);
  width: 40px;
   height: 35px;
 
@@ -86,7 +115,7 @@ z-index: 1;
 
 
 
-
+ max-width: none;
 
 
 
@@ -94,7 +123,7 @@ z-index: 1;
 
 
 
-#search_box .search_icon {
+#search_box .search_icon, #search_box_mobile .search_icon  {
 
    width: 21px;
             height: 21px;
@@ -121,7 +150,25 @@ margin-left:7px;
 }
 
 
+#search_box input:hover {
+  border: solid 1px #bcbcbc
+}
 
+#search_box_mobile input:hover {
+  border: solid 1px #bcbcbc
+}
+
+#search_box button:hover {
+  text-decoration: none;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
+#search_box_mobile button:hover {
+  text-decoration: none;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
 
 
 a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
@@ -130,14 +177,7 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 .hide {
   display: none;
 }
-#search_box input:hover {
-  border: solid 1px #bcbcbc
-}
-#search_box button:hover {
-  text-decoration: none;
-  opacity: 0.6;
-  filter: alpha(opacity=60);
-}
+
 
 
 /* ----- Mobile------ */

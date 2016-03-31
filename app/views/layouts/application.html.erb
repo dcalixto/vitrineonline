@@ -27,35 +27,18 @@
   </head>
 
   <body>
+
+
+
     <div id=header>
+  <%= render "layouts/header" %>
 
-      <div id=bottom_ribbon>
-        <div class=inner_bar>
-          <% cache "logo" do %>
-          <div id="logo">
-            <%= link_to root_url do %>
-            <%= content_tag(:span, nil, :class =>'logo') %>
-            <% end %>
-          </div>
-          <% end %>
 
-          <% cache "busca" do %>
-          <%= render "layouts/search" %>
-          <% end %>
-
-          <%= render "layouts/shop_cart" %>
-
-          <% if current_user %>
-          <%=render :partial=> "layouts/left_nav" %>
-          <%end %>
-
-          <%=render "layouts/log_topbar" %>
-
-          <% cache "drop" do %>
-          <%=render "layouts/drop" %>
-          <% end %>
 
         </div>
+
+
+
 
         <div id="container">
           <%= breadcrumbs separator: "&rsaquo;" %>
@@ -66,10 +49,14 @@
         <%=render "layouts/footer" %>
         <% end %>
 
+
+
         <% cache "js" do %>
+
         <%=jquery_include_tag :google %>
         <%=javascript_include_tag "application" %>
         <% end %>
+
 
         <% if logado? %>
         <%=render "layouts/faye" %>

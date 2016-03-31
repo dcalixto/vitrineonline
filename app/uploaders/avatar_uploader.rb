@@ -2,7 +2,7 @@
 require 'carrierwave/orm/activerecord'
 
 class AvatarUploader < CarrierWave::Uploader::Base
-  
+
   include CarrierWave::MiniMagick
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
@@ -24,27 +24,22 @@ class AvatarUploader < CarrierWave::Uploader::Base
     '/assets/fallback/' + [version_name, 'avatar.svg'].compact.join('_')
   end
 
-  
-  version :message do
-    process resize_to_fit: [50, 50]
+
+  version :mobile do
+    process resize_to_fit: [45, 45]
     process quality: 80
 
     process :strip
   end
 
   version :thumb do
-    process resize_to_fit: [186, 186]
+    process resize_to_fit: [150, 150]
     process quality: 80
 
     process :strip
   end
 
-  version :small do
-    process resize_to_fit: [30, 30]
-    process quality: 80
 
-    process :strip
-  end
 
    def extension_white_list
     %w(jpg jpeg png svg)

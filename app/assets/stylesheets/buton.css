@@ -39,15 +39,17 @@
     display: inline-block;
     text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
     font-weight: 700;
-    border: solid #304b98;
-    background-color: #185cb4;
+    border: solid rgb(79,85,100);
+    background-color: rgb(
+87,94,111);
     color: #fff;
     border-width: 1px 1px 1px;
 }
 
 .btn:hover {
-    border: solid #304b98;
-    background-color: #314d9c;
+    border: solid rgb(79,85,100);
+    background-color: rgb(
+124,134,158);
     border-width: 1px 1px 1px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -136,25 +138,10 @@
     font-weight: 700;
 }
 
-.color {
-    background: #4c69ba;
-    background: -webkit-gradient(linear,center top,center bottom,from(#4c69ba),to(#3b55a0));
-    background: -webkit-linear-gradient(#4c69ba,#3b55a0);
-    background: linear-gradient(#4C69BA,#3B55A0) repeat scroll 0 0 transparent;
-    border: none;
-    -webkit-border-radius: 2px;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 700;
-    height: 20px;
-    line-height: 20px;
-    padding: 0;
-    text-shadow: 0 -1px 0 #354c8c;
-    white-space: nowrap;
-}
 
-#shop_button a {
-    color: #333;
+
+#shop_button a  {
+    color: #fff;
 }
 
 #sell_button {
@@ -165,10 +152,34 @@
     margin-left: 10px;
 }
 
-.horizontal_buttons {
+
+
+#sell_button_mobile {
+
     vertical-align: baseline;
+    float: left;
+    margin-top: 13px;
+    margin-left: 10px;
+    overflow: auto;
+
+
+position: relative;
 }
 
-.horizontal_buttons li {
-    display: inline-block;
+
+.fb_button {
+display: inline-block;
+
+
+width:100px;
+height:32px;
+
+background:url(/assets/fb_button.png) no-repeat;
+
+}
+
+
+.fb_button:hover {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
 }

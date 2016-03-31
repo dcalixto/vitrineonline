@@ -1,25 +1,46 @@
-<div class="link_bar">
-  <div class="inner_bar">
-    <div class="inner_links">
+  <div id="main-nav">
+<ul>
 
-      <div class="menu_link nav">
-        <% @genders.each do |gender| %>
-        <%= link_to  gender.gender,  gender_path(:id => gender.id), :class => "tab"  %>
-        <div class="panel boxShadow" style="width:260px">
-          <ul>
-            <% gender.categories.first(5).each do |c| %>
-            <li><%= link_to   c.name,  category_path(:id => c.id)  %></li>
+<% @genders.each do |gender| %>
 
-            <% end %>
-          </ul>
-        </div>
-        <% end %>
-      </div>
-      <% @categories.first(5).each do |c| %>
-      <%= link_to   c.name,  category_path(:id => c.id), :class =>"ttooltip3", :data => {:url => '/categories/links'}  %>
-      <% end %>
-    </div>
-  </div>
+  <li class="parentnav">
+
+    <%= link_to  content_tag(:span, gender.gender),  gender_path(:id => gender.id), :class => "tab" %>
+<ul class="subnav">
+
+  <div class="panel box">
+ <% gender.categories.each do |category| %>
+
+<div class="divider">
+<h3 title="<%=category.name %>"><%= link_to category.name, category_path(:id => category.id )  %></h3>
+
+   <% category.subcategories.each do |subcategory| %>
+   <ul>
+  <li title="<%=subcategory.name %>">
+    <%= link_to subcategory.name, subcategory_path(:id => subcategory.id ) %></li>
+  </ul>
+    <% end %>
+     </div>
+ <% end %>
+ </div>
+</ul>
+</li>
+<% end %>
+</ul>
 </div>
 
-<!-- Fim -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Fim -->

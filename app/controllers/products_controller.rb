@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
@@ -12,8 +11,12 @@ class ProductsController < ApplicationController
     @product = Product.new
     @genders = Gender.all
     @categories = Category.where('gender_id = ?', Gender.first.id)
-    @subcategories = Subcategory.where('category_id = ?', Category.first.id)
+  @subcategories = Subcategory.where('category_id = ?', Category.first.id)
+  @images = @product.images.new
+
+
   end
+
 
   def upvote
     @product = Product.find(params[:id])
@@ -33,6 +36,32 @@ class ProductsController < ApplicationController
     current_user.mark_as_favorite @product
     redirect_to :back
   end
+
+def report
+  @user = current_user
+  @product = Product.find(params[:id])
+  #current_user.reports @product
+  #current_user.reports.save
+
+  current_user.report_product(@product)
+  #current_user.reports.save
+  redirect_to report_product
+
+
+  @user = current_user
+  @product = Product.find(params[:id])
+  current_user.mark_as_report @product
+  redirect_to :back
+
+
+end
+
+
+def report_product
+  current_user.reports.build(@product_id)
+
+end
+
 
   def tags
     @products = Product.tagged_with(params[:tag]).where(vitrine_id: params[:vitrine]).paginate(per_page: 20, page: params[:page])
@@ -109,7 +138,8 @@ class ProductsController < ApplicationController
     if @product.save
       # redirect_to wizard_path(steps.first, product_id: @product.id)
 
-      redirect_to product_step_path(@product, Product.form_steps.first)
+      redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html)
+      
     else
       render :new
         end
@@ -125,7 +155,7 @@ class ProductsController < ApplicationController
   end
 
   def autocomplete
-    render json: Product.search(params[:query], fields: [{ name: :text_start }], limit: 10).map(&:name)
+    render json: Product.search(params[:query], fields: [{ name: :text_start }], limit: 8).map(&:name)
     end
 
   protected

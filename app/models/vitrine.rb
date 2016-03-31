@@ -24,18 +24,24 @@ has_many :reports, as: :reportable
 
 
   mount_uploader :logo, LogoUploader
-  #mount_uploader :banner, BannerUploader
-   mount_uploader :b1, B1Uploader
-    mount_uploader :b2, B2Uploader
- mount_uploader :b3, B3Uploader
+ 
 
+ 
 
-
-
+reverse_geocoded_by :latitude, :longitude do |obj, results|
+    if geo = results.first
+      # populate your model
+      
+       obj.user.city.name    = geo.city
+      obj.user.state.code = geo.state_code
+      obj.postal_code = geo.postal_code
+         end
+  end
+  after_validation :fetch_address
 
 
  markable_as :favorite
-  #usar_como_cnpj_ou_cpf :codigo
+usar_como_cnpj_ou_cpf :codigo
 
 
   acts_as_votable
@@ -88,7 +94,7 @@ has_many :reports, as: :reportable
                    length: { within: 1..70 }
 
   attr_accessible :name, :about, :logo, :b1, :banner, :b2, :b3, :website, :ad, :slogan,
-                  :address, :neighborhood, :postal_code, :code, :about
+                  :address, :neighborhood, :latitude, :longitude,  :neighborhood,  :postal_code, :address_supplement, :code, :about
 
 
 

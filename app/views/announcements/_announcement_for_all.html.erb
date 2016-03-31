@@ -2,7 +2,7 @@
 
 <div id="announcement">
   <span><%= current_announcement.created_at.strftime("%d/%m/%Y")  %></span>
-  <span><%= current_announcement.body%></span>
+  <span><%= markdown(current_announcement.body) %></span>
   <span class="hide">
 
     <%= link_to_function "Fechar", "hideAnnouncement('announcement_#{current_announcement.created_at}')" %>

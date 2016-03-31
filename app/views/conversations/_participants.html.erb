@@ -1,12 +1,18 @@
 <% conversation.participants(:not => current_user).each do |user| %>
+<li class="row">
 
-<li >
+  <li class="cell">
 <div class="avatar">
   <%= link_to conversation_path(conversation.id), :class => "message_link conversation " do %>
-  <%= image_tag user.avatar.url(:message).to_s %>
+  <%= image_tag user.avatar.url(:mobile).to_s %>
   <% end %>
 </div>
-<div class="chatboxmessagecontent">
+</li>
+
+
+
+  <li class="cell messagebody">
+
   <%= link_to conversation_path(conversation.id),  :class => "message_link conversation" do %>
 
   <%= user.name %>
@@ -14,8 +20,11 @@
 
   <p><%= conversation.display_message.body %></p>
   <% end %>
-  <%= timeago_tag(conversation.created_at, :nojs => true, :date_only => false) %>
-</div>
+
 </li>
 
+    <li class="cell">
+  <%= timeago_tag(conversation.created_at, :nojs => true, :date_only => false) %>
+</li>
+</li>
 <% end %>

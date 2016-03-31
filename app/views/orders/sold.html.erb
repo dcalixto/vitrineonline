@@ -24,29 +24,57 @@
       </p>
       <% if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
 
+
+
       <table class="block_search">
         <tr>
+          <td>
 
+           <%= search_form_for @q, url:  paid_orders_path, method: :post  do |f| %>
+
+            <%= f.text_field :id_cont %>
+            <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+            <% end %>
+          </td>
           <td class="sort">
-            Ordenar por
+
+            Ordernar Por
+
+            |
             <%= sort_link @q, :created_at, "Data" %>
             |
             <%= sort_link @q, :transaction_status, "Pagamento" %>
+
           </td>
         </tr>
       </table>
+
+      
 
       <% end %>
       <%if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
 
       <table class="block_search">
         <tr>
+          <td>
 
+           <%= search_form_for @q, url:  sent_orders_path, method: :post  do |f| %>
+
+            <%= f.text_field :id_cont %>
+            <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+            <% end %>
+          </td>
           <td class="sort">
-            Ordenar por
+
+            Ordernar Por
+
+            |
             <%= sort_link @q, :created_at, "Data" %>
             |
             <%= sort_link @q, :track_number, "Rastreamento" %>
+
           </td>
         </tr>
       </table>

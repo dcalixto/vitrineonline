@@ -21,4 +21,8 @@ include ActsAsTaggableOn::TagsHelper
     @vitrine = Vitrine.find(params[:id])
     redirect_to login_path unless current_vitrine?(@vitrine)
   end
+
+
+
+  
 end

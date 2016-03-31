@@ -4,6 +4,10 @@
 
 <div class="box1">
   <% breadcrumb :product, @product %>
+
+
+    <%= link_to "Reportar Item",  report_product_path(@product.id), method: :get %>
+
   <div class="margin_top">
     <%= render 'shared/flash_messages' %>
 
@@ -15,9 +19,10 @@
 <div class="box9">
 
   <div id="placeholder">
-
-    <%= image_tag @product.f1.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
+<% if @product.images.present? %>
+    <%= image_tag @product.images.first.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
     <%= render_showcase %>
+    <% end %>
   </div>
 
 </div>
@@ -105,6 +110,7 @@
 <div class="box10">
 
   <div class="block">
+    <div class="tip_box">
     <div class="content">
 
       <ul>
@@ -142,7 +148,10 @@
           </li>
 
           <% unless @product.marked_as_favorite? %>
-          <li><%= link_to "Adicionar a lista de desejos", mark_product_path(@product.id), method: :put %>
+          <li>
+
+
+  <%= link_to "Adicionar a lista de desejos", mark_product_path(@product.id),  method: :put %>
 
           </li>
           <% end %>
@@ -190,6 +199,9 @@
 
   </div>
 
+    </div>
+
+
   <!-- Fim-->
 </div>
 
@@ -197,6 +209,9 @@
 
 <div class="box1">
   <div class="block">
+    <div class="content">
+          <div class="subcontent">
+
     <h2>Clientes que viram este produto também viram</h2>
 
 
@@ -214,6 +229,9 @@
   </ul>
 
 
+  </div>
+
+  </div>
 
 
   </div>
@@ -222,6 +240,8 @@
 
 <div class="box1">
   <div class="block">
+    <div class="content">
+      <div class="subcontent">
 
   <h2>Clientes que comprarm este produto também compraram</h2>
 
@@ -238,7 +258,10 @@
         </li>
       <% end %>
     </ul>
+  </div>
 
+
+  </div>
 
   </div>
 </div>
@@ -249,7 +272,7 @@
 
   <div class="block">
       <div class="content">
-            <div class="subcontent_top">
+            <div class="subcontent">
     <h2>Descrições do Produto</h2>
     <p><% if @product.detail.present? %>
       <%= markdown(@product.detail) %>
@@ -368,7 +391,7 @@
 
             <%= hidden_field :conversation_participants, :user_id, :value => @product.vitrine.user_id %>
             <ul>
-              <li><%= text_area :message, :body, :rows => 3 %></li>
+              <li><%= text_area :message, :body, class: 'form-control',data: { emojiable: true },:rows => 3 %></li>
 
             </ul>
 

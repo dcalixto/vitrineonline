@@ -1,0 +1,101 @@
+<% title  "Configurar vitrine" %>
+<%= render "shared/vitrine_menu" %>
+<div class="box5">
+  <div class="flash_box">
+    <%= render 'shared/flash_messages' %>
+    <%= render 'shared/error_messages', :target => @vitrine  %>
+  </div>
+
+  <div class="block  margin_top">
+
+    <h1>Configuração <%= link_to @vitrine.user.name, vitrine_path(current_vitrine) %> </h1>
+
+    <div class="content">
+
+      <div class="subcontent_top">
+
+        <h2>Logo</h2>
+
+        <ul class="image_info">
+          <li>
+  <%= image_tag current_vitrine.logo.url(:thumb).to_s %>
+          </li>
+          <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
+          <li class="tip">O logo será redimencionanda para 245 x 135 de altura</li>
+        </ul>
+
+        <%= form_for(@vitrine, :url => vitrine_path(current_vitrine), :method => :put, html: { multipart: true, class: "dropzone"}) do |logo|  %>
+
+
+          <div class="fallback">
+
+            <%= logo.file_field :logo %><br>
+            <%= logo.submit "Salvar" %>
+          </div>
+        <% end %>
+
+
+
+
+      </div>
+
+
+
+
+    <div class="subcontent">
+      <h2>Sobre</h2>
+
+
+  <p class="tip">Descreva sua vitrine</p>
+<p clas="tip">Para inserir emojis no texto acesse
+  <%= link_to  "http://www.emoji-cheat-sheet.com"   %></p>
+
+
+
+<div class="caixa">
+      <div class="wmd-panel">
+    <div id="wmd-button-bar"></div>
+      <%= form_for @vitrine, :url => vitrine_path, :method => :put do |a| %>
+
+
+
+
+      <%= a.text_area :about, :id => "wmd-input", :class=> "wmd-input", :placeholder => "Sobre"%>
+
+      <%= a.submit "Salvar", :class => 'btn' %>
+      <% end %>
+ <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+
+</div>
+
+  </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="box11">
+
+  <div class="tip_box">
+    <h2>Endereço</h2>
+    <h2><%= current_vitrine.name %></h2>
+    <ul>
+      <li>
+        <%=  current_user.address %>
+      </li>
+      <li>
+        <%= current_user.neighborhood %>
+      </li>
+      <li>
+        <%= current_user.postal_code %>
+      <li>
+        <% unless current_user.city.blank? %>
+      <li><%=  current_user.city.name %>
+      </li>
+      <% end %>
+      <% unless current_user.state.blank? %>
+      <li><%= current_user.state.name %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

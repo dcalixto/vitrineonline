@@ -39,9 +39,12 @@
         <li><%= link_to "Fatura", vitrine_invoices_path(current_vitrine)  %></li>
         <li><%= link_to 'Relatório de Vendas', sales_report_vitrine_path(current_vitrine) %></li>
       </ul>
+      
       <%= link_to  vitrine_path(current_vitrine), :id => "shop_button", :class => 'btn' do %>
       <%= content_tag(:i,nil, :class=>"go_boutique_icon")  %>
+
       Vitrine
+
       <% end %>
     </div>
   </div>

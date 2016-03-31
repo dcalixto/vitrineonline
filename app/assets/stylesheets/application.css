@@ -17,7 +17,6 @@
 *= require help
 *= require nav_bar
 *= require block
-*= require img_preview
 *= require buton
 *= require website_menu
 *= require feedbacks
@@ -28,7 +27,6 @@
 *= require order
 *= require tables
 *= require footer
-*= require custom_popover
 *= require header
 *= require icons
 *= require product
@@ -40,14 +38,14 @@
 *= require details
 *= require jquery.fancybox
 *= require jquery.raty
-*= require select
 *= require token-input
-*= require jquery.webui-popover
+*= require tipsy
 *= require lightslider.min
 *= require select2
 *= require dropTab
 *= require dropzone
-*= require simplemde.min
+*= require markdown
+
  */
 
 

@@ -1,0 +1,51 @@
+<div class="blue_bar">
+  <div class=inner_bar>
+
+
+
+    <% cache "logo" do %>
+    <div id="logo">
+      <%= link_to root_url do %>
+      <%= content_tag(:span, nil, :class =>'logo') %>
+      <% end %>
+    </div>
+    <% end %>
+
+
+              <% cache "busca" do %>
+              <%= render  :partial=> "layouts/search" %>
+              <% end %>
+
+
+  <%= render "layouts/shop_cart" %>
+
+    <%=render  :partial=>"layouts/links_topbar" %>
+
+    </div>
+
+        </div>
+
+  <div class="icons_bar">
+        <div class="inner_tab">
+
+          <% cache "drop" do %>
+      <%=render "layouts/drop" %>
+
+<% end %>
+      <div class="mobile_nav">
+
+          <% if current_user %>
+          <%=render :partial=> "layouts/user_nav" %>
+          <%end %>
+
+  </div>
+
+      </div>
+
+
+      </div>
+
+
+
+
+      </div>

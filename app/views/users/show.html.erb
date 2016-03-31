@@ -61,7 +61,7 @@
         <tr>
           <td>
 
-            <%= search_form_for @q, url: feedbacks_search_users_path, method: :post  do |f| %>
+            <%= search_form_for @q, url:  feedbacks_users_path, method: :post  do |f| %>
 
             <%= f.text_field :id_cont %>
             <%= f.submit "Buscar", :class=>"btn_grey" %>
@@ -83,4 +83,57 @@
       <%= render :partial => 'feedbacks/feedbacks' %>
     </div>
   </div>
+</div>
+<div class="box1">
+  <div class="block">
+<div class="subcontent">
+  <div class="block_message">
+
+    <h2>Entrar em contato com o vendedor</h2>
+
+    <% @conversation = Conversation.new %>
+
+    <%= form_for @conversation do |f| %>
+
+    <%= hidden_field :conversation_participants, :user_id, :value => @user %>
+    <ul>
+      <li><%= text_area :message, :body, class: 'form-control',data: { emojiable: true },:rows => 3 %></li>
+
+    </ul>
+
+    <%= f.button 'Enviar', :class => 'btn_grey' %>
+
+    <% end %>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class="box1">
+  <div class="block">
+    <h2>Veja Também</h2>
+
+
+      <ul class="content-slider">
+
+            <% @suggestions.each do |item| %>
+              <li>
+            <%= link_to product_path(item) do  %>
+            <%= image_tag item.f1.url(:thumb).to_s %>
+            <%= item.name %>
+              <%= item.price %>
+            <% end %>
+            </li>
+            <% end %>
+  </ul>
+
+
+
+
+  </div>
+
 </div>

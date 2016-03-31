@@ -10,6 +10,17 @@ Vitrineonline::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
+  #config.after_initialize do
+  #  Bullet.enable = true
+  #  Bullet.alert = true
+  #  Bullet.bullet_logger = true
+  #  Bullet.console = true
+  #  Bullet.rails_logger = true
+
+
+  #end
+
+
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -37,10 +48,11 @@ Vitrineonline::Application.configure do
   config.assets.debug = true
 
   # ActionMailer::Base.delivery_method = :smtp
-  # ActionMailer::Base.smtp_settings = {
-  #   :address => "localhost",
-  #  :port => 1025,
-  # :domain => "vitrineonline.com" }
+   #ActionMailer::Base.smtp_settings = {
+    # :address => "localhost",
+    #:port => 1025,
+   #:domain => "vitrineonline.com" }
 
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+   config.action_mailer.delivery_method = :letter_opener
+    config.action_mailer.default_url_options = { host: 'localhost:3000' }
 end

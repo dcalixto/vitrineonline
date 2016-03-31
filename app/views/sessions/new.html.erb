@@ -6,7 +6,10 @@
   <div class=" block margin_top">
     <h1>Entrar</h1>
     <div class="content">
+      <%= link_to   "/auth/facebook" do  %>
 
+        <%= content_tag( :i,nil, :class => "fb_button")  %>
+        <% end %>
       <%= form_tag  sessions_path,  :method => :post  do |f| %>
       <ul>
 

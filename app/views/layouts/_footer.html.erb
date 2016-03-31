@@ -2,70 +2,99 @@
 
   <div class="inner_footer">
 
-    <div class="footer-copy">
-      <% cache "logo_bottom" do %>
-      <%= link_to root_url do %>
-      <%= content_tag(:span, nil, :id =>"footer-logo") %>
-      <% end %>
-      <% end %>
-      <p>Vitrineonline &copy; 2015
-      </p>
-    </div>
+   
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <h2>Vamos ajudá-lo</h2>
 
-    <ul class="footer-links">
+    <ul >
       <li>
-        <h1>Serviço ao cliente</h1>
-      </li>
+              </li>
       <li><%= link_to 'Termos e Condições', page_path('termos') %></li>
       <li><%= link_to 'Privacidade', page_path('privacidade')%></li>
       <li><%= link_to 'Contato', contacts_path  %></li>
 
       <li><%= link_to 'Sobre', page_path('sobre')%></li>
 
+                <li class="invisible"><%= link_to 'Oportunidades', page_path('oportunidades')%></li>
+     <li><%= link_to 'Todos os Departamentos', departments_path%></li>
+
+         </ul>
+          </td>
+
+         <td>
+     <h2>Venda conosco</h2>
+
+           <ul >
+
+      <li>
+           </li>
+       <li>
+        <%= link_to "Como Vender",  page_path("vender")%>
+      </li>
+     <li>
+        <%= link_to "Segurança",  page_path("seguranca")%>
+      </li>
       <li>
         <%= link_to "Avaliação",  page_path("avaliacao")%>
       </li>
+
+    </ul>
+          </td>
+
+
+
+
+          <td>
+   <h2>Conecte-se conosco</h2>
+
+    <ul>
       <li>
-        <%= link_to "Segurança",  page_path("seguranca")%>
-      </li>
-      <li class="invisible"><%= link_to 'Oportunidades', page_path('oportunidades')%></li>
-      <li>
-        <%= link_to  "https://www.paypal.com/br"  do %>
+             </li>
+      <li><%= link_to 'face link',"https://www.faceboook.com/vitrineonlinevitrineonline" %></li>
+      <li><%= link_to 'twitter link', "https://www.twitter.com/vitrineonlinevitrineonline"%></li>
+      <li><%= link_to 'youtube link', "https://www.youtube.com/vitrineonlinevitrineonline"%></li>
+      <li><%= link_to 'instagram link', "https://www.instagram.com/vitrineonlinevitrineonline"%></li>
+
+    </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+ <div class="footer-copy">
+      <% cache "logo_bottom" do %>
+      <%= link_to root_url do %>
+      <%= content_tag(:span, nil, :id =>"footer-logo") %>
+      <% end %>
+      <% end %>
+      <p>Vitrineonline &copy; 2016
+      </p>
+    </div>
+          </td>
+
+          <td>
+              <%= link_to  "https://www.paypal.com/br"  do %>
 
         <%= content_tag(:span, nil, :class => 'paypal_logo') %>
         <% end %>
-      </li>
+          </td>
+          <td>
+  <%= link_to  root_url  do %>
 
-    </ul>
-
-    <ul class="footer-links">
-      <li>
-        <h1>Explore a Vitrineonline</h1>
-      </li>
-      <li><%= link_to 'Todos os Departamentos', page_path('termos') %></li>
-      <li><%= link_to 'Mapa do Site', page_path('privacidade')%></li>
-
-    </ul>
-
-    <ul class="footer-links">
-      <li>
-        <h1>Conecte-se com Nós</h1>
-      </li>
-      <li><%= link_to 'face link', page_path('termos') %></li>
-      <li><%= link_to 'twitter link', page_path('privacidade')%></li>
-      <li><%= link_to 'youtube link', page_path('privacidade')%></li>
-      <li><%= link_to 'instagram link', page_path('privacidade')%></li>
-
-    </ul>
-
-    <div id="security_footer">
-
-      <%= link_to  root_url  do %>
-
-      <%= content_tag(:span, nil, :class => 'comodo') %>
+      <%= content_tag(:span, nil, :class => 'omodo') %>
       <% end %>
 
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
     </div>
-  </div>
 
 </div>

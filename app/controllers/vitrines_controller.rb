@@ -2,7 +2,7 @@
 require 'product_recommender'
 class VitrinesController < ApplicationController
    before_filter :authorize, :correct_vitrine, only: [:edit, :update]
-   before_filter :log_view, only: [:show]
+   before_filter :log_view , only: [:show]
 
   def show
     @vitrine = Vitrine.find(params[:id])
@@ -20,11 +20,15 @@ class VitrinesController < ApplicationController
     @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
     #  @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 15).order('created_at DESC')
 
-    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 25)
+    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
     # similarities from another vitrines
     ids = ProductRecommender.instance.predictions_for(@vitrine.id, matrix_label: :vitrines)
     @similarities = Product.unscoped.for_ids_with_order(ids)
+
+    # suggestions for current visitor
+    ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
+    @suggestions = Product.unscoped.for_ids_with_order(ids)
   end
 
   def feedbacks
@@ -75,7 +79,9 @@ end
     end
 
   def index
-    @vitrines = Vitrine.all.paginate(per_page: 22, page: params[:page])
+
+    @q = Vitrine.ransack(params[:q])
+    @vitrines = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
   end
 
   def create
@@ -100,13 +106,6 @@ end
     end
   end
 
-  def links
-    @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0])
-
-    respond_to do |format|
-      format.html { render 'links', layout: false }
-    end
-   end
 
   def sales_report
     end_time = Time.now
@@ -142,15 +141,9 @@ end
     end
   end
 
-  protected
 
-  def prepare_stats(start_time, end_time, product_id = nil)
-    if product_id.nil?
-      current_vitrine.invoices.stats(start_time..end_time).to_a.map(&:serializable_hash)
-    else
-      Transaction.product_stats(product_id, start_time..end_time).to_a.map(&:serializable_hash)
-    end
-  end
+
+protected
 
   def log_view
    ip_addr = request.remote_ip
@@ -166,30 +159,15 @@ end
    else
      @vitrine.views.create(:ip_address => ip_addr)
    end
- end
+  end
+
+
+
+  def prepare_stats(start_time, end_time, product_id = nil)
+    if product_id.nil?
+      current_vitrine.invoices.stats(start_time..end_time).to_a.map(&:serializable_hash)
+    else
+      Transaction.product_stats(product_id, start_time..end_time).to_a.map(&:serializable_hash)
+    end
+  end
 end
-
-  #def log_view
-
-
-  #  begin
-  #    @vitrine = Vitrine.find(params[:id])
-  #  rescue
-    #  @vitrine = nil
-    #end
-    #if @vitrine.present?
-    #  ip_addr = request.remote_ip
-    #  @views = @vitrine.views.group(:ip_address).size[ip_addr]
-    #  if @views
-      #  if @views >= 1
-      #    return false
-      #  else
-        #  @vitrine.views.create(ip_address: ip_addr)
-      #  end
-      #else
-      #  @vitrine.views.create(ip_address: ip_addr)
-    #  end
-
-  #  end
-  #end
-  #end

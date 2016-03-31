@@ -1,52 +1,51 @@
-<% title "Subcategoria" %>
+<% title "Produtos" %>
 <div class="box1">
   <% breadcrumb :subcategory, @subcategory %>
 </div>
 
-<%= render "shared/filtro_product" %>
+<%= render 'shared/filtro_product' %>
 
 <!-- VITRINE-->
 <div class="box3">
-  <div class="block header">
+  <div class="subcontent_top">
 
-    <h1><%= @products.current_page %>
-      de
-      <%= @products.total_pages %>
-      no Total
+    <p>
       <span class="orange"><%= @products.total_entries %></span>
-      Itens</h1>
+      Produtos achados</p>
     <div class="content">
 
-      <div class="vitrine">
+      <div class="searchResults">
 
-        <% if @products.present? %>
         <% @products.each do |product|%>
 
-        <div class="expositor">
-          <ul class="lista-thumb">
+        <%= link_to  product_path(product.id), :class=>"product" do %>
 
-            <li><%= link_to(image_tag(product.f1.url(:thumb).to_s), product_url(product), :crop => :fill) %>
-            </li>
-          </ul>
-          <ul class="lista-detalhes">
-            <li class="lista-product" title="<%=product.name %>"><%= link_to product.name, product_path(product) %></li>
-            <li class="lista-preco">
-              <span><%= number_to_currency product.price %></span>
-            </li>
-            <li class="lista-time">
-              <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+        <%= image_tag product.f1.url(:small).to_s, :class=>"productImg" %>
 
-            </li>
+        <span class="productName">
+          <%= product.name %></span>
 
-            <li >Por
-              <%= link_to product.vitrine.name, vitrine_path(product.vitrine.id) %></li>
+        <span class="price"><%=  number_to_currency(product.price, :unit => "R$") %></span>
+        <% if product.feedbacks %>
 
-          </ul>
+        <div class="productFeeback">
+
+          <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+          <%= @total_feedbacks %>
+
         </div>
+        <% end %>
+
+
+
+        <span class="by">Por
+          <%= product.vitrine.name %></span>
 
         <% end %>
 
         <% end %>
+
       </div>
 
     </div>

@@ -7,16 +7,49 @@
 //= require jquery.raty
 //= require typeahead
 //= require jquery.tokeninput
-//= require jquery.webui-popover
+//= require jquery.tipsy
 //= require lightslider.min
 //= require jquery-dynamic-selectable
 //= require select2
 //= require social-share-button
 //= require dropzone
-//= require simplemde.min
+//= require respond.min
+//= jquery.menu-aim
+//= Markdown.Converter
+//= Markdown.Editor
+//= Markdown.Sanitizer
+//= tipsy
+
+
 //= require_tree .
 
 
+
+
+
+
+$(document).ready(function() {
+    $('.user_nav li a').tipsy({gravity: 'n'});
+});
+
+
+
+
+$(document).ready(function() {
+$("#main-nav").menuAim({
+    rowSelector: "li.parentnav",
+    submenuDirection: "below",
+
+    tolerance: 0,
+    exitMenu: function(){return true;},
+    activate: function(a){
+        $(a).children('.subnav').show();
+    },
+    deactivate: function(a){
+        $(a).children('.subnav').hide();
+    }
+});
+});
 
 
 // SELECT2 (TAGS)
@@ -26,43 +59,9 @@ $(document).ready(function() {
   })
 });
 
-// WEBUI-POPOVER
-
-
-
-
-$(document).ready(function() {
-$('.ttooltip').webuiPopover({
-  type: 'async',
-  /*url:'/feedbacks/links',*/
-  padding: false,
-  cache: false,
-
-
-});
-});
-$(document).ready(function() {
-$('.ttooltip2').webuiPopover({
-  trigger: 'hover',
-  padding: false,
-  cache: false,
-
-
-});
-});
-
 
 
 // LIGHTSLIDER
-
-$(document).ready(function() {
-  $(".content-slider").lightSlider({
-    loop: true,
-    keyPress: true,
-    auto: true
-
-  });
-});
 
 $(document).ready(function() {
   $(".box-slider").lightSlider({
@@ -70,18 +69,16 @@ $(document).ready(function() {
     keyPress: true,
     auto: true,
     item: 1,
+    pause: 7000,
   });
 });
 
 $(document).ready(function() {
-  $(".content-slider-vertical").lightSlider({
-    loop: true,
-    vertical: true,
-    verticalHeight: 500,
+  $(".content-slider").lightSlider({
+    loop: false,
+    keyPress: true,
     auto: true,
-    pager: false
-
-
+  pause: 7000,
   });
 });
 
@@ -106,45 +103,6 @@ $(document).ready(function() {
     });
   });
 });
-
-
-// SimpleMDE-EDITOR
-
-
-$(document).ready(function() {
-var simplemde = new SimpleMDE({ element: document.getElementById("vitrine_about"),
-showIcons: ["table", "horizontal-rule"],
-hideIcons: ["guide"],
-spellChecker: false,
-toolbarTips: false,
-
- });
-});
-$(document).ready(function() {
-var simplemde = new SimpleMDE({ element: document.getElementById("vitrine_garantia"),
-
-showIcons: ["table", "horizontal-rule"],
-hideIcons: ["guide"],
-spellChecker: false,
-toolbarTips: false,
-
-
- });
-});
-
-
-$(document).ready(function() {
-var simplemde = new SimpleMDE({ element: document.getElementById("vitrine_anuncio"),
-
-showIcons: ["table", "horizontal-rule"],
-hideIcons: ["guide"],
-spellChecker: false,
-toolbarTips: false,
-
-
- });
-});
-
 
 
 
@@ -224,17 +182,38 @@ $(document).ready(function(){
     /*$.getScript("/edit")*/
   //})
 
-  var bannerDropzone = new Dropzone (".dropzone", {
-		maxFilesize: 2, // Set the maximum file size to 256 MB
-     maxFiles: 3,
-      dictDefaultMessage: "Solte suas imagens aqui",
-		paramName: "banner[img]", // Rails expects the file upload to be something like model[field_name]
-		addRemoveLinks: true, // Don't show remove links on dropzone itself.
-   dictRemoveFile: 'Remover'
-  });
+//  var bannerDropzone = new Dropzone (".dropzone", {
+//		maxFilesize: 2, // Set the maximum file size to 256 MB
+  //   maxFiles: 3,
+    //  dictDefaultMessage: "Solte suas imagens aqui",
+//		paramName: "banner[img]", // Rails expects the file upload to be something like model[field_name]
+//		addRemoveLinks: true, // Don't show remove links on dropzone itself.
+  // dictRemoveFile: 'Remover'
+  //});
+
+
+
+
 
 
 });
+
+
+
+$('#images').dropzone({// PDF dropzone element
+  maxFilesize: 2, // Set the maximum file size to 256 MB
+   maxFiles: 10,
+    dictDefaultMessage: "Solte suas imagens aqui",
+    paramName: "images[foto]",
+
+
+  addRemoveLinks: true, // Don't show remove links on dropzone itself.
+ dictRemoveFile: 'Remover'
+
+
+ //
+  });
+
 
 $('#banner').dropzone({// PDF dropzone element
   maxFilesize: 2, // Set the maximum file size to 256 MB
@@ -246,14 +225,18 @@ $('#banner').dropzone({// PDF dropzone element
     // rest of code
 });
 
-// CUSTOM FORM SUBMIT
-$(document).ready(function() {
-  $('a[data-submit-form]').click(function(e) {
-    e.preventDefault();
-    $(this).closest('form').attr('action', $(this).attr('href')).submit();
-  });
-});
 
+
+
+
+
+// CUSTOM FORM SUBMIT
+//$(document).ready(function() {
+  //$('a[data-submit-form]').click(function(e) {
+    //e.preventDefault();
+   // $(this).closest('form').attr('action', $(this).attr('href')).submit();
+ // });
+//});
 
 
 
@@ -296,38 +279,6 @@ function hideAnnouncement(announcement_created_at) {
   $("#announcement").slideUp();
 }
 
-// http://www.quirksmode.org/js/cookies.html
-function createCookie(name, value, days) {
-  if (days) {
-    var date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    var expires = "; expires=" + date.toGMTString();
-  } else var expires = "";
-  document.cookie = name + "=" + value + expires + "; path=/";
-}
-
-
-
-// MENU CHOOSEN BRANDS ON NEW PRODUCT
-
-$(document).ready(function() {
-  $("#notificationLink").click(function() {
-    $("#notificationContainer").fadeToggle(300);
-    $("#notification_count").fadeOut("slow");
-    return false;
-  });
-
-  //Document Click hiding the popup
-  $(document).click(function() {
-    $("#notificationContainer").hide();
-  });
-
-  //Popup on click
-  $("#notificationContainer").click(function() {
-    return false;
-  });
-
-});
 
 
 //JQUERU CHAINED SELECTS
@@ -387,3 +338,19 @@ $(function() {
     animateDropdown: false
   });
 });
+
+
+
+
+  if ($(".wmd-input").length > 0) {
+      var converter = new Markdown.Converter();
+
+      var editors = [];
+      var i = 0;
+
+      $(".wmd-input").each(function() {
+          editors[i] = new Markdown.Editor(converter, "");
+          editors[i].run();
+          i = i + 1;
+      });
+  }

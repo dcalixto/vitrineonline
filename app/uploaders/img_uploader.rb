@@ -25,14 +25,20 @@ class ImgUploader < CarrierWave::Uploader::Base
 
 
 
+
   version :thumb do
-    process resize_to_fit: [186, 186]
+    process resize_to_fit: [986, 215]
     process quality: 80
 
     process :strip
   end
 
+  version :mobile do
+    process resize_to_fit: [414, 165]
+    process quality: 80
 
+    process :strip
+  end
 
    def extension_white_list
     %w(jpg jpeg png svg)

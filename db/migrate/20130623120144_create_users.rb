@@ -28,6 +28,14 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :uid
       t.string   :oauth_token
       t.datetime  :oauth_expires_at
+      t.boolean :email_confirmed,          :default => false
+      t.string :confirm_token
+      t.string :phone
+      t.string :otp_secret_key
+      t.integer :otp_counter
+      t.float :latitude
+      t.float :longitude
+      
 
 
       t.timestamps
@@ -38,5 +46,13 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, :state_id
     add_index :users, :city_id
     add_index :users, :oauth_token, :unique => true
+    add_index :users, :confirm_token, :unique => true
+    add_index :users, :phone
+   add_index :users, :otp_secret_key
+    add_index :users, :otp_counter
+
+
+
+
   end
 end

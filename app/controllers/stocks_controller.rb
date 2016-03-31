@@ -5,13 +5,13 @@ class StocksController < ApplicationController
 def index
 
     @q = Product.joins(:vitrine).where('vitrines.id' => current_vitrine.id).ransack(params[:q])
-    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
+    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
-    # @q = Site.joins(:site_management).where('site_managements.management_id' => @owner.id).search(params[:q])
-    # @sites = @q.result(:distinct => true).paginate(:page => params[:page]).order('id').all
+
   end
 
   def destroy
+
     @product = Product.find(params[:id])
     if @product.destroy
       redirect_to(action: 'index')

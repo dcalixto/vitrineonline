@@ -1,7 +1,7 @@
 <%= link_to  product_path(product.id), :class=>"product" do %>
-
-<%= image_tag product.f1.url(:small).to_s, :class=>"productImg" %>
-
+<% if product.images.present? %>
+<%= image_tag product.images.first.url(:small).to_s, :class=>"productImg" %>
+<% end %>
 <span class="productName">
   <%= product.name %></span>
 
@@ -17,8 +17,6 @@
 </div>
 <% end %>
 
-<span class="lista-time">
-  <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
-</span>
+
 
 <% end %>

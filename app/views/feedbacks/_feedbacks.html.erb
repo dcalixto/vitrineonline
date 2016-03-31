@@ -12,7 +12,7 @@
       <td>
         <h2>Item</h2>
         <%= link_to  product_path(product.id), :title => product.name do %>
-        <%= image_tag product.f1.url(:table).to_s, :alt => product.name %>
+        <%= image_tag product.images.first.url(:small).to_s, :alt => product.name %>
         <%=  product.name  %>
         <% end %>
       </td>
@@ -24,7 +24,7 @@
         <%= is_buyer ? feedback.seller_comment : feedback.buyer_comment %></td>
 
       <td>
-        <h2>De</h2>
+        <h2>Por</h2>
         <%= is_buyer ? link_to(seller.name, vitrine_path(seller.id)) : link_to(buyer.name, user_path(buyer.id)) %>
       </td>
 

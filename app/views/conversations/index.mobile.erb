@@ -1,0 +1,58 @@
+<% title "Menssagens Index" %>
+
+<div class="box1">
+  <div class="block margin_top">
+
+
+    <div class="chatboxhead">
+  <h2>Menssagens</h2>
+
+  <table class="block_search">
+    <tr>
+      <td>
+
+        <%= search_form_for @q, url: conversations_path, method: :post  do |f| %>
+
+        <%= f.text_field :id_cont %>
+        <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+        <% end %>
+      </td>
+      <td class="sort">
+
+        Ordernar por
+          <%= sort_link @q, :created_at, "Data" %>
+
+      </td>
+      <td>
+        <%=button_to "Nova Mensagem", new_conversation_path,  :class =>"ttooltip btn_grey btn_big",  :method => "get", :data => {:url => "/conversations/chatbox"}   %>
+</td>
+    </tr>
+  </table>
+
+
+
+    </div>
+    <div class="messagebox" id="message_list">
+
+      <%= render partial: 'conversation', :collection => @conversations %>
+
+
+
+</div>
+
+<div class="block_pagination">
+  <div class="digg_pagination">
+    <%= will_paginate @conversations,:container => false,
+    previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......",
+    :inner_window => 1, :outer_window => 1 %>
+
+  </div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>

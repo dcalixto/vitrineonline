@@ -5,7 +5,7 @@
       <ul>
 
         <%= link_to  product_path(product.id) do %>
-        <%= image_tag product.f1.url(:table).to_s %>
+        <%= image_tag product.f1.url(:thumb).to_s %>
         <% end %>
 
       </td>
@@ -30,13 +30,20 @@
           <b><%= number_to_currency(order.total_price) %></b>
         </span>
       </td>
-
       <td>
         <% if order.status.nil? %>
-        <%= button_to 'Checkout', checkout_order_path(order), method: :get, class: 'btn_orange' %>
+
         <%= button_to 'Remover',  order, :class=> "btn_grey btn_small",  method: :delete %>
         <% end %>
       </td>
+      <td>
+        <% if order.status.nil? %>
+        <%= button_to 'Prosseguir', checkout_order_path(order), method: :get, class: 'btn_orange' %>
+
+        <% end %>
+      </td>
+
+
     </tr>
   </tbody>
   <% unless order.status.nil? %>

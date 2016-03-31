@@ -5,17 +5,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
+    user = User.find_by_email(params[:email].downcase)
     if user && user.authenticate(params[:password])
       user.update_attribute(:login_at, Time.zone.now)
       user.update_attribute(:ip_address, request.remote_ip)
-      if params[:remember_me]
-        cookies.permanent[:auth_token] = user.auth_token
+
+      if user.email_confirmed
+        logar user
+
+      elsif
+      params[:remember_me]
+      cookies.permanent[:auth_token] = user.auth_token
 
       else
-        cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, :httponly => true, secure: !(Rails.env.test? || Rails.env.development?) }
 
-      end
+        cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, httponly: true, secure: !(Rails.env.test? || Rails.env.development?) }
+
+            end
+
       redirect_to root_url # , :notice => "Logado!"
     else
       flash.now[:alert] = 'Email ou Password inválido'

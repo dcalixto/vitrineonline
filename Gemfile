@@ -1,6 +1,23 @@
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
+
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.22'
+
+#ANALYTICS
+gem 'garelic'
+
+#Log
+
+gem "lograge"
+
+gem 'rollbar', '~> 2.8.3'
+gem 'newrelic_rpm'
+#gem 'notable'
 
 # SEARCH
 
@@ -9,8 +26,13 @@ gem 'ransack'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'searchkick',  github: "ankane/searchkick"
 
+#CHART
+gem "chartkick"
+gem 'groupdate'
+gem 'hightop'
+
 # MOBILE
-#gem 'mobylette'
+
 gem 'mobile-fu'
 
 #ADMIN
@@ -63,9 +85,14 @@ gem 'formtastic', :git => 'git://github.com/dcalixto/formtastic.git', :branch =>
 
 # ANALYS
 
+#FEEDS
+gem 'feedjira'
 
 # MARKUP LANGUAGE
 gem 'redcarpet'
+gem 'md_emoji'
+
+# => EMOJIS
 
 
 # FACEBOOK AUTH
@@ -80,21 +107,23 @@ gem 'prawn'#, '1.0.0.rc2'
 # ADMIN & SECURITY
 
 gem 'validate_url'
-#gem 'secure_headers'
-
+gem 'active_model_otp'
+gem 'rack-attack'
+gem 'geocoder'
+gem 'twilio-ruby'
 # IMAGE
 
 gem 'carrierwave','~> 0.9.0'
 gem 'mini_magick'
-#gem 'fog'
 gem 'dropzonejs-rails'
 # RATING PLUGIN
 
 gem 'jquery-raty-rails'
 
 # DELAY_JOB
-
+gem 'delayed_job', git: 'https://github.com/dcalixto/delayed_job.git'
 gem 'delayed_job_active_record'
+
 
 # STATIC PAGES
 gem 'high_voltage' # , '~> 2.1.0'
@@ -105,7 +134,7 @@ gem 'high_voltage' # , '~> 2.1.0'
 # CACHE
 gem 'memcachier'
 gem 'dalli'
-#gem 'dalli-elasticache'
+
 
 # MESSAGE
 gem 'rails-timeago'
@@ -127,7 +156,6 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'therubyracer'
- #gem 'asset_sync'
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -138,11 +166,15 @@ group :development do
   gem 'ruby_gntp'
   gem 'brakeman'
   gem 'better_errors'
+  gem 'dotenv-rails'
   gem 'rubocop', require: false
-
+   gem "letter_opener"
   gem 'binding_of_caller'
   gem 'meta_request'
+
 end
+ gem "mail_view", "~> 2.0.4"
+ gem  'premailer'
 
 group :production do
   gem 'pg'

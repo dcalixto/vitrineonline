@@ -1,0 +1,59 @@
+<% title "Relatório de Vendas" %>
+<%= render "shared/vitrine_menu" %>
+<% unless @most_sold_product.nil? %>
+<script language="javascript">
+  // Chart draw method
+  var chart;
+  var week_stats = <%= @week_stats.to_json.html_safe %>;
+  var month_stats = <%= @month_stats.to_json.html_safe %>;
+
+  var draw_chart = function()
+  {
+      chart = Morris.Line({
+          element: 'sales_chart',
+          data: week_stats,
+          xkey: 'day',
+          ykeys: ['count', 'pcount'],
+          labels: ['Total de Vendas', '<%= @most_sold_product.name %> Vendas'],
+          lineColors: ['#365d98','#225198']
+      });
+  };
+
+  var chart_options = function()
+  {
+      chart.setData($(this).val() == 0 ? week_stats : month_stats);
+  };
+</script>
+<% end %>
+
+
+<div class="box5">
+  <div class="flash_box">
+  <%= render 'shared/flash_messages' %>
+  </div>
+  <div class="block margin_top">
+    <h1>Relatório de Vendas</h1>
+    <div class="content">
+
+
+  <h4> Gráfico </h4>
+  <p class="tip">O relatório de vendas lhe ajudará a manter uma média semanal e mensal do fluxo de vendas</p>
+
+
+
+    <!-- CHART CONTAINER  -->
+    <div id="sales_chart"></div>
+    <!-- View options  -->
+    <% unless @most_sold_product.nil? %>
+    <div id="sales_chart_options">
+      &nbsp;Período:
+      <select name="chart_options" id="chart_options">
+        <option value="0">Ultima Semana</option>
+        <option value="1">Ultimo Mês</option>
+      </select>
+      <br/><br/>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>

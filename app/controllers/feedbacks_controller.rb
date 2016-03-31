@@ -22,15 +22,6 @@ class FeedbacksController < ApplicationController
   end
 
 
- def links
-
-    @awaiting_feedbacks_orders = Order.awaiting_feedback(current_user)
-       respond_to do |format|
-      format.html { render 'links', :layout=> false}
-    end
-  end
-
-
 
   def create
     @order = Order.find_by_id(params[:order_id])

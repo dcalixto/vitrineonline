@@ -12,7 +12,7 @@
 
 
     <div class="chatboxhead">
-    <h1>Conversa</h1>
+    <h3>Conversa</h3>
 
     </div>
 
@@ -26,7 +26,7 @@
       <%= semantic_form_for  [@conversation,  @new_message] do |f| %>
 
       <%= f.inputs do %>
-      <%= f.input :body, :as => :text, :placeholder => false, :label => false %>
+      <%= f.input :body, :as => :text, class: 'form-control',data: { emojiable: true },:placeholder => false, :label => false %>
       <%= f.actions do %>
       <%= f.action :submit, :label => "Enviar", :button_html => { :class => "btn"} %>
       <% end %>

@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'product_recommender'
 class CartsController < ApplicationController
   def add
     product = Product.find(params[:id])
@@ -16,7 +17,6 @@ class CartsController < ApplicationController
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
         order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id(product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id)
 
-        #order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id_and_condition_id_and_gender_id_and_category_id_and_subcategory_id_material_id((product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id,  condition.nil? ? nil : condition.id, gender.nil? ? nil : gender.id, category.nil? ? nil : category.id, subcategory.nil? ? nil : subcategory.id, material.nil? ? nil : material.id)
 
         if order.nil? # create new order
           order = Order.new
@@ -68,8 +68,6 @@ class CartsController < ApplicationController
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
         order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id(product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id)
 
-      #  order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id_and_condition_id_and_gender_id_and_category_id_and_subcategory_id_material_id((product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id,  condition.nil? ? nil : condition.id, gender.nil? ? nil : gender.id, category.nil? ? nil : category.id, subcategory.nil? ? nil : subcategory.id, material.nil? ? nil : material.id)
-
         if order.nil? # create new order
           order = Order.new
           order.product = product
@@ -104,9 +102,12 @@ class CartsController < ApplicationController
   def index
     @user = current_user
     if current_user && current_user.cart
-      @orders = current_user.cart.orders.where('status is null').paginate(per_page: 10, page: params[:page])
+      @orders = current_user.cart.orders.where('status is null').paginate(per_page: 22, page: params[:page])
 
     end
+    # suggestions for current visitor
+    ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
+    @suggestions = Product.unscoped.for_ids_with_order(ids)
    end
 
   def user_address

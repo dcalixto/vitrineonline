@@ -1,5 +1,6 @@
 
-<div class="box5"  data-role="content">
+
+<div class="box1">
   <div class="margin_top">
     <div class="flash_box">
       <%= render 'shared/flash_messages' %>
@@ -15,15 +16,6 @@
       <li><%= image_tag('slider3.jpg')  %></li>
     </ul>
 
-    <div class="subcontent_top">
-
-      <h1>Em destaque</h1>
-
-      <div id="searchResults">
-
-        <%= render :partial => 'product', :collection => @products  %>
-      </div>
-    </div>
 
   </div>
 </div>
@@ -31,18 +23,20 @@
 
 
 <div class="box1">
-  <h1>Prondutos mais Vendidos</h1>
+  <h2>Produtos Mais Vendidos</h2>
 
-  <div class="subcontent_top">
+  <div class="block">
 
     <ul class="content-slider">
-
-      <% Product.order(@average_rating_from_buyers).each do |product| %>
-      <li><%= link_to(image_tag(product.f1.url(:thumb).to_s), product_url(product.id)) %></li>
-
+        <% Product.order(@average_rating_from_buyers).each do |product| %>
+        <li>
+      <%= link_to product_path(product) do  %>
+      <%= image_tag product.f1.url(:thumb).to_s %>
+      <%= product.name %>
+</li>
       <% end %>.
     </ul>
-
+<% end %>.
   </div>
 
 </div>
@@ -50,14 +44,34 @@
 
 
 <div class="box1">
-  <h1>Melhor avaliadas</h1>
+  <h2>Vitrines Mais Avaliadas</h2>
 
-  <div class="subcontent_top">
+  <div class="block">
     <ul class="content-slider">
       <% Vitrine.order(@average_rating_from_buyers).each do |vitrine| %>
-      <li><%= link_to(image_tag(vitrine.logo.url(:thumb).to_s), vitrine_url(vitrine.id)) %></li>
+<li>
+    <%=   link_to vitrine_path(vitrine) do %>
+
+  <%= image_tag vitrine.logo.url(:thumb).to_s %>
+
+      <%= vitrine.name %>
+
+</li>
       <% end %>
     </ul>
+      <% end %>
   </div>
 
+</div>
+
+
+<div class="box1">
+<div class="block">
+  <h2>Produtos Adicionados Recentemente</h2>
+
+  <div id="searchResults">
+
+    <%= render :partial => 'product', :collection => @products  %>
+  </div>
+</div>
 </div>

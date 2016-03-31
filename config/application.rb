@@ -17,7 +17,9 @@ module Vitrineonline
 
     config.after_initialize do
       Rails.application.routes_reloader.reload!
+
     end
+
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = 'utf-8'
@@ -50,13 +52,6 @@ module Vitrineonline
       'X-XSS-Protection' => '1; mode=block',
       'X-Content-Type-Options' => 'nosniff'
     }
-
-  
-
-#config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'SAMEORIGIN'})
-
-
-
 
   end
 end
