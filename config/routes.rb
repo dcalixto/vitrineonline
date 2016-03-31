@@ -33,11 +33,9 @@ Vitrineonline::Application.routes.draw do
 
 
     collection do
-            match '/:id' => 'users#show', via: [:get, :post], as: :feedbacks
+       match '/:id' => 'users#show', via: [:get, :post], as: :feedbacks
        match '/:id/feedbacks' => 'users#feedbacks', via: [:get, :post], as: :search_feedbacks
   #  match '/' => 'users#index', via: [:get, :post], as: :search
-
- match 'set_search' => 'users#set_search', :via => [:get, :post], :as => :set_search
 
     end
 
@@ -138,7 +136,7 @@ end
     collection do
       match '/:id' => 'vitrines#show', via: [:post], as: :feedbacks
      match '/:id' => 'vitrines#show', via: [:post], as: :products
-   match '/' => 'vitrines#index', via: [:post], as: :search
+  # match '/' => 'vitrines#index', via: [:post], as: :search
 
     end
 
