@@ -6179,14 +6179,14 @@ material_list = [
 [ "Seda"],
 [ "Amianto"],
 [ "Poliéster"],
-[ " Poliamida"],
-[ " Acrílico"],
-[ " Polipropileno"],
-[ " Elastano"],
-[ " Kevlar"],
-[ "  Nomex"],
-[ "  Ractel"],
-[ "  Neoprene"],
+[ "Poliamida"],
+[ "Acrílico"],
+[ "Polipropileno"],
+[ "Elastano"],
+[ "Kevlar"],
+[ "Nomex"],
+[ "Ractel"],
+[ "Neoprene"],
 ]
 
 material_list.each do |name|

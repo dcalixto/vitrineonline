@@ -90,10 +90,6 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
 
   validates_format_of :postal_code, with: /\A(\d{5})([-]{0,1})(\d{3})\Z/, allow_blank: true
 
-  validates :avatar,
-            file_size: {
-              maximum: 2.megabytes.to_i
-            }
 
 
 

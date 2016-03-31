@@ -10,7 +10,7 @@ class BannersController < ApplicationController
         redirect_to(action: :new,  only_path: true, format: :html)
       flash[:success] = 'Banners adicionado'
     else
-      render :new
+      render :new, format: :html
     end
   end
 

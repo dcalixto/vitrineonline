@@ -102,7 +102,7 @@ end
       redirect_to(action: 'edit', id: @vitrine, format: :html, only_path: true)
       flash[:notice] = "#{@vitrine.name} atualiazada"
     else
-      render :edit
+      render :edit, format: :html
     end
   end
 
