@@ -17,8 +17,6 @@ class Product < ActiveRecord::Base
   belongs_to :condition
   belongs_to :brand
 
-  #has_and_belongs_to_many :colors
-  #has_and_belongs_to_many :sizes
 has_many :sizeship
 has_many :sizes, through: :sizeship
 
@@ -43,7 +41,7 @@ attr_accessible :images_attributes
 
 
 
-#mount_uploader :image, ImageUploader
+#
 
   acts_as_votable
   acts_as_taggable # Alias for acts_as_taggable_on :tags
@@ -54,9 +52,6 @@ attr_accessible :images_attributes
 
 
   # scope :open_orders, -> { where(workflow_state: "open") }
-
-
-
 
   markable_as :favorite
 
@@ -105,15 +100,6 @@ attr_accessible :images_attributes
     end
     vitrine.owner?(user) == false && quantity > 0
    end
-
-  # require 'file_size_validator'
-
-
-  # validates  :f1, :f2,
-  #
-  #    :file_size => {
-  #    :maximum => 2.megabytes.to_i
-  #  }
 
 
 
@@ -184,9 +170,6 @@ end
         created_at: created_at
     }
   end
-
-
-
 
 
  end

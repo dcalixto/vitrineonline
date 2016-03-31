@@ -121,7 +121,7 @@ end
      @states = State.all
     @cities = City.where('state_id = ?', State.first.id)
     if @user.update_attributes(params[:user])
-      redirect_to(action: :edit, id: @user, only_path: true, format: :html)
+      redirect_to(action: :edit, id: @user, only_path: true, render nothing: true, format: :html)
       flash[:notice] = 'Conta atualiazada'
     else
       render :edit

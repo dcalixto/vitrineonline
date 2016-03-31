@@ -6018,7 +6018,140 @@ shipping_list = [
 ]
 
 shipping_list.each do |kind|
-  Brand.create( kind: kind )
+  Shipping.create( kind: kind )
+end
+
+
+condition_list = [
+  [ "Novo com etiqueta" ],
+  [ "Novo" ],
+  [ "Pouco uso"],
+  [ "Usado"],
+
+]
+
+condition_list.each do |condition|
+  Condtion.create( condition: condition )
+end
+
+
+color_list = [
+  [ "Água" ],
+  [ "Azul Turquesa" ],
+  [ "Azul Brasilis"],
+  [ "Água-marinha"],
+
+[ "Azul-Celeste " ],
+[ "Amarelo" ],
+[ "Amarelo-Brasilis" ],
+[ "Amarelo-Creme" ],
+[ "Amarelo claro" ],
+[ "Amarelo escuro" ],
+[ "Amarelo esverdeado" ],
+[ "Amarelo ouro claro" ],
+[ "Amarelo queimado" ],
+[ "Âmbar" ],
+[ "Ameixa" ],
+[ "Ametista" ],
+[ "Amêndoa" ],
+[ "Aspargo" ],
+[ "Azul" ],
+[ "Azul alice" ],
+[ "Azul ardósia" ],
+[ "Azul areado" ],
+[ "Azul aço" ],
+[ "Azul cadete" ],
+[ "Azul camarada" ],
+[ "Azul celeste" ],
+[ "Azul claro" ],
+[ "Azul cobalto" ],
+[ "Azul escuro" ],
+[ "Azul marinho" ],
+
+[ "Bege" ],
+[ "Bordô" ],
+[ "Borgonha" ],
+[ "Branco" ],
+[ "Bronze" ],
+[ "Caramelo" ],
+[ "Caqui" ],
+[ "Cardo" ],
+[ "Carmesim" ],
+[ "Carmim" ],
+[ "Castanho claro" ],
+[ "Castanho avermelhado" ],
+[ "Cenoura" ],
+[ "Cereja" ],
+[ "Chocolate" ],
+[ "Ciano" ],
+[ "Ciano claro" ],
+[ "Cinza" ],
+[ "Cinza claro" ],
+[ "Cinza escuro" ],
+[ "Cobre" ],
+[ "Coral" ],
+[ "Couro" ],
+[ "Creme" ],
+[ "Dourado" ],
+[ "Escarlate" ],
+[ "Esmeralda" ],
+[ "Ferrugem" ],
+[ "Grená" ],
+[ "Herbal" ],
+[ "Índigo" ],
+[ "Jade" ],
+[ "Laranja" ],
+[ "Laranja escuro" ],
+[ "Laranja claro" ],
+[ "Lavanda" ],
+[ "Lilás" ],
+[ "Limão" ],
+[ "Lima" ],
+[ "Linho" ],
+[ "Madeira" ],
+[ "Magenta" ],
+[ "Magenta escuro" ],
+[ "Marfim" ],
+[ "Marrom" ],
+[ "Marrom claro" ],
+[ "Marrom ecuro" ],
+[ "Milho" ],
+[ "Mostarda" ],
+[ "Multicolorido" ],
+[ "Naval" ],
+
+[ "Oliva" ],
+[ "Ouro" ],
+
+[ "Pardo" ],
+[ "Prata" ],
+[ "Preto" ],
+[ "Rosa" ],
+[ "Rosa claro" ],
+[ "Rosa forte" ],
+[ "Roxo" ],
+
+[ "Salmão" ],
+
+[ "Terracota" ],
+[ "Tomate" ],
+[ "Trigo" ],
+
+[ "Verde" ],
+[ "Verde claro" ],
+[ "Verde escuro" ],
+[ "Verde militar" ],
+
+[ "Vermelho" ],
+[ "Vermelho escuro" ],
+[ "Violeta" ],
+[ "Violeta escuro" ],
+
+
+]
+
+color_list.each do |name|
+  Color.create( name: name )
 end
 
 
@@ -6032,6 +6165,32 @@ size_list = [
 
 size_list.each do |size|
   Size.create( size: size )
+end
+
+
+
+material_list = [
+  [ "Algodão" ],
+  [ "Juta" ],
+  [ "Linho"],
+  [ "Cânhamo"],
+  [ "Sisal"],
+[ "Lã"],
+[ "Seda"],
+[ "Amianto"],
+[ "Poliéster"],
+[ " Poliamida"],
+[ " Acrílico"],
+[ " Polipropileno"],
+[ " Elastano"],
+[ " Kevlar"],
+[ "  Nomex"],
+[ "  Ractel"],
+[ "  Neoprene"],
+]
+
+material_list.each do |name|
+  Material.create( name: name )
 end
 
 
