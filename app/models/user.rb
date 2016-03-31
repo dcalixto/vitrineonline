@@ -56,7 +56,7 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
 
 
   include PgSearch
-  pg_search_scope :search, against: [:name],
+  pg_search_scope :search_by_name, against: [:name],
     using: {tsearch: {dictionary: "english"}},
     associated_against: {vitrine: :name}
 

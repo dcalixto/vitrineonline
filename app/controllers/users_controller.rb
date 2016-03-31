@@ -40,15 +40,15 @@ def index
   #@q = User.ransack(params[:q])
   #@users = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
- @users = User.text_search(params[:query]).page(params[:page]).per_page(22)
+ @users = User.search_by_name(params[:name]).page(params[:page]).per_page(22)
 end
 
-def set_search
-
-  @q = User.ransack(params[:q])
-  @users = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
-    render 'index'
-  end
+#def set_search
+#
+#  @q = User.ransack(params[:q])
+#  @users = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+#    render 'index'
+#  end
 
 
   def new
