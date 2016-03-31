@@ -6370,7 +6370,7 @@ brand_list = [
 
     ["E! Live from the Red Carpet"],
     ["Earth"],
-    ["Eastland
+    ["Eastland"],
     ["Eastland 1955 Edition"],
     ["Easy Spirit"],
     ["Easy Street"],

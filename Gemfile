@@ -164,6 +164,7 @@ end
 
 group :development do
   gem 'sqlite3'
+
   gem 'rails_mail_preview'
   gem 'bullet'
   gem 'ruby_gntp'
