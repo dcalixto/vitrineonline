@@ -60,8 +60,14 @@
         <li>
         <%= social_share_button_tag(truncate(@vitrine.user.name, :length => 20), :url => url_for(:action => :show, :id => @vitrine.user.id, :only_path => false))  %>
 </li>
-      </ul>
 
+      <li> <% if @vitrine.user.online? == true %>
+        <span class="status_online"> Online </span>
+        <% else %>
+          <span class="status_offline"> Offline </span>
+          <% end %>
+      </li>
+</ul>
     </div>
   </div>
 

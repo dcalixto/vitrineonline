@@ -483,3 +483,13 @@ background-position: 0 0;
   overflow: hidden;
   text-indent: -9999em;
  }
+
+
+
+.status_online {background:green;color:#fff;width:80px;height:20px;padding:5px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;}
+
+  .status_offline {background:red;color:#fff;width:80px;height:20px;padding:5px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    border-radius: 3px 3px 3px 3px;}

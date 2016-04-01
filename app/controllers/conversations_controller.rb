@@ -27,11 +27,14 @@ class ConversationsController < ApplicationController
     end
 
   def show
+    
     @conversation = current_user.conversations.find(params[:id])
     @messages = @conversation.messages.order('created_at DESC') # .includes(:user).page(params[:page]).per_page(2)
     @participant = @conversation.conversation_participants.find_by_user_id(current_user)
     @participant.update_attribute(:has_read, true)
     @new_message = @conversation.messages.build
+
+
 
     #  if  params[:page]
     #  render partial: 'messages/message', collection: @messages

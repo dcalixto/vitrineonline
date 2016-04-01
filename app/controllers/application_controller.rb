@@ -12,11 +12,6 @@ class ApplicationController < ActionController::Base
   include AnnouncementsHelper
 
 
-
-
-
-
-
  before_filter :strict_transport_security
   def strict_transport_security
     if request.ssl?
@@ -33,11 +28,23 @@ class ApplicationController < ActionController::Base
        response.headers["Expires"] = '-1'
      end
 
+after_filter :set_online
 
+    # set to online
+private
 
-  private
+def set_online
+      if !!current_user
+        # using separate Redis database
+        # such as $redis_onlines = Redis.new db: 15
+        # value not need, only key
+        $redis_onlines.set( current_user.id, nil, ex: 10*60 )
+        # 'ex: 10*60' - set time to live - 10 minutes
+      end
+    end
 
-  # USER HELPERS
+ # USER HELPERS
+
 
   def current_user
     @current_user ||= User.first(conditions: ['auth_token = :token or oauth_token = :token', { token: cookies[:auth_token] }]) if cookies[:auth_token]

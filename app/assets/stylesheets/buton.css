@@ -39,17 +39,19 @@
     display: inline-block;
     text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
     font-weight: 700;
-    border: solid rgb(79,85,100);
-    background-color: rgb(
-87,94,111);
+    border: solid #4b9316;
+    background-color: #53a318;
+
+
+
     color: #fff;
     border-width: 1px 1px 1px;
 }
 
 .btn:hover {
-    border: solid rgb(79,85,100);
-    background-color: rgb(
-124,134,158);
+    border: solid #4b9316;
+
+    background-color:#68c026;
     border-width: 1px 1px 1px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;

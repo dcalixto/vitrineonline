@@ -276,7 +276,7 @@ margin-top:3px;
 
   #main-nav li:hover {
       z-index: 1000;
-      background:#fff;
+      background:#53a318;
   }
   #main-nav .divider h3 {
 
@@ -301,9 +301,20 @@ margin-top:3px;
 
 
 
-           color:#fff;
+           color:#333;
 }
 
+#main-nav .tab:hover{
+      float: left;
+      display: block;
+    text-transform: uppercase;
+      font-size: 12px;
+width:auto;
+height: auto;
+
+background:#53a318;
+           color:#fff;
+}
 
 
 

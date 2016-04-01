@@ -2,23 +2,17 @@
 
 
 .blue_bar {
-    background:#284070;
-    height:50px;
+    background:#53a318;
+    height:55px;
 
-    background:#336ec2;
-    background:#2a5db6;
-    background:#4c63a9;
-    background: rgb(
 
-      87,94,111)
+
 }
 
 .icons_bar {
 
 
-    background: rgb(
-
-      124,134,158);
+  background:#fff;
     height:40px;
     border-bottom:solid 1px #ddd;
     width:100%
@@ -247,8 +241,8 @@ margin-left:10px;
   display: block;
   vertical-align: middle;
   float: right;
-
-  font-weight:bold
+color:#fff;
+  font-weight:normal
 }
 .help {
   margin-right: 10px;
@@ -266,12 +260,13 @@ margin-left:10px;
   float: right
 }
 .log_topbar span {
-  border-right: 1px solid blue;
+  border-right: 1px solid #fff;
   line-height: 0.2em;
   height: 10px;
   display: inline-block;
   vertical-align: middle;
-  margin-right: 10px
+  margin-right: 10px;
+
 }
 
 

@@ -26,10 +26,11 @@
   word-wrap: break-word;
   color: #004B91;
 
-  background-color: rgb(
-240,243,247);
+  background-color: #efefef;
 
     }
+
+
 #ajuda-menu {
   border: 1px solid #dee1ea;
   padding: 0;
@@ -41,9 +42,8 @@
 }
 .h1_menu {
 
-  background:rgb(
+  background:#eaeaea;
 
-    217,222,233);
   color:#333;
   padding:10px
 }

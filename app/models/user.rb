@@ -52,6 +52,15 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
       obj.postal_code = geo.postal_code
          end
   end
+
+
+
+  def online?
+    $redis_onlines.exists( self.id )
+  end
+
+
+
   after_validation :fetch_address
 
 
@@ -89,7 +98,6 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
   mount_uploader :avatar, AvatarUploader
 
   validates_format_of :postal_code, with: /\A(\d{5})([-]{0,1})(\d{3})\Z/, allow_blank: true
-
 
 
 
