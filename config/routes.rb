@@ -97,6 +97,7 @@ end
     resources :banners, only: [:new, :create]
 
     resources :announcements, only: [:new, :create]
+    resources :offers, only: [:new, :create]
     resources :marketings, only: [:edit, :update]
 
 
@@ -251,6 +252,7 @@ match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :s
 
 
 resources :departments, only: [:index]
+resources :rankings, only: [:index]
 
 
 

@@ -5686,6 +5686,35 @@ g.categories.create(:name => "Roupas Social")
 g.categories.create(:name => "Roupas Esportivas")
 g.categories.create(:name => "Equipamentos")
 
+g = Gender.create(:gender => 'Feminino')
+g.categories.create(:name => "Roupas")
+g.categories.create(:name => "Calçados")
+g.categories.create(:name => "Acessórios")
+g.categories.create(:name => "Roupas Íntimas")
+g.categories.create(:name => "Roupas de Dormir")
+g.categories.create(:name => "Roupas Social")
+g.categories.create(:name => "Roupas Esportivas")
+g.categories.create(:name => "Equipamentos")
+
+g = Gender.create(:gender => 'Infantil Masculino')
+g.categories.create(:name => "Roupas")
+g.categories.create(:name => "Calçados")
+g.categories.create(:name => "Acessórios")
+g.categories.create(:name => "Roupas Íntimas")
+g.categories.create(:name => "Roupas de Dormir")
+g.categories.create(:name => "Roupas Social")
+g.categories.create(:name => "Roupas Esportivas")
+
+
+g = Gender.create(:gender => 'Infantil Feminino')
+g.categories.create(:name => "Roupas")
+g.categories.create(:name => "Calçados")
+g.categories.create(:name => "Acessórios")
+g.categories.create(:name => "Roupas Íntimas")
+g.categories.create(:name => "Roupas de Dormir")
+g.categories.create(:name => "Roupas Social")
+g.categories.create(:name => "Roupas Esportivas")
+
 
 
 
@@ -5767,28 +5796,16 @@ m.subcategories.create(:name => "Tornozeleiras" )
 m.subcategories.create(:name => "Cotoveleiras" )
 
 
-
-
-g = Gender.create(:gender => 'Feminino')
-g.categories.create(:name => "Roupas")
-g.categories.create(:name => "Calçados")
-g.categories.create(:name => "Acessórios")
-g.categories.create(:name => "Roupas Íntimas")
-g.categories.create(:name => "Roupas de Dormir")
-g.categories.create(:name => "Roupas Social")
-g.categories.create(:name => "Roupas Esportivas")
-g.categories.create(:name => "Equipamentos")
-
-
-
 f = Category.find_by_name("Roupas")
 f.subcategories.create(:name => "Camisas" )
 f.subcategories.create(:name => "Bermudas e Shorts" )
 f.subcategories.create(:name => "Calças")
-f.subcategories.create(:name => "Camisetas" )
+f.subcategories.create(:name => "Camisetas e Tops" )
 f.subcategories.create(:name => "Moletons e Hoodies" )
 f.subcategories.create(:name => "Regatas" )
 f.subcategories.create(:name => "Casacos e Jaquetas" )
+f.subcategories.create(:name => "Saias" )
+f.subcategories.create(:name => "Vestidos" )
 
 
 f = Category.find_by_name("Calçados")
@@ -5809,6 +5826,7 @@ f.subcategories.create(:name => "Bonés" )
 f.subcategories.create(:name => "Óculos" )
 f.subcategories.create(:name => "Gorros" )
 f.subcategories.create(:name => "Bolsas" )
+f.subcategories.create(:name => "Bolsas de Mão" )
 f.subcategories.create(:name => "Mochilas" )
 f.subcategories.create(:name => "Malas" )
 f.subcategories.create(:name => "Cachecol" )
@@ -5822,7 +5840,9 @@ f.subcategories.create(:name => "Tornozeleiras" )
 
 
 f = Category.find_by_name("Roupas Íntimas")
-f.subcategories.create(:name => "Cuecas" )
+f.subcategories.create(:name => "Calcinhas" )
+f.subcategories.create(:name => "Baby Dolls" )
+f.subcategories.create(:name => "Sutiãns" )
 f.subcategories.create(:name => "Meias" )
 f.subcategories.create(:name => "Pijamas")
 f.subcategories.create(:name => "Roupões" )
@@ -5833,14 +5853,16 @@ f.subcategories.create(:name => "Ternos" )
 f.subcategories.create(:name => "Gravatas")
 f.subcategories.create(:name => "Calças" )
 f.subcategories.create(:name => "Sapatos")
+f.subcategories.create(:name => "Saias")
 
 
 f = Category.find_by_name("Roupas Esportivas")
-f.subcategories.create(:name => "Camisas" )
-f.subcategories.create(:name => "Bermudas" )
+f.subcategories.create(:name => "Camisas e Camisetas" )
+f.subcategories.create(:name => "Shorts" )
 f.subcategories.create(:name => "Casacos e Jaquetas")
 f.subcategories.create(:name => "Bolsas e Mochilas" )
 f.subcategories.create(:name => "Leggings" )
+f.subcategories.create(:name => "Maiôs" )
 
 f = Category.find_by_name("Equipamentos")
 f.subcategories.create(:name => "Capacetes" )
@@ -5858,16 +5880,6 @@ f.subcategories.create(:name => "Skates" )
 f.subcategories.create(:name => "Tornozeleiras" )
 f.subcategories.create(:name => "Cotoveleiras" )
 
-
-
-g = Gender.create(:gender => 'Infantil Masculino')
-g.categories.create(:name => "Roupas")
-g.categories.create(:name => "Calçados")
-g.categories.create(:name => "Acessórios")
-g.categories.create(:name => "Roupas Íntimas")
-g.categories.create(:name => "Roupas de Dormir")
-g.categories.create(:name => "Roupas Social")
-g.categories.create(:name => "Roupas Esportivas")
 
 
 im = Category.find_by_name("Roupas")
@@ -5912,6 +5924,7 @@ im.subcategories.create(:name => "Tornozeleiras" )
 
 im = Category.find_by_name( "Roupas Íntimas")
 im.subcategories.create(:name => "Cuecas" )
+im.subcategories.create(:name => "Fraldas" )
 im.subcategories.create(:name => "Meias" )
 im.subcategories.create(:name => "Pijamas")
 im.subcategories.create(:name => "Roupões" )
@@ -5933,19 +5946,6 @@ im.subcategories.create(:name => "Leggings" )
 
 
 
-
-
-g = Gender.create(:gender => 'Infantil Feminino')
-g.categories.create(:name => "Roupas")
-g.categories.create(:name => "Calçados")
-g.categories.create(:name => "Acessórios")
-g.categories.create(:name => "Roupas Íntimas")
-g.categories.create(:name => "Roupas de Dormir")
-g.categories.create(:name => "Roupas Social")
-g.categories.create(:name => "Roupas Esportivas")
-
-
-
 imf = Category.find_by_name( "Roupas")
 imf.subcategories.create(:name => "Camisas" )
 imf.subcategories.create(:name => "Bermudas e Shorts" )
@@ -5954,6 +5954,8 @@ imf.subcategories.create(:name => "Camisetas" )
 imf.subcategories.create(:name => "Moletons e Hoodies" )
 imf.subcategories.create(:name => "Regatas" )
 imf.subcategories.create(:name => "Casacos e Jaquetas" )
+imf.subcategories.create(:name => "Saias" )
+imf.subcategories.create(:name => "Vestidos" )
 
 
 imf = Category.find_by_name( "Calçados")
@@ -5987,8 +5989,9 @@ imf.subcategories.create(:name => "Tornozeleiras" )
 
 
 imf = Category.find_by_name( "Roupas Íntimas")
-imf.subcategories.create(:name => "Cuecas" )
+imf.subcategories.create(:name => "Calcinhas" )
 imf.subcategories.create(:name => "Meias" )
+imf.subcategories.create(:name => "Fraldas" )
 imf.subcategories.create(:name => "Pijamas")
 imf.subcategories.create(:name => "Roupões" )
 

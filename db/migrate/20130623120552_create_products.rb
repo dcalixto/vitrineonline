@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string   :name,                                                        :null => false
       t.decimal  :price,                                          :precision => 9, :scale => 2
       t.text     :detail
-      t.integer  :gender_id,                                                   :null => false
+      t.integer  :gender_id,                                                   :null => false                                                  
       t.integer  :category_id,                                                 :null => false
       t.integer  :subcategory_id,                                              :null => false
       t.integer  :material_id
@@ -21,7 +21,7 @@ class CreateProducts < ActiveRecord::Migration
       t.timestamps
     end
     add_index :products, :slug
-    add_index :products, :vitrine_id                                       
+    add_index :products, :vitrine_id
     add_index :products, :category_id
     add_index :products, :subcategory_id
     add_index :products, :material_id

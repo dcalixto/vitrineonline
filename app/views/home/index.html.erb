@@ -23,23 +23,46 @@
 <div class="box1">
 
   <h2>Produtos Mais Vendidos</h2>
-  <#% unless @products.nil? %>
+  <% if @orderables %>
   <div class="block">
 
     <ul class="content-slider">
-        <#% @products.each do |product| %>
+         <% orderable.limit(10).each do |p| %>
         <li>
-      <#%= link_to product_path(product) do  %>
-      <%#= image_tag product.images.first.url(:foto_thumb).to_s %>
-      <#%= product.name %>
+      <%= link_to product_path(p) do  %>
+      <%= image_tag p.images.first.url(:thumb).to_s %>
+      <%= p.name %>
 
-      <#% end %>.
+      <% end %>.
     </li>
     </ul>
-<#% end %>.
+<% end %>.
   </div>
-<#% end %>.
+<% end %>.
 </div>
+
+
+
+
+<div class="box1">
+  <h2>Produtos Mais Avaliadas</h2>
+  <% unless Product.nil? %>
+  <div class="block">
+    <ul class="content-slider">
+
+      <% @feedbacks.includes(:products).limit(10).each do |v| %>
+
+
+      <li> <%= image_tag v.images.first.url(:thumb).to_s %></li>
+      <li><%= v.name   %></li>
+  <% end %>
+</ul>
+
+  </div>
+  <% end %>
+</div>
+
+
 
 
 
@@ -48,18 +71,15 @@
   <% unless Vitrine.nil? %>
   <div class="block">
     <ul class="content-slider">
-      <% Vitrine.order.each do |vitrine| %>
-<li>
-    <%=   link_to vitrine_path(vitrine) do %>
 
-  <%= image_tag vitrine.logo.url(:thumb).to_s %>
+      <% @feedbacks.includes(:vitrines).limit(10).each do |v| %>
 
-      <%= vitrine.name %>
 
-</li>
-      <% end %>
-    </ul>
-      <% end %>
+      <li> <%= image_tag v.logo.url(:thumb).to_s %></li>
+      <li><%= v.name   %></li>
+  <% end %>
+</ul>
+
   </div>
   <% end %>
 </div>
@@ -69,11 +89,20 @@
 <div class="block">
   <h2>Produtos Adicionados Recentemente</h2>
 
-  <div id="searchResults">
 <% if @products %>
-    <%= render :partial => 'product', :collection => @products  %>
-    <% end %>
-  </div>
+<ul class="content-slider">
+<% @products.first(10).each do |p| %>
+<li>
+<%= link_to product_path(p) do  %>
+<#%= image_tag p.images.first.url(:thumb).to_s %>
+<%= p.name %>
+<%= p.price %>
+<% end %>
+</li>
+<% end %>
+</ul>
+
+<% end %>
 </div>
 </div>
 

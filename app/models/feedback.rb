@@ -1,9 +1,17 @@
 class Feedback < ActiveRecord::Base
-  belongs_to :user
 
+#belongs_to :feedbackable, polymorphic: true
+  belongs_to :user
   belongs_to :vitrine
   has_one :order
-  has_one :product, through: :order
+ has_one :product, through: :order
+
+ #has_many :products, through: :order
+#  has_many :products, as: :feedbackable
+#  has_many :vitrines, as: :feedbackable
+
+
+
 
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'

@@ -29,6 +29,7 @@
       </h2>
       <ul>
         <li><%= link_to "Anúncio", new_vitrine_announcement_path(current_vitrine)  %></li>
+        <li><%= link_to "Promoções",  new_vitrine_offer_path(current_vitrine)  %></li>
         <li><%= link_to "Visualizações", vitrine_views_path(current_vitrine)  %></li>
         <li><%= link_to "Slogan & Site", edit_vitrine_marketing_path(current_vitrine, current_vitrine.marketing.id)  %></li>
       </ul>
@@ -39,7 +40,7 @@
         <li><%= link_to "Fatura", vitrine_invoices_path(current_vitrine)  %></li>
         <li><%= link_to 'Relatório de Vendas', sales_report_vitrine_path(current_vitrine) %></li>
       </ul>
-      
+
       <%= link_to  vitrine_path(current_vitrine), :id => "shop_button", :class => 'btn' do %>
       <%= content_tag(:i,nil, :class=>"go_boutique_icon")  %>
 

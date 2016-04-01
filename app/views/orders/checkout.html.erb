@@ -28,7 +28,7 @@
       <tbody>
         <tr>
           <td >
-            <%= image_tag product.f1.url(:thumb).to_s %>
+            <%= image_tag product.images.first.url(:thumb).to_s %>
           </td>
           <td class="sumary">
             <ul>
@@ -36,35 +36,35 @@
                 <%= link_to product.name, product_path(product.id) %></li>
               <li>Genero
                 <b>
-                  <#%= @order.gender.gender %></b>
+                  <%= @order.gender.gender %></b>
                 </li>
                 <li>Categoria
                   <b>
-                    <#%= @order.category.name %></b>
+                    <%= @order.category.name %></b>
                   </li>
                   <li>Subcategoria
                     <b>
-                      <#%= @order.subcategory.name %></b>
+                      <%= @order.subcategory.name %></b>
                     </li>
                     <li>Tamanho
                       <b>
-                        <#%= @order.size.size %></b>
+                        <%= @order.size.size %></b>
                       </li>
                       <li>Cor
                         <b>
-                          <#%= @order.color.name %></b>
+                          <%= @order.color.name %></b>
                         </li>
                         <li>Material
                           <b>
-                            <#%= @order.material.name %></b>
+                            <%= @order.material.name %></b>
                           </li>
                           <li>Marca
                             <b>
-                              <#%= @order.brand.name %></b>
+                              <%= @order.brand.name %></b>
                             </li>
                             <li>Condição
                               <b>
-                                <#%= @order.condition.condition %></b>
+                                <%= @order.condition.condition %></b>
                               </li>
                               <li>Vitrine
                                 <%= link_to @order.seller.vitrine_name, vitrine_path(@order.seller) %></li>

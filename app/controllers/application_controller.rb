@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
        response.headers["Expires"] = '-1'
      end
 
-after_filter :set_online
+#after_filter :set_online
 
     # set to online
 private

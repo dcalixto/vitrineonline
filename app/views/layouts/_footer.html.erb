@@ -39,7 +39,13 @@
       </li>
       <li>
         <%= link_to "Avaliação",  page_path("avaliacao")%>
+
       </li>
+
+      <li>
+        <%= link_to "Ranking",  rankings_path %>
+      </li>
+
 
     </ul>
           </td>
@@ -50,15 +56,30 @@
           <td>
    <h2>Conecte-se conosco</h2>
 
-    <ul>
+    <ul class="social_list">
       <li>
              </li>
-      <li><%= link_to 'face link',"https://www.facebook.com/vitrineonlinevitrineonline" %></li>
-      <li><%= link_to 'twitter link', "https://www.twitter.com/vitrineonlinevitrineonline"%></li>
-      <li><%= link_to 'youtube link', "https://www.youtube.com/vitrineonlinevitrineonline"%></li>
-      <li><%= link_to 'instagram link', "https://www.instagram.com/vitrineonlinevitrineonline"%></li>
+             <li><%= link_to  "https://www.facebook.com/vitrineonlinevitrineonline"  do  %>
+               <%= content_tag(:span, nil, :class =>"sprite-icons-1457991892_facebook_circle") %>
+                     <% end %>
 
-    </ul>
+
+             </li>
+             <li><%= link_to "https://www.twitter.com/vitrineonlinevitrineonline" do  %>
+
+               <%= content_tag(:span, nil, :class =>"sprite-icons-1457991929_twitter_circle") %>
+             <% end %>
+
+             <li><%= link_to "https://www.youtube.com/vitrineonlinevitrineonline" do %>
+               <%= content_tag(:span, nil, :class =>"sprite-icons-1457991913_youtube_circle") %>
+             <% end %>
+
+
+             <li><%= link_to"https://www.instagram.com/vitrineonlinevitrineonline" do %>
+               <%= content_tag(:span, nil, :class =>"sprite-icons-1457991976_instagram_circle_color") %>
+             <% end %>
+</li>
+        </ul>
           </td>
         </tr>
       </tbody>
@@ -70,7 +91,7 @@
  <div class="footer-copy">
       <% cache "logo_bottom" do %>
       <%= link_to root_url do %>
-      <%= content_tag(:span, nil, :id =>"footer-logo") %>
+      <%= content_tag(:span, nil, :class =>"sprite-icons-logo_small") %>
       <% end %>
       <% end %>
       <p>Vitrineonline &copy; 2016
@@ -81,13 +102,13 @@
           <td>
               <%= link_to  "https://www.paypal.com/br"  do %>
 
-        <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+        <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
         <% end %>
           </td>
           <td>
   <%= link_to  root_path  do %>
 
-      <%= content_tag(:span, nil, :class => 'omodo') %>
+      <%= content_tag(:span, nil, :class => 'sprite-icons-comodo_secure_100x85_white') %>
       <% end %>
 
           </td>

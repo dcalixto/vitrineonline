@@ -12,6 +12,10 @@
   position: relative;
 }
 
+ul#user_nav  li {
+    display: inline;
+}
+
 #user_nav_mobile {
   vertical-align: baseline;
   z-index: 100;

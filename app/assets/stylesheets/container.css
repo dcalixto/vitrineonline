@@ -1,12 +1,5 @@
 /* Smartphones (portrait and landscape) ----------- */
 
-body, html {
-  min-width: 320px;
-  height: 100%;
-margin: 0;
-}
-
-
 
 @media (min-width: 320px) {
   #container {

@@ -16,7 +16,7 @@
 
         <%=link_to( conversations_path, :id => "menu-messages", :title => "Mensagem" ) do %>
 
-        <%= content_tag( :i,nil, :class => "message_icon")  %>
+        <%= content_tag( :i,nil, :class => "sprite-icons-message")  %>
 
         <%end%>
         <% end %>
@@ -29,13 +29,13 @@
 
             <%=link_to( awaiting_feedbacks_path, :title => "Avaliações" ) do %>
 
-            <%= content_tag( :i,nil, :class => "feedback_icon")  %>
+            <%= content_tag( :i,nil, :class => "sprite-icons-feedback")  %>
             <%end%>
             <% else %>
 
             <%=link_to( completed_feedbacks_path, :title => "Avaliações" ) do %>
 
-            <%= content_tag( :i,nil, :class => "feedback_icon")  %>
+            <%= content_tag( :i,nil, :class => "sprite-icons-feedback")  %>
             <%end%>
             <% end %>
           </li>
@@ -43,18 +43,18 @@
           <li>
 
             <%=link_to(products_favorites_path, :title => "Favoritos") do %>
-            <%= content_tag( :i,nil, :class => "favorite_icon")  %>
+            <%= content_tag( :i,nil, :class => "sprite-icons-favoritos")  %>
             <%end%>
           </li>
           <li >
 
             <% if current_vitrine %>
             <%=link_to( edit_vitrine_path(current_vitrine), :title => "Vitrine") do %>
-            <%= content_tag( :i,nil, :class => "boutique_icon")  %>
+            <%= content_tag( :i,nil, :class => "sprite-icons-vitrine")  %>
             <%end%>
             <% else %>
             <%=link_to new_vitrine_path,:title => "Criar Vitrine" do %>
-            <%= content_tag( :i,nil, :class => "boutique_icon")  %>
+            <%= content_tag( :i,nil, :class => "sprite-icons-vitrine")  %>
             <%end%>
             <% end %>
 

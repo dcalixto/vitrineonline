@@ -3,14 +3,14 @@
 
   <%= link_to   carts_path do  %>
 
-  <%= content_tag( :i,nil, :class=>"shopcart_button")  %>
+  <%= content_tag( :i,nil, :class=>"sprite-icons-sacola")  %>
   <%= content_tag(:span, "Carrinho", :class=>"shopcart_link") %>
   <%= content_tag(:span, "#{order_count}", :class=>"shopcart_counter") %>
   <% end %>
 
   <% else %>
   <%= link_to   carts_path do %>
-  <%= content_tag( :i,nil, :class=>"shopcart_button")  %>
+  <%= content_tag( :i,nil, :class=>"sprite-icons-sacola")  %>
   <%= content_tag(:span, "Carrinho", :class=>"shopcart_link") %>
 
   <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160330015458) do
+ActiveRecord::Schema.define(:version => 20160401205757) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -167,6 +167,10 @@ ActiveRecord::Schema.define(:version => 20160330015458) do
     t.datetime "seller_feedback_date"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.integer  "product_id"
+    t.integer  "feedbackable_id"
+    t.string   "feedbackable_type"
+    t.string   "orderable_type"
   end
 
   add_index "feedbacks", ["user_id"], :name => "index_feedbacks_on_user_id", :unique => true
@@ -271,6 +275,20 @@ ActiveRecord::Schema.define(:version => 20160330015458) do
 
   add_index "notable_requests", ["user_id", "user_type"], :name => "index_notable_requests_on_user_id_and_user_type"
 
+  create_table "offers", :force => true do |t|
+    t.integer  "offertable_id"
+    t.string   "offertable_type"
+    t.integer  "product_id"
+    t.integer  "vitrine_id"
+    t.text     "offer"
+    t.text     "start_time"
+    t.text     "end_time"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "offers", ["offertable_id", "offertable_type", "offer"], :name => "index_offers_on_offertable_id_and_offertable_type_and_offer"
+
   create_table "orders", :force => true do |t|
     t.integer  "cart_id"
     t.integer  "seller_id"
@@ -292,6 +310,8 @@ ActiveRecord::Schema.define(:version => 20160330015458) do
     t.string   "track_number"
     t.datetime "created_at",                                                      :null => false
     t.datetime "updated_at",                                                      :null => false
+    t.integer  "orderable_id"
+    t.string   "orderable_type"
   end
 
   add_index "orders", ["buyer_id"], :name => "index_orders_on_buyer_id", :unique => true
@@ -306,6 +326,22 @@ ActiveRecord::Schema.define(:version => 20160330015458) do
   add_index "orders", ["seller_id"], :name => "index_orders_on_seller_id", :unique => true
   add_index "orders", ["size_id"], :name => "index_orders_on_size_id", :unique => true
   add_index "orders", ["subcategory_id"], :name => "index_orders_on_subcategory_id", :unique => true
+
+  create_table "orderships", :force => true do |t|
+    t.integer  "product_id",  :null => false
+    t.integer  "order_id",    :null => false
+    t.integer  "user_id",     :null => false
+    t.integer  "feedback_id", :null => false
+    t.integer  "vitrine_id",  :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "orderships", ["feedback_id"], :name => "index_orderships_on_feedback_id"
+  add_index "orderships", ["order_id"], :name => "index_orderships_on_order_id"
+  add_index "orderships", ["product_id"], :name => "index_orderships_on_product_id"
+  add_index "orderships", ["user_id"], :name => "index_orderships_on_user_id"
+  add_index "orderships", ["vitrine_id"], :name => "index_orderships_on_vitrine_id"
 
   create_table "policies", :force => true do |t|
     t.string   "paypal"

@@ -215,6 +215,12 @@
       </div>
 
       <div class="subcontent">
+        <h2>Ofertas</h2>
+        <%= content_tag(:span, nil, :class => 'offer_stamp') %>
+        <%= @vitrine.offers.first %>
+      </div>
+
+      <div class="subcontent">
         <h2>Formas de Pagamentos disponível</h2>
         <%= content_tag(:span, nil, :class => 'paypal_logo') %>
         <% unless @vitrine.policy.blank? %>

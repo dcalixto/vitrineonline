@@ -10,14 +10,17 @@ gem 'rails', '3.2.22'
 
 #ANALYTICS
 gem 'garelic'
-
-#Log
-
-gem "lograge"
-
 gem 'rollbar', '~> 2.8.3'
 gem 'newrelic_rpm'
-#gem 'notable'
+
+
+#Time
+
+gem 'stamp'
+
+
+
+
 
 # SEARCH
 

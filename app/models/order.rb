@@ -1,15 +1,18 @@
 class Order < ActiveRecord::Base
+
+
+
   attr_accessible :cart_id, :product_id, :purchased_at,
     :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method,  :status
 
 
   STATUSES = %w(paid sent)
-
+belongs_to :orderable, polymorphic: true
   belongs_to :cart
 
   belongs_to :seller, foreign_key: "seller_id", class_name: "Vitrine"
   belongs_to :buyer, foreign_key: "buyer_id", class_name: "User"
-  belongs_to :product ,  :touch => true
+  belongs_to :product,  :touch => true
   belongs_to :color
   belongs_to :size
   belongs_to :material
@@ -22,6 +25,10 @@ class Order < ActiveRecord::Base
   belongs_to :feedback
   attr_accessible :shipping_method, :shipping_cost, :status, :quantity
   validates :shipping_cost, numericality: { greater_than: 0, allow_nil: true }
+
+
+
+ has_many :products, as: :orderable
 
 
 scope :awaiting_feedback, ->(user) { joins('left join feedbacks on feedbacks.id = orders.feedback_id').where('(buyer_id = ? and buyer_feedback_date is null) or (seller_id = ? and seller_feedback_date is null)', user.id, user.vitrine ? user.vitrine.id : 0).where('status is not null').order(:created_at) }

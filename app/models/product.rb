@@ -10,7 +10,9 @@ class Product < ActiveRecord::Base
   belongs_to :subcategory
   has_many :orders
   has_many :images,  dependent: :destroy
+
   has_many :feedbacks, through: :orders
+
  has_many :reports, as: :reportable
   belongs_to :gender
   belongs_to :material
@@ -22,6 +24,9 @@ has_many :sizes, through: :sizeship
 
 has_many :colorship
 has_many :colors, through: :colorship
+
+               # Allow user to report others
+ has_many :offers, as: :offertable #
 
 
  accepts_nested_attributes_for :sizes, :sizeship, :colors, :colorship, :images

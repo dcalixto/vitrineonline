@@ -118,43 +118,7 @@
   box-shadow: 0px 0px 3px #999 inset;
   transition: box-shadow 0.3s ease 0s;
 }
-.divider_left {
-  position: absolute;
-  top: 0;
-  left: -1px;
-  height: 100%;
-  width: 1px;
-  background: #ddd;
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%), #ddd;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 1)), color-stop(20%, rgba(255, 255, 255, 0)), color-stop(80%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 1))), #ddd;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%), #ddd;
-  background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%), #ddd;
-  background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%), #ddd;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%), #ddd;
-}
-.divider_right {
-  right: -1px;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 1px;
-  background: #ddd;
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%), #ddd;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 1)), color-stop(20%, rgba(255, 255, 255, 0)), color-stop(80%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 1))), #ddd;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%), #ddd;
-  background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%), #ddd;
-  background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%), #ddd;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1) 100%), #ddd;
-}
-.divider_bottom {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: #ddd;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
+
 
 
 
@@ -231,6 +195,35 @@ color: #888
    line-height: 19px !important;
     text-decoration: none;
 }
+
+
+
+
+
+
+.product_table thead {
+  display: none;
+}
+.product_tabl tr,
+.product_tabl th,
+.product_tabl td {
+  display: block;
+}
+.product_tabl td {
+  border-top: none;
+}
+.product_tabl tr td:first-child {
+  border-top: 1px solid #ddd;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
 
 
 

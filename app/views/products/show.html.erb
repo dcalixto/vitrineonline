@@ -6,7 +6,6 @@
   <% breadcrumb :product, @product %>
 
 
-    <%= link_to "Reportar Item",  report_product_path(@product.id), method: :get %>
 
   <div class="margin_top">
     <%= render 'shared/flash_messages' %>
@@ -34,8 +33,19 @@
       <div>
         <h1 id="item_name"><%= @product.name %></h1>
       </div>
-      <div>Por
+      <div>
+<ul>
+    <li>    Por
         <%=link_to @product.vitrine.name, vitrine_path(@product.vitrine),  :title => "Nome" %>
+      </li>
+      <li>
+       <% if @product.vitrine.user.online? == true %>
+          <span class="status_online"> Online </span>
+          <% else %>
+            <span class="status_offline"> Offline </span>
+            <% end %>
+</li>
+</ul>
       </div>
 
 
@@ -220,7 +230,7 @@
             <% @suggestions.each do |item| %>
               <li>
             <%= link_to product_path(item) do  %>
-            <%= image_tag item.f1.url(:thumb).to_s %>
+            <#%= image_tag item.images.first.url(:thumb).to_s %>
             <%= item.name %>
               <%= item.price %>
             <% end %>
@@ -250,7 +260,7 @@
       <%  @similarities.each do |item| %>
         <li>
       <%= link_to product_path(item) do  %>
-      <%= image_tag item.f1.url(:thumb).to_s %>
+      <#%= image_tag item.images.first.url(:thumb).to_s %>
       <%= item.name %>
 
         <%= item.price %>
@@ -305,7 +315,11 @@
 
       </div>
 
-
+      <div class="subcontent">
+        <h2>Ofertas</h2>
+        <%= content_tag(:span, nil, :class => 'offer_stamp') %>
+        <%= @product.offers.first %>
+      </div>
 
       <div class="subcontent">
 
@@ -415,7 +429,8 @@
 
 <div class="box1">
   <div class="block">
-
+      <div class="content">
+  <div class="subcontent">
 
   <h2>Produtos similares a esta vitrine</h2>
 
@@ -423,12 +438,14 @@
       <%  @similarities_for_vitrine.each do |item| %>
 
     <li>  <%= link_to product_path(item) do  %>
-      <%= image_tag item.f1.url(:small).to_s %>
+      <%= image_tag item.images.first.url(:small).to_s %>
       <%= item.name %>
       <%= item.price %>
       <% end %>
     </li>
       <% end %>
 </ul>
+</div>
+  </div>
   </div>
 </div>
