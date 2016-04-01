@@ -20,7 +20,7 @@ Vitrineonline::Application.routes.draw do
   resources :reports, only: [:new, :create]
 
   # USER
-  resources :users, only:[:new,:create,:edit,:update ] do
+  resources :users, only:[:new,:create,:edit,:update, :show ] do
     resources :passwords
 
     member do
@@ -35,8 +35,6 @@ Vitrineonline::Application.routes.draw do
     collection do
        match '/:id' => 'users#show', via: [:get, :post], as: :feedbacks
        match '/:id/feedbacks' => 'users#feedbacks', via: [:get, :post], as: :search_feedbacks
-
-
     end
 
 

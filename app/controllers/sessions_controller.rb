@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       user.update_attribute(:login_at, Time.zone.now)
       user.update_attribute(:ip_address, request.remote_ip)
 
-      i#f user.email_confirmed
+      #i#f user.email_confirmed
       #  logar user
 
      if
