@@ -10,12 +10,12 @@ class SessionsController < ApplicationController
       user.update_attribute(:login_at, Time.zone.now)
       user.update_attribute(:ip_address, request.remote_ip)
 
-      if user.email_confirmed
-        logar user
+      i#f user.email_confirmed
+      #  logar user
 
-    #  elsif
-    #  params[:remember_me]
-    #  cookies.permanent[:auth_token] = user.auth_token
+     if
+      params[:remember_me]
+     cookies.permanent[:auth_token] = user.auth_token
 
       else
 
