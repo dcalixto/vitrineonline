@@ -2,7 +2,8 @@
 
 class UsersController < ApplicationController
   before_filter :authorize, :correct_user, only: [:edit, :update, :destroy]
-  #caches_action :edit, layout: false
+
+
 
 
   def show
@@ -36,19 +37,13 @@ class UsersController < ApplicationController
 
 
 
-def index
+#def index
   #@q = User.ransack(params[:q])
   #@users = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
- @users = User.search_by_name(params[:name]).page(params[:page]).per_page(22)
-end
+# @users = User.search_by_name(params[:name]).page(params[:page]).per_page(22)
+#end
 
-#def set_search
-#
-#  @q = User.ransack(params[:q])
-#  @users = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
-#    render 'index'
-#  end
 
 
   def new
@@ -121,11 +116,14 @@ end
      @states = State.all
     @cities = City.where('state_id = ?', State.first.id)
     if @user.update_attributes(params[:user])
-      redirect_to(action: :edit, id: @user, only_path: true, format: :html)
+      redirect_to(action: :edit, id: @user, only_path: true,format: :html)
       flash[:notice] = 'Conta atualiazada'
+  
     else
-      render :edit, format: :html
+      render :edit
     end
+
+
 
   end
 

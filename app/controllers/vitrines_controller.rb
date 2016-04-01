@@ -78,11 +78,7 @@ end
     redirect_to :back
     end
 
-  def index
 
-    @q = Vitrine.ransack(params[:q])
-    @vitrines = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
-  end
 
   def create
     @vitrine = current_user.build_vitrine(params[:vitrine])

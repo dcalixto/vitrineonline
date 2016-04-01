@@ -163,9 +163,9 @@ $(document).ready(function(){
   });
 
 	//dropzone.on("success", function(file) {
-	//	this.removeFile(file)
-		/*$.getScript("/edit")*/
-	//})
+		//this.removeFile(file)
+		//$.getScript("/edit")
+//	})
 
 
   var logoDropzone = new Dropzone (".dropzone", {
