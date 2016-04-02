@@ -35,7 +35,7 @@
       </div>
       <div>
 <ul>
-    <li>    Por
+    <li>   <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
         <%=link_to @product.vitrine.name, vitrine_path(@product.vitrine),  :title => "Nome" %>
       </li>
       <li>
@@ -106,7 +106,7 @@
   <div class="content">
     <%= link_to  "https://www.paypal.com/br"  do %>
 
-    <%= content_tag(:span, nil, :class => 'paypal_protect') %>
+    <%= content_tag(:span, nil, :class => 'sprite-icons-paypal_protect') %>
 
     <% end %>
 
@@ -327,7 +327,7 @@
         <div class="content">
           <%= link_to  "https://www.paypal.com/br"  do %>
 
-          <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+          <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
           <% end %>
 
           <% unless @product.vitrine.policy.blank? %>
@@ -342,7 +342,7 @@
           <ul>
 
             <li>
-              <%= content_tag(:span, nil, :class => 'shipping') %>
+              <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
             </li>
 
             <% @product.vitrine.policy.shippings.each do |shipping| %>

@@ -90,14 +90,14 @@ end
 
  end
   end
-
+   match '/offers/' => 'offers#index', via: [:get], as: :offers
   # VITRINE
   resources :vitrines,  only: [:new, :create,:edit,:update,:show] do
     resources :policies, only: [:edit, :update]
     resources :banners, only: [:new, :create]
 
     resources :announcements, only: [:new, :create]
-    resources :offers, only: [:new, :create]
+    resources :offers, only: [:new, :create, :index]
     resources :marketings, only: [:edit, :update]
 
 

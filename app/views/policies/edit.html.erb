@@ -22,7 +22,7 @@
           </li>
           <li>
             <%= link_to  "https://www.paypal.com/br"  do %>
-            <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+            <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
             <% end %>
           </li>
           <li>
@@ -48,7 +48,7 @@
         <h2>Envio</h2>
         <p class="tip">Indique as formas de envio disponível</p>
           <%= form_for @policy, :url => vitrine_policy_path, :method => :put do |s| %>
-        <%= content_tag(:span, nil, :class => 'shipping') %>
+        <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
         <%= hidden_field_tag "policy[shipping_ids][]", nil %>
         <% Shipping.all.each do |shipping| %>
         <%= check_box_tag "policy[shipping_ids][]", shipping.id, @policy.shipping_ids.include?(shipping.id), id: dom_id(shipping)%>

@@ -9,6 +9,8 @@ class OffersController < ApplicationController
       render :new
     end
   end
+  def index
+  end
 
   def new
     @offer = Offer.new

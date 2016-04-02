@@ -6,20 +6,20 @@ class ImageUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
 
-  
+
   storage :file
 
   include CarrierWave::MimeTypes
   process :set_content_type
 
-  
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
 
   def default_url
-    '/assets/fallback/' + [version_name, 'image.svg'].compact.join('_')
+    '/assets/fallback/' + [version_name, 'image.png'].compact.join('_')
   end
 
 
@@ -37,7 +37,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :strip
   end
 
- 
+
 
   version :big do
     process resize_to_fit: [460, 543]

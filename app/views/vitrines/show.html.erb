@@ -15,13 +15,14 @@
       <%=link_to(image_tag(@vitrine.logo.url(:thumb).to_s), vitrine_path(@vitrine)) %>
       <ul class="list">
         <li>
-
+  <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
           <%=link_to vitrine_path(@vitrine) do %>
           <%=@vitrine.name %>
           <% end %>
 
         </li>
         <li>
+          <%= content_tag(:span, nil, :class =>"sprite-icons-location") %>
           <% if @vitrine.user.city%>
 
           <span>
@@ -47,9 +48,8 @@
         </li>
 
         <li>
-
-          <span>Dono(a) <%=link_to @vitrine.user.name, user_path(@vitrine.user) %></span>
-
+<%= content_tag(:span, nil, :class =>"sprite-icons-small_avatar") %>
+           <%=link_to @vitrine.user.name, user_path(@vitrine.user) %>
         </li>
 
         <% unless @vitrine.marked_as_favorite? %>
@@ -167,8 +167,19 @@
 
       <div id="searchResults">
 
-        <%= render :partial => 'vitrines/product', :collection => @products%>
+        <table class="product_table">
+        	<tbody>
+        		<tr>
+<td>
 
+
+
+        <%= render :partial => 'vitrines/product', :collection => @products%>
+</td>
+
+</tr>
+</tbody>
+</table>
       </div>
 
       <div class="block_pagination">
@@ -222,7 +233,7 @@
 
       <div class="subcontent">
         <h2>Formas de Pagamentos disponível</h2>
-        <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+        <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
         <% unless @vitrine.policy.blank? %>
       </div>
 
@@ -233,7 +244,7 @@
         <ul>
 
           <li>
-            <%= content_tag(:span, nil, :class => 'shipping') %>
+            <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
           </li>
 
           <% @vitrine.policy.shippings.each do |shipping| %>

@@ -10,7 +10,7 @@
     <%=link_to(image_tag(@user.avatar.url(:thumb).to_s), user_path(@user)) %>
     <ul class="list">
       <li>
-
+     <%= content_tag(:span, nil, :class =>"sprite-icons-small_avatar") %>
           <%=link_to user_path(@user) do %>
           <%=@user.name %>
           <%=@user.surname %>
@@ -19,6 +19,7 @@
       </li>
       <% if @user.city%>
       <li>
+        <%= content_tag(:span, nil, :class =>"sprite-icons-location") %>
         <span><%=@user.city.name %>,</span>
         <% end %>
         <% if @user.state%>
@@ -37,7 +38,8 @@
 <% end %>
       </li>
 <% if @user.vitrine %>
-      <li><span>Vitrine <%=link_to @user.vitrine.name, vitrine_path(@user.vitrine) %></span>
+  <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
+      <li> <%=link_to @user.vitrine.name, vitrine_path(@user.vitrine) %>
       <%end %>
       <li>
       <%= social_share_button_tag(truncate(@user.name, :length => 20), :url => url_for(:action => :show, :id => @user.id, :only_path => false))  %>

@@ -20,7 +20,7 @@ class ImgUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    '/assets/fallback/' + [version_name, 'banner.png'].compact.join('_')
+    '/assets/fallback/' + [version_name, 'img.png'].compact.join('_')
   end
 
 

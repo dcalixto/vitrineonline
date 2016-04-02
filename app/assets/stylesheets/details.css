@@ -30,18 +30,6 @@
   padding: 5px;
   color: #000000;
 }
-#marketing span {
-  background-image: url("icons.png"); 
-  
-  width: 16px;
-  height: 12px;
-  float: left;
-  margin-top: 3px;
-  margin-right: 8px;
- background-position: -231px -147px;
-            width: 16px;
-            height: 11px;
-}
 
 
 
@@ -69,24 +57,7 @@
   font-size: 11px;
   color: #666
 }
-.file-wrapper {
-  cursor: pointer;
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-}
-.file-wrapper input {
-  cursor: pointer;
-  font-size: 100px;
-  height: 100%;
-  filter: alpha(opacity=1);
-  -moz-opacity: 0.01;
-  opacity: 0.01;
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: block;
-}
+
 .breadcrumbs {
   padding: 5px;
 }
