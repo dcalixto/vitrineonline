@@ -1,3 +1,13 @@
+@import "breakpoint";
+
+$mobile: min-width 320px;
+$tablet: min-width 768px;
+$notebook: min-width 992px;
+$desktop: min-width 1200px;
+
+
+
+
 #footer {
   line-height: 15px;
   overflow: hidden;
@@ -38,12 +48,11 @@
 
 
 
-
-@media (min-width: 480px) {
+@include breakpoint($mobile) {
   .inner_footer {
     margin: 0px auto;
-    min-width: 460px;
-
+    min-width: 320px;
+max-width: 1000px;
 
     box-sizing: border-box;
     overflow: auto;

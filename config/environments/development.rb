@@ -17,7 +17,7 @@ Vitrineonline::Application.configure do
   #  Bullet.console = true
   #  Bullet.rails_logger = true
 
-
+require 'breakpoint'
   #end
 
 

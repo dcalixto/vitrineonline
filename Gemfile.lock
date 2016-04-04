@@ -113,6 +113,9 @@ GEM
       sass (~> 3.0)
       slim (>= 1.3.6, < 4.0)
       terminal-table (~> 1.4)
+    breakpoint (2.7.0)
+      sass (~> 3.3)
+      sassy-maps (< 1.0.0)
     builder (3.0.4)
     bullet (5.0.0)
       activesupport (>= 3.0.0)
@@ -224,6 +227,9 @@ GEM
     hike (1.2.3)
     htmlentities (4.3.4)
     http_parser.rb (0.6.0)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     journey (1.0.4)
     jquery-rails (3.1.4)
@@ -280,6 +286,10 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    mymoip (0.10.0)
+      activemodel
+      builder
+      httparty
     newrelic_rpm (3.15.1.316)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -388,11 +398,13 @@ GEM
     ruby_parser (3.8.1)
       sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
-    sass (3.4.22)
+    sass (3.3.14)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    sassy-maps (0.4.0)
+      sass (~> 3.3)
     sax-machine (1.3.2)
     select2-rails (4.0.1.1)
       thor (~> 0.14)
@@ -460,6 +472,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   brakeman
+  breakpoint (~> 2.7.0)
   bullet
   canonical_dude
   carrierwave (~> 0.9.0)
@@ -503,6 +516,7 @@ DEPENDENCIES
   mina-newrelic
   mini_magick
   mobile-fu
+  mymoip
   newrelic_rpm
   oj
   omniauth-facebook

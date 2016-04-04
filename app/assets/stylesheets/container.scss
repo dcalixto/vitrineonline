@@ -1,7 +1,26 @@
-/* Smartphones (portrait and landscape) ----------- */
+@import "breakpoint";
+
+$mobile: min-width 320px;
+$tablet: min-width 768px;
+$notebook: min-width 992px;
+$desktop: min-width 1200px;
+
+#container:before, #container:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+#container:after {
+  clear: both
+}
 
 
-@media (min-width: 320px) {
+
+
+
+@include breakpoint($mobile) {
+
   #container {
     min-width: 320px;
     background: none repeat scroll 0% 0%;
@@ -9,27 +28,49 @@
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
-       max-width: 1000px;
-display: block;
+    max-width: 1000px;
+    display: block;
     line-height: 1.34;
   }
-
-
-
-  #header  {
-  width:100% ;
-
-
-
+  #header {
+    width: 100%;
   }
-
-  .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13{
+  .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13 {
     position: relative;
     min-height: 1px;
     padding-right: 10px;
     padding-left: 10px;
     float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+  }
+  }
 
+
+@include breakpoint($tablet) {
+  #container {
+    min-width: 768px;
+    background: none repeat scroll 0% 0%;
+    margin: 0px auto;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    max-width: 1000px;
+    display: block;
+    line-height: 1.34;
+  }
+  #header {
+    width: 100%;
+  }
+  .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+    float: left;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -37,132 +78,63 @@ display: block;
     width: 100%;
   }
 
-
-  }
-
+}
 
 
+@include breakpoint($notebook) {
 
-
-@media (min-width: 480px) {
   #container {
-    min-width: 460px;
+    min-width: 992px;
     background: none repeat scroll 0% 0%;
     margin: 0px auto;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
-       max-width: 1000px;
-display: block;
+    max-width: 1000px;
+    display: block;
     line-height: 1.34;
   }
-
-
-
-  #header  {
-  width:100% ;
-
-
-
+  #header {
+    width: 100%;
   }
-
-  .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13{
+  .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13 {
     position: relative;
     min-height: 1px;
     padding-right: 10px;
     padding-left: 10px;
     float: left;
-
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     display: block;
     width: 100%;
   }
-
-
-  }
+}
 
 
 
-@media (min-width: 768px) {
+@include breakpoint($desktop) {
+
   #container {
-    min-width: 750px;
+    min-width: 1200px;
     background: none repeat scroll 0% 0%;
     margin: 0px auto;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
-       max-width: 1000px;
-display: block;
+    max-width: 1200px;
     line-height: 1.34;
-  }
-
-  #header  {
-  width:100% ;
-
-  }
-
-
-  /*#header div {
-
-
-
-      position: relative;
-      min-height: 1px;
-
-      float: left;
-      border: solid 1px blue;
-
-      display: block;
-
-    }*/
-
-
-  .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13{
-    position: relative;
-    min-height: 1px;
-    padding-right: 10px;
-    padding-left: 10px;
-    float: left;
-
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     display: block;
+  }
+  #header {
     width: 100%;
   }
-
-
-  }
-
-@media (min-width: 992px) {
-  #container {
-    min-width: 970px;
-    background: none repeat scroll 0% 0%;
-    margin: 0px auto;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-       max-width: 1000px;
-       line-height: 1.34;
-       display: block;
-  }
-
-  #header  {
-  width:100% ;
-
-  }
-
-
-
-  .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13{
+  .box1, .box2, .box3, .box4, .box5, .box6, .box7, .box8, .box9, .box10, .box11, .box12, .box13 {
     position: relative;
     min-height: 1px;
     padding-right: 10px;
     padding-left: 10px;
     float: left;
-
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -204,46 +176,7 @@ display: block;
   .box12 {
     width: 8.33333333%;
   }
-
   .box13 {
     width: 3.33333333%;
   }
-
-
-
-
-
-}
-
-
-@media (min-width: 1200px) {
-  #container {
-    width: 1170px;
-  }
-}
-
-
-/*#container {
-  min-height: 100px;
-  background: none repeat scroll 0% 0%;
-  margin: 0px auto;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-     max-width: 1000px;
-  min-width: 960px;
-  line-height: 1.34;
-}
-*/
-
-
-
-#container:before, #container:after {
-  display: table;
-  content: "";
-  zoom: 1;
-  *display: inline;
-}
-#container:after {
-  clear: both
 }

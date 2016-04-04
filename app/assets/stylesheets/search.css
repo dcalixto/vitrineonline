@@ -79,6 +79,11 @@ white-space: nowrap;
  max-width: none;
 }
 
+.inner_search:before,  .inner_search:after {
+  content: "";
+  display: table;
+
+}
 
 #search_box button, #search_box_mobile button {
   position: absolute;

@@ -29,7 +29,7 @@
 }
 .add_to_cart a {
   width: 190px;
-  color: #fff;
+
   height: 50px
 }
 .add_to_cart {
@@ -84,7 +84,7 @@
   margin: 6px 0 0 0;
   text-align: middle;
   padding-top: 8px;
-  color: #fff;
+
 }
 #shopcart .shopcart_link:hover {
   text-decoration: underline
@@ -93,5 +93,5 @@
   display: block;
   vertical-align: middle;
   float: right;
-  color: #fff;
+
 }

@@ -1,0 +1,294 @@
+/* BLACK TOPBAR  */
+
+
+.blue_bar {
+
+    height:50px;
+
+background:#f2f2f2
+
+
+}
+
+.icons_bar {
+
+
+  background:#3657a0;
+  background:#3f51b5;
+    height:45px;
+    border-bottom:solid 1px #ddd;
+    width:100%
+}
+#header {
+
+
+
+  display: block;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  list-style: outside none none;
+  box-sizing: border-box;
+  margin: 0px auto;
+  width: 100%;
+
+  padding-bottom:10px
+}
+
+
+
+
+.info_area span {
+  border-right: 1px solid #6b6b6b;
+  line-height: 0.2em;
+  height: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px
+}
+
+
+.inner_bar:before, .inner_bar:after {
+  content: "";
+  display: table;
+
+}
+
+.inner_search:before,  .inner_search:after {
+  content: "";
+  display: table;
+
+}
+
+.inner_icons:before, .inner_icons:after {
+  content: "";
+  display: table;
+
+}
+
+
+
+@media (min-width: 320px) {
+  .inner_bar, .inner_search, .inner_icons{
+    margin: 0px auto;
+    min-width: 320px;
+    box-sizing: border-box;
+   overflow: auto;
+  }
+
+
+  .logo {
+     display: block;
+    margin-top: 10px;
+margin-left:10px;
+    width:130px;
+    height:40px;
+  display: block;
+  background:url(/assets/logo_mobile.png) no-repeat;
+
+  }
+
+
+  }
+
+
+
+
+@media (min-width: 480px) {
+  .inner_bar, .inner_search, .inner_icons {
+    margin: 0px auto;
+    min-width: 460px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+
+
+  .logo {
+     display: block;
+    margin-top: 10px;
+
+    width:130px;
+    height:40px;
+  display: block;
+  background:url(/assets/logo_mobile.png) no-repeat;
+
+  }
+
+
+
+  }
+
+@media (min-width: 768px) {
+
+  .inner_bar,  .inner_search, .inner_icons  {
+    margin: 0px auto;
+    min-width: 750px;
+    box-sizing: border-box;
+  overflow: auto;
+  }
+
+
+  .logo {
+     display: block;
+      margin-top: 10px;
+  width:130px;
+  height:40px;
+  display: block;
+  background:url(/assets/logo_mobile.png) no-repeat;
+
+  }
+
+
+
+
+
+
+  }
+
+@media (min-width: 992px) {
+
+
+  .inner_bar, .inner_search, .inner_icons {
+    margin: 0px auto;
+    min-width: 970px;
+      max-width: 1000px;
+
+    box-sizing: border-box;
+    overflow: auto;
+  }
+
+  .logo {
+     display: block;
+
+
+  width:180px;
+  height:50px;
+
+  display: block;
+  background:url(/assets/logo.png) no-repeat;
+
+  }
+
+
+
+}
+
+
+
+/* LOGO */
+
+#logo {
+  float: left;
+  display: block;
+  vertical-align: middle;
+
+}
+#logo a {
+  margin-top: 0;
+  cursor: pointer;
+  text-align: right;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: auto auto;
+  display: block;
+  outline: medium none;
+  overflow: hidden;
+  text-indent: -999px;
+  white-space: nowrap;
+  z-index: 2;
+
+  width:180px;
+  height: 50px;
+}
+#logo a:hover span {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
+/* MENU DA BUSCA */
+
+
+
+
+
+
+/* SEARCH  */
+
+.sell_button {
+  vertical-align: baseline;
+  height: 40px;
+  z-index: 100;
+  padding: 0;
+  float: right;
+}
+
+/*  TOP BAR USER LOG IN */
+
+.log_topbar {
+  float: right;
+  overflow: auto;
+  vertical-align: baseline;
+  width: auto;
+  position: relative;
+  margin-top: 15px
+}
+
+ul.log_topbar li {
+    display: inline;
+}
+
+.log_topbar li, .info_area li {
+  float: left;
+  margin-right: 5px;
+  margin-left: 7px;
+  vertical-align: middle;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+.log_topbar ul li a, .info_area ul li a {
+  display: block;
+  vertical-align: middle;
+  float: right;
+
+  font-weight:normal
+}
+.help {
+  margin-right: 10px;
+  font-size: 13px;
+  margin-top: 10px
+}
+.log_topbar ul, .info_area ul {
+  display: block;
+  vertical-align: middle;
+  float: right;
+  list-style: outside none none;
+}
+.top_links {
+  padding-top: 8px;
+  float: right
+}
+.log_topbar span {
+  border-right: 1px solid #3657a0;
+  line-height: 0.2em;
+  height: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+
+}
+
+
+
+
+
+
+.info_area {
+  font-family: tahoma;
+  font-size: 12px;
+  color: #D91B00;
+  text-align: right;
+  line-height: 17px;
+  font-weight: normal;
+  float: left;
+  position: relative;
+  margin-top: 5px;
+}

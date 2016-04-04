@@ -20,7 +20,8 @@ gem 'stamp'
 
 
 
-
+#RESPONSIVE
+gem "breakpoint", "~>2.7.0"
 
 # SEARCH
 
@@ -107,7 +108,7 @@ gem 'omniauth-facebook'
 gem 'paypal_adaptive'
 gem 'configatron' # , '3.1.3'
 gem 'prawn'#, '1.0.0.rc2'
-
+gem 'mymoip'
 # ADMIN & SECURITY
 
 gem 'validate_url'
@@ -161,6 +162,7 @@ gem 'jquery-ui-rails' # , '~> 4.2.1'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
+
   gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
 end
