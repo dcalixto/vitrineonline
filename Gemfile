@@ -41,7 +41,7 @@ gem 'hightop'
 gem 'mobile-fu'
 
 #ADMIN
-#gem "administrate", "~> 0.1.4"
+gem "administrate", :git => 'git://github.com/dcalixto/administrate.git'
 
 # MISC
 gem 'deadweight'
