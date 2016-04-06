@@ -1,48 +1,54 @@
-
+<div class="blue_bar">
   <div class=inner_bar>
-
 
 
     <% cache "logo" do %>
     <div id="logo">
-      <%= link_to root_url do %>
-      <%= content_tag(:span, nil, :class =>'logo') %>
+      <%= link_to root_path do %>
+      <%= content_tag(:span, nil, :class =>'sprite-icons-logo') %>
       <% end %>
     </div>
     <% end %>
+      <%= render "layouts/shop_cart" %>
+    </div>
+  </div>
+  <div class=inner_blue>
 
 
-    <%= render "layouts/shop_cart" %>
 
     <%=render  :partial=>"layouts/links_topbar" %>
+<%= link_to 'Categorias', departments_path%>
+  <% if current_user %>
+  <%=render :partial=> "layouts/user_nav" %>
+  <%end %>
+
 
     </div>
 
 
 
+  <div class="icons_bar">
+        <div class="inner_tab">
 
-    <div class="inner_icons">
+  <% cache "busca" do %>
+  <%= render  :partial=> "layouts/search" %>
+  <% end %>
+  <% if    current_user && current_vitrine %>
+  <div class="sell_button">
+    <%= button_to "Vender", new_product_path,  :class => 'btn_orange btn_small', :method => "get"
+%>
+  </div>
+
+  <% end %>
 
 
-      <div class="menu-trigger">Clique aqui</div>
+      </div>
 
 
-      <div class="mobile_nav">
-
-          <% if current_user %>
-          <%=render :partial=> "layouts/user_nav" %>
-          <%end %>
-
-</div>
 
       </div>
 
 
 
 
-
-    <div class="inner_search">
-        <% cache "busca" do %>
-        <%= render  :partial=> "layouts/search" %>
-        <% end %>
       </div>

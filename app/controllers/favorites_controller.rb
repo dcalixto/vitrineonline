@@ -6,21 +6,11 @@ class FavoritesController < ApplicationController
   end
 
   def vitrines
-    @q = current_user.favorite_vitrines.ransack(params[:q])
-    @favorite_vitrines = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+  #  @q = current_user.find_liked_items.ransack(params[:q])
+#  current_user.find_liked_items = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
   end
 
-  def unmark_product
-    @user = current_user
-    @product = Product.find(params[:id])
-    @product.users_have_marked_as_favorite.delete @user
-    redirect_to :back
-  end
 
-  def unmark_vitrine
-    @user = current_user
-    @vitrine = Vitrine.find(params[:id])
-    @vitrine.users_have_marked_as_favorite.delete @user
-    redirect_to :back
-  end
+
+
 end

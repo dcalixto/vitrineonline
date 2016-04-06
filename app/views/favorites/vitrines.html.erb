@@ -10,23 +10,23 @@
     <h1>Vitrines adicionadas</h1>
 
     <div class="content">
-      <%= current_user.favorite_vitrines.count %>
-      Vitrines favoritadas</h4>
+      <%= current_user.find_liked_items.count %>
+      vitrines curtidas</h4>
     <table class="block_search">
       <tr>
         <td>
 
-          <%= search_form_for @q, url:  vitrines_favorites_path, method: :post  do |f| %>
+          <#%= search_form_for @q, url:  vitrines_favorites_path, method: :post  do |f| %>
 
-          <%= f.text_field :id_cont %>
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
+          <#%= f.text_field :id_cont %>
+          <#%= f.submit "Buscar", :class=>"btn_grey" %>
 
-          <% end %>
+          <#% end %>
         </td>
         <td class="sort">
 
           Ordernar Por
-          <%= sort_link @q, :created_at, "Data" %>
+          <#%= sort_link @q, :created_at, "Data" %>
 
         </td>
       </tr>
@@ -46,7 +46,7 @@
 
       <tbody>
 
-        <% @favorite_vitrines.each do |vitrine| %>
+        <% current_user.find_liked_items.each do |vitrine| %>
         <tr>
           <td class="stock_td">
             <%= link_to  vitrine_path(vitrine.id) do %>
@@ -65,7 +65,11 @@
           </td>
 
           <td>
-            <%= button_to "Remover", unmark_vitrine_favorite_path(vitrine.id), method: :get, :class=>"btn_grey btn_small" %>
+
+
+
+          <%= link_to "Descurtir",  dislike_vitrine_path(vitrine.id), method: :put %>
+
           </td>
 
         </tr>
@@ -79,7 +83,7 @@
   <div class="block_pagination">
     <hr class="line"></hr>
     <div class="digg_pagination">
-      <%= will_paginate  @favorite_vitrines,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
+      <%= will_paginate  @current_user.get_up_voted,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
 
     </div>
   </div>

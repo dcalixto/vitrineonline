@@ -1,4 +1,7 @@
 Vitrineonline::Application.routes.draw do
+
+
+
   # SESSION
   resources :sessions, only: [:create, :new, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
@@ -11,8 +14,7 @@ Vitrineonline::Application.routes.draw do
 
   #REPORTS
 
-  #resources :send_code, only: [:new, :create]
-  #post 'send_codes/verify' => "send_codes#verify"
+
 
 
 
@@ -133,10 +135,10 @@ end
 
 
     collection do
-      match '/:id' => 'vitrines#show', via: [:post], as: :feedbacks
-     match '/:id' => 'vitrines#show', via: [:post], as: :products
+      match '/:id' => 'vitrines#show', via: [:get, :post], as: :feedbacks
+     match '/:id' => 'vitrines#show', via: [:get, :post], as: :products
 
-
+ match '/:id/feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :search_feedbacks
     end
 
     member do
@@ -147,6 +149,7 @@ end
       match 'mark', to: 'vitrines#mark'
    match :report
       get :tag
+      match :feedbacks
     end
 
   end

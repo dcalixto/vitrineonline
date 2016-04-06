@@ -70,6 +70,7 @@ body {
   padding: 0;
   direction: ltr;
   unicode-bidi: embed;
+
 }
 h1, h2, h3, h4, h5, h6 {
   font-size: 13px;
@@ -192,7 +193,7 @@ html {
   display: block;
   background-repeat: no-repeat;
   background: none repeat scroll 0% 0% #fff;
-  ;
+
 }
 
 
@@ -604,6 +605,7 @@ audio:not([controls]) {
 }
 body {
   margin: 0;
+
 }
 a:active, a:hover {
   outline: 0;
@@ -1085,7 +1087,6 @@ body {
   unicode-bidi: embed;
 
 
-    background: #fff;
 
 
 
@@ -1094,6 +1095,7 @@ body {
 }
 body, button, input, label, select, td, textarea {
   font-size: 12px;
+
 }
 h1, h2, h3, h4, h5, h6 {
   font-size: 13px;

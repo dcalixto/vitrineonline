@@ -9,11 +9,12 @@
   </div>
 
   <div class="block margin_top">
-<div class="content">
-
     <div class="chatboxhead">
     <h3>Conversa</h3>
-  
+  </div>
+<div id="message_box" class="content">
+
+
 
 
 
@@ -21,18 +22,27 @@
       <%= render partial: 'messages/message', collection: @messages  %>
     </div>
 
-    <div class="chatboxinput">
-      <%= semantic_form_for  [@conversation,  @new_message] do |f| %>
 
-      <%= f.inputs do %>
-      <%= f.input :body, :as => :text, class: 'form-control',data: { emojiable: true },:placeholder => false, :label => false %>
-      <%= f.actions do %>
-      <%= f.action :submit, :label => "Enviar", :button_html => { :class => "btn"} %>
-      <% end %>
-      <% end %>
-      <% end %>
-
-    </div>
   </div>
+
+
+</div>
+</div>
+
+
+<div class="box1">
+  <div class="block margin_top">
+<div class="chatboxinput">
+  <%= semantic_form_for  [@conversation,  @new_message] do |f| %>
+
+  <%= f.inputs do %>
+  <%= f.input :body, :as => :text, class: 'form-control',data: { emojiable: true },:placeholder => false, :label => false %>
+  <%= f.actions do %>
+  <%= f.action :submit, :label => "Enviar", :button_html => { :class => "btn"} %>
+  <% end %>
+  <% end %>
+  <% end %>
+
+</div>
 </div>
 </div>

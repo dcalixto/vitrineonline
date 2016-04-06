@@ -1,12 +1,16 @@
 
 
 <div class="box1">
-  <div class="margin_top">
+  <div class="block">
+      <div class="content">
     <div class="flash_box">
       <%= render 'shared/flash_messages' %>
 
     </div>
 
+
+
+      <div class="subcontent_top">
     <!-- Slideshow 1 -->
     <ul class="box-slider">
       <li>
@@ -16,62 +20,117 @@
       <li><%= image_tag('slider3.jpg')  %></li>
     </ul>
 
-
-  </div>
 </div>
 
 
+  <div class="subcontent_top">
 
-<div class="box1">
-  <h2>Produtos Mais Vendidos</h2>
-
-  <div class="block">
-
+    <h2>Produtos Mais Vendidos</h2>
+    <% if @orderables %>
     <ul class="content-slider">
-        <% Product.order(@average_rating_from_buyers).each do |product| %>
+         <% orderable.limit(10).each do |p| %>
         <li>
-      <%= link_to product_path(product) do  %>
-      <%= image_tag product.f1.url(:thumb).to_s %>
-      <%= product.name %>
-</li>
+      <%= link_to product_path(p) do  %>
+      <%= image_tag p.images.first.url(:thumb).to_s %>
+      <%= p.name %>
       <% end %>.
+    </li>
     </ul>
 <% end %>.
-  </div>
+<% end %>.
+
 
 </div>
 
 
 
-<div class="box1">
-  <h2>Vitrines Mais Avaliadas</h2>
 
-  <div class="block">
+  <div class="subcontent">
+  <h2>Produtos Mais Avaliadas</h2>
+  <% unless Product.nil? %>
+
     <ul class="content-slider">
-      <% Vitrine.order(@average_rating_from_buyers).each do |vitrine| %>
-<li>
-    <%=   link_to vitrine_path(vitrine) do %>
 
-  <%= image_tag vitrine.logo.url(:thumb).to_s %>
+      <% @feedbacks.includes(:products).limit(10).each do |v| %>
 
-      <%= vitrine.name %>
 
-</li>
-      <% end %>
-    </ul>
-      <% end %>
-  </div>
+      <li> <%= image_tag v.images.first.url(:thumb).to_s %></li>
+      <li><%= v.name   %></li>
+  <% end %>
+</ul>
+  <% end %>
+
 
 </div>
 
 
-<div class="box1">
-<div class="block">
+
+
+
+  <div class="subcontent">
+  <h2>Vitrines Mais Avaliadas</h2>
+  <% unless Vitrine.nil? %>
+
+    <ul class="content-slider">
+
+      <% @feedbacks.includes(:vitrines).limit(10).each do |v| %>
+
+
+      <li> <%= image_tag v.logo.url(:thumb).to_s %></li>
+      <li><%= v.name   %></li>
+  <% end %>
+</ul>
+  <% end %>
+
+
+</div>
+
+
+  <div class="subcontent">
   <h2>Produtos Adicionados Recentemente</h2>
 
-  <div id="searchResults">
+<% if @products %>
+<ul class="content-slider">
+<% @products.first(10).each do |p| %>
+<li>
+<%= link_to product_path(p) do  %>
+<#%= image_tag p.images.first.url(:thumb).to_s %>
+<%= p.name %>
+<%= p.price %>
+<% end %>
+</li>
+<% end %>
+</ul>
 
-    <%= render :partial => 'product', :collection => @products  %>
+<% end %>
+
+</div>
+
+
+
+  <div class="subcontent">
+    <h2>Produtos em Destaque</h2>
+
+
+      <ul class="content-slider">
+
+            <% @suggestions.each do |item| %>
+              <li>
+            <%= link_to product_path(item) do  %>
+            <%= image_tag item.images.first.url(:thumb).to_s %>
+            <%= item.name %>
+              <%= item.price %>
+            <% end %>
+            </li>
+            <% end %>
+  </ul>
+
+
+
+
   </div>
+
+
+</div>
 </div>
 </div>

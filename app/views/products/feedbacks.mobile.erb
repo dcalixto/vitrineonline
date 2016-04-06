@@ -9,7 +9,7 @@
     <div class="content">
       <div class="subcontent_top">
         <%= link_to  product_path(@product.id) do %>
-        <%= image_tag @product.f1.url(:thumb).to_s %>
+        <%= image_tag @product.images.first.url(:thumb).to_s %>
 
         <% end %>
 

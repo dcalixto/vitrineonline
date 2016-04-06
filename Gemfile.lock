@@ -1,20 +1,4 @@
 GIT
-  remote: git://github.com/dcalixto/administrate.git
-  revision: de2887ab501ca55df4376281a1c007559718a4e3
-  specs:
-    administrate (0.1.4)
-      autoprefixer-rails (~> 6.0)
-      datetime_picker_rails (~> 0.0.7)
-      jquery-rails (~> 3.1)
-      kaminari (~> 0.16)
-      momentjs-rails (~> 2.8)
-      neat (~> 1.1)
-      normalize-rails (~> 3.0)
-      rails (~> 3.2.22)
-      sass-rails (~> 3.2.6)
-      selectize-rails (~> 0.6)
-
-GIT
   remote: git://github.com/dcalixto/formtastic.git
   revision: 51589ebc49430dc5168e060b0cc4b9a0ed8b90c1
   branch: 3.1.3
@@ -81,9 +65,6 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active_model_otp (1.2.0)
-      activemodel
-      rotp
     activemodel (3.2.22)
       activesupport (= 3.2.22)
       builder (~> 3.0.0)
@@ -111,8 +92,6 @@ GEM
       rake (~> 10.4)
     arel (3.0.3)
     ast (2.2.0)
-    autoprefixer-rails (6.3.6)
-      execjs
     bcrypt-ruby (3.0.1)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -121,9 +100,6 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     blankslate (3.1.3)
-    bourbon (4.2.6)
-      sass (~> 3.4)
-      thor (~> 0.19)
     brakeman (3.2.1)
       erubis (~> 2.6)
       haml (>= 3.0, < 5.0)
@@ -148,7 +124,6 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
-    chartkick (1.4.2)
     coderay (1.1.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -175,8 +150,6 @@ GEM
       parslet (>= 1.6.1, < 2.0)
     daemons (1.2.3)
     dalli (2.7.6)
-    datetime_picker_rails (0.0.7)
-      momentjs-rails (>= 2.8.1)
     deadweight (0.2.2)
       css_parser (~> 1.2.6)
       nokogiri
@@ -210,8 +183,6 @@ GEM
     execjs (2.6.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
-    faraday_middleware (0.10.0)
-      faraday (>= 0.7.4, < 0.10)
     faye (1.1.2)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
@@ -223,11 +194,6 @@ GEM
     faye-websocket (0.10.3)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
-    feedjira (2.0.0)
-      faraday (~> 0.9)
-      faraday_middleware (~> 0.9)
-      loofah (~> 2.0)
-      sax-machine (~> 1.0)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     garelic (0.2.1)
@@ -238,21 +204,14 @@ GEM
       activesupport (>= 3.2, < 5.1)
     gretel (3.0.8)
       rails (>= 3.2.0)
-    groupdate (2.5.2)
-      activesupport (>= 3)
     haml (4.0.7)
       tilt
     hashie (3.4.3)
     high_voltage (2.4.0)
     highline (1.7.8)
-    hightop (0.1.4)
-      activerecord
     hike (1.2.3)
     htmlentities (4.3.4)
     http_parser.rb (0.6.0)
-    httparty (0.13.7)
-      json (~> 1.8)
-      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     journey (1.0.4)
     jquery-rails (3.1.4)
@@ -267,16 +226,11 @@ GEM
     json (1.8.3)
     jsonschema (2.0.2)
     jwt (1.5.1)
-    kaminari (0.16.3)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
       launchy (~> 2.2)
     libv8 (3.16.14.13)
-    loofah (2.0.3)
-      nokogiri (>= 1.5.9)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -309,22 +263,12 @@ GEM
     mobile-fu (1.3.1)
       rack-mobile-detect
       rails
-    momentjs-rails (2.11.0)
-      railties (>= 3.1)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mymoip (0.10.0)
-      activemodel
-      builder
-      httparty
-    neat (1.7.4)
-      bourbon (>= 4.0)
-      sass (>= 3.3)
     newrelic_rpm (3.15.1.316)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
-    normalize-rails (3.0.3)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0, < 1.5.2)
@@ -415,7 +359,6 @@ GEM
     ref (2.0.0)
     rollbar (2.8.3)
       multi_json
-    rotp (2.1.1)
     rubocop (0.39.0)
       parser (>= 2.3.0.7, < 3.0)
       powerpack (~> 0.1)
@@ -440,7 +383,6 @@ GEM
     sax-machine (1.3.2)
     select2-rails (4.0.1.1)
       thor (~> 0.14)
-    selectize-rails (0.12.1)
     sexp_processor (4.7.0)
     shareable (1.1.4)
       actionpack (>= 3.0.0)
@@ -472,10 +414,6 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.4.0)
-    twilio-ruby (4.11.1)
-      builder (>= 2.1.2)
-      jwt (~> 1.0)
-      multi_json (>= 1.3.0)
     tzinfo (0.3.48)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
@@ -496,11 +434,9 @@ PLATFORMS
 
 DEPENDENCIES
   act_as_cnpj_cpf
-  active_model_otp
   acts-as-taggable-on (~> 3.4)
   acts_as_commentable
   acts_as_votable (~> 0.10.0)
-  administrate!
   annotate
   bcrypt-ruby (~> 3.0.0)
   better_errors
@@ -510,7 +446,6 @@ DEPENDENCIES
   bullet
   canonical_dude
   carrierwave (~> 0.9.0)
-  chartkick
   coffee-rails
   configatron
   correios-frete
@@ -523,16 +458,13 @@ DEPENDENCIES
   dotenv-rails
   dropzonejs-rails
   dynamic_selectable!
-  feedjira
   formtastic!
   friendly_id
   garelic
   geocoder
   goldiloader
   gretel
-  groupdate
   high_voltage
-  hightop
   jquery-rails
   jquery-rails-cdn
   jquery-raty-rails
@@ -550,7 +482,6 @@ DEPENDENCIES
   mina-newrelic
   mini_magick
   mobile-fu
-  mymoip
   newrelic_rpm
   oj
   omniauth-facebook
@@ -581,7 +512,6 @@ DEPENDENCIES
   test-unit (~> 3.0)
   therubyracer
   thin
-  twilio-ruby
   uglifier (>= 1.0.3)
   validate_url
   wicked

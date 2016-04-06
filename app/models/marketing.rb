@@ -3,5 +3,5 @@ class Marketing < ActiveRecord::Base
   belongs_to :vitrine
   attr_accessible :slogan, :url
 
-  validates :url, url: true, on: :update
+  #validates :url, url: true, on: :update
 end

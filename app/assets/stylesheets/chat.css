@@ -12,4 +12,9 @@
 
 
 .messagecontent  {width:94%}
-.messagebody  {width:95%}
+.messagebody  {width:70%}
+
+
+#message_box {
+  max-height: 640px
+}

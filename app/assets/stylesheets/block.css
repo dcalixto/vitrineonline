@@ -59,10 +59,8 @@
 }
 
 .block_search {
-    background-color:
-rgb(240,243,247);
-    border-bottom: 1px solid rgb(
-217,222,233);
+background-color: #f5f5f5;
+border-bottom: 1px solid #e5e5e5;
     margin-bottom: 5px;
 
     border-spacing: 5px;
@@ -75,9 +73,10 @@ rgb(240,243,247);
 }
 
 .block_message {
-    background: #f6f7f8;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e5e5e5;
     padding: 10px;
-    border: solid 1px #e8e9ea;
+  
 }
 
 .list {

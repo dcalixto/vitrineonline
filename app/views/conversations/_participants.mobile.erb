@@ -1,13 +1,10 @@
-<ul>
-
 <% conversation.participants(:not => current_user).each do |user| %>
-
 <li class="row">
 
   <li class="cell">
 <div class="avatar">
   <%= link_to conversation_path(conversation.id), :class => "message_link conversation " do %>
-  <%= image_tag user.avatar.url(:small).to_s %>
+  <%= image_tag user.avatar.url(:mobile).to_s %>
   <% end %>
 </div>
 </li>
@@ -31,4 +28,3 @@
 </li>
 </li>
 <% end %>
-</ul>

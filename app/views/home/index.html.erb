@@ -1,12 +1,16 @@
 
 
 <div class="box1">
-  <div class="margin_top">
+  <div class="block">
+      <div class="content">
     <div class="flash_box">
       <%= render 'shared/flash_messages' %>
 
     </div>
 
+
+
+      <div class="subcontent_top">
     <!-- Slideshow 1 -->
     <ul class="box-slider">
       <li>
@@ -16,38 +20,35 @@
       <li><%= image_tag('slider3.jpg')  %></li>
     </ul>
 
-
-  </div>
 </div>
 
-<div class="box1">
 
-  <h2>Produtos Mais Vendidos</h2>
-  <% if @orderables %>
-  <div class="block">
+  <div class="subcontent_top">
 
+    <h2>Produtos Mais Vendidos</h2>
+    <% if @orderables %>
     <ul class="content-slider">
          <% orderable.limit(10).each do |p| %>
         <li>
       <%= link_to product_path(p) do  %>
       <%= image_tag p.images.first.url(:thumb).to_s %>
       <%= p.name %>
-
       <% end %>.
     </li>
     </ul>
 <% end %>.
-  </div>
 <% end %>.
+
+
 </div>
 
 
 
 
-<div class="box1">
+  <div class="subcontent">
   <h2>Produtos Mais Avaliadas</h2>
   <% unless Product.nil? %>
-  <div class="block">
+
     <ul class="content-slider">
 
       <% @feedbacks.includes(:products).limit(10).each do |v| %>
@@ -57,19 +58,19 @@
       <li><%= v.name   %></li>
   <% end %>
 </ul>
-
-  </div>
   <% end %>
+
+
 </div>
 
 
 
 
 
-<div class="box1">
+  <div class="subcontent">
   <h2>Vitrines Mais Avaliadas</h2>
   <% unless Vitrine.nil? %>
-  <div class="block">
+
     <ul class="content-slider">
 
       <% @feedbacks.includes(:vitrines).limit(10).each do |v| %>
@@ -79,14 +80,13 @@
       <li><%= v.name   %></li>
   <% end %>
 </ul>
-
-  </div>
   <% end %>
+
+
 </div>
 
 
-<div class="box1">
-<div class="block">
+  <div class="subcontent">
   <h2>Produtos Adicionados Recentemente</h2>
 
 <% if @products %>
@@ -103,13 +103,12 @@
 </ul>
 
 <% end %>
+
 </div>
-</div>
 
 
 
-<div class="box1">
-  <div class="block">
+  <div class="subcontent">
     <h2>Produtos em Destaque</h2>
 
 
@@ -131,4 +130,7 @@
 
   </div>
 
+
+</div>
+</div>
 </div>

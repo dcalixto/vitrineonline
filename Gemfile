@@ -32,17 +32,17 @@ gem 'searchkick',  github: "ankane/searchkick"
 
 
 #CHART
-gem "chartkick"
-gem 'groupdate'
-gem 'hightop'
+#gem "chartkick"
+#gem 'groupdate'
+#gem 'hightop'
 
 # MOBILE
 
 gem 'mobile-fu'
 
 #ADMIN
-gem "administrate", :git => 'git://github.com/dcalixto/administrate.git'
 
+#gem 'upmin-admin' #, '~> 0.1.0'
 # MISC
 gem 'deadweight'
 
@@ -91,7 +91,7 @@ gem 'formtastic', :git => 'git://github.com/dcalixto/formtastic.git', :branch =>
 # ANALYS
 
 #FEEDS
-gem 'feedjira'
+#gem 'feedjira'
 
 # MARKUP LANGUAGE
 gem 'redcarpet'
@@ -108,14 +108,14 @@ gem 'omniauth-facebook'
 gem 'paypal_adaptive'
 gem 'configatron' # , '3.1.3'
 gem 'prawn'#, '1.0.0.rc2'
-gem 'mymoip'
+#gem 'mymoip'
 # ADMIN & SECURITY
 
 gem 'validate_url'
-gem 'active_model_otp'
+#gem 'active_model_otp'
 gem 'rack-attack'
 gem 'geocoder'
-gem 'twilio-ruby'
+#gem 'twilio-ruby'
 gem 'rack-secure_headers', git: 'https://github.com/dcalixto/rack-secure_headers.git'
 
 # IMAGE

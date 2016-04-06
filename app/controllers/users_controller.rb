@@ -37,14 +37,6 @@ class UsersController < ApplicationController
 
 
 
-#def index
-  #@q = User.ransack(params[:q])
-  #@users = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
-
-# @users = User.search_by_name(params[:name]).page(params[:page]).per_page(22)
-#end
-
-
 
   def new
     @user = User.new
@@ -118,7 +110,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       redirect_to(action: :edit, id: @user, only_path: true,format: :html)
       flash[:notice] = 'Conta atualiazada'
-  
+
     else
       render :edit
     end

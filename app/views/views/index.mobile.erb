@@ -104,7 +104,9 @@
             <tr>
               <td>
                 <%= link_to  product_path(e.id) do %>
-                <%= image_tag e.f1.url(:small).to_s %>
+                <% if e.images.present? %>
+                <%= image_tag e.images.first.url(:small).to_s %>
+                <% end %>
                 <%=  e.name %>
                 <% end %>
 

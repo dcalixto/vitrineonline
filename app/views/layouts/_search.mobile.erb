@@ -1,8 +1,8 @@
 <div id="search_container_mobile">
   <%= form_tag products_path,method: :get, :id => "search_box_mobile" do %>
   <div class="wrapper">
-    <%= text_field_tag :query, params[:query],:placeholder => "Buscar",  :id => "search" %><%= button_tag "", :class =>"search_btn", :name => nil do %>
-    <%= content_tag( :i,nil, :class => "search_icon")  %>
+    <%= text_field_tag :query, params[:query], :placeholder => "Buscar", :id => "search" %><%= button_tag "", :class =>"search_btn", :name => nil do %>
+    <%= content_tag( :i,nil, :class => "sprite-icons-lupa")  %>
 
     <% end %>
   </div>

@@ -33,37 +33,32 @@
     <div id=header>
   <%= render "layouts/header" %>
 
+
+
         </div>
+
+
+
 
         <div id="container">
           <%= breadcrumbs separator: "&rsaquo;" %>
           <%=yield %>
-
-
-          <% cache "drop" do %>
-          <div class="box1">
-          <div class="tab_ba">
-
-          <%=render "layouts/drop" %>
-
-              </div>
-  </div>
-
-          <% end %>
-
-
-
-
         </div>
 
         <% cache "footer" do %>
         <%=render "layouts/footer" %>
         <% end %>
 
+
+
         <% cache "js" do %>
+
         <%=jquery_include_tag :google %>
         <%=javascript_include_tag "application" %>
         <% end %>
+
+        
+
 
         <% if logado? %>
         <%=render "layouts/faye" %>

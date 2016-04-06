@@ -2,6 +2,8 @@
 class MessagesController < ApplicationController
   before_filter :authorize
   # caches_action :show,  :layout => false
+
+
   def create
     # TODO: Handle 404
     @conversation = current_user.conversations.find(params[:conversation_id])

@@ -1,5 +1,5 @@
 # require 'sidekiq'
-require File.join File.dirname(__FILE__), 'send_code'
+#require File.join File.dirname(__FILE__), 'send_code'
 class User < ActiveRecord::Base
   extend FriendlyId
 
@@ -40,7 +40,7 @@ has_many :reports                 # Allow user to report others
   acts_as_marker
 
 
- has_one_time_password
+ #has_one_time_password
 
 
 reverse_geocoded_by :latitude, :longitude do |obj, results|

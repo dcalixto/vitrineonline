@@ -7,6 +7,10 @@ $notebook: min-width 992px;
 $desktop: min-width 1200px;
 
 
+#main-nav ul {
+margin-top:5px
+}
+
 
 @include breakpoint($mobile) {
 
@@ -48,12 +52,11 @@ $desktop: min-width 1200px;
           width: auto;
           bottom: 0;
           left: 0;
-          margin-left: -2px;
-          margin-top: 1px;
           z-index: 20;
           border: solid 1px #000;
-          width: 70%;
+          width: 100px;
           overflow: visible;
+          width: 480px;
         }
         #main-nav li {
           float: left;
@@ -89,12 +92,13 @@ $desktop: min-width 1200px;
           display: block;
           text-transform: uppercase;
           font-size: 12px;
-          padding-top: 5px;
-          padding-bottom: 5px;
+          padding-top: 10px;
+          padding-bottom: 10px;
           padding-right: 10px;
           padding-left: 10px;
           border: solid 1px red;
-          color: #fff;
+
+          color: #111;
         }
         #main-nav .tab:hover {
           float: left;
@@ -212,12 +216,11 @@ $desktop: min-width 1200px;
         width: auto;
         bottom: 0;
         left: 0;
-        margin-left: -2px;
-        margin-top: 1px;
         z-index: 20;
         border: solid 1px #000;
-        width: 70%;
+        width: 100px;
         overflow: visible;
+      width: 480px;
       }
       #main-nav li {
         float: left;
@@ -253,12 +256,13 @@ $desktop: min-width 1200px;
         display: block;
         text-transform: uppercase;
         font-size: 12px;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         padding-right: 10px;
         padding-left: 10px;
         border: solid 1px red;
-        color: #fff;
+
+        color: #111;
       }
       #main-nav .tab:hover {
         float: left;
@@ -376,12 +380,11 @@ $desktop: min-width 1200px;
       width: auto;
       bottom: 0;
       left: 0;
-      margin-left: -2px;
-      margin-top: 1px;
       z-index: 20;
       border: solid 1px #000;
-      width: 70%;
+      width: 100px;
       overflow: visible;
+      width: 480px;
     }
     #main-nav li {
       float: left;
@@ -417,12 +420,13 @@ $desktop: min-width 1200px;
       display: block;
       text-transform: uppercase;
       font-size: 12px;
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding-top: 10px;
+      padding-bottom: 10px;
       padding-right: 10px;
       padding-left: 10px;
       border: solid 1px red;
-      color: #fff;
+
+      color: #111;
     }
     #main-nav .tab:hover {
       float: left;
@@ -476,6 +480,7 @@ $desktop: min-width 1200px;
     .parentnav {
       border: solid 1px blue;
       display: block;
+        margin-bottom:5px;
     }
     .parentnav a {
       display: block;
@@ -538,12 +543,11 @@ $desktop: min-width 1200px;
     width: auto;
     bottom: 0;
     left: 0;
-    margin-left: -2px;
-    margin-top: 1px;
     z-index: 20;
     border: solid 1px #000;
-    width: 70%;
+    width: 100px;
     overflow: visible;
+    width: 480px;
   }
   #main-nav li {
     float: left;
@@ -579,12 +583,13 @@ $desktop: min-width 1200px;
     display: block;
     text-transform: uppercase;
     font-size: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-right: 10px;
     padding-left: 10px;
     border: solid 1px red;
-    color: #fff;
+
+    color: #111;
   }
   #main-nav .tab:hover {
     float: left;
@@ -633,6 +638,7 @@ $desktop: min-width 1200px;
     float: left;
     display: inline-block;
     font-size: 12px;
+
   }
 
   .parentnav {

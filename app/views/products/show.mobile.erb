@@ -4,6 +4,9 @@
 
 <div class="box1">
   <% breadcrumb :product, @product %>
+
+
+
   <div class="margin_top">
     <%= render 'shared/flash_messages' %>
 
@@ -15,9 +18,10 @@
 <div class="box9">
 
   <div id="placeholder">
-
-    <%= image_tag @product.f1.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
+<% if @product.images.present? %>
+    <%= image_tag @product.images.first.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
     <%= render_showcase %>
+    <% end %>
   </div>
 
 </div>
@@ -29,8 +33,19 @@
       <div>
         <h1 id="item_name"><%= @product.name %></h1>
       </div>
-      <div>Por
+      <div>
+<ul>
+    <li>   <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
         <%=link_to @product.vitrine.name, vitrine_path(@product.vitrine),  :title => "Nome" %>
+      </li>
+      <li>
+       <% if @product.vitrine.user.online? == true %>
+          <span class="status_online"> Online </span>
+          <% else %>
+            <span class="status_offline"> Offline </span>
+            <% end %>
+</li>
+</ul>
       </div>
 
 
@@ -91,7 +106,7 @@
   <div class="content">
     <%= link_to  "https://www.paypal.com/br"  do %>
 
-    <%= content_tag(:span, nil, :class => 'paypal_protect') %>
+    <%= content_tag(:span, nil, :class => 'sprite-icons-paypal_protect') %>
 
     <% end %>
 
@@ -105,6 +120,7 @@
 <div class="box10">
 
   <div class="block">
+    <div class="tip_box">
     <div class="content">
 
       <ul>
@@ -143,7 +159,9 @@
 
           <% unless @product.marked_as_favorite? %>
           <li>
-            <%= link_to "Adicionar a lista de desejos", mark_product_path(@product.id), :class => 'btn_grey btn', method: :put %>
+
+
+  <%= link_to "Adicionar a lista de desejos", mark_product_path(@product.id),  method: :put %>
 
           </li>
           <% end %>
@@ -191,6 +209,9 @@
 
   </div>
 
+    </div>
+
+
   <!-- Fim-->
 </div>
 
@@ -198,6 +219,9 @@
 
 <div class="box1">
   <div class="block">
+    <div class="content">
+          <div class="subcontent">
+
     <h2>Clientes que viram este produto também viram</h2>
 
 
@@ -206,7 +230,7 @@
             <% @suggestions.each do |item| %>
               <li>
             <%= link_to product_path(item) do  %>
-            <%= image_tag item.f1.url(:thumb).to_s %>
+            <#%= image_tag item.images.first.url(:thumb).to_s %>
             <%= item.name %>
               <%= item.price %>
             <% end %>
@@ -215,6 +239,9 @@
   </ul>
 
 
+  </div>
+
+  </div>
 
 
   </div>
@@ -223,6 +250,8 @@
 
 <div class="box1">
   <div class="block">
+    <div class="content">
+      <div class="subcontent">
 
   <h2>Clientes que comprarm este produto também compraram</h2>
 
@@ -231,7 +260,7 @@
       <%  @similarities.each do |item| %>
         <li>
       <%= link_to product_path(item) do  %>
-      <%= image_tag item.f1.url(:thumb).to_s %>
+      <#%= image_tag item.images.first.url(:thumb).to_s %>
       <%= item.name %>
 
         <%= item.price %>
@@ -239,7 +268,10 @@
         </li>
       <% end %>
     </ul>
+  </div>
 
+
+  </div>
 
   </div>
 </div>
@@ -250,7 +282,7 @@
 
   <div class="block">
       <div class="content">
-            <div class="subcontent_top">
+            <div class="subcontent">
     <h2>Descrições do Produto</h2>
     <p><% if @product.detail.present? %>
       <%= markdown(@product.detail) %>
@@ -283,7 +315,11 @@
 
       </div>
 
-
+      <div class="subcontent">
+        <h2>Ofertas</h2>
+        <%= content_tag(:span, nil, :class => 'offer_stamp') %>
+        <%= @product.offers.first %>
+      </div>
 
       <div class="subcontent">
 
@@ -291,7 +327,7 @@
         <div class="content">
           <%= link_to  "https://www.paypal.com/br"  do %>
 
-          <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+          <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
           <% end %>
 
           <% unless @product.vitrine.policy.blank? %>
@@ -306,7 +342,7 @@
           <ul>
 
             <li>
-              <%= content_tag(:span, nil, :class => 'shipping') %>
+              <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
             </li>
 
             <% @product.vitrine.policy.shippings.each do |shipping| %>
@@ -369,7 +405,7 @@
 
             <%= hidden_field :conversation_participants, :user_id, :value => @product.vitrine.user_id %>
             <ul>
-              <li><%= text_area :message, :body, :rows => 3 %></li>
+              <li><%= text_area :message, :body, class: 'form-control',data: { emojiable: true },:rows => 3 %></li>
 
             </ul>
 
@@ -393,7 +429,8 @@
 
 <div class="box1">
   <div class="block">
-
+      <div class="content">
+  <div class="subcontent">
 
   <h2>Produtos similares a esta vitrine</h2>
 
@@ -401,12 +438,14 @@
       <%  @similarities_for_vitrine.each do |item| %>
 
     <li>  <%= link_to product_path(item) do  %>
-      <%= image_tag item.f1.url(:small).to_s %>
+      <%= image_tag item.images.first.url(:small).to_s %>
       <%= item.name %>
       <%= item.price %>
       <% end %>
     </li>
       <% end %>
 </ul>
+</div>
+  </div>
   </div>
 </div>

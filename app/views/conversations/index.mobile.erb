@@ -2,7 +2,7 @@
 
 <div class="box1">
   <div class="block margin_top">
-
+<div class="content">
 
     <div class="chatboxhead">
   <h2>Menssagens</h2>
@@ -11,9 +11,9 @@
     <tr>
       <td>
 
-        <%= search_form_for @q, url: conversations_path, method: :post  do |f| %>
+        <%= search_form_for @q, url: search_conversations_path, method: :post  do |f| %>
 
-        <%= f.text_field :id_cont %>
+        <%= f.text_field :created_at_cont %>
         <%= f.submit "Buscar", :class=>"btn_grey" %>
 
         <% end %>
@@ -50,9 +50,6 @@
   </div>
 
 </div>
-
-</div>
-
 </div>
 </div>
 </div>

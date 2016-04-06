@@ -848,3 +848,8 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+
+html, body {
+  background:#e1e1e1
+}
