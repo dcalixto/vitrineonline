@@ -1,0 +1,10 @@
+<h2>New User</h2>
+
+<%= simple_form_for(@user, :url => [:admin, @user], :html => {:class => 'tabular'}) do |form| %>
+  <%= form.error_messages %>
+
+  <%= render :partial => form %>
+
+    <%= form.submit t('helpers.submit.create') %>
+    <%= link_to t('helpers.links.back'), admin_users_path %>
+<% end %>

@@ -51,17 +51,13 @@ class VitrinesController < ApplicationController
     @vitrine = current_vitrine
   end
 
-  def upvote
-    @vitrine = Vitrine.find(params[:id])
-    @vitrine.liked_by current_user
-    redirect_to :back
+  def vote
+    value = params[:type] == "Curtir" ? 1 : 0
+ @vitrine = Vitrine.find(params[:id])
+ @vitrine.add_or_update_evaluation(:votes, value, current_user)
+ redirect_to :back
   end
 
-  def downvote
-    @vitrine = Vitrine.find(params[:id])
-    @vitrine.downvote_from current_user
-    redirect_to :back
-  end
 
   def tags
     @vitrine = Vitrine.find(params[:id])
@@ -70,13 +66,6 @@ class VitrinesController < ApplicationController
       format.json { render json: @tags.collect { |t| { id: t.name, name: t.name } } }
     end
 end
-
-  def mark
-    @user = current_user
-    @vitrine = Vitrine.find(params[:id])
-    current_user.mark_as_favorite @vitrine
-    redirect_to :back
-    end
 
 
 

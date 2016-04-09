@@ -17,11 +17,13 @@
   <div class=inner_blue_icons>
 
     <%=render  :partial=>"layouts/links_topbar" %>
-<%= link_to 'Categorias', departments_path%>
+
   <% if current_user %>
   <%=render :partial=> "layouts/user_nav" %>
   <%end %>
-
+  <div class="mobile_category">
+<%= link_to 'Categorias', departments_path%>
+</div>
     </div>
     </div>
 

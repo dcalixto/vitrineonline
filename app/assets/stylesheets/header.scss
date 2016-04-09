@@ -7,7 +7,7 @@ $tablet: min-width 768px;
 $notebook: min-width 992px;
 $desktop: min-width 1200px;
 
-
+.mobile_category a{color:#fff;position: relative;font-weight:bold;float:left;margin-left:10px;margin-top: 15px}
 
 
 #header {
@@ -73,7 +73,8 @@ $desktop: min-width 1200px;
 
   .blue_bar, .inner_blue, .inner_bar {
       height:55px;
-    background:#5371af;
+
+    background:#3e6fb6;
     display:block;
 
 
@@ -104,7 +105,8 @@ $desktop: min-width 1200px;
 @include breakpoint($tablet) {
   .blue_bar, .inner_blue {
       height:50px;
-  background:#5371af
+
+  background:#3e6fb6
 
 
   }
@@ -134,7 +136,8 @@ $desktop: min-width 1200px;
 @include breakpoint($notebook) {
   .blue_bar, .inner_blue {
       height:55px;
-  background:#5371af
+
+  background:#3e6fb6
 
 
   }
@@ -163,7 +166,8 @@ $desktop: min-width 1200px;
 @include breakpoint($desktop){
   .blue_bar, .inner_blue {
       height:55px;
-  background:#5371af
+  
+  background:#3e6fb6
 
 
   }

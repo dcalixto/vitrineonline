@@ -76,12 +76,12 @@ border-bottom: 1px solid #e5e5e5;
   background-color: #f5f5f5;
   border-bottom: 1px solid #e5e5e5;
     padding: 10px;
-  
+
 }
 
 .list {
     display: block;
-    border: solid 1px #333;
+    
 }
 
 .list li {

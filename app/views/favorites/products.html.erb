@@ -13,7 +13,7 @@
 
 
     <div class="content">
-        <%= current_user.favorite_products.count %>
+        <#%= current_user.favorite_products.count %>
         Produtos favoritados</h4>
 
 
@@ -47,7 +47,7 @@
   <td><%= product.id %></td>
   <td class="lista-preco_stock">
     <span>
-      <b><%=  number_to_currency(product.price, :unit => "R$") %></b>
+      <b><#%=  number_to_currency(product.price, :unit => "R$") %></b>
     </span>
   </td>
 
@@ -61,27 +61,27 @@
   </td>
 
   <td>
-      <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}) %>
+      <#%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}) %>
 
   </td>
 
 <td>
-  <% if current_user %>
-  <%if product.buyable?(current_user) %>
+  <#% if current_user %>
+  <#%if product.buyable?(current_user) %>
 
 
   <div class="add_to_car">
 
-    <%= button_to("Adicionar a sacola",add_to_carts_path(product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
+    <#%= button_to("Adicionar a sacola",add_to_carts_path(product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
 
-    <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
-    <%end %>
+    <#%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
+    <#%end %>
 
   </div>
 
-  <%end %>
+  <#%end %>
 
-  <%end %>
+  <#%end %>
 </td>
 
   <td>

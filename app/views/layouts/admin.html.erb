@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <title>Admin</title>
+    <%= stylesheet_link_tag 'admin_interface' %>
+    <%= javascript_include_tag :application, 'admin_interface.jquery.js' %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <a name="top"></a>
+    <div id="wrapper">
+      <div id="top-menu">
+        <div id="loggedas">
+            Signed in as <%= '-put code here-' || link_to(current_user, current_user) -%>
+            <%= '-logout-' || link_to('logout', logout_path) %>
+        </div>
+        <ul><li><a class="home" href="/">Back to main site</a></li></ul>
+      </div>
+      <div id="header">
+        <h1><%= link_to 'Admin', admin_root_path %></h1>
+        <div id="main-menu">
+          <div class="tabs" id="admin_tabnav">
+            <ul>
+              <%= content_tag(:li, link_to('Overview', '/admin' , :class => ((controller_name == 'base') ? 'selected' : ''))) %>
+              <% Admin::BaseController.tabs.each do |tab| %>
+                <%= content_tag(:li, link_to(tab.humanize, [:admin, tab], :class => ((controller_name == tab) ? 'selected' : ''))) %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <%= tag('div', {:id => 'main', :class => (has_content?(:sidebar) ? '' : 'nosidebar')}, true) %>
+        <div id="sidebar">
+          <%= yield :sidebar %>
+        </div>
+        <div id="content">
+          <noscript>
+            <div class="flash error">
+              Your JavaScript seems disabled. The admin interface might not work 100%!
+            </div>
+          </noscript>
+          <%= render_flash_messages %>
+          <%= yield %>
+        </div>
+      </div>
+
+      <div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+
+      <div id="footer">
+        Powered by <a href="mailto:your@email.com">Your Name</a> &copy; 2011
+      </div>
+    </div>
+  </body>
+</html>

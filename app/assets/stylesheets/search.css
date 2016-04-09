@@ -12,7 +12,7 @@
 
 #search_container_mobile {
   width: 80%;
-  height: 38px;
+  height: 30px;
   float: left;
   display: block;
   /*border:solid 1px red;*/
@@ -22,68 +22,61 @@
 
 
 #search_container {
-  width: 30%;
-  height: 35px;
-   max-width: none;
+
    overflow: auto;
   float: left;
   display: block;
-  border:solid 1px red;
-  margin-top: 5px;
+  margin-top:10px;
+  margin-left:10px;
+  
   margin-left: 5px
-}
-#search_box .wrapper, #search_box_mobile .wrapper {
-  width: 85%;
+  margin-top: 3px;
+  max-width: 320px;
+  overflow: hidden;
+  padding: 0;
   position: relative;
-  -moz-border-top-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  border-image: none;
-   max-width: none;
-}
-#search_box input, #search_box_mobile input  {
-  zoom: 1;
-  width: 95%;
 
--webkit-border-radius: 3px 0 0 3px;
-border-radius: 3px 0 0 3px;
-  outline: 0;
-  -webkit-appearance: none;
-
-  outline: none;
-  border-width: 1px medium 1px 1px;
-  border-style: solid none solid solid;
-  border-color: #CCC -moz-use-text-color #CCC #CCC;
-  -moz-border-top-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  border-image: none;
-  font-family: arial, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  font-size-adjust: none;
-  font-stretch: normal;
-  font-feature-settings: normal;
-  font-language-override: normal;
-  font-kerning: auto;
-  font-synthesis: weight style;
-  font-variant: normal;
-  line-height: 26px !important;
-
-  line-height: 0;
-overflow: visible;
-white-space: nowrap;
- max-width: none;
-}
-
-.inner_search:before,  .inner_search:after {
-  content: "";
-  display: table;
 
 }
+
+
+#search_input   {
+  background-color: #fff;
+font-size: 14px;
+height: 29px;
+line-height: 30px;
+
+overflow: hidden;
+position: relative;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+
+width:280px;
+
+}
+#search_input input {
+border: 1px solid #ccc;
+box-shadow: inset 0 1px 2px #eee;
+
+background: transparent;
+border: 0;
+display: inline-block;
+font-size: 16px;
+
+display: table-cell;
+width: 99%;
+min-height: 26px;
+
+padding-top: 0;
+padding-bottom: 0;
+background: none;
+border: 0;
+box-shadow: none;
+
+
+}
+
+
 
 #search_box button, #search_box_mobile button {
   position: absolute;
@@ -91,64 +84,48 @@ white-space: nowrap;
 border-radius: 0 3px 3px 0;
     color: #666;
   cursor: pointer;
-
   text-align: center;
-
     padding: 0;
     box-shadow: none;
   top: 0px;
-
-   background-color: #f5c360;
-border:1px solid #f5c360;
+  background: #ffe28e;
+  background-image: -webkit-linear-gradient(top, #ffe28e, #ffd65e);
+  background-image: -moz-linear-gradient(top, #ffe28e, #ffd65e);
+  background-image: -ms-linear-gradient(top, #ffe28e, #ffd65e);
+  background-image: -o-linear-gradient(top, #ffe28e, #ffd65e);
+  background-image: linear-gradient(to bottom, #ffe28e, #ffd65e);
+  border: solid #eabb32 1px;
  width: 40px;
-  height: 35px;
-
+  height: 30px;
 position: absolute;
     display: inline-block;
-
 text-indent: -9999px;
-
 z-index: 1;
-
-
-
   font-size: 12px;
-  font-family: arial, helvetica, sans-serif;
   padding: 5px 15px 5px 15px;
   text-decoration: none;
   display: inline-block;
-
-
-
  max-width: none;
-
-
 
     }
 
 
 
 
+    #search_box button:hover {
+      text-decoration: none;
+      opacity: 0.6;
+      filter: alpha(opacity=60);
+    }
 
-#search_box input:hover {
-  border: solid 1px #bcbcbc
-}
+    #search_box_mobile button:hover {
+      text-decoration: none;
+      opacity: 0.6;
+      filter: alpha(opacity=60);
+    }
 
-#search_box_mobile input:hover {
-  border: solid 1px #bcbcbc
-}
 
-#search_box button:hover {
-  text-decoration: none;
-  opacity: 0.6;
-  filter: alpha(opacity=60);
-}
-
-#search_box_mobile button:hover {
-  text-decoration: none;
-  opacity: 0.6;
-  filter: alpha(opacity=60);
-}
+.twitter-typeahead {width:99%}
 
 
 a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {

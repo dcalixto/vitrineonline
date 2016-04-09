@@ -1,0 +1,63 @@
+<div class="contextual">
+  <%= link_to 'New User', new_admin_user_path, :class => 'icon icon-add' %>
+  | <%= search_form_for @search, :url => collection_url do |f| %>
+      <%
+        # Check https://github.com/ernie/ransack for options.
+        # Simply change :id_eq into :name_cont, etc.
+      %>
+      <%= f.text_field :id_eq, :placeholder => 'Search by ID' %>
+    <% end %>
+</div>
+
+<h2>
+    Users
+</h2>
+
+<% if @users.blank? %>
+  <p class="nodata">No data to display</p>
+<% else %>
+<table class="list issues">
+  <thead>
+    <tr>
+      <th class="checkbox"><%= image_tag "admin/true.png" %></th>
+        <th><%= sort_link(@search, :name) %></th>
+        <th><%= sort_link(@search, :email) %></th>
+        <th><%= sort_link(@search, :password) %></th>
+        <th></th>
+    </tr>
+  </thead>
+
+<%= form_tag(destroy_all_admin_users_path, :method => :delete) do %>
+  <tbody>
+<% @users.each do |user| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td class="checkbox">
+        <%= check_box_tag('ids[]', user.id, nil, :id => "ids_#{user.id}") %>
+      </td>
+      <td><%=h user.name %></td>
+      <td><%=h user.email %></td>
+      <td><%=h user.password %></td>
+      <td class="buttons">
+        <%= link_to t('helpers.links.show'), [:admin, user], :class => 'icon icon-view' %>
+        <%= link_to t('helpers.links.edit'), edit_admin_user_path(user), :class => 'icon icon-edit' %>
+        <%= link_to t('helpers.links.destroy'), [:admin, user], :confirm => t('helpers.links.confirm'), :method => :delete, :class => 'icon icon-del' %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th colspan="3"><%= submit_tag t("helpers.submit.delete"), :confirm => t('helpers.links.confirm') %></th>
+      <th></th>
+    </tr>
+  </tfoot>
+<% end %>
+</table>
+<% end %>
+
+<div class="block_pagination">
+  <div class="digg_pagination">
+    <%= navigate(@users) %>
+  </div>
+</div>

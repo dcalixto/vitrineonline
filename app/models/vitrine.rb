@@ -45,7 +45,7 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
   after_validation :fetch_address
 
 
- markable_as :favorite
+has_reputation :votes, source: :user, aggregated_by: :sum
 #usar_como_cnpj_ou_cpf :codigo
 
 

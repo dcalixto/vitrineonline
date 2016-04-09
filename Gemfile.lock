@@ -16,6 +16,12 @@ GIT
       hashie
 
 GIT
+  remote: https://github.com/dcalixto/admin_interface.git
+  revision: aeec3939f34f26a96f016c7418ea52bfeb97b554
+  specs:
+    admin_interface (2.2.5)
+
+GIT
   remote: https://github.com/dcalixto/delayed_job.git
   revision: 401f43e076c25559ec65fdfa611a0d94b7b29eb1
   specs:
@@ -73,6 +79,7 @@ GEM
       activesupport (= 3.2.22)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-reputation-system (2.0.2)
     activeresource (3.2.22)
       activemodel (= 3.2.22)
       activesupport (= 3.2.22)
@@ -162,6 +169,7 @@ GEM
       dotenv (= 2.0.1)
     dropzonejs-rails (0.7.3)
       rails (> 3.1)
+    dynamic_form (1.1.4)
     elasticsearch (1.0.15)
       elasticsearch-api (= 1.0.15)
       elasticsearch-transport (= 1.0.15)
@@ -206,6 +214,9 @@ GEM
       rails (>= 3.2.0)
     haml (4.0.7)
       tilt
+    has_scope (0.6.0)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     hashie (3.4.3)
     high_voltage (2.4.0)
     highline (1.7.8)
@@ -213,6 +224,18 @@ GEM
     htmlentities (4.3.4)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
+    i18n-country-translations (1.2.3)
+      i18n (~> 0.5)
+      railties (>= 3.0)
+    i18n_country_select (1.1.5)
+      i18n (~> 0.5)
+      i18n-country-translations (~> 1.0, >= 1.0.3)
+      unicode_utils (~> 1.0, >= 1.0.0)
+    inherited_resources (1.6.0)
+      actionpack (>= 3.2, < 5)
+      has_scope (~> 0.6.0.rc)
+      railties (>= 3.2, < 5)
+      responders
     journey (1.0.4)
     jquery-rails (3.1.4)
       railties (>= 3.0, < 5.0)
@@ -226,6 +249,9 @@ GEM
     json (1.8.3)
     jsonschema (2.0.2)
     jwt (1.5.1)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -357,6 +383,8 @@ GEM
     redcarpet (3.3.4)
     redis (3.2.2)
     ref (2.0.0)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
     rollbar (2.8.3)
       multi_json
     rubocop (0.39.0)
@@ -387,6 +415,9 @@ GEM
     shareable (1.1.4)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    simple_form (2.1.3)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -418,6 +449,7 @@ GEM
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.0.3)
+    unicode_utils (1.4.0)
     uniform_notifier (1.9.0)
     validate_url (1.0.2)
       activemodel (>= 3.0.0)
@@ -434,9 +466,11 @@ PLATFORMS
 
 DEPENDENCIES
   act_as_cnpj_cpf
+  activerecord-reputation-system (~> 2.0.2)
   acts-as-taggable-on (~> 3.4)
   acts_as_commentable
   acts_as_votable (~> 0.10.0)
+  admin_interface!
   annotate
   bcrypt-ruby (~> 3.0.0)
   better_errors
@@ -457,6 +491,7 @@ DEPENDENCIES
   delayed_job_active_record
   dotenv-rails
   dropzonejs-rails
+  dynamic_form
   dynamic_selectable!
   formtastic!
   friendly_id
@@ -465,11 +500,14 @@ DEPENDENCIES
   goldiloader
   gretel
   high_voltage
+  i18n_country_select
+  inherited_resources
   jquery-rails
   jquery-rails-cdn
   jquery-raty-rails
   jquery-ui-rails
   json
+  kaminari
   letter_opener
   mail_form
   mail_view (~> 2.0.4)
@@ -506,6 +544,7 @@ DEPENDENCIES
   searchkick!
   select2-rails
   shareable
+  simple_form
   social-share-button!
   sqlite3
   stamp

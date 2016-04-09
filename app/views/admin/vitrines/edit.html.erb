@@ -1,0 +1,15 @@
+<div class="contextual">
+  <%= link_to t('helpers.links.show'), [:admin, @vitrine], :class => 'icon icon-view' %>
+  <%= link_to t('helpers.links.destroy'), [:admin, @vitrine], :confirm => t('helpers.links.confirm'), :method => :delete, :class => 'icon icon-del' %>
+</div>
+
+<h2>Editing Vitrine</h2>
+
+<%= simple_form_for(@vitrine, :url => [:admin, @vitrine], :html => {:class => 'tabular'}) do |form| %>
+  <%= form.error_messages %>
+
+  <%= render :partial => form %>
+
+  <%= form.submit t('helpers.submit.update') %>
+  <%= link_to t('helpers.links.back'), admin_vitrines_path %>
+<% end %>

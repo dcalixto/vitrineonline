@@ -20,6 +20,7 @@
 //= Markdown.Sanitizer
 //= stretchtext
 //= dropzone_banner
+//= readmore
 //= tipsy
 
 
@@ -27,7 +28,11 @@
 
 
 
+$('vitrine_about').readmore({
+  speed: 75,
+  moreLink: '<a href="#">Ler Mais</a>'
 
+});
 
 
 

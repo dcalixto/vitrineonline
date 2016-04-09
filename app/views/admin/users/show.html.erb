@@ -1,0 +1,24 @@
+<div class="contextual">
+  <%= link_to t('helpers.links.edit'), edit_admin_user_path(@user), :class => 'icon icon-edit' %>
+  <%= link_to t('helpers.links.destroy'), [:admin, @user], :confirm => t('helpers.links.confirm'), :method => :delete, :class => 'icon icon-del' %>
+</div>
+
+<h2>User <%= @user.id %></h2>
+
+<div class="box">
+  <p>
+    <b>Name:</b>
+    <%=h @user.name %>
+  </p>
+  <p>
+    <b>Email:</b>
+    <%=h @user.email %>
+  </p>
+  <p>
+    <b>Password:</b>
+    <%=h @user.password %>
+  </p>
+</div>
+
+<%= link_to t('helpers.links.edit'), edit_admin_user_path(@user) %> |
+<%= link_to t('helpers.links.back'), admin_users_path %>

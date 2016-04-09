@@ -1,0 +1,12 @@
+<div class="contextual">
+  <%= link_to t('helpers.links.edit'), edit_admin_vitrine_path(@vitrine), :class => 'icon icon-edit' %>
+  <%= link_to t('helpers.links.destroy'), [:admin, @vitrine], :confirm => t('helpers.links.confirm'), :method => :delete, :class => 'icon icon-del' %>
+</div>
+
+<h2>Vitrine <%= @vitrine.id %></h2>
+
+<div class="box">
+</div>
+
+<%= link_to t('helpers.links.edit'), edit_admin_vitrine_path(@vitrine) %> |
+<%= link_to t('helpers.links.back'), admin_vitrines_path %>

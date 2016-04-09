@@ -1,0 +1,52 @@
+<div class="contextual">
+  <%= link_to 'New Vitrine', new_admin_vitrine_path, :class => 'icon icon-add' %>
+  | <%= search_form_for @search, :url => collection_url do |f| %>
+      <%
+        # Check https://github.com/ernie/ransack for options.
+        # Simply change :id_eq into :name_cont, etc.
+      %>
+      <%= f.text_field :id_eq, :placeholder => 'Search by ID' %>
+    <% end %>
+</div>
+
+<h2>
+    Vitrines
+</h2>
+
+<% if @vitrines.blank? %>
+  <p class="nodata">No data to display</p>
+<% else %>
+<table class="list issues">
+  <thead>
+    <tr>
+      <th class="checkbox"><%= image_tag "admin/true.png" %></th>
+        <th></th>
+    </tr>
+  </thead>
+
+<%= form_tag(destroy_all_admin_vitrines_path, :method => :delete) do %>
+  <tbody>
+<% @vitrines.each do |vitrine| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td class="checkbox">
+        <%= check_box_tag('ids[]', vitrine.id, nil, :id => "ids_#{vitrine.id}") %>
+      </td>
+      <td class="buttons">
+        <%= link_to t('helpers.links.show'), [:admin, vitrine], :class => 'icon icon-view' %>
+        <%= link_to t('helpers.links.edit'), edit_admin_vitrine_path(vitrine), :class => 'icon icon-edit' %>
+        <%= link_to t('helpers.links.destroy'), [:admin, vitrine], :confirm => t('helpers.links.confirm'), :method => :delete, :class => 'icon icon-del' %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th colspan="0"><%= submit_tag t("helpers.submit.delete"), :confirm => t('helpers.links.confirm') %></th>
+      <th></th>
+    </tr>
+  </tfoot>
+<% end %>
+</table>
+<% end %>
+<#%= navigate(@vitrines) %>

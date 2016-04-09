@@ -37,8 +37,19 @@ has_many :reports                 # Allow user to report others
   has_many :comments
 
   acts_as_voter
-  acts_as_marker
 
+  has_reputation :votes,
+        :source => [
+            { :reputation => :products },
+            { :reputation => :vitrines}]
+
+
+has_many :evaluations, class_name: "ReputationSystem::Evaluation", as: :source
+
+
+      def voted_for?(vitrine)
+      evaluations.where(target_type: vitrine.class, target_id: vitrine.id).present?
+    end
 
  #has_one_time_password
 

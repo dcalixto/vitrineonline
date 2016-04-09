@@ -30,9 +30,8 @@
       <% end %>
       <li>
         <% if @user.feedbacks %>
-
+   <%= content_tag(:span, nil, :class =>"sprite-icons-small_star") %>
         <%=link_to  feedbacks_user_path(:id=>@user.id)  do %>
-        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>">  </div>
               <div><%=@total_from_sellers %></div>
 <% end %>
 <% end %>

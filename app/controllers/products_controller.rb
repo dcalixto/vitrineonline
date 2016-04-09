@@ -18,24 +18,13 @@ class ProductsController < ApplicationController
   end
 
 
-  def upvote
-    @product = Product.find(params[:id])
-    @product.liked_by current_user
-    redirect_to :back
+  def vote
+    value = params[:type] == "Curtir" ? 1 : -1
+ @product = Product.find(params[:id])
+ @product.add_or_update_evaluation(:votes, value, current_user)
+ redirect_to :back
   end
 
-  def downvote
-    @product = Product.find(params[:id])
-    @product.downvote_from current_user
-    redirect_to :back
-  end
-
-  def mark
-    @user = current_user
-    @product = Product.find(params[:id])
-    current_user.mark_as_favorite @product
-    redirect_to :back
-  end
 
 def report
   @user = current_user

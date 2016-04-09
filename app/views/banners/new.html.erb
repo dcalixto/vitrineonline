@@ -22,11 +22,9 @@
   </ul>
 
 
+  <p class="tip">Os Banners serão redimencionandos para 986 x 215 e 414 x 165</p>
 
-    <p class="tip">Utilize esse epaço para informar sobre alguma oferta ou novidade na página da sua vitrine</p>
-    <p class="tip">Uma vez fechado o anúncio não aparecerá mais</p>
-
-
+  
 
     <%= form_for(@banner, :url => vitrine_banners_path, :method => :post, html: { multipart: true, id: "banner", class: "dropzone"}) do |banner|  %>
 

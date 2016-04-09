@@ -41,7 +41,12 @@ gem 'searchkick',  github: "ankane/searchkick"
 gem 'mobile-fu'
 
 #ADMIN
-
+gem 'admin_interface', github: "dcalixto/admin_interface"
+gem 'kaminari'
+gem 'inherited_resources'
+gem 'simple_form'
+gem 'dynamic_form'
+gem 'i18n_country_select'
 #gem 'upmin-admin' #, '~> 0.1.0'
 # MISC
 gem 'deadweight'
@@ -61,6 +66,8 @@ gem 'counter_culture', '~> 0.1.33'
 
 
 gem 'acts_as_votable', '~> 0.10.0'
+
+gem 'activerecord-reputation-system',  '~> 2.0.2'
 gem 'shareable'
 gem 'dynamic_selectable', git: 'https://github.com/dcalixto/dynamic_selectable.git'
 gem 'predictor'

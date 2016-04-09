@@ -1,5 +1,19 @@
 Vitrineonline::Application.routes.draw do
 
+  namespace :admin do
+    root :to => 'base#index'
+    # resources :some_model do
+    #   delete 'destroy_all', :on => :collection
+    # end
+  end
+
+
+  namespace :admin do
+      root :to => 'base#index'
+      resources :users, :vitrines do
+        delete 'destroy_all', :on => :collection
+      end
+    end
 
 
   # SESSION
@@ -43,6 +57,20 @@ Vitrineonline::Application.routes.draw do
   end
 
 # FAVORITES
+
+resources :votes, only:[:index ] do
+
+  collection do
+
+get :products
+get :vitrines
+  end
+
+
+end
+
+
+
 resources :favorites, only:[:index ] do
 
   collection do
@@ -146,7 +174,8 @@ end
       get :update_vitrine_select, as: :update_vitrine_select
       put 'like', to: 'vitrines#upvote'
       put 'dislike', to: 'vitrines#downvote'
-      #match 'mark', to: 'vitrines#mark'
+      post :vote
+
    match :report
       get :tag
       match :feedbacks
@@ -225,7 +254,8 @@ match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :s
       get :next_step
       put 'like', to: 'products#upvote'
       put 'dislike', to: 'products#downvote'
-      match 'mark', to: 'products#mark'
+      post :vote
+
    match :report, to: 'products#report'
     end
 

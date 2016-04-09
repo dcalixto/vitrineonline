@@ -45,7 +45,7 @@ attr_accessible :images_attributes
 
 
 
-
+has_reputation :votes, source: :user, aggregated_by: :sum
 #
 
   acts_as_votable

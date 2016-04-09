@@ -10,6 +10,8 @@ class OffersController < ApplicationController
     end
   end
   def index
+
+    @offers = Offer.products.all
   end
 
   def new

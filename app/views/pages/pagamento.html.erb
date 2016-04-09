@@ -5,7 +5,13 @@
     <h4>A única forma de pagamento disponível</h4>
     <div class="content">
 
-      <%= content_tag(:span, nil, :class => 'paypal') %>
+
+
+      <%= link_to  "https://www.paypal.com/br"  do %>
+
+  <%= content_tag(:span, nil, :class => 'sprite-icons-paypal_cards ') %>
+  <% end %>
+
     </div>
 
   </div>

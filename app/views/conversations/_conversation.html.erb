@@ -1,5 +1,5 @@
 <% participant = conversation.conversation_participants.find_by_user_id(current_user) %>
-<% ulClass = "message_item" %>
+<% ulClass = "message_item " %>
 <% unless participant.has_read? %>
 <% ulClass << " unread" %>
 <% end %>
