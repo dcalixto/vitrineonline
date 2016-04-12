@@ -40,8 +40,23 @@ $(document).ready(function() {
     $('.user_nav li a').tipsy({gravity: 'n'});
 });
 
-
-
+// CHANGE ORDER QUANTITY
+$(document).ready(function() {
+    $('.select_order_quantity').bind('change', function() {
+        $.ajax({
+                url: '/orders/' + $(this).data('order-id'),
+                type: 'PUT',
+                data: {
+                    'order[quantity]': $(this).val()
+                },
+                success: function (response) {
+                    if(response.success)
+                      window.location.reload();
+                }
+            }
+        );
+    });
+});
 
 $(document).ready(function() {
 $("#main-nav").menuAim({
@@ -240,8 +255,6 @@ $(document).ready(function() {
   }
   bind_comment_handler();
 });
-
-
 
 
 // ANNOUNCEMENT

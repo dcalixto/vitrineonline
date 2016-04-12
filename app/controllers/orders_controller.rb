@@ -36,9 +36,14 @@ class OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     if order.update_attributes(params[:order])
-      redirect_to checkout_order_path(order), flash: { success: 'Frete Salvo.' }
+      flash = { success: 'Frete Salvo.' }
     else
-      redirect_to checkout_order_path(order), flash: { error: 'Preço Inválido.' }
+      flash = { error: 'Preço Inválido.' }
+    end
+    if request.xhr?
+      render :json => flash
+    else
+      redirect_to checkout_order_path(order), flash: flash
     end
   end
 
