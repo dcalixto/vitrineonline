@@ -26,15 +26,14 @@
           <li class="tip">As imagens serão redimencionandas para 245 x 135 de altura</li>
         </ul>
 
-  <%= form_for @product, :html => {:multipart => true,class: "dropzone"}  do |p| %>
+  <%= form_for @product, :html => {:multipart => true, class: "dropzone", id: "images"}  do |p| %>
 
 
- <%= p.fields_for(:images,  html: { id: "images",class: "dropzone"}) do |i| %>
-     <div class="fallback">
-
-            <%= i.file_field :foto,  name: "images[foto]" %><br>
-            <%= i.submit "Salvar" %>
-          </div>
+    <%= p.fields_for(:images) do |i| %>
+      <div class="fallback">
+        <%= i.file_field :ifoto, name: "images[ifoto]" %><br>
+        <%= i.submit "Salvar" %>
+      </div>
     <% end %>
 
 
