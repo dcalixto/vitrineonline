@@ -15,11 +15,7 @@ gem 'newrelic_rpm'
 
 
 #Time
-
 gem 'stamp'
-
-
-
 #RESPONSIVE
 gem "breakpoint", "~>2.7.0"
 
@@ -64,16 +60,16 @@ gem 'test-unit', '~> 3.0'
 gem 'select2-rails'
 
 # MODEL
-gem 'goldiloader'
-gem 'counter_culture', '~> 0.1.33'
 
 
-gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'activerecord-reputation-system',  '~> 2.0.2'
 gem 'shareable'
 gem 'dynamic_selectable', git: 'https://github.com/dcalixto/dynamic_selectable.git'
 gem 'predictor'
+
+#LOG
+gem "lograge"
 
 # CPF CNPJ
 
@@ -107,7 +103,7 @@ gem 'formtastic', :git => 'git://github.com/dcalixto/formtastic.git', :branch =>
 gem 'redcarpet'
 gem 'md_emoji'
 
-# => EMOJIS
+
 
 
 # FACEBOOK AUTH
@@ -193,7 +189,8 @@ group :development do
 
 end
 
- gem  'premailer'
+#MAILER
+gem  'premailer'
 gem 'nokogiri'
 group :production do
   gem 'pg'
