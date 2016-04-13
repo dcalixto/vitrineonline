@@ -27,7 +27,7 @@
     </h1>
     <div class="content">
 
-      <%= semantic_form_for(@user)  do |f| %>
+      <%= semantic_form_for(@user, :validate => true) do |f| %>
       <%= f.inputs do %>
       <%= f.input :name,  :label => "Nome",:required=>true %>
       <%= f.input :surname, :label => "Sobrenome", :required=>true %>

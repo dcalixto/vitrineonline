@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   include ActsAsCommentable::Comment
-
+include ActiveModel::Validations
   belongs_to :commentable, polymorphic: true
 
   default_scope -> { order('created_at DESC') }
@@ -12,4 +12,9 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
   attr_accessible :comment, :user
+
+
+validates_presence_of :comment, nil: false
+
+
 end

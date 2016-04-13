@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
 
 
-
+include ActiveModel::Validations
   attr_accessible :cart_id, :product_id, :purchased_at,
     :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method,  :status
 

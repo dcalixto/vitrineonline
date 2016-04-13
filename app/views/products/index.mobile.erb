@@ -1,62 +1,37 @@
 <% title "Produtos" %>
 <div class="box1">
-  <% breadcrumb :products, @products %>
+<% breadcrumb :products, @products %>
 </div>
-
-<%= render 'shared/filtro_product' %>
-
-<!-- VITRINE-->
+<%=render 'shared/filtro_product' %>
 <div class="box3">
-  <div class="subcontent_top">
-
-    <p>
-      <span class="orange"><%= @products.total_entries %></span>
-      Produtos achados</p>
-    <div class="content">
-
-      <div class="searchResults">
-
-        <% @products.each do |product|%>
-
-        <%= link_to  product_path(product.id), :class=>"product" do %>
-
-        <%= image_tag product.f1.url(:small).to_s, :class=>"productImg" %>
-
-        <span class="productName">
-          <%= product.name %></span>
-
-        <span class="price"><%=  number_to_currency(product.price, :unit => "R$") %></span>
-        <% if product.feedbacks %>
-
-        <div class="productFeeback">
-
-          <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
-
-          <%= @total_feedbacks %>
-
-        </div>
-        <% end %>
-
-
-
-        <span class="by">Por
-          <%= product.vitrine.name %></span>
-
-        <% end %>
-
-        <% end %>
-
-      </div>
-
-    </div>
-    <div class="block_pagination">
-      <div class="digg_pagination">
-        <%= will_paginate @products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
-
-      </div>
-
-    </div>
-
-  </div>
-
+<div class="subcontent_top">
+<p>
+<span class="orange"><%=@products.total_entries %></span>
+Produtos achados</p>
+<div class="content">
+<div class="searchResults">
+<% @products.each do |product|%>
+<%=link_to product_path(product.id), :class=>"product" do %>
+<%=image_tag product.f1.url(:small).to_s, :class=>"productImg" %>
+<span class="productName">
+<%=product.name %></span>
+<span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
+<% if product.feedbacks %>
+<div class="productFeeback">
+<div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+<%=@total_feedbacks %>
+</div>
+<% end %>
+<span class="by">Por
+<%=product.vitrine.name %></span>
+<% end %>
+<% end %>
+</div>
+</div>
+<div class="block_pagination">
+<div class="digg_pagination">
+<%=will_paginate @products,:container=> false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+</div>
+</div>
+</div>
 </div>

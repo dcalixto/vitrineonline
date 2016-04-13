@@ -37,6 +37,12 @@ GIT
       rails (~> 3.2)
 
 GIT
+  remote: https://github.com/dcalixto/html5_validators.git
+  revision: 727213beddc819011fb6affea941cb8ceb0f515b
+  specs:
+    html5_validators (1.4.0)
+
+GIT
   remote: https://github.com/dcalixto/rack-secure_headers.git
   revision: 9e0c1d2fcc7393dd336726cf8e3afb8447c4253a
   specs:
@@ -54,7 +60,6 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    FBDistributedNotification (0.0.1)
     act_as_cnpj_cpf (1.1.0)
       activerecord (>= 3.2)
       activesupport (>= 3.2)
@@ -263,8 +268,6 @@ GEM
     mail_form (1.5.1)
       actionmailer (>= 3.2, < 5)
       activemodel (>= 3.2, < 5)
-    mail_view (2.0.4)
-      tilt
     markable (0.1.4)
       rails (>= 3.1)
     md_emoji (1.0.2)
@@ -335,6 +338,7 @@ GEM
       htmlentities (>= 4.0.0)
     private_pub (1.0.3)
       faye
+    promo (0.0.1)
     rack (1.4.7)
     rack-attack (4.4.1)
       rack
@@ -360,9 +364,6 @@ GEM
     rails-timeago (2.13.0)
       actionpack (>= 3.1)
       activesupport (>= 3.1)
-    rails_mail_preview (0.0.4)
-      FBDistributedNotification (= 0.0.1)
-      rails (>= 3.0.0)
     railties (3.2.22)
       actionpack (= 3.2.22)
       activesupport (= 3.2.22)
@@ -500,6 +501,7 @@ DEPENDENCIES
   goldiloader
   gretel
   high_voltage
+  html5_validators!
   i18n_country_select
   inherited_resources
   jquery-rails
@@ -510,7 +512,6 @@ DEPENDENCIES
   kaminari
   letter_opener
   mail_form
-  mail_view (~> 2.0.4)
   markable
   md_emoji
   memcachier
@@ -521,6 +522,7 @@ DEPENDENCIES
   mini_magick
   mobile-fu
   newrelic_rpm
+  nokogiri
   oj
   omniauth-facebook
   open4
@@ -530,11 +532,11 @@ DEPENDENCIES
   predictor
   premailer
   private_pub
+  promo
   rack-attack
   rack-secure_headers!
   rails (= 3.2.22)
   rails-timeago
-  rails_mail_preview
   ransack
   redcarpet
   rollbar (~> 2.8.3)

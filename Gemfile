@@ -51,6 +51,9 @@ gem 'i18n_country_select'
 # MISC
 gem 'deadweight'
 
+gem 'html5_validators',  github: "dcalixto/html5_validators"
+
+
 gem 'csscss'
 gem 'friendly_id'
 gem 'mail_form'
@@ -85,8 +88,9 @@ gem 'mina-newrelic'
 
 gem 'markable'
 
-# SHIPPING
+# SHIPPING & PROMO CODE
 gem 'correios-frete'
+gem 'promo'
 
 # COMMENTABLE SYSTEM
 
@@ -94,7 +98,6 @@ gem 'acts_as_commentable'
 
 # FORM
 gem 'formtastic', :git => 'git://github.com/dcalixto/formtastic.git', :branch => '3.1.3'
-
 # ANALYS
 
 #FEEDS
@@ -177,7 +180,7 @@ end
 group :development do
   gem 'sqlite3'
 
-  gem 'rails_mail_preview'
+
   gem 'bullet'
   gem 'ruby_gntp'
   gem 'brakeman'
@@ -189,9 +192,9 @@ group :development do
   gem 'meta_request'
 
 end
- gem "mail_view", "~> 2.0.4"
- gem  'premailer'
 
+ gem  'premailer'
+gem 'nokogiri'
 group :production do
   gem 'pg'
 end

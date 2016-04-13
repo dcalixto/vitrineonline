@@ -3,11 +3,21 @@
   width: 100%;
 }
 .no_awaiting {
-  border: #dadbd6 solid 1px;
+
   text-align: center;
   height: 30px;
-  padding-top: 6px;
-  margin-top: 6px;
+font-weight:bold;
+
+
+  background: #ebf3fd;
+  border: none;
+  color: #004B91;
+  padding: 10px;
+  display:block;
+  border:dashed 1px #c9dcf2;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+
 }
 .awaiting_feedback_table td, .completed_feedback_table td {
   padding: 4px;

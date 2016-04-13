@@ -1,124 +1,93 @@
 <div id="footer">
-
-  <div class="inner_footer">
-
-
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <h2>Vamos ajudá-lo</h2>
-
-    <ul >
-      <li>
-              </li>
-      <li><%= link_to 'Termos e Condições', page_path('termos') %></li>
-      <li><%= link_to 'Privacidade', page_path('privacidade')%></li>
-      <li><%= link_to 'Contato', contacts_path  %></li>
-
-      <li><%= link_to 'Sobre', page_path('sobre')%></li>
-
-                <li class="invisible"><%= link_to 'Oportunidades', page_path('oportunidades')%></li>
-     <li><%= link_to 'Todos os Departamentos', departments_path%></li>
-
-         </ul>
-          </td>
-
-         <td>
-     <h2>Venda conosco</h2>
-
-           <ul >
-
-      <li>
-           </li>
-       <li>
-        <%= link_to "Como Vender",  page_path("vender")%>
-      </li>
-     <li>
-        <%= link_to "Segurança",  page_path("seguranca")%>
-      </li>
-      <li>
-        <%= link_to "Avaliação",  page_path("avaliacao")%>
-
-      </li>
-
-      <li>
-        <%= link_to "Ranking",  rankings_path %>
-      </li>
-      <li class="invisible">
-        <%= link_to "Promoções",  offers_path %>
-      </li>
-
-
-    </ul>
-          </td>
-
-
-
-
-          <td>
-   <h2>Conecte-se conosco</h2>
-
-    <ul class="social_list">
-      <li>
-             </li>
-             <li><%= link_to  "https://www.facebook.com/vitrineonlinevitrineonline"  do  %>
-               <%= content_tag(:span, nil, :class =>"sprite-icons-facebook_circle") %>
-                     <% end %>
-
-
-             </li>
-             <li><%= link_to "https://www.twitter.com/vitrineonlinevitrineonline" do  %>
-
-               <%= content_tag(:span, nil, :class =>"sprite-icons-twitter_circle") %>
-             <% end %>
-
-             <li><%= link_to "https://www.youtube.com/vitrineonlinevitrineonline" do %>
-               <%= content_tag(:span, nil, :class =>"sprite-icons-youtube_circle") %>
-             <% end %>
-
-
-             <li><%= link_to"https://www.instagram.com/vitrineonlinevitrineonline" do %>
-               <%= content_tag(:span, nil, :class =>"sprite-icons-instagram_circle") %>
-             <% end %>
+<div class="inner_footer">
+<table>
+<tbody>
+<tr>
+<td>
+<h2>Vamos ajudá-lo</h2>
+<ul>
+<li>
 </li>
-        </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table>
-      <tbody>
-        <tr>
-          <td>
- <div class="footer-copy">
-      <% cache "logo_bottom" do %>
-      <%= link_to root_url do %>
-      <%= content_tag(:span, nil, :class =>"sprite-icons-logo_small") %>
-      <% end %>
-      <% end %>
-      <p>Vitrineonline &copy; 2016
-      </p>
-    </div>
-          </td>
-
-          <td>
-              <%= link_to  "https://www.paypal.com/br"  do %>
-
-        <%= content_tag(:span, nil, :class => 'sprite-icons-paypal_icon2') %>
-        <% end %>
-          </td>
-          <td>
-  <%= link_to  root_path  do %>
-
-      <%= content_tag(:span, nil, :class => 'sprite-icons-comodo_secure') %>
-      <% end %>
-
-          </td>
-
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
+<li><%=link_to 'Termos e Condições', page_path('termos') %></li>
+<li><%=link_to 'Privacidade', page_path('privacidade')%></li>
+<li><%=link_to 'Contato', contacts_path %></li>
+<li><%=link_to 'Sobre', page_path('sobre')%></li>
+<li class="invisible"><%=link_to 'Oportunidades', page_path('oportunidades')%></li>
+<li><%=link_to 'Todos os Departamentos', departments_path%></li>
+</ul>
+</td>
+<td>
+<h2>Venda conosco</h2>
+<ul>
+<li>
+</li>
+<li>
+<%=link_to "Como Vender", page_path("vender")%>
+</li>
+<li>
+<%=link_to "Segurança", page_path("seguranca")%>
+</li>
+<li>
+<%=link_to "Avaliação", page_path("avaliacao")%>
+</li>
+<li>
+<%=link_to "Ranking", rankings_path %>
+</li>
+<li class="invisible">
+<%=link_to "Promoções", offers_path %>
+</li>
+</ul>
+</td>
+<td>
+<h2>Conecte-se conosco</h2>
+<ul class="social_list">
+<li>
+</li>
+<li><%=link_to "https://www.facebook.com/vitrineonlinevitrineonline" do %>
+<%=content_tag(:span, nil, :class=>"sprite-icons-facebook_circle") %>
+<% end %>
+</li>
+<li><%=link_to "https://www.twitter.com/vitrineonlinevitrineonline" do %>
+<%=content_tag(:span, nil, :class=>"sprite-icons-twitter_circle") %>
+<% end %>
+<li><%=link_to "https://www.youtube.com/vitrineonlinevitrineonline" do %>
+<%=content_tag(:span, nil, :class=>"sprite-icons-youtube_circle") %>
+<% end %>
+<li><%=link_to"https://www.instagram.com/vitrineonlinevitrineonline" do %>
+<%=content_tag(:span, nil, :class=>"sprite-icons-instagram_circle") %>
+<% end %>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="footer-copy">
+<% cache "logo_bottom" do %>
+<%=link_to root_url do %>
+<%=content_tag(:span, nil, :class=>"sprite-icons-logo_small") %>
+<% end %>
+<% end %>
+<p>Vitrineonline &copy; 2016
+</p>
+</div>
+</td>
+<td>
+<%=link_to "https://www.paypal.com/br" do %>
+<%=content_tag(:span, nil, :class=> 'sprite-icons-paypal_icon2') %>
+<% end %>
+</td>
+<td>
+<%=link_to root_path do %>
+<%=content_tag(:span, nil, :class=> 'sprite-icons-comodo_secure') %>
+<% end %>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>

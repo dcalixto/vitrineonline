@@ -1,6 +1,12 @@
 class Feedback < ActiveRecord::Base
 
 #belongs_to :feedbackable, polymorphic: true
+
+  
+  include ActiveModel::Validations
+
+
+
   belongs_to :user
   belongs_to :vitrine
   has_one :order
@@ -12,7 +18,7 @@ class Feedback < ActiveRecord::Base
 
 
 
-
+validates_presence_of  :buyer_comment, :seller_comment, nil: false
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'
 

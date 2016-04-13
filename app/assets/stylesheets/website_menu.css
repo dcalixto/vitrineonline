@@ -34,7 +34,9 @@
 #ajuda-menu {
   border: 1px solid #dee1ea;
   padding: 0;
-  background: #ffffff;
+  background-color: #FFF8DC;
+  border: 1px solid #E0DCBF;
+
 }
 #ajuda-menu h1 {
   color: #333;
@@ -73,12 +75,16 @@
   text-decoration: underline;
   color: #295e9f;
 }
-#menu-b a, #menu-box a, #menu-feedback a, #menu-loja a {
+#menu-b a, #menu-box a, #menu-feedback a, {
   color: #777;
   color: #004B91;
   color: #333;
   /*border-bottom:1px solid #ddd*/
 }
+
+#menu-loja a {color:#fff}
+
+
 #menu-b h2, #menu-box h2, #menu-feedback h2, #menu-loja h2 {
   font-weight: bold;
   font-size: 15px;
@@ -109,7 +115,7 @@
   padding-left: 10px;
 }
 #ajuda-menu a {
-  color: #333;
+  color: #0077CC;
 }
 .ajuda-link {
   color: #333;

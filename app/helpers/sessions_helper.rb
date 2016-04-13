@@ -10,10 +10,7 @@ module SessionsHelper
    end
 
   def logar(user)
-  #  cookies.permanent[:auth_token] = user.auth_token
    cookies[:auth_token] = {:value => user.auth_token, :expires => 3.month.from_now, httponly: true, secure: true }
-
-
     current_user = user
   end
 end

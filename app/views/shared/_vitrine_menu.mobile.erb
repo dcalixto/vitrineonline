@@ -3,10 +3,8 @@
 
   <div id="menu-box">
     <div class="menu_content">
-      <h1 class="h1_menu">Menu</h1>
-      <h2>
-        <span class="texto">Vitrine</span>
-      </h2>
+      <h2 class="h1_menu">Vitrine</h2>
+
       <ul>
         <li><%= link_to "Configuração", edit_vitrine_path(current_vitrine) %></li>
         <li><%= link_to "Política" , edit_vitrine_policy_path(current_vitrine, current_vitrine.policy.id)%></li>
@@ -29,6 +27,7 @@
       </h2>
       <ul>
         <li><%= link_to "Anúncio", new_vitrine_announcement_path(current_vitrine)  %></li>
+        <li><%= link_to "Promoções",  new_vitrine_offer_path(current_vitrine)  %></li>
         <li><%= link_to "Visualizações", vitrine_views_path(current_vitrine)  %></li>
         <li><%= link_to "Slogan & Site", edit_vitrine_marketing_path(current_vitrine, current_vitrine.marketing.id)  %></li>
       </ul>
@@ -39,9 +38,12 @@
         <li><%= link_to "Fatura", vitrine_invoices_path(current_vitrine)  %></li>
         <li><%= link_to 'Relatório de Vendas', sales_report_vitrine_path(current_vitrine) %></li>
       </ul>
+
       <%= link_to  vitrine_path(current_vitrine), :id => "shop_button", :class => 'btn' do %>
-      <%= content_tag(:i,nil, :class=>"go_boutique_icon")  %>
+      <%= content_tag(:i,nil, :class=>"sprite-icons-ir-loja")  %>
+
       Vitrine
+
       <% end %>
     </div>
   </div>

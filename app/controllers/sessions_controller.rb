@@ -10,17 +10,17 @@ class SessionsController < ApplicationController
       user.update_attribute(:login_at, Time.zone.now)
       user.update_attribute(:ip_address, request.remote_ip)
 
-      #i#f user.email_confirmed
-      #  logar user
+      if user.email_confirmed
+        logar user
 
-     if
-      params[:remember_me]
-     cookies.permanent[:auth_token] = user.auth_token
+  #   if
+    #  params[:remember_me]
+  #   cookies.permanent[:auth_token] = user.auth_token
 
       else
 
         cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, httponly: true, secure: !(Rails.env.test? || Rails.env.development?) }
-     # cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, httponly: true, secure: true }
+     
             end
 
       redirect_to root_url # , :notice => "Logado!"

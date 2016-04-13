@@ -47,11 +47,8 @@ module Vitrineonline
 
     config.assets.version = '1.0'
 
-    config.action_dispatch.default_headers = {
-      'X-Frame-Options' => 'SAMEORIGIN',
-      'X-XSS-Protection' => '1; mode=block',
-      'X-Content-Type-Options' => 'nosniff'
-    }
+  
+
 
   end
 end

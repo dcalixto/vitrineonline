@@ -12,17 +12,17 @@ class UserMailer < ActionMailer::Base
 
   def registration_confirmation(user)
      @user = user
-     mail(:to => "#{user.name} <#{user.email}>", :subject => "Confirmar Registro")
+     mail(:to => "#{user.name} <#{user.email}>", :subject => "Confirmar Registro",&:html)
   end
 
   def password_reset(user)
     @user = user
-    mail to: user.email, subject: 'Password Resetado'
+    mail to: user.email, subject: 'Password Resetado', &:html
   end
 
   def new_password(user)
     @user = user
-    mail to: user.email, subject: 'Password Alterado'
+    mail to: user.email, subject: 'Password Alterado', &:html
    end
 
   def user_welcome(user)

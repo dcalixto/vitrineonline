@@ -3,7 +3,7 @@ require 'will_paginate/array'
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  #include Mobylette::RespondToMobileRequests
+
 
  has_mobile_fu
 
@@ -19,16 +19,29 @@ class ApplicationController < ActionController::Base
     end
   end
 
-   before_filter :no_store_cache
-     after_filter :no_store_cache
+   before_filter :no_store_cache#, if: :is_prod?
+     after_filter :no_store_cache#, if: :is_prod?
 
-     def no_store_cache
-       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-       response.headers["Pragma"] = "no-cache"
-       response.headers["Expires"] = '-1'
+     #def is_prod?
+      #      Rails.env.production?
+      # end
+
+     def no_store_cache#(max_age = 5.minutes.to_s)
+       response.headers['Cache-Control'] = "no-cache, no-store, must-revalidate, max-age=0"
+       response.headers['Pragma'] = "no-cache"
+       response.headers['Expires'] = "-1"
+       #response.headers['Surrogate-Control'] = "max-age=#{max_age}"
+       #response.headers['Content-Security-Policy'] = "default-src *; script-src http://localhost:3000/assets/; style-src http://localhost:3000/assets/"
      end
 
-#after_filter :set_online
+
+    # def set_cache_control_headers(max_age = 5.minutes.to_s)
+    #     response.headers['Cache-Control'] = 'public, no-cache, max-age=0'
+    #     response.headers['Surrogate-Control'] = "max-age=#{max_age}"
+    # end
+
+
+after_filter :set_online
 
     # set to online
 private
@@ -124,4 +137,10 @@ def set_online
       flash[:error] = 'Esta conta foi banida por violar os termos de uso e privacidade'
     end
   end
+
+
+
+
+
+
 end

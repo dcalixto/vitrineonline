@@ -1,4 +1,8 @@
 class Announcement < ActiveRecord::Base
+ 
+include ActiveModel::Validations
+
+  
   attr_accessible :title, :body
   # belongs_to :boutique
   belongs_to :vitrine
@@ -9,4 +13,7 @@ class Announcement < ActiveRecord::Base
   def exists?
     !new_record?
   end
+
+  validates_presence_of :body, nil: false
+
 end

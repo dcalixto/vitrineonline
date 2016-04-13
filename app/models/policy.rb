@@ -2,6 +2,9 @@ class Policy < ActiveRecord::Base
   # attr_accessible :title, :body
   attr_accessible :vitrine_id
   #belongs_to :policyable, polymorphic: true
+ 
+  include ActiveModel::Validations
+  
   has_many :shipman
   belongs_to :vitrine
   has_many :shippings, through: :shipman
@@ -12,4 +15,9 @@ class Policy < ActiveRecord::Base
 
   validates :paypal, uniqueness: { case_sensitive: false },
                      length: { within: 1..70 }
+
+
+
+  validates_presence_of :guarantee, nil: false
+
 end

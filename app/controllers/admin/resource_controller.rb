@@ -14,7 +14,7 @@ class Admin::ResourceController < Admin::BaseController
 
 
 
-  
+
 
 protected
 

@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   extend FriendlyId
-
+include ActiveModel::Validations
   friendly_id :name, use: [:slugged, :history]
 
   default_scope -> { order('created_at DESC') }

@@ -21,6 +21,8 @@ class Message < ActiveRecord::Base
   validates_presence_of :body, :conversation_participant, nil: false
   validates_associated :conversation_participant
 
+include ActiveModel::Validations
+
   def author
     user.name
     user.avatar

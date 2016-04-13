@@ -2,7 +2,7 @@
 #require File.join File.dirname(__FILE__), 'send_code'
 class User < ActiveRecord::Base
   extend FriendlyId
-
+include ActiveModel::Validations
 
   friendly_id :name, use: [:slugged, :history]
 
@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   before_create { generate_token(:auth_token) }
 
-  after_commit :send_user_welcome, on: :create
+  #after_commit :send_user_welcome, on: :create
 
 #after_commit :confirmation_token, on: :create
 
@@ -126,6 +126,7 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
                     uniqueness: { case_sensitive: false }
 
   validates :password, length: { within: 6..60 },
+                      :format => {:with => /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/, message: "Deve ter pelo menos 6 caracteres e incluir um número e uma letra"},
                        confirmation: true,
                        if: :is_password_validation_needed?
 
@@ -155,9 +156,9 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
 
 
 
- def send_user_welcome
-   UserMailer.user_welcome(self).deliver
- end
+# def send_user_welcome
+  # UserMailer.user_welcome(self).deliver
+# end
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_at = Time.zone.now

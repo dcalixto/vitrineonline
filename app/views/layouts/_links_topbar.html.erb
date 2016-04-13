@@ -1,56 +1,31 @@
 <div class="log_topbar">
-  
-  <ul>
-    <% if current_user %>
-
-    <li class="top_avatar" title="<%=current_user.name %>">
-
-      <%= link_to user_path(current_user) do %>
-
-
-      Olá, <%= current_user.name %>
-      <%end%>
-    </li>
-
-    <li class="padding_top">
-
-      <%= link_to "Conta", edit_user_path(current_user),  :title => "Conta"   %>
-
-      <span></span>
-
-    </li>
-
-
-
-
-    <li>
-
-      <%= link_to 'Sair',  session_path(current_user),   method: :delete %>
-
-  <span></span>
-    </li>
-    <% else %>
-
-    <li>
-      <%= link_to 'Ajuda?',  page_path("comprar")%>
-
-    </li>
-
-    <li>
-      <%=  link_to 'Abrir Conta', signup_path %>
-
-      <span></span>
-
-    </li>
-
-
-
-    <li>
-      <%=  link_to 'Entrar',  login_path %>
-      <span></span>
-
-    </li>
-    <% end %>
-  </ul>
-
+<ul>
+<% if current_user %>
+<li class="top_avatar" title="<%=current_user.name %>">
+<%=link_to user_path(current_user) do %>
+Olá, <%=current_user.name %>
+<%end%>
+</li>
+<li class="padding_top">
+<%=link_to "Conta", edit_user_path(current_user), :title=> "Conta" %>
+<span></span>
+</li>
+<li>
+<%=link_to 'Sair', session_path(current_user), method: :delete %>
+<span></span>
+</li>
+<% else %>
+<li>
+<%=link_to 'Ajuda?', page_path("comprar")%>
+</li>
+<li>
+<%=link_to 'Abrir Conta', signup_path %>
+<span></span>
+</li>
+<li>
+<%=link_to 'Entrar', login_path %>
+<span></span>
+</li>
+<% end %>
+</ul>
 </div>

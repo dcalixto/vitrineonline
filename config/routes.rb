@@ -1,20 +1,15 @@
 Vitrineonline::Application.routes.draw do
 
-  namespace :admin do
-    root :to => 'base#index'
-    # resources :some_model do
-    #   delete 'destroy_all', :on => :collection
-    # end
-  end
 
 
+ scope 'paka' do
   namespace :admin do
       root :to => 'base#index'
       resources :users, :vitrines do
         delete 'destroy_all', :on => :collection
       end
     end
-
+end
 
   # SESSION
   resources :sessions, only: [:create, :new, :destroy]
@@ -27,10 +22,6 @@ Vitrineonline::Application.routes.draw do
   resources :contacts, only: [:new, :index, :create]
 
   #REPORTS
-
-
-
-
 
 
   resources :reports, only: [:new, :create]
@@ -57,41 +48,12 @@ Vitrineonline::Application.routes.draw do
   end
 
 # FAVORITES
-
 resources :votes, only:[:index ] do
-
   collection do
-
 get :products
 get :vitrines
   end
-
-
 end
-
-
-
-resources :favorites, only:[:index ] do
-
-  collection do
-
-    # match '/products' => 'favorites#products', via: [:get, :post], as: :products
-
-   #match '/vitrines' => 'favorites#vitrines', via: [:get, :post], as: :vitrines
-
-get :products
-get :vitrines
-  end
-
-
-
-#member do
-#  match 'unmark_product', to: 'favorites#unmark_product'
-
-  # match 'unmark_vitrine', to: 'favorites#unmark_vitrine'
-#end
-end
-
 
 
   # FEEDBACKS
@@ -100,9 +62,7 @@ end
       get :completed
       post :completed
       get :awaiting
-
     end
-
   end
 
   resources :password_resets, only: [:new, :create, :update, :edit]
@@ -153,7 +113,7 @@ end
  end
 
     member do
-      get :products
+
       match :feedbacks
         get :policy
       get :message
@@ -197,7 +157,7 @@ end
       post :ipn_notification
       get :fail
       get :fail2
-    match :sold
+      match :sold
        match :purchased
        match :sent
        match :paid
@@ -254,8 +214,6 @@ match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :s
       get :next_step
       put 'like', to: 'products#upvote'
       put 'dislike', to: 'products#downvote'
-      post :vote
-
    match :report, to: 'products#report'
     end
 
@@ -263,8 +221,8 @@ match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :s
       get :created_at
       post '/:id', to: 'products#show', as: :feedbacks_search
      post '/:id/feedbacks', to: 'products#feedbacks', as: :search_feedbacks
-      get 'search'
-
+      #get 'search'
+     get :autocomplete
     end
 
 
@@ -296,6 +254,10 @@ resources :rankings, only: [:index]
 
   # MISC
   root to: 'home#index'
+
+
+  
+
 
   match '(errors)/:status', to: 'errors#show', constraints: { status: /\d{3}/ } # via: :all
 end

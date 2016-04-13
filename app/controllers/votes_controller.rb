@@ -1,6 +1,8 @@
 # encoding: utf-8
 require 'will_paginate/array'
 class VotesController < ApplicationController
+  
+  before_filter :authorize
   def products
   
 

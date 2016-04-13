@@ -36,6 +36,8 @@ $('vitrine_about').readmore({
 
 
 
+
+
 $(document).ready(function() {
     $('.user_nav li a').tipsy({gravity: 'n'});
 });
@@ -293,7 +295,7 @@ $(function() {
 
 
 // SEARCH AUTOCOMPLETE
-$("#query").typeahead({
+$("#product_search").typeahead({
   name: "product",
   remote: "/products/autocomplete?query=%QUERY"
 });

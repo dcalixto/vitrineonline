@@ -47,6 +47,7 @@
 *= require markdown
 *= require stretchtext
 *= require jquery.slinky
+*= require typehead
  */
 
 

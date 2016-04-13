@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
 
 
   def vote
-    value = params[:type] == "Curtir" ? 1 : -1
+    value = params[:type] == "Curtir" ? 1 : 0
  @product = Product.find(params[:id])
  @product.add_or_update_evaluation(:votes, value, current_user)
  redirect_to :back
@@ -144,7 +144,7 @@ end
   end
 
   def autocomplete
-    render json: Product.search(params[:query], fields: [{ name: :text_start }], limit: 8).map(&:name)
+    render json: Product.search(params[:query], fields: [{ name: :text_start }], limit: 4).map(&:name)
     end
 
   protected
