@@ -6034,7 +6034,7 @@ condition_list = [
 ]
 
 condition_list.each do |condition|
-  Condtion.create( condition: condition )
+  Condition.create( condition: condition )
 end
 
 
