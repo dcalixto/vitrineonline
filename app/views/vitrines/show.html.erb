@@ -235,7 +235,7 @@
           <tr>
             <td>
 
-              <%= search_form_for @q, url: '/vitrine_feedbacks' method: :post  do |f| %>
+              <%= search_form_for @q, url: '/vitrine_feedbacks', method: :post  do |f| %>
 
               <%= f.text_field :id_cont %>
               <%= f.submit "Buscar", :class=>"btn_grey" %>

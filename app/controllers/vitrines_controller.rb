@@ -43,6 +43,17 @@ class VitrinesController < ApplicationController
     end
   end
 
+
+  def vitrine_feedbacks
+     show
+     render :show
+   end
+
+   def vitrine_products
+      show
+      render :show
+    end
+
   def new
     @vitrine = Vitrine.new
   end
