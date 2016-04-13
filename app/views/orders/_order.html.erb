@@ -8,10 +8,10 @@
 
           <% if product.images.present? %>
         <%= image_tag product.images.first.url(:thumb).to_s %>
-        <% end %>
+
 
         <%= image_tag product.images.first.ifoto.url(:thumb) %>
-
+  <% end %>
         <% end %>
 
       </td>
