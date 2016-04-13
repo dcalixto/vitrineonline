@@ -11,10 +11,9 @@ class ProductsController < ApplicationController
     @product = Product.new
     @genders = Gender.all
     @categories = Category.where('gender_id = ?', Gender.first.id)
-  @subcategories = Subcategory.where('category_id = ?', Category.first.id)
-  @images = @product.images.new
-
-
+    @subcategories = Subcategory.where('category_id = ?', Category.first.id)
+    @images = @product.images.new
+    session[:image_paths] = []
   end
 
 
@@ -124,15 +123,35 @@ end
 
   def create
     @product = current_vitrine.products.build(params[:product])
-    if @product.save
-      # redirect_to wizard_path(steps.first, product_id: @product.id)
-
-      redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html)
-
-    else
-      render :new, format: :html
+    respond_to do |format|
+      format.html do
+        if @product.save
+          # add images to product
+          session[:image_paths].each do |path|
+            image = @product.images.build
+            image.ifoto_cache = path
+            image.save
+          end
+          # redirect_to wizard_path(steps.first, product_id: @product.id)
+          redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html)
+        else
+          render :new, format: :html
         end
-   end
+        # clear session variable in any case
+        session[:image_paths] = []
+      end
+      format.json do
+        # keep image caches in session
+        if params[:images] && params[:images][:ifoto]
+          params[:images][:ifoto].values.each do |ifoto|
+            image = Image.new({ifoto: ifoto})
+            session[:image_paths] << image.ifoto_cache
+          end
+        end
+        render :nothing => true
+      end
+    end
+  end
 
   def destroy
     @product = Product.find(params[:id])

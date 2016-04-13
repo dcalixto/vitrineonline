@@ -1,9 +1,9 @@
 class Image < ActiveRecord::Base
   # attr_accessible :title, :body
 
- attr_accessible :foto
+ attr_accessible :ifoto
   belongs_to :product
 
-    mount_uploader :foto, FotoUploader
+    mount_uploader :ifoto, FotoUploader
 
 end

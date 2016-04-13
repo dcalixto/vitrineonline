@@ -1,0 +1,10 @@
+<%= image_tag 'logo_mailer.png' %>
+<br/>
+<br/>
+Olá <%= @user.name %>,
+<br/>
+<br/>
+Obrigado por se Registrar! Para confirmar sua conta clique no link abaixo.
+<br/>
+<br/>
+<%= confirm_email_user_url(@user.confirm_token) %>

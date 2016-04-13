@@ -17,7 +17,7 @@
       <div class="subcontent_top">
 
         <h4>Fotos</h4>
-<%= image_tag @product.f1.url(:thumb).to_s %>
+<%= image_tag @product.images.first.ifoto.url(:thumb) %>
 
     <div class="product_img_box">
       <!-- Fotos  -->

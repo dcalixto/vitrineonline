@@ -5,9 +5,13 @@
       <ul>
 
         <%= link_to  product_path(product.id) do %>
+
           <% if product.images.present? %>
         <%= image_tag product.images.first.url(:thumb).to_s %>
         <% end %>
+
+        <%= image_tag product.images.first.ifoto.url(:thumb) %>
+
         <% end %>
 
       </td>
@@ -18,7 +22,7 @@
       </td>
       <td>
         <b>
-          <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}), :class=> "select_item" %></b>
+          <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}, order.quantity), :class=> "select_item select_order_quantity", :'data-order-id' => order.id %></b>
       </td>
 
       <td>
@@ -68,9 +72,13 @@
         <tr>
           <td>
             <%= link_to  product_path(product.id) do %>
+
               <% if product.images.present? %>
             <%= image_tag product.images.first.url(:table).to_s %>
             <% end %>
+
+            <%= image_tag product.images.first.ifoto.url(:table) %>
+
             <% end %>
             <%= link_to product.name, product_path(product.id) %>
             <%= order.quantity %>
