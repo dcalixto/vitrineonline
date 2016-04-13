@@ -33,9 +33,6 @@ has_many :reports, as: :reportable
 
   mount_uploader :logo, LogoUploader
 
-
-
-
 reverse_geocoded_by :latitude, :longitude do |obj, results|
     if geo = results.first
       # populate your model
@@ -50,16 +47,6 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
 
 has_reputation :votes, source: :user, aggregated_by: :sum
 #usar_como_cnpj_ou_cpf :codigo
-
-
-
-
-
-  acts_as_votable
-
-
-
-
 
 
 

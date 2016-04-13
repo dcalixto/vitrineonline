@@ -36,7 +36,7 @@ has_many :reports                 # Allow user to report others
 
   has_many :comments
 
-  acts_as_voter
+
 
   has_reputation :votes,
         :source => [

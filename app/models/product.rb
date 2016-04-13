@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   extend FriendlyId
-include ActiveModel::Validations
+#include ActiveModel::Validations
   friendly_id :name, use: [:slugged, :history]
 
   default_scope -> { order('created_at DESC') }
@@ -48,7 +48,6 @@ attr_accessible :images_attributes
 has_reputation :votes, source: :user, aggregated_by: :sum
 #
 
-  acts_as_votable
   acts_as_taggable # Alias for acts_as_taggable_on :tags
 
   # validates :name,      :presence => true, :if => :active_or_name?
@@ -58,7 +57,7 @@ has_reputation :votes, source: :user, aggregated_by: :sum
 
   # scope :open_orders, -> { where(workflow_state: "open") }
 
-  markable_as :favorite
+
 
   cattr_accessor :form_steps do
      %w(first)
@@ -129,11 +128,6 @@ has_reputation :votes, source: :user, aggregated_by: :sum
               }
           }
       }
-
-
-
-
-
 
 
   def self.aggs_search(params)
