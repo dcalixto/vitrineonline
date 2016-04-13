@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/dcalixto/admin_interface.git
-  revision: aeec3939f34f26a96f016c7418ea52bfeb97b554
+  revision: c4eb77b39764d5387b640b32089015f98804ec3f
   specs:
     admin_interface (2.2.5)
 
@@ -38,7 +38,7 @@ GIT
 
 GIT
   remote: https://github.com/dcalixto/rack-secure_headers.git
-  revision: 9e0c1d2fcc7393dd336726cf8e3afb8447c4253a
+  revision: 2b75b65c64550589e14594f3bdb826cce1b5547a
   specs:
     rack-secure_headers (0.0.3)
       rack (~> 1.4)
@@ -141,9 +141,10 @@ GEM
     colorize (0.7.7)
     configatron (4.5.0)
     cookiejar (0.3.0)
-    correios-frete (1.1.0)
-      nokogiri
-      sax-machine
+    correios-frete (1.9.4)
+      log-me (~> 0.0.10)
+      nokogiri (~> 1.6.2)
+      sax-machine (~> 0.2.1)
     counter_culture (0.1.34)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -169,12 +170,12 @@ GEM
     dropzonejs-rails (0.7.3)
       rails (> 3.1)
     dynamic_form (1.1.4)
-    elasticsearch (1.0.15)
-      elasticsearch-api (= 1.0.15)
-      elasticsearch-transport (= 1.0.15)
-    elasticsearch-api (1.0.15)
+    elasticsearch (1.0.17)
+      elasticsearch-api (= 1.0.17)
+      elasticsearch-transport (= 1.0.17)
+    elasticsearch-api (1.0.17)
       multi_json
-    elasticsearch-transport (1.0.15)
+    elasticsearch-transport (1.0.17)
       faraday
       multi_json
     em-http-request (1.1.3)
@@ -204,7 +205,7 @@ GEM
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     garelic (0.2.1)
-    geocoder (1.3.1)
+    geocoder (1.3.3)
     git-version-bump (0.15.1)
     goldiloader (0.0.10)
       activerecord (>= 3.2, < 5.1)
@@ -256,14 +257,13 @@ GEM
     letter_opener (1.4.1)
       launchy (~> 2.2)
     libv8 (3.16.14.13)
+    log-me (0.0.10)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mail_form (1.5.1)
       actionmailer (>= 3.2, < 5)
       activemodel (>= 3.2, < 5)
-    markable (0.1.4)
-      rails (>= 3.1)
     md_emoji (1.0.2)
       railties (>= 3.1.0)
       redcarpet (>= 2.0)
@@ -402,7 +402,8 @@ GEM
       tilt (~> 1.3)
     sassy-maps (0.4.0)
       sass (~> 3.3)
-    sax-machine (1.3.2)
+    sax-machine (0.2.1)
+      nokogiri (~> 1.6.0)
     select2-rails (4.0.1.1)
       thor (~> 0.14)
     sexp_processor (4.7.0)
@@ -420,7 +421,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.10)
+    sqlite3 (1.3.11)
     stamp (0.6.0)
     temple (0.7.6)
     terminal-table (1.5.2)
@@ -504,7 +505,6 @@ DEPENDENCIES
   kaminari
   letter_opener
   mail_form
-  markable
   md_emoji
   memcachier
   meta-tags
