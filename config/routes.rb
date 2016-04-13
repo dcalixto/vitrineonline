@@ -5,7 +5,7 @@ Vitrineonline::Application.routes.draw do
  scope 'dcalixto84' do
   namespace :admin do
       root :to => 'base#index'
-      resources :users, :vitrines do
+      resources :users, :vitrines, :feedbacks,:orders, :votes do
         delete 'destroy_all', :on => :collection
       end
     end
@@ -47,7 +47,7 @@ end
 
   end
 
-# FAVORITES
+# VOTES
 resources :votes, only:[:index ] do
   collection do
 get :products
@@ -126,7 +126,7 @@ end
 #      match '/:id' => 'vitrines#show', via: [:post], as: :feedbacks
 #     match '/:id' => 'vitrines#show', via: [:post], as: :products
 
-# match '/:id/feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :search_feedbacks
+ match '/:id/feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :search_feedbacks
     end
 
     member do
