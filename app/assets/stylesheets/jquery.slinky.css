@@ -21,10 +21,10 @@ border-radius: 3px 3px 3px 3px;
  color: #004B91;
 	padding-top: 5px;
 	display:block;
-width:100px
-float:right;left:
+width:100px;
+/*float:right;left:
 position:relative;
-vertical-align:top
+vertical-align:top*/
 }
 .slinky-menu a:hover {
 /*	background: #a4bad6;*/
