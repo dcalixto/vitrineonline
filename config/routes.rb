@@ -123,8 +123,8 @@ end
 
 
     collection do
-      match '/vitrine_feedbacks' => 'vitrines#show', via: [:get, :post], as: :vitrine_feedbacks
-     match '/vitrine_products' => 'vitrines#show', via: [:get, :post], as: :vitrine_products
+      match '/:id' => 'vitrines#show', via: [:get, :post], as: :vitrine_feedbacks
+     match '/:id' => 'vitrines#show', via: [:get, :post], as: :vitrine_products
 
  match '/:id/feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :search_feedbacks
     end
