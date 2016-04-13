@@ -37,12 +37,6 @@ GIT
       rails (~> 3.2)
 
 GIT
-  remote: https://github.com/dcalixto/html5_validators.git
-  revision: 727213beddc819011fb6affea941cb8ceb0f515b
-  specs:
-    html5_validators (1.4.0)
-
-GIT
   remote: https://github.com/dcalixto/rack-secure_headers.git
   revision: 9e0c1d2fcc7393dd336726cf8e3afb8447c4253a
   specs:
@@ -338,7 +332,6 @@ GEM
       htmlentities (>= 4.0.0)
     private_pub (1.0.3)
       faye
-    promo (0.0.1)
     rack (1.4.7)
     rack-attack (4.4.1)
       rack
@@ -501,7 +494,6 @@ DEPENDENCIES
   goldiloader
   gretel
   high_voltage
-  html5_validators!
   i18n_country_select
   inherited_resources
   jquery-rails
@@ -532,7 +524,6 @@ DEPENDENCIES
   predictor
   premailer
   private_pub
-  promo
   rack-attack
   rack-secure_headers!
   rails (= 3.2.22)
