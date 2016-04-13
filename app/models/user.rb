@@ -2,7 +2,7 @@
 #require File.join File.dirname(__FILE__), 'send_code'
 class User < ActiveRecord::Base
   extend FriendlyId
-include ActiveModel::Validations
+#include ActiveModel::Validations
 
   friendly_id :name, use: [:slugged, :history]
 

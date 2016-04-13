@@ -2,8 +2,8 @@ class Feedback < ActiveRecord::Base
 
 #belongs_to :feedbackable, polymorphic: true
 
-  
-  include ActiveModel::Validations
+
+#  include ActiveModel::Validations
 
 
 

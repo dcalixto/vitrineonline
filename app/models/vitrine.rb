@@ -1,7 +1,7 @@
 class Vitrine < ActiveRecord::Base
- 
+
   extend FriendlyId
-  include ActiveModel::Validations
+  #include ActiveModel::Validations
   friendly_id :name, use: [:slugged, :history]
 
   belongs_to :user

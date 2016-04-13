@@ -47,7 +47,7 @@ gem 'inherited_resources'
 gem 'simple_form'
 gem 'dynamic_form'
 gem 'i18n_country_select'
-#gem 'upmin-admin' #, '~> 0.1.0'
+
 # MISC
 gem 'deadweight'
 
@@ -86,7 +86,7 @@ gem 'mina-newrelic'
 
 # WISHLIST
 
-gem 'markable'
+
 
 # SHIPPING & PROMO CODE
 gem 'correios-frete'
