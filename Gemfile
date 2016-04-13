@@ -51,7 +51,7 @@ gem 'i18n_country_select'
 # MISC
 gem 'deadweight'
 
-gem 'html5_validators',  github: "dcalixto/html5_validators"
+#gem 'html5_validators',  github: "dcalixto/html5_validators"
 
 
 gem 'csscss'
@@ -90,7 +90,7 @@ gem 'markable'
 
 # SHIPPING & PROMO CODE
 gem 'correios-frete'
-gem 'promo'
+#gem 'promo'
 
 # COMMENTABLE SYSTEM
 
