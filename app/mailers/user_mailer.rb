@@ -3,12 +3,12 @@
 class UserMailer < ActionMailer::Base
   default from: 'Vitrineonline'
 
-  def premailer(message)
-    message.text_part.body = Premailer.new(message.text_part.body.to_s, with_html_string: true).to_plain_text
-    message.html_part.body = Premailer.new(message.html_part.body.to_s, with_html_string: true).to_inline_css
+  #def premailer(message)
+  #  message.text_part.body = Premailer.new(message.text_part.body.to_s, with_html_string: true).to_plain_text
+  #  message.html_part.body = Premailer.new(message.html_part.body.to_s, with_html_string: true).to_inline_css
 
-    return message
-  end
+  #  return message
+  #end
 
   def registration_confirmation(user)
      @user = user
