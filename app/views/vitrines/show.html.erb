@@ -45,7 +45,7 @@
           <% if @vitrine.feedbacks %>
   <%= content_tag(:span, nil, :class =>"sprite-icons-small_star") %>
           <%=link_to  feedbacks_vitrines_path(:id=>@vitrine.id)  do %>
-        
+
           <div><%=@total_from_buyers %></div>
           <% end %>
           <% end %>
@@ -174,7 +174,7 @@
         <tr>
           <td>
 
-            <%= search_form_for @q, url: products_vitrines_path, method: :post  do |f| %>
+            <%= search_form_for @q, url: '/vitrine_products', method: :post  do |f| %>
 
             <%= f.text_field :id_cont %>
             <%= f.submit "Buscar", :class=>"btn_grey" %>
@@ -235,7 +235,7 @@
           <tr>
             <td>
 
-              <%= search_form_for @q, url: feedbacks_vitrines_path, method: :post  do |f| %>
+              <%= search_form_for @q, url: '/vitrine_feedbacks' method: :post  do |f| %>
 
               <%= f.text_field :id_cont %>
               <%= f.submit "Buscar", :class=>"btn_grey" %>
