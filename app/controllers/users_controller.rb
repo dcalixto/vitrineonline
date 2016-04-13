@@ -64,8 +64,8 @@ class UsersController < ApplicationController
       user = User.find_by_confirm_token(params[:id])
       if user
         user.email_activate
-      #  UserMailer.user_welcome(self).deliver
-UserMailer.delay_until(1.seconds.from_now, retry: false).user_welcome(self)
+       
+
 
         flash[:success] = "Bem vindo a Vitrineonline  Seu email foi confirmado.
         Por favor logue para continuar.".html_safe

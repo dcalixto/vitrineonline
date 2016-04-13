@@ -156,9 +156,9 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
 
 
 
-# def send_user_welcome
-  # UserMailer.user_welcome(self).deliver
-# end
+ def send_user_welcome
+   UserMailer.user_welcome(self).deliver
+ end
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_at = Time.zone.now
@@ -199,6 +199,7 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
   def email_activate
       self.email_confirmed = true
       self.confirm_token = nil
+      send_user_welcome
       save!(:validate => false)
     end
 
