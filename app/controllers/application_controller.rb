@@ -20,14 +20,14 @@ class ApplicationController < ActionController::Base
   end
 
    before_filter :no_store_cache#, if: :is_prod?
-     after_filter :no_store_cache#, if: :is_prod?
+  after_filter :no_store_cache#, if: :is_prod?
 
      #def is_prod?
       #      Rails.env.production?
       # end
 
      def no_store_cache#(max_age = 5.minutes.to_s)
-       response.headers['Cache-Control'] = "no-cache, no-store, must-revalidate, max-age=0"
+       response.headers['Cache-Control'] = "max-age=0, no-cache, no-store, must-revalidate"
        response.headers['Pragma'] = "no-cache"
        response.headers['Expires'] = "-1"
        #response.headers['Surrogate-Control'] = "max-age=#{max_age}"

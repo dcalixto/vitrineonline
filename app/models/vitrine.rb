@@ -28,7 +28,7 @@ has_many :reports, as: :reportable
   belongs_to :state
 
 
- validates_presence_of :about, nil: false
+ #validates_presence_of :about, nil: false
 
 
   mount_uploader :logo, LogoUploader
