@@ -2,7 +2,7 @@ Vitrineonline::Application.routes.draw do
 
 
 
- scope 'paka' do
+ scope 'dcalixto84' do
   namespace :admin do
       root :to => 'base#index'
       resources :users, :vitrines do
@@ -123,10 +123,10 @@ end
 
 
     collection do
-      match '/:id' => 'vitrines#show', via: [:get, :post], as: :feedbacks
-     match '/:id' => 'vitrines#show', via: [:get, :post], as: :products
+      match '/:id' => 'vitrines#show', via: [:post], as: :feedbacks
+     match '/:id' => 'vitrines#show', via: [:post], as: :products
 
- match '/:id/feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :search_feedbacks
+ match '/:id/feedbacks' => 'vitrines#feedbacks', via: [:post], as: :search_feedbacks
     end
 
     member do
@@ -256,7 +256,7 @@ resources :rankings, only: [:index]
   root to: 'home#index'
 
 
-  
+
 
 
   match '(errors)/:status', to: 'errors#show', constraints: { status: /\d{3}/ } # via: :all
