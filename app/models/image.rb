@@ -5,5 +5,5 @@ class Image < ActiveRecord::Base
   belongs_to :product
 
     mount_uploader :ifoto, FotoUploader
-
+ default_scope order('position ASC')
 end

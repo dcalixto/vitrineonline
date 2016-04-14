@@ -57,8 +57,21 @@ has_reputation :votes, source: :user, aggregated_by: :sum
 
   # scope :open_orders, -> { where(workflow_state: "open") }
 
+  def foto_thumb
+    if images.any?
+      images.first.foto.thumb.url
+    else
+    #  asset_paths("thumb.png")
+    end
+  end
 
-
+  def foto
+    if images.any?
+      images.first.foto.url
+    else
+    #  asset_path("thumb.png")
+    end
+end
   cattr_accessor :form_steps do
      %w(first)
    end

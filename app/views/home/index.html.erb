@@ -32,9 +32,9 @@
         <li>
       <%= link_to product_path(p) do  %>
 
-        <% if p.images.present? %>
-      <%= image_tag p.images.first.url(:thumb).to_s %>
-      <% end %>
+
+      <%= image_tag p.foto_thumb.to_s %>
+    >
       <%= p.name %>
       <% end %>.
     </li>
@@ -97,9 +97,9 @@
 <% @products.first(10).each do |p| %>
 <li>
 <%= link_to product_path(p) do  %>
-<% if p.images.present? %>
-<%= image_tag p.images.first.url(:thumb).to_s %>
-<% end %>
+
+<%= image_tag p.foto_thumb.to_s %>
+
 <%= p.name %>
 <%= p.price %>
 <% end %>
@@ -122,7 +122,7 @@
             <% @suggestions.each do |item| %>
               <li>
             <%= link_to product_path(item) do  %>
-            <%= image_tag item.images.first.url(:thumb).to_s %>
+            <%= image_tag item.foto_thumb.to_s %>
             <%= item.name %>
               <%= item.price %>
             <% end %>

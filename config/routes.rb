@@ -41,7 +41,7 @@ end
     end
   end
 
-
+resources :images
   # FEEDBACKS
   resources :feedbacks, only: [:create] do
     collection do
