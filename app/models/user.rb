@@ -36,7 +36,7 @@ before_create :confirmation_token
   has_many :comments
 
 # TODO MAKE REPORTS
-as_many :reports                 # Allow user to report others
+has_many :reports                 # Allow user to report others
  has_many :reports, as: :reportable # Allow user to be reported as well
 
 

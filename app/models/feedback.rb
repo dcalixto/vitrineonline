@@ -12,9 +12,7 @@ class Feedback < ActiveRecord::Base
   has_one :order
  has_one :product, through: :order
 
- #has_many :products, through: :order
-#  has_many :products, as: :feedbackable
-#  has_many :vitrines, as: :feedbackable
+ 
 
 
 
