@@ -7,6 +7,9 @@ $(document).ready(function () {
         paramName: "images[ifoto]",
         addRemoveLinks: true, // Don't show remove links on dropzone itself.
         dictRemoveFile: 'Remover',
-        uploadMultiple: true
+        uploadMultiple: true,
+        method: 'put',
+        acceptedFiles: "image/*",
+        url: $('#images').data('update-url')
     });
 });

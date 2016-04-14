@@ -1,9 +1,7 @@
 # encoding: utf-8
-
+require 'product_recommender'
 class UsersController < ApplicationController
   before_filter :authorize, :correct_user, only: [:edit, :update, :destroy]
-
-
 
 
   def show
@@ -73,9 +71,6 @@ class UsersController < ApplicationController
       user = User.find_by_confirm_token(params[:id])
       if user
         user.email_activate
-
-
-
         flash[:success] = "Bem vindo a Vitrineonline  Seu email foi confirmado.
         Por favor logue para continuar.".html_safe
         redirect_to login_url
@@ -112,18 +107,22 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-     @states = State.all
-    @cities = City.where('state_id = ?', State.first.id)
-    if @user.update_attributes(params[:user])
-      redirect_to(action: :edit, id: @user, only_path: true,format: :html)
-      flash[:notice] = 'Conta atualiazada'
-
-    else
-      render :edit
+    respond_to do |format|
+      format.html do
+        @states = State.all
+        @cities = City.where('state_id = ?', State.first.id)
+        if @user.update_attributes(params[:user])
+          redirect_to(action: :edit, id: @user, only_path: true,format: :html)
+          flash[:notice] = 'Conta atualiazada'
+        else
+          render :edit
+        end
+      end
+      format.json do
+        @user.update_attributes(params[:user])
+        render :nothing => true
+      end
     end
-
-
-
   end
 
   def destroy
