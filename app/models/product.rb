@@ -59,7 +59,7 @@ has_reputation :votes, source: :user, aggregated_by: :sum
 
   def foto_thumb
     if images.any?
-      images.first.foto.thumb.url
+      images.first.foto.url(:thumb).url
     else
     #  asset_paths("thumb.png")
     end
@@ -67,7 +67,7 @@ has_reputation :votes, source: :user, aggregated_by: :sum
 
   def foto
     if images.any?
-      images.first.foto.url
+      images.first.foto.url(:thumb).url
     else
     #  asset_path("thumb.png")
     end
