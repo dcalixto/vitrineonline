@@ -70,10 +70,10 @@ end
         end
       end
       format.json do
-        if params[:images] && params[:images][:ifoto]
-          params[:images][:ifoto].values.each do |ifoto|
+        if params[:images] && params[:images][:foto]
+          params[:images][:foto].values.each do |foto|
             image = @product.images.build
-            image.ifoto = ifoto
+            image.foto = foto
             image.save
           end
         end
