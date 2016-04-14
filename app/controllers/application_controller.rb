@@ -19,32 +19,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-   before_filter :no_store_cache#, if: :is_prod?
-  after_filter :no_store_cache#, if: :is_prod?
-
-     #def is_prod?
-      #      Rails.env.production?
-      # end
-
-     def no_store_cache#(max_age = 5.minutes.to_s)
-       response.headers['Cache-Control'] = "max-age=0, no-cache, no-store, must-revalidate"
-       response.headers['Pragma'] = "no-cache"
-       response.headers['Expires'] = "-1"
-       #response.headers['Surrogate-Control'] = "max-age=#{max_age}"
-       #response.headers['Content-Security-Policy'] = "default-src *; script-src http://localhost:3000/assets/; style-src http://localhost:3000/assets/"
-     end
 
 
-    # def set_cache_control_headers(max_age = 5.minutes.to_s)
-    #     response.headers['Cache-Control'] = 'public, no-cache, max-age=0'
-    #     response.headers['Surrogate-Control'] = "max-age=#{max_age}"
-    # end
-
-
-#after_filter :set_online
-
-    # set to online
-private
+after_filter :set_online
 
 def set_online
       if !!current_user
@@ -55,6 +32,10 @@ def set_online
         # 'ex: 10*60' - set time to live - 10 minutes
       end
     end
+
+private
+
+
 
  # USER HELPERS
 

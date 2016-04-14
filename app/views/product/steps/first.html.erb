@@ -17,7 +17,7 @@
       <div class="subcontent_top">
 
         <h4>Fotos</h4>
-<%= image_tag @product.images.first.foto.url(:thumb) unless @product.images.blank? %>
+<%= image_tag @product.images.first.ifoto.url(:thumb) unless @product.images.blank? %>
 
     <p class="tip">Adicione no mínimo 2 fotos</p>
     <p class="tip">
@@ -30,6 +30,13 @@
         </ul>
 
         <div class="dropzone" id="image" data-update-url="<%= product_path(@product) + '?authenticity_token=' + form_authenticity_token %>"></div>
+
+
+
+
+
+
+
 
   </div>
 

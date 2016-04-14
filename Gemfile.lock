@@ -37,6 +37,12 @@ GIT
       rails (~> 3.2)
 
 GIT
+  remote: https://github.com/dcalixto/no_cache_control.git
+  revision: b58e2930009d1a45ebd4348008702860edcf66e7
+  specs:
+    no_cache_control (1.0.0)
+
+GIT
   remote: https://github.com/dcalixto/rack-secure_headers.git
   revision: 2b75b65c64550589e14594f3bdb826cce1b5547a
   specs:
@@ -439,9 +445,6 @@ GEM
     unicode-display_width (1.0.3)
     unicode_utils (1.4.0)
     uniform_notifier (1.9.0)
-    validate_url (1.0.2)
-      activemodel (>= 3.0.0)
-      addressable
     websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -505,6 +508,7 @@ DEPENDENCIES
   mini_magick
   mobile-fu
   newrelic_rpm
+  no_cache_control!
   nokogiri
   oj
   omniauth-facebook
@@ -536,7 +540,6 @@ DEPENDENCIES
   therubyracer
   thin
   uglifier (>= 1.0.3)
-  validate_url
   wicked
   will_paginate
 

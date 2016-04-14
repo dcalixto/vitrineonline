@@ -44,6 +44,8 @@ gem 'simple_form'
 gem 'dynamic_form'
 gem 'i18n_country_select'
 
+
+
 # MISC
 gem 'deadweight'
 
@@ -115,14 +117,18 @@ gem 'paypal_adaptive'
 gem 'configatron' # , '3.1.3'
 gem 'prawn'#, '1.0.0.rc2'
 #gem 'mymoip'
+
+
+
 # ADMIN & SECURITY
 
-gem 'validate_url'
+
 #gem 'active_model_otp'
+#gem 'twilio-ruby'
 gem 'rack-attack'
 gem 'geocoder'
-#gem 'twilio-ruby'
 gem 'rack-secure_headers', git: 'https://github.com/dcalixto/rack-secure_headers.git'
+gem 'no_cache_control', git: 'https://github.com/dcalixto/no_cache_control.git'
 
 # IMAGE
 
