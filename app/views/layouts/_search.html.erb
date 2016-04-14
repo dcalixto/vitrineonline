@@ -1,3 +1,5 @@
+<% cache "busca" do %>
+
 <%=form_tag products_path,method: :get, :id=> "search_box" do %>
 <table id="search_container">
 <tbody>
@@ -13,4 +15,6 @@
 </tr>
 </tbody>
 </table>
+<% end %>
+
 <% end %>

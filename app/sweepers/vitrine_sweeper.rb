@@ -7,7 +7,12 @@ class VitrineSweeper < ActionController::Caching::Sweeper
 expire_fragment('vitrine_menu')
 expire_fragment('busca')
 expire_fragment('logo')
-
+expire_fragment('cs')
+expire_fragment('footer')
+expire_fragment('js')
+expire_fragment('fayeserver')
+expire_fragment('facebook')
+expire_fragment('drop')
 
 
 
