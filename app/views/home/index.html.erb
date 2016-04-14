@@ -31,6 +31,7 @@
          <% orderable.limit(10).each do |p| %>
         <li>
       <%= link_to product_path(p) do  %>
+
         <% if p.images.present? %>
       <%= image_tag p.images.first.url(:thumb).to_s %>
       <% end %>
@@ -96,7 +97,7 @@
 <% @products.first(10).each do |p| %>
 <li>
 <%= link_to product_path(p) do  %>
-<% if p.images %>
+<% if p.images.present? %>
 <%= image_tag p.images.first.url(:thumb).to_s %>
 <% end %>
 <%= p.name %>

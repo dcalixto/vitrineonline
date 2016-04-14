@@ -7,21 +7,16 @@ class OrdersController < ApplicationController
   def purchased
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
-
       @q = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).ransack(params[:q])
     #  @q = Order.joins(:user, :cart).where('status = ?', current_user.id, cart.id, params[:status] || Order.statuses[0]).ransack(params[:q])
   #@q = Order.where('buyer_id = ? and status = ?', current_user.id, params[:status] || Order.statuses[0]).ransack(params[:q])
-
-
       @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
        end
   end
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
-
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
-
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
   end
 
@@ -120,10 +115,7 @@ class OrdersController < ApplicationController
   def sent
     order = Order.find(params[:id])
     transaction = Transaction.find_by_id(params[:id])
-
     #  @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[1]).paginate(:per_page => 22, :page => params[:page])
-
-
     @q = Order.where('status = ?', params[:status] || Order.statuses[1]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
@@ -137,9 +129,13 @@ class OrdersController < ApplicationController
     end
   end
 
+def index
+end
+
+
   def calculate_ship
     frete = Correios::Frete::Calculador.new cep_origem: '23970-000',
-                                            cep_destino: params[:post_code]
+                                          cep_destino: params[:post_code]
     servicos = frete.calcular :sedex, :pac
     @pac = servicos[:pac].valor
     @sedex = servicos[:sedex].valor
