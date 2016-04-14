@@ -41,9 +41,7 @@ crumb :subcategory do |subcategory|
   link subcategory.name, subcategory_path(subcategory)
 end
 
-crumb :boutique_kind do |boutique_kind|
-  link boutique_kind.kind, boutique_kind_path(boutique_kind)
-end
+
 
 # crumb :project_issues do |project|
 #   link "Issues", project_issues_path(project)

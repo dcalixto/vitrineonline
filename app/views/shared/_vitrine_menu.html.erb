@@ -4,7 +4,7 @@
   <div id="menu-box">
     <div class="menu_content">
       <h2 class="h1_menu">Vitrine</h2>
-    
+
       <ul>
         <li><%= link_to "Configuração", edit_vitrine_path(current_vitrine) %></li>
         <li><%= link_to "Política" , edit_vitrine_policy_path(current_vitrine, current_vitrine.policy.id)%></li>
@@ -27,7 +27,7 @@
       </h2>
       <ul>
         <li><%= link_to "Anúncio", new_vitrine_announcement_path(current_vitrine)  %></li>
-        <li><%= link_to "Promoções",  new_vitrine_offer_path(current_vitrine)  %></li>
+        <li><%= link_to "Promoções",  new_vitrine_coupon_path(current_vitrine)  %></li>
         <li><%= link_to "Visualizações", vitrine_views_path(current_vitrine)  %></li>
         <li><%= link_to "Slogan & Site", edit_vitrine_marketing_path(current_vitrine, current_vitrine.marketing.id)  %></li>
       </ul>

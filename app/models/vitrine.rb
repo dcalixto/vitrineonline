@@ -21,8 +21,8 @@ has_many :reports, as: :reportable
   has_many :announcements, dependent: :destroy
   has_many :banners, dependent: :destroy
 
-  #has_many :offers                 # Allow user to report others
-   has_many :offers, as: :offertable #
+  
+   has_many :coupons, as: :couponable #
 
   belongs_to :city
   belongs_to :state

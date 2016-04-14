@@ -28,12 +28,6 @@
 
 
 
-
-
-
-
-
-
 <div class="box5">
 
   <div class="block  margin_top">
@@ -41,11 +35,13 @@
       <%= render 'shared/flash_messages' %>
     </div>
 
-    <h1>Visualizações</h1>
 
-    <div class="content">
+    <div class="square_box">
+    <h4>Visualizações</h4>
 
-      <div class="subcontent_top">
+
+
+      <div class="subcontent">
         <p class="tip">A visualisação lhe ajudará a compreender e posicionar melhor sua vitrine e produtos</p>
 
         <h4><%=link_to current_vitrine.name, vitrine_path(current_vitrine),  :title => "Nome" %></h4>

@@ -12,11 +12,11 @@
     </div>
 
   <div class="block  margin_top">
+  <div class="square_box">
 
 
-
-    <%= "<h1>Produtos Vendidos </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
-    <%= "<h1>Produtos Enviados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
+    <%= "<h4>Produtos Vendidos </h4>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+    <%= "<h4>Produtos Enviados </h4>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
 
 
     <div class="content">
@@ -50,7 +50,7 @@
         </tr>
       </table>
 
-      
+
 
       <% end %>
       <%if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
@@ -88,5 +88,6 @@
         <%= will_paginate @orders, previous_label: h('« Voltar'), next_label: h('Próximo »') %>
       </div>
     </div>
+  </div>
   </div>
 </div>

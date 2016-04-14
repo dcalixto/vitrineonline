@@ -1,6 +1,6 @@
 
 <% title "Favoritos" %>
-<%= render "shared/favorites_menu" %>
+<%= render "shared/votes_menu" %>
 <!--STOCK OF ITEMS  -->
 <div class="box3">
   <div class="flash_box">
@@ -8,7 +8,9 @@
   </div>
 
   <div class="block margin_top">
-    <h1>Produtos Curtidos</h1>
+
+      <div class="square_box">
+    <h4>Produtos Curtidos</h1>
 
 
 
@@ -40,7 +42,9 @@
 <tr>
   <td class="stock_td">
     <%= link_to  product_path(product.id) do %>
-    <#%= image_tag product.images.first.url(:small).to_s %>
+    <% if product.images %>
+    <%= image_tag product.images.first.url(:small).to_s %>
+    <% end %>
     <%=  product.name %>
     <% end %>
   </td>
@@ -62,27 +66,27 @@
   </td>
 
   <td>
-      <#%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}) %>
+      <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}) %>
 
   </td>
 
 <td>
-  <#% if current_user %>
-  <#%if product.buyable?(current_user) %>
+  <% if current_user %>
+  <%if product.buyable?(current_user) %>
 
 
   <div class="add_to_car">
 
-    <#%= button_to("Adicionar a sacola",add_to_carts_path(product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
+    <%= button_to("Adicionar a sacola",add_to_carts_path(product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
 
-    <#%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
-    <#%end %>
+    <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
+    <%end %>
 
   </div>
 
-  <#%end %>
+  <%end %>
 
-  <#%end %>
+  <%end %>
 </td>
 
   <td>
@@ -106,5 +110,5 @@
       </div>
     </div>
 </div>
-
+</div>
 </div>

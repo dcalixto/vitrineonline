@@ -16,7 +16,9 @@
 <div class="box10">
 
   <div class="block">
-    <div class="content">
+      <div class="square_box">
+        <h4>Vitrine</h4>
+    <div class="subcontent">
       <%=link_to(image_tag(@vitrine.logo.url(:thumb).to_s), vitrine_path(@vitrine)) %>
       <ul class="list">
         <li>
@@ -44,7 +46,7 @@
         <li>
           <% if @vitrine.feedbacks %>
   <%= content_tag(:span, nil, :class =>"sprite-icons-small_star") %>
-          <%=link_to  feedbacks_vitrines_path(:id=>@vitrine.id)  do %>
+          <%=link_to  search_feedbacks_vitrines_path(:id=>@vitrine.id)  do %>
 
           <div><%=@total_from_buyers %></div>
           <% end %>
@@ -99,10 +101,11 @@
           <span class="status_offline"> Offline </span>
           <% end %>
       </li>
+      <%=link_to "Enviar Mensagem", message_box_vitrine_path, :class=>"message_box" %>
 </ul>
     </div>
   </div>
-
+</div>
 </div>
 <div class="box4">
   <!-- Slideshow 1 -->
@@ -174,7 +177,7 @@
         <tr>
           <td>
 
-            <%= search_form_for @q, url: '/vitrine_products', method: :post  do |f| %>
+            <%= search_form_for @q, url: "/vitrines/#{@vitrine.id}/vitrine_products", method: :post  do |f| %>
 
             <%= f.text_field :id_cont %>
             <%= f.submit "Buscar", :class=>"btn_grey" %>
@@ -235,7 +238,7 @@
           <tr>
             <td>
 
-              <%= search_form_for @q, url: '/vitrine_feedbacks', method: :post  do |f| %>
+              <%= search_form_for @q, url: "/vitrines/#{@vitrine.id}/vitrine_feedbacks", method: :post  do |f| %>
 
               <%= f.text_field :id_cont %>
               <%= f.submit "Buscar", :class=>"btn_grey" %>
@@ -256,11 +259,6 @@
         <%= render :partial => 'feedbacks/feedbacks' %>
       </div>
 
-      <div class="subcontent">
-        <h2>Ofertas</h2>
-        <%= content_tag(:span, nil, :class => 'offer_stamp') %>
-        <%= @vitrine.offers.first %>
-      </div>
 
       <div class="subcontent">
         <h2>Formas de Pagamentos disponível</h2>
@@ -301,21 +299,7 @@
         <% end %>
       </div>
 
-      <div class="subcontent">
-        <div class="block_message">
-          <h4>Mensagem</h4>
-          <% @conversation = Conversation.new %>
-          <%= form_for @conversation do |f| %>
-          <div class="doubt">
-            <%= hidden_field :conversation_participants, :boutique_id, :value => @vitrine.user_id %>
-            <ul>
-              <li><%= text_area :message, :body, :rows => 3, class: 'form-control',data: { emojiable: true } %></li>
-            </ul>
-          </div>
-          <div><%= f.button 'Enviar', :class => 'btn_grey' %></div>
-          <% end %>
-        </div>
-      </div>
+
 
 
                   <div class="subcontent">

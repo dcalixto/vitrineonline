@@ -10,11 +10,11 @@
 
 
   <div class="block  margin_top">
+  <div class="square_box">
 
+<h4>Banners</h4>
 
-<h1>Banners</h1>
-
-  <div class="content">
+  <div class="subcontent">
     <ul class="box-slider">
     <% current_vitrine.banners.last(3).each do |i| %>
   <li> <%= image_tag(i.img.url(:mobile).to_s) %></li>
@@ -24,7 +24,7 @@
 
   <p class="tip">Os Banners serão redimencionandos para 986 x 215 e 414 x 165</p>
 
-  
+
 
     <%= form_for(@banner, :url => vitrine_banners_path, :method => :post, html: { multipart: true, id: "banner", class: "dropzone"}) do |banner|  %>
 
@@ -42,7 +42,7 @@
   <% end %>
 </div>
 
-
+</div>
  <!--SLOGAN  -->
 
 

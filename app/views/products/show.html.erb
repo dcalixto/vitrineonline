@@ -106,8 +106,8 @@
         <% end %>
         </li>
 
-        <li><%=@product.get_likes.size%> Curtidas</li>
 
+    <li> <%= pluralize @product.reputation_for(:votes).to_i, "Curtida" %></li>
     </ul>
 
 
@@ -169,23 +169,13 @@
 
           </li>
 
-          <% unless @product.marked_as_favorite? %>
-          <li>
 
 
 
 
 
+          <li><% if current_user && !current_user.voted_for?(@product) %></li>
 
-
-
-
-          </li>
-          <% end %>
-
-          <% unless @current_user.voted_up_on?@product %>
-          <li><%= link_to "Curtir",  like_product_path(@product.id), method: :put %></li>
-          <% end %>
         </ul>
 
 
@@ -193,7 +183,7 @@
       </div>
 
 
-
+<% end %>
 
       <div class="horizontal_buttons">
         <ul>
@@ -254,7 +244,8 @@
             <% @suggestions.each do |item| %>
               <li>
             <%= link_to product_path(item) do  %>
-            <#%= image_tag item.images.first.url(:thumb).to_s %>
+
+            <%= image_tag item.images.first.url(:thumb).to_s %>
             <%= item.name %>
               <%= item.price %>
             <% end %>
@@ -284,7 +275,7 @@
       <%  @similarities.each do |item| %>
         <li>
       <%= link_to product_path(item) do  %>
-      <#%= image_tag item.images.first.url(:thumb).to_s %>
+      <%= image_tag item.images.first.url(:thumb).to_s %>
       <%= item.name %>
 
         <%= item.price %>

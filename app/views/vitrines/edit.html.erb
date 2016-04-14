@@ -6,16 +6,23 @@
 <%=render 'shared/error_messages', :target=> @vitrine %>
 </div>
 <div class="block margin_top">
-<h1>Configuração <%=link_to @vitrine.user.name, vitrine_path(current_vitrine) %> </h1>
-<hr class="line"></hr>
-<div class="content">
-<div class="subcontent_top">
+
+
+  <div class="square_box">
+<h4>Configuração <%=link_to @vitrine.user.name, vitrine_path(current_vitrine) %> </h4>
+
+
+<div class="subcontent">
 <% unless current_vitrine.user.city.blank? %>
 <%=image_tag "http://maps.google.com/maps/api/staticmap?size=550x150&sensor=false&zoom=16&markers=#{ current_vitrine.address}" %>
 <% end %>
 </div>
+</div>
+
+<div class="square_box">
+  <h4>Logo</h4>
 <div class="subcontent">
-<h2>Logo</h2>
+
 <ul class="image_info">
 <li>
 <%=image_tag current_vitrine.logo.url(:thumb).to_s %>
@@ -30,8 +37,11 @@
 </div>
 <% end %>
 </div>
+</div>
+<div class="square_box">
+  <h4>Sobre</h4>
 <div class="subcontent">
-<h2>Sobre</h2>
+
 <p class="tip">Descreva sua vitrine</p>
 <p clas="tip">Para inserir emojis no texto acesse
 <%=link_to nil, "http://www.emoji-cheat-sheet.com" %></p>
@@ -44,8 +54,11 @@
 <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
 </div>
 </div>
+</div>
+<div class="square_box">
+  <h4>Endereço</h4>
 <div class="subcontent">
-<h2>Endereço</h2>
+
 <p class="tip">Fique a vontade para atualizar o endereço de sua vitrine</p>
 <%=semantic_form_for(@vitrine, html: { id: 'address_vitrine' }) do |form| %>
 <%=form.inputs do %>
@@ -62,11 +75,14 @@
 </div>
 </div>
 </div>
+
 <div class="box11">
-<div class="tip_box">
-<h2>Endereço</h2>
-<h2><%=current_vitrine.name %></h2>
+  <div class="block">
+  <div class="square_box">
+    <h4>Endereço</h4>
+<div class="content">
 <ul>
+  <li><%=current_vitrine.name %></li>
 <li>
 <%=current_vitrine.address %>
 </li>
@@ -85,5 +101,7 @@
 </li>
 <% end %>
 </ul>
+</div>
+</div>
 </div>
 </div>

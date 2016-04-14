@@ -34,7 +34,7 @@ attr_accessible :images_attributes
 
   has_many :impressions, dependent: :destroy
 
-  attr_accessible :f1, :f2, :f3, :f4, :name, :detail, :price, :color_id, :gender_id,
+  attr_accessible  :name, :detail, :price, :color_id, :gender_id,
                   :category_id, :subcategory_id, :material_id, :condition_id,
                   :brand_id,  :meta_keywords, :quantity, :status, :vitrine_id, :products, :price,
                   :size_ids, :color_ids,:state, :tag_list

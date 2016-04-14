@@ -36,6 +36,8 @@ end
       get :products
        get :confirm_email
        match :report
+
+       get :message_box
     end
 
 
@@ -87,7 +89,7 @@ end
     resources :banners, only: [:new, :create]
 
     resources :announcements, only: [:new, :create]
-    resources :offers, only: [:new, :create, :index]
+    resources :coupons, only: [:new, :create, :index]
     resources :marketings, only: [:edit, :update]
 
 
@@ -118,13 +120,15 @@ end
         get :policy
       get :message
       match :products
+
+             get :message_box
     end
 
 
 
     collection do
-      match '/vitrine_feedbacks' => 'vitrines#show', via: [:get, :post], as: :vitrine_feedbacks
-     match '/vitrine_product' => 'vitrines#show', via: [:get, :post], as: :vitrine_products
+      match '/:id/vitrine_feedbacks' => 'vitrines#show', via: [:get, :post], as: :vitrine_feedbacks
+     match '/:id/vitrine_products' => 'vitrines#show', via: [:get, :post], as: :vitrine_products
 
  match '/:id/feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :search_feedbacks
     end
@@ -215,6 +219,8 @@ match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :s
       put 'like', to: 'products#upvote'
       put 'dislike', to: 'products#downvote'
    match :report, to: 'products#report'
+
+          get :message_box
     end
 
     collection do
@@ -239,6 +245,11 @@ match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :s
   namespace :dynamic_selectable do
     get 'categories/:category_id/subcategories', to: 'category_subcategories#index', as: :category_subcategories
     get 'gender/:gender_id/categories', to: 'gender_categories#index', as: :gender_categories
+
+
+    get 'state/:state_id/cities', to: 'state_cities#index', as: :state_cities
+
+
   end
 
 

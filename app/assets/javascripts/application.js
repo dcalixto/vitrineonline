@@ -35,6 +35,18 @@ $('vitrine_about').readmore({
 });
 
 
+$("message_box").fancybox({
+                'width': 400,
+                'height': 400,
+                'enableEscapeButton' : false,
+                'overlayShow' : true,
+                'overlayOpacity' : 0,
+                'hideOnOverlayClick' : false,
+              //  'type': 'iframe',
+                //'href': "/components/profile/buyer/regbuyer1.php" //or any other url that contains the contents of that iframe
+            });
+
+
 
 
 
@@ -271,27 +283,6 @@ function hideAnnouncement(announcement_created_at) {
 //JQUERU CHAINED SELECTS
 
 
-
-
-// USER-SELECT-CITY
-$(function() {
-  return $(document).on('change', '#states_select', function(evt) {
-    return $.ajax('update_city_select', {
-      type: 'GET',
-      dataType: 'script',
-      data: {
-        state_id: $("#states_select option:selected").val()
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        return console.log("AJAX Error: " + textStatus);
-      },
-      success: function(data, textStatus, jqXHR) {
-        return console.log("Dynamic state select OK!");
-      }
-    });
-  });
-
-});
 
 
 // PAGINTAION AND RANSACK

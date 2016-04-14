@@ -17,7 +17,7 @@
 
     <div class="subcontent">
       <%= link_to  user_path(@vitrine.user.id) do %>
-      <%= image_tag @vitrine.user.avatar.url(:small).to_s %>
+      <%= image_tag @vitrine.user.avatar.url(:mobile).to_s %>
       Criado em:
       <%= timeago_tag(@vitrine.user.created_at, :nojs => true, :date_only => false)%>
       <% end %>
@@ -28,7 +28,7 @@
       <tr>
         <td>
 
-          <%= search_form_for @q, url: search_feedbacks_users_path, method: :post  do |f| %>
+          <%= search_form_for @q, url: search_feedbacks_vitrines_path, method: :post  do |f| %>
 
           <%= f.text_field :id_cont %>
           <%= f.submit "Buscar", :class=>"btn_grey" %>

@@ -37,6 +37,15 @@ class UsersController < ApplicationController
 
 
 
+  def message_box
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html { render 'message_box'}
+    end
+  end
+
+
 
   def new
     @user = User.new
@@ -64,7 +73,7 @@ class UsersController < ApplicationController
       user = User.find_by_confirm_token(params[:id])
       if user
         user.email_activate
-       
+
 
 
         flash[:success] = "Bem vindo a Vitrineonline  Seu email foi confirmado.
@@ -82,16 +91,11 @@ class UsersController < ApplicationController
 
     @states = State.all
     @cities = City.where('state_id = ?', State.first.id)
-  end
 
-  def update_city_select
-    @cities = City.where('state_id = ?', params[:state_id])
-    respond_to do |format|
-      format.js
-    end
 
 
   end
+
 
 
 

@@ -13,7 +13,7 @@
     <%= form_for @product, method: :put, url: wizard_path,  :html => {:multipart => true} do |p| %>
 
   <h1>Imagens e especifiações</h1>
-
+<hr class="line"></hr>
       <div class="subcontent_top">
 
         <h4>Fotos</h4>
@@ -54,7 +54,7 @@
           <%= p.text_area :detail,  :id => 'notes', :label =>"Descrição"%>
           <div id="notes-preview"></div>
 
-       
+
 
   </div>
   <div class="subcontent">
@@ -112,4 +112,3 @@
 </div>
 
 </div>
-

@@ -79,6 +79,7 @@
      width: 161px;
      height: 21px;
        margin-top:15px;
+       background:url(/assets/logo.png) no-repeat;
  }
 
  .sprite-icons-fb_button {
@@ -306,6 +307,3 @@
   .status_offline {background:red;color:#fff;width:80px;height:20px;padding:5px;
     -webkit-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px;}
-
-
-  

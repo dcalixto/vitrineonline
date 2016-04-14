@@ -50,6 +50,9 @@ has_many :evaluations, class_name: "ReputationSystem::Evaluation", as: :source
       def voted_for?(vitrine)
       evaluations.where(target_type: vitrine.class, target_id: vitrine.id).present?
     end
+    def voted_product_for?(product)
+    evaluations.where(target_type: product.class, target_id: product.id).present?
+  end
 
  #has_one_time_password
 

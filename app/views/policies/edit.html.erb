@@ -8,13 +8,11 @@
   </div>
 
   <div class="block margin_top">
+  <div class="square_box">
+    <h4>Política</h4>
 
-    <h1>Política</h1>
-<hr class="line"></hr>
-
-    <div class="content">
-      <div class="subcontent_top">
-        <h2>Pagamento</h2>
+      <div class="subcontent">
+        <h4>Pagamento</h4>
         <ul>
           <li>
             <!--PAYPAL -->
@@ -42,10 +40,13 @@
         </ul>
 
       </div>
+      </div>
 
+        <div class="square_box">
+            <h4>Envio</h4>
       <div class="subcontent">
 
-        <h2>Envio</h2>
+
         <p class="tip">Indique as formas de envio disponível</p>
           <%= form_for @policy, :url => vitrine_policy_path, :method => :put do |s| %>
         <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
@@ -57,8 +58,12 @@
         <%= s.submit "Salvar", :class => 'btn' %>
             <% end %>
       </div>
+      </div>
+
+      <div class="square_box">
+          <h4>Garantias</h4>
       <div class="subcontent">
-        <h2>Garantias</h2>
+
 
 
         <p class="tip">Garantias como prazo de devoluação e cancelamento do pedido são sempre bem vindos</p>
@@ -81,8 +86,9 @@
          <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
 
        </div>
-</div>
 
+
+              </div>
       </div>
     </div>
   </div>

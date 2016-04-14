@@ -45,13 +45,23 @@ class VitrinesController < ApplicationController
 
 
   def vitrine_feedbacks
-     show
+      @vitrine = Vitrine.find(params[:id])
      render :show
    end
 
    def vitrine_products
-      show
+         @vitrine = Vitrine.find(params[:id])
+
       render :show
+    end
+
+
+    def message_box
+      @vitrine = Vitrine.find(params[:id])
+
+      respond_to do |format|
+        format.html { render 'message_box'}
+      end
     end
 
   def new

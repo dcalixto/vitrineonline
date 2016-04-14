@@ -6,6 +6,8 @@
 <div class="box10">
 
   <div class="block margin_top">
+    <div class="square_box">
+      <h4>Usuário</h4>
   <div class="content">
     <%=link_to(image_tag(@user.avatar.url(:thumb).to_s), user_path(@user)) %>
     <ul class="list">
@@ -51,11 +53,15 @@
     <% end %>
 </li>
 
+
+<%=link_to "Enviar Mensagem", message_box_user_path, :class=>"message_box" %>
+
     </ul>
 
  </div>
 
 
+</div>
 </div>
 </div>
 
@@ -94,28 +100,7 @@
 
 
 </div>
-<div class="subcontent">
-  <div class="block_message">
 
-    <h2>Entrar em contato com o vendedor</h2>
-
-    <% @conversation = Conversation.new %>
-
-    <%= form_for @conversation do |f| %>
-
-    <%= hidden_field :conversation_participants, :user_id, :value => @user %>
-    <ul>
-      <li><%= text_area :message, :body, class: 'form-control',data: { emojiable: true },:rows => 3 %></li>
-
-    </ul>
-
-    <%= f.button 'Enviar', :class => 'btn_grey' %>
-
-    <% end %>
-
-      </div>
-
-    </div>
 
     </div>
   </div>
@@ -134,7 +119,7 @@
             <% @suggestions.each do |item| %>
               <li>
             <%= link_to product_path(item) do  %>
-            <%= image_tag item.f1.url(:thumb).to_s %>
+            <%= image_tag item.images.first.url(:thumb).to_s %>
             <%= item.name %>
               <%= item.price %>
             <% end %>

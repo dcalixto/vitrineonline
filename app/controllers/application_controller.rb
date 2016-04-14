@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
     # end
 
 
-after_filter :set_online
+#after_filter :set_online
 
     # set to online
 private

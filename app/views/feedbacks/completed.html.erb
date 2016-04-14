@@ -2,8 +2,10 @@
 <%= render "shared/feedback_menu" %>
 <div class="box3">
   <div class="block margin_top">
+    <div class="square_box">
+
     <h4>Avaliação</h4>
-    <div class="content">
+    <div class="subcontent">
 
       <table class="block_search">
         <tr>
@@ -27,7 +29,7 @@
       </table>
 
     </div>
-    <div class="content">
+    <div class="subcontent">
 
       <% if params[:view] != Feedback::FROM_SELLERS %>
       Dos Compradores:
@@ -47,4 +49,5 @@
       <%= render :partial => 'feedbacks' %>
     </div>
   </div>
+</div>
 </div>

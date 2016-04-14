@@ -6,19 +6,28 @@
 <%=render 'shared/error_messages', :target=> @user %>
 </div>
 </div>
+
+
+
 <div class="box5">
 <div class="block margin_top">
-<h1>Configuração
-</h1>
-<hr class="line"></hr>
-<div class="content">
-<div class="subcontent_top">
+
+  <div class="square_box">
+    <h4>Configuração
+    </h4>
+
+<div class="subcontent">
+
 <% unless current_user.city.blank? %>
 <%=image_tag "http://maps.google.com/maps/api/staticmap?size=550x150&sensor=false&zoom=16&markers=#{ current_user.address}" %>
 <% end %>
 </div>
+</div>
+
+<div class="square_box">
+  <h4>Avatar</h4>
 <div class="subcontent">
-<h2>Avatar</h2>
+
 <div class="preview-template">
 <%=image_tag @user.avatar.url(:thumb).to_s %>
 </div>
@@ -30,8 +39,13 @@
 </div>
 <% end %>
 </div>
+</div>
+
+
+<div class="square_box">
+  <h4>Email</h4>
 <div class="subcontent">
-<h2>Email</h2>
+
 <p class="tip">Seu email atual</p>
 <%=semantic_form_for(@user, html: { id: 'email' }) do |em| %>
 <%=em.inputs do %>
@@ -43,27 +57,48 @@
 <% end %>
 <% end %>
 </div>
+</div>
+
+<div class="square_box">
+
+<h4>Endereço</h4>
+
 <div class="subcontent">
-<h2>Endereço</h2>
 <p class="tip">Adicione o seu endereço de entrega para facilitar a vida do vendedor</p>
-<%=semantic_form_for(@user, html: { id: 'address' }) do |form| %>
-<%=form.inputs do %>
-<%=form.input :address, :label=> "Endereço" %>
-<%=form.input :neighborhood, :label=> "Bairro"%>
-<%=form.input :postal_code, :label=> "CEP"%>
-<%=form.input :address_supplement, :as=> :text, :label => "Complemento" %>
-<%=form.input :state_id, :as=> :select, :collection=> @states.collect{|s|[s.name.titleize,s.id]}, :selected => @states.find(1),
-:input_html => { :id => "states_select"}, :prompt => 'Selecionar Estado' %>
-<%=form.input :city_id, :label=> "Cidade", :as => :select,:collection=>@cities.collect{ |c| [c.name.titleize,c.id]},
-:input_html => { :id => "cities_select"}, :prompt => 'Selecionar Cidade' %>
-<%=form.actions do %>
-<%=form.action(:submit, :label=> "Salvar", :button_html => { :class => "btn", id: 'button_address'}) %>
-<% end %>
-<% end %>
+<%=form_for @user, :method=> :put do |ad| %>
+
+<%= ad.text_field  :address, :label=> "Endereço" %>
+<%=ad.text_field  :neighborhood, :label=> "Bairro"%>
+<%=ad.text_field  :postal_code, :label=> "CEP"%>
+<%=ad.text_field  :address_supplement, :as=> :text, :label => "Complemento" %>
+
+<div class="form-group">
+  <%= ad.label :state_id, 'Estado' %>&nbsp;
+  <%= dynamic_collection_select :user, :state_id, :city, State.all, :id, :code,
+{ include_blank: false, submit_with_form: true, :prompt => 'Selecionar Estado'  }, { class: 'form-control' } %>
+</div>
+
+<div class="form-group">
+  <%= ad.label :city_id, 'Cidade' %>&nbsp;
+  <%= ad.collection_select :city_id, [], :name,  {include_blank: false, :prompt => 'Selecionar Cidade'}, { class: 'form-control' } %>
+</div>
+
+
+
+
+
+
+
+<%=ad.submit"Salvar",  :class => "btn" %>
 <% end %>
 </div>
+</div>
+
+
+<div class="square_box">
+<h4>Encerrar Conta</h4>
 <div class="subcontent">
-<h2>Encerrar Conta</h2>
+
 <p>
 <b>O que acontece quando você fechar sua conta?</b>
 </p>
@@ -77,10 +112,13 @@
 </div>
 </div>
 <div class="box11">
-<div class="tip_box">
-<h2>Endereço</h2>
-<h2><%=current_user.name %><% current_user.surname%></h2>
+  <div class="block">
+    <div class="square_box">
+      <h4>Endereço</h4>
+  <div class="content">
+
 <ul>
+  <li><%=current_user.name %><% current_user.surname%></li>
 <li>
 <%=current_user.address %>
 </li>
@@ -101,5 +139,7 @@
 </li>
 <% end %>
 </ul>
+</div>
+</div>
 </div>
 </div>

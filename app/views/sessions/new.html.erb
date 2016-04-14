@@ -4,7 +4,9 @@
   <%= render 'shared/flash_messages' %>
 
   <div class=" block margin_top">
-    <h1>Entrar</h1>
+
+      <div class="square_box">
+    <h4>Entrar</h4>
     <div class="content">
       <%= link_to   "/auth/facebook" do  %>
 
@@ -32,13 +34,13 @@
         </li>
 
         <li class="space"></li>
-      
+
 
         <li><%= submit_tag "Entrar",  :class => "btn btn_big" %></li>
       </ul>
 
       <% end %>
-
+    </div>
     </div>
   </div>
 
@@ -48,14 +50,14 @@
 
   <div class="block margin_top">
 
-    <div class="content" id="session_list">
+    <div class="content ul_disc" id="session_list">
       <h1>Sou um novo cliente</h1>
-      <ol>
+      <ul>
         <li>Acompanhe as suas encomendas on-line</li>
         <li>Descubra novas vitrines e marcas</li>
         <li>Veja o histórico de seus pedidos e mais</li>
 
-      </ol>
+      </ul>
 
       <%=  button_to 'Criar Conta', signup_path, :class => 'btn_orange  btn_big', :method => "get"%>
 
