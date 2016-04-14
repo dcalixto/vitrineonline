@@ -23,7 +23,7 @@
 <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
 <li class="tip">O logo será redimencionanda para 245 x 135 de altura</li>
 </ul>
-<%=form_for(@vitrine, :url=> vitrine_path(current_vitrine), :method => :put, html: { multipart: true, class: "dropzone"}) do |logo| %>
+<%=form_for(@vitrine, :url=> vitrine_path(current_vitrine), :method => :put, html: { multipart: true, class: "dropzone", id: "vitrine_logo_dropzone"}) do |logo| %>
 <div class="fallback">
 <%=logo.file_field :logo %><br>
 <%=logo.submit "Salvar" %>

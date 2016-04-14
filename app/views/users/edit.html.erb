@@ -23,7 +23,7 @@
 <%=image_tag @user.avatar.url(:thumb).to_s %>
 </div>
 <span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<%=form_for(@user, :method=> :put, html: { multipart: true, class: "dropzone"}) do |f| %>
+<%=form_for(@user, :method=> :put, html: { multipart: true, class: "dropzone", id: "user_avatar_dropzone"}) do |f| %>
 <div class="fallback">
 <%=f.file_field :avatar %><br>
 <%=f.submit "Salvar" %>

@@ -92,16 +92,23 @@ end
   end
 
   def update
-    @vitrine = current_vitrine
-    if @vitrine.update_attributes(params[:vitrine])
+    respond_to do |format|
+      format.html do
+        @vitrine = current_vitrine
+        if @vitrine.update_attributes(params[:vitrine])
 
-      redirect_to(action: 'edit', id: @vitrine, format: :html, only_path: true)
-      flash[:notice] = "#{@vitrine.name} atualiazada"
-    else
-      render :edit, format: :html
+          redirect_to(action: 'edit', id: @vitrine, format: :html, only_path: true)
+          flash[:notice] = "#{@vitrine.name} atualiazada"
+        else
+          render :edit, format: :html
+        end
+      end
+      format.json do
+        @vitrine.update_attributes(params[:vitrine])
+        render :nothing => true
+      end
     end
   end
-
 
   def sales_report
     end_time = Time.now

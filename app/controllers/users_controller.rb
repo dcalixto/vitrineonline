@@ -108,18 +108,22 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-     @states = State.all
-    @cities = City.where('state_id = ?', State.first.id)
-    if @user.update_attributes(params[:user])
-      redirect_to(action: :edit, id: @user, only_path: true,format: :html)
-      flash[:notice] = 'Conta atualiazada'
-
-    else
-      render :edit
+    respond_to do |format|
+      format.html do
+        @states = State.all
+        @cities = City.where('state_id = ?', State.first.id)
+        if @user.update_attributes(params[:user])
+          redirect_to(action: :edit, id: @user, only_path: true,format: :html)
+          flash[:notice] = 'Conta atualiazada'
+        else
+          render :edit
+        end
+      end
+      format.json do
+        @user.update_attributes(params[:user])
+        render :nothing => true
+      end
     end
-
-
-
   end
 
   def destroy

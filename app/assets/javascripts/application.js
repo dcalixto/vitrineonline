@@ -177,14 +177,14 @@ $(document).ready(function(){
 	// disable auto discover
 	Dropzone.autoDiscover = false;
 
-
-	var avatarDropzone = new Dropzone (".dropzone", {
-		maxFilesize: 2, // Set the maximum file size to 256 MB
-     maxFiles: 1,
-      dictDefaultMessage: "Solte suas imagens aqui",
-		paramName: "user[avatar]", // Rails expects the file upload to be something like model[field_name]
-		addRemoveLinks: true, // Don't show remove links on dropzone itself.
-   dictRemoveFile: 'Remover'
+  $("#user_avatar_dropzone").dropzone({
+    maxFilesize: 2, // Set the maximum file size to 256 MB
+    maxFiles: 1,
+    dictDefaultMessage: "Solte suas imagens aqui",
+	paramName: "user[avatar]", // Rails expects the file upload to be something like model[field_name]
+	addRemoveLinks: true, // Don't show remove links on dropzone itself.
+    dictRemoveFile: 'Remover',
+    acceptedFiles: "image/*"
   });
 
 	//dropzone.on("success", function(file) {
@@ -193,13 +193,14 @@ $(document).ready(function(){
 //	})
 
 
-  var logoDropzone = new Dropzone (".dropzone", {
-		maxFilesize: 2, // Set the maximum file size to 256 MB
-     maxFiles: 1,
-      dictDefaultMessage: "Solte suas imagens aqui",
-		paramName: "vitrine[logo]", // Rails expects the file upload to be something like model[field_name]
-		addRemoveLinks: true, // Don't show remove links on dropzone itself.
-   dictRemoveFile: 'Remover'
+  $("#vitrine_logo_dropzone").dropzone({
+    maxFilesize: 2, // Set the maximum file size to 256 MB
+    maxFiles: 1,
+    dictDefaultMessage: "Solte suas imagens aqui",
+    paramName: "vitrine[logo]", // Rails expects the file upload to be something like model[field_name]
+    addRemoveLinks: true, // Don't show remove links on dropzone itself.
+    dictRemoveFile: 'Remover',
+    acceptedFiles: "image/*"
   });
 
   //dropzone.on("success", function(file) {
@@ -296,7 +297,7 @@ $(function() {
 
 // PAGINTAION AND RANSACK
 $(function() {
-  $(".sort_links a, #content .digg_pagination a").live("click", function() {
+  $(".sort_links, #content .digg_pagination").on('click', 'a', function() {
     $.getScript(this.href);
     return false;
   });
