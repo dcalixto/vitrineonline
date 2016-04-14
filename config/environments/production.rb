@@ -8,7 +8,7 @@ Vitrineonline::Application.configure do
   config.serve_static_assets = false
 
   config.assets.digest = true
-  config.assets.compile = true
+  config.assets.compile = false
   # Compress JavaScripts and CSS
   config.assets.compress = true
   config.cache_store = :dalli_store

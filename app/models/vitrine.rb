@@ -9,7 +9,7 @@ class Vitrine < ActiveRecord::Base
   has_one :policy, dependent: :destroy
 
   has_many :products, dependent: :destroy
-has_many :reports, as: :reportable
+
   has_one :marketing, dependent: :destroy
   has_many :views, dependent: :destroy
 
@@ -21,8 +21,10 @@ has_many :reports, as: :reportable
   has_many :announcements, dependent: :destroy
   has_many :banners, dependent: :destroy
 
-  
+
+# TODO COUPONS AND REPORT
    has_many :coupons, as: :couponable #
+   has_many :reports, as: :reportable
 
   belongs_to :city
   belongs_to :state
@@ -45,7 +47,6 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
   after_validation :fetch_address
 
 
-has_reputation :votes, source: :user, aggregated_by: :sum
 #usar_como_cnpj_ou_cpf :codigo
 
 

@@ -29,30 +29,16 @@ before_create :confirmation_token
   has_many :conversations,
            through: :conversation_participants
 
-has_many :reports                 # Allow user to report others
- has_many :reports, as: :reportable # Allow user to be reported as well
+
 
   has_many :feedbacks
 
   has_many :comments
 
+# TODO MAKE REPORTS
+as_many :reports                 # Allow user to report others
+ has_many :reports, as: :reportable # Allow user to be reported as well
 
-
-  has_reputation :votes,
-        :source => [
-            { :reputation => :products },
-            { :reputation => :vitrines}]
-
-
-has_many :evaluations, class_name: "ReputationSystem::Evaluation", as: :source
-
-
-      def voted_for?(vitrine)
-      evaluations.where(target_type: vitrine.class, target_id: vitrine.id).present?
-    end
-    def voted_product_for?(product)
-    evaluations.where(target_type: product.class, target_id: product.id).present?
-  end
 
  #has_one_time_password
 
@@ -107,7 +93,7 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
     "#{address_supplement}"
   end
 
-  require 'file_size_validator'
+
 
   mount_uploader :avatar, AvatarUploader
 
