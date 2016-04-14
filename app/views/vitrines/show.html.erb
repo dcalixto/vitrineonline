@@ -66,31 +66,6 @@
 
 
 
-
-<li>
-
-
- <%= pluralize vitrine.reputation_for(:votes).to_i, "Curtida" %>
-  <% if current_user && !current_user.voted_for?(@vitrine) %>
-
-
-
-<% else %>
-    <%= link_to "Curtir", vote_vitrine_path(@vitrine, type: "Curtir"), method: "post" %>
-  <% end %>
-
-</li>
-
-
-
-
-
-
-
-
-
-
-
         <li>
         <%= social_share_button_tag(truncate(@vitrine.user.name, :length => 20), :url => url_for(:action => :show, :id => @vitrine.user.id, :only_path => false))  %>
 </li>

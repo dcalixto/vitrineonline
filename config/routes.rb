@@ -1,11 +1,9 @@
 Vitrineonline::Application.routes.draw do
 
-
-
  scope 'dcalixto84' do
   namespace :admin do
       root :to => 'base#index'
-      resources :users, :vitrines, :feedbacks,:orders, :votes do
+      resources :users, :vitrines, :feedbacks,:orders do
         delete 'destroy_all', :on => :collection
       end
     end
@@ -22,8 +20,6 @@ end
   resources :contacts, only: [:new, :index, :create]
 
   #REPORTS
-
-
   resources :reports, only: [:new, :create]
 
   # USER
@@ -32,30 +28,18 @@ end
 
     member do
       match :feedbacks
-         get :update_city_select, as: :update_city_select
+      #get :update_city_select, as: :update_city_select
       get :products
        get :confirm_email
        match :report
-
        get :message_box
     end
-
 
     collection do
        match '/:id' => 'users#show', via: [:get, :post], as: :feedbacks
        match '/:id/feedbacks' => 'users#feedbacks', via: [:get, :post], as: :search_feedbacks
     end
-
-
   end
-
-# VOTES
-resources :votes, only:[:index ] do
-  collection do
-get :products
-get :vitrines
-  end
-end
 
 
   # FEEDBACKS
@@ -82,7 +66,7 @@ end
 
  end
   end
-   match '/offers/' => 'offers#index', via: [:get], as: :offers
+
   # VITRINE
   resources :vitrines,  only: [:new, :create,:edit,:update,:show] do
     resources :policies, only: [:edit, :update]
@@ -106,8 +90,6 @@ end
       end
     end
 
-
-
  resources :views, only: [:index] do
    collection do
      match '/' => 'views#index', via: [:get, :post], as: :views
@@ -120,8 +102,7 @@ end
         get :policy
       get :message
       match :products
-
-             get :message_box
+      get :message_box
     end
 
 
@@ -129,17 +110,12 @@ end
     collection do
       match '/:id/vitrine_feedbacks' => 'vitrines#show', via: [:get, :post], as: :vitrine_feedbacks
      match '/:id/vitrine_products' => 'vitrines#show', via: [:get, :post], as: :vitrine_products
-
  match '/:id/feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :search_feedbacks
     end
 
     member do
       get :sales_report
-      get :update_vitrine_select, as: :update_vitrine_select
-      put 'like', to: 'vitrines#upvote'
-      put 'dislike', to: 'vitrines#downvote'
-      post :vote
-
+    #  get :update_vitrine_select, as: :update_vitrine_select
    match :report
       get :tag
       match :feedbacks
@@ -174,18 +150,10 @@ end
        match :sent
        match :paid
 
-match '/sold?status=sent ' => 'orders#sold', via: [:get, :post], as: :sent
-
-
-match '/sold?status=paid ' => 'orders#sold', via: [:get, :post], as: :paid
-
-
-match '/purchased?status=paid' => 'orders#purchased', via: [:get, :post], as: :paid
-
-match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :sent
-
-
-
+match '/sold?status=sent ' => 'orders#sold', via: [:get, :post], as: :vitrine_sent
+match '/sold?status=paid ' => 'orders#sold', via: [:get, :post], as: :vitrine_sold
+match '/purchased?status=paid' => 'orders#purchased', via: [:get, :post], as: :user_paid
+match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :user_sent
 
     end
   end
@@ -194,14 +162,10 @@ match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :s
 
   # CATEGORIES
   resources :genders, only: [:show]
-
   resources :categories, only: [:show]
-
   namespace :categories, as: '' do
     resources :subcategories, only: [:show]
   end
-
-
 
 
   get 'tags/tag' => 'products#index', :as => :tag
@@ -216,10 +180,7 @@ match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :s
       get :tag
       get :feedbacks
       get :next_step
-      put 'like', to: 'products#upvote'
-      put 'dislike', to: 'products#downvote'
-   match :report, to: 'products#report'
-
+      match :report, to: 'products#report'
           get :message_box
     end
 
@@ -245,28 +206,19 @@ match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :s
   namespace :dynamic_selectable do
     get 'categories/:category_id/subcategories', to: 'category_subcategories#index', as: :category_subcategories
     get 'gender/:gender_id/categories', to: 'gender_categories#index', as: :gender_categories
-
-
     get 'state/:state_id/cities', to: 'state_cities#index', as: :state_cities
-
-
   end
 
 
 resources :departments, only: [:index]
 resources :rankings, only: [:index]
 
-
-
   resources :home, only: [:index]
-
   # FOOTERS & TOP NAV
   resources :contacts, only: [:index, :new, :create]
 
   # MISC
   root to: 'home#index'
-
-
 
 
 

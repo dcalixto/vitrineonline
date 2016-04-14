@@ -106,8 +106,6 @@
         <% end %>
         </li>
 
-
-    <li> <%= pluralize @product.reputation_for(:votes).to_i, "Curtida" %></li>
     </ul>
 
 
@@ -170,11 +168,6 @@
           </li>
 
 
-
-
-
-
-          <li><% if current_user && !current_user.voted_for?(@product) %></li>
 
         </ul>
 
@@ -330,11 +323,6 @@
 
       </div>
 
-      <div class="subcontent">
-        <h2>Ofertas</h2>
-        <%= content_tag(:span, nil, :class => 'offer_stamp') %>
-        <%= @product.offers.first %>
-      </div>
 
       <div class="subcontent">
 
@@ -453,7 +441,7 @@
       <%  @similarities_for_vitrine.each do |item| %>
 
     <li>  <%= link_to product_path(item) do  %>
-      <%= image_tag item.images.first.url(:small).to_s %>
+      <%= image_tag item.images.first.url(:thumb).to_s %>
       <%= item.name %>
       <%= item.price %>
       <% end %>
