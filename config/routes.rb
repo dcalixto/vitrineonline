@@ -42,6 +42,12 @@ end
   end
 
 resources :images
+resources :logo
+resources :avatar
+resources :banner
+
+
+
   # FEEDBACKS
   resources :feedbacks, only: [:create] do
     collection do
