@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       #  cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, httponly: true, secure: !(Rails.env.test? || Rails.env.development?) }
 
           #  end
-
+  expire_fragment("busca", "logo")
       redirect_to root_url # , :notice => "Logado!"
     else
       flash.now[:alert] = 'Email ou Password inválido'

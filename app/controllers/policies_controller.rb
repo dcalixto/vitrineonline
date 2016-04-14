@@ -1,7 +1,7 @@
 # encoding: utf-8
 class PoliciesController < ApplicationController
   before_filter :authorize, :correct_policy, only: [:edit, :update]
-
+cache_sweeper :policy_sweeper
   def edit
     @policy = Policy.find(params[:id])
   end

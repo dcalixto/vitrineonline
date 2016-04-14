@@ -1,7 +1,8 @@
 # encoding: utf-8
 class MessagesController < ApplicationController
   before_filter :authorize
-  # caches_action :show,  :layout => false
+  cache_sweeper :message_sweeper
+
 
 
   def create

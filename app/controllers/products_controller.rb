@@ -2,9 +2,10 @@
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
-
+cache_sweeper :product_sweeper
   def index
     @products = Product.aggs_search(params)
+
   end
 
   def new
@@ -62,7 +63,8 @@ end
     respond_to do |format|
       format.html do
         if @product.update_attributes(params[:product])
-          expire_fragment('product_show', 'product')
+
+
           redirect_to(action: :show, id: @product, only_path: true)
           flash[:success] = "#{@product.name} atualizado"
         else
@@ -138,6 +140,7 @@ end
     if @product.save
       # redirect_to wizard_path(steps.first, product_id: @product.id)
       redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html)
+  
     else
       render :new, format: :html
     end

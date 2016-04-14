@@ -3,7 +3,7 @@ require 'product_recommender'
 class VitrinesController < ApplicationController
    before_filter :authorize, :correct_vitrine, only: [:edit, :update]
    before_filter :log_view , only: [:show]
-
+cache_sweeper :vitrine_sweeper
   def show
     @vitrine = Vitrine.find(params[:id])
 
@@ -109,6 +109,8 @@ end
 
           redirect_to(action: 'edit', id: @vitrine, format: :html, only_path: true)
           flash[:notice] = "#{@vitrine.name} atualiazada"
+
+
         else
           render :edit, format: :html
         end

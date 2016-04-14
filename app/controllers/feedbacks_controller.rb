@@ -2,7 +2,7 @@
 class FeedbacksController < ApplicationController
   before_filter :authorize, :awaiting_count
   skip_after_filter :flash_to_headers
-
+cache_sweeper :feedback_sweeper
   def awaiting_count
     @awaiting_feedback_count = Order.awaiting_feedback(current_user).count
   end
@@ -33,6 +33,7 @@ class FeedbacksController < ApplicationController
       flash[:success] = 'Obrigado'
       @order.feedback = feedback
       @order.save
+
     else
       flash[:error] = 'Erro'
     end

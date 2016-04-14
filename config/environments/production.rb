@@ -11,7 +11,7 @@ Vitrineonline::Application.configure do
   config.assets.compile = true
   # Compress JavaScripts and CSS
   config.assets.compress = true
-  config.cache_store = :dalli_store
+  config.cache_store = :dalli_store, '127.0.0.1:11211'
 
   config.lograge.enabled = true
 

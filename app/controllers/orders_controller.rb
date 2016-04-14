@@ -2,7 +2,7 @@
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
   protect_from_forgery except: [:ipn_notification]
-
+cache_sweeper :order_sweeper
 
   def purchased
     if current_user.cart

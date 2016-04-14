@@ -2,7 +2,7 @@
 require 'product_recommender'
 class UsersController < ApplicationController
   before_filter :authorize, :correct_user, only: [:edit, :update, :destroy]
-
+cache_sweeper :user_sweeper
 
   def show
     @user = User.find(params[:id])
@@ -57,6 +57,8 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.registration_confirmation(@user).deliver
     redirect_to root_url
+
+
 
       flash[:success] = "Por favor confirme seu endereço de email para continuar".html_safe
     else
@@ -114,6 +116,7 @@ class UsersController < ApplicationController
         if @user.update_attributes(params[:user])
           redirect_to(action: :edit, id: @user, only_path: true,format: :html)
           flash[:notice] = 'Conta atualiazada'
+
         else
           render :edit
         end
