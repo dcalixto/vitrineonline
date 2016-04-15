@@ -16,8 +16,6 @@ class User < ActiveRecord::Base
 
 before_create :confirmation_token
 
-
-
   has_one :vitrine, dependent: :destroy
   has_one :cart, dependent: :destroy
 
@@ -66,16 +64,7 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
   scope :online, lambda{ where("updated_at > ?", 5.minutes.ago) }
 
 
-
-
-
-
-
-
   after_validation :fetch_address
-
-
-
 
   after_commit :flush_cache
 
@@ -207,9 +196,6 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
-
-
-
 
 
   def email_activate

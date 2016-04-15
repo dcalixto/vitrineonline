@@ -31,7 +31,7 @@ class Category < ActiveRecord::Base
     Rails.cache.delete([self.class.name, id])
   end
 
-  def cached_gender
-    Gender.cached_find(gender_id)
+  def cached_categiry
+    Category.cached_find(category_id)
   end
 end

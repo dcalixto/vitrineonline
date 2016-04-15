@@ -1,1 +1,1 @@
-$redis_onlines = Redis.new
+#$redis_onlines = Redis.new

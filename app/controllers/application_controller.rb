@@ -3,8 +3,6 @@ require 'will_paginate/array'
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-
-
  has_mobile_fu
 
   include SessionsHelper
@@ -18,7 +16,6 @@ class ApplicationController < ActionController::Base
       response.headers['Strict-Transport-Security'] = "max-age=31536000; includeSubDomains"
     end
   end
-
 
 
 #after_filter :set_online
@@ -125,9 +122,6 @@ end
       flash[:error] = 'Esta conta foi banida por violar os termos de uso e privacidade'
     end
   end
-
-
-
 
 
 

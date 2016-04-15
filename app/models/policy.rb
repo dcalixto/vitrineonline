@@ -16,8 +16,6 @@ class Policy < ActiveRecord::Base
   validates :paypal, uniqueness: { case_sensitive: false },
                      length: { within: 1..70 }
 
-
-
-  validates_presence_of :guarantee, nil: false
+  
 
 end
