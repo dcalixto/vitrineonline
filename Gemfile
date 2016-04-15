@@ -119,6 +119,8 @@ gem 'prawn'#, '1.0.0.rc2'
 #gem 'mymoip'
 
 
+#observers
+
 
 # ADMIN & SECURITY
 
@@ -131,6 +133,7 @@ gem 'rack-secure_headers', git: 'https://github.com/dcalixto/rack-secure_headers
 gem 'no_cache_control', git: 'https://github.com/dcalixto/no_cache_control.git'
 
 # IMAGE
+
 
 gem 'carrierwave','~> 0.9.0'
 gem 'mini_magick'

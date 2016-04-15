@@ -16,7 +16,9 @@ Produtos achados</p>
 <% @products.each do |product|%>
 <td>
 <%=link_to product_path(product.id), :class=>"product" do %>
-<%=image_tag product.images.first.url(:small).to_s, :class=>"productImg" %>
+<%if product.images.present? %>
+<%=image_tag product.images.first.ifoto.url(:small).to_s, :class=>"productImg" %>
+<% end %>
 <span class="productName">
 <%=product.name %></span>
 <span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>

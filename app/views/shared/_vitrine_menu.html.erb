@@ -10,24 +10,13 @@
         <li><%= link_to "Política" , edit_vitrine_policy_path(current_vitrine, current_vitrine.policy.id)%></li>
           <li><%= link_to "Banner", new_vitrine_banner_path(current_vitrine) %></li>
       </ul>
-      <h2>
-        <span class="texto">Produtos</span>
-      </h2>
-      <ul>
-        <li><%= link_to "Adicionados", vitrine_stocks_path(current_vitrine.id) %></li>
-        <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[0] %>">
-          <%= link_to 'Vendidos', "#{sold_orders_path}?status=#{Order.statuses[0]}" %>
-        </li>
-        <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[1] %>">
-          <%= link_to 'Enviados', "#{sold_orders_path}?status=#{Order.statuses[1]}" %>
-        </li>
-      </ul>
+
       <h2>
         <span class="texto">Marketing</span>
       </h2>
       <ul>
         <li><%= link_to "Anúncio", new_vitrine_announcement_path(current_vitrine)  %></li>
-        <li><%= link_to "Promoções",  new_vitrine_coupon_path(current_vitrine)  %></li>
+        
         <li><%= link_to "Visualizações", vitrine_views_path(current_vitrine)  %></li>
         <li><%= link_to "Slogan & Site", edit_vitrine_marketing_path(current_vitrine, current_vitrine.marketing.id)  %></li>
       </ul>

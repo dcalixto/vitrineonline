@@ -21,20 +21,27 @@ class ApplicationController < ActionController::Base
 
 
 
-after_filter :set_online
+#after_filter :set_online
+after_filter :user_activity
 
-def set_online
-      if !!current_user
+#private
+
+
+
+#def set_online
+  #    if !!current_user
         # using separate Redis database
         # such as $redis_onlines = Redis.new db: 15
         # value not need, only key
-        $redis_onlines.set( current_user.id, nil, ex: 10*60 )
+    #    $redis_onlines.set( current_user.id, nil, ex: 10*60 )
         # 'ex: 10*60' - set time to live - 10 minutes
-      end
-    end
+    #  end
+    #end
 
 private
-
+def user_activity
+  current_user.try :touch
+end
 
 
  # USER HELPERS

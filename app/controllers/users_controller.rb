@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 cache_sweeper :user_sweeper
 
   def show
-    @user = User.find(params[:id])
+    @user = User.cached_find(params[:id])
     canonical_url url_for(@user)
 
     @total_from_sellers = Feedback.by_participant(@user, Feedback::FROM_SELLERS).count
@@ -22,7 +22,7 @@ cache_sweeper :user_sweeper
   end
 
   def feedbacks
-    @user = User.find(params[:id])
+    @user = User.cached_find(params[:id])
     # @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
 
     @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
@@ -36,7 +36,7 @@ cache_sweeper :user_sweeper
 
 
   def message_box
-    @user = User.find(params[:id])
+    @user = User.cached_find(params[:id])
 
     respond_to do |format|
       format.html { render 'message_box'}

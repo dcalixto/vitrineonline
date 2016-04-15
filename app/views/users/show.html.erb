@@ -3,6 +3,8 @@
   <% breadcrumb :user, @user %>
   <%=render 'shared/flash_messages' %>
 </div>
+
+<%cache "user_info_box" do %>
 <div class="box10">
 
   <div class="block margin_top">
@@ -65,7 +67,7 @@
 </div>
 </div>
 
-
+<% end %>
 
 <div class="box4">
   <div class="block margin_top">

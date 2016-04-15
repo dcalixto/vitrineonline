@@ -106,6 +106,8 @@
         <% end %>
         </li>
 
+
+    <li> <%= pluralize @product.reputation_for(:votes).to_i, "Curtida" %></li>
     </ul>
 
 
@@ -124,21 +126,17 @@
 
 </div>
 
-<%= form_tag buy_now_to_carts_path(@product) do %>
-<div class="box10">
 
+<div class="box10">
+  <%= social_share_button_tag(truncate(@product.vitrine.name, :length => 20), :url => url_for(:action => :show, :id => @product.vitrine.id, :only_path => false))  %>
+
+<%= form_tag buy_now_to_carts_path(@product) do %>
   <div class="block">
-    <%= social_share_button_tag(truncate(@product.vitrine.name, :length => 20), :url => url_for(:action => :show, :id => @product.vitrine.id, :only_path => false))  %>
 
     <div class="tip_box">
     <div class="content">
 
       <ul>
-
-        <!-- Fim-->
-
-        <!--Descrição   -->
-
         <li>
 
           <h3 id="item_price"><%= number_to_currency(@product.price, :unit => "R$") %></h3>
@@ -168,7 +166,6 @@
           </li>
 
 
-
         </ul>
 
 
@@ -176,7 +173,7 @@
       </div>
 
 
-<% end %>
+
 
       <div class="horizontal_buttons">
         <ul>
@@ -206,7 +203,7 @@
 
             <%end %>
 
-        
+            <%end %>
 
           </li>
         </ul>
@@ -218,11 +215,16 @@
 
     </div>
 
-
+ <% end %>
   <!-- Fim-->
 </div>
 
-<%end %>
+
+
+
+
+
+
 
 <div class="box1">
   <div class="block">
@@ -323,6 +325,11 @@
 
       </div>
 
+      <div class="subcontent">
+        <h2>Ofertas</h2>
+        <%= content_tag(:span, nil, :class => 'offer_stamp') %>
+        <%= @product.offers.first %>
+      </div>
 
       <div class="subcontent">
 
@@ -441,7 +448,7 @@
       <%  @similarities_for_vitrine.each do |item| %>
 
     <li>  <%= link_to product_path(item) do  %>
-      <%= image_tag item.images.first.url(:thumb).to_s %>
+      <%= image_tag item.images.first.url(:small).to_s %>
       <%= item.name %>
       <%= item.price %>
       <% end %>

@@ -7,6 +7,8 @@
 <%=render 'shared/flash_messages' %>
 <%=render 'shared/error_messages', :target=> @vitrine %>
 </div>
+
+<% cache "vitrine_block" do %>
 <div class="block margin_top">
 
 
@@ -76,8 +78,10 @@
 </div>
 </div>
 </div>
+<% end %>
 </div>
 
+<% cache "vitrine_address"do%>
 <div class="box11">
   <div class="block">
   <div class="square_box">
@@ -107,3 +111,4 @@
 </div>
 </div>
 </div>
+<% end %>

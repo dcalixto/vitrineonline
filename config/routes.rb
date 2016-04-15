@@ -83,12 +83,6 @@ resources :banner
     resources :marketings, only: [:edit, :update]
 
 
-     resources :stocks, only: [:index, :destroy] do
-      collection do
-         match '/' => 'stocks#index', via: [:get, :post], as: :products
-
-      end
-    end
 
     resources :invoices, only: [:index, :show] do
       collection do
@@ -137,6 +131,16 @@ resources :banner
 
   resources :carts, only: [:index]
   resources :orders, only: [:index, :update, :destroy] do
+
+
+    resources :stocks, only: [:index, :destroy] do
+     collection do
+        match '/' => 'stocks#index', via: [:get, :post], as: :products
+
+     end
+    end
+
+
     member do
       get :checkout
       get :buy
@@ -149,6 +153,9 @@ resources :banner
        match :paid
 
     end
+
+
+
 
     collection do
        match :sold

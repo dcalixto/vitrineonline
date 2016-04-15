@@ -49,7 +49,19 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
 
 #usar_como_cnpj_ou_cpf :codigo
 
+after_commit :flush_cache
 
+def self.cached_find(id)
+  Rails.cache.fetch([name, id], expires_in: 5.minutes) { find(id) }
+end
+
+def flush_cache
+  Rails.cache.delete([self.class.name, id])
+end
+
+def cached_vitrine
+  Vitrine.cached_find(vitrine_id)
+end
 
   def vitrine_name
     "#{name}"

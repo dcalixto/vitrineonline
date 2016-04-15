@@ -13,6 +13,8 @@ module Vitrineonline
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += %W(#{config.root}/vendor)
+config.autoload_paths += %W( #{Rails.root}/app/sweepers )
+
     # config.autoload_paths += %W(#{config.root}/lib/validators)
 
     config.after_initialize do
@@ -31,6 +33,9 @@ module Vitrineonline
     config.i18n.locale = 'pt-BR'
     config.time_zone = 'Brasilia'
     config.active_record.observers = [:message_observer]
+config.active_record.observers = [:user_sweeper,:policy_sweeper, :feedback_sweeper, :vitrine_sweeper]
+
+
     # config.i18n.enforce_available_locales = true
 
     # Enable escaping HTML in JSON.
@@ -47,7 +52,7 @@ module Vitrineonline
 
     config.assets.version = '1.0'
 
-  
+
 
 
   end

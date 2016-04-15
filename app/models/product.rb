@@ -87,6 +87,22 @@ end
 
 
 
+   after_commit :flush_cache
+
+   def self.cached_find(id)
+     Rails.cache.fetch([name, id], expires_in: 5.minutes) { find(id) }
+   end
+
+   def flush_cache
+     Rails.cache.delete([self.class.name, id])
+   end
+
+   def cached_product
+    Product.cached_find(product_id)
+   end
+
+
+
   scope :for_ids_with_order, ->(ids) {
     order = ids.blank? ? nil : "(#{ids.map{|i| "id=#{i}"}.join(',')}) DESC"
     where(:id => ids).order(order)

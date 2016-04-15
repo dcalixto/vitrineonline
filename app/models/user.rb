@@ -55,14 +55,41 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
 
 
 
+#  def online?
+  #  $redis_onlines.exists( self.id )
+#  end
+
   def online?
-    $redis_onlines.exists( self.id )
+    updated_at > 5.minutes.ago
   end
+
+  scope :online, lambda{ where("updated_at > ?", 5.minutes.ago) }
+
+
+
+
+
 
 
 
   after_validation :fetch_address
 
+
+
+
+  after_commit :flush_cache
+
+  def self.cached_find(id)
+    Rails.cache.fetch([name, id], expires_in: 5.minutes) { find(id) }
+  end
+
+  def flush_cache
+    Rails.cache.delete([self.class.name, id])
+  end
+
+  def cached_user
+    User.cached_find(user_id)
+  end
 
 
   def full_name

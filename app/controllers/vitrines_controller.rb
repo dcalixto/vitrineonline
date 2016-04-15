@@ -5,7 +5,7 @@ class VitrinesController < ApplicationController
    before_filter :log_view , only: [:show]
 cache_sweeper :vitrine_sweeper
   def show
-    @vitrine = Vitrine.find(params[:id])
+    @vitrine = Vitrine.cached_find(params[:id])
 
     if request.path != vitrine_path(@vitrine)
       redirect_to @vitrine, status: :moved_permanently
@@ -32,7 +32,7 @@ cache_sweeper :vitrine_sweeper
   end
 
   def feedbacks
-    @vitrine = Vitrine.find(params[:id])
+    @vitrine = Vitrine.cached_find(params[:id])
     # @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
     @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
@@ -45,19 +45,19 @@ cache_sweeper :vitrine_sweeper
 
 
   def vitrine_feedbacks
-      @vitrine = Vitrine.find(params[:id])
+      @vitrine = Vitrine.cached_find(params[:id])
      render :show
    end
 
    def vitrine_products
-         @vitrine = Vitrine.find(params[:id])
+         @vitrine = Vitrine.cached_find(params[:id])
 
       render :show
     end
 
 
     def message_box
-      @vitrine = Vitrine.find(params[:id])
+      @vitrine = Vitrine.cached_find(params[:id])
 
       respond_to do |format|
         format.html { render 'message_box'}
@@ -72,16 +72,16 @@ cache_sweeper :vitrine_sweeper
     @vitrine = current_vitrine
   end
 
-  def vote
-    value = params[:type] == "Curtir" ? 1 : 0
- @vitrine = Vitrine.find(params[:id])
- @vitrine.add_or_update_evaluation(:votes, value, current_user)
- redirect_to :back
-  end
+#  def vote
+#    value = params[:type] == "Curtir" ? 1 : 0
+ #@vitrine = Vitrine.find(params[:id])
+ #@vitrine.add_or_update_evaluation(:votes, value, current_user)
+ #redirect_to :back
+#  end
 
 
   def tags
-    @vitrine = Vitrine.find(params[:id])
+    @vitrine = Vitrine.cached_find(params[:id])
     @tags = ActsAsTaggableOn::Tag.where('tags.name LIKE ?', "%#{params[:q]}%")
     respond_to do |format|
       format.json { render json: @tags.collect { |t| { id: t.name, name: t.name } } }
@@ -162,7 +162,7 @@ protected
 
   def log_view
    ip_addr = request.remote_ip
-   @vitrine = Vitrine.find(params[:id])
+   @vitrine = Vitrine.cached_find(params[:id])
    @views = @vitrine.views.group(:ip_address).size[ip_addr]
    if @views
      if @views >= 1

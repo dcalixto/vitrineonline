@@ -1,6 +1,6 @@
 <% title "Editar #{@product.name}" %>
 
-<%= render "shared/vitrine_menu" %>
+<%= render "shared/order_menu" %>
 
 <div class="box4">
   <%= render 'shared/flash_messages' %>
@@ -13,11 +13,13 @@
 
   <!-- Seção-->
   <div class="block margin_top">
+
+      <div class="square_box">
     <h4>
       <%= link_to @product.name, product_path(@product) %>
     </h4>
 
-    <div class="content">
+    <div class="subcontent">
 
       <%= p.input :quantity, :label =>"Quantidade", :as => :number %>
       <span>
@@ -33,6 +35,6 @@
       <% end %>
       <% end %>
       <% end %>
-
+    </div>
     </div>
   </div>

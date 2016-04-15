@@ -1,5 +1,5 @@
 <% title "Produtos Adicionados" %>
-<%= render "shared/vitrine_menu" %>
+<%= render "shared/order_menu" %>
 `
 <!--STOCK OF ITEMS  -->
 <div class="box3">
@@ -12,7 +12,7 @@
 
     <div class="square_box">
 
-    <h1>Produtos adicionados</h1>
+    <h4>Itens adicionados</h4>
 
 
     <div class="subcontent">
@@ -23,7 +23,7 @@
         <tr>
           <td>
 
-            <%= search_form_for @q, url: products_vitrine_stocks_path, method: :post  do |f| %>
+            <%= search_form_for @q, url: products_order_stocks_path, method: :post  do |f| %>
 
             <%= f.text_field :id_cont %>
             <%= f.submit "Buscar", :class=>"btn_grey" %>

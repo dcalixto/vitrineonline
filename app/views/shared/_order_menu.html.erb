@@ -1,0 +1,38 @@
+<!--USER MENU  -->
+
+<div class="box11">
+
+  <div id="menu-box">
+    <div class="menu_content">
+<h2 class="h1_menu">Pedidos</h2>
+
+<h2>
+  <span class="texto">Usuário</span>
+</h2>
+<ul>
+  <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[0] %>">
+    <%= link_to 'Comprados', "#{purchased_orders_path}?status=#{Order.statuses[0]}" %>
+  </li>
+  <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[1] %>">
+    <%= link_to 'Marcado como Enviado pelo Vendedor', "#{purchased_orders_path}?status=#{Order.statuses[1]}" %>
+  </li>
+</ul>
+  <h2>
+    <span class="texto">Vitrine</span>
+  </h2>
+<ul>
+<li><%= link_to "Adicionados", order_stocks_path(current_vitrine.id) %></li>
+  <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[0] %>">
+    <%= link_to 'Vendidos', "#{sold_orders_path}?status=#{Order.statuses[0]}" %>
+  </li>
+  <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[1] %>">
+    <%= link_to 'Enviados', "#{sold_orders_path}?status=#{Order.statuses[1]}" %>
+  </li>
+
+</ul>
+
+
+
+    </div>
+  </div>
+</div>

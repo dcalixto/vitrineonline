@@ -16,17 +16,17 @@ cache_sweeper :product_sweeper
   end
 
 
-  def vote
-    value = params[:type] == "Curtir" ? 1 : 0
- @product = Product.find(params[:id])
- @product.add_or_update_evaluation(:votes, value, current_user)
- redirect_to :back
-  end
+#  def vote
+#    value = params[:type] == "Curtir" ? 1 : 0
+# @product = Product.find(params[:id])
+ #@product.add_or_update_evaluation(:votes, value, current_user)
+ #redirect_to :back
+  #end
 
 
 def report
   @user = current_user
-  @product = Product.find(params[:id])
+  @product = Product.cached_find(params[:id])
   #current_user.reports @product
   #current_user.reports.save
 
@@ -55,7 +55,7 @@ end
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = Product.cached_find(params[:id])
   end
 
   def update
@@ -85,7 +85,7 @@ end
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.cached_find(params[:id])
     canonical_url url_for(@product)
     @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
     @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
@@ -111,7 +111,7 @@ end
 
   def feedbacks
     begin
-      @product = Product.find(params[:id])
+      @product = Product.cached_find(params[:id])
     rescue
       @product = nil
     end
@@ -140,7 +140,7 @@ end
     if @product.save
       # redirect_to wizard_path(steps.first, product_id: @product.id)
       redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html)
-  
+
     else
       render :new, format: :html
     end
@@ -168,7 +168,7 @@ end
 
   def log_impression
     begin
-      @product = Product.find(params[:id])
+      @product = Product.cached_find(params[:id])
     rescue
       @product = nil
     end
@@ -190,7 +190,7 @@ end
   private
 
   def correct_product
-    @product = Product.find(params[:id])
+    @product = Product.cached_find(params[:id])
     redirect_to login_path unless current_vitrine?(@product.vitrine)
   end
 end

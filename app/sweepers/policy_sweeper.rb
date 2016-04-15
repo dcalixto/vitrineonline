@@ -8,7 +8,7 @@ expire_fragment('policy_menu')
 expire_fragment('busca')
 expire_fragment('logo')
 
-
+expire_fragment('policy_block')
 
 
 
