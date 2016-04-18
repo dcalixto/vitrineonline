@@ -24,7 +24,9 @@
         <%= hidden_field_tag "feedback[#{who}rating]", 0, :id => "feedback_#{order.id}_score" %>
         <tr>
           <td>
-            <%= image_tag(product.f1.url(:table).to_s, :alt => product.name) %>
+            <% if product.images.present? %>
+            <%= image_tag(product.images.first.ifoto.url(:small).to_s, :alt => product.name) %>
+            <% end %>
             <%= link_to product.name, product_path(product), :title => product.name %>
             <br/>
             <% if order.buyer == current_user %>

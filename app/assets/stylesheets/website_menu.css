@@ -9,8 +9,9 @@
   width: auto;
   word-wrap: break-word;
   color: #004B91;
-  border-right: solid 1px #ddd;
   background-color: #f5f5f5;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0,0,0,.05);
 
     }
 
@@ -26,7 +27,13 @@
   word-wrap: break-word;
   color: #004B91;
 
-  background-color: #efefef;
+  
+
+
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0,0,0,.05);
+
 
     }
 

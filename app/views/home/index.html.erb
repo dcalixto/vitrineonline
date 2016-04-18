@@ -12,7 +12,13 @@
 
       <div class="subcontent_top">
     <!-- Slideshow 1 -->
-    <ul class="box-slider">
+
+
+
+
+          <div class="slider">
+
+    <ul>
       <li>
         <%= image_tag('slider1.jpg')  %>
       </li>
@@ -20,14 +26,21 @@
       <li><%= image_tag('slider3.jpg')  %></li>
     </ul>
 
-</div>
 
+    </div>
+</div>
+</div>
 
   <div class="subcontent_top">
 
     <h2>Produtos Mais Vendidos</h2>
+
+
+    <a href="#" class="prev">&lsaquo;</a>
+          <div class="carousel">
+
     <% if @orderables %>
-    <ul class="content-slider">
+    <ul>
          <% orderable.limit(10).each do |p| %>
         <li>
       <%= link_to product_path(p) do  %>
@@ -41,8 +54,9 @@
     </ul>
 <% end %>.
 <% end %>.
-
-
+<a href="#" class="next">&rsaquo;</a>
+     <div class="clear"></div>
+</div>
 </div>
 
 
@@ -50,9 +64,14 @@
 
   <div class="subcontent">
   <h2>Produtos Mais Avaliadas</h2>
+
+
+      <a href="#" class="prev">&lsaquo;</a>
+            <div class="carousel">
+
   <% unless Product.nil? %>
 
-    <ul class="content-slider">
+    <ul>
 
       <% @feedbacks.includes(:products).limit(10).each do |v| %>
 
@@ -63,15 +82,21 @@
 </ul>
   <% end %>
 
-
+  <a href="#" class="next">&rsaquo;</a>
+       <div class="clear"></div>
 </div>
-
+</div>
 
 
 
 
   <div class="subcontent">
   <h2>Vitrines Mais Avaliadas</h2>
+
+
+  <a href="#" class="prev">&lsaquo;</a>
+        <div class="carousel">
+
   <% unless Vitrine.nil? %>
 
     <ul class="content-slider">
@@ -85,12 +110,18 @@
 </ul>
   <% end %>
 
-
+  <a href="#" class="next">&rsaquo;</a>
+       <div class="clear"></div>
+</div>
 </div>
 
 
   <div class="subcontent">
   <h2>Produtos Adicionados Recentemente</h2>
+
+
+  <a href="#" class="prev">&lsaquo;</a>
+        <div class="carousel">
 
 <% if @products %>
 <ul class="content-slider">
@@ -108,7 +139,9 @@
 </ul>
 
 <% end %>
-
+<a href="#" class="next">&rsaquo;</a>
+     <div class="clear"></div>
+</div>
 </div>
 
 

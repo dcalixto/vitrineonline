@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'product_recommender'
+#require 'product_recommender'
 class UsersController < ApplicationController
   before_filter :authorize, :correct_user, only: [:edit, :update, :destroy]
 cache_sweeper :user_sweeper
@@ -10,20 +10,24 @@ cache_sweeper :user_sweeper
 
     @total_from_sellers = Feedback.by_participant(@user, Feedback::FROM_SELLERS).count
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
-    # @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
-
-    @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
-    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
+     @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(:per_page => 22, :page => params[:page])#.order('created_at DESC')
 
     # suggestions for current visitor
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
 
+
+
+
+
+    @products = Product.where(current_user.id).find_with_reputation(:votes, :all, {:conditions => ["votes = ?", 1.0]}).paginate(page: params[:page], per_page: 22)
+
+
+
   end
 
-  def feedbacks
+  def user_feedbacks
     @user = User.cached_find(params[:id])
-    # @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
 
     @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
@@ -35,11 +39,11 @@ cache_sweeper :user_sweeper
 
 
 
-  def message_box
+  def message_user
     @user = User.cached_find(params[:id])
 
     respond_to do |format|
-      format.html { render 'message_box'}
+      format.html { render 'message_user'}
     end
   end
 
@@ -96,15 +100,13 @@ cache_sweeper :user_sweeper
 
 
 
+
+
+
   def products
-    @vitrine = Vitrine.find(params[:id])
 
-    @q = @vitrine.products.ransack(params[:q])
-    @products = @q.result.paginate(page: params[:page], per_page: 22)
 
-    respond_to do |format|
-      format.html { render 'products', layout: false }
-    end
+
   end
 
   def update

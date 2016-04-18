@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def routing
+      render_404
+    end
+
 
 #after_filter :set_online
 after_filter :user_activity

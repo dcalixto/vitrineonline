@@ -8,6 +8,46 @@
   </div>
   <div class="block  margin_top">
 
+
+
+    <div class="square_box">
+
+  <h4>Banners</h4>
+
+    <div class="subcontent">
+
+
+   <%= image_tag(current_vitrine.marketing.banner.url(:mobile).to_s) %>
+
+
+
+    <p class="tip">Os Banners serão redimencionandos para 986 x 215 e 414 x 165</p>
+
+
+
+      <%= form_for(@marketing, :url => vitrine_marketing_path, :method => :post, html: { multipart: true, id: "banner", class: "dropzone"}) do |banner|  %>
+
+
+              <div class="fallback">
+
+                <%= banner.file_field :img %><br>
+                <%= banner.submit "Salvar" %>
+              </div>
+
+
+
+
+
+    <% end %>
+  </div>
+
+  </div>
+
+
+
+
+
+
     <div class="square_box">
     <h4>Slogan</h4>
 

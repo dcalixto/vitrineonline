@@ -1,0 +1,138 @@
+
+
+
+<div class="block">
+
+
+  <div class="aubcontent">
+
+      <%= render 'announcements/announcement_for_all' %>
+
+  </div>
+
+    <div class="content">
+
+
+
+
+<div class="subcontent">
+  <h2>Produtos Similares aos da <%= @vitrine.name %></h2>
+  <%  @similarities.each do |item| %>
+  <%= link_to product_path(item) do  %>
+  <%= image_tag item.images.first.ifoto.url(:small).to_s %>
+  <%= item.name %>
+  <%= item.price %>
+  <% end %>
+  <% end %>
+
+
+</div>
+
+
+  <div class="subcontent">
+<h2>Produtos Adicionados recentemente pela <%=@vitrine.name %></h2>
+
+
+
+<p>Total
+  <%= @vitrine.products.count %>
+  Produtos</p>
+
+
+    <div id="searchResults">
+
+      <table class="product_table">
+        <tbody>
+          <tr>
+<td>
+
+
+
+      <%= render :partial => 'vitrines/product', :collection => @products%>
+</td>
+
+</tr>
+</tbody>
+</table>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+    <div class="subcontent">
+      <h2>Avaliações recebidas recentemente
+      </h2>
+
+
+      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+      <%= render :partial => 'feedbacks/feedbacks' %>
+    </div>
+
+
+    <div class="subcontent">
+      <h2>Formas de Pagamentos disponível</h2>
+      <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
+      <% unless @vitrine.policy.blank? %>
+    </div>
+
+    <div class="subcontent">
+
+      <h2>Formas de Envio disponível</h2>
+
+      <ul>
+
+        <li>
+          <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+        </li>
+
+        <% @vitrine.policy.shippings.each do |shipping| %>
+        <li>
+          <b><%= shipping.kind %></b>
+        </li>
+        <% end %>
+      </ul>
+
+    </div>
+
+    <div class="subcontent">
+      <h2>Garantias Oferecidas pelo Vendedor</h2>
+      <p><%= markdown(@vitrine.policy.guarantee) %></p>
+      <% end %>
+      <% unless @vitrine.policy.shippings.blank? %>
+      <b>Formas de Envio</b>
+      <ul>
+        <% @vitrine.policy.shippings.each do |shipping| %>
+        <li><%= shipping.kind %></li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+
+
+
+
+                <div class="subcontent">
+              <h2>Veja Também</h2>
+
+
+                <ul class="content-slider">
+
+                      <% @suggestions.each do |item| %>
+                        <li>
+                      <%= link_to product_path(item) do  %>
+                      <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
+                      <%= item.name %>
+                        <%= item.price %>
+                      <% end %>
+                      </li>
+                      <% end %>
+            </ul>
+
+
+          </div>
+      </div>

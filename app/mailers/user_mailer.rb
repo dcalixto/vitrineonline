@@ -2,7 +2,7 @@
 
 class UserMailer < ActionMailer::Base
   default from: 'Vitrineonline'
-
+include Resque::Mailer
   #def premailer(message)
   #  message.text_part.body = Premailer.new(message.text_part.body.to_s, with_html_string: true).to_plain_text
   #  message.html_part.body = Premailer.new(message.html_part.body.to_s, with_html_string: true).to_inline_css

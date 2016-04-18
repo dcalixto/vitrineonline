@@ -51,16 +51,31 @@ $desktop: min-width 1200px;
   filter: alpha(opacity=60);
 }
 
-
-.icons_bar,.inner_blue  {
+.blue_bar {  background:#346c9f;}
+.inner_blue  {
 
 
 
 
     height:45px;
-    border-bottom:solid 1px #ddd;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #e5e5e5;
+
+  background-color: #323f8a;
+    background:#346c9f;
+
+    width:100%;
+    display: block;
+
+}
+
+.icons_bar  {
+
+
+
+
+    height:35px;
+
+    background-color: #e6ebf5;
+    border-bottom: 1px solid #d9edf7;
     width:100%;
     display: block;
 
@@ -71,11 +86,10 @@ $desktop: min-width 1200px;
 
 @include breakpoint($mobile) {
 
-  .blue_bar, .inner_blue, .inner_bar {
-      height:55px;
+  .blue_bar, .inner_blue {
+      height:45px;
 
-    background:#3e6fb6;
-      background:#AA3030;
+
     display:block;
 
 
@@ -105,10 +119,8 @@ $desktop: min-width 1200px;
 
 @include breakpoint($tablet) {
   .blue_bar, .inner_blue {
-      height:50px;
+      height:45px;
 
-  background:#3e6fb6;
-    background:#AA3030
 
 
   }
@@ -137,10 +149,7 @@ $desktop: min-width 1200px;
 
 @include breakpoint($notebook) {
   .blue_bar, .inner_blue {
-      height:55px;
-
-  background:#3e6fb6;
-    background:#AA3030
+      height:45px;
 
 
   }
@@ -168,17 +177,17 @@ $desktop: min-width 1200px;
 
 @include breakpoint($desktop){
   .blue_bar, .inner_blue {
-      height:55px;
+        height:45px;
 
-  background:#3e6fb6;
-  background:#AA3030
+
+
 
 
   }
 
   .inner_bar, .inner_search, .inner_icons, .inner_blue_icons {
     margin: 0px auto;
-    min-width: 1200px;
+    min-width: 960px;
       max-width: 1200px;
 
     box-sizing: border-box;

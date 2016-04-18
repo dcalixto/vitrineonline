@@ -19,11 +19,11 @@ class Vitrine < ActiveRecord::Base
   has_many :invoices, through: :orders, source: :transaction
 
   has_many :announcements, dependent: :destroy
-  has_many :banners, dependent: :destroy
+
 
 
 # TODO COUPONS AND REPORT
-   has_many :coupons, as: :couponable #
+  # has_many :coupons, as: :couponable #
    has_many :reports, as: :reportable
 
   belongs_to :city
@@ -103,13 +103,13 @@ end
 
   before_create :build_default_models
 
-  accepts_nested_attributes_for :policy, :products, :banners,
+  accepts_nested_attributes_for :policy, :products, 
                                 :marketing, allow_destroy: true
 
   validates :name, uniqueness: { case_sensitive: false },
                    length: { within: 1..70 }
 
-  attr_accessible :name, :about, :logo, :b1, :banner, :b2, :b3, :website, :ad, :slogan,
+  attr_accessible :name, :about, :logo, :banner,   :ad, :slogan,
                   :address, :neighborhood, :latitude, :longitude,  :neighborhood,  :postal_code, :address_supplement, :code, :about
 
 

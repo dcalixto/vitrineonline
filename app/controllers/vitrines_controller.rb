@@ -46,13 +46,19 @@ cache_sweeper :vitrine_sweeper
 
   def vitrine_feedbacks
       @vitrine = Vitrine.cached_find(params[:id])
-     render :show
+
+     respond_to do |format|
+       format.html { render 'feedbacks'}
+     end
+
    end
 
    def vitrine_products
          @vitrine = Vitrine.cached_find(params[:id])
 
-      render :show
+         respond_to do |format|
+           format.html { render 'products'}
+         end
     end
 
 
@@ -63,6 +69,17 @@ cache_sweeper :vitrine_sweeper
         format.html { render 'message_box'}
       end
     end
+
+
+    def about
+      @vitrine = Vitrine.cached_find(params[:id])
+
+      respond_to do |format|
+        format.html { render 'about'}
+      end
+    end
+
+
 
   def new
     @vitrine = Vitrine.new

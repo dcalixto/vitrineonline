@@ -8,106 +8,13 @@
 </div>
 
 
-<% cache 'user_block' do %>
-<div class="box5">
-<div class="block margin_top">
 
-  <div class="square_box">
-    <h4>Configuração
-    </h4>
-
-<div class="subcontent">
-
-<% unless current_user.city.blank? %>
-<%=image_tag "http://maps.google.com/maps/api/staticmap?size=550x150&sensor=false&zoom=16&markers=#{ current_user.address}" %>
-<% end %>
-</div>
-</div>
-
-<div class="square_box">
-  <h4>Avatar</h4>
-<div class="subcontent">
-
-<div class="preview-template">
-<%=image_tag @user.avatar.url(:thumb).to_s %>
-</div>
-<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<%=form_for(@user, :method=> :put, html: { multipart: true, class: "dropzone", id: "user_avatar_dropzone"}) do |f| %>
-<div class="fallback">
-<%=f.file_field :avatar %><br>
-<%=f.submit "Salvar" %>
-</div>
-<% end %>
-</div>
-</div>
+<%=render "users/edit" %>
 
 
-<div class="square_box">
-  <h4>Email</h4>
-<div class="subcontent">
-
-<p class="tip">Seu email atual</p>
-<%=semantic_form_for(@user, html: { id: 'email' }) do |em| %>
-<%=em.inputs do %>
-<%=em.input :email, :as=> :email, :label => "Email" %>
-<%=em.input :email_confirmation, :as=> :email, :label => "Confirmar Email" %>
-<%=em.actions do %>
-<%=em.action :submit, :label=> "Salvar", :button_html => { :class => "btn"} %>
-<% end %>
-<% end %>
-<% end %>
-</div>
-</div>
-
-<div class="square_box">
-
-<h4>Endereço</h4>
-
-<div class="subcontent">
-<p class="tip">Adicione o seu endereço de entrega para facilitar a vida do vendedor</p>
-<%=form_for @user, :method=> :put do |ad| %>
-
-<%= ad.text_field  :address, :label=> "Endereço" %>
-<%=ad.text_field  :neighborhood, :label=> "Bairro"%>
-<%=ad.text_field  :postal_code, :label=> "CEP"%>
-<%=ad.text_field  :address_supplement, :as=> :text, :label => "Complemento" %>
-
-<div class="form-group">
-  <%= ad.label :state_id, 'Estado' %>&nbsp;
-  <%= dynamic_collection_select :user, :state_id, :city, State.all, :id, :code,
-{ include_blank: false, submit_with_form: true, :prompt => 'Selecionar Estado'  }, { class: 'form-control' } %>
-</div>
-
-<div class="form-group">
-  <%= ad.label :city_id, 'Cidade' %>&nbsp;
-  <%= ad.collection_select :city_id, [], :name,  {include_blank: false, :prompt => 'Selecionar Cidade'}, { class: 'form-control' } %>
-</div>
 
 
-<%=ad.submit"Salvar",  :class => "btn" %>
-<% end %>
-</div>
-</div>
 
-
-<div class="square_box">
-<h4>Encerrar Conta</h4>
-<div class="subcontent">
-
-<p>
-<b>O que acontece quando você fechar sua conta?</b>
-</p>
-<br>
-<p>Seu perfil de compras, não serão exibidos na vitrineonline. As pessoas que tentarem ver o seu perfil , ou uma das avaliações da de seu perfil vai ver uma mensagem que a página não está disponível.
-</p>
-<br>
-<%=button_to 'Encerrar', current_user, :data=> { :confirm => 'Confirmar?' }, method: :delete, :class => 'btn_red' %>
-</div>
-</div>
-</div>
-</div>
-
-<% end %>
 
 <% cache 'user_address' do %>
 <div class="box11">

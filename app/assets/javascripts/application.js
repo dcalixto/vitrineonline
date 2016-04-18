@@ -8,7 +8,6 @@
 //= require typeahead
 //= require jquery.tokeninput
 //= require jquery.tipsy
-//= require lightslider.min
 //= require jquery-dynamic-selectable
 //= require select2
 //= require social-share-button
@@ -21,20 +20,32 @@
 //= stretchtext
 //= dropzone_banner
 //= readmore
+
 //= tipsy
 
+//= require jquery.bettertabs.min
+
+//= require jquery.sliderkit
 
 //= require_tree .
 
+jQuery('.bettertabs').bettertabs();
 
 
+
+
+
+
+
+
+$(document).ready(function() {
 $('vitrine_about').readmore({
   speed: 75,
   moreLink: '<a href="#">Ler Mais</a>'
 
 });
 
-
+});
 
 
 $(document).ready(function() {
@@ -58,7 +69,7 @@ $(document).ready(function() {
         );
     });
 });
-
+// FRONT PAGE TABS
 $(document).ready(function() {
 $("#main-nav").menuAim({
     rowSelector: "li.parentnav",
@@ -87,24 +98,7 @@ $(document).ready(function() {
 
 // LIGHTSLIDER
 
-$(document).ready(function() {
-  $(".box-slider").lightSlider({
-    loop: true,
-    keyPress: true,
-    auto: true,
-    item: 1,
-    pause: 7000,
-  });
-});
 
-$(document).ready(function() {
-  $(".content-slider").lightSlider({
-    loop: false,
-    keyPress: true,
-    auto: false
-  /*pause: 7000,*/
-  });
-});
 
 
 
@@ -217,18 +211,6 @@ $(document).ready(function(){
 
 
 
-
-
-// CUSTOM FORM SUBMIT
-//$(document).ready(function() {
-  //$('a[data-submit-form]').click(function(e) {
-    //e.preventDefault();
-   // $(this).closest('form').attr('action', $(this).attr('href')).submit();
- // });
-//});
-
-
-
 // POSTS
 var bind_comment_handler = function() {
   $('.comment_input').unbind('keyup');
@@ -320,3 +302,18 @@ $(function() {
           i = i + 1;
       });
   }
+
+
+
+  jQuery(document).ready(function($) {
+  $(".carousel_show").sliderkit({
+          auto:false,
+          autospeed:4000,
+          shownavitems:3,
+          circular:false,
+          fastchange:false,
+          scrolleasing:"easeOutExpo", //"easeOutBounce, easeOutBack"
+          scrollspeed:500
+        });
+      });
+    

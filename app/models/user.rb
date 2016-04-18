@@ -1,8 +1,8 @@
-# require 'sidekiq'
+
 #require File.join File.dirname(__FILE__), 'send_code'
 class User < ActiveRecord::Base
   extend FriendlyId
-#include ActiveModel::Validations
+
 
   friendly_id :name, use: [:slugged, :history]
 
@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
 
   before_create { generate_token(:auth_token) }
 
-  #after_commit :send_user_welcome, on: :create
 
 #after_commit :confirmation_token, on: :create
 
@@ -34,8 +33,8 @@ before_create :confirmation_token
   has_many :comments
 
 # TODO MAKE REPORTS
-has_many :reports                 # Allow user to report others
- has_many :reports, as: :reportable # Allow user to be reported as well
+#has_many :reports                 # Allow user to report others
+ #has_many :reports, as: :reportable # Allow user to be reported as well
 
 
  #has_one_time_password
@@ -112,6 +111,7 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
 
 
   mount_uploader :avatar, AvatarUploader
+    mount_uploader :banner, BannerUploader
 
   validates_format_of :postal_code, with: /\A(\d{5})([-]{0,1})(\d{3})\Z/, allow_blank: true
 
@@ -141,9 +141,6 @@ reverse_geocoded_by :latitude, :longitude do |obj, results|
                     email: true,
                     on: :update
 
-#  def send_user_welcome
-#   UserMailer.delay_until(1.seconds.from_now, retry: false).user_welcome(self)
-#  end
 
 
 #Two Factor Authentication

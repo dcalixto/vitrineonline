@@ -249,12 +249,15 @@ border-bottom: 1px solid #e5e5e5;
 
 
 .square_box {
-    background: #eee;
+
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    border:solid 1px #eee;
-    margin-bottom:10px
+
+    margin-bottom:10px;
+    background-color: #f5f5f5;
+border: 1px solid #eee;
+border: 1px solid rgba(0,0,0,.05);
 }
 
 .square_box h2   {

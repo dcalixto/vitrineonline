@@ -1,19 +1,9 @@
 class Feedback < ActiveRecord::Base
 
-#belongs_to :feedbackable, polymorphic: true
-
-
-#  include ActiveModel::Validations
-
-
-
   belongs_to :user
   belongs_to :vitrine
   has_one :order
  has_one :product, through: :order
-
- 
-
 
 
 validates_presence_of  :buyer_comment, :seller_comment, nil: false

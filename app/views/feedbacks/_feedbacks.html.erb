@@ -14,7 +14,9 @@
       <td>
         <h2>Item</h2>
         <%= link_to  product_path(product.id), :title => product.name do %>
-        <%= image_tag product.images.first.url(:small).to_s, :alt => product.name %>
+        <% if product.images.present? %>
+        <%= image_tag product.images.first.ifoto.url(:small).to_s, :alt => product.name %>
+        <% end %>
         <%=  product.name  %>
         <% end %>
       </td>

@@ -1,19 +1,8 @@
 GIT
-  remote: git://github.com/dcalixto/formtastic.git
-  revision: 51589ebc49430dc5168e060b0cc4b9a0ed8b90c1
-  branch: 3.1.3
+  remote: https://github.com/dcalixto/activerecord-reputation-system.git
+  revision: 744617fc698ff5dde48f88152e5811c3196a94d6
   specs:
-    formtastic (3.1.3)
-      actionpack (>= 3.2.13)
-
-GIT
-  remote: https://github.com/ankane/searchkick.git
-  revision: 1f76d066f83bc0ad5e6748e116748909cb1f0f9a
-  specs:
-    searchkick (1.2.1)
-      activemodel
-      elasticsearch (>= 1)
-      hashie
+    activerecord-reputation-system (2.0.2)
 
 GIT
   remote: https://github.com/dcalixto/admin_interface.git
@@ -22,11 +11,12 @@ GIT
     admin_interface (2.2.5)
 
 GIT
-  remote: https://github.com/dcalixto/delayed_job.git
-  revision: 401f43e076c25559ec65fdfa611a0d94b7b29eb1
+  remote: https://github.com/dcalixto/bettertabs.git
+  revision: 773ac5d34b627083426c7126f9774b0072e1ddec
   specs:
-    delayed_job (4.1.1)
-      activesupport (>= 3.0, < 5.1)
+    bettertabs (1.4.2)
+      jquery-rails
+      rails (>= 3.1.0)
 
 GIT
   remote: https://github.com/dcalixto/dynamic_selectable.git
@@ -35,6 +25,14 @@ GIT
     dynamic_selectable (1.0.0)
       coffee-script (~> 2.3)
       rails (~> 3.2)
+
+GIT
+  remote: https://github.com/dcalixto/formtastic.git
+  revision: 51589ebc49430dc5168e060b0cc4b9a0ed8b90c1
+  branch: 3.1.3
+  specs:
+    formtastic (3.1.3)
+      actionpack (>= 3.2.13)
 
 GIT
   remote: https://github.com/dcalixto/no_cache_control.git
@@ -50,12 +48,38 @@ GIT
       rack (~> 1.4)
 
 GIT
+  remote: https://github.com/dcalixto/resque.git
+  revision: df9dea4dc319e1675919cdd0539d213117c72701
+  specs:
+    resque (1.27.0)
+      mono_logger (~> 1.0)
+      multi_json (~> 1.0)
+      redis-namespace (~> 1.3)
+      sinatra (>= 0.9.2)
+      vegas (~> 0.1.2)
+
+GIT
+  remote: https://github.com/dcalixto/searchkick.git
+  revision: 1f76d066f83bc0ad5e6748e116748909cb1f0f9a
+  specs:
+    searchkick (1.2.1)
+      activemodel
+      elasticsearch (>= 1)
+      hashie
+
+GIT
   remote: https://github.com/dcalixto/social-share-button.git
   revision: 97ee9fd68c1893726ef7ae30fbfc3a18670dbec9
   specs:
     social-share-button (0.1.10)
       coffee-rails
       sass-rails
+
+GIT
+  remote: https://github.com/dcalixto/sprig.git
+  revision: 8f5a0751f6bbbf33d7affc1b3ffac0f1997c2508
+  specs:
+    sprig (0.2.0)
 
 GEM
   remote: http://rubygems.org/
@@ -84,7 +108,6 @@ GEM
       activesupport (= 3.2.22)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activerecord-reputation-system (2.0.2)
     activeresource (3.2.22)
       activemodel (= 3.2.22)
       activesupport (= 3.2.22)
@@ -100,6 +123,7 @@ GEM
       rake (~> 10.4)
     arel (3.0.3)
     ast (2.2.0)
+    backports (3.6.8)
     bcrypt-ruby (3.0.1)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -141,6 +165,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     colorize (0.7.7)
+    commonjs (0.2.7)
     configatron (4.5.0)
     cookiejar (0.3.0)
     correios-frete (1.9.4)
@@ -159,9 +184,6 @@ GEM
       css_parser (~> 1.2.6)
       nokogiri
     debug_inspector (0.0.2)
-    delayed_job_active_record (4.1.0)
-      activerecord (>= 3.0, < 5)
-      delayed_job (>= 3.0, < 5)
     dotenv (2.0.1)
     dotenv-rails (2.0.1)
       dotenv (= 2.0.1)
@@ -203,7 +225,7 @@ GEM
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     garelic (0.2.1)
-    geocoder (1.3.3)
+    geocoder (1.3.4)
     git-version-bump (0.15.1)
     gretel (3.0.8)
       rails (>= 3.2.0)
@@ -213,7 +235,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashie (3.4.3)
-    high_voltage (2.4.0)
+    high_voltage (3.0.0)
     highline (1.7.8)
     hike (1.2.3)
     htmlentities (4.3.4)
@@ -249,6 +271,11 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.6.0)
+      actionpack (>= 3.1)
+      less (~> 2.6.0)
     letter_opener (1.4.1)
       launchy (~> 2.2)
     libv8 (3.16.14.13)
@@ -266,6 +293,12 @@ GEM
     md_emoji (1.0.2)
       railties (>= 3.1.0)
       redcarpet (>= 2.0)
+    memcached-manager (1.0.0)
+      dalli
+      sinatra
+      sinatra-contrib
+      thin (~> 1.6.2)
+      vegas
     memcachier (0.0.2)
     meta-tags (2.1.0)
       actionpack (>= 3.0.0)
@@ -285,6 +318,7 @@ GEM
     mobile-fu (1.3.1)
       rack-mobile-detect
       rails
+    mono_logger (1.1.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -319,7 +353,6 @@ GEM
     polyamorous (1.3.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
-    power_assert (0.2.7)
     powerpack (0.1.1)
     prawn (2.1.0)
       pdf-core (~> 0.6.1)
@@ -340,6 +373,8 @@ GEM
       git-version-bump (~> 0.15)
       rack (~> 1.4)
     rack-mobile-detect (0.4.0)
+      rack
+    rack-protection (1.5.3)
       rack
     rack-ssl (1.3.4)
       rack
@@ -375,9 +410,19 @@ GEM
       json (~> 1.4)
     redcarpet (3.3.4)
     redis (3.2.2)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     ref (2.0.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    resque-web (0.0.7)
+      coffee-rails
+      jquery-rails
+      resque
+      sass-rails
+      twitter-bootstrap-rails
+    resque_mailer (2.2.7)
+      actionmailer (>= 3.0)
     rollbar (2.8.3)
       multi_json
     rubocop (0.39.0)
@@ -406,12 +451,20 @@ GEM
     select2-rails (4.0.1.1)
       thor (~> 0.14)
     sexp_processor (4.7.0)
-    shareable (1.1.4)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     simple_form (2.1.3)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
+    sinatra (1.3.6)
+      rack (~> 1.4)
+      rack-protection (~> 1.3)
+      tilt (~> 1.3, >= 1.3.3)
+    sinatra-contrib (1.3.2)
+      backports (>= 2.0)
+      eventmachine
+      rack-protection
+      rack-test
+      sinatra (~> 1.3.0)
+      tilt (~> 1.3)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -424,8 +477,6 @@ GEM
     stamp (0.6.0)
     temple (0.7.6)
     terminal-table (1.5.2)
-    test-unit (3.1.8)
-      power_assert
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -439,16 +490,23 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.4.0)
+    twitter-bootstrap-rails (3.2.2)
+      actionpack (>= 3.1)
+      execjs (>= 2.2.2, >= 2.2)
+      less-rails (>= 2.5.0)
+      railties (>= 3.1)
     tzinfo (0.3.48)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.0.3)
     unicode_utils (1.4.0)
     uniform_notifier (1.9.0)
+    vegas (0.1.11)
+      rack (>= 1.0.0)
     websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    wicked (1.2.1)
+    wicked (1.3.0)
       railties (>= 3.0.7)
     will_paginate (3.1.0)
 
@@ -457,13 +515,14 @@ PLATFORMS
 
 DEPENDENCIES
   act_as_cnpj_cpf
-  activerecord-reputation-system (~> 2.0.2)
+  activerecord-reputation-system!
   acts-as-taggable-on (~> 3.4)
   acts_as_commentable
   admin_interface!
   annotate
   bcrypt-ruby (~> 3.0.0)
   better_errors
+  bettertabs!
   binding_of_caller
   brakeman
   breakpoint (~> 2.7.0)
@@ -476,8 +535,6 @@ DEPENDENCIES
   csscss
   dalli
   deadweight
-  delayed_job!
-  delayed_job_active_record
   dotenv-rails
   dropzonejs-rails
   dynamic_form
@@ -500,6 +557,7 @@ DEPENDENCIES
   lograge
   mail_form
   md_emoji
+  memcached-manager
   memcachier
   meta-tags
   meta_request
@@ -511,8 +569,8 @@ DEPENDENCIES
   no_cache_control!
   nokogiri
   oj
+  omniauth
   omniauth-facebook
-  open4
   paypal_adaptive
   pg
   prawn
@@ -525,18 +583,22 @@ DEPENDENCIES
   rails-timeago
   ransack
   redcarpet
+  resque!
+  resque-web
+  resque_mailer
   rollbar (~> 2.8.3)
   rubocop
   ruby_gntp
   sass-rails
   searchkick!
   select2-rails
-  shareable
   simple_form
+  sinatra
+  sinatra-contrib (~> 1.3.2)
   social-share-button!
+  sprig!
   sqlite3
   stamp
-  test-unit (~> 3.0)
   therubyracer
   thin
   uglifier (>= 1.0.3)

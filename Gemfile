@@ -13,6 +13,8 @@ gem 'garelic'
 gem 'rollbar', '~> 2.8.3'
 gem 'newrelic_rpm'
 
+#TABS
+gem 'bettertabs', github: "dcalixto/bettertabs"
 
 #Time
 gem 'stamp'
@@ -24,8 +26,15 @@ gem "breakpoint", "~>2.7.0"
 gem 'will_paginate'
 gem 'ransack'
 gem 'acts-as-taggable-on', '~> 3.4'
-gem 'searchkick',  github: "ankane/searchkick"
+gem 'searchkick',  github: "dcalixto/searchkick"
 
+
+# SUGGESTIONS
+gem 'predictor'
+
+
+#REPUTAION
+gem 'activerecord-reputation-system',  github: "dcalixto/activerecord-reputation-system"
 
 #CHART
 #gem "chartkick"
@@ -45,57 +54,59 @@ gem 'dynamic_form'
 gem 'i18n_country_select'
 
 
+#SEEDING DATA
+gem "sprig", github: "dcalixto/sprig"
 
-# MISC
+# FIND UNUSED CSS
 gem 'deadweight'
+gem 'csscss'
+
+# SEO
+gem 'meta-tags', require: 'meta_tags'
+gem 'canonical_dude'
+gem 'gretel'
+gem 'friendly_id'
 
 #gem 'html5_validators',  github: "dcalixto/html5_validators"
 
-
-gem 'csscss'
-gem 'friendly_id'
-gem 'mail_form'
+#DB ANOTATION
 gem 'annotate' # , :git => 'git://github.com/ctran/annotate_models.git'
-gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'gretel'
-gem 'test-unit', '~> 3.0'
+
+
+#COMTACT
+gem 'mail_form'
+
+#SELECT
 gem 'select2-rails'
+gem 'dynamic_selectable', github: "dcalixto/dynamic_selectable"
 
 # MODEL
 
+#gem 'activerecord-reputation-system',  '~> 2.0.2'
 
-
-gem 'activerecord-reputation-system',  '~> 2.0.2'
-gem 'shareable'
-gem 'dynamic_selectable', git: 'https://github.com/dcalixto/dynamic_selectable.git'
-gem 'predictor'
 
 #LOG
 gem "lograge"
 
-# CPF CNPJ
-
+# CPF CNPJ & FRETE
 gem 'act_as_cnpj_cpf'
+gem 'correios-frete'
 
-# AMAZON EC2
-gem 'open4'
+
+# DEPLOY
+
 gem 'mina'
 gem 'mina-newrelic'
 
-# WISHLIST
-
-
-
 # SHIPPING & PROMO CODE
-gem 'correios-frete'
+
 #gem 'promo'
 
 # COMMENTABLE SYSTEM
-
 gem 'acts_as_commentable'
 
 # FORM
-gem 'formtastic', :git => 'git://github.com/dcalixto/formtastic.git', :branch => '3.1.3'
+gem 'formtastic', github: "dcalixto/formtastic", :branch => '3.1.3'
 # ANALYS
 
 #FEEDS
@@ -107,11 +118,6 @@ gem 'md_emoji'
 
 
 
-
-# FACEBOOK AUTH
-
-gem 'omniauth-facebook'
-
 # PAYMENT
 gem 'paypal_adaptive'
 gem 'configatron' # , '3.1.3'
@@ -119,22 +125,19 @@ gem 'prawn'#, '1.0.0.rc2'
 #gem 'mymoip'
 
 
-#observers
+
 
 
 # ADMIN & SECURITY
-
-
-#gem 'active_model_otp'
-#gem 'twilio-ruby'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'rack-attack'
 gem 'geocoder'
-gem 'rack-secure_headers', git: 'https://github.com/dcalixto/rack-secure_headers.git'
-gem 'no_cache_control', git: 'https://github.com/dcalixto/no_cache_control.git'
+gem 'rack-secure_headers',   github: "dcalixto/rack-secure_headers"
+gem 'no_cache_control',     github: "dcalixto/no_cache_control"
+#gem 'active_model_otp'
+#gem 'twilio-ruby'
 
 # IMAGE
-
-
 gem 'carrierwave','~> 0.9.0'
 gem 'mini_magick'
 gem 'dropzonejs-rails'
@@ -143,19 +146,30 @@ gem 'dropzonejs-rails'
 gem 'jquery-raty-rails'
 
 # DELAY_JOB
-gem 'delayed_job', git: 'https://github.com/dcalixto/delayed_job.git'
-gem 'delayed_job_active_record'
+
 
 
 # STATIC PAGES
 gem 'high_voltage' # , '~> 2.1.0'
 
-# FACEBOOK SHARE
- gem 'social-share-button', git: 'https://github.com/dcalixto/social-share-button.git'
+# FACEBOOK AUTH & SHARE AND OTHERS
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'social-share-button',  github: "dcalixto/social-share-button"
+
 
 # CACHE
 gem 'memcachier'
 gem 'dalli'
+gem 'memcached-manager'
+#MAILER
+
+gem 'resque', github: "dcalixto/resque"
+gem 'resque_mailer'
+gem 'resque-web',  require: 'resque_web'
+
+gem "sinatra", require: 'sinatra/base'
+gem "sinatra-contrib", '~> 1.3.2',  require: false
 
 
 # MESSAGE
@@ -163,9 +177,8 @@ gem 'rails-timeago'
 gem 'private_pub'
 gem 'thin'
 
-# SEO
-gem 'meta-tags', require: 'meta_tags'
-gem 'canonical_dude'
+#MILTISETP FORM
+gem 'wicked'
 
 # JAVASCRIPT & JSON
 gem 'jquery-rails' # , "< 3.0.0"
@@ -177,15 +190,12 @@ gem 'jquery-ui-rails' # , '~> 4.2.1'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-
   gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :development do
   gem 'sqlite3'
-
-
   gem 'bullet'
   gem 'ruby_gntp'
   gem 'brakeman'
@@ -204,6 +214,3 @@ gem 'nokogiri'
 group :production do
   gem 'pg'
 end
-
-gem 'wicked'
-#gem 'debugger'

@@ -1,0 +1,22 @@
+<div class="subcontent message_box">
+  <div class="block_message">
+
+    <h2>Entrar em contato com o vendedor</h2>
+
+    <% @conversation = Conversation.new %>
+
+    <%= form_for @conversation do |f| %>
+
+    <%= hidden_field :conversation_participants, :user_id, :value => @user %>
+    <ul>
+      <li><%= text_area :message, :body, class: 'form-control',data: { emojiable: true },:rows => 3 %></li>
+
+    </ul>
+
+    <%= f.button 'Enviar', :class => 'btn_grey' %>
+
+    <% end %>
+
+      </div>
+
+    </div>

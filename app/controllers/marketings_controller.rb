@@ -8,7 +8,7 @@ class MarketingsController < ApplicationController
   def update
     @marketing = current_vitrine.marketing
     if @marketing.update_attributes(params[:marketing])
-      redirect_to(action: :edit, id: @marketing)
+      redirect_to(action: :edit, id: @marketing, format: :html)
       flash[:success] = 'Política Atualizada'
     else
       render :edit

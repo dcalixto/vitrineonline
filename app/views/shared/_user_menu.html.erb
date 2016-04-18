@@ -8,8 +8,16 @@
       <ul>
         <li><%= link_to "Configuração", edit_user_path(current_user) %></li>
         <li><%= link_to "Password", new_user_password_path(current_user) %></li>
+
+
       </ul>
-  
+  <h2 class="h1_menu">Curtidas</h2>
+
+
+  <ul>
+    <li><%=link_to "Produtos",  products_votes_path(current_user)  %></li>
+<li><%=link_to "Vitrines", vitrines_votes_path(current_user)  %></li>
+</li>
     </div>
   </div>
 </div>

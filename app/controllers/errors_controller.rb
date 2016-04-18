@@ -7,4 +7,6 @@ class ErrorsController < ApplicationController
       format.json { render json: { status: request.path[1..-1], error: @exception.message } }
     end
   end
+
+
 end

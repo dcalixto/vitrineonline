@@ -1,0 +1,229 @@
+<div class="box1">
+  <div class="block">
+    <div class="content">
+          <div class="subcontent">
+
+    <h2>Clientes que viram este produto também viram</h2>
+
+
+      <ul class="content-slider">
+
+            <% @suggestions.each do |item| %>
+              <li>
+            <%= link_to product_path(item) do  %>
+
+            <%= image_tag item.images.first.url(:thumb).to_s %>
+            <%= item.name %>
+              <%= item.price %>
+            <% end %>
+            </li>
+            <% end %>
+  </ul>
+
+
+  </div>
+
+  </div>
+
+
+  </div>
+
+</div>
+
+<div class="box1">
+  <div class="block">
+    <div class="content">
+      <div class="subcontent">
+
+  <h2>Clientes que comprarm este produto também compraram</h2>
+
+  <ul class="content-slider">
+
+      <%  @similarities.each do |item| %>
+        <li>
+      <%= link_to product_path(item) do  %>
+      <%= image_tag item.images.first.url(:thumb).to_s %>
+      <%= item.name %>
+
+        <%= item.price %>
+      <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+  </div>
+
+  </div>
+</div>
+
+
+
+<div class="box1">
+
+  <div class="block">
+      <div class="content">
+            <div class="subcontent">
+    <h2>Descrições do Produto</h2>
+    <p><% if @product.detail.present? %>
+      <%= markdown(@product.detail) %>
+      <% end %></p>
+    </div>
+
+
+
+      <div class="subcontent">
+<h2>Detalhes do produto</h2>
+        <div class="left_info">
+          <ul>
+
+            <li>
+              <span>Condição
+              </span>
+              <b><%= @product.condition.condition %></b>
+            </li>
+            <% if @product.material.present? %>
+
+            <li>
+              <span>Material</span>
+              <b><%= @product.material.name %></b>
+            </li>
+            <% end %>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="subcontent">
+
+        <h2>Formas de Pagamento</h2>
+        <div class="content">
+          <%= link_to  "https://www.paypal.com/br"  do %>
+
+          <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
+          <% end %>
+
+          <% unless @product.vitrine.policy.blank? %>
+          <% end %>
+
+        </div>
+
+        <div class="subcontent">
+
+          <h2>Formas de Envio</h2>
+
+          <ul>
+
+            <li>
+              <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+            </li>
+
+            <% @product.vitrine.policy.shippings.each do |shipping| %>
+            <li>
+              <b><%= shipping.kind %></b>
+            </li>
+            <% end %>
+          </ul>
+
+        </div>
+
+        <div class="subcontent">
+
+          <h2>Garantias do Vendedor </h2>
+
+          <p><%= markdown(@product.vitrine.policy.guarantee) %></p>
+          <% unless @product.vitrine.policy.shippings.blank? %>
+          <% end %>
+
+        </div>
+
+        <div class="subcontent">
+
+          <h2>Avaliação dos clientes</h2>
+
+          <table class="block_search">
+            <tr>
+              <td>
+
+                <%= search_form_for @q, url: feedbacks_search_products_path, method: :post  do |f| %>
+
+                <%= f.text_field :id_cont %>
+                <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+                <% end %>
+              </td>
+              <td class="sort">
+                Ordernar por
+                <%= sort_link @q, :created_at, "Data" %>
+                |
+                <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
+              </td>
+            </tr>
+          </table>
+
+          <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+          <%= render :partial => 'feedbacks/feedbacks' %>
+
+        </div>
+
+        <div class="subcontent">
+          <div class="block_message">
+
+            <h2>Entrar em contato com o vendedor</h2>
+
+            <% @conversation = Conversation.new %>
+
+            <%= form_for @conversation do |f| %>
+
+            <%= hidden_field :conversation_participants, :user_id, :value => @product.vitrine.user_id %>
+            <ul>
+              <li><%= text_area :message, :body, class: 'form-control',data: { emojiable: true },:rows => 3 %></li>
+
+            </ul>
+
+            <%= f.button 'Enviar', :class => 'btn_grey' %>
+
+            <% end %>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+<div class="box1">
+  <div class="block">
+      <div class="content">
+  <div class="subcontent">
+
+  <h2>Produtos similares a esta vitrine</h2>
+
+  <ul class="content-slider">
+      <%  @similarities_for_vitrine.each do |item| %>
+
+    <li>  <%= link_to product_path(item) do  %>
+      <%= image_tag item.images.first.url(:small).to_s %>
+      <%= item.name %>
+      <%= item.price %>
+      <% end %>
+    </li>
+      <% end %>
+</ul>
+</div>
+  </div>
+  </div>
+</div>

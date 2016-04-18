@@ -40,7 +40,6 @@
 *= require jquery.raty
 *= require token-input
 *= require tipsy
-*= require lightslider.min
 *= require select2
 *= require breakpoints
 *= require dropzone
@@ -48,6 +47,10 @@
 *= require stretchtext
 *= require jquery.slinky
 *= require typehead
+*= require unslider
+*= require js_tab
+*= require vitrine_header
+*= require sliderkit-core
  */
 
 

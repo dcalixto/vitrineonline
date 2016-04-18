@@ -1,1 +1,1 @@
-$(".edit").html("<%= escape_javascript(render('edit')) %>")
+$("#tab_container .nav_section").html("<%= escape_javascript(%w[new].include?(params[:view]) ? render(params[:view]) : render("edit")) %>");

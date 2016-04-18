@@ -6,23 +6,13 @@
 
       <div class="subcontent_top">
       <li class="lista-time">
-        <%= link_to  vitrine_path(@vitrine.id)  do %>
 
-        <%= image_tag @vitrine.logo.url(:thumb).to_s %>
-        <% end%>
         Criada em:
         <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => false)%>
       </li>
     </div>
 
-    <div class="subcontent">
-      <%= link_to  user_path(@vitrine.user.id) do %>
-      <%= image_tag @vitrine.user.avatar.url(:mobile).to_s %>
-      Criado em:
-      <%= timeago_tag(@vitrine.user.created_at, :nojs => true, :date_only => false)%>
-      <% end %>
-
-    </div>
+  
 
     <table class="block_search">
       <tr>

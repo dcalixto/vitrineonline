@@ -2,7 +2,7 @@
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
-cache_sweeper :product_sweeper
+#cache_sweeper :product_sweeper
   def index
     @products = Product.aggs_search(params)
 
@@ -193,4 +193,6 @@ end
     @product = Product.cached_find(params[:id])
     redirect_to login_path unless current_vitrine?(@product.vitrine)
   end
+
+
 end

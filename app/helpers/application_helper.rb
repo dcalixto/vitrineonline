@@ -44,6 +44,8 @@ module ApplicationHelper
 
 
 
+  
+
   def remove_user
     cookies.delete(:auth_token)
     current_user = nil

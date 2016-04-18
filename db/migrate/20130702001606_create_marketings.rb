@@ -3,8 +3,9 @@ class CreateMarketings < ActiveRecord::Migration
     create_table :marketings do |t|
       t.string :ad
       t.integer :vitrine_id, :null => false
-      t.string :slogan 
+      t.string :slogan
       t.string :url
+        t.string :banner
       t.timestamps
     end
      add_index :marketings, :vitrine_id

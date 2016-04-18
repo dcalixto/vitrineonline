@@ -8,7 +8,7 @@
       <ul>
         <li><%= link_to "Configuração", edit_vitrine_path(current_vitrine) %></li>
         <li><%= link_to "Política" , edit_vitrine_policy_path(current_vitrine, current_vitrine.policy.id)%></li>
-          <li><%= link_to "Banner", new_vitrine_banner_path(current_vitrine) %></li>
+        
       </ul>
 
       <h2>
@@ -16,7 +16,7 @@
       </h2>
       <ul>
         <li><%= link_to "Anúncio", new_vitrine_announcement_path(current_vitrine)  %></li>
-        
+
         <li><%= link_to "Visualizações", vitrine_views_path(current_vitrine)  %></li>
         <li><%= link_to "Slogan & Site", edit_vitrine_marketing_path(current_vitrine, current_vitrine.marketing.id)  %></li>
       </ul>
