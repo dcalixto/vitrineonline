@@ -5,7 +5,6 @@
 //= require raphael.min
 //= require jquery.fancybox.pack
 //= require jquery.raty
-//= require typeahead
 //= require jquery.tokeninput
 //= require jquery.tipsy
 //= require jquery-dynamic-selectable
@@ -19,18 +18,20 @@
 //= Markdown.Sanitizer
 //= stretchtext
 //= dropzone_banner
+//= user_banner
 //= readmore
-
 //= tipsy
 
 //= require jquery.bettertabs.min
 
-//= require jquery.sliderkit
+//= require remote-list
+
+
+
+//= require jquery.liquidcarousel
+
 
 //= require_tree .
-
-jQuery('.bettertabs').bettertabs();
-
 
 
 
@@ -69,6 +70,10 @@ $(document).ready(function() {
         );
     });
 });
+
+
+
+
 // FRONT PAGE TABS
 $(document).ready(function() {
 $("#main-nav").menuAim({
@@ -269,10 +274,13 @@ $(function() {
 
 
 // SEARCH AUTOCOMPLETE
-$("#product_search").typeahead({
-  name: "product",
-  remote: "/products/autocomplete?query=%QUERY"
-});
+
+
+
+
+
+
+
 
 
 // TOKEN INPUT TAGS
@@ -305,15 +313,44 @@ $(function() {
 
 
 
-  jQuery(document).ready(function($) {
-  $(".carousel_show").sliderkit({
-          auto:false,
-          autospeed:4000,
-          shownavitems:3,
-          circular:false,
-          fastchange:false,
-          scrolleasing:"easeOutExpo", //"easeOutBounce, easeOutBack"
-          scrollspeed:500
-        });
-      });
-    
+jQuery('.bettertabs').bettertabs();
+
+
+
+
+
+$(document).ready(function() {
+	$('.vitrine_carousel').liquidcarousel({
+		height: 170,		//the height of the list
+		duration: 100,		//the duration of the animation
+		hidearrows: false	//hide arrows if all of the list items are visible
+	});
+});
+
+
+
+
+$(document).ready(function() {
+	$('.sugestion_carousel').liquidcarousel({
+		height: 170,		//the height of the list
+		duration: 100,		//the duration of the animation
+		hidearrows: false	//hide arrows if all of the list items are visible
+	});
+});
+
+
+
+
+$(document).ready(function() {
+	$('.similar_carousel').liquidcarousel({
+		height: 170,		//the height of the list
+		duration: 100,		//the duration of the animation
+		hidearrows: false	//hide arrows if all of the list items are visible
+	});
+});
+
+
+
+
+
+ 

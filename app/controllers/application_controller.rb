@@ -3,50 +3,50 @@ require 'will_paginate/array'
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
- has_mobile_fu
+  has_mobile_fu
 
   include SessionsHelper
   include VitrinesHelper
   include AnnouncementsHelper
 
-
- before_filter :strict_transport_security
+  before_filter :strict_transport_security
   def strict_transport_security
     if request.ssl?
-      response.headers['Strict-Transport-Security'] = "max-age=31536000; includeSubDomains"
+      response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
     end
   end
 
-  def routing
-      render_404
+  # after_filter :set_online
+  after_filter :user_activity
+
+  # private
+
+  # def set_online
+  #    if !!current_user
+  # using separate Redis database
+  # such as $redis_onlines = Redis.new db: 15
+  # value not need, only key
+  #    $redis_onlines.set( current_user.id, nil, ex: 10*60 )
+  # 'ex: 10*60' - set time to live - 10 minutes
+  #  end
+  # end
+
+
+  def episodes_per_page
+      case params[:view]
+      when "list" then 40
+      when "grid" then 24
+      else 10
+      end
     end
 
+  private
 
-#after_filter :set_online
-after_filter :user_activity
+  def user_activity
+    current_user.try :touch
+  end
 
-#private
-
-
-
-#def set_online
-  #    if !!current_user
-        # using separate Redis database
-        # such as $redis_onlines = Redis.new db: 15
-        # value not need, only key
-    #    $redis_onlines.set( current_user.id, nil, ex: 10*60 )
-        # 'ex: 10*60' - set time to live - 10 minutes
-    #  end
-    #end
-
-private
-def user_activity
-  current_user.try :touch
-end
-
-
- # USER HELPERS
-
+  # USER HELPERS
 
   def current_user
     @current_user ||= User.first(conditions: ['auth_token = :token or oauth_token = :token', { token: cookies[:auth_token] }]) if cookies[:auth_token]
@@ -126,6 +126,15 @@ end
       flash[:error] = 'Esta conta foi banida por violar os termos de uso e privacidade'
     end
   end
+
+
+
+
+
+
+
+
+
 
 
 

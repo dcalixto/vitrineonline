@@ -1,0 +1,44 @@
+<div id="searchResults">
+<table class="product_list">
+<tbody>
+
+<% @products.each do |product| %>
+
+<tr>
+
+<td>
+<%=link_to product_path(product.id), :class=>"product" do %>
+<%if product.images.present? %>
+<%=image_tag product.images.first.ifoto.url(:thumb).to_s, :class=>"productImg" %>
+<% end %>
+<% end %>
+</td>
+
+
+<td>
+  <%=link_to product_path(product.id), :class=>"product" do %>
+<span class="productName">
+<%=product.name %>
+</span>
+<span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
+
+<span class="by">Por
+<%=product.vitrine.name %></span>
+<% end %>
+</td>
+
+<td>
+<% if product.feedbacks %>
+<div class="productFeeback">
+<div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+<%=@total_feedbacks %>
+</div>
+<% end %>
+</td>
+</tr>
+
+<% end %>
+
+</tbody>
+</table>
+</div>

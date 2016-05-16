@@ -8,31 +8,26 @@
   position: relative;
   width: auto;
   word-wrap: break-word;
-  color: #004B91;
-  background-color: #f5f5f5;
-  border: 1px solid #eee;
-  border: 1px solid rgba(0,0,0,.05);
-
+  color: #333;
+ 
     }
+
+
+#menu-box-product a {
+    color: #333;
+}
 
 
 #menu-box {
   padding: 0;
   margin-top: 20px;
-  padding: 0;
-  margin-bottom: 50px;
+
+
   margin-bottom: 7px;
   position: relative;
   width: auto;
   word-wrap: break-word;
-  color: #004B91;
-
-  
-
-
-  background-color: #f5f5f5;
-  border: 1px solid #eee;
-  border: 1px solid rgba(0,0,0,.05);
+  color: #333;
 
 
     }
@@ -43,18 +38,22 @@
   padding: 0;
   background-color: #FFF8DC;
   border: 1px solid #E0DCBF;
+  -webkit-border-radius: 3px 3px 3px 3px;
+border-radius: 3px 3px 3px 3px;
 
 }
 #ajuda-menu h1 {
   color: #333;
   margin-top: 10px;
+
 }
 .h1_menu {
 
-  background:#eaeaea;
+
 
   color:#333;
-  padding:10px
+  padding:10px;
+
 }
 #menu-b, #menu-box, #menu-feedback, #menu-loja li a {
   display: block;
@@ -66,28 +65,30 @@
   display: block;
   text-decoration: none;
   color: #295e9f;
+  background:#f4f4f4
 }
 #menu-box li:hover > a {
   display: block;
   text-decoration: none;
   color: #295e9f;
+   background:#f4f4f4
+
 }
 #menu-feedback li:hover > a {
   display: block;
   text-decoration: underline;
   color: #295e9f;
+   background:#f4f4f4
+
 }
 #menu-loja li:hover > a {
   display: block;
   text-decoration: underline;
   color: #295e9f;
+   background:#f4f4f4
+
 }
-#menu-b a, #menu-box a, #menu-feedback a, {
-  color: #777;
-  color: #004B91;
-  color: #333;
-  /*border-bottom:1px solid #ddd*/
-}
+
 
 #menu-loja a {color:#fff}
 
@@ -110,6 +111,7 @@
   padding-bottom: 5px;
   padding-left: 5px;
   margin-bottom: 5px;
+  color: #333;
 }
 
 /* HELP MENU */

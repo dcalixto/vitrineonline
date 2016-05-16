@@ -1,5 +1,26 @@
 <% title  "Entrar" %>
 
+
+<div class="box10">
+
+  <div class="block margin_top">
+
+    <div class="content ul_disc" id="session_list">
+      <h1>Sou um novo cliente</h1>
+      <ul>
+        <li>Acompanhe as suas encomendas on-line</li>
+        <li>Descubra novas vitrines e marcas</li>
+        <li>Veja o histórico de seus pedidos e mais</li>
+
+      </ul>
+
+      <%=  button_to 'Criar Conta', signup_path, :class => 'btn_orange  btn_big', :method => "get"%>
+
+    </div>
+  </div>
+</div>
+
+
 <div class="box10">
   <%= render 'shared/flash_messages' %>
 
@@ -44,23 +65,4 @@
     </div>
   </div>
 
-</div>
-
-<div class="box8">
-
-  <div class="block margin_top">
-
-    <div class="content ul_disc" id="session_list">
-      <h1>Sou um novo cliente</h1>
-      <ul>
-        <li>Acompanhe as suas encomendas on-line</li>
-        <li>Descubra novas vitrines e marcas</li>
-        <li>Veja o histórico de seus pedidos e mais</li>
-
-      </ul>
-
-      <%=  button_to 'Criar Conta', signup_path, :class => 'btn_orange  btn_big', :method => "get"%>
-
-    </div>
-  </div>
 </div>

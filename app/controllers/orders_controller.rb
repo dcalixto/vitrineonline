@@ -2,14 +2,14 @@
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
   protect_from_forgery except: [:ipn_notification]
-#cache_sweeper :order_sweeper
+  # cache_sweeper :order_sweeper
 
   def purchased
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
       @q = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).ransack(params[:q])
-    #  @q = Order.joins(:user, :cart).where('status = ?', current_user.id, cart.id, params[:status] || Order.statuses[0]).ransack(params[:q])
-  #@q = Order.where('buyer_id = ? and status = ?', current_user.id, params[:status] || Order.statuses[0]).ransack(params[:q])
+      #  @q = Order.joins(:user, :cart).where('status = ?', current_user.id, cart.id, params[:status] || Order.statuses[0]).ransack(params[:q])
+      # @q = Order.where('buyer_id = ? and status = ?', current_user.id, params[:status] || Order.statuses[0]).ransack(params[:q])
       @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
        end
   end
@@ -30,13 +30,13 @@ class OrdersController < ApplicationController
 
   def update
     order = Order.find(params[:id])
-    if order.update_attributes(params[:order])
-      flash = { success: 'Frete Salvo.' }
-    else
-      flash = { error: 'Preço Inválido.' }
-    end
+    flash = if order.update_attributes(params[:order])
+              { success: 'Frete Salvo.' }
+            else
+              { error: 'Preço Inválido.' }
+            end
     if request.xhr?
-      render :json => flash
+      render json: flash
     else
       redirect_to checkout_order_path(order), flash: flash
     end
@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
 
         ]
       },
-      'memo' =>  order.product.name,
+      'memo' => order.product.name,
       'feesPayer' => 'SENDER',
       'cancelUrl' => carts_url,
       'actionType' => 'PAY',
@@ -129,18 +129,15 @@ class OrdersController < ApplicationController
     end
   end
 
-def index
-end
-
+  def index
+  end
 
   def calculate_ship
     frete = Correios::Frete::Calculador.new cep_origem: '23970-000',
-                                          cep_destino: params[:post_code]
+                                            cep_destino: params[:post_code]
     servicos = frete.calcular :sedex, :pac
     @pac = servicos[:pac].valor
     @sedex = servicos[:sedex].valor
     render '/path/to/rails/app//orders/:id/checkout'
   end
-
-
 end

@@ -1,0 +1,51 @@
+<% title  "Banners" %>
+<%= render "shared/user_menu" %>
+
+
+<div class="box5">
+  <div class="flash_box">
+  <%= render 'shared/flash_messages' %>
+ <%= render 'shared/error_messages', :target => @user  %>
+ </div>
+
+
+  <div class="block  margin_top">
+  <div class="square_box">
+
+<h1>Banners</h1>
+
+  <div class="subcontent">
+       <%= image_tag(@user.banner.url(:mobile).to_s) %> 
+
+  <p class="tip">Os Banners serão redimencionandos para 986 x 215 e 414 x 165</p>
+
+
+
+    <%= form_for(@user, :url => user_banner_update_path, :method => :put, html: { multipart: true, id: "user_banner", class: "dropzone"}) do |banner|  %>
+
+
+            <div class="fallback">
+
+              <%= banner.file_field :img %><br>
+              <%= banner.submit "Salvar" %>
+            </div>
+
+
+
+
+
+  <% end %>
+</div>
+
+</div>
+ <!--SLOGAN  -->
+
+
+
+
+
+    </div>
+</div>
+
+
+

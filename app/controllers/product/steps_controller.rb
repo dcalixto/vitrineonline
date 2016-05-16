@@ -1,4 +1,4 @@
- #encoding: utf-8
+# encoding: utf-8
 class Product::StepsController < ApplicationController
   include Wicked::Wizard
   steps *Product.form_steps
@@ -13,7 +13,8 @@ class Product::StepsController < ApplicationController
 
     if @product.update_attributes(params[:product])
 
-      redirect_to vitrine_stocks_path(current_vitrine.id)
+      redirect_to order_stocks_path(current_vitrine.id)
+    
     else
       render_wizard @product
     end

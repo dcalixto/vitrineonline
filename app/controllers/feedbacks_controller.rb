@@ -2,7 +2,7 @@
 class FeedbacksController < ApplicationController
   before_filter :authorize, :awaiting_count
   skip_after_filter :flash_to_headers
-#cache_sweeper :feedback_sweeper
+  # cache_sweeper :feedback_sweeper
   def awaiting_count
     @awaiting_feedback_count = Order.awaiting_feedback(current_user).count
   end
@@ -20,8 +20,6 @@ class FeedbacksController < ApplicationController
     @awaiting_feedbacks_orders = Order.awaiting_feedback(current_user).paginate(page: params[:page], per_page: 22)
     @feedback = Feedback.new
   end
-
-
 
   def create
     @order = Order.find_by_id(params[:order_id])

@@ -24,7 +24,18 @@
       ? week_stats
       : month_stats);
   };
+
+
 </script>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -37,7 +48,7 @@
 
 
     <div class="square_box">
-    <h4>Visualizações</h4>
+    <h1>Visualizações</h1>
 
 
 
@@ -101,7 +112,7 @@
               <td>
                 <%= link_to  product_path(e.id) do %>
                 <% if e.images.present? %>
-                <%= image_tag e.images.first.url(:small).to_s %>
+                <%= image_tag e.images.first.ifoto.url(:small).to_s %>
                 <% end %>
                 <%=  e.name %>
                 <% end %>

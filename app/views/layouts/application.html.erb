@@ -7,13 +7,31 @@
 <%=favicon_link_tag %>
 <meta content=noodp,noydir name=robots/>
 <%=display_meta_tags(default_meta_tags) %>
+
+
 <%=canonical_link_tag %>
-<% set_meta_tags :og=> {
-:site_name => "Vitrineonline",
-:locale => "pt_PT",
-:url => "http://www.vitrineonline.com"
+<%=   display_meta_tags og: {
+  site_name: "Vitrineonline",
+  title:    'Vitrineonline - Monte sua Vitrine',
+   type:     'website',
+   :locale => "pt_PT",
+   url:      'http://vitrineonline.com/',
+  #  image:    'http://ia.media-imdb.com/rock.jpg',
+  description: 'Monte sua vitrine, desenvolva sua vitrine, compre e venda roupas, calçados e acessórios do seu estilo'
+
+  }
+%>
+
+<%=   display_meta_tags twitter: {
+  site_name: "Vitrineonline",
+  site: '@vitrineonline',
+  card: 'vitrineonline',
+  description: 'Monte sua vitrine, desenvolva sua vitrine, compre e venda roupas, calçados e acessórios do seu estilo'
+
+#  image: image
 }
 %>
+
 <meta content=166642276860638 property=fb:app_id/>
 <meta content=Dl2kWPSdv0m1b_iGqTBmnv-GyydEZdoH0p4ZoOjLsBM name=google-site-verification/>
 <% cache "cs" do %>

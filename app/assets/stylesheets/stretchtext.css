@@ -58,6 +58,64 @@
 [epub\:type="stretchsummary"].stretchtext-open::after,
 .stretchsummary.stretchtext-open::after {
 	content: "\00ab"; /* << character */
-	
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Required styles; changing these may break the menu */
+
+
+/* Default theme */
+
+
+.slinky-menu  {
+	background: #ebf3fd;
+	border: none;
+ color: #004B91;
+	padding: 10px;
+	display:block;
+border:dashed 1px #c9dcf2;
+-webkit-border-radius: 3px 3px 3px 3px;
+border-radius: 3px 3px 3px 3px;
+}
+
+.slinky-menu a {
+	background: #ebf3fd;
+	border: none;
+ color: #004B91;
+	padding-top: 5px;
+	display:block;
+width:100px;
+/*float:right;left:
+position:relative;
+vertical-align:top*/
+}
+.slinky-menu a:hover {
+/*	background: #a4bad6;*/
+	text-decoration: underline;
+}
+.slinky-menu a.next:after {
+	content: '\276f';
+	margin-left: 1em;
+	float: right;
+}
+.slinky-menu a.back:before {
+	content: '\276e';
+	margin-right: 1em;
+	float: left;
+}
+
+.slinky-menu {background:#ebf3fd;}
+ .stretchsummary {display:inline-block;vertical-align:top;width:100%;border-bottom: 1px dashed #c9dcf2;}

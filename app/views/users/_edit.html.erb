@@ -3,11 +3,14 @@
 <div class="block margin_top">
 
   <div class="square_box">
-    <h4>Configuração
-    </h4>
+    <h1>Configuração
+    </h1>
 
 <div class="subcontent">
 
+
+
+ 
 <% unless current_user.city.blank? %>
 <%=image_tag "http://maps.google.com/maps/api/staticmap?size=550x150&sensor=false&zoom=16&markers=#{ current_user.address}" %>
 <% end %>

@@ -8,7 +8,7 @@
       <ul>
         <li><%= link_to "Configuração", edit_vitrine_path(current_vitrine) %></li>
         <li><%= link_to "Política" , edit_vitrine_policy_path(current_vitrine, current_vitrine.policy.id)%></li>
-        
+
       </ul>
 
       <h2>
@@ -28,13 +28,13 @@
         <li><%= link_to 'Relatório de Vendas', sales_report_vitrine_path(current_vitrine) %></li>
       </ul>
 
-      <%= link_to  vitrine_path(current_vitrine), :id => "shop_button", :class => 'btn' do %>
-      <%= content_tag(:i,nil, :class=>"sprite-icons-ir-loja")  %>
 
-      Vitrine
-
-      <% end %>
     </div>
+
   </div>
+  <%= button_to "Ir para Vitrine",  vitrine_path(current_vitrine), :id => "shop_button", :class => 'btn', :method => :get do %>
+  <%= content_tag(:i,nil, :class=>"sprite-icons-ir-loja")  %>
+
+  <% end %>
 </div>
 <% end %>

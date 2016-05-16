@@ -40,18 +40,29 @@
   </div>
 
 
-    <div class="subcontent_top">
 
+    <h4>Mais Informações</h4>
+  <div class="subcontent">
 
-  <h4>Mais informações</h4>
-          <div id="notes-bar"></div>
+  <p class="tip">Descreva seu item</p>
+  <p clas="tip">Para inserir emojis no texto acesse
+  <%=link_to nil, "http://www.emoji-cheat-sheet.com" %></p>
+  <div class="wmd-panel">
+  <div id="wmd-button-bar"></div>
 
-          <%= p.text_area :detail,  :id => 'notes', :label =>"Descrição"%>
-          <div id="notes-preview"></div>
+  <%=p.text_area :detail, :id=> "wmd-input", :class=> "wmd-input", :placeholder => "Descrição"%>
+  <%=p.submit "Salvar", :class=> 'btn' %>
 
-
-
+  <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
   </div>
+  </div>
+
+
+
+
+
+
+
   <div class="subcontent">
     <h4>Estilos</h4>
     <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade

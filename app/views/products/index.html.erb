@@ -6,42 +6,96 @@
 <div class="box3">
 <div class="subcontent_top">
 <p>
-<span class="orange"><%=@products.total_entries %></span>
-Produtos achados</p>
+<h1> Produtos <%=@products.total_entries %></h1>
+
+
+
+
+
+    <div class="episode_views">
+      Visualizar:
+      <span class="view"><%= link_to_unless params[:view].blank?, image_tag("views/full.png", :size => "15x10"), params.merge(:view => nil, :page => nil), :title => "Full View" %></span>
+      <span class="view"><%= link_to_unless params[:view] == "grid", image_tag("views/grid.png", :size => "11x10"), params.merge(:view => "grid", :page => nil), :title => "Grid View" %></span>
+    </div>
+
+
+
+
 <div class="content">
-<div id="searchResults">
-<table class="product_table">
-<tbody>
-<tr>
-<% @products.each do |product|%>
-<td>
-<%=link_to product_path(product.id), :class=>"product" do %>
-<%if product.images.present? %>
-<%=image_tag product.images.first.ifoto.url(:small).to_s, :class=>"productImg" %>
-<% end %>
-<span class="productName">
-<%=product.name %></span>
-<span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
-<% if product.feedbacks %>
-<div class="productFeeback">
-<div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
-<%=@total_feedbacks %>
+  <% if params[:view].nil? %>
+
+
+
+<%= render :partial => 'products/list'%>
+
+<% elsif params[:view] == "grid" %>
+
+<%= render :partial => 'products/product'%>
+  <% end %>
+
+
 </div>
-<% end %>
-<span class="by">Por
-<%=product.vitrine.name %></span>
-<% end %>
-</td>
-<% end %>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+
+
+
 <div class="block_pagination">
 <div class="digg_pagination">
 <%=will_paginate @products,:container=> false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
 </div>
 </div>
 </div>
+
+
+
+
+<div class="block">
+    <h2>Confira Também</h2>
+
+
+  <div class="sugestion_carousel liquid" >
+	<span class="previous"></span>
+	<div class="wrapper">
+  <ul>
+
+            <% @suggestions.each do |item| %>
+              <li>
+            <%= link_to product_path(item) do  %>
+            <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
+            <%= item.name %>
+              <%= item.price %>
+            <% end %>
+            </li>
+            <% end %>
+  </ul>
+
+
+ 	</div>
+	<span class="next"></span>
 </div>
+
+
+
+
+
+
+  
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

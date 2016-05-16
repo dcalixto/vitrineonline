@@ -18,7 +18,7 @@
 
         <%= link_to  product_path(product.id), :class=>"product" do %>
 
-        <%= image_tag product.images.ifoto.url(:small).to_s, :class=>"productImg" %>
+        <%= image_tag product.images.first.ifoto.url(:small).to_s, :class=>"productImg" %>
 
         <span class="productName">
           <%= product.name %></span>
@@ -35,9 +35,7 @@
         </div>
         <% end %>
 
-        <span class="lista-time">
-          <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
-        </span>
+      
 
         <span class="by">Por
           <%= product.vitrine.name %></span>

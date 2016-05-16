@@ -1,7 +1,6 @@
 class Vitrine < ActiveRecord::Base
-
   extend FriendlyId
-  #include ActiveModel::Validations
+  # include ActiveModel::Validations
   friendly_id :name, use: [:slugged, :history]
 
   belongs_to :user
@@ -20,55 +19,49 @@ class Vitrine < ActiveRecord::Base
 
   has_many :announcements, dependent: :destroy
 
-
-
-# TODO COUPONS AND REPORT
+  has_reputation :votes, source: :user, aggregated_by: :sum
+  # TODO: COUPONS AND REPORT
   # has_many :coupons, as: :couponable #
-   has_many :reports, as: :reportable
+  # has_many :reports, as: :reportable
 
   belongs_to :city
   belongs_to :state
 
-
- #validates_presence_of :about, nil: false
-
-
   mount_uploader :logo, LogoUploader
 
-reverse_geocoded_by :latitude, :longitude do |obj, results|
+  reverse_geocoded_by :latitude, :longitude do |obj, results|
     if geo = results.first
       # populate your model
 
-       obj.user.city.name    = geo.city
+      obj.user.city.name = geo.city
       obj.user.state.code = geo.state_code
       obj.postal_code = geo.postal_code
          end
   end
   after_validation :fetch_address
 
+  # usar_como_cnpj_ou_cpf :codigo
 
-#usar_como_cnpj_ou_cpf :codigo
+  after_commit :flush_cache
 
-after_commit :flush_cache
+  def self.cached_find(id)
+    Rails.cache.fetch([name, id], expires_in: 5.minutes) { find(id) }
+  end
 
-def self.cached_find(id)
-  Rails.cache.fetch([name, id], expires_in: 5.minutes) { find(id) }
-end
+  def flush_cache
+    Rails.cache.delete([self.class.name, id])
+  end
 
-def flush_cache
-  Rails.cache.delete([self.class.name, id])
-end
-
-def cached_vitrine
-  Vitrine.cached_find(vitrine_id)
-end
+  def cached_vitrine
+    Vitrine.cached_find(vitrine_id)
+  end
 
   def vitrine_name
-    "#{name}"
+    name.to_s
   end
 
   def vitrine_address
-    "#{address}"
+    address.to_s
   end
 
   def vitrine_city
@@ -76,11 +69,11 @@ end
   end
 
   def vitrine_neighborhood
-    "#{neighborhood}"
+    neighborhood.to_s
   end
 
   def vitrine_postal_code
-    "#{postal_code}"
+    postal_code.to_s
   end
 
   def views_count
@@ -92,7 +85,7 @@ end
   end
 
   def vitrine_name
-    "#{name}"
+    name.to_s
   end
 
   def tag_list
@@ -100,22 +93,16 @@ end
     ActsAsTaggableOn::Tag.joins(:taggings).joins("inner join products on products.id = taggings.taggable_id and taggings.taggable_type = 'Product'").where('products.vitrine_id = ?', id).group('tags.id').order(:name)
   end
 
-
   before_create :build_default_models
 
-  accepts_nested_attributes_for :policy, :products, 
+  accepts_nested_attributes_for :policy, :products,
                                 :marketing, allow_destroy: true
 
   validates :name, uniqueness: { case_sensitive: false },
                    length: { within: 1..70 }
 
-  attr_accessible :name, :about, :logo, :banner,   :ad, :slogan,
-                  :address, :neighborhood, :latitude, :longitude,  :neighborhood,  :postal_code, :address_supplement, :code, :about
-
-
-
-
-
+  attr_accessible :name, :about, :logo, :banner, :ad, :slogan,
+                  :address, :neighborhood, :latitude, :longitude, :neighborhood, :postal_code, :address_supplement, :code, :about
 
   # CACHE
 

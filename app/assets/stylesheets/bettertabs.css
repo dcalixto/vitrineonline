@@ -1,0 +1,46 @@
+
+
+div.bettertabs {  }
+
+div.bettertabs ul.tabs {   padding: 0 8px;
+  margin: 0;
+  height: 35px;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: center;
+
+
+  border-bottom-color: #AAA;
+  background: #eee; }
+div.bettertabs ul.tabs li {
+
+
+  display: inline; float: left; height: 24px; line-height: 24px;
+  list-style: none outside none;
+  margin-right: .5em; padding-right: .5em; padding-left: .5em;
+  position: relative; top: 1px;
+
+
+  color: #393939;
+  padding: 5px 8px;
+  padding-bottom: 4px;
+
+
+}
+div.bettertabs ul.tabs li.active { height: 25px; background-color: #fff; border-bottom: none;border: solid 1px #CCC;
+border-bottom: none;
+background-color: #fff;
+color: #555;
+
+cursor: default; }
+div.bettertabs ul.tabs li.active a.active  { color: black; }
+
+div.bettertabs ul.tabs li a {  text-decoration: none; float: left; }
+div.bettertabs ul.tabs li a:link,
+div.bettertabs ul.tabs li a:visited { color: #444; }
+div.bettertabs ul.tabs li a:hover { color: #000; text-decoration: underline;  }
+div.bettertabs ul.tabs li a:active { color: #933; }
+div.bettertabs ul.tabs li a.ajax-loading { color: #666; }
+
+div.bettertabs div.content {   background-color: #fff; clear: left; }
+div.bettertabs div.content.hidden { display: none; }

@@ -2,14 +2,14 @@
   <ul>
 
     <% unless @product.images.blank? %>
-  <%  @product.images.limit(4).each do |f| %>
+  <%  @product.images.first(4).each do |i| %>
     <li>
-      <a href="<%= @product.images.url.to_s %>">
-        <%= f.image_tag(@product.images.url(:small).to_s, :class => 'thumbnail circle', :'data-zoom-href' => @product.images.url(:big).to_s) %>
+      <a href="<%= i.ifoto.url.to_s %>">
+        <%= image_tag(i.ifoto.url(:small).to_s, :class => 'thumbnail circle', :'data-zoom-href' => i.ifoto.url(:big).to_s) %>
       </a>
     </li>
        <% end %>
 
-
+ <% end %>
   </ul>
 </div>

@@ -25,14 +25,14 @@ class FotoUploader < CarrierWave::Uploader::Base
 
 
   version :thumb do
-    process resize_to_fit: [170, 198]
+    process resize_to_fit: [170, 170]
     process quality: 80
 
     process :strip
   end
 
   version :small do
-    process resize_to_fit: [80, 100]
+    process resize_to_fit: [80, 80]
     process quality: 80
     process :strip
   end
@@ -40,7 +40,7 @@ class FotoUploader < CarrierWave::Uploader::Base
  
 
   version :big do
-    process resize_to_fit: [460, 543]
+    process resize_to_fit: [460, 460]
     process quality: 80
 
     process :strip

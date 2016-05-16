@@ -1,0 +1,49 @@
+
+<!--STOCK OF ITEMS  -->
+   
+
+    <div class="content">
+ <h2>Vitrines Curtidas</h2>
+
+    <table class="zebra_branca margin_top" id="stock_vitrine">
+
+      
+
+      <tbody>
+
+        <% @vitrines.each do |vitrine| %>
+        <tr>
+          <td class="stock_td">
+            <%= link_to  vitrine_path(vitrine.id) do %>
+            <%= image_tag vitrine.logo.url(:mobile).to_s %>
+<%= vitrine.name %>
+            <% end %>
+          </td>
+
+          <td>
+            <% if vitrine.feedbacks %>
+            <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+            <%= @total_feedbacks %>
+            <% end %>
+
+          </td>
+
+
+        </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+
+ 
+
+  <div class="block_pagination">
+    <hr class="line"></hr>
+    <div class="digg_pagination">
+      <%= will_paginate  @vitrines,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
+
+    </div>
+  </div>
+</div>
+

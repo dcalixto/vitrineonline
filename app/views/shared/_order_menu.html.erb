@@ -7,7 +7,7 @@
 <h2 class="h1_menu">Pedidos</h2>
 
 <h2>
-  <span class="texto">Usuário</span>
+  <span class="texto">Usuário - Itens</span>
 </h2>
 <ul>
   <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[0] %>">
@@ -17,10 +17,12 @@
     <%= link_to 'Marcado como Enviado pelo Vendedor', "#{purchased_orders_path}?status=#{Order.statuses[1]}" %>
   </li>
 </ul>
+<% if current_user.vitrine %>
   <h2>
-    <span class="texto">Vitrine</span>
+    <span class="texto">Vitrine - Itens</span>
   </h2>
 <ul>
+
 <li><%= link_to "Adicionados", order_stocks_path(current_vitrine.id) %></li>
   <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[0] %>">
     <%= link_to 'Vendidos', "#{sold_orders_path}?status=#{Order.statuses[0]}" %>
@@ -31,7 +33,7 @@
 
 </ul>
 
-
+<% end %>
 
     </div>
   </div>

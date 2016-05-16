@@ -33,7 +33,7 @@
 *= require vitrine
 *= require will_paginate
 *= require shopcart
-*= require link_bar
+
 *= require search
 *= require details
 *= require jquery.fancybox
@@ -45,12 +45,20 @@
 *= require dropzone
 *= require markdown
 *= require stretchtext
-*= require jquery.slinky
-*= require typehead
-*= require unslider
-*= require js_tab
+
+*= require sugestion
+*= require carousel
+
+
+*= require bettertabs
 *= require vitrine_header
-*= require sliderkit-core
+*= require user_header
+*= require tags
+*= require liquidcarousel
+
+
+
+
  */
 
 

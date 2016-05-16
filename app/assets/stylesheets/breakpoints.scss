@@ -12,6 +12,9 @@ margin-top:5px
 }
 
 
+.box a, .panel a {color: #111;}
+
+
 @include breakpoint($mobile) {
 
   .inner_tab {
@@ -21,7 +24,7 @@ margin-top:5px
     max-width: 1000px;
     box-sizing: border-box;
     display: block;
-    height: 35px;
+    height: 33px;
 }
         .subnav {
           display: none;
@@ -47,6 +50,7 @@ margin-top:5px
           box-sizing: border-box;
           position: relative;
           border-image: none;
+          color: #111;
         }
 
 
@@ -76,10 +80,11 @@ margin-top:5px
           left: -9999px;
           background: #fff;
           border-top: 4px solid #3e6fb6;
-          margin-top: 3px;
-          min-width: 700px;
+            margin-top: -9px;
+          min-width: 800px;
           min-height: 500px;
           z-index: 20000;
+          color: #111;
         }
         #main-nav li:hover .panel {
           left: 0;
@@ -200,7 +205,7 @@ margin-top:5px
     max-width: 1000px;
     box-sizing: border-box;
     display: block;
-    height: 35px;
+    height: 33px;
 }
       .subnav {
         display: none;
@@ -255,10 +260,11 @@ margin-top:5px
         left: -9999px;
         background: #fff;
         border-top: 4px solid #3e6fb6;
-        margin-top: 3px;
-        min-width: 700px;
+         margin-top: -9px;
+        min-width: 800px;
         min-height: 500px;
         z-index: 20000;
+        color: #111;
       }
       #main-nav li:hover .panel {
         left: 0;
@@ -377,7 +383,7 @@ margin-top:5px
       max-width: 1000px;
       box-sizing: border-box;
       display: block;
-  height: 35px;
+  height: 33px;
   }
 
   .subnav {
@@ -400,6 +406,7 @@ margin-top:5px
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
+    color: #111;
     border-image: none;
   }
 
@@ -430,10 +437,11 @@ margin-top:5px
     left: -9999px;
     background: #fff;
     border-top: 4px solid #3e6fb6;
-    margin-top: 3px;
-    min-width: 700px;
+     margin-top: -9px;
+    min-width: 800px;
     min-height: 500px;
     z-index: 20000;
+    color: #111;
   }
   #main-nav li:hover .panel {
     left: 0;
@@ -453,7 +461,7 @@ margin-top:5px
     padding-left: 10px;
 
 
-    color: #fff;
+    color: #111;
   }
   #main-nav .tab:hover {
     float: left;
@@ -552,7 +560,7 @@ margin-top:5px
     max-width: 1200px;
     box-sizing: border-box;
     display: block;
-    height: 35px;
+    height: 33px;
 }
   .subnav {
     display: none;
@@ -575,6 +583,7 @@ margin-top:5px
     box-sizing: border-box;
     position: relative;
     border-image: none;
+    color: #111;
   }
 
 
@@ -585,8 +594,7 @@ margin-top:5px
     left: 0;
     z-index: 20;
 
-    width: 100px;
-    overflow: visible;
+       overflow: visible;
     width: 500px;
   }
   #main-nav li {
@@ -604,10 +612,11 @@ margin-top:5px
     left: -9999px;
     background: #fff;
     border-top: 4px solid #3e6fb6;
-    margin-top: 3px;
-    min-width: 700px;
+    margin-top: -9px;
+    min-width: 800px;
     min-height: 500px;
     z-index: 20000;
+    color: #111;
   }
   #main-nav li:hover .panel {
     left: 0;
@@ -688,11 +697,9 @@ margin-top:5px
     display: inline-block;
     font-size: 12px;
 
-
   }
 
   .parentnav {
-
     display: block;
   }
   .parentnav a {

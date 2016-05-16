@@ -8,15 +8,15 @@
 
 <div class="box1">
   <%= render 'shared/flash_messages' %>
-<div id="vitrine_header">
-  <div id="vitrine_banner">
+<div id="user_header">
+  <div id="user_banner">
 
 
   <%= image_tag(@user.banner.url(:thumb).to_s) %>
      </div>
 
-         <div class="vitrine_logo-container">
-                <div class="vitrine_logo">
+         <div class="user_logo-container">
+                <div class="user_logo">
 
   <%= image_tag(@user.avatar.url(:thumb).to_s) %>
 
@@ -27,7 +27,7 @@
 
 
 
-  <div class="vitrine_header_share_links">
+  <div class="user_header_share_links">
   <ul>
 <li>
 <%= social_share_button_tag(truncate(@user.name, :length => 20), :url => url_for(:action => :show, :id => @user.id, :only_path => false))  %>
@@ -43,7 +43,7 @@
 
 
 
-   <div id="vitrine_header_info_links">
+   <div id="user_header_info_links">
      <h2>
 
      <%=link_to user_path(@user) do %>
@@ -139,7 +139,12 @@
     <h2>Veja Também</h2>
 
 
-      <ul class="content-slider">
+
+
+  <div class="sugestion_carousel liquid" >
+	<span class="previous"></span>
+	<div class="wrapper">
+     <ul>
 
             <% @suggestions.each do |item| %>
               <li>
@@ -152,6 +157,15 @@
             <% end %>
   </ul>
 
+ 	</div>
+	<span class="next"></span>
+</div>
+
+
+
+
+
+</div>
 
 
 

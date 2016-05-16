@@ -10,21 +10,21 @@ class SessionsController < ApplicationController
       user.update_attribute(:login_at, Time.zone.now)
       user.update_attribute(:ip_address, request.remote_ip)
 
-      #if user.email_confirmed
-        #logar user
-#redirect_to root_url
-  #   if
-    #  params[:remember_me]
-     cookies.permanent[:auth_token] = user.auth_token
+      # if user.email_confirmed
+      # logar user
+      # redirect_to root_url
+      #   if
+      #  params[:remember_me]
+      cookies.permanent[:auth_token] = user.auth_token
 
-    #  else
-#redirect_to root_url
+      #  else
+      # redirect_to root_url
 
-#flash.now[:alert] = 'Antes de logar confirme seu email'
+      # flash.now[:alert] = 'Antes de logar confirme seu email'
       #  cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, httponly: true, secure: !(Rails.env.test? || Rails.env.development?) }
 
-          #  end
-  
+      #  end
+
       redirect_to root_url # , :notice => "Logado!"
     else
       flash.now[:alert] = 'Email ou Password inválido'
@@ -59,6 +59,17 @@ class SessionsController < ApplicationController
     cookies[:auth_token] = { value: user.oauth_token, expires: user.oauth_expires_at, secure: !(Rails.env.test? || Rails.env.development?) }
     redirect_to root_url
   end
+
+
+
+  def facebook
+     @facebook ||= Koala::Facebook::API.new(oauth_token)
+     block_given? ? yield(@facebook) : @facebook
+   rescue Koala::Facebook::APIError => e
+     logger.info e.to_s
+     nil
+   end
+
 
   def destroy
     cookies.delete(:auth_token)

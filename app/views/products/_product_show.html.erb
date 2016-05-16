@@ -1,44 +1,68 @@
-<div class="box1">
-  <div class="block">
+
     <div class="content">
+
+
+
+      <div class="subcontent_top">
+
+
+  <ul>
+
+    <% unless @product.images.blank? %>
+  <%  @product.images.offset(4).each do |i| %>
+    <li>
+      <%= link_to product_path(i) do  %>
+    <%= image_tag(i.ifoto.url(:big).to_s)%>
+  <% end %>
+
+    </li>
+      <% end %>
+
+ <% end %>
+  </ul>
+</div>
+
+
+
           <div class="subcontent">
 
     <h2>Clientes que viram este produto também viram</h2>
 
-    <div clsss="carousel_show" class="sliderkit">
-    					<div class="sliderkit-nav">
-    						<div class="sliderkit-nav-clip">
-    							<ul>
-      <ul>
+
+
+<div class="sugestion_carousel liquid" >
+	<span class="previous"></span>
+	<div class="wrapper">
+    <ul>
 
             <% @suggestions.each do |item| %>
               <li>
             <%= link_to product_path(item) do  %>
-
-            <%= image_tag item.images.first.url(:thumb).to_s %>
+            <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
             <%= item.name %>
               <%= item.price %>
             <% end %>
             </li>
             <% end %>
   </ul>
-  <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a href="#" title="Scroll to the left"><span>Anterior</span></a></div>
-						<div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-next"><a href="#" title="Scroll to the right"><span>Próximo</span></a></div>
-					</div>
+	</div>
+	<span class="next"></span>
+</div>
 
 
-  </div>
-
-  </div>
 
 
-  </div>
+ 
 
 </div>
 
-<div class="box1">
-  <div class="block">
-    <div class="content">
+ 
+  
+
+
+
+
+ 
       <div class="subcontent">
 
   <h2>Clientes que comprarm este produto também compraram</h2>
@@ -56,20 +80,17 @@
         </li>
       <% end %>
     </ul>
+
+
+
   </div>
 
 
-  </div>
-
-  </div>
-</div>
 
 
 
-<div class="box1">
 
-  <div class="block">
-      <div class="content">
+
             <div class="subcontent">
     <h2>Descrições do Produto</h2>
     <p><% if @product.detail.present? %>
@@ -99,7 +120,8 @@
 
           </ul>
 
-        </div>
+      </div>
+
 
       </div>
 
@@ -108,7 +130,7 @@
       <div class="subcontent">
 
         <h2>Formas de Pagamento</h2>
-        <div class="content">
+      
           <%= link_to  "https://www.paypal.com/br"  do %>
 
           <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
@@ -176,29 +198,27 @@
 
           <%= render :partial => 'feedbacks/feedbacks' %>
 
-        </div>
+        
 
 
 
       </div>
-    </div>
-
-  </div>
-
-</div>
-
-
-
-
-<div class="box1">
-  <div class="block">
-      <div class="content">
+ 
   <div class="subcontent">
 
   <h2>Produtos similares a esta vitrine</h2>
 
-  <ul class="content-slider">
-      <%  @similarities_for_vitrine.each do |item| %>
+ 
+
+
+
+
+
+<div class="similar_carousel liquid" >
+	<span class="previous"></span>
+	<div class="wrapper">
+    <ul>
+   <%  @similarities_for_vitrine.each do |item| %>
 
     <li>  <%= link_to product_path(item) do  %>
       <%= image_tag item.images.first.url(:small).to_s %>
@@ -208,7 +228,20 @@
     </li>
       <% end %>
 </ul>
+
+ 	</div>
+	<span class="next"></span>
 </div>
+
+
+
+ </div>
+
+
+
+
+
+  
   </div>
-  </div>
-</div>
+ 
+

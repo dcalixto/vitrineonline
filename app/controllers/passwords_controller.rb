@@ -1,11 +1,7 @@
 # encoding: utf-8
 class PasswordsController < ApplicationController
-
-
-
   def new
     @password_form = PasswordForm.new(current_user)
-  
   end
 
   def create

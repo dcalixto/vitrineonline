@@ -60,6 +60,8 @@
 
 .breadcrumbs {
   padding: 5px;
+  border-bottom:solid 1px #ddd;
+  margin-bottom:5px
 }
 .breadcrumbs a {
   color: #888;

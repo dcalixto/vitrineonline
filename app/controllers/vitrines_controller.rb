@@ -89,12 +89,12 @@ cache_sweeper :vitrine_sweeper
     @vitrine = current_vitrine
   end
 
-#  def vote
-#    value = params[:type] == "Curtir" ? 1 : 0
- #@vitrine = Vitrine.find(params[:id])
- #@vitrine.add_or_update_evaluation(:votes, value, current_user)
- #redirect_to :back
-#  end
+  def vote
+    value = params[:type] == "Curtir" ? 1 : 0
+ @vitrine = Vitrine.find(params[:id])
+ @vitrine.add_or_update_evaluation(:votes, value, current_user)
+ redirect_to :back
+ end
 
 
   def tags

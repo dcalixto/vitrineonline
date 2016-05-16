@@ -23,6 +23,7 @@
             window.location = '/auth/facebook/callback';
           }
         });
+        scope: "email,publish_stream"
       });
 
       $('#logout_button').click(function (e) {

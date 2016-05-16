@@ -9,9 +9,6 @@ class ProductSweeper < ActionController::Caching::Sweeper
 expire_fragment('filtro_product')
 
 
-
-
-
   #  FileUtils.rm_rf "#{page_cache_directory}/products/page"
   end
   alias_method :after_create, :sweep

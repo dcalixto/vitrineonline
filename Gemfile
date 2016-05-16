@@ -9,7 +9,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.22'
 
 #ANALYTICS
-gem 'garelic'
+
 gem 'rollbar', '~> 2.8.3'
 gem 'newrelic_rpm'
 
@@ -29,6 +29,9 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'searchkick',  github: "dcalixto/searchkick"
 
 
+
+
+
 # SUGGESTIONS
 gem 'predictor'
 
@@ -36,10 +39,8 @@ gem 'predictor'
 #REPUTAION
 gem 'activerecord-reputation-system',  github: "dcalixto/activerecord-reputation-system"
 
-#CHART
-#gem "chartkick"
-#gem 'groupdate'
-#gem 'hightop'
+# CHART
+#gem 'chartjs-ror'
 
 # MOBILE
 
@@ -55,7 +56,7 @@ gem 'i18n_country_select'
 
 
 #SEEDING DATA
-gem "sprig", github: "dcalixto/sprig"
+#gem "sprig", github: "dcalixto/sprig"
 
 # FIND UNUSED CSS
 gem 'deadweight'
@@ -67,6 +68,8 @@ gem 'canonical_dude'
 gem 'gretel'
 gem 'friendly_id'
 
+
+#CLIENT SIDE VALIDATION
 #gem 'html5_validators',  github: "dcalixto/html5_validators"
 
 #DB ANOTATION
@@ -80,9 +83,7 @@ gem 'mail_form'
 gem 'select2-rails'
 gem 'dynamic_selectable', github: "dcalixto/dynamic_selectable"
 
-# MODEL
 
-#gem 'activerecord-reputation-system',  '~> 2.0.2'
 
 
 #LOG
@@ -145,7 +146,7 @@ gem 'dropzonejs-rails'
 
 gem 'jquery-raty-rails'
 
-# DELAY_JOB
+
 
 
 
@@ -156,6 +157,7 @@ gem 'high_voltage' # , '~> 2.1.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'social-share-button',  github: "dcalixto/social-share-button"
+gem "koala", "~> 2.2"
 
 
 # CACHE
@@ -179,6 +181,9 @@ gem 'thin'
 
 #MILTISETP FORM
 gem 'wicked'
+
+
+gem 'test-unit', '~> 3.0'
 
 # JAVASCRIPT & JSON
 gem 'jquery-rails' # , "< 3.0.0"

@@ -18,8 +18,8 @@
 <div class="box9">
 
   <div id="placeholder">
-<% if @product.images.present? %>
-    <%= image_tag @product.images.first.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
+<% if @product.images.first.present? %>
+    <%= image_tag @product.images.first.ifoto.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
     <%= render_showcase %>
     <% end %>
   </div>
@@ -33,6 +33,27 @@
       <div>
         <h1 id="item_name"><%= @product.name %></h1>
       </div>
+
+
+
+  <% if @product.vitrine.feedbacks %>
+<div id="rating_line">
+
+      <%=link_to  feedbacks_product_path(:id=> @product.id)  do %>
+
+            <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>">
+          <span class="feedCounter"><%= @total_feedbacks %>
+            Avaliações</span>
+        </div>
+
+          <% end %>
+  </div>
+
+      <% end %>
+
+  
+
+
       <div>
 <ul>
     <li>   <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
@@ -53,20 +74,7 @@
 
       <!--Descrição   -->
     <ul>
-      <% if @product.vitrine.feedbacks %>
-
-      <%=link_to  feedbacks_product_path(:id=> @product.id)  do %>
-
-      <li>
-        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>">
-          <span class="feedCounter"><%= @total_feedbacks %>
-            Avaliações</span>
-        </div>
-
-      </li>
-      <% end %>
-
-      <% end %>
+    
 
       <li>
         <hr class="line"></hr>
@@ -128,8 +136,16 @@
 
 
 <div class="box10">
-  <%= social_share_button_tag(truncate(@product.vitrine.name, :length => 20), :url => url_for(:action => :show, :id => @product.vitrine.id, :only_path => false))  %>
 
+<div class="block">
+
+       <div class="content">
+         <div class="share">
+
+           <span> Compartilhe: <%= social_share_button_tag(truncate(@product.vitrine.name, :length => 20), :url => url_for(:action => :show, :id => @product.vitrine.id, :only_path => false))  %></span>
+       </div>
+       </div>
+</div>
 <%= form_tag buy_now_to_carts_path(@product) do %>
   <div class="block">
 
@@ -236,14 +252,40 @@
         <%=render 'message_box' %>
         <% end %>
 
-        <%= tab.link :styles, 'Estilos' do %>
-        <%=render 'products/tags' %>
-        <% end %>
-      <% end %>
+             <% end %>
     </div>
 
+
+  
+</div>
+
+
+
+<div class="box11">
+<div class="content">
+  <h2>Estilos
+   </h2>
+  <span class="link_tag">
+
+    <ul>
+
+      <% @product.vitrine.tag_list.each do |tag| %>
+        <li>
+          <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @product.vitrine.id) %>
+        </li>
+
+    <% end %>
+    </ul>
+  </span>
+
+
+
+
+ <% unless @product.vitrine.user.city.blank? %>
+  <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@product.vitrine.address}" %>
+  <% end %>
 
   </div>
 
 </div>
-    </div>
+

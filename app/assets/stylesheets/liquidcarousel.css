@@ -1,0 +1,40 @@
+.liquid {
+	border:2px solid #19301C;
+	-moz-border-radius:10px 10px 10px 10px;
+	-webkit-border-radius:10px 10px 10px 10px;
+	border-radius:10px 10px 10px 10px;
+	padding:10px 0;
+     }
+.liquid .previous {
+  	display:block;
+	height:45px;
+	width:21px;
+	background-image:url(/assets/chevron-left.gif);
+	float:left;
+	margin:0;
+	padding:0;
+        margin-top:50px;
+margin-right:10px;
+
+}
+.liquid .next {
+	display:block;
+	height:45px;
+	width:21px;
+	background-image:url(/assets/chevron-right.gif);
+	float:right;
+	margin:0;
+	padding:0;
+         margin-top:50px;
+margin-left:10px;
+
+}
+.liquid ul li {
+	width:170px;
+	padding:0 2px;
+	}
+.liquid ul li a img {
+	-moz-box-shadow: 5px 5px 3px #222;
+   	-webkit-box-shadow: 5px 5px 3px #222;
+   	box-shadow: 5px 5px 3px #222;
+}

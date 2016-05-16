@@ -17,7 +17,6 @@ class CartsController < ApplicationController
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
         order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id(product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id)
 
-
         if order.nil? # create new order
           order = Order.new
           order.product = product
@@ -40,10 +39,10 @@ class CartsController < ApplicationController
         end
 
         redirect_to product_path(product)
-        flash[:success] = "#{(product.name)} adicionado(a) a sacola"
+        flash[:success] = "#{product.name} adicionado(a) a sacola"
       else
         redirect_to product_path(product)
-        flash[:error] = " Erro ao adicionar #{(product.name)} a sacola"
+        flash[:error] = " Erro ao adicionar #{product.name} a sacola"
 
       end
     else

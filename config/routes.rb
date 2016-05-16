@@ -31,14 +31,24 @@ mount MemcachedManager::Routes, :at => '/mm'
 
   resources :users, only: [:new, :create, :edit, :update, :show] do
     resources :passwords
-    resources :banners, only: [:edit, :update]
-    member do
+       member do
       #  get :products
       get :confirm_email
       get :report
       get :message
       get :message_user
+
+
+ #get :banner
+ #put :banner_update,  to: 'user#banner'
+
+
     end
+
+match '/banner' => 'users#banner', :via => [:get]
+ 
+  match '/banner_update', to: 'users#banner', via: :put
+
 
     collection do
       get :feedbacks
@@ -214,8 +224,7 @@ mount MemcachedManager::Routes, :at => '/mm'
   resources :images, only: [:new, :create]
   resources :logo, only: [:edit, :update]
   resources :avatar, only: [:edit, :update]
-  resources :banner, only: [:edit, :update]
-
+  
   resources :votes, only:[:index ] do
     collection do
   get :products

@@ -3,8 +3,6 @@ class MessagesController < ApplicationController
   before_filter :authorize
   cache_sweeper :message_sweeper
 
-
-
   def create
     # TODO: Handle 404
     @conversation = current_user.conversations.find(params[:conversation_id])

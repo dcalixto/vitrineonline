@@ -36,15 +36,23 @@ module ApplicationHelper
 
   def default_meta_tags
     {
+
       title: 'Vitrineonline - Monte sua Vitrine',
       description: 'Monte sua vitrine, desenvolva sua vitrine, compre e venda roupas, calçados e acessórios do seu estilo',
-      keywords: 'vitrine, loja, estilo,  moda, calçados, camisas, cordões, pulseiras, brincos, comprar, roupas, vender, ecommerce, loja virtual, online'
+
+     keywords: 'vitrine, social, ofertas, oferta, loja, estilo, moda, calçados, camisas, cordões, pulseiras, brincos, comprar, roupas, vender, ecommerce, loja virtual, online'
+
     }
   end
 
 
 
-  
+
+
+
+
+
+
 
   def remove_user
     cookies.delete(:auth_token)
@@ -90,4 +98,19 @@ module ApplicationHelper
       markdown.render(text).html_safe
  end
     end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

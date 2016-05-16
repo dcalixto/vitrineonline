@@ -1,38 +1,14 @@
 
-
-<div class="box3">
-  <div class="flash_box">
-    <%= render 'shared/flash_messages' %>
-  </div>
-
-  <div class="block margin_top">
-
-      <div class="square_box">
-    <h4>Produtos Curtidos</h1>
-
-
-
     <div class="content">
 
-        Produtos curtidos
+      <h2> Produtos curtidos</h2>
+
+
         <% @products.each do |product| %>
       <%= product.reputation_for(:votes).to_i %>
       <% end %>
       <table class="zebra_branca margin_top" id="stock_vitrine">
 
-        <thead>
-          <tr class="header">
-            <th scope="col">Produto</th>
-            <th scope="col">Código</th>
-            <th scope="col">Preço</th>
-
-            <th scope="col">Avaliação</th>
-              <th scope="col">Quantidade</th>
-                <th scope="col">Comprar</th>
-
-
-          </tr>
-        </thead>
 
         <tbody>
 
@@ -73,7 +49,7 @@
   <%if product.buyable?(current_user) %>
 
 
-  <div class="add_to_car">
+  <div class="add_to_cart">
 
     <%= button_to("Adicionar a sacola",add_to_carts_path(product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
 
@@ -95,8 +71,7 @@
         </tbody>
       </table>
 
-    </div>
-
+  
     <div class="block_pagination">
       <hr class="line"></hr>
       <div class="digg_pagination">
@@ -104,6 +79,12 @@
 
       </div>
     </div>
-</div>
-</div>
-</div>
+    
+    
+    
+    
+    
+    
+    
+    </div>
+

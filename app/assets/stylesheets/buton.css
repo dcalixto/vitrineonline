@@ -1,7 +1,28 @@
-.uplad_button {
-    height: 20px;
-    width: 50px;
+
+
+.btn_green {
+  background: #31d126;
+  background-image: -webkit-linear-gradient(top, #31d126, #29a91d);
+  background-image: -moz-linear-gradient(top, #31d126, #29a91d);
+  background-image: -ms-linear-gradient(top, #31d126, #29a91d);
+  background-image: -o-linear-gradient(top, #31d126, #29a91d);
+  background-image: linear-gradient(to bottom, #31d126, #29a91d);
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 5px 10px 5px 10px;
+  border: solid #229c18 1px;
+  text-decoration: none;
 }
+
+.btn_green:hover {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
 
 .btn_cart {
     position: relative;
@@ -144,7 +165,7 @@
 
     vertical-align: baseline;
     float: left;
-    margin-top: 13px;
+    
     margin-left: 10px;
 }
 

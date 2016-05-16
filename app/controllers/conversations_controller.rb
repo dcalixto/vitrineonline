@@ -13,8 +13,8 @@ class ConversationsController < ApplicationController
       # #@conversation = Conversation.new
 
       @q = @conversations = current_user.active_conversations
-                            .includes(:conversation_participants, :display_message) #:users
-                            .order('conversations.updated_at DESC').ransack(params[:q])
+                                        .includes(:conversation_participants, :display_message) #:users
+                                        .order('conversations.updated_at DESC').ransack(params[:q])
       @conversations = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
     else
@@ -27,14 +27,11 @@ class ConversationsController < ApplicationController
     end
 
   def show
-    
     @conversation = current_user.conversations.find(params[:id])
     @messages = @conversation.messages.order('created_at DESC') # .includes(:user).page(params[:page]).per_page(2)
     @participant = @conversation.conversation_participants.find_by_user_id(current_user)
     @participant.update_attribute(:has_read, true)
     @new_message = @conversation.messages.build
-
-
 
     #  if  params[:page]
     #  render partial: 'messages/message', collection: @messages
@@ -51,15 +48,8 @@ class ConversationsController < ApplicationController
     render partial: 'participants', locals: { conversation: @conversation }
   end
 
-
-
   def new
-
-    if current_user
-
-      @conversation = Conversation.new
-
-  end
+    @conversation = Conversation.new if current_user
   end
 
   def create
@@ -76,7 +66,7 @@ class ConversationsController < ApplicationController
           user = User.find_by_name(params[:conversation_participant][:name])
           if user.nil?
             flash[:error] = 'Usuário inexistente'
-            fail ActiveRecord::Rollback
+            raise ActiveRecord::Rollback
           end
           @conversation.conversation_participants.create(user_id: user.id)
         end

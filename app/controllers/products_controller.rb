@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
 #cache_sweeper :product_sweeper
   def index
     @products = Product.aggs_search(params)
-
+ # suggestions for current visitor
+    ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
+    @suggestions = Product.unscoped.for_ids_with_order(ids)
   end
 
   def new
@@ -16,38 +18,16 @@ class ProductsController < ApplicationController
   end
 
 
-#  def vote
-#    value = params[:type] == "Curtir" ? 1 : 0
-# @product = Product.find(params[:id])
- #@product.add_or_update_evaluation(:votes, value, current_user)
- #redirect_to :back
-  #end
+ def vote
+   value = params[:type] == "Curtir" ? 1 : 0
+ @product = Product.find(params[:id])
+ @product.add_or_update_evaluation(:votes, value, current_user)
+ redirect_to :back
+  end
 
+#TODO
+#report
 
-def report
-  @user = current_user
-  @product = Product.cached_find(params[:id])
-  #current_user.reports @product
-  #current_user.reports.save
-
-  current_user.report_product(@product)
-  #current_user.reports.save
-  redirect_to report_product
-
-
-  @user = current_user
-  @product = Product.find(params[:id])
-  current_user.mark_as_report @product
-  redirect_to :back
-
-
-end
-
-
-def report_product
-  current_user.reports.build(@product_id)
-
-end
 
 
   def tags
@@ -125,15 +105,6 @@ end
     end
   end
 
-  # def create
-  #   @product = current_vitrine.products.build(params[:product])
-  #    if @product.save
-  #      redirect_to product_build_path(@product, Product.steps.one)
-  # flash[:success] = "#{(@product.name)} adicionado"
-  #    else
-  #      render :new
-  #    end
-  #  end
 
   def create
     @product = current_vitrine.products.build(params[:product])

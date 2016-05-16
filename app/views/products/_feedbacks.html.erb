@@ -1,16 +1,15 @@
-<% title @product.name%>
-<%description @product.feedbacks  %>
-<% keywords  @product.feedbacks %>
 
-<div class="box3">
-  <div class="block margin_top">
-    <h1>Avaliações</h1>
+<div class="content">
+
+
+
+    <h2>Avaliações</h2>
 <hr class="line"></hr>
-    <div class="content">
+  
       <div class="subcontent_top">
         <%= link_to  product_path(@product.id) do %>
 <% if @product.images.present? %>
-        <%= image_tag @product.images.ifoto.first.url(:thumb).to_s %>
+        <%= image_tag @product.images.first.ifoto.url(:thumb).to_s %>
 <% end %>
         <% end %>
 
@@ -18,6 +17,8 @@
         <%= @product.name %>
         <% end%>
       </div>
+
+
       <div class="subcontent">
       <li class="lista-time">
         <%= link_to  vitrine_path(@product.vitrine.id)  do %>
@@ -53,7 +54,7 @@
 
     <%= render :partial => 'feedbacks/feedbacks' %>
 
-  </div>
+  
 
   <div class="block_pagination">
     <div class="digg_pagination">
@@ -64,5 +65,4 @@
 
 </div>
 
-</div>
-</div>
+

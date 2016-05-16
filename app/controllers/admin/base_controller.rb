@@ -12,7 +12,7 @@ class Admin::BaseController < ApplicationController
   # Add controller names you want to include as tab. Eg.
   #  @@tabs = %w(messages) # if you created a Admin::MessagesController using the admin_scaffold generator.
   cattr_accessor :tabs
-  @@tabs = %w(users vitrines)
+  @@tabs = %w(users vitrines products orders feedbacks  )
 
   #  GET /admin/
   def index

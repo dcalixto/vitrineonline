@@ -11,8 +11,8 @@
 #
 
 class Category < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :name, use: [:slugged, :history]
+  #extend FriendlyId
+  #friendly_id :name, use: [:slugged, :history]
 
   belongs_to :gender
   has_many :subcategories
@@ -31,7 +31,7 @@ class Category < ActiveRecord::Base
     Rails.cache.delete([self.class.name, id])
   end
 
-  def cached_categiry
+  def cached_category
     Category.cached_find(category_id)
   end
 end

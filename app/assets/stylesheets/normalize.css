@@ -6,19 +6,13 @@
  *    without disabling user zoom.
  */
 
-html {
-  font-family: sans-serif; /* 1 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-}
+
 
 /**
  * Remove default margin.
  */
 
-body {
-  margin: 0;
-}
+
 
 /* HTML5 display definitions
    ========================================================================== */
@@ -90,8 +84,8 @@ template {
 
 a {
 
-  color: #0066C0;
-  text-decoration: none;
+ color: #167ac6; 
+   text-decoration: none;
   cursor: pointer;
     background-color: transparent;
 }
@@ -100,8 +94,7 @@ a:hover {
   color: #034678;
 }
 a:visited {
-  color: #085EB9;
-}
+ color: #167ac6; }
 
 
 /**
@@ -460,7 +453,7 @@ html {
     -ms-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-
+  font-family: sans-serif; /* 1 */
     word-wrap: break-word;
     -ms-word-wrap: break-word;
     white-space: normal;
@@ -469,8 +462,13 @@ html {
     hyphens: auto;
     display: block;
     background-repeat: no-repeat;
-    background: none repeat scroll 0% 0% #fff;
+
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+      background:#fff
 }
+
 
 /*
  * Remove text-shadow in selection highlight:
@@ -558,7 +556,7 @@ textarea {
    input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="tel"], input[type="color"], textarea {
 
      line-height: 16px;
-     font-size: 12px;
+     
      padding: 5px 4px;
      width: 50%;
 
@@ -616,30 +614,24 @@ textarea {
      font-weight: normal;
      -webkit-font-smoothing: subpixel-antialiased;
      line-height: 19px;
-     background:#fff;
+     background:#f1f1f1;
      color: #141823;
      line-height: 1.28;
-     margin: 0;
+
      padding: 0;
      direction: ltr;
      unicode-bidi: embed;
+
+
+     margin: 0;
      min-height: 100%;
-
+     width: 100%;
 
    }
 
 
-   html {
-      margin: 0px;
-      height: 100%;
-      width: 100%;
-   }
 
-   body {
-      margin: 0px;
-      min-height: 100%;
-      width: 100%;
-   }
+
 
 
 
@@ -852,8 +844,10 @@ textarea {
 }
 
 
-html, body {
-  background:#fff
-}
+
+
+
+
+
 
 .ul_disc {list-style-type:disc}

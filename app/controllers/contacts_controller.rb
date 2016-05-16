@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
     @contact.request = request
     if @contact.deliver
       redirect_to(action: 'index')
-      flash[:notice] = "Obrigado por entrar em contato #{(@contact.name)}, o mais rapido possivel."
+      flash[:notice] = "Obrigado por entrar em contato #{@contact.name}, o mais rapido possivel."
     else
       render :index
     end

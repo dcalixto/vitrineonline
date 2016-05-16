@@ -115,29 +115,28 @@
     <%=render 'message_box' %>
     <% end %>
 
-    <%= tab.link :styles, 'Estilos' do %>
-    <%=render 'products/tags' %>
-    <% end %>
+   
     <% end %>
   </div>
 
 </div>
 
-</div>
-
 <div class="box11">
 <div class="subcontent">
-  <h2>Estilos e Categorias da
-    <%=@vitrine.name %></h2>
-  <span class="tags">
+  <h2>Estilos
+   </h2>
+  <span class="link_tag">
 
-    <% @vitrine.products.each do |tag| %>
-    <%= raw tag.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-    <% end %>
-    <% @vitrine.tag_list.each do |tag| %>
-    <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
+    <ul>
+
+      <% @vitrine.tag_list.each do |tag| %>
+        <li>
+          <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
+        </li>
 
     <% end %>
+    </ul>
+  </span>
   </div>
 
 </div>

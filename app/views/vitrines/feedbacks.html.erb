@@ -1,16 +1,14 @@
-<div class="box3">
-  <div class="block margin_top">
+   <div class="content">
     <h1>Avaliações</h1>
 
-    <div class="content">
+ 
 
-      <div class="subcontent_top">
-      <li class="lista-time">
+      <div class="lista-time">
 
         Criada em:
         <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => false)%>
-      </li>
-    </div>
+      </div>
+   
 
   
 
@@ -39,7 +37,7 @@
 
     <%= render :partial => 'feedbacks/feedbacks' %>
 
-  </div>
+  
 
   <div class="block_pagination">
     <div class="digg_pagination">
@@ -48,7 +46,6 @@
     </div>
   </div>
 
-</div>
 
 </div>
-</div>
+

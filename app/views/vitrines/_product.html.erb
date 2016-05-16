@@ -1,6 +1,6 @@
 <%= link_to  product_path(product.id), :class=>"product" do %>
 <% if product.images.present? %>
-<%= image_tag product.images.first.url(:small).to_s, :class=>"productImg" %>
+<%= image_tag product.images.first.ifoto.url(:thumb).to_s, :class=>"productImg" %>
 <% end %>
 <span class="productName">
   <%= product.name %></span>

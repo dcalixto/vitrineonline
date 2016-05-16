@@ -1,6 +1,21 @@
-.upload_item span {
-  float: left
-}
+
+
+img#rating_line  {display: inline;
+    margin: 0 auto;
+    clear: right; }
+
+
+
+#rating_line {height:16px;display: inline;    position: relative;}
+
+#rating_line a {height:16px;display: inline;  width:400px}
+
+
+#rating_line img a {
+  display:block;
+    margin:auto;
+  }
+
 #showcase {
   padding: 0;
   margin: 0;
@@ -34,9 +49,7 @@
 #item_quantity {
   width: 50px
 }
-#item_price {
-  width: 100px
-}
+
 .filtro li {
   margin-bottom: 5px
 }
@@ -127,11 +140,43 @@
     padding: 4px 0px;
 border:solid 1px #000;
     overflow:auto
+    }
+
+  
+
+
+#searchResults td {
+    width: 180px;
+    height:265px;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+     border:solid 1px red;
 }
+
+
+#searchResults img {
+   max-width: 170px;
+    max-width: 170px;
+  }
+
+#searchResults .productName{color: #167ac6; font-size:13px;
+
+     display: block;
+    line-height: 1.3em;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+
+}
+
 #searchResults .product {
-    width: 170px;
-    margin-bottom: 35px;
-    padding: 15px 12px 0px 13px;
+
+  max-width: 170px;
+
+
     border:solid 1px blue;
 }
 
@@ -150,7 +195,7 @@ border:solid 1px #000;
     position: relative;
     display: block;
     white-space: normal;
-    width: 136px;
+   
     /*padding: 0px 18px;*/
     float: left;
     text-align: left;
@@ -161,16 +206,12 @@ border:solid 1px #000;
 
 }
 
-.product .productName {
-  font-size: 13px;
-  margin-top:5px
-}
 .product .by {
 color: #888
 }
 .product .productImg {
-  /*  width: 170px;
-    height: 198px;*/
+   width: 170px;
+    height: 170px;
      display: block;
      vertical-align: top;
     text-decoration: none;
@@ -219,26 +260,40 @@ color: #888
 
 
 
-
-
-
-
-
-
-
-
-@media (max-width: 551px) {
-    .product {
-        width: 440px;
-    }
+.product_list tr td a {
+    display:block;
+    height:100%;
+    width:100%;
 }
-@media (max-width: 441px) {
-    .product {
-        width: 330px;
-    }
+
+.product_list tr td {
+  
+    white-space: nowrap;
+    width: 99%;
+    padding:0px;
+    vertical-align:top;
+    height:100%;
 }
-@media (max-width: 331px) {
-    .product {
-        width: 220px;
-    }
-  }
+
+.product_list{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.product_list tr {
+  border-bottom: solid 1px #CCC;
+}
+
+.searchResults h2 {}
+.product .productName {
+   margin-top:5px;
+   font-weight:normal;
+
+
+   font-size: 17px;
+   line-height: 1.255;
+   font-family: Arial,sans-serif;
+text-rendering: optimizeLegibility;
+}
+
+

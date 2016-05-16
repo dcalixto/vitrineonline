@@ -8,7 +8,7 @@
   z-index: 100;
   padding: 0;
   float: left;
-  margin-top: 5px;
+  
   position: relative;
 }
 
@@ -40,7 +40,7 @@ position: relative;
 }
 
 .user_nav_list ul {
-  margin-top: 5px
+ 
 }
 .user_nav_list li {
   display: inline-block;

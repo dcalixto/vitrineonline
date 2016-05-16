@@ -7,10 +7,10 @@
   <h1 class="h1_menu">Curtidas</h1>
       <ul>
         <li>
-          <%= link_to 'Produtos', products_votes_path %>
+          <%= link_to 'Produtos', products_votes_path(current_user) %>
         </li>
         <li>
-        <%= link_to 'Vitrines', vitrines_votes_path %>
+        <%= link_to 'Vitrines', vitrines_votes_path(current_user) %>
         </li>
       </ul>
     </div>
