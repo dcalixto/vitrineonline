@@ -200,6 +200,7 @@ match '/banner' => 'users#banner', :via => [:get]
       post '/:id/feedbacks', to: 'products#feedbacks', as: :search_feedbacks
       # get 'search'
       get :autocomplete
+      get 'auth/:provider/callback', to: 'products#omniauth_callback'
     end
 
     resources(:steps,

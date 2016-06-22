@@ -13,8 +13,23 @@ class Product::StepsController < ApplicationController
 
     if @product.update_attributes(params[:product])
 
+      #facebook sharing
+      if @product.is_shared_on_facebook
+        begin
+          client = Koala::Facebook::API.new cookies[:facebook_auth_token]
+          client.put_wall_post('Hello!', {
+                :name => @product.name,
+                :link => product_url(@product),
+                :caption => "#{current_user.full_name} posted a new product",
+                :description => @product.detail,
+                :picture => root_url[0...-1] + @product.images.first.ifoto.url(:big)
+            })
+        rescue
+          @product.update_attribute :is_shared_on_facebook, false
+        end
+      end
+
       redirect_to order_stocks_path(current_vitrine.id)
-    
     else
       render_wizard @product
     end

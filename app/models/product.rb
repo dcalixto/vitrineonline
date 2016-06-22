@@ -36,7 +36,7 @@ class Product < ActiveRecord::Base
   attr_accessible  :name, :detail, :price, :color_id, :gender_id,
                    :category_id, :subcategory_id, :material_id, :condition_id,
                    :brand_id, :meta_keywords, :quantity, :status, :vitrine_id, :products, :price,
-                   :size_ids, :color_ids, :state, :tag_list
+                   :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook, :is_shared_on_twitter
 
   validates :name, presence: true, length: { maximum: 140 }
   validates :price, presence: true

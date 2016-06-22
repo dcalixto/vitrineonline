@@ -130,6 +130,11 @@ class ProductsController < ApplicationController
     render json: Product.search(params[:query], fields: [{ name: :text_start }], limit: 4).map(&:name)
     end
 
+  def omniauth_callback
+    cookies[params[:provider] + '_auth_token'] = { value: params[:access_token], secure: !(Rails.env.test? || Rails.env.development?) }
+    render :nothing => true
+  end
+
   protected
 
   def sold_info

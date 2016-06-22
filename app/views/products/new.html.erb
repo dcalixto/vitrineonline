@@ -49,6 +49,14 @@
 </li>
 </ul>
 </div>
+<div class="subcontent">
+  <h4>Compartilhe</h4>
+  <%= p.check_box :is_shared_on_facebook %>
+  <span class="social-share-button-facebook"></span>
+  &nbsp;&nbsp;&nbsp;
+  <%= p.check_box :is_shared_on_twitter %>
+  <span class="social-share-button-twitter"></span>
+</div>
 </div>
 </div>
 <%=p.button "Próximo", :class=> "btn btn_big" %>
