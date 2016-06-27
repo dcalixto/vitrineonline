@@ -6,7 +6,9 @@ class Feedback < ActiveRecord::Base
  has_one :product, through: :order
 
 
-validates_presence_of  :buyer_comment, :seller_comment, nil: false
+#validates_presence_of  :buyer_comment, :seller_comment, nil: false  # this cause a bug - buyer can't post feedback
+
+
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'
 

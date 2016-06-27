@@ -29,7 +29,7 @@
         <tr>
           <td >
               <% if product.images.present? %>
-            <%= image_tag product.images.first.url(:thumb).to_s %>
+            <%= image_tag product.images.first.ifoto.url(:thumb).to_s %>
             <% end %>
           </td>
           <td class="sumary">

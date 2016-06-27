@@ -12,6 +12,7 @@
 //= require social-share-button
 //= require dropzone
 //= require respond.min
+//= require url.min
 //= jquery.menu-aim
 //= Markdown.Converter
 //= Markdown.Editor
@@ -48,6 +49,14 @@ $('vitrine_about').readmore({
 
 });
 
+// PRODUCT SEARCH ORDER BY
+$(document).ready(function() {
+   $('#order_by').change(function() {
+       var url = new Url;
+       url.query.order_by = $(this).val();
+       window.location = url.toString();
+   });
+});
 
 $(document).ready(function() {
     $('.user_nav li a').tipsy({gravity: 'n'});
