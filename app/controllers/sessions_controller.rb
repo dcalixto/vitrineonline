@@ -36,6 +36,15 @@ class SessionsController < ApplicationController
   def omniauth_callback
     auth_hash = request.env['omniauth.auth']
 
+    # twitter auth used for product sharing only
+   if auth_hash[:provider] == 'twitter'
+      cookies['twitter_auth_token'] = { value: auth_hash[:credentials][:token], secure: !(Rails.env.test? || Rails.env.development?) }
+      cookies['twitter_auth_secret'] = { value: auth_hash[:credentials][:secret], secure: !(Rails.env.test? || Rails.env.development?) }
+      render :text => '<script type="text/javascript">window.close();</script>'
+      return
+    end
+
+
     user = User.find_by_uid(auth_hash[:uid])
     if user.nil? && auth_hash[:info][:email]
       user = User.find_by_email(auth_hash[:info][:email])

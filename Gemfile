@@ -156,8 +156,10 @@ gem 'high_voltage' # , '~> 2.1.0'
 # FACEBOOK AUTH & SHARE AND OTHERS
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'social-share-button',  github: "dcalixto/social-share-button"
 gem "koala", "~> 2.2"
+gem 'twitter'
 
 
 # CACHE

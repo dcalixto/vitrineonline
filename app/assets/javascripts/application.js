@@ -49,6 +49,17 @@ $('vitrine_about').readmore({
 
 });
 
+// TWITTER OAUTH
+$(document).ready(function() {
+    $('#product_is_shared_on_twitter').click(function (e) {
+        var checkbox = $(this);
+        if(checkbox.is(':checked')) {
+            if(document.cookie.indexOf('twitter_auth_token') == -1 || document.cookie.indexOf('twitter_auth_secret') == -1)
+              window.open('/auth/twitter', '_blank', "scrollbars=1,resizable=1,height=500,width=650");
+        }
+    });
+});
+
 // PRODUCT SEARCH ORDER BY
 $(document).ready(function() {
    $('#order_by').change(function() {
