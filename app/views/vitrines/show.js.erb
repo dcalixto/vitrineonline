@@ -1,1 +1,4 @@
 $("#tab_container .nav_section").html("<%= escape_javascript(%w[products feedbacks about message_box].include?(params[:view]) ? render(params[:view]) : render("vitrine_show")) %>");
+
+$("#posts").append("<tbody class='page'><%= escape_javascript(render(@products)) %></tbody>");
+

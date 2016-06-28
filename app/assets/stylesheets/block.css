@@ -1,9 +1,11 @@
 /* TOP BOX  */
+
+.margin_top {margin-top:50px}
+.white {background-color:#fff}
 .tip_box {
 
 
-    margin-top: 30px;
-    -moz-border-radius: 3px;
+       -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 
     padding: 8px 10px;
@@ -12,7 +14,16 @@
     text-align: left;
     border: solid 1px #eee;
     border-radius: 3px;
-}
+    width:auto
+-webkit-box-shadow: -1px 1px 5px -1px rgba(0,0,0,0.12);
+-moz-box-shadow: -1px 1px 5px -1px rgba(0,0,0,0.12);
+box-shadow: -1px 1px 5px -1px rgba(0,0,0,0.12);
+    }
+
+.container{background-color: #ffffff;width:100%;height:100%;overflow:auto}
+
+
+
 
 .ul_disc ul {
     list-style-type: disc;
@@ -56,7 +67,7 @@
 
     width: auto;
     word-wrap: break-word;
-
+background:#fff;
     white-space: normal;
     display: block;
     overflow: hidden;

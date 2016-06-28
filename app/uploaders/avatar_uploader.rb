@@ -33,7 +33,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process resize_to_fit: [150, 150]
+    process resize_to_fit: [80, 80]
     process quality: 80
 
     process :strip

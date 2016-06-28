@@ -34,12 +34,9 @@
 
 
 #ajuda-menu {
-  border: 1px solid #dee1ea;
+ 
   padding: 0;
-  background-color: #FFF8DC;
-  border: 1px solid #E0DCBF;
-  -webkit-border-radius: 3px 3px 3px 3px;
-border-radius: 3px 3px 3px 3px;
+   
 
 }
 #ajuda-menu h1 {
@@ -65,27 +62,27 @@ border-radius: 3px 3px 3px 3px;
   display: block;
   text-decoration: none;
   color: #295e9f;
-  background:#f4f4f4
+  background:#fff
 }
 #menu-box li:hover > a {
   display: block;
   text-decoration: none;
   color: #295e9f;
-   background:#f4f4f4
+   background:#fff
 
 }
 #menu-feedback li:hover > a {
   display: block;
   text-decoration: underline;
   color: #295e9f;
-   background:#f4f4f4
+   background:#fff
 
 }
 #menu-loja li:hover > a {
   display: block;
   text-decoration: underline;
   color: #295e9f;
-   background:#f4f4f4
+   background:#fff
 
 }
 

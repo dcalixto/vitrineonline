@@ -18,12 +18,7 @@ class ProductsController < ApplicationController
   end
 
 
- def vote
-   value = params[:type] == "Curtir" ? 1 : 0
- @product = Product.find(params[:id])
- @product.add_or_update_evaluation(:votes, value, current_user)
- redirect_to :back
-  end
+
 
 #TODO
 #report

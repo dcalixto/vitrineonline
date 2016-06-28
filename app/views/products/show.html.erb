@@ -1,7 +1,7 @@
 <% title @product.name%>
 <%description @product.name  %>
 <% keywords  @product.tag_list %>
-
+<div class="container">
 <div class="box1">
   <% breadcrumb :product, @product %>
 
@@ -15,6 +15,7 @@
 
 <!-- Imagens do product   -->
 
+
 <div class="box9">
 
   <div id="placeholder">
@@ -26,7 +27,8 @@
 
 </div>
 
-<div class="box9">
+<div class="box9  white">
+
   <div class"content">
 
 
@@ -36,20 +38,6 @@
 
 
 
-  <% if @product.vitrine.feedbacks %>
-<div id="rating_line">
-
-      <%=link_to  feedbacks_product_path(:id=> @product.id)  do %>
-
-            <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>">
-          <span class="feedCounter"><%= @total_feedbacks %>
-            Avaliações</span>
-        </div>
-
-          <% end %>
-  </div>
-
-      <% end %>
 
   
 
@@ -86,7 +74,7 @@
 
       <li>
 
-        <span>Disponíveis:
+        <span>Disponível:
           <strong><%= @product.quantity%></strong>
         </span>
       </li>
@@ -100,6 +88,25 @@
           </strong></span>
       </li>
       <% end %>
+
+ <li>
+
+
+        <% if @product.vitrine.feedbacks %>
+<div id="rating_line">
+
+      <%=link_to  feedbacks_product_path(:id=> @product.id)  do %>
+
+            <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>">
+          <span class="feedCounter"><%= @total_feedbacks %>
+            Avaliações</span>
+        </div>
+
+          <% end %>
+  </div>
+
+      <% end %>
+  </li>
 
 
 
@@ -137,19 +144,13 @@
 
 <div class="box10">
 
-<div class="block">
-
-       <div class="content">
-         <div class="share">
-
-           <span> Compartilhe: <%= social_share_button_tag(truncate(@product.vitrine.name, :length => 20), :url => url_for(:action => :show, :id => @product.vitrine.id, :only_path => false))  %></span>
-       </div>
-       </div>
-</div>
 <%= form_tag buy_now_to_carts_path(@product) do %>
   <div class="block">
 
-    <div class="tip_box">
+    <div class="tip_box wrapper ">
+
+   
+
     <div class="content">
 
       <ul>
@@ -193,24 +194,20 @@
 
       <div class="horizontal_buttons">
         <ul>
-          <li>
+        
 
             <% if current_user %>
             <%if @product.buyable?(current_user) %>
 
-            <div class="buy_now">
+        
 
-              <%= button_to( "Comprar", buy_now_to_carts_path(@product), :class => 'btn_orange  btn_big', :'data-submit-form' => true)  %>
-
-            </div>
-
-          </li>
+          
 
           <li>
 
             <div class="add_to_car">
 
-              <%= button_to("Adicionar a sacola",add_to_carts_path(@product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
+              <%= button_to("Adicionar a sacola",add_to_carts_path(@product), :class => 'btn_orange btn_big', :'data-submit-form' => true) do %>
 
               <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
               <%end %>
@@ -222,14 +219,21 @@
             <%end %>
 
           </li>
+
+
+          <li> <span> Compartilhe: <%= social_share_button_tag(truncate(@product.vitrine.name, :length => 20), :url => url_for(:action => :show, :id => @product.vitrine.id, :only_path => false))  %></span>
+       
+          </li>
+
         </ul>
 
       </div>
     </div>
 
   </div>
+</div>
 
-    </div>
+    
 
  <% end %>
   <!-- Fim-->
@@ -287,5 +291,6 @@
 
   </div>
 
+</div>
 </div>
 

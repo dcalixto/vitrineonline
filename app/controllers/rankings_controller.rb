@@ -1,6 +1,6 @@
 class RankingsController < ApplicationController
   def index
-    @products = Product.find_with_reputation(:votes, :all)
-    @vitrines = Vitrine.find_with_reputation(:votes, :all)
+    @products = Product.order(:cached_weighted_average => :desc)
+    @vitrines = Vitrine.order(:cached_weighted_average => :desc)
   end
 end

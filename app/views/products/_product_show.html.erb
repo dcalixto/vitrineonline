@@ -176,15 +176,7 @@
 
           <table class="block_search">
             <tr>
-              <td>
-
-                <%= search_form_for @q, url: feedbacks_search_products_path, method: :post  do |f| %>
-
-                <%= f.text_field :id_cont %>
-                <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-                <% end %>
-              </td>
+            
               <td class="sort">
                 Ordernar por
                 <%= sort_link @q, :created_at, "Data" %>

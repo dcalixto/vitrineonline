@@ -9,8 +9,18 @@
     <div class="content">
       <h1>Carrinho</h1>
 
-    </div>
-    <% else %>
+
+    <p>
+      <span><%="#{order_count}" %></span>
+      Itens</>
+    </p>
+    <p>Total:
+      <%= number_to_currency order_subtotal %></p>
+  </div>
+
+
+
+       <% else %>
 
     <div class="content">
 
@@ -22,6 +32,10 @@
     <% end %>
 
     <% unless  @orders.nil? or  @orders.empty?  %>
+
+
+
+
 
     <table class="cart">
       <thead>
@@ -68,27 +82,14 @@
 
     </div>
     <%end %>
-  </div>
-</div>
 
-<div class="box1">
-  <div class="tip_box">
 
-    <h4>
-      <span><%="#{order_count}" %></span>
-      Itens</h4>
 
-    <h1>Total:
-      <%= number_to_currency order_subtotal %></h1>
-  </div>
-
-</div>
 
 
 <% unless  @orders.nil? or  @orders.empty?  %>
 
-<div class="box1">
-  <div class="block">
+ 
     <h2>Clientes que compraram itens no seu carrinho Também Compraram</h2>
 
 
@@ -118,8 +119,12 @@
 
    
 
+</div>
 
 
 
 </div>
 <% end%>
+
+</div>
+</div>

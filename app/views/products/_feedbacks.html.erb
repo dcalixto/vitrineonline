@@ -3,10 +3,9 @@
 
 
 
-    <h2>Avaliações</h2>
-<hr class="line"></hr>
+    <h1>Avaliações</h1>
   
-      <div class="subcontent_top">
+      <div class="subcontent">
         <%= link_to  product_path(@product.id) do %>
 <% if @product.images.present? %>
         <%= image_tag @product.images.first.ifoto.url(:thumb).to_s %>
@@ -31,15 +30,7 @@
 
     <table class="block_search">
       <tr>
-        <td>
-
-          <%= search_form_for @q, url: search_feedbacks_products_path, method: :post  do |f| %>
-
-          <%= f.text_field :id_cont %>
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-          <% end %>
-        </td>
+       
         <td class="sort">
 
           Ordernar por

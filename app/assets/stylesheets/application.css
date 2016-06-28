@@ -33,7 +33,7 @@
 *= require vitrine
 *= require will_paginate
 *= require shopcart
-
+*= require nprogress
 *= require search
 *= require details
 *= require jquery.fancybox

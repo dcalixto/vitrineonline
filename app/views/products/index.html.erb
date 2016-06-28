@@ -1,37 +1,24 @@
-<% title "Produtos" %>
+<h1><% title "Produtos" %></h1>
 <div class="box1">
 <% breadcrumb :products, @products %>
 </div>
 <%=render 'shared/filtro_product' %>
-<div class="box3">
+<div class="box6">
 <div class="subcontent_top">
 <p>
-<h1> Produtos <%=@products.total_entries %></h1>
+<p><%=@products.total_entries %> Produtos achados</p>
 
 
 
 
 
-    <div class="episode_views">
-      Visualizar:
-      <span class="view"><%= link_to_unless params[:view].blank?, image_tag("views/full.png", :size => "15x10"), params.merge(:view => nil, :page => nil), :title => "Full View" %></span>
-      <span class="view"><%= link_to_unless params[:view] == "grid", image_tag("views/grid.png", :size => "11x10"), params.merge(:view => "grid", :page => nil), :title => "Grid View" %></span>
-    </div>
-
-
+   
 
 
 <div class="content">
-  <% if params[:view].nil? %>
-
 
 
 <%= render :partial => 'products/list'%>
-
-<% elsif params[:view] == "grid" %>
-
-<%= render :partial => 'products/product'%>
-  <% end %>
 
 
 </div>

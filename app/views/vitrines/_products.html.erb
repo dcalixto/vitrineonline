@@ -1,23 +1,51 @@
 
 
+    <table class="block_search">
+      <tr>
+        <td>
 
-<div class="block">
-<div class="subcontent_top">
+          <%= search_form_for @q, url:search_products_vitrines_path, method: :post  do |f| %>
+
+          <%= f.text_field :name_cont %>
+          <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+          <% end %>
+        </td>
+        <td class="sort">
+
+          Ordernar por
+          <%= sort_link @q, :created_at, "Data" %>
+          |
+          <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
+        </td>
+      </tr>
+    </table>
 
 
-<div class="content">
-<div id="searchResults">
-<table class="product_table">
+
+
+<div id="searchResults_list">
+<table class="product_list">
 <tbody>
+
+<% @products.each do |product| %>
+
 <tr>
-<% @products.each do |product|%>
-<td>
+
+<td class="image_cell">
 <%=link_to product_path(product.id), :class=>"product" do %>
 <%if product.images.present? %>
 <%=image_tag product.images.first.ifoto.url(:thumb).to_s, :class=>"productImg" %>
 <% end %>
-<span class="productName">
-<%=product.name %></span>
+<% end %>
+</td>
+
+
+<td  class="info_cell">
+  <%=link_to product_path(product.id), :class=>"product" do %>
+<span class="productName_list">
+<%=product.name %>
+</span>
 <span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
 
 
@@ -27,26 +55,33 @@
 <%=@total_feedbacks %>
 </div>
 <% end %>
+
+
 <span class="by">Por
 <%=product.vitrine.name %></span>
 <% end %>
+
+
+
+
 </td>
-<% end %>
+
+
 </tr>
+
+<% end %>
+
 </tbody>
 </table>
 </div>
-</div>
-
-
-
 
 <div class="block_pagination">
 <div class="digg_pagination">
 <%=will_paginate @products,:container=> false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
-</div>
-</div>
 
 
 </div>
 </div>
+
+
+

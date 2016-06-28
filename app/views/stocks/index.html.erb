@@ -16,16 +16,16 @@
 
 
     <div class="subcontent">
-      <h2>Total
+      <p>Total
         <%= current_vitrine.products.count %>
-        Produtos adicionados</h2>
+        Produtos adicionados</p>
       <table class="block_search">
         <tr>
           <td>
 
             <%= search_form_for @q, url: products_order_stocks_path, method: :post  do |f| %>
 
-            <%= f.text_field :id_cont %>
+            <%= f.text_field :name_cont %>
             <%= f.submit "Buscar", :class=>"btn_grey" %>
 
             <% end %>

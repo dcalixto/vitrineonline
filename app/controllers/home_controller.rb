@@ -2,6 +2,12 @@
 require 'product_recommender'
 class HomeController < ApplicationController
   # caches_action :index, :layout => false
+  
+  
+  #before_action :tag_cloud
+
+
+
   def index
     @products = Product.all
     @vitrines = Vitrine.all
@@ -12,17 +18,13 @@ class HomeController < ApplicationController
     # suggestions for current visitor
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
+ 
+  # @tags = ActsAsTaggableOn::Tag.most_used
+ #@tags = Vitrine.tag_list
+ 
   end
 
 
 
 
-  def tags
-
-    @tags = ActsAsTaggableOn::Tag.where('tags.name LIKE ?', "%#{params[:q]}%")
-    respond_to do |format|
-      format.json { render json: @tags.collect { |t| { id: t.name, name: t.name } } }
-    end
-
-end
 end

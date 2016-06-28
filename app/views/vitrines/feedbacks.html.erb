@@ -1,28 +1,33 @@
-   <div class="content">
-    <h1>Avaliações</h1>
+<div class="box6">
+        <div class="content">
+<h1>Avaliações</h1>
 
- 
 
-      <div class="lista-time">
+
+  <div class="subcontent">
+        <%= link_to  vitrine_path(@vitrine.id) do %>
+          <%= image_tag @vitrine.logo.url(:thumb).to_s %>
+          <%= @vitrine.name %>
+
+        <% end %>
+
+              </div>
+
+
+
+      <div class="subcontent">
+      <li class="lista-time">
 
         Criada em:
         <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => false)%>
-      </div>
-   
+      </li>
+    </div>
 
-  
+
 
     <table class="block_search">
       <tr>
-        <td>
-
-          <%= search_form_for @q, url: search_feedbacks_vitrines_path, method: :post  do |f| %>
-
-          <%= f.text_field :id_cont %>
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-          <% end %>
-        </td>
+       
         <td class="sort">
 
           Ordernar por
@@ -37,7 +42,7 @@
 
     <%= render :partial => 'feedbacks/feedbacks' %>
 
-  
+
 
   <div class="block_pagination">
     <div class="digg_pagination">
@@ -46,6 +51,8 @@
     </div>
   </div>
 
+</div>
 
 </div>
+
 

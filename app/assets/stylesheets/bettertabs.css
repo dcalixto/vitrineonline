@@ -11,7 +11,7 @@ div.bettertabs ul.tabs {   padding: 0 8px;
 
 
   border-bottom-color: #AAA;
-  background: #eee; }
+ /* background: #eee;*/ }
 div.bettertabs ul.tabs li {
 
 
@@ -27,18 +27,18 @@ div.bettertabs ul.tabs li {
 
 
 }
-div.bettertabs ul.tabs li.active { height: 25px; background-color: #fff; border-bottom: none;border: solid 1px #CCC;
+div.bettertabs ul.tabs li.active { height: 25px; /*background-color: #fff;*/ border-bottom: none;/*border: solid 1px #CCC;*/
 border-bottom: none;
 background-color: #fff;
 color: #555;
 
 cursor: default; }
-div.bettertabs ul.tabs li.active a.active  { color: black; }
+div.bettertabs ul.tabs li.active a.active  { color: black; font-weight:bold; border-bottom:2px solid #f3c43a}
 
 div.bettertabs ul.tabs li a {  text-decoration: none; float: left; }
 div.bettertabs ul.tabs li a:link,
 div.bettertabs ul.tabs li a:visited { color: #444; }
-div.bettertabs ul.tabs li a:hover { color: #000; text-decoration: underline;  }
+div.bettertabs ul.tabs li a:hover { color: #000; border-bottom:2px solid #f3c43a }
 div.bettertabs ul.tabs li a:active { color: #933; }
 div.bettertabs ul.tabs li a.ajax-loading { color: #666; }
 

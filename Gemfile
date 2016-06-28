@@ -8,6 +8,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.22'
 
+
 #ANALYTICS
 
 gem 'rollbar', '~> 2.8.3'
@@ -16,8 +17,7 @@ gem 'newrelic_rpm'
 #TABS
 gem 'bettertabs', github: "dcalixto/bettertabs"
 
-#Time
-gem 'stamp'
+
 #RESPONSIVE
 gem "breakpoint", "~>2.7.0"
 
@@ -39,6 +39,9 @@ gem 'predictor'
 #REPUTAION
 gem 'activerecord-reputation-system',  github: "dcalixto/activerecord-reputation-system"
 
+gem 'acts_as_votable', '~> 0.10.0'
+
+
 # CHART
 #gem 'chartjs-ror'
 
@@ -59,8 +62,8 @@ gem 'i18n_country_select'
 #gem "sprig", github: "dcalixto/sprig"
 
 # FIND UNUSED CSS
-gem 'deadweight'
-gem 'csscss'
+#gem 'deadweight'
+#gem 'csscss'
 
 # SEO
 gem 'meta-tags', require: 'meta_tags'

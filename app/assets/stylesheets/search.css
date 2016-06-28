@@ -81,7 +81,7 @@ box-shadow: none;
 
 
  #search_input:hover {
-   outline:none;border:1px solid black}
+   outline:none;border:1px solid #f3d74d}
 
 
 
@@ -95,8 +95,8 @@ box-shadow: none;
     box-shadow: none;
   top: 0px;
 
- width: 40px;
-  height: 31px;
+ width: 45px;
+  height: 32px;
 
     display: inline-block;
 text-indent: -9999px;
@@ -112,15 +112,19 @@ z-index: 1;
 
 
 
+-webkit-border-radius: 0 3px 3px 0;
+border-radius: 0 3px 3px 0;
 
- background: #ffe28e;
-  background-image: -webkit-linear-gradient(top, #ffe28e, #ffd65e);
-  background-image: -moz-linear-gradient(top, #ffe28e, #ffd65e);
-  background-image: -ms-linear-gradient(top, #ffe28e, #ffd65e);
-  background-image: -o-linear-gradient(top, #ffe28e, #ffd65e);
-  background-image: linear-gradient(to bottom, #ffe28e, #ffd65e);
+
  
-  border: solid #eabb32 1px;
+
+    border: solid #d5d5d5 1px;
+ 
+    background: #f8f8f8;
+    color: #333;
+
+
+
 
     }
 

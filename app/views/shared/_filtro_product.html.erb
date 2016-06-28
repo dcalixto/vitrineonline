@@ -29,11 +29,14 @@
     <div class="filtro">
       <h3>Vitrines</h3>
       <ul>
-        <#% @products.aggs['vitrine_id']['buckets'].each do |bucket| %>
+        <% @products.aggs['vitrine_id']['buckets'].each do |bucket| %>
           <li>
-            <#%= link_to_unless_current Vitrine.find(bucket['key']).vitrine_name, params.merge(vitrine_id: bucket['key']) %> <#%= bucket['doc_count'] %>
+            <%= link_to_unless_current Vitrine.find(bucket['key']).vitrine_name, params.merge(vitrine_id: bucket['key']) %> <%= bucket['doc_count'] %>
+        
+          
+          
           </li>
-        <#% end %>
+        <% end %>
       </ul>
     </div>
 
@@ -44,11 +47,18 @@
       <ul>
         <% @products.aggs['category_id']['buckets'].each do |bucket| %>
           <li>
-            <%
+            <#%
               category = Category.find(bucket['key'])
               params_to_merge = controller.controller_name == CategoriesController.controller_name ? {id: category.slug} : {category_id: bucket['key']}
             %>
-            <%= link_to_if params[:id] != category.slug && params[:category_id] != bucket['key'].to_s, category.name, params.merge(params_to_merge) %> <%= bucket['doc_count'] %>
+            <#%= link_to_if params[:id] != category.slug && params[:category_id] != bucket['key'].to_s, category.name, params.merge(params_to_merge) %> <#%= bucket['doc_count'] %>
+       
+
+                    
+          <%= link_to_unless_current Category.find(bucket['key']).name, params.merge({(:category_id) => bucket['key']}) %>  <%= bucket['doc_count'] %>
+        
+
+          
           </li>
         <% end %>
       </ul>
@@ -69,6 +79,8 @@
         <% @products.aggs['subcategory_id']['buckets'].each do |bucket| %>
           <li>
             <%= link_to_unless_current Subcategory.find(bucket['key']).name, params.merge({(controller.controller_name == Categories::SubcategoriesController.controller_name ? :id: :subcategory_id) => bucket['key']}) %>  <%= bucket['doc_count'] %>
+        
+          
           </li>
         <% end %>
       </ul>

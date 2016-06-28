@@ -1,12 +1,6 @@
 
 
 .btn_green {
-  background: #31d126;
-  background-image: -webkit-linear-gradient(top, #31d126, #29a91d);
-  background-image: -moz-linear-gradient(top, #31d126, #29a91d);
-  background-image: -ms-linear-gradient(top, #31d126, #29a91d);
-  background-image: -o-linear-gradient(top, #31d126, #29a91d);
-  background-image: linear-gradient(to bottom, #31d126, #29a91d);
   -webkit-border-radius: 3;
   -moz-border-radius: 3;
   border-radius: 3px;
@@ -16,6 +10,15 @@
   padding: 5px 10px 5px 10px;
   border: solid #229c18 1px;
   text-decoration: none;
+
+
+
+    background: #74b20e;
+    background: linear-gradient(to bottom,#74b20e 0,#5b8c0b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#74b20e', endColorstr='#5b8c0b', GradientType=0);
+    
+
+
 }
 
 .btn_green:hover {
@@ -175,7 +178,7 @@
 
     vertical-align: baseline;
     float: left;
-    margin-top: 13px;
+   
     margin-left: 10px;
     overflow: auto;
 
@@ -184,16 +187,7 @@ position: relative;
 }
 
 
-.fb_button {
-display: inline-block;
 
-
-width:100px;
-height:32px;
-
-background:url(/assets/fb_button.png) no-repeat;
-
-}
 
 
 .fb_button:hover {

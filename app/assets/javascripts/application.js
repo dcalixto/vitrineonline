@@ -23,14 +23,14 @@
 //= tipsy
 
 //= require jquery.bettertabs.min
-
+//= require nprogress
 //= require remote-list
 
 
 
 //= require jquery.liquidcarousel
-
-
+//= pagination
+//= jquery.infinitescroll
 //= require_tree .
 
 
@@ -352,5 +352,12 @@ $(document).ready(function() {
 
 
 
+$(document).ready(function() {
+NProgress.configure({ showSpinner: false });
 
- 
+NProgress.start();
+NProgress.done(); 
+
+
+});
+

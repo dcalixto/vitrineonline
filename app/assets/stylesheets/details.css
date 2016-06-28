@@ -66,3 +66,18 @@
 .breadcrumbs a {
   color: #888;
 }
+
+
+.address_list li { margin-bottom:10px}
+
+
+
+.address_list  .label {
+    display: block;
+    float: left;
+    padding-top: 10px;
+    font-family: "Helvetica", Arial, sans-serif;
+    padding-right: 10px;
+    text-align: right;
+    width: 130px;
+}

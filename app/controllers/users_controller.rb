@@ -10,14 +10,15 @@ class UsersController < ApplicationController
 
     @total_from_sellers = Feedback.by_participant(@user, Feedback::FROM_SELLERS).count
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
-    @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(per_page: 22, page: params[:page]) # .order('created_at DESC')
-
-    # suggestions for current visitor
+      @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
+    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])    # suggestions for current visitor
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
 
-    @products = Product.where(@user.id).find_with_reputation(:votes, :all, conditions: ['votes = ?', 1.0]).paginate(page: params[:page], per_page: 22)
-    @vitrines = Vitrine.where(@user.id).find_with_reputation(:votes, :all, conditions: ['votes = ?', 1.0]).paginate(page: params[:page], per_page: 22)
+    @products = Product.paginate(page: params[:page], per_page: 22)
+    @vitrines = Vitrine.paginate(page: params[:page], per_page: 22)
+ 
+  
   end
 
   def user_feedbacks
@@ -86,39 +87,24 @@ class UsersController < ApplicationController
   end
 
   def products
-  end
 
+ @products = @user.find_up_voted_items.paginate(page: params[:page], per_page: 22)
 
- def banner
-    @user = current_user
-
- render :banner, format: :html 
  
- end
 
+     end
 
-def banner_update
-   @user = current_user
+  def vitrines
 
-   if @user.update_attributes(params[:user])
-      # redirect_to new_vitrine_banner_path
-      redirect_to(action: :banner, id: @user,only_path: true, format: :html)
-      flash[:success] = 'Banner Adicionado'
-    else
-      render :banner, format: :html
-    end
+ @vitrines = @user.find_up_voted_items.paginate(page: params[:page], per_page: 22)
 
+ 
+
+     end
 
 
 
  
-
-
-
-
-
-end
-
 
   def update
     @user = User.find(params[:id])

@@ -19,7 +19,12 @@ class Vitrine < ActiveRecord::Base
 
   has_many :announcements, dependent: :destroy
 
-  has_reputation :votes, source: :user, aggregated_by: :sum
+ 
+ acts_as_votable
+  
+  
+  
+  
   # TODO: COUPONS AND REPORT
   # has_many :coupons, as: :couponable #
   # has_many :reports, as: :reportable

@@ -46,7 +46,9 @@
 <div id=container>
 <%=breadcrumbs separator: "&rsaquo;" %>
 <%=yield %>
+
 </div>
+
 
 
 <% cache "footer" do %>
@@ -63,5 +65,8 @@
 <%=render "layouts/faye" %>
 <%end %>
 <%=render "layouts/analytics" %>
+
+
+
 </body>
 </html>

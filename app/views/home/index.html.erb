@@ -9,7 +9,7 @@
     </div>
 
 
-            <%= image_tag('slider1.jpg')  %>
+            <%= image_tag('front_banner.png')  %>
 
 
 </div>
@@ -19,7 +19,7 @@
 </div>
 
 
-<div class="box4">
+<div class="box3">
   <div class="block">
   
 
@@ -32,7 +32,7 @@
 <table class="product_table">
 <tbody>
 
-<% @products.each_slice(4)do |row| %>
+<% @products.each_slice(5)do |row| %>
 
 <tr>
 <%  row.each do |product| %>
@@ -132,20 +132,22 @@
 
 
 
-<div class="box12">
+<div class="box11">
 <div class="content">
   <h2>Estilos
     </h2>
   <span class="tags">
 
-    <ul class="link_tag">
-      <% ActsAsTaggableOn::Tag.most_used(10).each do |tag| %>
-        <li >
-          <%=  raw link_to tag.name, tags_path(:tag => tag.name), :class=>  "link_tag" %>
-        </li>
+   <ul class="link_tag">
+   <% tag_cloud Product.tag_counts, %w[s m l] do |tag, css_class| %>
+       <li >
 
-    <% end %>
-    </ul>
-  </span>
+         <%= raw link_to tag.name, tag_path(:tag => tag.name), class: css_class %>
+          </li>
+
+
+  <% end %>
+</ul>
+...
   </div>
     </div>

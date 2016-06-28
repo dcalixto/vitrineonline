@@ -13,7 +13,7 @@
 
             <%= search_form_for @q, url: completed_feedbacks_path, method: :post  do |f| %>
 
-            <%= f.text_field :id_cont %>
+            <%= f.text_field :buyer_comment_cont %>
             <%= f.submit "Buscar", :class=>"btn_grey" %>
 
             <% end %>

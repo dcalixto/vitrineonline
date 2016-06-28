@@ -1,0 +1,57 @@
+
+<!--STOCK OF ITEMS  -->
+   
+
+    <div class="content">
+ <h2>Vitrines Curtidas</h2>
+
+    <table class="zebra_branca margin_top" id="stock_vitrine">
+
+      
+
+      <tbody>
+
+        <% @user.find_up_voted_items.each do |vitrine| %>
+        <tr>
+            <td >
+                <ul>
+                    <li>
+            <%= link_to  vitrine_path(vitrine.id) do %>
+            <%= image_tag vitrine.logo.url(:mobile).to_s %>
+<%= vitrine.name %>
+            <% end %>
+                    </li>
+                    <li>
+
+
+             <% if current_user.voted_as_when_voted_for vitrine %>
+             <%= link_to "Descutir", dislike_vitrine_path(vitrine, type: "down"), method: "put" %>
+           <% else %>
+             
+           <%= link_to "Curtir",  like_vitrine_path(vitrine, type: "up"), method: "put" %>
+
+  <% end %> 
+                    </li>
+                </ul>
+          </td>
+
+         
+
+        </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+
+ 
+
+  <div class="block_pagination">
+    <hr class="line"></hr>
+    <div class="digg_pagination">
+      <%= will_paginate  @vitrines,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
+
+    </div>
+  </div>
+</div>
+
+

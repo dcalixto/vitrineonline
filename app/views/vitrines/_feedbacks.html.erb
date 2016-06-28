@@ -1,8 +1,7 @@
-<div class="box3">
-  <div class="block margin_top">
-    <h2>Avaliações</h2>
 
-    <div class="content">
+        <div class="content">
+<h1>Avaliações</h1>
+
 
       <div class="subcontent_top">
       <li class="lista-time">
@@ -16,16 +15,7 @@
 
     <table class="block_search">
       <tr>
-        <td>
-
-          <%= search_form_for @q, url: vitrine_feedbacks_vitrines_path, method: :post  do |f| %>
-
-          <%= f.text_field :id_cont %>
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-          <% end %>
-        </td>
-        <td class="sort">
+               <td class="sort">
 
           Ordernar por
           <%= sort_link @q, :created_at, "Data" %>
@@ -39,7 +29,7 @@
 
     <%= render :partial => 'feedbacks/feedbacks' %>
 
-  </div>
+
 
   <div class="block_pagination">
     <div class="digg_pagination">
@@ -50,5 +40,4 @@
 
 </div>
 
-</div>
-</div>
+

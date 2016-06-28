@@ -39,15 +39,16 @@ mount MemcachedManager::Routes, :at => '/mm'
       get :message_user
 
 
- #get :banner
- #put :banner_update,  to: 'user#banner'
-
 
     end
 
-match '/banner' => 'users#banner', :via => [:get]
  
-  match '/banner_update', to: 'users#banner', via: :put
+ 
+
+
+
+
+
 
 
     collection do
@@ -104,17 +105,18 @@ match '/banner' => 'users#banner', :via => [:get]
       get :policy
       get :message
       get :message_box
-      put 'like', to: 'products#upvote'
-      put 'dislike', to: 'products#downvote'
+      put "like", to: "vitrines#upvote"
+    put "dislike", to: "vitrines#downvote"
     end
 
     collection do
-      match '/:id?view=feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :vitrine_feedbacks
+    #  match '/:id?view=feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :vitrine_feedbacks
 
-
-
+ post '/:id/feedbacks', to: 'vitrines#feedbacks', as: :search_feedbacks
+post '/:id/products', to: 'vitrines#products', as: :search_products
       get :feedbacks
       get :products
+      get :user_votes
     end
 
     member do
@@ -225,14 +227,7 @@ match '/banner' => 'users#banner', :via => [:get]
   resources :logo, only: [:edit, :update]
   resources :avatar, only: [:edit, :update]
   
-  resources :votes, only:[:index ] do
-    collection do
-  get :products
-  get :vitrines
-    end
-  end
-
-
+ 
   # MISC
   root to: 'home#index'
 

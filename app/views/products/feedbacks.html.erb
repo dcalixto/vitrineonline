@@ -2,7 +2,7 @@
 <%description @product.feedbacks  %>
 <% keywords  @product.feedbacks %>
 
-<div class="box3">
+<div class="box6">
   <div class="block margin_top">
     <h1>Avaliações</h1>
 <hr class="line"></hr>
@@ -34,7 +34,7 @@
 
           <%= search_form_for @q, url: search_feedbacks_products_path, method: :post  do |f| %>
 
-          <%= f.text_field :id_cont %>
+          <%= f.text_field :buyer_comment_cont %>
           <%= f.submit "Buscar", :class=>"btn_grey" %>
 
           <% end %>

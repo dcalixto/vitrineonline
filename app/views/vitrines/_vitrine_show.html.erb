@@ -53,23 +53,79 @@
   Produtos</p>
 
 
-    <div id="searchResults">
+ <table class="block_search">
+      <tr>
+        <td>
 
-      <table class="product_table">
-        <tbody>
-          <tr>
+          <%= search_form_for @q, url:search_products_vitrines_path, method: :post  do |f| %>
+
+          <%= f.text_field :name_cont %>
+          <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+          <% end %>
+        </td>
+        <td class="sort">
+
+          Ordernar por
+          <%= sort_link @q, :created_at, "Data" %>
+          |
+          <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
+        </td>
+      </tr>
+    </table>
+
+
+
+<div id="searchResults">
+<table id="posts" class="product_table">
+<tbody class="page">
+<tr>
+<% @products.each do |product|%>
 <td>
+<%=link_to product_path(product.id), :class=>"product" do %>
+<%if product.images.present? %>
+<%=image_tag product.images.first.ifoto.url(:thumb).to_s, :class=>"productImg" %>
+<% end %>
+<span class="productName">
+<%=product.name %></span>
+<span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
 
 
-
-      <%= render :partial => 'vitrines/product', :collection => @products%>
+<% if product.feedbacks %>
+<div class="productFeeback">
+<div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+<%=@total_feedbacks %>
+</div>
+<% end %>
+<span class="by">Por
+<%=product.vitrine.name %></span>
+<% end %>
 </td>
-
+<% end %>
 </tr>
+
+
+
+
 </tbody>
 </table>
-    </div>
+</div>
 
+
+
+
+
+<div class="block_pagination">
+<div class="digg_pagination">
+<%=will_paginate @products,:container=> false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+
+
+</div>
+</div>
+
+
+
+   
 
 </div>
 
@@ -81,6 +137,21 @@
     <div class="subcontent">
       <h2>Avaliações recebidas recentemente
       </h2>
+
+
+<table class="block_search">
+      <tr>
+       
+        <td class="sort">
+
+          Ordernar por
+          <%= sort_link @q, :created_at, "Data" %>
+          |
+          <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
+        </td>
+      </tr>
+    </table>
+
 
 
       <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>

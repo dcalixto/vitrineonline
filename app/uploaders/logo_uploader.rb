@@ -19,7 +19,7 @@ class LogoUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-    process resize_to_fit: [186, 124]
+    process resize_to_fit: [156, 114]
     process quality: 80
 
     process :strip

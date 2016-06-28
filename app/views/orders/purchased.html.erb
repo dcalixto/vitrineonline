@@ -23,7 +23,7 @@
 
 
 
-  <div class="content">
+  <div class="subcontent">
     <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
     </p>
 
@@ -35,15 +35,7 @@
 
     <table class="block_search">
       <tr>
-        <td>
-
-         <%= search_form_for @q, url:  paid_orders_path, method: :post  do |f| %>
-
-          <%= f.text_field :id_cont %>
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-          <% end %>
-        </td>
+      
         <td class="sort">
 
           Ordernar Por
@@ -68,15 +60,7 @@
 
 <table class="block_search">
   <tr>
-    <td>
-
-     <%= search_form_for @q, url:  sent_orders_path, method: :post  do |f| %>
-
-      <%= f.text_field :id_cont %>
-      <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-      <% end %>
-    </td>
+   
     <td class="sort">
 
       Ordernar Por

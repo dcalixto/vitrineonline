@@ -37,8 +37,8 @@
       <ul>
 
         <li >
-          <strong><%= label_tag :email, "Email", :class=>"label" %>
-          </strong>
+          <%= label_tag :email, "Email", :class=>"label" %>
+          
         </li>
 
         <li>
@@ -47,8 +47,8 @@
         <li class="space"></li>
 
         <li >
-          <strong><%= label_tag :password, "Passord", :class=>"label" %>
-          </strong>
+        <%= label_tag :password, "Passord", :class=>"label" %>
+          
           <%= link_to "Esqueceu o password?", new_password_reset_path %>
 
           <%= password_field_tag :password, params[:password]%>

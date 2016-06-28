@@ -54,6 +54,11 @@ class User < ActiveRecord::Base
 
   scope :online, -> { where('updated_at > ?', 5.minutes.ago) }
 
+
+
+acts_as_voter
+
+
   after_validation :fetch_address
 
   after_commit :flush_cache

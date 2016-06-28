@@ -42,7 +42,7 @@ class Product < ActiveRecord::Base
   validates :price, presence: true
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  has_reputation :votes, source: :user, aggregated_by: :sum
+ acts_as_votable 
   #
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags

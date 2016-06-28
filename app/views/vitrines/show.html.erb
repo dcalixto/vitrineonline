@@ -1,4 +1,5 @@
 <% title  @vitrine.name %>
+<div class="container">
 
 <div class="box1">
   <%= render 'shared/flash_messages' %>
@@ -87,6 +88,24 @@
           <% end %>
         </li>
 
+
+
+
+        <li>
+        <% if current_user  %>
+               
+               
+             <% if  current_user.voted_as_when_voted_for @vitrine %>
+             <%= link_to "Descutir", dislike_vitrine_path(@vitrine, type: "down"), method: "put" %>
+           <% else %>
+             
+           <%= link_to "Curtir",  like_vitrine_path(@vitrine, type: "up"), method: "put" %>
+
+  <% end %>
+  <% end %>
+
+
+  <li>Criada em: <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => true)  %></li>
       </ul>
     </div>
 
@@ -144,4 +163,5 @@
   <% unless @vitrine.user.city.blank? %>
   <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@vitrine.address}" %>
   <% end %>
+</div>
 </div>

@@ -1,4 +1,7 @@
 <% title @user.name %>
+
+<div class="container">
+
 <div class="box1">
 
   <%=render 'shared/flash_messages' %>
@@ -7,12 +10,16 @@
 
 
 <div class="box1">
-  <%= render 'shared/flash_messages' %>
+  
 <div id="user_header">
-  <div id="user_banner">
+  <div id="user-banner">
 
 
-  <%= image_tag(@user.banner.url(:thumb).to_s) %>
+    <%if @user.vitrine %>
+      <%= image_tag(@user.vitrine.marketing.banner.url(:thumb).to_s) %>
+    <% else %>
+      <%= image_tag(@user.banner.url(:thumb).to_s) %>
+    <% end %>
      </div>
 
          <div class="user_logo-container">
@@ -71,14 +78,17 @@
        <% end %>
 
      </li>
-
-<% if @user.vitrine %>
+       
+        <% if @user.vitrine %>
+          <li>
  <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
-     <li> <%=link_to @user.vitrine.name, vitrine_path(@user.vitrine) %>
-     <%end %>
+ <%=link_to @user.vitrine.name, vitrine_path(@user.vitrine) %>
+   
+          </li>
+   
+   <%end %>
 
-
-
+     
 
 <% end %>
 
@@ -89,7 +99,7 @@
        <span class="status_offline"> Offline </span>
        <% end %>
      </li>
-
+<li>Criado(a) em: <%= timeago_tag(@user.created_at, :nojs => true, :date_only => true)  %></li>
      </ul>
  </div>
 
@@ -108,11 +118,11 @@
       <%= render 'user_show' %>
       <% end %>
       <%= tab.link :products, "Produtos Curtidos"  do %>
-      <%=render 'votes/products' %>
+      <%=render 'users/products' %>
       <% end %>
 
       <%= tab.link :vitrines,  "Vitrines Curtidas" do %>
-      <%=render 'votes/vitrines' %>
+      <%=render 'users/vitrines' %>
       <% end %>
       <%= tab.link :message, 'Mensagem'  do %>
       <%=render 'message_box' %>
@@ -174,5 +184,5 @@
   </div>
 
   </div>
-
+</div>
 </div>

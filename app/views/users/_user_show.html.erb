@@ -2,7 +2,23 @@
   <h4>Avaliações Recebidas recentemente</h4>
   <hr class="line"></hr>
   <div class="content">
+
+ <table class="block_search">
+      <tr>
+       
+        <td class="sort">
+
+          Ordernar por
+          <%= sort_link @q, :created_at, "Data" %>
+          |
+          <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
+        </td>
+      </tr>
+    </table>
+
     <div class="subcontent_top">
+
+
 
     <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>"></div>
     <%= render :partial => 'feedbacks/feedbacks' %>

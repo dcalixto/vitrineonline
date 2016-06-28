@@ -14,12 +14,21 @@ cache_sweeper :vitrine_sweeper
     @total_from_buyers = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).count
     #  @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
 
-    @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
+  #  @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
     @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
 
-    @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
+   # @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
     #  @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 15).order('created_at DESC')
 
+   # @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 2)
+
+
+    @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
+    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+
+  
+   
+      @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
     @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
     # similarities from another vitrines
@@ -29,6 +38,8 @@ cache_sweeper :vitrine_sweeper
     # suggestions for current visitor
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
+
+  
   end
 
   def feedbacks
@@ -54,7 +65,11 @@ cache_sweeper :vitrine_sweeper
    end
 
    def vitrine_products
-         @vitrine = Vitrine.cached_find(params[:id])
+     
+      @vitrine = Vitrine.cached_find(params[:id])
+   
+      @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
+    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
          respond_to do |format|
            format.html { render 'products'}
@@ -80,6 +95,31 @@ cache_sweeper :vitrine_sweeper
     end
 
 
+    def user_votes
+    
+      @users = User.paginate(page: params[:page], per_page: 22)
+  
+
+    
+    end
+
+
+def products
+ 
+
+      @vitrine = Vitrine.cached_find(params[:id])
+   
+      @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
+    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+    
+  
+#@q = Product.ransack(params[:q])
+ # @products = @q.result.includes(:vitrine).page(params[:page])
+
+end
+
+
+
 
   def new
     @vitrine = Vitrine.new
@@ -89,12 +129,18 @@ cache_sweeper :vitrine_sweeper
     @vitrine = current_vitrine
   end
 
-  def vote
-    value = params[:type] == "Curtir" ? 1 : 0
- @vitrine = Vitrine.find(params[:id])
- @vitrine.add_or_update_evaluation(:votes, value, current_user)
- redirect_to :back
- end
+
+def upvote
+  @vitrine = Vitrine.cached_find(params[:id])
+  @vitrine.upvote_by current_user
+  redirect_to :back
+end
+
+def downvote
+   @vitrine = Vitrine.cached_find(params[:id])
+  @vitrine.downvote_by current_user
+    redirect_to :back
+end
 
 
   def tags
