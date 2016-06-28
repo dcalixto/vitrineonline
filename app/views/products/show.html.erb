@@ -2,10 +2,8 @@
 <%description @product.name  %>
 <% keywords  @product.tag_list %>
 <div class="container">
-<div class="box1">
-  <% breadcrumb :product, @product %>
-
-
+<div class="box1"
+<% breadcrumb :products, @products %>
 
   <div class="margin_top">
     <%= render 'shared/flash_messages' %>

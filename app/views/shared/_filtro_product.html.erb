@@ -47,13 +47,7 @@
       <ul>
         <% @products.aggs['category_id']['buckets'].each do |bucket| %>
           <li>
-            <#%
-              category = Category.find(bucket['key'])
-              params_to_merge = controller.controller_name == CategoriesController.controller_name ? {id: category.slug} : {category_id: bucket['key']}
-            %>
-            <#%= link_to_if params[:id] != category.slug && params[:category_id] != bucket['key'].to_s, category.name, params.merge(params_to_merge) %> <#%= bucket['doc_count'] %>
-       
-
+          
                     
           <%= link_to_unless_current Category.find(bucket['key']).name, params.merge({(:category_id) => bucket['key']}) %>  <%= bucket['doc_count'] %>
         

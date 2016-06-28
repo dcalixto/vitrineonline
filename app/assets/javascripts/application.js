@@ -25,7 +25,7 @@
 
 //= require jquery.bettertabs.min
 //= require nprogress
-//= require remote-list
+
 
 
 

@@ -19,8 +19,11 @@ $desktop: min-width 1200px;
   margin: 0px auto;
   width: 100%;
 
- 
-}
+ position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+ }
 
 
 #logo {
@@ -54,8 +57,7 @@ $desktop: min-width 1200px;
 .blue_bar {      height:45px;
  
    border-bottom:1px solid #ddd;
-
-background:#3a4866;
+background:#364a76
 
 
   }

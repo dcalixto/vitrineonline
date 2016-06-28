@@ -14,9 +14,7 @@
 
 
     background: #74b20e;
-    background: linear-gradient(to bottom,#74b20e 0,#5b8c0b 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#74b20e', endColorstr='#5b8c0b', GradientType=0);
-    
+  
 
 
 }
@@ -53,21 +51,32 @@
 }
 
 .btn {
-  background: #7296c9;
-  background-image: -webkit-linear-gradient(top, #7296c9, #447ac8);
-  background-image: -moz-linear-gradient(top, #7296c9, #447ac8);
-  background-image: -ms-linear-gradient(top, #7296c9, #447ac8);
-  background-image: -o-linear-gradient(top, #7296c9, #447ac8);
-  background-image: linear-gradient(to bottom, #7296c9, #447ac8);
+
+
+
+
+
+ padding: 5px 10px 5px 10px;
+font-size: 12px;
+
+background: #364a76;
   -webkit-border-radius: 4;
   -moz-border-radius: 4;
   border-radius: 4px;
   font-family: Arial;
   color: #ffffff;
-  font-size: 20px;
-  padding: 5px 10px 5px 10px;
-  border: solid #567bb0 1px;
+    text-decoration: none;
+
+
+
+      border: solid 1px #284175;
   text-decoration: none;
+
+
+
+
+
+
 }
 
 
@@ -80,11 +89,6 @@
 
 .btn_orange {
   background: #ffe28e;
-  background-image: -webkit-linear-gradient(top, #ffe28e, #ffd65e);
-  background-image: -moz-linear-gradient(top, #ffe28e, #ffd65e);
-  background-image: -ms-linear-gradient(top, #ffe28e, #ffd65e);
-  background-image: -o-linear-gradient(top, #ffe28e, #ffd65e);
-  background-image: linear-gradient(to bottom, #ffe28e, #ffd65e);
   -webkit-border-radius: 4;
   -moz-border-radius: 4;
   border-radius: 4px;
@@ -103,11 +107,6 @@
 
 .btn_grey {
   background: #fcfcfc;
-  background-image: -webkit-linear-gradient(top, #fcfcfc, #eeeeee);
-  background-image: -moz-linear-gradient(top, #fcfcfc, #eeeeee);
-  background-image: -ms-linear-gradient(top, #fcfcfc, #eeeeee);
-  background-image: -o-linear-gradient(top, #fcfcfc, #eeeeee);
-  background-image: linear-gradient(to bottom, #fcfcfc, #eeeeee);
   -webkit-border-radius: 4;
   -moz-border-radius: 4;
   border-radius: 4px;
@@ -129,11 +128,7 @@
 
 .btn_red {
   background: #d37373;
-  background-image: -webkit-linear-gradient(top, #d37373, #ca4c4c);
-  background-image: -moz-linear-gradient(top, #d37373, #ca4c4c);
-  background-image: -ms-linear-gradient(top, #d37373, #ca4c4c);
-  background-image: -o-linear-gradient(top, #d37373, #ca4c4c);
-  background-image: linear-gradient(to bottom, #d37373, #ca4c4c);
+
   -webkit-border-radius: 4;
   -moz-border-radius: 4;
   border-radius: 4px;

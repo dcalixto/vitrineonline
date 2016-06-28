@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160519004222) do
+ActiveRecord::Schema.define(:version => 20160615123608) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -304,25 +304,27 @@ ActiveRecord::Schema.define(:version => 20160519004222) do
   add_index "product_data", ["vitrine_id"], :name => "index_product_data_on_vitrine_id"
 
   create_table "products", :force => true do |t|
-    t.integer  "vitrine_id",                                                  :null => false
+    t.integer  "vitrine_id",                                                             :null => false
     t.string   "slug"
-    t.string   "name",                                                        :null => false
-    t.decimal  "price",          :precision => 9, :scale => 2
+    t.string   "name",                                                                   :null => false
+    t.decimal  "price",                 :precision => 9, :scale => 2
     t.text     "detail"
-    t.integer  "gender_id",                                                   :null => false
-    t.integer  "category_id",                                                 :null => false
-    t.integer  "subcategory_id",                                              :null => false
+    t.integer  "gender_id",                                                              :null => false
+    t.integer  "category_id",                                                            :null => false
+    t.integer  "subcategory_id",                                                         :null => false
     t.integer  "material_id"
     t.integer  "condition_id"
     t.integer  "size_id"
     t.integer  "color_id"
     t.integer  "brand_id"
     t.string   "meta_keywords"
-    t.integer  "quantity",                                     :default => 0
+    t.integer  "quantity",                                            :default => 0
     t.string   "status"
     t.string   "current_step"
-    t.datetime "created_at",                                                  :null => false
-    t.datetime "updated_at",                                                  :null => false
+    t.datetime "created_at",                                                             :null => false
+    t.datetime "updated_at",                                                             :null => false
+    t.boolean  "is_shared_on_facebook",                               :default => false
+    t.boolean  "is_shared_on_twitter",                                :default => false
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"

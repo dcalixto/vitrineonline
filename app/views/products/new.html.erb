@@ -29,10 +29,14 @@
 <%=p.label :gender_id, 'Genero' %>&nbsp;
 <%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control' } %>
 </div>
+ </br>
+
 <div class="form-group">
 <%=p.label :category_id, 'Categoria' %>&nbsp;
 <%=dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Categoria' }, { class: 'form-control' } %>
 </div>
+ </br>
+
 <div class="form-group">
 <%=p.label :subcategory_id, 'Subcategoria' %>&nbsp;
 <%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control' } %>
@@ -41,10 +45,14 @@
 <div class="subcontent">
 <h4>Preço e Quantidade</h4>
 <ul>
-<li>
+  <li>
+    <%=p.label :quantity, 'Quantidade' %>&nbsp;
 <%=p.number_field :quantity, :label=>"Quantidade" %>
-</li>
+  </li>
+  </br>
 <li>
+  <%=p.label :price, 'Preço' %>&nbsp;
+
 <%=p.text_field :price, :label=>"Preço R$" %>
 </li>
 </ul>
