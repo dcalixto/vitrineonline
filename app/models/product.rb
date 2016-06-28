@@ -36,7 +36,7 @@ class Product < ActiveRecord::Base
   attr_accessible  :name, :detail, :price, :color_id, :gender_id,
                    :category_id, :subcategory_id, :material_id, :condition_id,
                    :brand_id, :meta_keywords, :quantity, :status, :vitrine_id, :products, :price,
-                   :size_ids, :color_ids, :state, :tag_list
+                   :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook, :is_shared_on_twitter
 
   validates :name, presence: true, length: { maximum: 140 }
   validates :price, presence: true
@@ -83,6 +83,11 @@ class Product < ActiveRecord::Base
     where(id: ids).order(order)
   }
 
+  # AVERAGE BUYER RATING
+  def average_customer_rating
+    feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+  end
+
   # GET VISITOR ID
   def impression_count
     impressions.count
@@ -123,7 +128,8 @@ class Product < ActiveRecord::Base
              merge_mappings: true, mappings: {
                product: {
                  properties: {
-                   name: { type: 'string', analyzer: 'keyword', boost: 100 }
+                   name: { type: 'string', analyzer: 'keyword', boost: 100 },
+                   average_customer_rating: { type: 'double' }
                  }
                }
              }
@@ -142,10 +148,14 @@ class Product < ActiveRecord::Base
     conditions[:brand_id] = params[:brand_id] if params[:brand_id].present?
     conditions[:quantity] = { gt: 0 } # quantity should be greather than 0
 
+    order_by_param = params[:order_by] || 'created_at:desc'
+    order_options = {}
+    order_options[order_by_param.split(':')[0]] = order_by_param.split(':')[1]
+
     products = Product.search query, fields: [{ name: :word_start }], where: conditions,
 
                                      aggs: [:gender_id, :vitrine_id, :category_id, :subcategory_id, :size_id, :color_id, :material_id, :condition_id, :brand_id],
-                                     page: params[:page], suggest: true, highlight: true, per_page: 22, order: {created_at:  "desc"}
+                                     page: params[:page], suggest: true, highlight: true, per_page: 22, order: [order_options, {created_at: 'desc'}]
 
     products
 end
@@ -164,7 +174,8 @@ end
       material_id: material_id,
       condition_id: condition_id,
       brand_id: brand_id,
-      created_at: created_at
+      created_at: created_at,
+      average_customer_rating: average_customer_rating
     }
   end
  end

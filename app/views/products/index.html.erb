@@ -12,7 +12,18 @@
 
 
 
-   
+
+    <div class="episode_views">
+      Visualizar:
+      <span class="view"><%= link_to_unless params[:view].blank?, image_tag("views/full.png", :size => "15x10"), params.merge(:view => nil, :page => nil), :title => "Full View" %></span>
+      <span class="view"><%= link_to_unless params[:view] == "grid", image_tag("views/grid.png", :size => "11x10"), params.merge(:view => "grid", :page => nil), :title => "Grid View" %></span>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Order by:
+      <%= select_tag 'order_by', options_for_select([['Price: Low To High', 'price:asc'], ['Price: High To Low', 'price:desc'], ['Avg. Customer Review', 'average_customer_rating:desc'], ['Newest Arrivals', 'created_at:desc']], params[:order_by] || 'created_at:desc') %>
+    </div>
+
+
 
 
 <div class="content">

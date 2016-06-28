@@ -22,8 +22,26 @@
           if (response.authResponse) {
             window.location = '/auth/facebook/callback';
           }
-        });
-        scope: "email,publish_stream"
+        }, {scope: 'email, publish_actions'});
+      });
+
+      // Facebook login for product sharing
+      $('#product_is_shared_on_facebook').click(function (e) {
+        var checkbox = $(this);
+
+        if(checkbox.is(':checked')) {
+          FB.getLoginStatus(function (response) {
+            if (response.status === 'connected')
+              $.get('/products/auth/facebook/callback?access_token=' + response.authResponse.accessToken);
+            else
+              FB.login(function (response) {
+                if (response.authResponse)
+                  $.get('/products/auth/facebook/callback?access_token=' + response.authResponse.accessToken);
+                else
+                  checkbox.attr('checked', false);
+              }, {scope: 'email, publish_actions'});
+          });
+        }
       });
 
       $('#logout_button').click(function (e) {
