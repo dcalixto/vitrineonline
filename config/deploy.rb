@@ -89,7 +89,7 @@ task deploy: :environment do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
-  invoke :'foreman:export'
+  #invoke :'foreman:export'
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
@@ -100,7 +100,7 @@ task deploy: :environment do
 
 
     to :launch do
-       invoke 'foreman:restart'
+     #  invoke 'foreman:restart'
 
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
