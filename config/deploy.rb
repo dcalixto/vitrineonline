@@ -89,22 +89,24 @@ task deploy: :environment do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
+  invoke :'foreman:export'
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
-    invoke :'foreman:export'
+    
 
 
     to :launch do
+       invoke 'foreman:restart'
+
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       invoke 'newrelic:notice_deployment'
       #queue "bundle exec foreman start"
-      invoke 'foreman:restart'
-    end
+         end
   end
 end
 
