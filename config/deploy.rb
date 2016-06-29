@@ -4,6 +4,7 @@ require 'mina/git'
 require 'mina/rbenv'
 require 'mina/newrelic'
 #require 'mina_faye/tasks'
+require 'mina/foreman'
 
 # for rbenv support. (http://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (http://rvm.io)
@@ -24,6 +25,8 @@ set :term_mode, nil
 set :port, '22'
 set :repository_name, 'vitrineonline'
 set_default :rbenv_path, '$HOME/.rbenv'
+
+set :application, "vitrineonline"
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
@@ -97,6 +100,7 @@ task deploy: :environment do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       invoke 'newrelic:notice_deployment'
+       invoke 'foreman:restart'
     end
   end
 end
