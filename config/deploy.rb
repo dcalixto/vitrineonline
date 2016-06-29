@@ -102,7 +102,7 @@ task deploy: :environment do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       invoke 'newrelic:notice_deployment'
-      queue "bundle exec foreman start"
+      #queue "bundle exec foreman start"
       invoke 'foreman:restart'
     end
   end
