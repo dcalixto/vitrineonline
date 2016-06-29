@@ -26,7 +26,7 @@ set :port, '22'
 set :repository_name, 'vitrineonline'
 set_default :rbenv_path, '$HOME/.rbenv'
 
-set :application, "vitrineonline"
+#set :application, "app-name"
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
@@ -94,13 +94,16 @@ task deploy: :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
+    invoke :'foreman:export'
     invoke :'deploy:cleanup'
+
 
     to :launch do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       invoke 'newrelic:notice_deployment'
-       invoke 'foreman:restart'
+      queue "bundle exec foreman start"
+      invoke 'foreman:restart'
     end
   end
 end
