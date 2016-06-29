@@ -94,8 +94,8 @@ task deploy: :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    invoke :'foreman:export'
     invoke :'deploy:cleanup'
+    invoke :'foreman:export'
 
 
     to :launch do
