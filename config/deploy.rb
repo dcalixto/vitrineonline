@@ -82,8 +82,8 @@ task setup: :environment do
 end
 
 
-  
-cmd = "rbenv sudo foreman export upstart /etc/init -a #{foreman_app} -u #{foreman_user} -l #{foreman_log}"
+desc 'Export foreman'
+  cmd = "rbenv sudo foreman export upstart /etc/init -a #{foreman_app} -u #{foreman_user} -l #{foreman_log}"
  
 
 desc 'Deploys the current version to the server.'
