@@ -38,7 +38,7 @@ module ApplicationHelper
     {
 
       title: 'Vitrineonline - Monte sua Vitrine',
-      description: 'Monte sua vitrine, desenvolva sua vitrine, compre e venda roupas, calçados e acessórios do seu estilo',
+      description: 'Monte sua vitrine, desenvolva sua vitrine, compre e venda roupas, calçados, acessórios e equipamentos',
 
      keywords: 'vitrine, social, ofertas, oferta, loja, estilo, moda, calçados, camisas, cordões, pulseiras, brincos, comprar, roupas, vender, ecommerce, loja virtual, online'
 

@@ -32,13 +32,7 @@ class ApplicationController < ActionController::Base
   # end
 
 
-  def episodes_per_page
-      case params[:view]
-      when "list" then 40
-      when "grid" then 24
-      else 10
-      end
-    end
+
 
   private
 

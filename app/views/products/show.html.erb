@@ -219,7 +219,7 @@
           </li>
 
 
-          <li> <span> Compartilhe: <%= social_share_button_tag(truncate(@product.vitrine.name, :length => 20), :url => url_for(:action => :show, :id => @product.vitrine.id, :only_path => false))  %></span>
+          <li> <span> Compartilhe: <%= social_share_button_tag(truncate(@product.name, :length => 20), :url => url_for(:action => :show, :id => @product.id, :only_path => false))  %></span>
        
           </li>
 
