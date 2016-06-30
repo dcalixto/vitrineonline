@@ -1,3 +1,4 @@
+nginx: sudo service nginx start
 web: passenger start
 web: bundle exec rails server
 elasticsearch: bundle exec elasticsearch
