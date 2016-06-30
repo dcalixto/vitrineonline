@@ -26,7 +26,7 @@ set :port, '22'
 set :repository_name, 'vitrineonline'
 set_default :rbenv_path, '$HOME/.rbenv'
 set :foreman_sudo, false
-set :sudo, 'rbenv sudo'
+#set :sudo, 'rbenv sudo'
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
@@ -89,7 +89,7 @@ task deploy: :environment do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
-  invoke :'foreman:export'
+    #invoke :'foreman:export'
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
@@ -100,13 +100,12 @@ task deploy: :environment do
 
 
     to :launch do
-       invoke 'foreman:restart'
+     #  invoke 'foreman:restart'
 
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       invoke 'newrelic:notice_deployment'
-      #queue "bundle exec foreman start"
-         end
+              end
   end
 end
 
