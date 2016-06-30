@@ -77,9 +77,15 @@
   							<ul>
                     <% @vitrines.last(10).each do |v| %>
 
-                          <li> <%= image_tag v.logo.url(:thumb).to_s %>
+                      <li>
+                        <%=link_to vitrine_path(v.id) do %>
+                        
+                        
+                        <%= image_tag v.logo.url(:thumb).to_s %>
                           <%= v.name   %></li>
-                      <% end %>
+                    <% end %>
+                     <% end %>
+
                     </ul>
                       <% end %>
 	</div>

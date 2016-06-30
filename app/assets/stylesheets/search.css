@@ -30,7 +30,7 @@
   margin-left:10px;
 
   margin-left: 5px;
-  margin-top: 5px;
+  margin-top: 7px;
   max-width: 320px;
 
   padding: 0;
@@ -43,7 +43,7 @@
 #search_input   {
   background-color: #fff;
 font-size: 14px;
-height: 29px;
+height: 28px;
 line-height: 30px;
 
 
@@ -54,7 +54,7 @@ box-sizing: border-box;
 width:280px;
 
 
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
     box-shadow: inset 0 1px 2px #eee;
 }
 
@@ -82,7 +82,7 @@ box-shadow: none;
 
 
  #search_input:hover {
-   outline:none;border:1px solid #f3d74d}
+   outline:none;border:1px solid #8ab700}
 
 
 
@@ -118,10 +118,9 @@ border-radius: 0 3px 3px 0;
 
 
  
-
-    border: solid #d5d5d5 1px;
+ border: solid #eabb32 1px;
  
-    background: #f8f8f8;
+    background: #ffe28e;
     color: #333;
 
 

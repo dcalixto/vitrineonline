@@ -26,9 +26,6 @@
 //= require jquery.bettertabs.min
 //= require nprogress
 
-
-
-
 //= require jquery.liquidcarousel
 //= pagination
 //= jquery.infinitescroll
@@ -37,6 +34,14 @@
 
 
 
+$(document).ready(function() {
+NProgress.configure({ showSpinner: false });
+
+NProgress.start();
+NProgress.done(); 
+
+
+});
 
 
 
@@ -372,12 +377,4 @@ $(document).ready(function() {
 
 
 
-$(document).ready(function() {
-NProgress.configure({ showSpinner: false });
-
-NProgress.start();
-NProgress.done(); 
-
-
-});
 

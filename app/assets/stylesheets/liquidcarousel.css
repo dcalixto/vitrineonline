@@ -34,7 +34,5 @@ margin-left:10px;
 	padding:0 2px;
 	}
 .liquid ul li a img {
-	-moz-box-shadow: 5px 5px 3px #222;
-   	-webkit-box-shadow: 5px 5px 3px #222;
-   	box-shadow: 5px 5px 3px #222;
+
 }
