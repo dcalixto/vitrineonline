@@ -81,6 +81,13 @@ task setup: :environment do
   )
 end
 
+
+  
+#cmd = "rbenv sudo foreman export upstart /etc/init -a #{foreman_app} -u #{foreman_user} -l #{foreman_log}"
+  task :update_upstart_scripts, :except => { :no_release => true } do
+    run "cd #{latest_release} && rbenv sudo foreman export upstart /etc/init -a vitrineonline -u ubuntu"
+  end
+
 desc 'Deploys the current version to the server.'
 task deploy: :environment do
   to :before_hook do
@@ -89,7 +96,7 @@ task deploy: :environment do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
-    invoke :'foreman:export'
+   # invoke :'foreman:export'
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
