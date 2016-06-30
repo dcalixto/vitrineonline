@@ -26,7 +26,7 @@ set :port, '22'
 set :repository_name, 'vitrineonline'
 set_default :rbenv_path, '$HOME/.rbenv'
 set :foreman_sudo, false
-set :sudo, 'rbenv sudo'
+#set :sudo, 'rbenv sudo'
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
@@ -84,7 +84,9 @@ end
 
   
 #cmd = "rbenv sudo foreman export upstart /etc/init -a #{foreman_app} -u #{foreman_user} -l #{foreman_log}"
-  task :update_upstart_scripts, :except => { :no_release => true } do
+ 
+desc 'Export foreman'
+task :update_upstart_scripts, :except => { :no_release => true } do
     run "cd #{latest_release} && rbenv sudo foreman export upstart /etc/init -a vitrineonline -u ubuntu"
   end
 
