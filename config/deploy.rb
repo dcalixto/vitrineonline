@@ -83,12 +83,8 @@ end
 
 
   
-#cmd = "rbenv sudo foreman export upstart /etc/init -a #{foreman_app} -u #{foreman_user} -l #{foreman_log}"
+cmd = "rbenv sudo foreman export upstart /etc/init -a #{foreman_app} -u #{foreman_user} -l #{foreman_log}"
  
-desc 'Export foreman'
-task :update_upstart_scripts, :except => { :no_release => true } do
-    run "cd #{latest_release} && rbenv sudo foreman export upstart /etc/init -a vitrineonline -u ubuntu"
-  end
 
 desc 'Deploys the current version to the server.'
 task deploy: :environment do
