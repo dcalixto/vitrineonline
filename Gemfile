@@ -31,13 +31,12 @@ gem 'searchkick',  github: "dcalixto/searchkick"
 
 
 
-
 # SUGGESTIONS
 gem 'predictor'
 
 
 #REPUTAION
-gem 'activerecord-reputation-system',  github: "dcalixto/activerecord-reputation-system"
+#gem 'activerecord-reputation-system',  github: "dcalixto/activerecord-reputation-system"
 
 gem 'acts_as_votable', '~> 0.10.0'
 
@@ -87,6 +86,9 @@ gem 'select2-rails'
 gem 'dynamic_selectable', github: "dcalixto/dynamic_selectable"
 
 
+#FOREMAN
+
+gem 'foreman'
 
 
 #LOG
