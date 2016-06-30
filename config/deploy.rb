@@ -26,7 +26,7 @@ set :port, '22'
 set :repository_name, 'vitrineonline'
 set_default :rbenv_path, '$HOME/.rbenv'
 set :foreman_sudo, false
-#set :application, "app-name"
+set :sudo, 'rbenv sudo'
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
