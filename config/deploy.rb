@@ -97,29 +97,6 @@ end
 
 
 
-namespace :foreman do
-  desc 'Export the Procfile to Ubuntu upstart scripts'
-  task :export do
-    sudo_cmd = "sudo" if fetch(:foreman_sudo)
-    export_cmd = "#{sudo_cmd} bundle exec foreman export #{fetch(:foreman_format)} #{fetch(:foreman_location)} -a #{fetch(:foreman_app)} -u #{fetch(:foreman_user)} -d #{fetch(:deploy_to)}/#{fetch(:current_path)} -l #{fetch(:foreman_log)} -f #{fetch(:foreman_procfile)}"
-
-    command %{
-      echo "-----> Exporting foreman procfile for #{fetch(:foreman_app)}"
-      #{echo_cmd %[cd #{fetch(:deploy_to)}/#{fetch(:current_path)} ; #{export_cmd}]}
-    }
-  end
-
-  desc "Restart the application services"
-  task :restart do
-    command %{
-      echo "-----> Restarting #{fetch(:foreman_app)} services"
-      #{echo_cmd %[sudo start #{fetch(:foreman_app)} || sudo restart #{fetch(:foreman_app)}]}
-    }
-  end
-end
-
-
-
 
  
 
@@ -131,7 +108,7 @@ task deploy: :environment do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
-    #invoke 'foreman:export' 
+    invoke 'foreman:export' 
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
@@ -142,7 +119,7 @@ task deploy: :environment do
 
 
     to :launch do
-    # invoke 'foreman:restart'
+     invoke 'foreman:restart'
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       invoke 'newrelic:notice_deployment'
