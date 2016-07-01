@@ -28,8 +28,8 @@ set_default :rbenv_path, '$HOME/.rbenv'
 #set :foreman_sudo, false
 #set :sudo, 'rbenv sudo'
 
-#set :foreman_app, 'vitrineonline'
-#set :foreman_user, 'ubuntu'
+set :foreman_app, 'vitrineonline'
+set :foreman_user, 'ubuntu'
 
 
 #set_default :foreman_app, 'vitrineonline'
@@ -97,27 +97,26 @@ end
 
 
 
-#namespace :foreman do
- # desc 'Export the Procfile to Ubuntu upstart scripts'
-  #task :export do
-   # sudo_cmd = "sudo" if fetch(:foreman_sudo)
-    #export_cmd = "#{sudo_cmd} bundle exec foreman export #{fetch(:foreman_format)} #{fetch(:foreman_location)} -a #{fetch(:foreman_app)} -u #{fetch(:foreman_user)} -d #{fetch(:deploy_to)}/#{fetch(:current_path)} -l #{fetch(:foreman_log)} -f #{fetch(:foreman_procfile)}"
+namespace :foreman do
+  desc 'Export the Procfile to Ubuntu upstart scripts'
+  task :export do
+    sudo_cmd = "sudo" if fetch(:foreman_sudo)
+    export_cmd = "#{sudo_cmd} bundle exec foreman export #{fetch(:foreman_format)} #{fetch(:foreman_location)} -a #{fetch(:foreman_app)} -u #{fetch(:foreman_user)} -d #{fetch(:deploy_to)}/#{fetch(:current_path)} -l #{fetch(:foreman_log)} -f #{fetch(:foreman_procfile)}"
 
-    #command %{
-     # echo "-----> Exporting foreman procfile for #{fetch(:foreman_app)}"
+    command %{
+      echo "-----> Exporting foreman procfile for #{fetch(:foreman_app)}"
       #{echo_cmd %[cd #{fetch(:deploy_to)}/#{fetch(:current_path)} ; #{export_cmd}]}
-   # }
-  #end
+    }
+  end
 
-  #desc "Restart the application services"
-  #task :restart do
-   # command %{
-    #  echo "-----> Restarting #{fetch(:foreman_app)} services"
+  desc "Restart the application services"
+  task :restart do
+    command %{
+      echo "-----> Restarting #{fetch(:foreman_app)} services"
       #{echo_cmd %[sudo start #{fetch(:foreman_app)} || sudo restart #{fetch(:foreman_app)}]}
-    #}
-  #end
-#end
-
+    }
+  end
+end
 
 
 
