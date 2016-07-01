@@ -25,9 +25,12 @@ set :term_mode, nil
 set :port, '22'
 set :repository_name, 'vitrineonline'
 set_default :rbenv_path, '$HOME/.rbenv'
-set :foreman_sudo, false
-#set :sudo, 'rbenv sudo'
+#set :foreman_sudo, false
+set :sudo, 'rbenv sudo'
 
+
+set_default :foreman_app, 'vitrineonline'
+set_default :foreman_user, 'ubuntu'
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
 
