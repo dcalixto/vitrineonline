@@ -103,7 +103,7 @@ gem 'correios-frete'
 
 gem 'mina'#,  github: "dcalixto/mina"
 gem 'mina-newrelic'
-gem 'mina-foreman', github: "dcalixto/mina-foreman"
+#gem 'mina-foreman', github: "dcalixto/mina-foreman"
 # SHIPPING & PROMO CODE
 
 #gem 'promo'

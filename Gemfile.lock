@@ -29,13 +29,6 @@ GIT
       actionpack (>= 3.2.13)
 
 GIT
-  remote: https://github.com/dcalixto/mina-foreman.git
-  revision: 3ed2c27c6c7005bbe40580b518bf34e7afaf8211
-  specs:
-    mina-foreman (1.0.0.beta1)
-      mina (= 1.0.0.beta1)
-
-GIT
   remote: https://github.com/dcalixto/no_cache_control.git
   revision: b58e2930009d1a45ebd4348008702860edcf66e7
   specs:
@@ -592,7 +585,6 @@ DEPENDENCIES
   meta-tags
   meta_request
   mina
-  mina-foreman!
   mina-newrelic
   mini_magick
   mobile-fu
