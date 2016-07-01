@@ -29,8 +29,8 @@ set_default :rbenv_path, '$HOME/.rbenv'
 #set :sudo, 'rbenv sudo'
 
 
-set_default :foreman_app, 'vitrineonline'
-set_default :foreman_user, 'ubuntu'
+#set_default :foreman_app, 'vitrineonline'
+#set_default :foreman_user, 'ubuntu'
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
 
