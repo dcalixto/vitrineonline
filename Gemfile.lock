@@ -29,12 +29,11 @@ GIT
       actionpack (>= 3.2.13)
 
 GIT
-  remote: https://github.com/dcalixto/mina.git
-  revision: 0ea0130310ccc5bd60b39f66df2623c872061014
+  remote: https://github.com/dcalixto/mina-foreman.git
+  revision: 3ed2c27c6c7005bbe40580b518bf34e7afaf8211
   specs:
-    mina (1.0.0.beta1)
-      open4 (~> 1.3.4)
-      rake
+    mina-foreman (1.0.0.beta1)
+      mina (= 1.0.0.beta1)
 
 GIT
   remote: https://github.com/dcalixto/no_cache_control.git
@@ -315,6 +314,9 @@ GEM
       rack-contrib (~> 1.1)
       railties (>= 3.0.0, < 5.1.0)
     mime-types (1.25.1)
+    mina (1.0.0.beta1)
+      open4 (~> 1.3.4)
+      rake
     mina-newrelic (0.0.3)
       mina (>= 0.3.0)
       newrelic_rpm (>= 3.6.0)
@@ -589,7 +591,8 @@ DEPENDENCIES
   memcachier
   meta-tags
   meta_request
-  mina!
+  mina
+  mina-foreman!
   mina-newrelic
   mini_magick
   mobile-fu
