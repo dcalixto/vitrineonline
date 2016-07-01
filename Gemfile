@@ -101,7 +101,7 @@ gem 'correios-frete'
 
 # DEPLOY
 
-gem 'mina'
+gem 'mina',  github: "dcalixto/mina"
 gem 'mina-newrelic'
 
 # SHIPPING & PROMO CODE
