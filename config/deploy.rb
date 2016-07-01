@@ -97,7 +97,7 @@ end
 
 
 
-namespace :foreman do
+#namespace :foreman do
   desc 'Export the Procfile to Ubuntu upstart scripts'
   task :export do
     sudo_cmd = "sudo" if fetch(:foreman_sudo)
@@ -116,7 +116,7 @@ namespace :foreman do
       #{echo_cmd %[sudo start #{fetch(:foreman_app)} || sudo restart #{fetch(:foreman_app)}]}
     }
   end
-end
+#end
 
 
 
