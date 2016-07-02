@@ -25,7 +25,7 @@ set :term_mode, nil
 set :port, '22'
 set :repository_name, 'vitrineonline'
 set_default :rbenv_path, '$HOME/.rbenv'
-set :foreman_sudo, false
+#set :foreman_sudo, false
 #set :sudo, 'rbenv sudo'
 
 
@@ -105,7 +105,7 @@ task deploy: :environment do
 
 
     to :launch do
-     invoke 'foreman:restart'
+    # invoke 'foreman:restart'
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       invoke 'newrelic:notice_deployment'

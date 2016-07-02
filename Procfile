@@ -1,4 +1,4 @@
-web: bundle exec rails server
+
 elasticsearch: bundle exec elasticsearch
 redis: bundle exec redis-server
 memcached: bundle exec memcached
