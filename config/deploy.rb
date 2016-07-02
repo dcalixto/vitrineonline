@@ -25,7 +25,7 @@ set :term_mode, nil
 set :port, '22'
 set :repository_name, 'vitrineonline'
 set_default :rbenv_path, '$HOME/.rbenv'
-set :foreman_sudo, false
+#set :foreman_sudo, false
 #set :sudo, 'rbenv sudo'
 
 
