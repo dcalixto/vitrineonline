@@ -28,7 +28,7 @@ set_default :rbenv_path, '$HOME/.rbenv'
 set :foreman_sudo, false
 set :sudo, 'rbenv sudo'
 
-#set :foreman_app, 'vitrineonline'
+set :foreman_app, 'vitrineonline'
 set :foreman_user, 'ubuntu'
 
 
@@ -86,28 +86,6 @@ task setup: :environment do
     ssh-keyscan -p $repo_port -H $repo_host >> ~/.ssh/known_hosts
   )
 end
-
-
-
-
-
-#desc 'Export the Procfile to Ubuntu upstart scripts'
-#task :export do
- #   export_cmd = "rbenv sudo foreman export upstart /etc/init -a #{foreman_app} -u #{foreman_user} -l #{foreman_log}"
-
-  #  queue %{
-   #   echo "-----> Exporting foreman procfile for #{foreman_app}"
-      #{echo_cmd %[cd #{deploy_to!}/#{current_path!} ; #{export_cmd}]}
-    #}
-  #end
-
-#desc "Restart the application services"
- # task :restart do
-  #  queue %{
-   #   echo "-----> Restarting #{foreman_app} services"
-      #{echo_cmd %[sudo start #{foreman_app} || sudo restart #{foreman_app}]}
-   # }
-  #end
 
  
 
