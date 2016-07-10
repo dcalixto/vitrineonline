@@ -8,12 +8,10 @@
         console.log(data);
         messageReceived(data);
       });
-
     function messageReceived(data) {
       var $messages = $('#menu-messages');
       var addToMenu = !isViewingConvo(data.conversation.id) && !isConvoIndex();
       var newText = "";
-
       if (addToMenu) {
         var currentString = $messages.text();
         var match = currentString.match(/Messages \((.+)\)/);
@@ -24,22 +22,18 @@
           var newNumber = parseInt(currentNumber) + 1;
           newText = 'Mensagens (' + newNumber + ')';
         }
-
         $messages.text(newText);
         if (!$messages.hasClass('new-messages'))
           $messages.addClass('new-messages')
       }
-
       if (isViewingConvo(data.conversation.id)) {
         addMessageToConvo(data);
       } else if (isConvoIndex()) {
         updateOrAddConvo(data);
       }
     }
-
     function updateOrAddConvo(data) {
       var convosDiv = $('div#message_list');
-
       $.get('/conversations/' + data.conversation.id + '/participants', function (pdata) {
         var convoUl = $('ul#conversation_' + data.conversation.id);
         if (convoUl.length == 0) {
@@ -49,21 +43,17 @@
         convoUl.html(pdata);
       });
     }
-
     function addMessageToConvo(data) {
       var conversationList = $('.chatboxcontent');
       $.get('/conversations/' + data.conversation.id + '/messages/' + data.message.id, function (mdata) {
         conversationList.prepend(mdata);
       });
     }
-
     function isConvoIndex() {
       return $('div#message_list').length > 0
     }
-
     function isViewingConvo(conversation_id) {
       return $('div#conversation_' + conversation_id).length > 0
     }
-
   });
 </script>

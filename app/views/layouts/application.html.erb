@@ -61,7 +61,7 @@
 <% cache "facebook" do %>
 <%=render "layouts/facebook" %>
 <% end %>
-<% if logado? %>
+<% if current_user %>
 <%=render "layouts/faye" %>
 <%end %>
 <%=render "layouts/analytics" %>

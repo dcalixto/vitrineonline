@@ -36,7 +36,7 @@ gem 'predictor'
 
 
 #REPUTAION
-#gem 'activerecord-reputation-system',  github: "dcalixto/activerecord-reputation-system"
+
 
 gem 'acts_as_votable', '~> 0.10.0'
 
@@ -57,8 +57,6 @@ gem 'dynamic_form'
 gem 'i18n_country_select'
 
 
-#SEEDING DATA
-#gem "sprig", github: "dcalixto/sprig"
 
 # FIND UNUSED CSS
 #gem 'deadweight'
@@ -140,8 +138,6 @@ gem 'rack-attack'
 gem 'geocoder'
 gem 'rack-secure_headers',   github: "dcalixto/rack-secure_headers"
 gem 'no_cache_control',     github: "dcalixto/no_cache_control"
-#gem 'active_model_otp'
-#gem 'twilio-ruby'
 
 # IMAGE
 gem 'carrierwave','~> 0.9.0'

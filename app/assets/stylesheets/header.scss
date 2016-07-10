@@ -54,16 +54,11 @@ $desktop: min-width 1200px;
   filter: alpha(opacity=60);
 }
 
-.blue_bar {      height:45px;
+.blue_bar {      height:40px;
  
-   border-bottom:1px solid #ddd;
+background:#383b43;
 
-    background-color: #2b4781;
-background-color: #f1f1f1;
-
-
-
-  }
+border-bottom: 1px solid #383b43;  }
 .inner_blue  {
 
 
@@ -72,11 +67,9 @@ background-color: #f1f1f1;
     height:45px;
 
     background:#346c9f;
-  
-
     width:100%;
     display: block;
-}
+    }
 
 .icons_bar  {
 
@@ -90,11 +83,9 @@ background-color: #f1f1f1;
 
  background:#fff; 
  
-    border-bottom: 1px solid rgba(0,0,0,.1);
-    white-space: nowrap;
+      white-space: nowrap;
     height: 33px;
-   
-
+  border-bottom: 1px solid #383b43; 
   
 }
 
@@ -282,8 +273,8 @@ ul.log_topbar li {
   display: block;
   vertical-align: middle;
   float: right;
-  
- 
+
+color:#fff; 
 
   font-weight:normal
 }
@@ -303,7 +294,7 @@ ul.log_topbar li {
   float: right
 }
 .log_topbar span {
-  border-right: 1px solid #167ac6;
+  border-right: 1px solid #fff;
   line-height: 0.2em;
   height: 10px;
   display: inline-block;

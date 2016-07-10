@@ -30,20 +30,20 @@
   margin-left:10px;
 
   margin-left: 5px;
-  margin-top: 7px;
+  margin-top: 5px;
   max-width: 320px;
 
   padding: 0;
   position: relative;
 
-
 }
+
+
 
 
 #search_input   {
   background-color: #fff;
 font-size: 14px;
-height: 28px;
 line-height: 30px;
 
 
@@ -52,25 +52,24 @@ position: relative;
 box-sizing: border-box;
 
 width:280px;
+border: 1px solid #005295;
 
+height: 31px;
 
-    border: 1px solid #ccc;
-    box-shadow: inset 0 1px 2px #eee;
+     
 }
 
 
 #search_input input {
-border: 1px solid #ccc;
-box-shadow: inset 0 1px 2px #eee;
+border-bottom: 1px solid #b2f3fc; 
 
 background: transparent;
 border: 0;
 
-font-size: 16px;
+font-size: 15px;
 
 width: 99%;
-min-height: 26px;
-
+height: 25px;
 padding-top: 0;
 padding-bottom: 0;
 background: none;
@@ -82,7 +81,7 @@ box-shadow: none;
 
 
  #search_input:hover {
-   outline:none;border:1px solid #8ab700}
+   outline:none;border:1px solid #F9CF1E}
 
 
 
@@ -97,7 +96,7 @@ box-shadow: none;
   top: 0px;
 
  width: 45px;
-  height: 32px;
+  height: 31px;
 
     display: inline-block;
 text-indent: -9999px;
@@ -118,9 +117,9 @@ border-radius: 0 3px 3px 0;
 
 
  
- border: solid #eabb32 1px;
+ border: solid #e3ca40 1px;
  
-    background: #ffe28e;
+    background: #e3ca40;
     color: #333;
 
 

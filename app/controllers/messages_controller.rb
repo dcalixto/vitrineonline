@@ -1,7 +1,7 @@
 # encoding: utf-8
 class MessagesController < ApplicationController
-  before_filter :authorize
-  cache_sweeper :message_sweeper
+  #before_filter :authorize
+  #cache_sweeper :message_sweeper
 
   def create
     # TODO: Handle 404

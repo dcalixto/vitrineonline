@@ -1,6 +1,6 @@
 # encoding: utf-8
 class ConversationsController < ApplicationController
-  before_filter :logado?, :authorize
+  #before_filter  :authorize
   after_filter :update_user_last_read
 
   def index
@@ -20,10 +20,6 @@ class ConversationsController < ApplicationController
     else
       redirect_to root_url
     end
-    # redirect_to fail_order_path if current_user.conversation.display_message.body.blank?
-    if request.xhr?
-      render partial: 'conversations/conversation', collection: @conversations
-    end
     end
 
   def show
@@ -32,10 +28,6 @@ class ConversationsController < ApplicationController
     @participant = @conversation.conversation_participants.find_by_user_id(current_user)
     @participant.update_attribute(:has_read, true)
     @new_message = @conversation.messages.build
-
-    #  if  params[:page]
-    #  render partial: 'messages/message', collection: @messages
-    #  end
 
     respond_to do |format|
       format.js { render partial: 'messages/message', collection: @messages, layout: false }

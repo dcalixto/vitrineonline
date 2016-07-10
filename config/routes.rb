@@ -76,9 +76,7 @@ mount MemcachedManager::Routes, :at => '/mm'
       get :participants
       get :fail
     end
-    collection do
-      match '/' => 'conversations#index', via: [:get, :post], as: :search
-    end
+   
   end
 
   # VITRINE

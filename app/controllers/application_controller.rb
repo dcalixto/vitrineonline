@@ -19,19 +19,6 @@ class ApplicationController < ActionController::Base
   # after_filter :set_online
   after_filter :user_activity
 
-  # private
-
-  # def set_online
-  #    if !!current_user
-  # using separate Redis database
-  # such as $redis_onlines = Redis.new db: 15
-  # value not need, only key
-  #    $redis_onlines.set( current_user.id, nil, ex: 10*60 )
-  # 'ex: 10*60' - set time to live - 10 minutes
-  #  end
-  # end
-
-
 
 
   private
@@ -120,16 +107,6 @@ class ApplicationController < ActionController::Base
       flash[:error] = 'Esta conta foi banida por violar os termos de uso e privacidade'
     end
   end
-
-
-
-
-
-
-
-
-
-
 
 
 end

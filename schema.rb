@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(:version => 20160615123608) do
 
   create_table "conversation_participants", :force => true do |t|
     t.boolean  "has_read",        :default => false
-    t.integer  "user_id",                            :null => false
-    t.integer  "conversation_id",                    :null => false
+    t.integer  "user_id"
+    t.integer  "conversation_id"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
   end
@@ -210,8 +210,8 @@ ActiveRecord::Schema.define(:version => 20160615123608) do
 
   create_table "messages", :force => true do |t|
     t.text     "body",                        :null => false
-    t.integer  "conversation_id",             :null => false
-    t.integer  "conversation_participant_id", :null => false
+    t.integer  "conversation_id"
+    t.integer  "conversation_participant_id"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
