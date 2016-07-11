@@ -1,4 +1,4 @@
-/* glue: 0.11.1 hash: fd2999b65e */
+/* glue: 0.11.1 hash: 9f1a084061 */
         .sprite-icons-paypal_cards,
 .sprite-icons-logo_big,
 .sprite-icons-paypal_protect,
@@ -45,50 +45,50 @@
         
         .sprite-icons-logo_big {
             background-position: 0 -110px;
-            width: 294px;
-            height: 41px;
+            width: 285px;
+            height: 36px;
         }
         
         .sprite-icons-paypal_protect {
-            background-position: 0 -151px;
+            background-position: 0 -146px;
             width: 280px;
             height: 50px;
         }
         
         .sprite-icons-paypal-icon {
-            background-position: 0 -201px;
+            background-position: 0 -196px;
             width: 191px;
             height: 29px;
         }
         
         .sprite-icons-paypal_icon2 {
-            background-position: 0 -230px;
+            background-position: 0 -225px;
             width: 163px;
             height: 50px;
         }
         
         .sprite-icons-logo {
-            background-position: 0 -280px;
-            width: 160px;
-            height: 22px;
+            background-position: 0 -275px;
+            width: 158px;
+            height: 19px;
         }
         
         .sprite-icons-fb_button {
-            background-position: -163px -230px;
+            background-position: -163px -225px;
             width: 120px;
             height: 32px;
         }
         
         .sprite-icons-5star {
-            background-position: -191px -201px;
+            background-position: -191px -196px;
             width: 100px;
             height: 20px;
         }
         
         .sprite-icons-logo_small {
-            background-position: -163px -262px;
-            width: 96px;
-            height: 14px;
+            background-position: -163px -257px;
+            width: 97px;
+            height: 12px;
         }
         
         .sprite-icons-comodo_secure {
@@ -191,7 +191,7 @@
             background-position: -346px -229px;
             width: 21px;
             height: 21px;
-             margin-top:4px;
+              margin-top:4px;
  margin-left:7px;
      position: absolute;
      left: 0;
@@ -239,10 +239,6 @@ top: 0;
             width: 14px;
             height: 13px;
         }
-        
-      
-
-
 
 
 
