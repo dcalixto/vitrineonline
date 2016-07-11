@@ -5,11 +5,11 @@
 <% if new_messages? %>
 <%=content_tag(:span, "#{num_new_messages}", :class=> "alert" ) %>
 <%=link_to( conversations_path, :title=> "Mensagem" ) do %>
-<%=content_tag( :i,nil, :class=> "sprite-icons-message2") %>
+<%=content_tag( :i,nil, :class=> "sprite-icons-message") %>
 <%end%>
 <% else %>
 <%=link_to( conversations_path, :id=> "menu-messages", :title => "Mensagem" ) do %>
-<%=content_tag( :i,nil, :class=> "sprite-icons-message2") %>
+<%=content_tag( :i,nil, :class=> "sprite-icons-message") %>
 <%end%>
 <% end %>
 </li>
@@ -17,27 +17,27 @@
 <% if new_feedback? %>
 <%=content_tag(:span, "#{num_new_feedback}", :class=> "alert") %>
 <%=link_to( awaiting_feedbacks_path, :title=> "Avaliações" ) do %>
-<%=content_tag( :i,nil, :class=> "sprite-icons-feedback2") %>
+<%=content_tag( :i,nil, :class=> "sprite-icons-feedback") %>
 <%end%>
 <% else %>
 <%=link_to( completed_feedbacks_path, :title=> "Avaliações" ) do %>
-<%=content_tag( :i,nil, :class=> "sprite-icons-feedback2") %>
+<%=content_tag( :i,nil, :class=> "sprite-icons-feedback") %>
 <%end%>
 <% end %>
 </li>
 <li>
 <%=link_to('/orders/purchased?status=paid', :title=> "Pedidos") do %>
-<%=content_tag( :i,nil, :class=> "sprite-icons-curtidas2") %>
+<%=content_tag( :i,nil, :class=> "sprite-icons-box") %>
 <%end%>
 </li>
 <li>
 <% if current_vitrine %>
 <%=link_to( edit_vitrine_path(current_vitrine), :title=> "Vitrine") do %>
-<%=content_tag( :i,nil, :class=> "sprite-icons-vitrine2") %>
+<%=content_tag( :i,nil, :class=> "sprite-icons-vitrine") %>
 <%end%>
 <% else %>
 <%=link_to new_vitrine_path,:title=> "Criar Vitrine" do %>
-<%=content_tag( :i,nil, :class=> "sprite-icons-vitrine2") %>
+<%=content_tag( :i,nil, :class=> "sprite-icons-vitrine") %>
 <%end%>
 <% end %>
 </li>
