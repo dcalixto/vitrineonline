@@ -25,13 +25,14 @@ class SessionsController < ApplicationController
 
       #  end
 
-      redirect_to root_url # , :notice => "Logado!"
-    else
+      redirect_to root_url 
+       else
       flash.now[:alert] = 'Email ou Password inválido'
       render :new
 
     end
   end
+ end
 
   def omniauth_callback
     auth_hash = request.env['omniauth.auth']
