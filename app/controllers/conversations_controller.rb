@@ -6,16 +6,16 @@ class ConversationsController < ApplicationController
   def index
     if current_user
       # @conversation = Conversation.new
-      # @conversations = current_user.active_conversations
-      # .includes(:conversation_participants,:display_message) #:users
-      # .order('conversations.updated_at DESC').paginate(:page => params[:page], :per_page => 2)
+       @conversations = current_user.active_conversations
+       .includes(:conversation_participants,:display_message) #:users
+       .order('conversations.updated_at DESC').paginate(:page => params[:page], :per_page => 22)
 
       # #@conversation = Conversation.new
 
-      @q = @conversations = current_user.active_conversations
-                                        .includes(:conversation_participants, :display_message) #:users
-                                        .order('conversations.updated_at DESC').ransack(params[:q])
-      @conversations = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+   #   @q = @conversations = current_user.active_conversations
+    #                                    .includes(:conversation_participants, :display_message) #:users
+    #                                    .order('conversations.updated_at DESC').ransack(params[:q])
+    #  @conversations = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
     else
       redirect_to root_url

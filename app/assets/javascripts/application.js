@@ -239,8 +239,6 @@ $(document).ready(function(){
 
 
 
-
-
 // POSTS
 var bind_comment_handler = function() {
   $('.comment_input').unbind('keyup');
@@ -299,11 +297,6 @@ $(function() {
 
 
 // SEARCH AUTOCOMPLETE
-
-
-
-
-
 
 
 

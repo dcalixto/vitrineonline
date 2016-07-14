@@ -112,9 +112,7 @@ def products
       @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
     @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
     
-  
-#@q = Product.ransack(params[:q])
- # @products = @q.result.includes(:vitrine).page(params[:page])
+
 
 end
 

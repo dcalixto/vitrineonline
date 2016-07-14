@@ -16,8 +16,8 @@
     <div class="episode_views">
             
     
-    
-  <table class="block_search">
+
+ <table class="block_search">
         <tr>
           <td>
 
@@ -25,12 +25,15 @@
           <td class="sort">
 
             Ordernar Por
-            <%= select_tag 'order_by', options_for_select([['Price: Low To High', 'price:asc'], ['Price: High To Low', 'price:desc'], ['Avg. Customer Review', 'average_customer_rating:desc'], ['Newest Arrivals', 'created_at:desc']], params[:order_by] || 'created_at:desc') %>
+            <%= select_tag 'order_by', options_for_select([['Preço: Mais Baratos', 'price:asc'], ['Preço: Mais Caros', 'price:desc'], ['Média de Avaliações', 'average_customer_rating:desc'], ['Postado Recentemente', 'created_at:desc']], params[:order_by] || 'created_at:desc') %>
    
 
           </td>
         </tr>
-      </table>    
+      </table>  
+
+
+
     
     </div>
 

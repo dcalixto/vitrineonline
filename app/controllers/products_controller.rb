@@ -2,7 +2,7 @@
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
-#cache_sweeper :product_sweeper
+
   def index
     @products = Product.aggs_search(params)
  # suggestions for current visitor
@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html do
         if @product.update_attributes(params[:product])
-
+         Product.reindex
 
           redirect_to(action: :show, id: @product, only_path: true)
           flash[:success] = "#{@product.name} atualizado"
@@ -116,6 +116,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.destroy
+      Product.reindex
       expire_fragment('product')
       flash[:success] = "#{@product.name} removido"
     end

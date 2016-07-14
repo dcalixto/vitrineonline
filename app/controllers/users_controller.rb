@@ -129,6 +129,7 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
+      Product.reindex
       cookies.delete(:auth_token)
       redirect_to root_path
       flash[:success] = 'Conta deletada'
