@@ -1,4 +1,4 @@
-/* glue: 0.11.1 hash: 9f1a084061 */
+/* glue: 0.11.1 hash: 7605cfd766 */
         .sprite-icons-paypal_cards,
 .sprite-icons-logo_big,
 .sprite-icons-paypal_protect,
@@ -45,50 +45,50 @@
         
         .sprite-icons-logo_big {
             background-position: 0 -110px;
-            width: 285px;
-            height: 36px;
+            width: 282px;
+            height: 37px;
         }
         
         .sprite-icons-paypal_protect {
-            background-position: 0 -146px;
+            background-position: 0 -147px;
             width: 280px;
             height: 50px;
         }
         
         .sprite-icons-paypal-icon {
-            background-position: 0 -196px;
+            background-position: 0 -197px;
             width: 191px;
             height: 29px;
         }
         
         .sprite-icons-paypal_icon2 {
-            background-position: 0 -225px;
+            background-position: 0 -226px;
             width: 163px;
             height: 50px;
         }
         
         .sprite-icons-logo {
-            background-position: 0 -275px;
-            width: 158px;
+            background-position: -163px -226px;
+            width: 152px;
             height: 19px;
         }
         
         .sprite-icons-fb_button {
-            background-position: -163px -225px;
+            background-position: 0 -276px;
             width: 120px;
             height: 32px;
         }
         
         .sprite-icons-5star {
-            background-position: -191px -196px;
+            background-position: -191px -197px;
             width: 100px;
             height: 20px;
         }
         
         .sprite-icons-logo_small {
-            background-position: -163px -257px;
+            background-position: -163px -245px;
             width: 97px;
-            height: 12px;
+            height: 13px;
         }
         
         .sprite-icons-comodo_secure {
@@ -191,7 +191,7 @@
             background-position: -346px -229px;
             width: 21px;
             height: 21px;
-              margin-top:4px;
+                          margin-top:4px;
  margin-left:7px;
      position: absolute;
      left: 0;
@@ -239,7 +239,9 @@ top: 0;
             width: 14px;
             height: 13px;
         }
-
+        
+      
+        
 
 
   ul.social_list li {
