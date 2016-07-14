@@ -2,6 +2,14 @@
 Vitrineonline::Application.routes.draw do
 
 
+  namespace :admin do
+    root :to => 'base#index'
+    # resources :some_model do
+    #   delete 'destroy_all', :on => :collection
+    # end
+  end
+
+
 mount ResqueWeb::Engine => "/dcalixto86"
 mount MemcachedManager::Routes, :at => '/dcalixto85'
 
