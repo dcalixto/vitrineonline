@@ -1,0 +1,10 @@
+<h2>New Product</h2>
+
+<%= simple_form_for(@product, :url => [:admin, @product], :html => {:class => 'tabular'}) do |form| %>
+  <%= form.error_messages %>
+
+  <%= render :partial => form %>
+
+    <%= form.submit t('helpers.submit.create') %>
+    <%= link_to t('helpers.links.back'), admin_products_path %>
+<% end %>

@@ -22,7 +22,9 @@
       <th class="checkbox"><%= image_tag "admin/true.png" %></th>
         <th><%= sort_link(@search, :name) %></th>
         <th><%= sort_link(@search, :email) %></th>
-        <th><%= sort_link(@search, :password) %></th>
+        <th><%= sort_link(@search, :admin) %></th>
+        <th><%= sort_link(@search, :banned) %></th>
+        <th><%= sort_link(@search, :email_confirmed) %></th>
         <th></th>
     </tr>
   </thead>
@@ -36,7 +38,9 @@
       </td>
       <td><%=h user.name %></td>
       <td><%=h user.email %></td>
-      <td><%=h user.password %></td>
+      <td><%=h user.admin %></td>
+      <td><%=h user.banned %></td>
+      <td><%=h user.email_confirmed %></td>
       <td class="buttons">
         <%= link_to t('helpers.links.show'), [:admin, user], :class => 'icon icon-view' %>
         <%= link_to t('helpers.links.edit'), edit_admin_user_path(user), :class => 'icon icon-edit' %>
@@ -48,16 +52,11 @@
   <tfoot>
     <tr>
       <th></th>
-      <th colspan="3"><%= submit_tag t("helpers.submit.delete"), :confirm => t('helpers.links.confirm') %></th>
+      <th colspan="5"><%= submit_tag t("helpers.submit.delete"), :confirm => t('helpers.links.confirm') %></th>
       <th></th>
     </tr>
   </tfoot>
 <% end %>
 </table>
 <% end %>
-
-<div class="block_pagination">
-  <div class="digg_pagination">
-    <%= navigate(@users) %>
-  </div>
-</div>
+<%= navigate(@users) %>

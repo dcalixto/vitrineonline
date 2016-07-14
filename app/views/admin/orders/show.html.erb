@@ -1,0 +1,28 @@
+<div class="contextual">
+  <%= link_to t('helpers.links.edit'), edit_admin_order_path(@order), :class => 'icon icon-edit' %>
+  <%= link_to t('helpers.links.destroy'), [:admin, @order], :confirm => t('helpers.links.confirm'), :method => :delete, :class => 'icon icon-del' %>
+</div>
+
+<h2>Order <%= @order.id %></h2>
+
+<div class="box">
+  <p>
+    <b>Buyer:</b>
+    <%=h @order.buyer_id %>
+  </p>
+  <p>
+    <b>Seller:</b>
+    <%=h @order.seller_id %>
+  </p>
+  <p>
+    <b>Product:</b>
+    <%=h @order.product_id %>
+  </p>
+  <p>
+    <b>Cart:</b>
+    <%=h @order.cart_id %>
+  </p>
+</div>
+
+<%= link_to t('helpers.links.edit'), edit_admin_order_path(@order) %> |
+<%= link_to t('helpers.links.back'), admin_orders_path %>

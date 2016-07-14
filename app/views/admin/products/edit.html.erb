@@ -1,0 +1,15 @@
+<div class="contextual">
+  <%= link_to t('helpers.links.show'), [:admin, @product], :class => 'icon icon-view' %>
+  <%= link_to t('helpers.links.destroy'), [:admin, @product], :confirm => t('helpers.links.confirm'), :method => :delete, :class => 'icon icon-del' %>
+</div>
+
+<h2>Editing Product</h2>
+
+<%= simple_form_for(@product, :url => [:admin, @product], :html => {:class => 'tabular'}) do |form| %>
+  <%= form.error_messages %>
+
+  <%= render :partial => form %>
+
+  <%= form.submit t('helpers.submit.update') %>
+  <%= link_to t('helpers.links.back'), admin_products_path %>
+<% end %>

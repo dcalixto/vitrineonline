@@ -1,0 +1,58 @@
+<div class="contextual">
+  <%= link_to 'New Feedback', new_admin_feedback_path, :class => 'icon icon-add' %>
+  | <%= search_form_for @search, :url => collection_url do |f| %>
+      <%
+        # Check https://github.com/ernie/ransack for options.
+        # Simply change :id_eq into :name_cont, etc.
+      %>
+      <%= f.text_field :id_eq, :placeholder => 'Search by ID' %>
+    <% end %>
+</div>
+
+<h2>
+    Feedbacks
+</h2>
+
+<% if @feedbacks.blank? %>
+  <p class="nodata">No data to display</p>
+<% else %>
+<table class="list issues">
+  <thead>
+    <tr>
+      <th class="checkbox"><%= image_tag "admin/true.png" %></th>
+        <th><%= sort_link(@search, :user_id) %></th>
+        <th><%= sort_link(@search, :vitrine_id) %></th>
+        <th><%= sort_link(@search, :product_id) %></th>
+        <th></th>
+    </tr>
+  </thead>
+
+<%= form_tag(destroy_all_admin_feedbacks_path, :method => :delete) do %>
+  <tbody>
+<% @feedbacks.each do |feedback| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td class="checkbox">
+        <%= check_box_tag('ids[]', feedback.id, nil, :id => "ids_#{feedback.id}") %>
+      </td>
+      <td><%=h feedback.user_id %></td>
+      <td><%=h feedback.vitrine_id %></td>
+      <td><%=h feedback.product_id %></td>
+      <td class="buttons">
+        <%= link_to t('helpers.links.show'), [:admin, feedback], :class => 'icon icon-view' %>
+        <%= link_to t('helpers.links.edit'), edit_admin_feedback_path(feedback), :class => 'icon icon-edit' %>
+        <%= link_to t('helpers.links.destroy'), [:admin, feedback], :confirm => t('helpers.links.confirm'), :method => :delete, :class => 'icon icon-del' %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th colspan="3"><%= submit_tag t("helpers.submit.delete"), :confirm => t('helpers.links.confirm') %></th>
+      <th></th>
+    </tr>
+  </tfoot>
+<% end %>
+</table>
+<% end %>
+<%= navigate(@feedbacks) %>

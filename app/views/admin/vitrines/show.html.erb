@@ -6,6 +6,14 @@
 <h2>Vitrine <%= @vitrine.id %></h2>
 
 <div class="box">
+  <p>
+    <b>Name:</b>
+    <%=h @vitrine.name %>
+  </p>
+  <p>
+    <b>User:</b>
+    <%=h @vitrine.user_id %>
+  </p>
 </div>
 
 <%= link_to t('helpers.links.edit'), edit_admin_vitrine_path(@vitrine) %> |

@@ -20,6 +20,8 @@
   <thead>
     <tr>
       <th class="checkbox"><%= image_tag "admin/true.png" %></th>
+        <th><%= sort_link(@search, :name) %></th>
+        <th><%= sort_link(@search, :user_id) %></th>
         <th></th>
     </tr>
   </thead>
@@ -31,6 +33,8 @@
       <td class="checkbox">
         <%= check_box_tag('ids[]', vitrine.id, nil, :id => "ids_#{vitrine.id}") %>
       </td>
+      <td><%=h vitrine.name %></td>
+      <td><%=h vitrine.user_id %></td>
       <td class="buttons">
         <%= link_to t('helpers.links.show'), [:admin, vitrine], :class => 'icon icon-view' %>
         <%= link_to t('helpers.links.edit'), edit_admin_vitrine_path(vitrine), :class => 'icon icon-edit' %>
@@ -42,11 +46,11 @@
   <tfoot>
     <tr>
       <th></th>
-      <th colspan="0"><%= submit_tag t("helpers.submit.delete"), :confirm => t('helpers.links.confirm') %></th>
+      <th colspan="2"><%= submit_tag t("helpers.submit.delete"), :confirm => t('helpers.links.confirm') %></th>
       <th></th>
     </tr>
   </tfoot>
 <% end %>
 </table>
 <% end %>
-<#%= navigate(@vitrines) %>
+<%= navigate(@vitrines) %>

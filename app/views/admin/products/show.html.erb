@@ -1,0 +1,28 @@
+<div class="contextual">
+  <%= link_to t('helpers.links.edit'), edit_admin_product_path(@product), :class => 'icon icon-edit' %>
+  <%= link_to t('helpers.links.destroy'), [:admin, @product], :confirm => t('helpers.links.confirm'), :method => :delete, :class => 'icon icon-del' %>
+</div>
+
+<h2>Product <%= @product.id %></h2>
+
+<div class="box">
+  <p>
+    <b>Name:</b>
+    <%=h @product.name %>
+  </p>
+  <p>
+    <b>Vitrine:</b>
+    <%=h @product.vitrine_id %>
+  </p>
+  <p>
+    <b>Price:</b>
+    <%=h @product.price %>
+  </p>
+  <p>
+    <b>Quantity:</b>
+    <%=h @product.quantity %>
+  </p>
+</div>
+
+<%= link_to t('helpers.links.edit'), edit_admin_product_path(@product) %> |
+<%= link_to t('helpers.links.back'), admin_products_path %>

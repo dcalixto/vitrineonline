@@ -1,8 +1,6 @@
 class Admin::UsersController < Admin::ResourceController
 
-  # See admin/resource_controller.rb for more info..
-
-  def index
+ def index
   #  @users = User.all
 
     @search = User.ransack(params[:q])

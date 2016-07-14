@@ -1,0 +1,24 @@
+<div class="contextual">
+  <%= link_to t('helpers.links.edit'), edit_admin_feedback_path(@feedback), :class => 'icon icon-edit' %>
+  <%= link_to t('helpers.links.destroy'), [:admin, @feedback], :confirm => t('helpers.links.confirm'), :method => :delete, :class => 'icon icon-del' %>
+</div>
+
+<h2>Feedback <%= @feedback.id %></h2>
+
+<div class="box">
+  <p>
+    <b>User:</b>
+    <%=h @feedback.user_id %>
+  </p>
+  <p>
+    <b>Vitrine:</b>
+    <%=h @feedback.vitrine_id %>
+  </p>
+  <p>
+    <b>Product:</b>
+    <%=h @feedback.product_id %>
+  </p>
+</div>
+
+<%= link_to t('helpers.links.edit'), edit_admin_feedback_path(@feedback) %> |
+<%= link_to t('helpers.links.back'), admin_feedbacks_path %>
