@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       # redirect_to root_url
 
       # flash.now[:alert] = 'Antes de logar confirme seu email'
-        cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, httponly: true, secure: !(Rails.env.test? || Rails.env.development?) }
+        cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, httponly: true}
 
       #  end
 
