@@ -5,10 +5,15 @@ class UserMailer < ActionMailer::Base
   include Resque::Mailer
 
 
-  def registration_confirmation(user)
-    @user = user
-    mail to: user.email, subject: 'Confirmar Registro', &:html
+  def registration_confirmation(user_id)
+    user = User.find(user_id)
+
+   # @user = user
+    mail(to: "#{user.email}", subject: 'Confirmar Registro', &:html)
   end
+
+
+
 
   def password_reset(user)
     @user = user
