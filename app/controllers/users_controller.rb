@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     @vitrine = Vitrine.new(params[:vitrine])
 
     if @user.save
-      UserMailer.registration_confirmation(self.mail).deliver
+      UserMailer.registration_confirmation(self.user.mail).deliver
       redirect_to root_url
 
       flash[:success] = "Por favor confirme seu endereço de email para continuar".html_safe
