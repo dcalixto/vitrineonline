@@ -2,13 +2,13 @@
 
 class UserMailer < ActionMailer::Base
   default from: 'Vitrineonline'
-  include Resque::Mailer
+  #include Resque::Mailer
 
 
-  def registration_confirmation(user_id)
-    user = User.find(user_id)
+  def registration_confirmation(user)
+    #user = User.find(user_id)
 
-   # @user = user
+    @user = user
     mail(to: user.email, subject: 'Confirmar Registro', &:html)
   end
 
