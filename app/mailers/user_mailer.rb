@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
 
   def registration_confirmation(user)
     #user = User.find(user_id)
-  attachments.inline['logo.png'] = File.read("#{Rails.root}/app/assets/images/logo.png")
+
    
     @user = user
     mail(to: user.email, subject: 'Confirmar Registro', &:html)
