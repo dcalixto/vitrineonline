@@ -49,13 +49,14 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @vitrine = Vitrine.new(params[:vitrine])
 
-    if @user.save
-      UserMailer.registration_confirmation(@user).deliver
+      if @user.save
+      @user.authenticate(params[:user][:password])
+      @user.update_attribute(:login_at, Time.zone.now)
+      @user.update_attribute(:ip_address, request.remote_ip)
+      cookies[:auth_token] = {:value => @user.auth_token, :expires => 3.month.from_now}
       redirect_to root_url
-
-      flash[:success] = "Por favor confirme seu endereço de email para continuar".html_safe
-    else
-
+      flash[:success] = "Bem vindo a Vitrineonline #{(@user.name)}".html_safe
+      else
       render :new
       flash[:error] = 'Ooooppss, algo deu errado!'.html_safe
     end

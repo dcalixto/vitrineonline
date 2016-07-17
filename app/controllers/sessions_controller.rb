@@ -4,36 +4,31 @@ class SessionsController < ApplicationController
     redirect_to root_url if current_user
   end
 
+
   def create
-    user = User.find_by_email(params[:email].downcase)
+
+    user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       user.update_attribute(:login_at, Time.zone.now)
       user.update_attribute(:ip_address, request.remote_ip)
+      if params[:remember_me]
+        cookies.permanent[:auth_token] = user.auth_token
+     
 
-       if user.email_confirmed
-      # logar user
-      # redirect_to root_url
-      #   if
-      #  params[:remember_me]
-     # cookies.permanent[:auth_token] = user.auth_token
+        
+      else
+        cookies[:auth_token] = { :value => user.auth_token, :expires => 3.month.from_now }
 
-      #  else
-      # redirect_to root_url
-
-      # flash.now[:alert] = 'Antes de logar confirme seu email'
-        cookies[:auth_token] = { value: user.auth_token, expires: 3.month.from_now, httponly: true}
-
-      #  end
-
-      redirect_to root_url 
-       else
-      flash.now[:alert] = 'Email ou Password inválido'
+      end
+      redirect_to root_url #, :notice => "Logado!"
+    else
+      flash.now[:alert] = "Email ou Password inválido"
       render :new
-
     end
   end
- end
 
+
+  
   def omniauth_callback
     auth_hash = request.env['omniauth.auth']
 
