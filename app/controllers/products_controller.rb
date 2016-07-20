@@ -127,7 +127,7 @@ class ProductsController < ApplicationController
     end
 
   def omniauth_callback
-    cookies[params[:provider] + '_auth_token'] = { value: params[:access_token], secure: !(Rails.env.test? || Rails.env.development?) }
+    cookies[params[:provider] + '_auth_token'] = { value: params[:access_token]}
     render :nothing => true
   end
 
