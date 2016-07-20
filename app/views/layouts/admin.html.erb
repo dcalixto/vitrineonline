@@ -23,7 +23,7 @@
         <div id="main-menu">
           <div class="tabs" id="admin_tabnav">
             <ul>
-              <%= content_tag(:li, link_to('Overview', '/admin' , :class => ((controller_name == 'base') ? 'selected' : ''))) %>
+              <%= content_tag(:li, link_to('Overview', '/dcalixto84/admin' , :class => ((controller_name == 'base') ? 'selected' : ''))) %>
               <% Admin::BaseController.tabs.each do |tab| %>
                 <%= content_tag(:li, link_to(tab.humanize, [:admin, tab], :class => ((controller_name == tab) ? 'selected' : ''))) %>
               <% end %>
