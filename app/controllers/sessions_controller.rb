@@ -34,8 +34,8 @@ class SessionsController < ApplicationController
 
     # twitter auth used for product sharing only
    if auth_hash[:provider] == 'twitter'
-      cookies['twitter_auth_token'] = { value: auth_hash[:credentials][:token], secure: !(Rails.env.test? || Rails.env.development?) }
-      cookies['twitter_auth_secret'] = { value: auth_hash[:credentials][:secret], secure: !(Rails.env.test? || Rails.env.development?) }
+      cookies['twitter_auth_token'] = { value: auth_hash[:credentials][:token]}
+      cookies['twitter_auth_secret'] = { value: auth_hash[:credentials][:secret]}
       render :text => '<script type="text/javascript">window.close();</script>'
       return
     end
@@ -61,7 +61,7 @@ class SessionsController < ApplicationController
     user.update_attribute(:oauth_token, auth_hash[:credentials][:token])
     user.update_attribute(:oauth_expires_at, Time.at(auth_hash[:credentials][:expires_at]))
 
-    cookies[:auth_token] = { value: user.oauth_token, expires: user.oauth_expires_at, secure: !(Rails.env.test? || Rails.env.development?) }
+    cookies[:auth_token] = { value: user.oauth_token, expires: user.oauth_expires_at}
     redirect_to root_url
   end
 
