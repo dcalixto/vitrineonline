@@ -1,5 +1,6 @@
+
 <% participant = conversation.conversation_participants.find_by_user_id(current_user) %>
-<% ulClass = "message_item" %>
+<% ulClass = "message_item " %>
 <% unless participant.has_read? %>
 <% ulClass << " unread" %>
 <% end %>
@@ -7,3 +8,4 @@
 <ul class="<%= ulClass %>" id="conversation_<%= conversation.id %>">
   <%= render :partial => 'participants', :locals => {conversation: conversation} %>
 </ul>
+

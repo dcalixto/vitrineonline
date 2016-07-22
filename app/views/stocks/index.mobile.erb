@@ -1,5 +1,5 @@
 <% title "Produtos Adicionados" %>
-<%= render "shared/vitrine_menu" %>
+<%= render "shared/order_menu" %>
 `
 <!--STOCK OF ITEMS  -->
 <div class="box3">
@@ -8,21 +8,24 @@
   </div>
 
   <div class="block margin_top">
-    <h1>Produtos adicionados</h1>
 
-<hr class="line"></hr>
 
-    <div class="content">
-      <h2>Total
+    <div class="square_box">
+
+    <h1>Itens adicionados</h1>
+
+
+    <div class="subcontent">
+      <p>Total
         <%= current_vitrine.products.count %>
-        Produtos adicionados</h2>
+        Produtos adicionados</p>
       <table class="block_search">
         <tr>
           <td>
 
-            <%= search_form_for @q, url: products_vitrine_stocks_path, method: :post  do |f| %>
+            <%= search_form_for @q, url: products_order_stocks_path, method: :post  do |f| %>
 
-            <%= f.text_field :id_cont %>
+            <%= f.text_field :name_cont %>
             <%= f.submit "Buscar", :class=>"btn_grey" %>
 
             <% end %>
@@ -74,5 +77,6 @@
       </div>
     </div>
 </div>
-
 </div>
+</div>
+

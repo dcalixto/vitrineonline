@@ -33,8 +33,8 @@
 <li>
 <%=link_to "Ranking", rankings_path %>
 </li>
-<li>
-<#%=link_to "Promoções invisible", offers_path %>
+<li class="invisible">
+<#%=link_to "Promoções invisible", coupons_path %>
 </li>
 </ul>
 </td>
@@ -78,7 +78,7 @@
 </td>
 <td>
 <%=link_to "https://www.paypal.com/br" do %>
-<%=content_tag(:span, nil, :class=> 'sprite-icons-paypal-icon') %>
+<%=content_tag(:span, nil, :class=> 'sprite-icons-paypal_icon2') %>
 <% end %>
 </td>
 <td>
@@ -91,3 +91,4 @@
 </table>
 </div>
 </div>
+

@@ -6,22 +6,24 @@
 <% title "Itens Enviados" %>
 <% end %>
 
-<%= render "shared/user_menu" %>
+<%= render "shared/order_menu" %>
 
 <div class="box4">
 
   <div class="block margin_top">
+
+    <div class="square_box">
     <%= render 'shared/flash_messages' %>
 
     <%= "<h1>Produtos Comprados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
 
     <%= "<h1>Produtos Enviados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
-  </div>
 
 
 
 
-  <div class="content">
+
+  <div class="subcontent">
     <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
     </p>
 
@@ -33,15 +35,7 @@
 
     <table class="block_search">
       <tr>
-        <td>
-
-         <%= search_form_for @q, url:  paid_orders_path, method: :post  do |f| %>
-
-          <%= f.text_field :id_cont %>
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-          <% end %>
-        </td>
+      
         <td class="sort">
 
           Ordernar Por
@@ -66,15 +60,7 @@
 
 <table class="block_search">
   <tr>
-    <td>
-
-     <%= search_form_for @q, url:  sent_orders_path, method: :post  do |f| %>
-
-      <%= f.text_field :id_cont %>
-      <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-      <% end %>
-    </td>
+   
     <td class="sort">
 
       Ordernar Por
@@ -121,7 +107,8 @@
 
     </div>
     <% end %>
-
   </div>
-
+  </div>
+  </div>
 </div>
+

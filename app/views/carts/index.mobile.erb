@@ -9,11 +9,22 @@
     <div class="content">
       <h1>Carrinho</h1>
 
-    </div>
-    <% else %>
-    <div class="content">
-      <h2>Seu Carrinho está vazio</h2>
 
+    <p>
+      <span><%="#{order_count}" %></span>
+      Itens</>
+    </p>
+    <p>Total:
+      <%= number_to_currency order_subtotal %></p>
+  </div>
+
+
+
+       <% else %>
+
+    <div class="content">
+
+<h2>Seu Carrinho está vazio</h2>
       <p>Busque ótimos produtos</p>
       <%= link_to "Procurar", products_path  %>
 
@@ -21,6 +32,10 @@
     <% end %>
 
     <% unless  @orders.nil? or  @orders.empty?  %>
+
+
+
+
 
     <table class="cart">
       <thead>
@@ -41,18 +56,20 @@
             Subtotal
           </th>
           <th>
+            remover
+          </th>
+          <th>
             Prosseguir
           </th>
 
         </tr>
       </thead>
-
+      <%end %>
       <%= render partial: 'orders/order', collection: @orders unless  @orders.nil? or  @orders.empty?  %>
 
 
 
     </table>
-    <% end%>
 
     <% if current_user and current_user.cart %>
 
@@ -65,46 +82,50 @@
 
     </div>
     <%end %>
-  </div>
-</div>
-
-<div class="box1">
-  <div class="tip_box">
-
-    <h4>
-      <span><%="#{order_count}" %></span>
-      Itens</h4>
-
-    <h1>Total:
-      <%= number_to_currency order_subtotal %></h1>
-  </div>
-
-</div>
 
 
-  <% unless  @orders.nil? or  @orders.empty?  %>
-<div class="box1">
-  <div class="block">
+
+
+
+<% unless  @orders.nil? or  @orders.empty?  %>
+
+ 
     <h2>Clientes que compraram itens no seu carrinho Também Compraram</h2>
 
 
-      <ul class="content-slider">
+
+<div class="sugestion_carousel liquid" >
+	<span class="previous"></span>
+	<div class="wrapper">
+      <ul>
 
             <% @suggestions.each do |item| %>
               <li>
             <%= link_to product_path(item) do  %>
-            <%= image_tag item.f1.url(:thumb).to_s %>
+            <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
             <%= item.name %>
               <%= item.price %>
             <% end %>
             </li>
             <% end %>
   </ul>
+	</div>
+	<span class="next"></span>
+</div>
 
 
 
 
-  </div>
+
+   
 
 </div>
-<%end %>
+
+
+
+</div>
+<% end%>
+
+</div>
+</div>
+

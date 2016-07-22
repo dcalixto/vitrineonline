@@ -618,9 +618,9 @@ textarea {
      font-weight: normal;
      -webkit-font-smoothing: subpixel-antialiased;
      line-height: 19px;
-     background:#fff;
+     
      background: #f4f5f0; 
-
+background:#fff;
      color: #141823;
      line-height: 1.28;
 

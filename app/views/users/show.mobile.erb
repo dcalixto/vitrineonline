@@ -1,59 +1,106 @@
 <% title @user.name %>
+
+<div class="container">
+
 <div class="box1">
-  <% breadcrumb :user, @user %>
+
   <%=render 'shared/flash_messages' %>
 </div>
-<div class="box10">
 
-  <div class="block margin_top">
-  <div class="content">
-    <%=link_to(image_tag(@user.avatar.url(:thumb).to_s), user_path(@user)) %>
-    <ul class="list">
-      <li>
-     <%= content_tag(:span, nil, :class =>"sprite-icons-small_avatar") %>
-          <%=link_to user_path(@user) do %>
-          <%=@user.name %>
-          <%=@user.surname %>
-          <% end %>
 
-      </li>
-      <% if @user.city%>
-      <li>
-        <%= content_tag(:span, nil, :class =>"sprite-icons-location") %>
-        <span><%=@user.city.name %>,</span>
-        <% end %>
-        <% if @user.state%>
-        <b>
-          <%=@user.state.code %>
-        </b>
-      </li>
-      <% end %>
-      <li>
-        <% if @user.feedbacks %>
 
-        <%=link_to  feedbacks_user_path(:id=>@user.id)  do %>
-        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>">  </div>
-              <div><%=@total_from_sellers %></div>
-<% end %>
-<% end %>
-      </li>
-<% if @user.vitrine %>
-  <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
-      <li> <%=link_to @user.vitrine.name, vitrine_path(@user.vitrine) %>
-      <%end %>
-      <li>
-      <%= social_share_button_tag(truncate(@user.name, :length => 20), :url => url_for(:action => :show, :id => @user.id, :only_path => false))  %>
-    </li>
+<div class="box1">
+  
+<div id="user_header">
+  <div id="user-banner">
 
-<li> <% if @user.online? == true %>
-  <span class="status_online"> Online </span>
-  <% else %>
-    <span class="status_offline"> Offline </span>
+
+    <%if @user.vitrine %>
+      <%= image_tag(@user.vitrine.marketing.banner.url(:thumb).to_s) %>
+    <% else %>
+      <%= image_tag(@user.banner.url(:thumb).to_s) %>
     <% end %>
+     </div>
+
+         <div class="user_logo-container">
+                <div class="user_logo">
+
+  <%= image_tag(@user.avatar.url(:thumb).to_s) %>
+
+                 </div>
+   </div>
+
+
+
+
+
+  <div class="user_header_share_links">
+  <ul>
+<li>
+<%= social_share_button_tag(truncate(@user.name, :length => 20), :url => url_for(:action => :show, :id => @user.id, :only_path => false))  %>
 </li>
-
     </ul>
+</div>
 
+
+
+
+
+
+
+
+
+   <div id="user_header_info_links">
+     <h2>
+
+     <%=link_to user_path(@user) do %>
+     <%=@user.name %>
+     <%=@user.surname %>
+     <% end %>
+
+   </h2>
+
+<ul>
+  <% cache"user_info_box" do %>
+
+     <li>
+       <%= content_tag(:span, nil, :class =>"sprite-icons-location") %>
+       <% if @user.city%>
+
+       <span>
+         <%= @user.city.name %>,</span>
+       <% end %>
+
+       <% if @user.state %>
+       <b>
+         <%= @user.state.code %>
+       </b>
+       <% end %>
+
+     </li>
+       
+        <% if @user.vitrine %>
+          <li>
+ <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
+ <%=link_to @user.vitrine.name, vitrine_path(@user.vitrine) %>
+   
+          </li>
+   
+   <%end %>
+
+     
+
+<% end %>
+
+
+     <li> <% if @user.online? == true %>
+     <span class="status_online"> Online </span>
+     <% else %>
+       <span class="status_offline"> Offline </span>
+       <% end %>
+     </li>
+<li>Criado(a) em: <%= timeago_tag(@user.created_at, :nojs => true, :date_only => true)  %></li>
+     </ul>
  </div>
 
 
@@ -62,65 +109,37 @@
 
 
 
-<div class="box4">
-  <div class="block margin_top">
-    <h4>Avaliações</h4>
-    <div class="content">
-      <div class="subcontent_top">
-      <table class="block_search">
-        <tr>
-          <td>
 
-            <%= search_form_for @q, url:  feedbacks_users_path, method: :post  do |f| %>
+<div class="box3">
+  <div class ="block">
 
-            <%= f.text_field :id_cont %>
-            <%= f.submit "Buscar", :class=>"btn_grey" %>
+    <%= bettertabs :simpletabs do |tab| %>
+      <%= tab.link :feedbacks, 'Resumo' do %>
+      <%= render 'user_show' %>
+      <% end %>
+      <%= tab.link :products, "Produtos Curtidos"  do %>
+      <%=render 'users/products' %>
+      <% end %>
 
-            <% end %>
-          </td>
-          <td class="sort">
-
-            Ordernar por
-              <%= sort_link @q, :created_at, "Data" %>
-            |
-            <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
-          </td>
-        </tr>
-      </table>
-
-
-      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>"></div>
-      <%= render :partial => 'feedbacks/feedbacks' %>
-
-
-
-</div>
-<div class="subcontent">
-  <div class="block_message">
-
-    <h2>Entrar em contato com o vendedor</h2>
-
-    <% @conversation = Conversation.new %>
-
-    <%= form_for @conversation do |f| %>
-
-    <%= hidden_field :conversation_participants, :user_id, :value => @user %>
-    <ul>
-      <li><%= text_area :message, :body, class: 'form-control',data: { emojiable: true },:rows => 3 %></li>
-
-    </ul>
-
-    <%= f.button 'Enviar', :class => 'btn_grey' %>
-
+      <%= tab.link :vitrines,  "Vitrines Curtidas" do %>
+      <%=render 'users/vitrines' %>
+      <% end %>
+      <%= tab.link :message, 'Mensagem'  do %>
+      <%=render 'message_box' %>
+      <% end %>
     <% end %>
-
-      </div>
-
-    </div>
-
-    </div>
   </div>
+
+
 </div>
+
+<div class="box11">
+    <% unless @user.city.blank? %>
+    <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@user.address}" %>
+    <% end %>
+</div>
+
+
 
 
 <div class="box1">
@@ -130,12 +149,17 @@
     <h2>Veja Também</h2>
 
 
-      <ul class="content-slider">
+
+
+  <div class="sugestion_carousel liquid" >
+	<span class="previous"></span>
+	<div class="wrapper">
+     <ul>
 
             <% @suggestions.each do |item| %>
               <li>
             <%= link_to product_path(item) do  %>
-            <%= image_tag item.f1.url(:thumb).to_s %>
+            <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
             <%= item.name %>
               <%= item.price %>
             <% end %>
@@ -143,6 +167,15 @@
             <% end %>
   </ul>
 
+ 	</div>
+	<span class="next"></span>
+</div>
+
+
+
+
+
+</div>
 
 
 
@@ -151,5 +184,6 @@
   </div>
 
   </div>
-
 </div>
+</div>
+

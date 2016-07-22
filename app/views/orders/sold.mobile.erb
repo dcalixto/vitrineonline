@@ -4,7 +4,7 @@
 <% if params[:status].nil? || params[:status] == Order.statuses[1] %>
 <% title "Itens Enviados" %>
 <% end %>
-<%= render "shared/vitrine_menu" %>
+<%= render "shared/order_menu" %>
 
 <div class="box5">
     <div class="flash_box">
@@ -12,14 +12,14 @@
     </div>
 
   <div class="block  margin_top">
+  <div class="square_box">
 
 
+    <%= "<h4>Produtos Vendidos </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+    <%= "<h4>Produtos Enviados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
 
-    <%= "<h1>Produtos Vendidos </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
-    <%= "<h1>Produtos Enviados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
 
-
-    <div class="content">
+    <div class="subcontent">
       <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
       </p>
       <% if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
@@ -28,15 +28,7 @@
 
       <table class="block_search">
         <tr>
-          <td>
-
-           <%= search_form_for @q, url:  paid_orders_path, method: :post  do |f| %>
-
-            <%= f.text_field :id_cont %>
-            <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-            <% end %>
-          </td>
+         
           <td class="sort">
 
             Ordernar Por
@@ -57,15 +49,7 @@
 
       <table class="block_search">
         <tr>
-          <td>
-
-           <%= search_form_for @q, url:  sent_orders_path, method: :post  do |f| %>
-
-            <%= f.text_field :id_cont %>
-            <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-            <% end %>
-          </td>
+        
           <td class="sort">
 
             Ordernar Por
@@ -89,4 +73,6 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
+

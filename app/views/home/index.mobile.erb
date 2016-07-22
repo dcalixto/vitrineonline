@@ -9,107 +9,94 @@
     </div>
 
 
-
-      <div class="subcontent_top">
-    <!-- Slideshow 1 -->
-    <ul class="box-slider">
-      <li>
-        <%= image_tag('slider1.jpg')  %>
-      </li>
-      <li><%= image_tag('slider4.jpg')  %></li>
-      <li><%= image_tag('slider3.jpg')  %></li>
-    </ul>
-
-</div>
-
-
-  <div class="subcontent_top">
-
-    <h2>Produtos Mais Vendidos</h2>
-    <% if @orderables %>
-    <ul class="content-slider">
-         <% orderable.limit(10).each do |p| %>
-        <li>
-      <%= link_to product_path(p) do  %>
-
-        <% if p.images.present? %>
-      <%= image_tag p.images.first.ifoto.url(:thumb).to_s %>
-      <% end %>
-      <%= p.name %>
-      <% end %>.
-    </li>
-    </ul>
-<% end %>.
-<% end %>.
+            <%= image_tag('banner_mobile.png')  %>
 
 
 </div>
 
+</div>
+
+</div>
+
+
+<div class="box3">
+  <div class="block">
+  
+
+
+<div class="content">
+<h2>Produtos Postados Recentemente</h2>
+
+
+<div id="searchResults">
+<table class="product_table">
+<tbody>
+
+<% @products.each_slice(5)do |row| %>
+
+<tr>
+<%  row.each do |product| %>
+<td>
+<%=link_to product_path(product.id), :class=>"product" do %>
+<%if product.images.present? %>
+<%=image_tag product.images.first.ifoto.url(:thumb).to_s, :class=>"productImg" %>
+<% end %>
+<span  class="productName"><%=product.name %></span>
+<span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
+<% if product.feedbacks %>
+<div class="productFeeback">
+<div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+<%=@total_feedbacks %>
+</div>
+<% end %>
+<span class="by">Por
+<%=product.vitrine.name %></span>
+<% end %>
+</td>
+<% end %>
+</tr>
+<% end %>
+
+</tbody>
+</table>
+</div>
+
+</div>
 
 
 
   <div class="subcontent">
-  <h2>Produtos Mais Avaliadas</h2>
-  <% unless Product.nil? %>
-
-    <ul class="content-slider">
-
-      <% @feedbacks.includes(:products).limit(10).each do |v| %>
+  <h2>Vitrines Criadas Recentemente</h2>
 
 
-      <li> <%= image_tag v.images.first.ifoto.url(:thumb).to_s %></li>
-      <li><%= v.name   %></li>
-  <% end %>
-</ul>
-  <% end %>
 
+<div class="vitrine_carousel liquid" >
+	<span class="previous"></span>
+	<div class="wrapper">
+    <% unless Vitrine.nil? %>
+  							<ul>
+                    <% @vitrines.last(10).each do |v| %>
+
+                      <li>
+                        <%=link_to vitrine_path(v.id) do %>
+                        
+                        
+                        <%= image_tag v.logo.url(:thumb).to_s %>
+                          <%= v.name   %></li>
+                    <% end %>
+                     <% end %>
+
+                    </ul>
+                      <% end %>
+	</div>
+	<span class="next"></span>
+</div>
 
 </div>
 
 
 
 
-
-  <div class="subcontent">
-  <h2>Vitrines Mais Avaliadas</h2>
-  <% unless Vitrine.nil? %>
-
-    <ul class="content-slider">
-
-      <% @feedbacks.includes(:vitrines).limit(10).each do |v| %>
-
-
-      <li> <%= image_tag v.logo.url(:thumb).to_s %></li>
-      <li><%= v.name   %></li>
-  <% end %>
-</ul>
-  <% end %>
-
-
-</div>
-
-
-  <div class="subcontent">
-  <h2>Produtos Adicionados Recentemente</h2>
-
-<% if @products %>
-<ul class="content-slider">
-<% @products.first(10).each do |p| %>
-<li>
-<%= link_to product_path(p) do  %>
-<% if p.images.present? %>
-<%= image_tag p.images.first.ifoto.url(:thumb).to_s %>
-<% end %>
-<%= p.name %>
-<%= p.price %>
-<% end %>
-</li>
-<% end %>
-</ul>
-
-<% end %>
-
-</div>
 
 
 
@@ -117,7 +104,13 @@
     <h2>Produtos em Destaque</h2>
 
 
-      <ul class="content-slider">
+
+
+<div class="sugestion_carousel liquid" >
+	<span class="previous"></span>
+	<div class="wrapper">
+
+      <ul>
 
             <% @suggestions.each do |item| %>
               <li>
@@ -128,14 +121,40 @@
             <% end %>
             </li>
             <% end %>
-  </ul>
+      </ul>
+        </div>
+	<span class="next"></span>
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 
 
 
+
+
+
+<div class="box11">
+<div class="content">
+  <h2>Estilos
+    </h2>
+  <span class="tags">
+
+   <ul class="link_tag">
+   <% tag_cloud Product.tag_counts, %w[s m l] do |tag, css_class| %>
+       <li >
+
+         <%= raw link_to tag.name, tag_path(:tag => tag.name), class: css_class %>
+          </li>
+
+
+  <% end %>
+</ul>
+...
   </div>
+    </div>
 
-
-</div>
-</div>
-</div>

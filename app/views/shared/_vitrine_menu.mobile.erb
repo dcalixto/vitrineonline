@@ -1,4 +1,4 @@
-<!--VITRINE MENU  -->
+<% cache "vitrine_menu" do %><!--VITRINE MENU  -->
 <div class="box11">
 
   <div id="menu-box">
@@ -8,26 +8,15 @@
       <ul>
         <li><%= link_to "Configuração", edit_vitrine_path(current_vitrine) %></li>
         <li><%= link_to "Política" , edit_vitrine_policy_path(current_vitrine, current_vitrine.policy.id)%></li>
-          <li><%= link_to "Banner", new_vitrine_banner_path(current_vitrine) %></li>
+<li><%=link_to "Curtiram sua vitrine", user_votes_vitrines_path  %></li>
       </ul>
-      <h2>
-        <span class="texto">Produtos</span>
-      </h2>
-      <ul>
-        <li><%= link_to "Adicionados", vitrine_stocks_path(current_vitrine.id) %></li>
-        <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[0] %>">
-          <%= link_to 'Vendidos', "#{sold_orders_path}?status=#{Order.statuses[0]}" %>
-        </li>
-        <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[1] %>">
-          <%= link_to 'Enviados', "#{sold_orders_path}?status=#{Order.statuses[1]}" %>
-        </li>
-      </ul>
+
       <h2>
         <span class="texto">Marketing</span>
       </h2>
       <ul>
         <li><%= link_to "Anúncio", new_vitrine_announcement_path(current_vitrine)  %></li>
-        <li><%= link_to "Promoções",  new_vitrine_offer_path(current_vitrine)  %></li>
+
         <li><%= link_to "Visualizações", vitrine_views_path(current_vitrine)  %></li>
         <li><%= link_to "Slogan & Site", edit_vitrine_marketing_path(current_vitrine, current_vitrine.marketing.id)  %></li>
       </ul>
@@ -39,12 +28,14 @@
         <li><%= link_to 'Relatório de Vendas', sales_report_vitrine_path(current_vitrine) %></li>
       </ul>
 
-      <%= link_to  vitrine_path(current_vitrine), :id => "shop_button", :class => 'btn' do %>
-      <%= content_tag(:i,nil, :class=>"sprite-icons-ir-loja")  %>
 
-      Vitrine
-
-      <% end %>
     </div>
+
   </div>
+  <%= button_to "Ir para Vitrine",  vitrine_path(current_vitrine), :id => "shop_button", :class => 'btn', :method => :get do %>
+  <%= content_tag(:i,nil, :class=>"sprite-icons-ir-loja")  %>
+
+  <% end %>
 </div>
+<% end %>
+

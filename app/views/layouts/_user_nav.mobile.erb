@@ -26,8 +26,8 @@
 <% end %>
 </li>
 <li>
-<%=link_to(orders_path, :title=> "Pedidos") do %>
-<%=content_tag( :i,nil, :class=> "sprite-icons-curtidas") %>
+<%=link_to('/orders/purchased?status=paid', :title=> "Pedidos") do %>
+<%=content_tag( :i,nil, :class=> "sprite-icons-box") %>
 <%end%>
 </li>
 <li>
@@ -44,3 +44,5 @@
 </ul>
 </div>
 </div>
+
+
