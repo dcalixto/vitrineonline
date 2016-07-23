@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang=pt-BR>
+<head>
+<meta charset=utf-8>
+<meta content="IE=Edge;chrome=1" http-equiv=X-UA-Compatible>
+<meta content="width=device-width, initial-scale=1.0" name=viewport>
+<%=favicon_link_tag %>
+<meta content=noodp,noydir name=robots/>
+<%=display_meta_tags(default_meta_tags) %>
+<%=canonical_link_tag %>
+<% set_meta_tags :og=> {
+:site_name => "Vitrineonline",
+:locale => "pt_PT",
+:url => "http://www.vitrineonline.com"
+}
+%>
+<%=   display_meta_tags twitter: {
+  site_name: "Vitrineonline",
+  site: '@vitrineonline',
+  card: 'vitrineonline',
+  description: 'Monte sua vitrine, desenvolva sua vitrine, compre e venda roupas, calçados e acessórios do seu estilo'
+
+#  image: image
+}
+%>
+<meta content=166642276860638 property=fb:app_id/>
+<meta content=Dl2kWPSdv0m1b_iGqTBmnv-GyydEZdoH0p4ZoOjLsBM name=google-site-verification/>
+<% cache "cs" do %>
+<%=stylesheet_link_tag "application" %>
+<% end %>
+<%=csrf_meta_tags %>
+</head>
+<body>
+<div id=header>
+<%=render "layouts/header" %>
+</div>
+<div id=container>
+<%=breadcrumbs separator: "&rsaquo;" %>
+<%=yield %>
+<%=render "layouts/drop" %>
+</div>
+<% cache "footer" do %>
+<%=render "layouts/footer" %>
+<% end %>
+<% cache "js" do %>
+<%=jquery_include_tag :google %>
+<%=javascript_include_tag "application" %>
+<% end %>
+<% if logado? %>
+<%=render "layouts/faye" %>
+<%end %>
+<%=render "layouts/analytics" %>
+</body>
+</html>
+

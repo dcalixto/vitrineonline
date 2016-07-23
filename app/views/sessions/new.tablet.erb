@@ -1,0 +1,70 @@
+<% title  "Entrar" %>
+
+
+
+
+
+<div class="box10">
+  <%= render 'shared/flash_messages' %>
+
+  <div class=" block margin_top">
+
+      <div class="square_box">
+    <h4>Entrar</h4>
+    <div class="content">
+      <%= link_to   "/auth/facebook" do  %>
+
+        <%= content_tag( :i,nil, :class => "sprite-icons-fb_button")  %>
+        <% end %>
+      <%= form_tag  sessions_path,  :method => :post  do |f| %>
+      <ul>
+
+        <li >
+          <%= label_tag :email, "Email", :class=>"label" %>
+          
+        </li>
+
+        <li>
+          <%= email_field_tag :email, params[:email] %></li>
+
+        <li class="space"></li>
+
+        <li >
+        <%= label_tag :password, "Passord", :class=>"label" %>
+          
+          <%= link_to "Esqueceu o password?", new_password_reset_path %>
+
+          <%= password_field_tag :password, params[:password]%>
+        </li>
+
+        <li class="space"></li>
+
+
+        <li><%= submit_tag "Entrar",  :class => "btn btn_big" %></li>
+      </ul>
+
+      <% end %>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="box10">
+
+  <div class="block margin_top">
+
+    <div class="content ul_disc" id="session_list">
+      <h1>Sou um novo cliente</h1>
+      <ul>
+        <li>Acompanhe as suas encomendas on-line</li>
+        <li>Descubra novas vitrines e marcas</li>
+        <li>Veja o histórico de seus pedidos e mais</li>
+
+      </ul>
+
+      <%=  button_to 'Criar Conta', signup_path, :class => 'btn_orange  btn_big', :method => "get"%>
+
+    </div>
+  </div>
+</div>

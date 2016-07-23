@@ -1,0 +1,27 @@
+<% title "Contato" %>
+<div class="box1">
+
+  <div class="block margin_top">
+    <%= render 'shared/error_messages', :target => @contact %>
+    <%= render 'shared/flash_messages' %>
+    <h1>Contato</h1>
+    <div class="content">
+      Como podemos ajudá-lo(a)?
+      <br>
+      <%= semantic_form_for(@contact )  do |c| %>
+      <%= c.inputs do %>
+      <%= c.input :name, :placeholder => "Nome", :label => false,:required=>true %>
+
+      <%= c.input :email, :as => :email, :placeholder => "Email", :label => false,:required=>true %>
+      <%= c.input :subject, :placeholder => "Assunto", :label => false,:required=>true %>
+      <%= c.input :message, :as => :text, :placeholder => "Mensagem", :label => false,:required=>true %>
+
+      <%= c.actions do %>
+      <%= c.action :submit, :label => "Enviar", :button_html => { :class => "btn"} %>
+      <% end %>
+      <% end %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

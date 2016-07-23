@@ -1,0 +1,54 @@
+
+<div class="box1">
+  <div class="block margin_top">
+    <h4>Departamentos</h4>
+    <div class="content">
+<div class="slinky-menu" >
+
+
+
+  <% @genders.each do |gender| %>
+
+    <%= link_to  content_tag(:span, gender.gender),  gender_path(:id => gender.id), :class => "tab" %> <span class="stretchsummary">Abrir</span>
+
+
+
+  <span class="stretchdetail ">
+
+
+   <% gender.categories.each do |category| %>
+
+
+
+    <%= link_to category.name, category_path(:id => category.id ), :class => "tab"  %><span class="stretchsummary">Abrir</span>
+
+
+
+
+  <span class="stretchdetail">
+
+     <% category.subcategories.each do |subcategory| %>
+
+      <%= link_to subcategory.name, subcategory_path(:id => subcategory.id ) %>
+
+
+      <% end %>
+
+       </span>
+   <% end %>
+
+
+</span>
+
+
+  <% end %>
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+          <!-- Fim -->
+

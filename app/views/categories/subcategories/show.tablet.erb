@@ -1,0 +1,115 @@
+<h1><% title "Produtos" %></h1>
+<div class="box1">
+<% breadcrumb :subcategory, @subcategory %>
+</div>
+<%=render 'shared/filtro_product' %>
+<div class="box6">
+<div class="subcontent_top">
+<p>
+<p><%=@products.total_entries %> Produtos achados</p>
+
+
+
+
+
+
+    <div class="episode_views">
+            
+    
+
+ <table class="block_search">
+        <tr>
+          <td>
+
+                  </td>
+          <td class="sort">
+
+            Ordernar Por
+            <%= select_tag 'order_by', options_for_select([['Preço: Mais Baratos', 'price:asc'], ['Preço: Mais Caros', 'price:desc'], ['Média de Avaliações', 'average_customer_rating:desc'], ['Postado Recentemente', 'created_at:desc']], params[:order_by] || 'created_at:desc') %>
+   
+
+          </td>
+        </tr>
+      </table>  
+
+
+
+    
+    </div>
+
+
+
+
+<div class="content">
+
+
+<%= render :partial => 'products/list'%>
+
+
+</div>
+
+
+
+<div class="block_pagination">
+<div class="digg_pagination">
+<%=will_paginate @products,:container=> false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="block">
+    <h2>Confira Também</h2>
+
+
+  <div class="sugestion_carousel liquid" >
+	<span class="previous"></span>
+	<div class="wrapper">
+  <ul>
+
+            <% @suggestions.each do |item| %>
+              <li>
+            <%= link_to product_path(item) do  %>
+            <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
+            <%= item.name %>
+              <%= item.price %>
+            <% end %>
+            </li>
+            <% end %>
+  </ul>
+
+
+ 	</div>
+	<span class="next"></span>
+</div>
+
+
+
+
+
+
+  
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

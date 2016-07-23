@@ -1,0 +1,40 @@
+<% cache "vitrine_menu" do %><!--VITRINE MENU  -->
+<div class="box11">
+
+  <div id="menu-box">
+    <div class="menu_content">
+      <h2 class="h1_menu">Vitrine</h2>
+
+      <ul>
+        <li><%= link_to "Configuração", edit_vitrine_path(current_vitrine) %></li>
+        <li><%= link_to "Política" , edit_vitrine_policy_path(current_vitrine, current_vitrine.policy.id)%></li>
+<li><%=link_to "Curtiram sua vitrine", user_votes_vitrines_path  %></li>
+      </ul>
+
+      <h2>
+        <span class="texto">Marketing</span>
+      </h2>
+      <ul>
+        <li><%= link_to "Anúncio", new_vitrine_announcement_path(current_vitrine)  %></li>
+
+        <li><%= link_to "Visualizações", vitrine_views_path(current_vitrine)  %></li>
+        <li><%= link_to "Slogan & Site", edit_vitrine_marketing_path(current_vitrine, current_vitrine.marketing.id)  %></li>
+      </ul>
+      <h2>
+        <span class="texto">Contabilidade</span>
+      </h2>
+      <ul >
+        <li><%= link_to "Fatura", vitrine_invoices_path(current_vitrine)  %></li>
+        <li><%= link_to 'Relatório de Vendas', sales_report_vitrine_path(current_vitrine) %></li>
+      </ul>
+
+
+    </div>
+
+  </div>
+  <%= button_to "Ir para Vitrine",  vitrine_path(current_vitrine), :id => "shop_button", :class => 'btn', :method => :get do %>
+  <%= content_tag(:i,nil, :class=>"sprite-icons-ir-loja")  %>
+
+  <% end %>
+</div>
+<% end %>

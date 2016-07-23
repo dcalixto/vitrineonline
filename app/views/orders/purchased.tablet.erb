@@ -1,0 +1,113 @@
+<% if params[:status].nil? || params[:status] == Order.statuses[0] %>
+<% title "Itens Comprados" %>
+<% end %>
+
+<% if params[:status].nil? || params[:status] == Order.statuses[1] %>
+<% title "Itens Enviados" %>
+<% end %>
+
+<%= render "shared/order_menu" %>
+
+<div class="box4">
+
+  <div class="block margin_top">
+
+    <div class="square_box">
+    <%= render 'shared/flash_messages' %>
+
+    <%= "<h1>Produtos Comprados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+
+    <%= "<h1>Produtos Enviados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
+
+
+
+
+
+  <div class="subcontent">
+    <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
+    </p>
+
+    <%if  current_user.cart %>
+
+    <% if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+
+
+
+    <table class="block_search">
+      <tr>
+      
+        <td class="sort">
+
+          Ordernar Por
+
+          |
+          <%= sort_link @q, :created_at, "Data" %>
+          |
+          <%= sort_link @q, :transaction_status, "Pagamento" %>
+
+        </td>
+      </tr>
+    </table>
+
+
+
+<% end %>
+<% end %>
+
+<%if  current_user.cart %>
+
+<%if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
+
+<table class="block_search">
+  <tr>
+   
+    <td class="sort">
+
+      Ordernar Por
+
+      |
+      <%= sort_link @q, :created_at, "Data" %>
+      |
+      <%= sort_link @q, :track_number, "Rastreamento" %>
+
+    </td>
+  </tr>
+</table>
+
+<% end %>
+
+<% end %>
+
+
+
+
+  <div class="block">
+
+    <div class="content">
+
+
+
+
+
+      <%= render  partial: 'orders/order', collection: @orders %>
+
+    </div>
+
+
+        </div>
+
+
+    <% if current_user.cart %>
+
+    <div class="block_pagination">
+      <div class="digg_pagination">
+        <%= will_paginate @orders, previous_label: h('« Voltar'), next_label: h('Próximo »') %>
+
+      </div>
+
+    </div>
+    <% end %>
+  </div>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<% title  "Mudar Password" %>
+<div class="box12">
+     </div>
+
+
+<div class="box3">
+  <div class="flash_box">
+       <%= render 'shared/error_messages', :target => @user %>
+    <%= render 'shared/flash_messages' %>
+  </div>
+  <div class="block">
+  <div class="square_box">
+     <h1>Mudar Password</h1>
+    <div class="content">
+
+      <%= semantic_form_for @user, :url => password_reset_path(params[:id]), :method => :put  do |f| %>
+      <%= f.inputs do %>
+      <%= f.input :password, :as => :password, :label =>"Novo Password", :required=>true %>
+
+      <%= f.input :password_confirmation, :as => :password,  :label => "Confirmar Password", :required=>true   %>
+
+      <%= f.actions do %>
+      <%= f.action :submit, :label => "Mudar", :button_html => { :class => "btn"} %>
+      <% end %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>
+
+</div>

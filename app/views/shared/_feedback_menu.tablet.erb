@@ -1,0 +1,20 @@
+<!--USER MENU  -->
+<% cache "feedback_menu" do %>
+<div class="box11">
+
+  <div id="menu-box">
+    <div class="menu_content">
+<h2 class="h1_menu">Avaliação</h2>
+
+      <ul>
+        <li>
+          <%= link_to awaiting_feedbacks_path do %>
+          Em Espera (<%= content_tag(:span, @awaiting_feedback_count, :id => 'awaiting_feedback_count') %>)
+          <% end %>
+        </li>
+        <li><%= link_to "Completa", completed_feedbacks_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<% end %>

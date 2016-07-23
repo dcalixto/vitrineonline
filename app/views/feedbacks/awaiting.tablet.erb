@@ -1,0 +1,75 @@
+<% title "Feedbacks" %>
+<%= render "shared/feedback_menu" %>
+
+<div class="box3">
+
+  <div class="block margin_top">
+<div class="square_box">
+    <h1>Avaliação</h1>
+    <div class="subcontent">
+
+      <%= render 'shared/flash_messages' %>
+      <% if @awaiting_feedbacks_orders.count == 0 %>
+      <div class="no_awaiting">
+        <%= 'Você não tem espera de avaliações.' %>
+      </div>
+      <% end %>
+      <table class="awaiting_feedback_table">
+        <% @awaiting_feedbacks_orders.each do |order| %>
+        <% product = order.product %>
+        <% who = current_user.id == order.buyer.id ? 'buyer_' : 'seller_' %>
+        <%= form_tag({action: :create}) do %>
+        <%= hidden_field_tag :order_id, order.id %>
+        <%= hidden_field_tag "feedback[#{who}feedback_date]", DateTime.now %>
+        <%= hidden_field_tag "feedback[#{who}rating]", 0, :id => "feedback_#{order.id}_score" %>
+        <tr>
+          <td>
+            <% if product.images.present? %>
+            <%= image_tag(product.images.first.ifoto.url(:small).to_s, :alt => product.name) %>
+            <% end %>
+            <%= link_to product.name, product_path(product), :title => product.name %>
+            <br/>
+            <% if order.buyer == current_user %>
+            Comprado de
+            <%= link_to order.seller.name, vitrine_path(order.seller) %>
+            Por
+            <%= number_to_currency product.price %>
+            <% else %>
+            Vendido para
+            <%= link_to order.buyer.full_name, user_path(order.buyer) %>
+            <% end %>
+            Em
+            <%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %>
+            <br/>
+            <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
+          </td>
+        </tr>
+        <tr class="comment_tr">
+          <td>
+            <%= text_area_tag "feedback[#{who}comment]" %>
+            <%= submit_tag 'Avaliar', :class => 'btn' %>
+          </td>
+        </tr>
+        <% end %>
+        <% end %>
+        <tr>
+          <td></div>
+          <div class="block_pagination">
+            <div class="digg_pagination">
+              <%= will_paginate @awaiting_feedbacks_orders,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+
+            </div>
+          </div>
+
+        </div>
+
+      </td>
+    </tr>
+  </table>
+  <script language="JavaScript">
+    fade_flash();
+  </script>
+</div>
+</div>
+</div>
+</div>

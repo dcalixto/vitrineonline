@@ -92,20 +92,18 @@
     <%= label_tag dom_id(color), color.name %><br>
     <% end %>
     <ul>
-       <li>
-      <b>Marca</b>&nbsp;
-      <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
- 
-    </li>
-
       <b>Material</b>&nbsp;
       <%=  p.collection_select :material_id, Material.all, :id, :name %>
     </li>
     <li>
       <b>Condição</b>&nbsp;
-      <%=  p.collection_select :condition_id, Condition.all, :id, :condition,  { :class=> 'brand_list'} %>
+      <%=  p.collection_select :condition_id, Condition.all, :id, :condition %>
     </li>
-     </ul>
+    <li>
+      <b>Marca</b>&nbsp;
+      <%=  p.collection_select :brand_id, Brand.all, :id, :name %>
+    </li>
+  </ul>
 </div>
 </div>
 <p>

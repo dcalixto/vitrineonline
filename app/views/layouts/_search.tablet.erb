@@ -1,0 +1,21 @@
+<% cache "busca" do %>
+
+<%=form_tag products_path,method: :get, :id=> "search_box" do %>
+<table id="search_container">
+<tbody>
+<tr>
+<td id="search_input">
+<%=text_field_tag :query, params[:query], :id=> "product_search", :title=>"Busque Itens", :placeholder => "Buscar" %>
+</td>
+<td class="search_btn">
+<%=button_tag "", :name=> nil do %>
+<%=content_tag( :i,nil, :class=> "sprite-icons-lupa") %>
+<% end %>
+</td>
+</tr>
+</tbody>
+</table>
+<% end %>
+
+<% end %>
+

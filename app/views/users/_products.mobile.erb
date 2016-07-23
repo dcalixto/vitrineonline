@@ -1,0 +1,90 @@
+
+    <div class="content">
+
+      <h2> Produtos curtidos</h2>
+
+
+        
+     
+      <table class="zebra_branca margin_top" id="stock_vitrine">
+
+
+        <tbody>
+
+  <% @user.find_up_voted_items.each do |product| %>
+<tr>
+  <td class="stock_td">
+    <%= link_to  product_path(product.id) do %>
+       <%if product.images.present? %>
+    <%= image_tag product.images.first.ifoto.url(:small).to_s %>
+    <% end %>
+    <%=  product.name %>
+    <% end %>
+  </td>
+
+  <td><%= product.id %></td>
+  <td class="lista-preco_stock">
+    <span>
+      <b><%=  number_to_currency(product.price, :unit => "R$") %></b>
+    </span>
+  </td>
+
+  <td>
+      <% if product.feedbacks %>
+            <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+            <%= @total_feedbacks %>
+            <% end %>
+
+  </td>
+
+  <td>
+      <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}) %>
+
+  </td>
+
+<td>
+  <% if current_user %>
+  <%if product.buyable?(current_user) %>
+
+
+  <div class="add_to_cart">
+
+    <%= button_to("Adicionar a sacola",add_to_carts_path(product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
+
+    <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
+    <%end %>
+
+  </div>
+
+  <%end %>
+
+  <%end %>
+</td>
+
+
+
+</tr>
+ <% end %>
+
+        </tbody>
+      </table>
+
+  
+    <div class="block_pagination">
+      <hr class="line"></hr>
+      <div class="digg_pagination">
+        <%= will_paginate @products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
+
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    </div>
+
+

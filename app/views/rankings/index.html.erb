@@ -14,7 +14,7 @@
     
 
       <tbody>
-
+ <% if @vitrines %>
         <% @vitrines.each do |vitrine| %>
         <tr>
           <td >
@@ -37,6 +37,7 @@
         
         </tr>
         <% end %>
+ <% end %>
 
       </tbody>
     </table>
@@ -78,6 +79,7 @@
        
 
         <tbody>
+<% if @products %>
 
   <% @products.each do |product| %>
 <tr>
@@ -107,6 +109,7 @@
 
 </tr>
  <% end %>
+<% end %>
 
         </tbody>
       </table>

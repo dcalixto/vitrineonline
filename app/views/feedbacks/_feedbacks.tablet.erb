@@ -1,0 +1,76 @@
+
+<div class="feed">
+<table class="completed_feedback_table">
+
+  <tbody>
+    <% @feedbacks.each do |feedback| %>
+    <% order = feedback.order %>
+    <% product = order.product %>
+    <% buyer = feedback.user %>
+    <% seller = feedback.vitrine %>
+    <% is_buyer = @user.nil? ? false : @user.id == buyer.id %>
+    <tr>
+
+      <td>
+        <h2>Item</h2>
+        <%= link_to  product_path(product.id), :title => product.name do %>
+        <% if product.images.present? %>
+        <%= image_tag product.images.first.ifoto.url(:small).to_s, :alt => product.name %>
+        <% end %>
+        <%=  product.name  %>
+        <% end %>
+      </td>
+
+      <td>
+
+        <h2>Avaliação</h2>
+        <div class="feedback_stars_rating" data-read-only="true" data-score="<%= is_buyer ? feedback.seller_rating : feedback.buyer_rating %>"></div>
+        <%= is_buyer ? feedback.seller_comment : feedback.buyer_comment %></td>
+
+      <td>
+        <h2>Por</h2>
+        <%= is_buyer ? link_to(seller.name, vitrine_path(seller.id)) : link_to(buyer.name, user_path(buyer.id)) %>
+      </td>
+
+      <td>
+        <h2>Data</h2>
+        <%= is_buyer ? feedback.seller_feedback_date.strftime("%d/%m/%Y") : feedback.buyer_feedback_date.strftime("%d/%m/%Y") %></td>
+    </td>
+    <td>
+      <div class="comments" id="comments<%= feedback.id %>">
+        <%= render :partial => 'comments', :locals => {feedbacks: feedbacks} %>
+      </div>
+      <% if current_user %>
+      <div class="controls">
+        <%= hidden_field_tag 'feedback_id', feedback.id %>
+        <label>Comentário</label>
+        <%= text_field_tag 'comment_input', '', :class => 'comment_input' %>
+        <br/>
+
+      </div>
+      <% end %>
+    </td>
+
+  </tr>
+  <% end %>
+
+  <script type="text/javascript">
+    bind_comment_handler();
+  </script>
+</tbody>
+<tfoot>
+  <tr>
+    <td colspan="4">
+
+      <div class="block_pagination">
+        <div class="digg_pagination">
+          <%= will_paginate @feedbacks,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
+
+        </div>
+      </div>
+
+    </td>
+  </tr>
+</tfoot>
+</table>
+</div>

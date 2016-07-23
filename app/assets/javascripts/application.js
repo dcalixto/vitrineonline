@@ -125,7 +125,9 @@ $(document).ready(function() {
 });
 
 
-
+$(document).ready(function() {
+  $(".brand_list").select2();
+});
 // LIGHTSLIDER
 
 

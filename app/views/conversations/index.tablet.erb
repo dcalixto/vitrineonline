@@ -1,0 +1,41 @@
+<% title "Menssagens Index" %>
+
+<div class="box1">
+  <div class="block margin_top">
+<div class="content">
+
+    <div class="chatboxhead">
+  <h1>Menssagens</h1>
+
+  <table class="block_search">
+    <tr>
+   
+      <td>
+        <%=button_to "Nova Mensagem", new_conversation_path,  :class =>"ttooltip btn_grey btn_big",  :method => "get", :data => {:url => "/conversations/chatbox"}   %>
+</td>
+    </tr>
+  </table>
+
+
+
+    </div>
+    <div class="messagebox" id="message_list">
+
+      <%= render partial: 'conversation', :collection => @conversations %>
+
+
+
+</div>
+
+<div class="block_pagination">
+  <div class="digg_pagination">
+    <%= will_paginate @conversations,:container => false,
+    previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......",
+    :inner_window => 1, :outer_window => 1 %>
+
+  </div>
+
+</div>
+</div>
+</div>
+</div>

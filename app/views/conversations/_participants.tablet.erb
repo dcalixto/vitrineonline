@@ -1,0 +1,32 @@
+<div id="table">
+<% conversation.participants(:not => current_user).each do |user| %>
+<li class="row">
+
+  <li class="cell">
+<div class="avatar">
+  <%= link_to conversation_path(conversation.id), :class => "message_link conversation " do %>
+  <%= image_tag user.avatar.url(:mobile).to_s %>
+  <% end %>
+</div>
+</li>
+
+
+
+  <li class="cell messagebody">
+
+  <%= link_to conversation_path(conversation.id),  :class => "message_link conversation" do %>
+
+  <%= user.name %>
+  <%= user.surname %>
+
+  <p><%= conversation.display_message.body %></p>
+  <% end %>
+
+</li>
+
+    <li class="cell">
+  <%= timeago_tag(conversation.created_at, :nojs => true, :date_only => false) %>
+</li>
+</li>
+<% end %>
+</div>

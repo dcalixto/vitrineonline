@@ -1,0 +1,81 @@
+<% title "Produtos Adicionados" %>
+<%= render "shared/order_menu" %>
+`
+<!--STOCK OF ITEMS  -->
+<div class="box3">
+  <div class="flash_box">
+    <%= render 'shared/flash_messages' %>
+  </div>
+
+  <div class="block margin_top">
+
+
+    <div class="square_box">
+
+    <h1>Itens adicionados</h1>
+
+
+    <div class="subcontent">
+      <p>Total
+        <%= current_vitrine.products.count %>
+        Produtos adicionados</p>
+      <table class="block_search">
+        <tr>
+          <td>
+
+            <%= search_form_for @q, url: products_order_stocks_path, method: :post  do |f| %>
+
+            <%= f.text_field :name_cont %>
+            <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+            <% end %>
+          </td>
+          <td class="sort">
+
+            Ordernar Por
+            <%= sort_link @q, :price,  "Preço" %>
+            |
+            <%= sort_link @q, :created_at, "Data" %>
+            |
+            <%= sort_link @q, :quantity, "Quantidade" %>
+
+          </td>
+        </tr>
+      </table>
+
+      <table class="zebra_branca margin_top" id="stock_vitrine">
+
+        <thead>
+          <tr class="header">
+            <th scope="col">Produto</th>
+            <th scope="col">Código</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Paypal</th>
+            <th scope="col">Envio</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Avaliação</th>
+            <th scope="col">Postado em</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Remover</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render :partial => 'stocks/product', :collection => @products%>
+
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="block_pagination">
+      <hr class="line"></hr>
+      <div class="digg_pagination">
+        <%= will_paginate @products,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => t("......"), :inner_window => 1, :outer_window => 1 %>
+
+      </div>
+    </div>
+</div>
+</div>
+</div>

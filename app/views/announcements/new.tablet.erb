@@ -1,0 +1,53 @@
+<% title  "Anúncios" %>
+<%= render "shared/vitrine_menu" %>
+
+
+<div class="box5">
+  <div class="flash_box">
+  <%= render 'shared/flash_messages' %>
+ <%= render 'shared/error_messages', :target => @announcement  %>
+ </div>
+
+
+  <div class="block  margin_top">
+<%= render 'announcements/announcement_for_boutique'  %>
+  <div class="square_box">
+
+<h4>Anúncio</h4>
+
+  <div class="subcontent">
+
+    <p class="tip">Utilize esse epaço para informar sobre alguma oferta ou novidade na página da sua vitrine</p>
+    <p class="tip">Uma vez fechado o anúncio não aparecerá mais</p>
+    <p clas="tip">Para inserir emojis no texto acesse
+      <%= link_to  nil,"http://www.emoji-cheat-sheet.com"   %></p>
+          <div class="wmd-panel">
+        <div id="wmd-button-bar"></div>
+          <%= form_for  @announcement, :url => vitrine_announcements_path, :method => :post  do |ad| %>
+
+
+
+
+          <%= ad.text_area :body, :id => "wmd-input", :class=> "wmd-input", :placeholder => "Anúncios"%>
+
+          <%= ad.submit "Salvar", :class => 'btn' %>
+          <% end %>
+     <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+
+    </div>
+
+
+
+</div>
+
+</div>
+
+
+ <!--SLOGAN  -->
+
+
+
+
+
+    </div>
+</div>

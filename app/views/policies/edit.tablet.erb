@@ -1,0 +1,98 @@
+<% title "Políticas" %>
+<%= render "shared/vitrine_menu" %>
+<div class="box5">
+  <div class="flash_box  margin_top">
+    <%= render 'shared/flash_messages' %>
+    <%= render 'shared/error_messages', :target => @policy %>
+
+  </div>
+<% cache "policy_block" do %>
+  <div class="block margin_top">
+  <div class="square_box">
+    <h1>Política</h1>
+
+      <div class="subcontent">
+        <h4>Pagamento</h4>
+        <ul>
+          <li>
+            <!--PAYPAL -->
+            <p class="tip">Indique seu email do paypal para recebimento</p>
+          </li>
+          <li>
+            <%= link_to  "https://www.paypal.com/br"  do %>
+            <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
+            <% end %>
+          </li>
+          <li>
+            <p class="tip">Saiba mais sobre o sistema de proteção ao vendedor</p>
+            <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+          </li>
+
+          <li class="space"></li>
+          <li>
+              <%= form_for @policy, :url => vitrine_policy_path(@policy), :method => :put do |e| %>
+            <%= label_tag :paypal, "Paypal", :class=>"label" %>
+            <%= e.email_field :paypal %>
+
+            <%= e.submit "Salvar", :class => 'btn' %>
+                <% end %>
+          </li>
+        </ul>
+
+      </div>
+      </div>
+
+        <div class="square_box">
+            <h4>Envio</h4>
+      <div class="subcontent">
+
+
+        <p class="tip">Indique as formas de envio disponível</p>
+          <%= form_for @policy, :url => vitrine_policy_path, :method => :put do |s| %>
+        <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+        <%= hidden_field_tag "policy[shipping_ids][]", nil %>
+        <% Shipping.all.each do |shipping| %>
+        <%= check_box_tag "policy[shipping_ids][]", shipping.id, @policy.shipping_ids.include?(shipping.id), id: dom_id(shipping)%>
+        <%= label_tag dom_id(shipping), shipping.kind %>
+        <% end %>
+        <%= s.submit "Salvar", :class => 'btn' %>
+            <% end %>
+      </div>
+      </div>
+
+      <div class="square_box">
+          <h4>Garantias</h4>
+      <div class="subcontent">
+
+
+
+        <p class="tip">Garantias como prazo de devoluação e cancelamento do pedido são sempre bem vindos</p>
+
+        <p clas="tip">Para inserir emojis no texto acesse
+          <%= link_to nil, "http://www.emoji-cheat-sheet.com"   %></p>
+
+<div class="caixa">
+              <div class="wmd-panel">
+            <div id="wmd-button-bar"></div>
+              <%= form_for  @policy, :url => vitrine_policy_path, :method => :put do |a| %>
+
+
+
+
+              <%= a.text_area :guarantee, :id => "wmd-input", :class=> "wmd-input", :placeholder => "Garantias"%>
+
+              <%= a.submit "Salvar", :class => 'btn' %>
+              <% end %>
+         <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+
+       </div>
+
+
+              </div>
+      </div>
+        <% end %>
+    </div>
+  </div>
+
+</div>
+<!-- FIM DO CONTAINER-->
