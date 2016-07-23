@@ -6,6 +6,9 @@ class CreateMarketings < ActiveRecord::Migration
       t.string :slogan
       t.string :url
         t.string :banner
+        t.string :facebook
+        t.string :twitter
+   
       t.timestamps
     end
      add_index :marketings, :vitrine_id

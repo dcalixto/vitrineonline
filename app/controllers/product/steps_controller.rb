@@ -20,11 +20,11 @@ class Product::StepsController < ApplicationController
           options = {
               :name => @product.name,
               :link => product_url(@product),
-              :caption => "#{current_user.full_name} posted a new product",
+              :caption => "#{current_user.full_name} postou um produto",
               :description => @product.detail || ''
           }
           options[:picture] = (root_url[0...-1] + @product.images.first.ifoto.url(:big)) if @product.images.length > 0
-          client.put_wall_post('Hello!', options)
+          client.put_wall_post("#{@product.name}", options)
         rescue StandardError => e
           logger.error e.message
           @product.update_attribute :is_shared_on_facebook, false

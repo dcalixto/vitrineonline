@@ -106,7 +106,7 @@ class Vitrine < ActiveRecord::Base
   validates :name, uniqueness: { case_sensitive: false },
                    length: { within: 1..70 }
 
-  attr_accessible :name, :about, :logo, :banner, :ad, :slogan,
+  attr_accessible :name, :about,:codigo, :logo, :banner, :ad, :slogan,
                   :address, :neighborhood, :latitude, :longitude, :neighborhood, :postal_code, :address_supplement, :code, :about
 
   # CACHE

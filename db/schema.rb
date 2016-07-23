@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160615123608) do
+ActiveRecord::Schema.define(:version => 20160723054932) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -198,6 +198,11 @@ ActiveRecord::Schema.define(:version => 20160615123608) do
     t.string   "banner"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "instagram"
+    t.string   "youtube"
+    t.string   "pinterest"
   end
 
   add_index "marketings", ["vitrine_id"], :name => "index_marketings_on_vitrine_id"

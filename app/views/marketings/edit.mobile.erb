@@ -7,12 +7,54 @@
     <%= render 'shared/error_messages', :target => @marketing  %>
   </div>
   <div class="block  margin_top">
-    <h1>Slogan & Site</h1>
-    <hr class="line"></hr>
-    <div class="content">
-      <div class="subcontent_top">
 
-        <h4>Slogan</h4>
+
+
+    <div class="square_box">
+
+  <h1>Banners</h1>
+
+    <div class="subcontent">
+
+
+   <%= image_tag(current_vitrine.marketing.banner.url(:mobile).to_s) %>
+
+
+
+    <p class="tip">Os Banners serão redimencionandos para 986 x 215 e 414 x 165</p>
+
+
+
+      <%= form_for(@marketing, :url => vitrine_marketing_path, :method => :put, html: { multipart: true, id: "banner", class: "dropzone"}) do |banner|  %>
+
+
+              <div class="fallback">
+
+                <%= banner.file_field :img %><br>
+                <%= banner.submit "Salvar" %>
+              </div>
+
+
+
+
+
+    <% end %>
+  </div>
+
+  </div>
+
+
+
+
+
+
+    <div class="square_box">
+    <h4>Slogan</h4>
+
+
+      <div class="subcontent">
+
+
 
         <p class="tip">Slogan ou frase de efeito é uma frase de fácil memorização que resume as características de um produto ou serviço
         </p>
@@ -26,12 +68,14 @@
         <% end %>
         <% end %>
       </div>
+</div>
 
+<div class="square_box">
+    <h4>Site</h4>
       <div class="subcontent">
-        <h4>Site</h4>
 
-        <p class="tip">Se tua boutique não tiver site tu pode adicionar o facebook da sua vitrine</p>
 
+       
         <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |url| %>
         <%= url.inputs do %>
         <%= url.input :url, :label => "Site da sua vitrine" %>
@@ -41,6 +85,94 @@
         <% end %>
         <% end %>
       </div>
+</div>
+
+<div class="square_box">
+    <h4>Facebook</h4>
+      <div class="subcontent">
+
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |face| %>
+        <%= url.inputs do %>
+        <%= url.input :facebook, :label => "Facebook da sua vitrine" %>
+        <%= url.actions do %>
+        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+</div>
+
+
+<div class="square_box">
+    <h4>Twitter</h4>
+      <div class="subcontent">
+
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |twi| %>
+        <%= url.inputs do %>
+        <%= url.input :twitter, :label => "Twitter da sua vitrine" %>
+        <%= url.actions do %>
+        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+</div>
+
+<div class="square_box">
+    <h4>Youtube</h4>
+      <div class="subcontent">
+
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |youtube| %>
+        <%= url.inputs do %>
+        <%= url.input :youtube, :label => "Youtube da sua vitrine" %>
+        <%= url.actions do %>
+        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+</div>
+
+
+<div class="square_box">
+    <h4>Pinterest</h4>
+      <div class="subcontent">
+
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |pin| %>
+        <%= url.inputs do %>
+        <%= url.input :youtube, :label => "Pinterest da sua vitrine" %>
+        <%= url.actions do %>
+        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
     </div>
+
+
+<div class="square_box">
+    <h4>Instagram</h4>
+      <div class="subcontent">
+
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |insta| %>
+        <%= url.inputs do %>
+        <%= url.input :instagram, :label => "Instagram da sua vitrine" %>
+        <%= url.actions do %>
+        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+
+
+
+
   </div>
 </div>
+

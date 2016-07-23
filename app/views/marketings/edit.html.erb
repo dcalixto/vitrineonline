@@ -75,8 +75,7 @@
       <div class="subcontent">
 
 
-        <p class="tip">Se tua boutique não tiver site tu pode adicionar o facebook da sua vitrine</p>
-
+       
         <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |url| %>
         <%= url.inputs do %>
         <%= url.input :url, :label => "Site da sua vitrine" %>
@@ -86,6 +85,45 @@
         <% end %>
         <% end %>
       </div>
-    </div>
+</div>
+
+<div class="square_box">
+    <h4>Facebook</h4>
+      <div class="subcontent">
+
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |face| %>
+        <%= face.inputs do %>
+        <%= face.input :facebook, :label => "Facebook da sua vitrine" %>
+        <%= face.actions do %>
+        <%= face.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+</div>
+
+
+<div class="square_box">
+    <h4>Twitter</h4>
+      <div class="subcontent">
+
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |twi| %>
+        <%= twi.inputs do %>
+        <%= twi.input :twitter, :label => "Twitter da sua vitrine" %>
+        <%= twi.actions do %>
+        <%= twi.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+</div>
+
+
+
+
+
+
   </div>
 </div>
