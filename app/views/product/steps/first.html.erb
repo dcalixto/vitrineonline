@@ -68,6 +68,9 @@
     <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
     </p>
     <%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
+    
+   
+  
   </div>
 
 
@@ -94,8 +97,17 @@
     <ul>
        <li>
       <b>Marca</b>&nbsp;
-      <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
  
+      <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
+
+
+ <p class="tip">Se você tem sua marca por favor adicione
+    </p>
+  <%= p.fields_for :brand do |b| %>
+ 
+  <%=b.text_field :name, :label=>"Nome"%>
+<% end %>
+
     </li>
 
       <b>Material</b>&nbsp;

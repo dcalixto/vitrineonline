@@ -122,10 +122,10 @@
                
                
              <% if  current_user.voted_as_when_voted_for @vitrine %>
-             <%= link_to "Descutir", dislike_vitrine_path(@vitrine, type: "down"), method: "put" %>
+               <%= link_to "Descutir", dislike_vitrine_path(@vitrine, type: "down"), :class=> "btn_grey", method: "put" %>
            <% else %>
              
-           <%= link_to "Curtir",  like_vitrine_path(@vitrine, type: "up"), method: "put" %>
+           <%= link_to "Curtir",  like_vitrine_path(@vitrine, type: "up"),:class=> "btn_grey",  method: "put" %>
 
   <% end %>
   <% end %>

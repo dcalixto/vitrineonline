@@ -570,7 +570,6 @@ DEPENDENCIES
   mina-newrelic
   mini_magick
   mobile-fu
-  newrelic_rpm
   no_cache_control!
   nokogiri
   oj
