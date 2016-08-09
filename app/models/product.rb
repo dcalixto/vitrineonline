@@ -150,12 +150,12 @@ class Product < ActiveRecord::Base
 
     order_by_param = params[:order_by] || 'created_at:desc'
     order_options = {}
-    order_options[order_by_param.split(':')[0]] = order_by_param.split(':')[1]
+    order_options[order_by_param.split(':')[0]] = {order: order_by_param.split(':')[1], ignore_unmapped: true}
 
     products = Product.search query, fields: [{ name: :word_start }], where: conditions,
 
                                      aggs: [:gender_id, :vitrine_id, :category_id, :subcategory_id, :size_id, :color_id, :material_id, :condition_id, :brand_id],
-                                     page: params[:page], suggest: true, highlight: true, per_page: 22, order: [order_options, {created_at: 'desc'}]
+                                     page: params[:page], suggest: true, highlight: true, per_page: 22, order: [order_options, {created_at: {order: 'desc', ignore_unmapped: true}}]
 
     products
 end
