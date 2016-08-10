@@ -469,7 +469,7 @@ html {
     height: 100%;
     width: 100%;
       background:#fff;
-      background:#f4f5f0; 
+      
 
 }
 
@@ -620,7 +620,7 @@ textarea {
      line-height: 19px;
      
      background: #f4f5f0; 
-background:#fff;
+ background: #ffffff; 
      color: #141823;
      line-height: 1.28;
 
