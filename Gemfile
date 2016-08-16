@@ -216,6 +216,12 @@ group :development do
 
 end
 
+
+
+#BACKUP
+#gem "backup" , :require => false
+#gem "whenever" , :require => false
+
 #MAILER
 gem  'premailer'
 gem 'nokogiri'

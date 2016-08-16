@@ -10,6 +10,7 @@ Vitrineonline::Application.routes.draw do
   #end
 
 
+   # ADMIN
 
   scope 'dcalixto84abcd152567' do
     mount ResqueWeb::Engine => "/resque"
@@ -53,14 +54,6 @@ mount MemcachedManager::Routes, :at => '/mm'
 
 
     end
-
- 
- 
-
-
-
-
-
 
 
     collection do
@@ -192,6 +185,8 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
   get 'tags/tag' => 'products#index', :as => :tag
   get 'products/tags' => 'products#tags', :as => :tags
 
+
+    # PRODUCTS
   resources :products do
     member do
       get :sold_info
@@ -202,8 +197,8 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       get :next_step
       get :report, to: 'products#report'
       get :message_product
-      put 'like', to: 'products#upvote'
-      put 'dislike', to: 'products#downvote'
+      put 'like', to: 'products#pupvote'
+      put 'dislike', to: 'products#pdownvote'
     end
 
     collection do

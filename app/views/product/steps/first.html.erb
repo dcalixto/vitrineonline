@@ -95,20 +95,7 @@
     <%= label_tag dom_id(color), color.name %><br>
     <% end %>
     <ul>
-       <li>
-      <b>Marca</b>&nbsp;
- 
-      <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
-
-
- <p class="tip">Se você tem sua marca por favor adicione
-    </p>
-  <%= p.fields_for :brand do |b| %>
- 
-  <%=b.text_field :name, :label=>"Nome"%>
-<% end %>
-
-    </li>
+   
 
       <b>Material</b>&nbsp;
       <%=  p.collection_select :material_id, Material.all, :id, :name %>

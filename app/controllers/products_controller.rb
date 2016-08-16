@@ -15,7 +15,24 @@ class ProductsController < ApplicationController
     @genders = Gender.all
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
+ 
+  @product.build_brand
+
+  
   end
+
+def upvote
+  @product = Product.cached_find(params[:id])
+  @product.upvote_by current_user
+  redirect_to :back
+end
+
+def downvote
+   @product = Product.cached_find(params[:id])
+  @product.downvote_by current_user
+    redirect_to :back
+end
+
 
 
 

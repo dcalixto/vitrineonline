@@ -10,7 +10,7 @@ class Product::StepsController < ApplicationController
 
   def update
     @product = Product.find(params[:product_id])
-
+ @product.build_brand
     if @product.update_attributes(params[:product])
 
       #facebook sharing

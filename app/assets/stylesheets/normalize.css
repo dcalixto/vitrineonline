@@ -468,8 +468,7 @@ html {
     margin: 0px;
     height: 100%;
     width: 100%;
-      background:#fff;
-      
+            
 
 }
 
@@ -619,9 +618,10 @@ textarea {
      -webkit-font-smoothing: subpixel-antialiased;
      line-height: 19px;
      
-     background: #f4f5f0; 
- background: #ffffff; 
-     color: #141823;
+  
+background:#ffffff;
+ 
+
      line-height: 1.28;
 
      padding: 0;

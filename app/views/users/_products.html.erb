@@ -38,28 +38,16 @@
 
   </td>
 
-  <td>
-      <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}) %>
 
-  </td>
 
 <td>
-  <% if current_user %>
-  <%if product.buyable?(current_user) %>
+    <% if current_user.voted_as_when_voted_for product %>
+             <%= link_to "Descutir", dislike_product_path(product, type: "down"), method: "put" %>
+           <% else %>
+             
+           <%= link_to "Curtir",  like_product_path(product, type: "up"), method: "put" %>
 
-
-  <div class="add_to_cart">
-
-    <%= button_to("Adicionar a sacola",add_to_carts_path(product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
-
-    <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
-    <%end %>
-
-  </div>
-
-  <%end %>
-
-  <%end %>
+  <% end %> 
 </td>
 
 

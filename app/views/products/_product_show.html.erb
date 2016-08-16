@@ -104,19 +104,32 @@
 <h2>Detalhes do produto</h2>
         <div class="left_info">
           <ul>
-
+ <% if @product.condition.present? %>
             <li>
               <span>Condição
               </span>
               <b><%= @product.condition.condition %></b>
             </li>
+          <%end %>
             <% if @product.material.present? %>
 
             <li>
               <span>Material</span>
               <b><%= @product.material.name %></b>
             </li>
-            <% end %>
+          <% end %>
+
+
+           <% if @product.brand.present? %>
+
+            <li>
+              <span>Marca</span>
+              <b><%= @product.brand.name %></b>
+            </li>
+          <% end %>
+
+
+        
 
           </ul>
 

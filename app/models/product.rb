@@ -28,7 +28,7 @@ class Product < ActiveRecord::Base
   # Allow user to report others
 
 
-  accepts_nested_attributes_for :sizes, :sizeship, :colors, :colorship, :images
+  accepts_nested_attributes_for :sizes, :sizeship, :colors, :colorship, :images, :brand
   attr_accessible :images_attributes
 
   has_many :impressions, dependent: :destroy
@@ -36,7 +36,7 @@ class Product < ActiveRecord::Base
   attr_accessible  :name, :detail, :price, :color_id, :gender_id,
                    :category_id, :subcategory_id, :material_id, :condition_id,
                    :brand_id, :meta_keywords, :quantity, :status, :vitrine_id, :products, :price,
-                   :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook, :is_shared_on_twitter
+                   :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook, :is_shared_on_twitter,:brand_attributes
 
   validates :name, presence: true, length: { maximum: 140 }
   validates :price, presence: true

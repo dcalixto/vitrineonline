@@ -1,4 +1,24 @@
-/* glue: 0.11.1 hash: 7605cfd766 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* glue: 0.11.1 hash: 4ee7a4151f */
         .sprite-icons-paypal_cards,
 .sprite-icons-logo_big,
 .sprite-icons-paypal_protect,
@@ -17,17 +37,17 @@
 .sprite-icons-twitter_circle,
 .sprite-icons-pinterest_circle,
 .sprite-icons-facebook_circle,
-.sprite-icons-sacola,
 .sprite-icons-instagram_circle,
 .sprite-icons-message,
 .sprite-icons-truck,
 .sprite-icons-vitrine,
 .sprite-icons-feedback,
 .sprite-icons-box,
-.sprite-icons-lupa,
 .sprite-icons-1star,
+.sprite-icons-sacola,
 .sprite-icons-location,
 .sprite-icons-criar-check,
+.sprite-icons-lupa,
 .sprite-icons-small_vitrine,
 .sprite-icons-small_star,
 .sprite-icons-small_like,
@@ -35,6 +55,7 @@
             background-image: url('icons.png');
             background-repeat: no-repeat;
             display: inline-block;
+
         }
         
         .sprite-icons-paypal_cards {
@@ -45,51 +66,50 @@
         
         .sprite-icons-logo_big {
             background-position: 0 -110px;
-            width: 282px;
-            height: 37px;
+            width: 287px;
+            height: 41px;
         }
         
         .sprite-icons-paypal_protect {
-            background-position: 0 -147px;
+            background-position: 0 -151px;
             width: 280px;
             height: 50px;
         }
         
         .sprite-icons-paypal-icon {
-            background-position: 0 -197px;
+            background-position: 0 -201px;
             width: 191px;
             height: 29px;
         }
         
         .sprite-icons-paypal_icon2 {
-            background-position: 0 -226px;
+            background-position: 0 -230px;
             width: 163px;
             height: 50px;
         }
         
         .sprite-icons-logo {
-            background-position: -163px -226px;
-            width: 152px;
-            height: 19px;
-                  
-                             }
+            background-position: -163px -230px;
+            width: 147px;
+            height: 22px;
+        }
         
         .sprite-icons-fb_button {
-            background-position: 0 -276px;
+            background-position: 0 -280px;
             width: 120px;
             height: 32px;
         }
         
         .sprite-icons-5star {
-            background-position: -191px -197px;
+            background-position: -191px -201px;
             width: 100px;
             height: 20px;
         }
         
         .sprite-icons-logo_small {
-            background-position: -163px -245px;
-            width: 97px;
-            height: 13px;
+            background-position: -163px -252px;
+            width: 98px;
+            height: 14px;
         }
         
         .sprite-icons-comodo_secure {
@@ -146,20 +166,14 @@
             height: 32px;
         }
         
-        .sprite-icons-sacola {
-            background-position: -383px -165px;
-            width: 30px;
-            height: 25px;
-        }
-        
         .sprite-icons-instagram_circle {
-            background-position: -383px -197px;
+            background-position: -383px -165px;
             width: 30px;
             height: 30px;
         }
         
         .sprite-icons-message {
-            background-position: -319px -229px;
+            background-position: -383px -197px;
             width: 27px;
             height: 23px;
         }
@@ -177,32 +191,27 @@
         }
         
         .sprite-icons-feedback {
-            background-position: -319px -252px;
+            background-position: -319px -229px;
             width: 25px;
             height: 25px;
         }
         
         .sprite-icons-box {
-            background-position: -344px -252px;
+            background-position: -344px -229px;
             width: 22px;
             height: 25px;
-        }
-        
-        .sprite-icons-lupa {
-            background-position: -346px -229px;
-            width: 21px;
-            height: 21px;
-                          margin-top:4px;
- margin-left:7px;
-     position: absolute;
-     left: 0;
-top: 0;
         }
         
         .sprite-icons-1star {
             background-position: -384px -145px;
             width: 20px;
             height: 20px;
+        }
+        
+        .sprite-icons-sacola {
+            background-position: -366px -229px;
+            width: 18px;
+            height: 15px;
         }
         
         .sprite-icons-location {
@@ -212,37 +221,58 @@ top: 0;
         }
         
         .sprite-icons-criar-check {
-            background-position: -367px -229px;
+            background-position: -384px -229px;
             width: 16px;
             height: 11px;
         }
         
-        .sprite-icons-small_vitrine {
+        .sprite-icons-lupa {
             background-position: -399px -69px;
+            width: 15px;
+            height: 15px;
+                                    margin-top:7px;
+ margin-left:10px;
+     position: absolute;
+     left: 0;
+top: 0;
+
+        }
+        
+        .sprite-icons-small_vitrine {
+            background-position: -399px -84px;
             width: 14px;
             height: 12px;
         }
         
         .sprite-icons-small_star {
-            background-position: -399px -81px;
+            background-position: -399px -105px;
             width: 14px;
             height: 14px;
         }
         
         .sprite-icons-small_like {
-            background-position: -399px -105px;
+            background-position: -319px -254px;
             width: 14px;
             height: 12px;
         }
         
         .sprite-icons-small_avatar {
-            background-position: -366px -252px;
+            background-position: -319px -266px;
             width: 14px;
             height: 13px;
         }
-        
-      
-        
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   ul.social_list li {
