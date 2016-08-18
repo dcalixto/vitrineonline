@@ -45,7 +45,7 @@ class Vitrine < ActiveRecord::Base
   end
   after_validation :fetch_address
 
-   #usar_como_cnpj_ou_cpf :codigo
+   usar_como_cnpj_ou_cpf :codigo
 
   after_commit :flush_cache
 
