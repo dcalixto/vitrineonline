@@ -46,11 +46,13 @@ $desktop: min-width 1200px;
   white-space: nowrap;
   z-index: 2;
 
-    width: 170px;
-            height: 35px;
+    width: 156px;
+            height: 27px;
 
-  margin-top:5px;
 
+margin-right:1px;
+
+ margin-top:7px
 
 
 
@@ -71,8 +73,8 @@ $desktop: min-width 1200px;
 background-color: #f1f1f1;
         border-bottom: 1px solid #e5e5e5;
 background:#fff;
-background-color: #f1f1f1;
-    
+
+   background-color: #f1f1f1; 
 }
 .inner_blue  {
 
@@ -96,10 +98,10 @@ background-color: #f1f1f1;
     display: block;
 
 
-   background-color: #245bbc;
+      background: #f8f8f8;
       white-space: nowrap;
     height: 33px;
-     
+    background:#e2e2e2; 
 border-bottom: 1px solid #ebebeb;
 
 }
