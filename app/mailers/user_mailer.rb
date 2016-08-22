@@ -26,8 +26,10 @@ class UserMailer < ActionMailer::Base
     mail to: user.email, subject: 'Password Alterado', &:html
    end
 
-  def user_welcome(user)
-    @user = user
+  def user_welcome(user_id)
+   # @user = user
+    @user = User.find(user_id)
+
     mail to: user.email, subject: 'Bem Vindo', &:html
   end
 end
