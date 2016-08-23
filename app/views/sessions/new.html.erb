@@ -35,6 +35,11 @@
           <%= link_to "Esqueceu o password?", new_password_reset_path %>
 
           <%= password_field_tag :password, params[:password]%>
+     
+        <li><label clas="label">Lembrar-me<%= check_box_tag :remember_me, 1, params[:remember_me]%></label></li>
+
+
+        
         </li>
 
         <li class="space"></li>

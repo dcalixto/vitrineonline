@@ -1,7 +1,7 @@
 # encoding: utf-8
 # require 'product_recommender'
 class UsersController < ApplicationController
-  before_filter :authorize, :correct_user, only: [:edit, :update, :destroy]
+  before_filter :authorize, only: [:edit, :update, :destroy]
   cache_sweeper :user_sweeper
 
   def show

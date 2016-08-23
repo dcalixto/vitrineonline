@@ -22,7 +22,7 @@
 //= user_banner
 //= readmore
 //= tipsy
-
+//= require js.cookie
 //= require jquery.bettertabs.min
 //= require nprogress
 

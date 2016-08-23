@@ -2,7 +2,7 @@
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
-
+before_filter :authorize_vitrine, only: [:create, :edit, :update]
   def index
     @products = Product.aggs_search(params)
  # suggestions for current visitor

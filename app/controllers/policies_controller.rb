@@ -1,6 +1,6 @@
 # encoding: utf-8
 class PoliciesController < ApplicationController
-  before_filter :authorize#, :correct_policy, only: [:edit, :update]
+  before_filter :authorize, [:edit, :update]
   def edit
     @policy = Policy.find(params[:id])
   end

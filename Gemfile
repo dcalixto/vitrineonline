@@ -29,7 +29,8 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'searchkick',  github: "dcalixto/searchkick"
 
 
-
+#SESSION COOKIE
+gem 'js_cookie_rails'
 
 # SUGGESTIONS
 gem 'predictor'

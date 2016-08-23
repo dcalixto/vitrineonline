@@ -252,6 +252,8 @@ GEM
       rails (~> 3.2.3)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
+    js_cookie_rails (2.1.2)
+      railties (>= 3.1)
     json (1.8.3)
     jsonschema (2.0.2)
     jwt (1.5.4)
@@ -555,6 +557,7 @@ DEPENDENCIES
   jquery-rails-cdn
   jquery-raty-rails
   jquery-ui-rails
+  js_cookie_rails
   json
   kaminari
   koala (~> 2.2)

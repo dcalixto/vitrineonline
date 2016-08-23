@@ -1,5 +1,5 @@
 class BannersController < ApplicationController
-  before_filter :authorize_user, only: [:update]
+  before_filter :authorize_vitrine, only: [:update]
 
   def edit
  @user = User.cached_find(params[:id])
