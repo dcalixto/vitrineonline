@@ -1,6 +1,6 @@
 # encoding: utf-8
 class MarketingsController < ApplicationController
-  before_filter :authorize, :correct_marketing, only: [:edit, :update]
+  before_filter :authorize_vitrine, only: [:edit, :update]
   def edit
     @marketing = current_vitrine.marketing
  end

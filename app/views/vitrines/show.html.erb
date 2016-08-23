@@ -62,7 +62,7 @@
       <p>
         <%=@vitrine.marketing.slogan %></p>
       <ul>
-        <% cache"vitrine_info_box" do %>
+     
 
         <li>
           <%= content_tag(:span, nil, :class =>"sprite-icons-location") %>
@@ -100,7 +100,7 @@
 
         </li>
 
-        <% end %>
+   
 
         <li>
           <% if @vitrine.user.online? == true %>

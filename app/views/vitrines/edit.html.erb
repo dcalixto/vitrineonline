@@ -11,7 +11,7 @@
 <%=render 'shared/error_messages', :target=> @vitrine %>
 </div>
 
-<% cache "vitrine_block" do %>
+
 <div class="block margin_top">
 
 
@@ -84,7 +84,7 @@
 <% end %>
 </div>
 
-<% cache "vitrine_address"do%>
+
 <div class="box11 margin_top">
   <div class="block">
   <div class="square_box">
@@ -108,10 +108,10 @@
 <% unless current_user.state.blank? %>
 <li><%=current_user.state.name %>
 </li>
-<% end %>
+
 </ul>
 </div>
 </div>
 </div>
 </div>
-<% end %>
+
