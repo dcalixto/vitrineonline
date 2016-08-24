@@ -190,14 +190,7 @@
       <h2>Garantias Oferecidas pelo Vendedor</h2>
       <p><%= markdown(@vitrine.policy.guarantee) %></p>
       <% end %>
-      <% unless @vitrine.policy.shippings.blank? %>
-      <b>Formas de Envio</b>
-      <ul>
-        <% @vitrine.policy.shippings.each do |shipping| %>
-        <li><%= shipping.kind %></li>
-        <% end %>
-      </ul>
-      <% end %>
+   
     </div>
 
 
