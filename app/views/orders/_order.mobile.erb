@@ -33,7 +33,7 @@
 
       <td>
         <% if order.status.nil? %>
-        <%= button_to 'Checkout', checkout_order_path(order), method: :get, class: 'btn_orange' %>
+        <%= button_to 'Checkout', checkout_order_path(order), method: :get, class: 'btn' %>
         <%= button_to 'Remover',  order, :class=> "btn_grey btn_small",  method: :delete %>
         <% end %>
       </td>

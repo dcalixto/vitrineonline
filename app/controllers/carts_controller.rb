@@ -10,25 +10,22 @@ class CartsController < ApplicationController
         color = Color.find_by_id(params[:color_id])
         size = Size.find_by_id(params[:size_id])
         condition = Condition.find_by_id(params[:condition_id])
-         material = Material.find_by_id(params[:material_id])
-         brand = Brand.find_by_id(params[:brand_id])
-
-
+        material = Material.find_by_id(params[:material_id])
+        brand = Brand.find_by_id(params[:brand_id])
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
-      order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id(product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id)
+        order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id(product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id)
 
         if order.nil? # create new order
-        order = Order.new
-        order.product = product
+          order = Order.new
+          order.product = product
           order.seller = product.vitrine
           order.buyer = current_user
-        order.quantity = quantity
+          order.quantity = quantity
           order.color = color
           order.size = size
- 
           order.condition = condition
           order.material = material
-order.brand = brand
+          order.brand = brand
 
           current_user.cart.orders << order
         else # increase quantity
@@ -36,7 +33,7 @@ order.brand = brand
           order.save
         end
 
-        redirect_to carts_path(product)
+        redirect_to carts_path
         flash[:success] = "#{product.name} adicionado(a) a sacola"
       else
         redirect_to product_path(product)
