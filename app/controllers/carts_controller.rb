@@ -15,7 +15,7 @@ class CartsController < ApplicationController
 
 
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
-      order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id_and_condition_id_and_material_id_and_brand_id(product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id, condition.nil? ? nil : condition.id, material.nil? ? nil : material.id, brand.nil? ? nil : brand.id)
+      order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id(product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id)
 
         if order.nil? # create new order
         order = Order.new
