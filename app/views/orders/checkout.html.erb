@@ -6,7 +6,7 @@
       &gt; Confirmar e Pagar</h1>
   </div>
 </div>
-<div class="box4">
+<div class="box5">
   <%= render 'shared/flash_messages' %>
   <%= render 'shared/error_messages', :target => @order %>
   <div class="block_empty margin_top">
@@ -20,10 +20,7 @@
           <th>
             Sumário
           </th>
-          <th>
-            Endereço de Entrega
-          </th>
-        </tr>
+              </tr>
       </thead>
       <tbody>
         <tr>
@@ -78,7 +75,29 @@
                               </li>
                             </ul>
                           </td>
-                          <td >
+                                              </tbody>
+                      </table>
+                    </div>
+                  </div>
+               
+                  
+                  
+
+
+ <div class="box11">
+ <div class="block_empty margin_top">
+
+<table class="checkout_product">
+         <thead>
+        <tr>
+                  <th>
+            Endereço de Entrega
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+                                   <td >
                             <ul >
                               <li><%= current_user.full_name %></li>
                               <%unless current_user.user_address.nil? %>
@@ -107,7 +126,15 @@
                         </tbody>
                       </table>
                     </div>
-                  </div>
+                 
+
+
+</div>
+
+                  
+                  
+                  
+                  
                   <div class="box10">
                     <div class="block_empty margin_top">
                       <table class="checkout_total">
