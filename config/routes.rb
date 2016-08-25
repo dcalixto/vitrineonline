@@ -137,8 +137,8 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
 
   # ORDER & CART & TRANSACTION
   post '/carts/add/:id', to: 'carts#add', as: :add_to_carts
-  post '/carts/buy_now/:id', to: 'carts#buy_now', as: :buy_now_to_carts
-  put '/carts/user_address/', to: 'carts#user_address', as: :user_address
+
+ # put '/carts/user_address/', to: 'carts#user_address', as: :user_address
 
   resources :carts, only: [:index]
   resources :orders, only: [:index, :update, :destroy] do
