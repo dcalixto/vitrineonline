@@ -11,7 +11,7 @@ class CartsController < ApplicationController
         size = Size.find_by_id(params[:size_id])
         condition = Condition.find_by_id(params[:condition_id])
          material = Material.find_by_id(params[:material_id])
-         material = Brand.find_by_id(params[:brand_id])
+         brand = Brand.find_by_id(params[:brand_id])
 
 
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
