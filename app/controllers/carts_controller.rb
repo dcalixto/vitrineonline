@@ -66,7 +66,7 @@ def add
         if order.nil? # create new order
           order = Order.new
           order.product = product
-          order.seller = product.boutique
+          order.seller = product.vitrine
           order.buyer = current_user
           order.quantity = 1
           current_user.cart.orders << order
