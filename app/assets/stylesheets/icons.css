@@ -1,13 +1,8 @@
-
-
-
-
-
-/* glue: 0.11.1 hash: e17a8d2c55 */
+/* glue: 0.11.1 hash: 0b02519174 */
         .sprite-icons-paypal_cards,
-.sprite-icons-logo_big,
 .sprite-icons-paypal_protect,
 .sprite-icons-paypal-icon,
+.sprite-icons-logo_big,
 .sprite-icons-paypal_icon2,
 .sprite-icons-logo,
 .sprite-icons-fb_button,
@@ -49,53 +44,52 @@
             height: 110px;
         }
         
-        .sprite-icons-logo_big {
-            background-position: 0 -110px;
-            width: 285px;
-            height: 41px;
-        }
-        
         .sprite-icons-paypal_protect {
-            background-position: 0 -151px;
+            background-position: 0 -110px;
             width: 280px;
             height: 50px;
         }
         
         .sprite-icons-paypal-icon {
-            background-position: 0 -201px;
+            background-position: 0 -160px;
             width: 191px;
             height: 29px;
         }
         
+        .sprite-icons-logo_big {
+            background-position: 0 -189px;
+            width: 184px;
+            height: 26px;
+        }
+        
         .sprite-icons-paypal_icon2 {
-            background-position: 0 -230px;
+            background-position: 0 -215px;
             width: 163px;
             height: 50px;
         }
         
         .sprite-icons-logo {
-            background-position: -163px -230px;
-            width: 156px;
-            height: 23px;
-           
-        }
+            background-position: -163px -215px;
+            width: 140px;
+            height: 19px;
+           }
         
         .sprite-icons-fb_button {
-            background-position: 0 -280px;
+            background-position: 0 -265px;
             width: 120px;
             height: 32px;
         }
         
         .sprite-icons-5star {
-            background-position: -191px -201px;
+            background-position: -191px -160px;
             width: 100px;
             height: 20px;
         }
         
         .sprite-icons-logo_small {
-            background-position: -163px -253px;
-            width: 96px;
-            height: 15px;
+            background-position: -184px -189px;
+            width: 97px;
+            height: 14px;
         }
         
         .sprite-icons-comodo_secure {
@@ -216,12 +210,13 @@
             background-position: -399px -69px;
             width: 15px;
             height: 15px;
- 
-                                                     margin-top:7px;
+                                                                       margin-top:7px;
  margin-left:10px;
      position: absolute;
      left: 0;
 top: 0;
+
+
         }
         
         .sprite-icons-small_vitrine {
@@ -247,10 +242,10 @@ top: 0;
             width: 14px;
             height: 13px;
         }
+
+
+
         
-
-
-
 
 
 

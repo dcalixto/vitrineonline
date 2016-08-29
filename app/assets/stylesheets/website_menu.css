@@ -8,13 +8,13 @@
   position: relative;
   width: auto;
   word-wrap: break-word;
-  color: #333;
+  color: #666;
  
     }
 
 
 #menu-box-product a {
-    color: #333;
+    color: #666;
 }
 
 
@@ -27,7 +27,7 @@
   position: relative;
   width: auto;
   word-wrap: break-word;
-  color: #333;
+  color: #666;
 
 
     }
@@ -40,7 +40,7 @@
 
 }
 #ajuda-menu h1 {
-  color: #333;
+  color: #555;
   margin-top: 10px;
 
 }
@@ -48,7 +48,7 @@
 
 
 
-  color:#333;
+  color:#555;
   padding:10px;
 
 }
@@ -108,7 +108,7 @@
   padding-bottom: 5px;
   padding-left: 5px;
   margin-bottom: 5px;
-  color: #333;
+  color: #666;
 }
 
 /* HELP MENU */

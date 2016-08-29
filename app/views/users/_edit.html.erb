@@ -90,43 +90,6 @@
 </div>
 
 
-
-<div class="square_box">
-    <h4>Facebook</h4>
-      <div class="subcontent">
-
-
-        <%= semantic_form_for @user, :method => :put do |face| %>
-        <%= face.inputs do %>
-        <%= face.input :facebook, :label => "Seu Facebook" %>
-        <%= face.actions do %>
-        <%= face.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
-</div>
-
-
-<div class="square_box">
-    <h4>Twitter</h4>
-      <div class="subcontent">
-
-
-        <%= semantic_form_for @user,  :method => :put do |twi| %>
-        <%= twi.inputs do %>
-        <%= twi.input :twitter, :label => "Seu Twitter" %>
-        <%= twi.actions do %>
-        <%= twi.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
-</div>
-
-
-
-
 <div class="square_box">
 <h4>Encerrar Conta</h4>
 <div class="subcontent">
@@ -143,5 +106,7 @@
 </div>
 </div>
 </div>
+
+
 
 

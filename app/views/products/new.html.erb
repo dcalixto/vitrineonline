@@ -43,13 +43,9 @@
 </div>
 </div>
 <div class="subcontent">
-<h4>Selecione a marca</h4>
+<h4>Marca Própria</h4>
 
-  
-      <%=p.label :brand_id, 'Marca' %>&nbsp; 
-      <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
-
-
+ 
  <p class="tip">Se você tem sua marca por favor adicione
     </p>
   <%= p.fields_for :brand_attributes do |b| %>
