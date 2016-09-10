@@ -80,7 +80,7 @@ box-shadow: none;
 
 
  #search_input:hover {
-   outline:none;border:1px solid #245BBC}
+   outline:none;border:1px solid #CE1D37}
 
 
 
@@ -116,14 +116,16 @@ z-index: 1;
 border-radius: 0 2px 2px 0;
 
  
- border: solid #d3d3d3 1px;
+ border: solid #FCDB1D 1px;
  
        color: #333;
  
 
- background: #f8f8f8;
 
 
+
+ border-color: #d3d3d3;
+    background: #f8f8f8;
     }
 
 
