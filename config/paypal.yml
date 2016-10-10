@@ -1,12 +1,11 @@
-  test: 
-  <<: *default
+  test:
+    # <<: *default
   # verbose_logging: true
 
   development:
-  <<: *default
+    # <<: *default
 
-  production: #&default
-  mode: live
+  production:   mode: live
  
   # Credentials for REST APIs
   client_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
