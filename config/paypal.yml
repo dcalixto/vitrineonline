@@ -1,9 +1,9 @@
   test:
-  <<: *default
+    # <<: *default
   # verbose_logging: true
 
   development:
-  <<: *default
+    # <<: *default
 
   production:   
   mode: live
