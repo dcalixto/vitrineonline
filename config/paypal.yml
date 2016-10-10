@@ -5,7 +5,7 @@
   development:
   <<: *default
 
-  production: &default
+  production: #&default
   mode: live
  
   # Credentials for REST APIs
