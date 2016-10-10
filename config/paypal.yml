@@ -1,17 +1,17 @@
-#test: &default
+test: &default
 
   # Credentials for REST APIs
-  # client_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
-  #client_secret: EMTfumeHWt6wurQqOQEc6hQNDPWWTotxCK69jd4MTefsJAKzLKJ_tx-4J8DhGQt4CelJJ5TOTuGG1puI
+   client_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
+  client_secret: EMTfumeHWt6wurQqOQEc6hQNDPWWTotxCK69jd4MTefsJAKzLKJ_tx-4J8DhGQt4CelJJ5TOTuGG1puI
 
   # Mode can be 'live' or 'sandbox'
-  #mode: live
+  mode: live
 
   # Credentials for Classic APIs
-  #app_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
-  #username: calixtodaniel_api1.gmail.com
-  #password: DSG2N7ZTJELQUNWL
-  #signature: ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv
+app_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
+  username: calixtodaniel_api1.gmail.com
+  password: DSG2N7ZTJELQUNWL
+  signature: ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv
   # # With Certificate
   # cert_path: "config/cert_key.pem"
   #sandbox_email_address: Platform.sdk.seller@gmail.com
@@ -23,9 +23,9 @@
 
   # verbose_logging: true
 
-  #development:
-  #<<: *default
+  development:
+  <<: *default
 
-  #production:
-  #<<: *default
-  #mode: live
+  production:
+  <<: *default
+  mode: live

@@ -1,6 +1,6 @@
 # encoding: utf-8
 
- include PayPal::SDK::AdaptivePayments
+ #include PayPal::SDK::AdaptivePayments
 
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
