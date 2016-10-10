@@ -1,5 +1,5 @@
 PayPal::SDK.load("config/paypal.yml", Rails.env)
-
+PayPal::SDK.logger = Rails.logger
 
 #PayPal::SDK.configure(
  # :mode      => "live",  # Set "live" for production
@@ -9,4 +9,4 @@ PayPal::SDK.load("config/paypal.yml", Rails.env)
   #:signature => "ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv" )
 
 
-PayPal::SDK.logger = Rails.logger
+

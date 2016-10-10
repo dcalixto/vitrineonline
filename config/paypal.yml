@@ -1,14 +1,19 @@
-test: &default
+  test: 
+  <<: *default
+  # verbose_logging: true
 
-  # Credentials for REST APIs
-   client_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
-  client_secret: EMTfumeHWt6wurQqOQEc6hQNDPWWTotxCK69jd4MTefsJAKzLKJ_tx-4J8DhGQt4CelJJ5TOTuGG1puI
+  development:
+  <<: *default
 
-  # Mode can be 'live' or 'sandbox'
+  production: &default
   mode: live
-
-  # Credentials for Classic APIs
-app_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
+ 
+  # Credentials for REST APIs
+  client_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
+  client_secret: EMTfumeHWt6wurQqOQEc6hQNDPWWTotxCK69jd4MTefsJAKzLKJ_tx-4J8DhGQt4CelJJ5TOTuGG1puI
+  # Mode can be 'live' or 'sandbox'
+    # Credentials for Classic APIs
+  app_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
   username: calixtodaniel_api1.gmail.com
   password: DSG2N7ZTJELQUNWL
   signature: ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv
@@ -21,11 +26,4 @@ app_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApy
   # # HTTP Proxy
   # http_proxy: http://proxy-ipaddress:3129/
 
-  # verbose_logging: true
 
-  development:
-  <<: *default
-
-  production:
-  <<: *default
-  mode: live

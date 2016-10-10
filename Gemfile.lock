@@ -253,7 +253,6 @@ GEM
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (1.8.3)
-    jsonschema (2.0.2)
     jwt (1.5.4)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
@@ -349,9 +348,6 @@ GEM
     paypal-sdk-core (0.3.4)
       multi_json (~> 1.0)
       xml-simple
-    paypal_adaptive (0.3.10)
-      json (~> 1.0)
-      jsonschema (~> 2.0.0)
     pdf-core (0.6.1)
     pg (0.18.4)
     pkg-config (1.1.7)
@@ -583,7 +579,6 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-twitter
   paypal-sdk-adaptivepayments
-  paypal_adaptive
   pg
   prawn
   predictor
