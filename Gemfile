@@ -11,7 +11,7 @@ gem 'rails', '3.2.22'
 
 #ANALYTICS
 
-gem 'rollbar'#, '~> 2.8.3'
+gem 'rollbar' , '~> 2.13.2'
 #gem 'newrelic_rpm'
 
 #TABS
