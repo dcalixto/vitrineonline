@@ -52,10 +52,6 @@ class OrdersController < ApplicationController
   end
 
   def buy
-   # pay_request = PaypalAdaptive::Request.new
-
-
-
 
 require 'paypal-sdk-adaptivepayments'
 PayPal::SDK.configure(
@@ -66,49 +62,12 @@ PayPal::SDK.configure(
   :signature => "ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv" )
 
 
-@api = PayPal::SDK::AdaptivePayments.new
-
-
     order = Order.find(params[:id])
     store_amount = (order.total_price * configatron.store_fee).round(2)
     seller_amount = (order.total_price - store_amount) + order.shipping_cost
+@api = PayPal::SDK::AdaptivePayments.new
 
 
-
-
-
-
-
- #   data = {
-  #    'returnUrl' => carts_url,
-   #   'requestEnvelope' => { 'errorLanguage' => 'pt_BR' },
-   #   'currencyCode' => 'BRL',
-   #   'receiverList' => {
-   #     'receiver' => [
-   #       { 'email' => order.product.vitrine.policy.paypal, 'amount' => seller_amount, 'primary' => false },
-    #      { 'email' => configatron.paypal.merchant, 'amount' => store_amount, 'primary' => false }
-
-    #    ]
-    #  },
-    #  'memo' => order.product.name,
-    #  'feesPayer' => 'SENDER',
-    #  'cancelUrl' => carts_url,
-    #  'actionType' => 'PAY',
-    #  'ipnNotificationUrl' => ipn_notification_order_url(order)
-  #  }
-
-
-
-
-
-  #  pay_response = pay_request.pay(data)
-
-   # if pay_response.success?
-  #    redirect_to pay_response.approve_paypal_payment_url
-  #  else
-   #   logger.info pay_response
-   #   redirect_to fail_order_path(order)
-   # end
 
 
 
@@ -160,9 +119,7 @@ end
   end
 
   def ipn_notification
-   # ipn = PaypalAdaptive::IpnNotification.new
-
-
+ 
 @ipn = PayPal::SDK::IpnNotification.new
 
 
