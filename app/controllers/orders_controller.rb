@@ -1,8 +1,8 @@
 # encoding: utf-8
 
 class OrdersController < ApplicationController
-  skip_before_filter :authorize, only: :ipn_notification
-  protect_from_forgery except: [:ipn_notification]
+ # skip_before_filter :authorize, only: :ipn_notification
+#  protect_from_forgery except: [:ipn_notification]
   # cache_sweeper :order_sweeper
 
   def purchased
@@ -62,12 +62,12 @@ PayPal::SDK.configure(
   :signature => "ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv" )
 
 
-    order = Order.find(params[:id])
-    store_amount = (order.total_price * configatron.store_fee).round(2)
-    seller_amount = (order.total_price - store_amount) + order.shipping_cost
+  
 @api = PayPal::SDK::AdaptivePayments.new
 
-
+  order = Order.find(params[:id])
+    store_amount = (order.total_price * configatron.store_fee).round(2)
+    seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
 
 
@@ -83,9 +83,9 @@ PayPal::SDK.configure(
     :receiver => [{
       :email =>  order.product.vitrine.policy.paypal,
       :amount => seller_amount,
-      :primary => false,
-    #},
-   # {
+      :primary => false
+    },
+    {
       :email => configatron.paypal.merchant, 
       :amount => store_amount, 
       :primary => false  }] },
