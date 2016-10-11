@@ -1,4 +1,4 @@
 require 'resque/server'
-require 'resque_web'
+#require 'resque_web'
 
 
