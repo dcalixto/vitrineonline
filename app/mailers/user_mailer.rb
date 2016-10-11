@@ -2,7 +2,7 @@
 
 class UserMailer < ActionMailer::Base
   default from: 'VITRINEONLINE'
-  include Resque::Mailer
+ # include Resque::Mailer
 
 
   def registration_confirmation(user)
