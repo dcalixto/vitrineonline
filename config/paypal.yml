@@ -1,15 +1,15 @@
-development: &default
+#development: &default
 
-  client_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
-  client_secret: EMTfumeHWt6wurQqOQEc6hQNDPWWTotxCK69jd4MTefsJAKzLKJ_tx-4J8DhGQt4CelJJ5TOTuGG1puI
+# client_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
+# client_secret: EMTfumeHWt6wurQqOQEc6hQNDPWWTotxCK69jd4MTefsJAKzLKJ_tx-4J8DhGQt4CelJJ5TOTuGG1puI
   
-  app_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
-  username: calixtodaniel_api1.gmail.com
-  password: DSG2N7ZTJELQUNWL
-  signature: ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv
-  http_timeout: 30
-  mode: sandbox
-  sandbox_email_address: calixtodaniel@mail.com
+# app_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
+# username: calixtodaniel_api1.gmail.com
+# password: DSG2N7ZTJELQUNWL
+# signature: ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv
+# http_timeout: 30
+# mode: sandbox
+# sandbox_email_address: calixtodaniel@mail.com
     # # with certificate
   # cert_path: "config/cert_key.pem"
   # # with token authentication
@@ -19,12 +19,12 @@ development: &default
   # http_proxy: http://proxy-ipaddress:3129/
   # # with device ip address
   # device_ipaddress: "127.0.0.1"
-test:
-  <<: *default
-production:
-  mode: live
-  app_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
-  username: calixtodaniel_api1.gmail.com
-  password: DSG2N7ZTJELQUNWL
-  signature: ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv
+  #test:
+  #<<: *default
+  #production:
+  #mode: live
+  #app_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
+  #username: calixtodaniel_api1.gmail.com
+  #password: DSG2N7ZTJELQUNWL
+  #signature: ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv
 
