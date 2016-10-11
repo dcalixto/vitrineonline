@@ -589,7 +589,7 @@ DEPENDENCIES
   ransack
   redcarpet
   resque!
-  resque-web
+  resque-web (~> 0.0.8)
   resque_mailer
   rollbar (~> 2.13.2)
   rubocop

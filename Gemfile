@@ -172,7 +172,7 @@ gem 'memcached-manager'
 
 gem 'resque', github: "dcalixto/resque"
 gem 'resque_mailer'
-gem 'resque-web',  require: 'resque_web'
+gem 'resque-web', "~> 0.0.8",  require: 'resque_web'
 
 gem "sinatra", require: 'sinatra/base'
 gem "sinatra-contrib", '~> 1.3.2',  require: false
