@@ -3,7 +3,7 @@
 class OrderMailer < ActionMailer::Base
   default from: 'Vitrineonline'
 
-  include Resque::Mailer
+ # include Resque::Mailer
 
 
 
