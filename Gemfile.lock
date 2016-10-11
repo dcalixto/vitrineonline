@@ -593,7 +593,7 @@ DEPENDENCIES
   resque!
   resque-web
   resque_mailer
-  rollbar (~> 2.8.3)
+  rollbar
   rubocop
   ruby_gntp
   sass-rails
