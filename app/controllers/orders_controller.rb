@@ -86,9 +86,9 @@ class OrdersController < ApplicationController
         :receiver => [{
           :email =>  order.product.vitrine.policy.paypal,
           :amount => seller_amount,
-          :primary => false,
-       # },
-       # {
+          :primary => false
+        },
+        {
           :email => configatron.paypal.merchant, 
           :amount => store_amount, 
           :primary => false  }] },
