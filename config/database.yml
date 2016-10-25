@@ -1,26 +1,19 @@
-
-default: &default
-  adapter: postgresql
-  encoding: Unicode
-  pool: 5
-  username: ubuntu
-  password: 152567
-  
 development:
-  #  <<: *default
   adapter: sqlite3
-  database: db/test.sqlite3
+  database: db/development.sqlite3
   pool: 5
   timeout: 5000
 
 
 test:
-  <<: *default
-   database: vitrineonline_test
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
 
-
- production:
-   <<: *default
-     database: vitrineonline_production
-     username: ubuntu
-     password: 152567
+production:
+  adapter: postgresql
+  encoding: Unicode
+  pool: 5
+  username: ubuntu
+  password: 152567
