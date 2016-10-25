@@ -7,11 +7,11 @@ default: &default
   password: 152567
   
 development:
-  <<: *default
-# adapter: sqlite3
-# database: db/test.sqlite3
-# pool: 5
-# timeout: 5000
+  #  <<: *default
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
 
 
 test:
@@ -22,5 +22,5 @@ test:
  production:
    <<: *default
      database: vitrineonline_production
-     #username: ubuntu
-     #password: 152567
+     username: ubuntu
+     password: 152567
