@@ -5,14 +5,10 @@ test: &default
   #client_secret: EMTfumeHWt6wurQqOQEc6hQNDPWWTotxCK69jd4MTefsJAKzLKJ_tx-4J8DhGQt4CelJJ5TOTuGG1puI
 
   # Mode can be 'live' or 'sandbox'
-  # mode: live
+   mode: sandbox
 
   # Credentials for Classic APIs
-  app_id: APP-8TU98166249274123
-  username: admin_api1.vitrineonline.com
-  password: DKJVG8KMXTBFWZFT
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY
-  # # With Certificate
+   # # With Certificate
   # cert_path: "config/cert_key.pem"
   #sandbox_email_address:  calixtodaniel@mail.com
 
@@ -27,8 +23,13 @@ test: &default
   <<: *default
 
   production:
-  <<: *default
+  
   mode: live
+  app_id: APP-8TU98166249274123
+  username: admin_api1.vitrineonline.com
+  password: DKJVG8KMXTBFWZFT
+  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY
+
 
 
 
