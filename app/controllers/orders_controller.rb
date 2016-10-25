@@ -53,19 +53,19 @@ class OrdersController < ApplicationController
 
   def buy
 
-require 'paypal-sdk-adaptivepayments'
+#require 'paypal-sdk-adaptivepayments'
 
   
 @api = PayPal::SDK::AdaptivePayments.new
 
 
 
-PayPal::SDK.configure(
-  :mode      => "live",  # Set "live" for production
-  :app_id    => "APP-8TU98166249274123",
-  :username  => "admin_api1.vitrineonline.com",
-  :password  => "DKJVG8KMXTBFWZFT",
-  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY" )
+#PayPal::SDK.configure(
+ # :mode      => "live",  # Set "live" for production
+ # :app_id    => "APP-8TU98166249274123",
+ # :username  => "admin_api1.vitrineonline.com",
+ # :password  => "DKJVG8KMXTBFWZFT",
+ # :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY" )
 
 
 

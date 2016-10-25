@@ -1,17 +1,17 @@
-#test: &default
+test: &default
 
   # Credentials for REST APIs
   # client_id: Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le
   #client_secret: EMTfumeHWt6wurQqOQEc6hQNDPWWTotxCK69jd4MTefsJAKzLKJ_tx-4J8DhGQt4CelJJ5TOTuGG1puI
 
   # Mode can be 'live' or 'sandbox'
-  #mode: live
+  # mode: live
 
   # Credentials for Classic APIs
-  #app_id: APP-80W284485P519543T
-  #username: calixtodaniel_api1.gmail.com
-  #password: DSG2N7ZTJELQUNWL
-  #signature: ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv
+  app_id: APP-8TU98166249274123
+  username: admin_api1.vitrineonline.com
+  password: DKJVG8KMXTBFWZFT
+  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY
   # # With Certificate
   # cert_path: "config/cert_key.pem"
   #sandbox_email_address:  calixtodaniel@mail.com
@@ -23,21 +23,14 @@
 
   # verbose_logging: true
 
-  #development:
-  #<<: *default
+  development:
+  <<: *default
 
-  #production:
-  #<<: *default
-  #mode: live
-
-
+  production:
+  <<: *default
+  mode: live
 
 
 
 
-    #PayPal::SDK.configure(
-#  :mode      => "live",  # Set "live" for production
- # :app_id    => "Abkh6ZginWQ3UPu22C0JNT5lh6nivSJdgi83dB4UULnxTNxA4lFlCsHUwBtBo6ywimJtwApythzi79Le",
- # :username  => "calixtodaniel_api1.gmail.com",
- # :password  => "DSG2N7ZTJELQUNWL",
- # :signature => "ApTm-PAyPlvJvccJvw3u97zEAvNNAKnr2ZdPlbdLvJvW9XEWP2Rr3Csv" )
+
