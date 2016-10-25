@@ -54,12 +54,7 @@ class OrdersController < ApplicationController
 
     require 'paypal-sdk-adaptivepayments'
 
-
-    @api = PayPal::SDK::AdaptivePayments.new
-
-
-
-    PayPal::SDK.configure(
+  PayPal::SDK.configure(
      :mode      => "live",  # Set "live" for production
      :app_id    => "APP-8TU98166249274123",
      :username  => "admin_api1.vitrineonline.com",
@@ -67,6 +62,11 @@ class OrdersController < ApplicationController
      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY" )
 
 
+    @api = PayPal::SDK::AdaptivePayments.new
+
+
+
+  
 
     order = Order.find(params[:id])
     store_amount = (order.total_price * configatron.store_fee).round(2)
@@ -86,7 +86,7 @@ class OrdersController < ApplicationController
         :receiver => [{
           :email =>  order.product.vitrine.policy.paypal,
           :amount => seller_amount,
-          :primary => true,
+          :primary => false,
        # },
        # {
           :email => configatron.paypal.merchant, 
