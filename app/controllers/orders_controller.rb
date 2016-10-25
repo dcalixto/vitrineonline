@@ -1,10 +1,9 @@
 # encoding: utf-8
 
 class OrdersController < ApplicationController
-  # skip_before_filter :authorize, only: :ipn_notification
-  #  protect_from_forgery except: [:ipn_notification]
-  # cache_sweeper :order_sweeper
-
+   skip_before_filter :authorize, only: :ipn_notification
+    protect_from_forgery except: [:ipn_notification]
+  
   def purchased
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
@@ -52,83 +51,46 @@ class OrdersController < ApplicationController
   end
 
   def buy
-
-    #require 'paypal-sdk-adaptivepayments'
-
-
-    @api = PayPal::SDK::AdaptivePayments.new
-
-
-
-    #PayPal::SDK.configure(
-    # :mode      => "live",  # Set "live" for production
-    # :app_id    => "APP-8TU98166249274123",
-    # :username  => "admin_api1.vitrineonline.com",
-    # :password  => "DKJVG8KMXTBFWZFT",
-    # :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY" )
-
-
+    pay_request = PaypalAdaptive::Request.new
 
     order = Order.find(params[:id])
     store_amount = (order.total_price * configatron.store_fee).round(2)
     seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
+    data = {
+      'returnUrl' => carts_url,
+      'requestEnvelope' => { 'errorLanguage' => 'pt_BR' },
+      'currencyCode' => 'BRL',
+      'receiverList' => {
+        'receiver' => [
+          { 'email' => order.product.vitrine.policy.paypal, 'amount' => seller_amount, 'primary' => false },
+          { 'email' => configatron.paypal.merchant, 'amount' => store_amount, 'primary' => false }
 
+        ]
+      },
+      'memo' => order.product.name,
+      'feesPayer' => 'SENDER',
+      'cancelUrl' => carts_url,
+      'actionType' => 'PAY',
+      'ipnNotificationUrl' => ipn_notification_order_url(order)
+    }
 
+    pay_response = pay_request.pay(data)
 
-    @pay = @api.build_pay({
-      :actionType => "PAY",
-      :cancelUrl => carts_url,
-      :currencyCode => "BRL",
-      :feesPayer => "SENDER",
-      :ipnNotificationUrl => ipn_notification_order_url(order),
-
-      :receiverList => {
-        :receiver => [{
-          :email =>  order.product.vitrine.policy.paypal,
-          :amount => seller_amount,
-          :primary => false
-        },
-        {
-          :email => configatron.paypal.merchant, 
-          :amount => store_amount, 
-          :primary => false  }] },
-
-
-
-
-          :returnUrl => carts_url })
-
-
-
-
-          @response = @api.pay(@pay)
-
-          # Access response
-          if @response.success? && @response.payment_exec_status != "ERROR"
-            @response.payKey
-            @api.payment_url(@response)  # Url to complete payment
-          else
-            @response.error[0].message
-            redirect_to fail_order_path(order)
-
-          end
-
-
-
-
+    if pay_response.success?
+      redirect_to pay_response.approve_paypal_payment_url
+    else
+      logger.info pay_response
+      redirect_to fail_order_path(order)
+    end
   end
 
   def fail
   end
 
   def ipn_notification
-
-    @ipn = PayPal::SDK::IpnNotification.new
-
-
-
-    @ipn.send_back(request.raw_post)
+    ipn = PaypalAdaptive::IpnNotification.new
+    ipn.send_back(request.raw_post)
 
     if ipn.verified?
       order = Order.find(params[:id])
@@ -149,6 +111,7 @@ class OrdersController < ApplicationController
 
     render nothing: true
   end
+
 
   def sent
     order = Order.find(params[:id])

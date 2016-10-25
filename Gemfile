@@ -123,7 +123,7 @@ gem 'md_emoji'
 
 
 # PAYMENT
-#gem 'paypal_adaptive'
+gem 'paypal_adaptive'
 gem 'paypal-sdk-adaptivepayments'
 gem 'configatron' # , '3.1.3'
 gem 'prawn'#, '1.0.0.rc2'
