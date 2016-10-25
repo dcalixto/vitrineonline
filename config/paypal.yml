@@ -9,12 +9,12 @@ development: &default
   # # with certificate
   # cert_path: "config/cert_key.pem"
   # # with token authentication
-   token: ESTy2hio5WJQo1iixkH29I53RJxaS0Gvno1A6.YQXZgktxbY4I2Tdg
-   token_secret: ZKPhUYuwJwYsfWdzorozWO2U9pI
+  # token: ESTy2hio5WJQo1iixkH29I53RJxaS0Gvno1A6.YQXZgktxbY4I2Tdg
+  # token_secret: ZKPhUYuwJwYsfWdzorozWO2U9pI
   # # with Proxy
   # http_proxy: http://proxy-ipaddress:3129/
   # # with device ip address
-   device_ipaddress: "127.0.0.1"
+  #device_ipaddress: "127.0.0.1"
   
   test:
     <<: *default
