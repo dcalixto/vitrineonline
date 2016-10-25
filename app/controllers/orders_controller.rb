@@ -1,8 +1,8 @@
 # encoding: utf-8
 
 class OrdersController < ApplicationController
- # skip_before_filter :authorize, only: :ipn_notification
-#  protect_from_forgery except: [:ipn_notification]
+  # skip_before_filter :authorize, only: :ipn_notification
+  #  protect_from_forgery except: [:ipn_notification]
   # cache_sweeper :order_sweeper
 
   def purchased
@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
       #  @q = Order.joins(:user, :cart).where('status = ?', current_user.id, cart.id, params[:status] || Order.statuses[0]).ransack(params[:q])
       # @q = Order.where('buyer_id = ? and status = ?', current_user.id, params[:status] || Order.statuses[0]).ransack(params[:q])
       @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
-       end
+    end
   end
 
   def sold
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
       redirect_to :back
       flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
     end
-     end
+  end
 
   def update
     order = Order.find(params[:id])
@@ -53,66 +53,66 @@ class OrdersController < ApplicationController
 
   def buy
 
-#require 'paypal-sdk-adaptivepayments'
-
-  
-@api = PayPal::SDK::AdaptivePayments.new
+    #require 'paypal-sdk-adaptivepayments'
 
 
-
-#PayPal::SDK.configure(
- # :mode      => "live",  # Set "live" for production
- # :app_id    => "APP-8TU98166249274123",
- # :username  => "admin_api1.vitrineonline.com",
- # :password  => "DKJVG8KMXTBFWZFT",
- # :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY" )
+    @api = PayPal::SDK::AdaptivePayments.new
 
 
 
-  order = Order.find(params[:id])
+    #PayPal::SDK.configure(
+    # :mode      => "live",  # Set "live" for production
+    # :app_id    => "APP-8TU98166249274123",
+    # :username  => "admin_api1.vitrineonline.com",
+    # :password  => "DKJVG8KMXTBFWZFT",
+    # :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY" )
+
+
+
+    order = Order.find(params[:id])
     store_amount = (order.total_price * configatron.store_fee).round(2)
     seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
 
 
 
-@pay = @api.build_pay({
-  :actionType => "PAY",
-  :cancelUrl => carts_url,
-  :currencyCode => "BRL",
-  :feesPayer => "SENDER",
-  :ipnNotificationUrl => ipn_notification_order_url(order),
+    @pay = @api.build_pay({
+      :actionType => "PAY",
+      :cancelUrl => carts_url,
+      :currencyCode => "BRL",
+      :feesPayer => "SENDER",
+      :ipnNotificationUrl => ipn_notification_order_url(order),
 
-  :receiverList => {
-    :receiver => [{
-      :email =>  order.product.vitrine.policy.paypal,
-      :amount => seller_amount,
-      :primary => false
-    },
-    {
-      :email => configatron.paypal.merchant, 
-      :amount => store_amount, 
-      :primary => false  }] },
-
-
-
-
-  :returnUrl => carts_url })
+      :receiverList => {
+        :receiver => [{
+          :email =>  order.product.vitrine.policy.paypal,
+          :amount => seller_amount,
+          :primary => false
+        },
+        {
+          :email => configatron.paypal.merchant, 
+          :amount => store_amount, 
+          :primary => false  }] },
 
 
 
 
-@response = @api.pay(@pay)
+          :returnUrl => carts_url })
 
-# Access response
-if @response.success? && @response.payment_exec_status != "ERROR"
-  @response.payKey
-  @api.payment_url(@response)  # Url to complete payment
-else
-  @response.error[0].message
-    redirect_to fail_order_path(order)
 
-end
+
+
+          @response = @api.pay(@pay)
+
+          # Access response
+          if @response.success? && @response.payment_exec_status != "ERROR"
+            @response.payKey
+            @api.payment_url(@response)  # Url to complete payment
+          else
+            @response.error[0].message
+            redirect_to fail_order_path(order)
+
+          end
 
 
 
@@ -123,8 +123,8 @@ end
   end
 
   def ipn_notification
- 
-@ipn = PayPal::SDK::IpnNotification.new
+
+    @ipn = PayPal::SDK::IpnNotification.new
 
 
 
@@ -163,7 +163,7 @@ end
 
       order.save
       redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}",
-                  flash: { success: 'Estado Mudado' }
+      flash: { success: 'Estado Mudado' }
     end
   end
 
@@ -172,7 +172,7 @@ end
 
   def calculate_ship
     frete = Correios::Frete::Calculador.new cep_origem: '23970-000',
-                                            cep_destino: params[:post_code]
+      cep_destino: params[:post_code]
     servicos = frete.calcular :sedex, :pac
     @pac = servicos[:pac].valor
     @sedex = servicos[:sedex].valor
