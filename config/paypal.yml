@@ -1,30 +1,23 @@
 development: &default
- username: jb-us-seller_api1.paypal.com
- password: WX4WTU3S8MY44S7F
- signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
- app_id: APP-80W284485P519543T
-# http_timeout: 30
- mode: sandbox
- sandbox_email_address: Platform.sdk.seller@gmail.com
-  # # with certificate
-  # cert_path: "config/cert_key.pem"
-  # # with token authentication
-  # token: ESTy2hio5WJQo1iixkH29I53RJxaS0Gvno1A6.YQXZgktxbY4I2Tdg
-  # token_secret: ZKPhUYuwJwYsfWdzorozWO2U9pI
-  # # with Proxy
-  # http_proxy: http://proxy-ipaddress:3129/
-  # # with device ip address
-  #device_ipaddress: "127.0.0.1"
-  
-  test:
-    <<: *default
-  
-  production:
-   mode: live
-   username: admin_api1.vitrineonline.com
-   password: DKJVG8KMXTBFWZFT
-   signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY
-   app_id: APP-8TU98166249274123
+  username: jb-us-seller_api1.paypal.com
+  password: WX4WTU3S8MY44S7F
+  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+  app_id: APP-80W284485P519543T
+  # http_timeout: 30
+  mode: sandbox
+  sandbox_email_address: Platform.sdk.seller@gmail.com
+
+
+test:
+  <<: *default
+
+
+production:
+  mode: live
+  username: admin_api1.vitrineonline.com
+  password: DKJVG8KMXTBFWZFT
+  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY
+  app_id: APP-8TU98166249274123
 
 
 
