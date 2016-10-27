@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
 
   def buy
 
-   
+   require 'paypal-sdk-adaptivepayments'
 
     @api = PayPal::SDK::AdaptivePayments.new
 
@@ -78,9 +78,9 @@ class OrdersController < ApplicationController
         :receiver => [{
           :email =>  order.product.vitrine.policy.paypal,
           :amount => seller_amount,
-          :primary => true
-        },
-        {
+          :primary => true,
+      #  },
+       # {
           :email => configatron.paypal.merchant, 
           :amount => store_amount, 
           :primary => false  }] },
@@ -115,8 +115,8 @@ class OrdersController < ApplicationController
 
   def ipn_notification
 
-    @ipn = PayPal::SDK::IpnNotification.new
-
+    #@ipn = PayPal::SDK::IpnNotification.new
+PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
 
 
     @ipn.send_back(request.raw_post)
