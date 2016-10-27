@@ -11,9 +11,7 @@ development: &default
 test:
   <<: *default
 
-
-production:
-  <<: *default
+production: 
   mode: live
   username: admin_api1.vitrineonline.com
   password: DKJVG8KMXTBFWZFT
