@@ -83,7 +83,7 @@ class OrdersController < ApplicationController
         {
           :email => configatron.paypal.merchant, 
           :amount => store_amount, 
-          :secondary => true  }] },
+          :primary => false  }] },
 
 
 
