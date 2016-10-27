@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
 
       :receiverList => {
         :receiver => [{
-          :email =>  order.product.vitrine.policy.paypal,
+          :email =>  "calixtomariaa@gmail.com",
           :amount => seller_amount,
           :primary => true},
          {:email => "admin@vitrineonline.com",
@@ -84,7 +84,7 @@ class OrdersController < ApplicationController
           :primary => false}]},
           :returnUrl => carts_url })
 
-
+#order.product.vitrine.policy.paypal
          # configatron.paypal.merchant
           @response = @api.pay(@pay)
 
