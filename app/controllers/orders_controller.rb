@@ -54,8 +54,8 @@ class OrdersController < ApplicationController
 
    require 'paypal-sdk-adaptivepayments'
 
-   # @api = PayPal::SDK::AdaptivePayments.new
-    @api = PayPal::SDK::AdaptivePayments::API.new
+    @api = PayPal::SDK::AdaptivePayments.new
+    
 
 
   
@@ -77,10 +77,10 @@ class OrdersController < ApplicationController
       :receiverList => {
         :receiver => [{
           :email =>  order.product.vitrine.policy.paypal,
-          :amount => seller_amount,
+          :amount => 10,
           :primary => true},
          {:email => configatron.paypal.merchant,
-          :amount => store_amount, 
+          :amount => 20, 
           :primary => false}]},
           :returnUrl => carts_url })
 
