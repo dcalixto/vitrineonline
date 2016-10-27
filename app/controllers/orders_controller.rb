@@ -53,12 +53,18 @@ class OrdersController < ApplicationController
   def buy
 
    require 'paypal-sdk-adaptivepayments'
+
+   # @api = PayPal::SDK::AdaptivePayments.new
+    @api = PayPal::SDK::AdaptivePayments::API.new
+
+
+  
+
     order = Order.find(params[:id])
     store_amount = (order.total_price * configatron.store_fee).round(2)
     seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
 
-    @api = PayPal::SDK::AdaptivePayments.new
 
 
     @pay = @api.build_pay({
