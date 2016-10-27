@@ -116,12 +116,13 @@ class OrdersController < ApplicationController
   def ipn_notification
 
     #@ipn = PayPal::SDK::IpnNotification.new
-PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
 
+#ipn.verified?
 
-    @ipn.send_back(request.raw_post)
+   # @ipn.send_back(request.raw_post)
 
-    if ipn.verified?
+    if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
+logger.info("IPN message: VERIFIED")
       order = Order.find(params[:id])
       if order
         if params[:status] == 'COMPLETED'
