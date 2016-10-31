@@ -1,9 +1,9 @@
 # encoding: utf-8
 
 class OrdersController < ApplicationController
-   skip_before_filter :authorize, only: :ipn_notification
-    protect_from_forgery except: [:ipn_notification]
-  
+  skip_before_filter :authorize, only: :ipn_notification
+  protect_from_forgery except: [:ipn_notification]
+
   def purchased
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
@@ -52,52 +52,51 @@ class OrdersController < ApplicationController
 
   def buy
 
-require 'paypal-sdk-adaptivepayments'
-PayPal::SDK.configure(
-  :mode      => "live",  # Set "live" for production
-  :app_id    => "APP-80W284485P519543T",
-  :username  => "admin_api1.vitrineonline.com",
-  :password  => "8CYZME3C4YAEJVD2",
-  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A" )
+    require 'paypal-sdk-adaptivepayments'
+    PayPal::SDK.configure(
+      :mode      => "live",  # Set "live" for production
+      :app_id    => "APP-8TU98166249274123",
+      :username  => "admin_api1.vitrineonline.com",
+      :password  => "8CYZME3C4YAEJVD2",
+      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A" )
 
-    order = Order.find(params[:id])
-    store_amount = (order.total_price * configatron.store_fee).round(2)
-    seller_amount = (order.total_price - store_amount) + order.shipping_cost
+      order = Order.find(params[:id])
+      store_amount = (order.total_price * configatron.store_fee).round(2)
+      seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
-    @api = PayPal::SDK::AdaptivePayments.new
-
-   
+      @api = PayPal::SDK::AdaptivePayments.new
 
 
 
-    @pay = @api.build_pay({
-      :actionType => "PAY",
-      :cancelUrl => carts_url,
-      :currencyCode => "BRL",
-      :feesPayer => "SENDER",
-      :ipnNotificationUrl => ipn_notification_order_url(order),
 
-      :receiverList => {
-        :receiver => [{
-          :email =>  order.product.vitrine.policy.paypal,
-          :amount => seller_amount,
-          :primary => true},
-         {:email => configatron.paypal.merchant,
-          :amount => store_amount, 
-          :primary => false}]},
-          :returnUrl => carts_url })
+      @pay = @api.build_pay({
+        :actionType => "PAY",
+        :cancelUrl => carts_url,
+        :currencyCode => "BRL",
+        :feesPayer => "SENDER",
+        :ipnNotificationUrl => ipn_notification_order_url(order),
 
-          @response = @api.pay(@pay)
+        :receiverList => {
+          :receiver => [{
+            :email =>  order.product.vitrine.policy.paypal,
+            :amount => seller_amount,
+            :primary => true},
+            {:email => configatron.paypal.merchant,
+             :amount => store_amount, 
+             :primary => false}]},
+             :returnUrl => carts_url })
 
-          # Access response
-          if @response.success? && @response.payment_exec_status != "ERROR"
-            @response.payKey
-           redirect_to @api.payment_url(@response)  # Url to complete payment
-          else
-            @response.error[0].message
-            redirect_to fail_order_path(order)
+             @response = @api.pay(@pay)
 
-          end
+             # Access response
+             if @response.success? && @response.payment_exec_status != "ERROR"
+               @response.payKey
+               redirect_to @api.payment_url(@response)  # Url to complete payment
+             else
+               @response.error[0].message
+               redirect_to fail_order_path(order)
+
+             end
 
 
 
@@ -111,12 +110,12 @@ PayPal::SDK.configure(
 
     #@ipn = PayPal::SDK::IpnNotification.new
 
-#ipn.verified?
+    #ipn.verified?
 
-   # @ipn.send_back(request.raw_post)
+    # @ipn.send_back(request.raw_post)
 
     if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
-logger.info("IPN message: VERIFIED")
+      logger.info("IPN message: VERIFIED")
       order = Order.find(params[:id])
       if order
         if params[:status] == 'COMPLETED'
@@ -138,7 +137,7 @@ logger.info("IPN message: VERIFIED")
 
 
 
-  
+
   def sent
     order = Order.find(params[:id])
     transaction = Transaction.find_by_id(params[:id])
