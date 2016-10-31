@@ -52,20 +52,21 @@ class OrdersController < ApplicationController
 
   def buy
 
-  # require 'paypal-sdk-adaptivepayments'
-
-       
-
-
-  
-
-    
-
-    @api = PayPal::SDK::AdaptivePayments.new
+require 'paypal-sdk-adaptivepayments'
+PayPal::SDK.configure(
+  :mode      => "live",  # Set "live" for production
+  :app_id    => "APP-80W284485P519543T",
+  :username  => "admin_api1.vitrineonline.com",
+  :password  => "8CYZME3C4YAEJVD2",
+  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A" )
 
     order = Order.find(params[:id])
     store_amount = (order.total_price * configatron.store_fee).round(2)
     seller_amount = (order.total_price - store_amount) + order.shipping_cost
+
+    @api = PayPal::SDK::AdaptivePayments.new
+
+   
 
 
 
