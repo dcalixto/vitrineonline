@@ -124,7 +124,7 @@ gem 'md_emoji'
 
 # PAYMENT
 #gem 'paypal_adaptive'
-gem 'paypal-sdk-adaptivepayments',  github: "jrasanen/adaptivepayments-sdk-ruby"
+gem 'paypal-sdk-adaptivepayments',  github: "chornodid/adaptivepayments-sdk-ruby"
 gem 'configatron' # , '3.1.3'
 gem 'prawn'#, '1.0.0.rc2'
 #gem 'mymoip'
