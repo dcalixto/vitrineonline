@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/chornodid/adaptivepayments-sdk-ruby.git
+  revision: 4b4a4317921869b9e836eb09358c6b1386940669
+  specs:
+    paypal-sdk-adaptivepayments (1.117.1)
+      paypal-sdk-core (~> 0.3.0)
+
+GIT
   remote: https://github.com/dcalixto/admin_interface.git
   revision: c4eb77b39764d5387b640b32089015f98804ec3f
   specs:
@@ -76,13 +83,6 @@ GIT
     social-share-button (0.1.10)
       coffee-rails
       sass-rails
-
-GIT
-  remote: https://github.com/jrasanen/adaptivepayments-sdk-ruby.git
-  revision: e89f90506545563ead69261eb6f88cb93b4e4622
-  specs:
-    paypal-sdk-adaptivepayments (1.117.1)
-      paypal-sdk-core (~> 0.3.0)
 
 GEM
   remote: http://rubygems.org/
