@@ -52,10 +52,9 @@ class OrdersController < ApplicationController
 
   def buy
 
-   require 'paypal-sdk-adaptivepayments'
+  # require 'paypal-sdk-adaptivepayments'
 
-    @api = PayPal::SDK::AdaptivePayments.new
-    
+       
 
 
   
@@ -66,6 +65,7 @@ class OrdersController < ApplicationController
 
 
 
+    @api = PayPal::SDK::AdaptivePayments.new
 
     @pay = @api.build_pay({
       :actionType => "PAY",
@@ -76,16 +76,14 @@ class OrdersController < ApplicationController
 
       :receiverList => {
         :receiver => [{
-          :email =>  "calixtomariaa@gmail.com",
-          :amount => seller_amount,
+          :email =>  order.product.vitrine.policy.paypal,
+         # :amount => seller_amount,
           :primary => true},
-         {:email => "admin@vitrineonline.com",
-          :amount => store_amount, 
+         {:email => configatron.paypal.merchant,
+         # :amount => store_amount, 
           :primary => false}]},
           :returnUrl => carts_url })
 
-#order.product.vitrine.policy.paypal
-         # configatron.paypal.merchant
           @response = @api.pay(@pay)
 
           # Access response
