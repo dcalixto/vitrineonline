@@ -1,22 +1,22 @@
-development: #&default
-  username: admin_api1.vitrineonline.com
-  password: DKJVG8KMXTBFWZFT
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY
-  app_id: APP-80W284485P519543T
+#development: &default
+#  username: admin_api1.vitrineonline.com
+#  password: DKJVG8KMXTBFWZFT
+#  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AWU78If4EWNK1xJLuqvuBIF7s3dY
+#  app_id: APP-80W284485P519543T
   # http_timeout: 30
   # mode: sandbox
-  sandbox_email_address: admin-facilitator@vitrineonline.com
+  # sandbox_email_address: admin-facilitator@vitrineonline.com
 
 
-test:
-  #<<: *default
+  #test:
+  #  <<: *default
 
-production: 
-  mode: live
-  username: admin_api1.vitrineonline.com
-  password: 8CYZME3C4YAEJVD2
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A
-  app_id: APP-8TU98166249274123
+  #production: 
+  #  mode: live
+  # username: admin_api1.vitrineonline.com
+  # password: 8CYZME3C4YAEJVD2
+  # signature: AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A
+  # app_id: APP-8TU98166249274123
 
 
 
