@@ -1,6 +1,6 @@
 # encoding: utf-8
  
-
+require 'paypal-sdk-adaptivepayments'
 
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
@@ -59,8 +59,7 @@ class OrdersController < ApplicationController
       store_amount = (order.total_price * configatron.store_fee).round(2)
       seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
-     # @api = PayPal::SDK::AdaptivePayments.new
-@api = PayPal::SDK::AdaptivePayments::API.new
+      @api = PayPal::SDK::AdaptivePayments.new
 
       
 
@@ -87,14 +86,14 @@ class OrdersController < ApplicationController
              # Access response
              if @response.success? && @response.payment_exec_status != "ERROR"
                @response.payKey
-               redirect_to @api.payment_url(@response)  # Url to complete payment
+               @api.payment_url(@response)  # Url to complete payment
              else
                @response.error[0].message
                redirect_to fail_order_path(order)
 
              end
 
-
+#redirect_to 
 
 
   end
