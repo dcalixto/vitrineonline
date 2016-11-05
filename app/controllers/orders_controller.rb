@@ -1,4 +1,6 @@
 # encoding: utf-8
+ 
+
 
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
@@ -52,24 +54,15 @@ class OrdersController < ApplicationController
 
   def buy
 
-    require 'paypal-sdk-adaptivepayments'
-
-
-    PayPal::SDK.configure(
-      :mode      => "live",  # Set "live" for production
-      :app_id    => "APP-8TU98166249274123",
-      :username  => "admin_api1.vitrineonline.com",
-      :password  => "8CYZME3C4YAEJVD2",
-      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A" )
-
-
-
-      @api = PayPal::SDK::AdaptivePayments.new
-
 
       order = Order.find(params[:id])
       store_amount = (order.total_price * configatron.store_fee).round(2)
       seller_amount = (order.total_price - store_amount) + order.shipping_cost
+
+     # @api = PayPal::SDK::AdaptivePayments.new
+@api = PayPal::SDK::AdaptivePayments::API.new
+
+      
 
 
       @pay = @api.build_pay({
@@ -111,11 +104,7 @@ class OrdersController < ApplicationController
 
   def ipn_notification
 
-    #@ipn = PayPal::SDK::IpnNotification.new
-
-    #ipn.verified?
-
-    # @ipn.send_back(request.raw_post)
+ 
 
     if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
       logger.info("IPN message: VERIFIED")
