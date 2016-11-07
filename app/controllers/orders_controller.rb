@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'httparty'
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
   protect_from_forgery except: [:ipn_notification]
@@ -51,7 +52,7 @@ class OrdersController < ApplicationController
 
   def buy
  
-
+ include HTTParty
     
     pay_request = HTTParty.post('https://svcs.paypal.com/AdaptivePayments/Pay',
   :body =>
