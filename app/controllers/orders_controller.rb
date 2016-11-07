@@ -90,7 +90,7 @@ class OrdersController < ApplicationController
 
 
 
-  pay_response = pay_request.pay(data)
+  pay_response = pay_request.pay#(data)
 
     if pay_response.success?
       redirect_to pay_response.approve_paypal_payment_url
