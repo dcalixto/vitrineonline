@@ -130,7 +130,7 @@ gem 'prawn'#, '1.0.0.rc2'
 #gem 'mymoip'
 
 
-
+gem "httparty"
 
 
 # ADMIN & SECURITY
