@@ -50,8 +50,10 @@ class OrdersController < ApplicationController
   end
 
   def buy
- 
- #include HTTParty
+
+    order = Order.find(params[:id])
+    store_amount = (order.total_price * configatron.store_fee).round(2)
+    seller_amount = (order.total_price - store_amount) + order.shipping_cost
     
     pay_request = HTTParty.post('https://svcs.paypal.com/AdaptivePayments/Pay',
   :body =>
