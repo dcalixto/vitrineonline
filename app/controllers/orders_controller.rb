@@ -50,31 +50,45 @@ class OrdersController < ApplicationController
   end
 
   def buy
- pay_request = PaypalAdaptive::Request.new
+ 
 
-    order = Order.find(params[:id])
-    store_amount = (order.total_price * configatron.store_fee).round(2)
-    seller_amount = (order.total_price - store_amount) + order.shipping_cost
-
-    data = {
-      'returnUrl' => carts_url,
-      'requestEnvelope' => { 'errorLanguage' => 'pt_BR' },
-      'currencyCode' => 'BRL',
-      'receiverList' => {
-        'receiver' => [
-          { 'email' => order.product.vitrine.policy.paypal, 'amount' => seller_amount, 'primary' => true },
-          { 'email' => configatron.paypal.merchant, 'amount' => store_amount, 'primary' => false }
+    
+    pay_request = HTTParty.post('https://svcs.paypal.com/AdaptivePayments/Pay',
+  :body =>
+    {:actionType => "PAY",
+     :currencyCode => "BRL",
+     :receiverList => {
+       :receiver => [
+          { :email => order.product.vitrine.policy.paypal, 'amount' => seller_amount, 'primary' => true },
+          { :email => configatron.paypal.merchant, 'amount' => store_amount, 'primary' => false }
 
         ]
       },
-      'memo' => order.product.name,
-      'feesPayer' => 'SENDER',
-      'cancelUrl' => carts_url,
-      'actionType' => 'PAY',
-      'ipnNotificationUrl' => ipn_notification_order_url(order)
-    }
+      :memo => order.product.name,
+      :feesPayer => 'SENDER',
+      :ipnNotificationUrl => ipn_notification_order_url(order),
 
-    pay_response = pay_request.pay(data)
+     :returnUrl =>  carts_url,
+     :cancelUrl =>  carts_url,
+     :requestEnvelope => {
+       :errorLanguage => "pt_BR",
+       :detailLevel => "ReturnAll"}
+     },
+     :headers => {
+       "X-PAYPAL-SECURITY-USERID" => "admin_api1.vitrineonline.com",
+       "X-PAYPAL-SECURITY-PASSWORD" => "8CYZME3C4YAEJVD2",
+       "X-PAYPAL-SECURITY-SIGNATURE" => "AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A",
+       "X-PAYPAL-APPLICATION-ID" => "APP-8TU98166249274123",
+       "X-PAYPAL-REQUEST-DATA-FORMAT" => "JSON",
+       "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON"
+     }
+ )
+    
+
+
+
+
+  pay_response = pay_request.pay(data)
 
     if pay_response.success?
       redirect_to pay_response.approve_paypal_payment_url
@@ -83,6 +97,9 @@ class OrdersController < ApplicationController
       redirect_to fail_order_path(order)
     end
 
+    
+    
+  
   end
 
   def fail
