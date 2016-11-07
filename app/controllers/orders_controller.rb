@@ -1,5 +1,4 @@
 # encoding: utf-8
-require 'httparty'
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
   protect_from_forgery except: [:ipn_notification]
