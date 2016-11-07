@@ -89,8 +89,10 @@ class OrdersController < ApplicationController
 
 
 
+         # key = key.payKey if key.respond_to?(:payKey)
+        #  redirect_url(:cmd => "_ap-payment", :paykey => key.to_s)
 
-  pay_response = pay_request.pay#(data)
+  pay_response = pay_request#.pay#(data)
 
     if pay_response.success?
       redirect_to pay_response.approve_paypal_payment_url
