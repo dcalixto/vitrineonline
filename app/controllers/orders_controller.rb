@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def buy
+  def pay
 
    @api = PayPal::SDK::AdaptivePayments.new
 
