@@ -1,34 +1,17 @@
-#production: &default
+production: &default
 
-  # Credentials for REST APIs
-  # client_id: EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM
-  #client_secret: EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM
+   mode: live
+   app_id: APP-8TU98166249274123
+   username: admin_api1.vitrineonline.com
+   password: 8CYZME3C4YAEJVD2
+   signature: AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A
 
-  # Mode can be 'live' or 'sandbox'
-  # mode: live
+development:
+   <<: *default
 
-  # Credentials for Classic APIs
-  # app_id: APP-8TU98166249274123
-  # username: admin_api1.vitrineonline.com
-  # password: 8CYZME3C4YAEJVD2
-  # signature: AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A
-  # # With Certificate
-  # cert_path: "config/cert_key.pem"
-  #sandbox_email_address: Platform.sdk.seller@gmail.com
-
-  # # IP Address
-  # ip_address: 127.0.0.1
-  # # HTTP Proxy
-  # http_proxy: http://proxy-ipaddress:3129/
-
-  # verbose_logging: true
-
-  #development:
-  # <<: *default
-
-  #test:
-  #  <<: *default
-  # mode: sandbox
+test:
+   <<: *default
+   mode: sandbox
 
 
 
