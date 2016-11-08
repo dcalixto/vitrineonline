@@ -107,26 +107,24 @@ class OrdersController < ApplicationController
                redirect_to fail_order_path(order)
 
              end
-
-#redirect_to 
-
-
-
   end
+
+
+  
   def fail
   end
 
   def ipn_notification
-    ipn = PayPal::SDK::Core::API::IPN.new
+   # ipn = PayPal::SDK::Core::API::IPN.new
     
-    ipn.send_back(request.raw_post)
+    #ipn.send_back(request.raw_post)
 
 
  if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
       logger.info("IPN message: VERIFIED")
 
 
-    if ipn.verified?
+   # if ipn.verified?
       order = Order.find(params[:id])
       if order
         if params[:status] == 'COMPLETED'
