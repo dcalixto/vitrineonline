@@ -80,10 +80,10 @@ class OrdersController < ApplicationController
             :amount => "50",
 
             :primary => true},
-            {#:email => configatron.paypal.merchant,
-            :email => "admin@vitrineonline.com",
+            #:email => configatron.paypal.merchant,
+            {:email => "admin@vitrineonline.com",
 
-             :amount => store_amount, 
+            # :amount => store_amount, 
              
              :amount => "60", 
              :primary => false}]},
@@ -97,7 +97,7 @@ class OrdersController < ApplicationController
              # Access response
              if @response.success? && @response.payment_exec_status != "ERROR"
                @response.payKey
-              redirect_to @api.payment_url(@response)  # Url to complete payment
+              redirect_to  @api.payment_url(@response)  # Url to complete payment
              else
                @response.error[0].message
                redirect_to fail_order_path(order)
