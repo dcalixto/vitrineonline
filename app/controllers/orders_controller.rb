@@ -1,7 +1,7 @@
 # encoding: utf-8
 class OrdersController < ApplicationController
-  skip_before_filter :authorize, only: :ipn_notification
-  protect_from_forgery except: [:ipn_notification]
+  #skip_before_filter :authorize, only: :ipn_notification
+ # protect_from_forgery except: [:ipn_notification]
 
   def purchased
     if current_user.cart
@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def pay
+  def buy
 
    @api = PayPal::SDK::AdaptivePayments.new
 
@@ -59,12 +59,6 @@ class OrdersController < ApplicationController
     store_amount = (order.total_price * configatron.store_fee).round(2)
     seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
-
-
-  
-     
-
-      
 
 
       @pay = @api.build_pay({
@@ -103,9 +97,9 @@ class OrdersController < ApplicationController
   end
 
   def ipn_notification
-   # ipn = PayPal::SDK::Core::API::IPN.new
+    ipn = PayPal::SDK::Core::API::IPN.new
     
-    #ipn.send_back(request.raw_post)
+    ipn.send_back(request.raw_post)
 
 
  if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)

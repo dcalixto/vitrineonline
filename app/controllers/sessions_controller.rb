@@ -17,8 +17,9 @@ class SessionsController < ApplicationController
 
         
       else
-        cookies[:auth_token] = { :value => user.auth_token, httponly: true, :expires => Time.now + 3600 }
+        cookies[:auth_token] = { :value => user.auth_token }
 
+ #httponly: true, :expires => 1.year.from_now
       end
       redirect_to root_url #, :notice => "Logado!"
     else

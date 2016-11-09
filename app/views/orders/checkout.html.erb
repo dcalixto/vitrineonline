@@ -207,7 +207,7 @@
                         <tr class="checkout_bottom">
                           <td></td>
                           <td id="pay_cell">
-                            <%= button_to("Comprar", pay_order_path(@order), method: :get, class: 'btn big') unless @order.shipping_cost.nil? %>
+                            <%= button_to("Comprar", buy_order_path(@order), method: :get, class: 'btn big') unless @order.shipping_cost.nil? %>
                           </td>
                         </tr>
                       </table>
