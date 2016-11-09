@@ -129,7 +129,8 @@ gem 'configatron' # , '3.1.3'
 gem 'prawn'#, '1.0.0.rc2'
 #gem 'mymoip'
 
-
+gem 'paypal-sdk-rest'
+gem 'paypal-express', '~> 0.8.1'
 
 
 

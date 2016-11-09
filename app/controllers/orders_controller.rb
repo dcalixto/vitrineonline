@@ -51,14 +51,17 @@ class OrdersController < ApplicationController
 
   def buy
 
+
+ order = Order.find(params[:id])
+    #store_amount = (order.total_price * configatron.store_fee).round(2)
+    #seller_amount = (order.total_price - store_amount) + order.shipping_cost
+
+
    @api = PayPal::SDK::AdaptivePayments.new
 
 
 
-    order = Order.find(params[:id])
-    store_amount = (order.total_price * configatron.store_fee).round(2)
-    seller_amount = (order.total_price - store_amount) + order.shipping_cost
-
+   
 
 
       @pay = @api.build_pay({
@@ -70,13 +73,24 @@ class OrdersController < ApplicationController
 
         :receiverList => {
           :receiver => [{
-            :email =>  order.product.vitrine.policy.paypal,
-            :amount => seller_amount,
+           # :email =>  order.product.vitrine.policy.paypal,
+            :email =>  "calixtomariaa@gmail.com",
+
+           # :amount => seller_amount,
+            :amount => "50",
+
             :primary => true},
-            {:email => configatron.paypal.merchant,
+            {#:email => configatron.paypal.merchant,
+            :email => "admin@vitrineonline.com",
+
              :amount => store_amount, 
+             
+             :amount => "60", 
              :primary => false}]},
              :returnUrl => carts_url })
+
+
+ begin
 
              @response = @api.pay(@pay)
 
@@ -90,6 +104,7 @@ class OrdersController < ApplicationController
 
              end
   end
+ end
 
 
   
