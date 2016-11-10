@@ -1,6 +1,7 @@
 
 development:
-  server: "http://localhost:9292/faye"
+  port: 9292
+  server: "http://52.87.228.48:80/faye/faye"
   secret_token: "d2f2f7d32e82677504b3bf101b09be369eb2139"
   signature_expiration: 86400 # one day
 
