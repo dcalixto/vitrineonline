@@ -77,7 +77,7 @@ class OrdersController < ApplicationController
             :email =>  "calixtomariaa@gmail.com",
 
            # :amount => seller_amount,
-            :amount => "50",
+            :amount => "1",
 
             :primary => true},
             #:email => configatron.paypal.merchant,
@@ -85,7 +85,7 @@ class OrdersController < ApplicationController
 
             # :amount => store_amount, 
              
-             :amount => "60", 
+             :amount => "1", 
              :primary => false}]},
              :returnUrl => carts_url })
 
