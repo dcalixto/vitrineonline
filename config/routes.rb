@@ -150,7 +150,7 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
 
     member do
       get :checkout
-      get :buy
+      post :buy
       post :ipn_notification
       get :fail
       get :fail2
