@@ -90,20 +90,18 @@ class OrdersController < ApplicationController
              :returnUrl => carts_url })
 
 
- begin
 
              @response = @api.pay(@pay)
 
              # Access response
              if @response.success? && @response.payment_exec_status != "ERROR"
-               @response.payKey
+               #@response.payKey
               redirect_to  @api.payment_url(@response)  # Url to complete payment
              else
                @response.error[0].message
                redirect_to fail_order_path(order)
 
              end
-  end
  end
 
 
