@@ -82,15 +82,15 @@ end
     @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
     @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
-     @colors_for_dropdown = @product.colors.product(:name).collect{ |co| [co.name, co.id]}
+    # @colors_for_dropdown = @product.colors.product.collect{ |co| [co.name, co.id]}
   
      
-      @sizes_for_dropdown = @product.sizes.product(:name).collect{ |s| [s.size, s.id]}
+    #  @sizes_for_dropdown = @product.sizes.product(:name).collect{ |s| [s.size, s.id]}
 
-     #  @colors_for_dropdown = @product.colors.collect { |co| [co.name, co.id] }
+       @colors_for_dropdown = @product.colors.collect { |co| [co.name, co.id] }
     
   
-   # @sizes_for_dropdown = @product.sizes.collect { |s| [s.size, s.id] }
+    @sizes_for_dropdown = @product.sizes.collect { |s| [s.size, s.id] }
 
     @q = Feedback.by_participant(@product, Feedback::FROM_BUYERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
