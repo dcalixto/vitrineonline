@@ -19,8 +19,8 @@ class Product < ActiveRecord::Base
   belongs_to :condition
   belongs_to :brand
 
-  has_many :sizeship
-  has_many :sizes, through: :sizeship
+  has_many :sizeships
+  has_many :sizes, through: :sizeships
 
   has_many :colorship
   has_many :colors, through: :colorship

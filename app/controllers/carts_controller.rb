@@ -10,9 +10,9 @@ class CartsController < ApplicationController
     if product
      if product.buyable?(current_user)
         current_user.cart = Cart.new #if current_user.cart.nil?
-        color = product.color_ids += [params[:id]] 
-        size =  product.size_ids += [params[:id]] 
+        color = product.colorships.colors.name
 
+        size =  product.sizeships.sizes.size
         condition = Condition.find_by_id(params[:condition_id])
         material = Material.find_by_id(params[:material_id])
         brand = Brand.find_by_id(params[:brand_id])
@@ -25,8 +25,8 @@ class CartsController < ApplicationController
           order.seller = product.vitrine
           order.buyer = current_user
           order.quantity = quantity
-          order.color = product.color_ids += [params[:id]]
-          order.size = product.size_ids += [params[:id]] 
+          order.color = product.colorships.colors.name
+          order.size = product.sizeships.sizes.size
           order.condition = condition
           order.material = material
           order.brand = brand
