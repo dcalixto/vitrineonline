@@ -1,14 +1,18 @@
 # encoding: utf-8
 require 'product_recommender'
 class CartsController < ApplicationController
- def add
+ 
+  
+  
+  def add
     product = Product.find(params[:id])
 
     if product
      if product.buyable?(current_user)
-        current_user.cart = Cart.new if current_user.cart.nil?
-        color = Color.find_by_id(params[:color_id])
-        size = Size.find_by_id(params[:size_id])
+        current_user.cart = Cart.new #if current_user.cart.nil?
+        color = product.color_ids += [params[:id]] 
+        size =  product.size_ids += [params[:id]] 
+
         condition = Condition.find_by_id(params[:condition_id])
         material = Material.find_by_id(params[:material_id])
         brand = Brand.find_by_id(params[:brand_id])
@@ -21,8 +25,8 @@ class CartsController < ApplicationController
           order.seller = product.vitrine
           order.buyer = current_user
           order.quantity = quantity
-          order.color = color
-          order.size = size
+          order.color = product.color_ids += [params[:id]]
+          order.size = product.size_ids += [params[:id]] 
           order.condition = condition
           order.material = material
           order.brand = brand
@@ -33,7 +37,7 @@ class CartsController < ApplicationController
           order.save
         end
 
-        redirect_to carts_path
+        redirect_to product_path(product)
         flash[:success] = "#{product.name} adicionado(a) a sacola"
       else
         redirect_to product_path(product)
