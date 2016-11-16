@@ -19,16 +19,16 @@ class Product < ActiveRecord::Base
   belongs_to :condition
   belongs_to :brand
 
-  has_many :sizeship
-  has_many :sizes, through: :sizeship
+  has_many :sizeships
+  has_many :sizes, through: :sizeships
 
-  has_many :colorship
-  has_many :colors, through: :colorship
+  has_many :colorships
+  has_many :colors, through: :colorships
 
   # Allow user to report others
 
 
-  accepts_nested_attributes_for :sizes, :sizeship, :colors, :colorship, :images, :brand
+  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images, :brand
   attr_accessible :images_attributes
 
   has_many :impressions, dependent: :destroy

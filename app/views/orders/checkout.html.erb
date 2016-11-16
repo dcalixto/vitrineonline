@@ -47,12 +47,15 @@
                     </li>
                     <li>Tamanho
                       <b>
-                        <%= product.sizes.map(&:size).join(' ') %></b>
+                        <%= product.sizes.find { |s| s.size }.size %></b>
                       </li>
                       <li>Cor
                         <b>
-                          <%= product.colors.map(&:name).join(' ') %></b>
-                        </li>
+                                               
+                          <%= product.colors.find { |i| i.name }.name   %>
+                          </b>
+
+                      </li>
                         <li>Material
                           <b>
                             <%= product.material.name %></b>

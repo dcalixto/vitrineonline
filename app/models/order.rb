@@ -21,9 +21,12 @@ class Order < ActiveRecord::Base
   has_one    :transaction
   belongs_to :feedback
   attr_accessible :shipping_method, :shipping_cost, :status, :quantity
+ # accepts_nested_attributes_for  :color
   validates :shipping_cost, numericality: { greater_than: 0, allow_nil: true }
 
   has_many :products, as: :orderable
+
+#has_one :color, :through => :products
 
   scope :awaiting_feedback, ->(user) { joins('left join feedbacks on feedbacks.id = orders.feedback_id').where('(buyer_id = ? and buyer_feedback_date is null) or (seller_id = ? and seller_feedback_date is null)', user.id, user.vitrine ? user.vitrine.id : 0).where('status is not null').order(:created_at) }
 
