@@ -96,9 +96,9 @@ PayPal::SDK.configure(
            # :amount => seller_amount,
             :amount => 1.0,
 
-            :primary => true},
+            :primary => true,
             #:email => configatron.paypal.merchant,
-            {:email => "admin@vitrineonline.com",
+            :email => "admin@vitrineonline.com",
 
             # :amount => store_amount, 
              
