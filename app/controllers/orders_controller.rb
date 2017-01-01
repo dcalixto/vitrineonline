@@ -1,5 +1,4 @@
 # encoding: utf-8
-require 'paypal-sdk-adaptivepayments'
 class OrdersController < ApplicationController
   #skip_before_filter :authorize, only: :ipn_notification
  # protect_from_forgery except: [:ipn_notification]
@@ -53,6 +52,7 @@ class OrdersController < ApplicationController
   def buy
 order = Order.find(params[:id])
     
+require 'paypal-sdk-adaptivepayments'
 
 PayPal::SDK.configure(
   :mode      => "live",  # Set "live" for production
