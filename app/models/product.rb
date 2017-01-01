@@ -8,12 +8,13 @@ class Product < ActiveRecord::Base
   belongs_to :vitrine
   belongs_to :category
   belongs_to :subcategory
-  has_many :orders
+ # has_many :orders
   has_many :images, dependent: :destroy
 
-  has_many :feedbacks, through: :orders
+  has_many :feedbacks, through: :orders, :as => :orderable
 
   has_many :reports, as: :reportable
+  has_many :orders, as: :orderable
   belongs_to :gender
   belongs_to :material
   belongs_to :condition
@@ -24,14 +25,15 @@ class Product < ActiveRecord::Base
 
   has_many :colorships
   has_many :colors, through: :colorships
-
+ belongs_to :productable, polymorphic: true
   # Allow user to report others
 
 
   accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images, :brand
   attr_accessible :images_attributes
 
-  has_many :impressions, dependent: :destroy
+  #has_many :impressions, dependent: :destroy
+has_many :impressions,  as: :impressionable, dependent: :destroy
 
   attr_accessible  :name, :detail, :price, :color_id, :gender_id,
                    :category_id, :subcategory_id, :material_id, :condition_id,

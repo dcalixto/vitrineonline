@@ -26,7 +26,7 @@
 </div>
 
 <div class="box9  white">
-
+ <%= form_tag  add_to_carts_path(@product),  :method => :post  do |f| %>
   <div class"content">
 
 
@@ -147,7 +147,7 @@
 
    
 
-    <div class="content">
+   
 
       <ul>
         <li>
@@ -169,6 +169,8 @@
             <b>Cor</b>&nbsp;
 
             <%= select_tag :color_id, options_for_select(@colors_for_dropdown.unshift(['Selecionar Cor', nil])) %>
+
+
 
        <span>
 
@@ -206,8 +208,7 @@
 
             <div class="add_to_car">
 
-              <%= button_to("Adicionar a sacola",add_to_carts_path(@product), :class => 'btn btn_big', :'data-submit-form' => true) do %>
-
+              <%= submit_tag("Adicionar a sacola", :class => 'btn btn_big', :'data-submit-form' => true) do %>
               <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
               <%end %>
 
@@ -227,7 +228,9 @@
         </ul>
 
       </div>
-    </div>
+      <%end %>
+
+   
 
   </div>
 </div>

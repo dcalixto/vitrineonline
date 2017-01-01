@@ -2,34 +2,37 @@
 require 'product_recommender'
 class CartsController < ApplicationController
  
-  
-  
+    
   def add
     product = Product.find(params[:id])
 
     if product
      if product.buyable?(current_user)
         current_user.cart = Cart.new #if current_user.cart.nil?
-        color = product.colors.find { |c| c.id } 
-        size =  product.sizes.find { |s| s.id } 
+        color = Color.find_by_id(params[:color_id])
 
-        condition = Condition.find_by_id(params[:condition_id])
-        material = Material.find_by_id(params[:material_id])
-        brand = Brand.find_by_id(params[:brand_id])
+        size =  Size.find_by_id(params[:size_id])
+     
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
-       order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id(product.id, nil, product.colors.nil? ? nil :  product.colors.find { |f| f.id } , product.sizes.nil? ? nil : product.sizes.find { |l| l.id } )
+       order = current_user.cart.orders.find_by_product_id_and_status(product.id, nil)
 
+
+ 
 
 
         if order.nil? # create new order
+          
           order = Order.new
           order.product = product
           order.seller = product.vitrine
           order.buyer = current_user
           order.quantity = quantity
-          order.color =   product.colors.find { |g| g.id } 
-          order.size = product.sizes.find { |k| k.id } 
-
+         # order.color =     order.colors.find(&:id)
+            
+          
+          order.color = Color.find_by_id(params[:color_id])
+             
+          order.size = size
           order.condition = condition
           order.material = material
           order.brand = brand
@@ -50,6 +53,15 @@ class CartsController < ApplicationController
     else
       redirect_to :vitrines, flash[:error] = 'Produto não existe'
     end
+ 
+  
+  puts "product: #{product.inspect}"
+  puts "size: #{product.sizes.inspect}"
+   puts "Color: #{product.colors.inspect}"
+
+  puts "Order: #{order.inspect}"
+  puts "Cart: #{current_user.cart.inspect}"
+
   end
 
 
@@ -82,6 +94,9 @@ class CartsController < ApplicationController
       flash[:error] = 'erro'
      end
   end
+
+
+
 end
 
 

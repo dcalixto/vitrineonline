@@ -14,6 +14,7 @@ class CreateVitrines < ActiveRecord::Migration
       t.string   :address_supplement
       t.float    :latitude
       t.float    :longitude
+      t.integer   :impressions_count
 
       t.timestamps
     end

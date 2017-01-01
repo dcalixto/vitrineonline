@@ -10,7 +10,11 @@ class Vitrine < ActiveRecord::Base
   has_many :products, dependent: :destroy
 
   has_one :marketing, dependent: :destroy
-  has_many :views, dependent: :destroy
+ # has_many :views, dependent: :destroy
+
+has_many :impressions,  as: :impressionable, dependent: :destroy
+
+
 
   has_many :feedbacks, dependent: :destroy
 

@@ -10,8 +10,8 @@ class Order < ActiveRecord::Base
   belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
   belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User'
   belongs_to :product, touch: true
-  belongs_to :color
-  belongs_to :size
+ # belongs_to :color
+  #belongs_to :size
   belongs_to :material
   belongs_to :gender
   belongs_to :category
@@ -24,7 +24,7 @@ class Order < ActiveRecord::Base
  # accepts_nested_attributes_for  :color
   validates :shipping_cost, numericality: { greater_than: 0, allow_nil: true }
 
-  has_many :products, as: :orderable
+#  has_many :products, as: :orderable
 
 #has_one :color, :through => :products
 

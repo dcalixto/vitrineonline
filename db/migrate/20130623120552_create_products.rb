@@ -11,13 +11,15 @@ class CreateProducts < ActiveRecord::Migration
       t.integer  :subcategory_id,                                              :null => false
       t.integer  :material_id
       t.integer  :condition_id
-      t.integer  :size_id
-      t.integer  :color_id
+      t.integer   :impressions_count
       t.integer  :brand_id
       t.string   :meta_keywords
       t.integer  :quantity,                                                     :default => 0
       t.string   :status
       t.string   :current_step
+      t.integer :productable_id, polymorphic: true
+      t.string :productable_type, polymorphic: true
+      
       t.timestamps
     end
     add_index :products, :slug
@@ -30,5 +32,9 @@ class CreateProducts < ActiveRecord::Migration
     add_index :products, :color_id
     add_index :products, :brand_id
     add_index :products, :gender_id
+ 
+   add_index :products, [:productable_id, :productable_type]
+  
+  
   end
 end

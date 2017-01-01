@@ -3,6 +3,7 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
       t.integer :orderable_id, polymorphic: true
       t.string :orderable_type, polymorphic: true
+           
       t.integer :cart_id
       t.integer :seller_id
       t.integer :buyer_id

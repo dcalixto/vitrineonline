@@ -224,16 +224,16 @@ protected
   def log_view
    ip_addr = request.remote_ip
    @vitrine = Vitrine.cached_find(params[:id])
-   @views = @vitrine.views.group(:ip_address).size[ip_addr]
-   if @views
-     if @views >= 1
+   @impressions = @vitrine.impressions.group(:ip_address).size[ip_addr]
+   if @impressions
+     if @impressions >= 1
        return false
 
      else
-       @vitrine.views.create(:ip_address => ip_addr)
+       @vitrine.impressions.create(:ip_address => ip_addr)
      end
    else
-     @vitrine.views.create(:ip_address => ip_addr)
+     @vitrine.impressions.create(:ip_address => ip_addr)
    end
   end
 

@@ -57,6 +57,21 @@ class OrdersController < ApplicationController
     #seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
 
+
+
+require 'paypal-sdk-adaptivepayments'
+PayPal::SDK.configure(
+  :mode      => "live",  # Set "live" for production
+  :app_id    => "APP-8TU98166249274123",
+  :username  => "admin_api1.vitrineonline.com",
+
+  :password  => "8CYZME3C4YAEJVD2",
+  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A" )
+
+
+
+
+
    @api = PayPal::SDK::AdaptivePayments.new
 
 
@@ -77,7 +92,7 @@ class OrdersController < ApplicationController
             :email =>  "calixtomariaa@gmail.com",
 
            # :amount => seller_amount,
-            :amount => "1",
+            :amount => 1.0,
 
             :primary => true},
             #:email => configatron.paypal.merchant,
@@ -85,7 +100,7 @@ class OrdersController < ApplicationController
 
             # :amount => store_amount, 
              
-             :amount => "1", 
+             :amount => 1.0, 
              :primary => false}]},
              :returnUrl => carts_url })
 
@@ -95,8 +110,8 @@ class OrdersController < ApplicationController
 
              # Access response
              if @response.success? && @response.payment_exec_status != "ERROR"
-               #@response.payKey
-              redirect_to  @api.payment_url(@response)  # Url to complete payment
+               @response.payKey
+               @api.payment_url(@response)  # Url to complete payment
              else
                @response.error[0].message
                redirect_to fail_order_path(order)

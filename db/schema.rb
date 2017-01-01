@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160723054932) do
+ActiveRecord::Schema.define(:version => 20161118031015) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -183,12 +183,12 @@ ActiveRecord::Schema.define(:version => 20160723054932) do
 
   create_table "impressions", :force => true do |t|
     t.string   "ip_address"
-    t.integer  "product_id", :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "impressionable_id"
+    t.string   "impressionable_type"
+    t.integer  "impressions_count"
   end
-
-  add_index "impressions", ["product_id"], :name => "index_impressions_on_product_id"
 
   create_table "marketings", :force => true do |t|
     t.string   "ad"
@@ -330,6 +330,7 @@ ActiveRecord::Schema.define(:version => 20160723054932) do
     t.datetime "updated_at",                                                             :null => false
     t.boolean  "is_shared_on_facebook",                               :default => false
     t.boolean  "is_shared_on_twitter",                                :default => false
+    t.integer  "impressions_count"
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
