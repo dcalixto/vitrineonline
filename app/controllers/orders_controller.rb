@@ -52,45 +52,63 @@ class OrdersController < ApplicationController
   def buy
 order = Order.find(params[:id])
     
-
-  
-  require 'paypal-sdk-adaptivepayments'
+require 'paypal-sdk-adaptivepayments'
 PayPal::SDK.configure(
-  :mode      => "sandbox",  # Set "live" for production
-  :app_id    => "APP-80W284485P519543T",
-  :username  => "jb-us-seller_api1.paypal.com",
-  :password  => "WX4WTU3S8MY44S7F",
-  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy" )
+  :mode      => "live",  # Set "live" for production
+  :app_id    => "APP-8TU98166249274123",
+  :username  => "admin_api1.vitrineonline.com",
 
-@api = PayPal::SDK::AdaptivePayments.new
+  :password  => "8CYZME3C4YAEJVD2",
+  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A" )
 
-# Build request object
-@pay = @api.build_pay({
-  :actionType => "PAY",
-  :cancelUrl => "http://localhost:3000/samples/adaptive_payments/pay",
-  :currencyCode => "USD",
-  :feesPayer => "SENDER",
-  :ipnNotificationUrl => "http://localhost:3000/samples/adaptive_payments/ipn_notify",
-  :receiverList => {
-    :receiver => [{
-      :amount => 1.0,
-      :email => "platfo_1255612361_per@gmail.com" }] },
-  :returnUrl => "http://localhost:3000/samples/adaptive_payments/pay" })
+ 
+    #store_amount = (order.total_price * configatron.store_fee).round(2)
+    #seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
-# Make API call & get response
-@response = @api.pay(@pay)
 
-# Access response
-if @response.success? && @response.payment_exec_status != "ERROR"
-  @response.payKey
-  @api.payment_url(@response)  # Url to complete payment
-else
-  @response.error[0].message
-end
-  
-  
-  
-  end
+
+   @api = PayPal::SDK::AdaptivePayments.new
+
+
+      @pay = @api.build_pay({
+        :actionType => "PAY",
+        :cancelUrl => carts_url,
+        :currencyCode => "BRL",
+        :feesPayer => "SENDER",
+        :ipnNotificationUrl => ipn_notification_order_url(order),
+
+        :receiverList => {
+          :receiver => [{
+           # :email =>  order.product.vitrine.policy.paypal,
+            :email =>  "calixtomariaa@gmail.com",
+
+           # :amount => seller_amount,
+            :amount => 1.0,
+
+            :primary => true,
+            #:email => configatron.paypal.merchant,
+            :email => "admin@vitrineonline.com",
+
+            # :amount => store_amount, 
+             
+             :amount => 1.0, 
+             :primary => false}]},
+             :returnUrl => carts_url })
+
+
+
+             @response = @api.pay(@pay)
+
+             # Access response
+             if @response.success? && @response.payment_exec_status != "ERROR"
+               @response.payKey
+               @api.payment_url(@response)  # Url to complete payment
+             else
+               @response.error[0].message
+               redirect_to fail_order_path(order)
+
+             end
+ end
 
 
   

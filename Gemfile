@@ -124,13 +124,12 @@ gem 'md_emoji'
 
 # PAYMENT
 #gem 'paypal_adaptive'
-gem 'paypal-sdk-adaptivepayments'
+gem 'paypal-sdk-adaptivepayments', :ref => '8fb732630247a141d0a5e374da5d640429c56f30'
 gem 'configatron' # , '3.1.3'
 gem 'prawn'#, '1.0.0.rc2'
 #gem 'mymoip'
 
-gem 'paypal-sdk-rest'
-gem 'paypal-express', '~> 0.8.1'
+
 
 
 
