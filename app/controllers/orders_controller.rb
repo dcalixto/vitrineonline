@@ -55,8 +55,8 @@ order = Order.find(params[:id])
 
 
  
-    #store_amount = (order.total_price * configatron.store_fee).round(2)
-    #seller_amount = (order.total_price - store_amount) + order.shipping_cost
+    store_amount = (order.total_price * configatron.store_fee).round(2)
+    seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
 
 
@@ -72,19 +72,19 @@ order = Order.find(params[:id])
 
         :receiverList => {
           :receiver => [{
-           # :email =>  order.product.vitrine.policy.paypal,
-            :email =>  "calixtomariaa@gmail.com",
+            :email =>  order.product.vitrine.policy.paypal,
+           # :email =>  "calixtomariaa@gmail.com",
 
-           # :amount => seller_amount,
-            :amount => 1.0,
+            :amount => seller_amount,
+           # :amount => 1.0,
 
             :primary => true,
-            #:email => configatron.paypal.merchant,
-            :email => "admin@vitrineonline.com",
+            :email => configatron.paypal.merchant,
+           # :email => "admin@vitrineonline.com",
 
-            # :amount => store_amount, 
+             :amount => store_amount, 
              
-             :amount => 1.0, 
+            # :amount => 1.0, 
              :primary => false}]},
              :returnUrl => carts_url })
 
