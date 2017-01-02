@@ -206,7 +206,7 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem 'bullet'
+  gem 'bullet', github: "dcalixto/bullet", :tag => '5.4.3'
   gem 'ruby_gntp'
   gem 'brakeman'
   gem 'better_errors'

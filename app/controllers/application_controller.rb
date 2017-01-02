@@ -9,12 +9,12 @@ class ApplicationController < ActionController::Base
   include VitrinesHelper
   include AnnouncementsHelper
 
- # before_filter :strict_transport_security
- # def strict_transport_security
-  #  if request.ssl?
-    #  response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
-  #  end
- # end
+  before_filter :strict_transport_security
+  def strict_transport_security
+    if request.ssl?
+      response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    end
+  end
 
  
   after_filter :user_activity

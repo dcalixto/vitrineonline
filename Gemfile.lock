@@ -13,6 +13,15 @@ GIT
       rails (>= 3.1.0)
 
 GIT
+  remote: https://github.com/dcalixto/bullet.git
+  revision: 31792175a6dee7dfe11b75f56d33fb39791fa7eb
+  tag: 5.4.3
+  specs:
+    bullet (5.4.3)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
+
+GIT
   remote: https://github.com/dcalixto/dynamic_selectable.git
   revision: 546717f51ff2ff3ea30c59fe8fd2ad32cb6f6040
   specs:
@@ -135,9 +144,6 @@ GEM
       sassy-maps (< 1.0.0)
     buftok (0.2.0)
     builder (3.0.4)
-    bullet (5.5.0)
-      activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.10.0)
     callsite (0.0.11)
     canonical_dude (2.1.0)
       rails (>= 3.2)
@@ -513,7 +519,7 @@ DEPENDENCIES
   binding_of_caller
   brakeman
   breakpoint (~> 2.7.0)
-  bullet
+  bullet!
   canonical_dude
   carrierwave (~> 0.9.0)
   coffee-rails

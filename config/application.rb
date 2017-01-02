@@ -55,7 +55,7 @@ config.autoload_paths += %W(#{config.root}/app/sweepers)
 
     config.assets.version = '1.0'
 
-
+    config.middleware.use Rack::Attack
 
 
   end
