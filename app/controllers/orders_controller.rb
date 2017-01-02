@@ -78,8 +78,8 @@ order = Order.find(params[:id])
             :amount => seller_amount,
            # :amount => 1.0,
 
-            :primary => true,
-            :email => configatron.paypal.merchant,
+            :primary => true},
+            { :email => configatron.paypal.merchant,
            # :email => "admin@vitrineonline.com",
 
              :amount => store_amount, 
