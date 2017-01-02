@@ -95,7 +95,7 @@ order = Order.find(params[:id])
              # Access response
              if @response.success? && @response.payment_exec_status != "ERROR"
                @response.payKey
-               @api.payment_url(@response)  # Url to complete payment
+               redirect_to @api.payment_url(@response)  # Url to complete payment
              else
                @response.error[0].message
                redirect_to fail_order_path(order)
