@@ -99,8 +99,11 @@ gem 'correios-frete'
 
 # DEPLOY
 
-gem 'mina',  github: "dcalixto/mina"
-gem 'mina-newrelic'
+gem 'mina', github: "dcalixto/mina-1", :tag => 'v1.0.6' 
+
+
+
+#,  github: "dcalixto/mina", 
 #gem 'mina-foreman', github: "dcalixto/mina-foreman"
 # SHIPPING & PROMO CODE
 
@@ -171,8 +174,8 @@ gem 'memcached-manager'
 #MAILER
 
 gem 'resque', github: "dcalixto/resque"
-#gem 'resque_mailer',  github: "dcalixto/resque_mailer"
-#gem 'resque-web',   require: 'resque_web', github: "dcalixto/resque-web"
+gem 'resque_mailer',  github: "dcalixto/resque_mailer"
+gem 'resqueweb',   require: 'resque_web', github: "dcalixto/resqueweb"
 
 
 gem "sinatra", require: 'sinatra/base'
@@ -220,9 +223,6 @@ end
 
 
 
-#BACKUP
-#gem "backup" , :require => false
-#gem "whenever" , :require => false
 
 #MAILER
 gem  'premailer'
