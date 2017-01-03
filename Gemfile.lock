@@ -60,6 +60,12 @@ GIT
       rack (~> 1.4)
 
 GIT
+  remote: https://github.com/dcalixto/resque-web.git
+  revision: 885077cde43542f65e5a12c589ad8ccaad2899d0
+  specs:
+    resque-web (0.1.0)
+
+GIT
   remote: https://github.com/dcalixto/resque.git
   revision: df9dea4dc319e1675919cdd0539d213117c72701
   specs:
@@ -76,12 +82,6 @@ GIT
   specs:
     resque_mailer (2.2.7)
       actionmailer (>= 3.0)
-
-GIT
-  remote: https://github.com/dcalixto/resqueweb.git
-  revision: 25c5bdb5c60662b3b5aac186a85b3a1b890bc030
-  specs:
-    resqueweb (0.1.0)
 
 GIT
   remote: https://github.com/dcalixto/searchkick.git
@@ -585,8 +585,8 @@ DEPENDENCIES
   ransack
   redcarpet
   resque!
+  resque-web!
   resque_mailer!
-  resqueweb!
   rollbar (~> 2.13.2)
   rubocop
   ruby_gntp
