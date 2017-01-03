@@ -60,12 +60,6 @@ GIT
       rack (~> 1.4)
 
 GIT
-  remote: https://github.com/dcalixto/resque-web.git
-  revision: 885077cde43542f65e5a12c589ad8ccaad2899d0
-  specs:
-    resque-web (0.1.0)
-
-GIT
   remote: https://github.com/dcalixto/resque.git
   revision: df9dea4dc319e1675919cdd0539d213117c72701
   specs:
@@ -585,7 +579,6 @@ DEPENDENCIES
   ransack
   redcarpet
   resque!
-  resque-web!
   resque_mailer!
   rollbar (~> 2.13.2)
   rubocop
@@ -594,8 +587,6 @@ DEPENDENCIES
   searchkick!
   select2-rails
   simple_form
-  sinatra
-  sinatra-contrib (~> 1.3.2)
   social-share-button!
   sqlite3
   test-unit (~> 3.0)
