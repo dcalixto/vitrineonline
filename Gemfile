@@ -175,7 +175,7 @@ gem 'memcached-manager'
 
 gem 'resque', github: "dcalixto/resque"
 gem 'resque_mailer',  github: "dcalixto/resque_mailer"
-gem 'resque-web',    github: "dcalixto/resque-web", require: 'resque_web'
+gem 'resque-web',    github: "dcalixto/resque-web"#, require: 'resque_web'
 
 
 gem "sinatra", require: 'sinatra/base'
