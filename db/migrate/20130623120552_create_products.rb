@@ -28,7 +28,7 @@ class CreateProducts < ActiveRecord::Migration
     add_index :products, :subcategory_id
     add_index :products, :material_id
     add_index :products, :condition_id
-    add_index :products, :size_id
+  
     add_index :products, :color_id
     add_index :products, :brand_id
     add_index :products, :gender_id
