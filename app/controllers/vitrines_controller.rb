@@ -233,7 +233,7 @@ protected
        @vitrine.impressions.create(:ip_address => ip_addr)
      end
    else
-     @vitrine.impressions.create(:ip_address => ip_addr)
+    # @vitrine.impressions.create(:ip_address => ip_addr)
    end
   end
 

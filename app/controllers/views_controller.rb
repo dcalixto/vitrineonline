@@ -16,7 +16,7 @@ class ViewsController < ApplicationController
   protected
 
   def prepare_stats(start_time, end_time)
-    result = current_vitrine.views.stats(start_time..end_time).to_a.map(&:serializable_hash)
+    result = current_vitrine.impressions.stats(start_time..end_time).to_a.map(&:serializable_hash)
     start_time.to_date.upto(end_time.to_date) do |date|
       result << { count: 0, day: date } unless result.any? { |s| s['day'] == date.to_formatted_s(:db) }
     end

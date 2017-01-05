@@ -9,74 +9,22 @@
 
 
 
-<div class="box1">
+<div class="box11">
   
-<div id="user_header">
-  <div id="user-banner">
-
-
-    <%if @user.vitrine %>
-      <%= image_tag(@user.vitrine.marketing.banner.url(:thumb).to_s) %>
-    <% else %>
-      <%= image_tag(@user.banner.url(:thumb).to_s) %>
-    <% end %>
-     </div>
-
-         <div class="user_logo-container">
-                <div class="user_logo">
+                <div >
 
   <%= image_tag(@user.avatar.url(:thumb).to_s) %>
 
                  </div>
-   </div>
-
-
-
-
-
-  <div class="user_header_share_links">
-  <ul>
-<li>
-           <%if @user.facebook %>
-
-          <%=link_to "https://www.facebook.com/#{@user.facebook}" do %>
-<%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
-<% end %>
-<% end %>
-
-      
-        
-        </li>
-
-
-
-   <li>
-           <%if @user.twitter %>
-
-          <%=link_to "https://www.twitter.com/#{@user.twitter}" do %>
-<%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
-<% end %>
-<% end %>
-
-      
-        
-      
-
-
-</li>
-    </ul>
-</div>
+  
 
 
 
 
 
 
-
-
-
-   <div id="user_header_info_links">
-     <h2>
+<div class="user_info">
+  <h2>
 
      <%=link_to user_path(@user) do %>
      <%=@user.name %>
@@ -85,7 +33,45 @@
 
    </h2>
 
-<ul>
+
+   <ul class="profile_list">
+<li>
+           <#%if @user.facebook %>
+
+          <#%=link_to "https://www.facebook.com/#{@user.facebook}" do %>
+<#%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
+<#% end %>
+<#% end %>
+
+      
+        
+        </li>
+
+
+
+   <li>
+           <#%if @user.twitter %>
+
+          <#%=link_to "https://www.twitter.com/#{@user.twitter}" do %>
+<#%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
+<#% end %>
+<#% end %>
+
+      
+        
+      
+
+
+</li>
+   
+
+
+
+
+
+
+
+   
   <% cache"user_info_box" do %>
 
      <li>
@@ -129,14 +115,36 @@
  </div>
 
 
-</div>
-</div>
 
 
+<% unless @user.city.blank? %>
+    <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@user.address}" %>
+    <% end %>
+
+</div>
 
 
 <div class="box3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div class ="block">
+
+
+
+
 
     <%= bettertabs :simpletabs do |tab| %>
       <%= tab.link :feedbacks, 'Resumo' do %>
@@ -154,11 +162,7 @@
 
 </div>
 
-<div class="box11">
-    <% unless @user.city.blank? %>
-    <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@user.address}" %>
-    <% end %>
-</div>
+
 
 
 

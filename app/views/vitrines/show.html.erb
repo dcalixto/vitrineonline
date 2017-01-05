@@ -1,24 +1,26 @@
 <% title  @vitrine.name %>
 <div class="container">
 
-<div class="box1">
+<div class="box11">
   <%= render 'shared/flash_messages' %>
-  <div id="vitrine_header">
-    <div id="vitrine_banner">
-
-      <%= image_tag(@vitrine.marketing.banner.url(:thumb).to_s) %>
-    </div>
-
-    <div class="vitrine_logo-container">
-      <div class="vitrine_logo">
-
+  
+    <div >
+      
         <%= image_tag(@vitrine.logo.url(:thumb).to_s) %>
-
-      </div>
     </div>
 
-    <div class="vitrine_header_share_links">
-      <ul>
+    <div >
+
+  <h2>
+
+        <%=link_to vitrine_path(@vitrine) do %>
+        <%=@vitrine.name %>
+        <% end %>
+
+      </h2>
+
+
+      <ul class="profile_list">
         <li>
            <%if @vitrine.marketing.facebook %>
 
@@ -47,19 +49,7 @@
 
  
 
-
-      </ul>
-    </div>
-
-    <div id="vitrine_header_info_links">
-      <h2>
-
-        <%=link_to vitrine_path(@vitrine) do %>
-        <%=@vitrine.name %>
-        <% end %>
-
-      </h2>
-      <p>
+            <p>
         <%=@vitrine.marketing.slogan %></p>
       <ul>
      
@@ -117,10 +107,10 @@
 
 
 
-        <li>
-        <% if current_user  %>
+              <% if current_user  %>
                
-               
+                 <li>
+
           <% if  current_user.voted_as_when_voted_for @vitrine %>
             
           
@@ -138,9 +128,10 @@ Descutir
  <% end %>
 
   <% end %>
+  </li>
+
   <% end %>
-
-
+       
   <li>Criada em: <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => true)  %></li>
      
       
@@ -153,10 +144,48 @@ Descutir
       </ul>
     </div>
 
-  </div>
+
+    <div>
+
+
+  <h2>Estilos
+   </h2>
+  <span class="link_tag">
+
+    <ul>
+
+      <% @vitrine.tag_list.each do |tag| %>
+        <li>
+          <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
+        </li>
+
+    <% end %>
+    </ul>
+  </span>
+
+    </div>
+    <div>
+
+ <% unless @vitrine.user.city.blank? %>
+  <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@vitrine.address}" %>
+  <% end %>
+
+    </div>
 </div>
 
+
+
 <div class="box3">
+
+<div >
+    
+      <%= image_tag(@vitrine.marketing.banner.url(:thumb).to_s) %>
+    </div>
+
+
+
+
+
   <div class="block">
 
     <%= bettertabs :simpletabs do |tab| %>
@@ -184,28 +213,6 @@ Descutir
 
 </div>
 
-<div class="box11">
-<div class="subcontent">
-  <h2>Estilos
-   </h2>
-  <span class="link_tag">
-
-    <ul>
-
-      <% @vitrine.tag_list.each do |tag| %>
-        <li>
-          <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
-        </li>
-
-    <% end %>
-    </ul>
-  </span>
-  </div>
 
 </div>
-<div class="box11">
-  <% unless @vitrine.user.city.blank? %>
-  <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@vitrine.address}" %>
-  <% end %>
-</div>
-</div>
+
