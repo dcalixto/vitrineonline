@@ -27,14 +27,14 @@ class BannerUploader < CarrierWave::Uploader::Base
 
 
   version :thumb do
-    process resize_to_fit: [1060, 175]
+    process resize_to_fit: [800, 124]
     process quality: 80
 
     process :strip
   end
 
   version :mobile do
-    process resize_to_fit: [414, 165]
+    process resize_to_fit: [414, 124]
     process quality: 80
 
     process :strip
