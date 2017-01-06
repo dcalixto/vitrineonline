@@ -50,7 +50,7 @@ class SessionsController < ApplicationController
     if user.nil?
       email_domain = ''
       email_domain = '@facebook.com' if auth_hash[:provider] == 'facebook'
-      user = User.new(email: auth_hash[:info][:email] || auth_hash[:info][:nickname] + email_domain, name: auth_hash[:info][:first_name] || '', surname: auth_hash[:info][:last_name] || '',  address: auth_hash[:info][:address] || '', gender: 'I')
+      user = User.new(email: auth_hash[:info][:email] || auth_hash[:info][:nickname] + email_domain, name: auth_hash[:info][:first_name] || '', surname: auth_hash[:info][:last_name] || '',  address: auth_hash[:extra][:location] || '', gender: 'I')
       
       user.password_digest = ''
       user.save!(validate: false)
