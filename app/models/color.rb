@@ -7,4 +7,6 @@ class Color < ActiveRecord::Base
   has_many :products, :through => :colorships
   #accepts_nested_attributes_for :orders, :products
 
+
+ 
 end

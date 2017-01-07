@@ -1,9 +1,6 @@
 class Order < ActiveRecord::Base
   
-  attr_accessible :cart_id, :product_id, :purchased_at,
-                  :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method, :status
-
-  STATUSES = %w(paid sent).freeze
+   STATUSES = %w(paid sent).freeze
   belongs_to :orderable, polymorphic: true
   belongs_to :cart
 
@@ -20,8 +17,13 @@ class Order < ActiveRecord::Base
   belongs_to :condition
   has_one    :transaction
   belongs_to :feedback
-  attr_accessible :shipping_method, :shipping_cost, :status, :quantity
- # accepts_nested_attributes_for  :color
+  attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
+
+                  :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method, :status,  :color, :size
+
+   
+  
+  # accepts_nested_attributes_for  :color
   validates :shipping_cost, numericality: { greater_than: 0, allow_nil: true }
 
 #  has_many :products, as: :orderable
