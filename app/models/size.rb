@@ -5,7 +5,7 @@ class Size < ActiveRecord::Base
   has_many :sizeship
   has_many :products, :through => :sizeship
 
-has_many :orders, as: :oderable
+has_one :order, as: :oderable
 
 
 end

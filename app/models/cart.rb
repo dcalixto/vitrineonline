@@ -1,6 +1,7 @@
 class Cart < ActiveRecord::Base
   belongs_to :user,  class_name: 'User', foreign_key: 'user_id'
-  has_many :orders
+ 
+  has_many :orders, as: :orderable
 
   def subtotals
     orders.map(&:subtotal)
