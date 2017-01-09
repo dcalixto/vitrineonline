@@ -10,15 +10,15 @@ class UsersController < ApplicationController
 
     @total_from_sellers = Feedback.by_participant(@user, Feedback::FROM_SELLERS).count
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
-      @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
+    @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])    # suggestions for current visitor
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
 
     @products = Product.paginate(page: params[:page], per_page: 22)
     @vitrines = Vitrine.paginate(page: params[:page], per_page: 22)
- 
-  
+
+
   end
 
   def user_feedbacks
@@ -49,14 +49,14 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @vitrine = Vitrine.new(params[:vitrine])
 
-      if @user.save
+    if @user.save
       @user.authenticate(params[:user][:password])
       @user.update_attribute(:login_at, Time.zone.now)
       @user.update_attribute(:ip_address, request.remote_ip)
       cookies[:auth_token] = {:value => @user.auth_token, :expires => 3.month.from_now}
       redirect_to root_url
-      flash[:success] = "Bem vindo a Vitrineonline #{(@user.name)}".html_safe
-      else
+      flash[:success] = "Bem vindo a Vitrineonline #{(@user.first_name)}".html_safe
+    else
       render :new
       flash[:error] = 'Ooooppss, algo deu errado!'.html_safe
     end
@@ -80,36 +80,26 @@ class UsersController < ApplicationController
 
     @states = State.all
     @cities = City.where('state_id = ?', State.first.id)
-  
-  
-  
 
-  
+
+
+
+
   end
 
   def products
 
- @products = @user.find_up_voted_items.paginate(page: params[:page], per_page: 22)
+    @products = @user.find_up_voted_items.paginate(page: params[:page], per_page: 22)
 
- 
-
-     end
+  end
 
   def vitrines
+    @vitrines = @user.find_up_voted_items.paginate(page: params[:page], per_page: 22)
 
- @vitrines = @user.find_up_voted_items.paginate(page: params[:page], per_page: 22)
-
- 
-
-     end
+  end
 
 
 
-
-
-
-
- 
 
   def update
     @user = User.find(params[:id])
@@ -142,12 +132,6 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
-
-
-
-
-
 
 
 

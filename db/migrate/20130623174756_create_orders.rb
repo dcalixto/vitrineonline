@@ -16,11 +16,6 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :feedback_id
       t.integer :size_id
       t.integer :color_id
-      t.integer :gender_id
-      t.integer :category_id
-      t.integer :subcategory_id
-      t.integer :condition_id
-      t.integer :material_id
       t.string :track_number
 
       t.timestamps
@@ -32,11 +27,6 @@ class CreateOrders < ActiveRecord::Migration
     add_index :orders, :feedback_id
     add_index :orders, :size_id
     add_index :orders, :color_id
-    add_index :orders, :gender_id
-    add_index :orders, :category_id
-    add_index :orders, :subcategory_id
-    add_index :orders, :condition_id
-    add_index :orders, :material_id
 
     add_index :orders, [:orderable_id, :orderable_type]
   end

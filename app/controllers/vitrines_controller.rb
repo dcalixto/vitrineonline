@@ -2,7 +2,7 @@
 require 'product_recommender'
 class VitrinesController < ApplicationController
    before_filter :authorize_vitrine, only: [:edit, :update]
-   before_filter :log_view , only: [:show]
+   before_filter :log_impression, only: [:show]
 cache_sweeper :vitrine_sweeper
   def show
     @vitrine = Vitrine.cached_find(params[:id])
@@ -155,7 +155,7 @@ end
     @vitrine = current_user.build_vitrine(params[:vitrine])
     if @vitrine.save
       redirect_to(action: :edit, id: @vitrine, only_path: true)
-      flash[:success] = "#{@vitrine.name} criada com sucesso, boa sorte em seu empreendimento #{@vitrine.user.name}".html_safe
+      flash[:success] = "#{@vitrine.name} criada com sucesso, boa sorte em seu empreendimento #{@vitrine.user.first_name}".html_safe
 
     else
       render :new
@@ -221,7 +221,7 @@ end
 
 protected
 
-  def log_view
+  def log_impression
    ip_addr = request.remote_ip
    @vitrine = Vitrine.cached_find(params[:id])
    @impressions = @vitrine.impressions.group(:ip_address).size[ip_addr]
@@ -233,7 +233,7 @@ protected
        @vitrine.impressions.create(:ip_address => ip_addr)
      end
    else
-    # @vitrine.impressions.create(:ip_address => ip_addr)
+     @vitrine.impressions.create(:ip_address => ip_addr)
    end
   end
 

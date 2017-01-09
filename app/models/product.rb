@@ -8,13 +8,12 @@ class Product < ActiveRecord::Base
   belongs_to :vitrine
   belongs_to :category
   belongs_to :subcategory
- # has_many :orders
   has_many :images, dependent: :destroy
 
-  has_many :feedbacks, through: :orders, :as => :orderable
+  has_many :feedbacks, through: :ordeships
 
-  has_many :reports, as: :reportable
-  has_many :orders, as: :orderable
+  has_many :reports
+  has_many :orders
   belongs_to :gender
   belongs_to :material
   belongs_to :condition
@@ -25,20 +24,20 @@ class Product < ActiveRecord::Base
 
   has_many :colorships
   has_many :colors, through: :colorships
- belongs_to :productable, polymorphic: true
+  has_many :impressions,  as: :impressionable, dependent: :destroy
+
+# belongs_to :productable, polymorphic: true
   # Allow user to report others
-
-
-  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images, :brand
-  attr_accessible :images_attributes
-
-  #has_many :impressions, dependent: :destroy
-has_many :impressions,  as: :impressionable, dependent: :destroy
+ 
+  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images, :brand, :material 
+  
 
   attr_accessible  :name, :detail, :price, :color_id, :gender_id,
                    :category_id, :subcategory_id, :material_id, :condition_id,
                    :brand_id, :meta_keywords, :quantity, :status, :vitrine_id, :products, :price,
-                   :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook, :is_shared_on_twitter,:brand_attributes
+                   :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook,
+                   :is_shared_on_twitter,:brand_attributes, :images_attributes
+
 
   validates :name, presence: true, length: { maximum: 140 }
   validates :price, presence: true

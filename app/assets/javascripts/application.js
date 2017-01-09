@@ -45,6 +45,7 @@ NProgress.done();
 
 
 
+
 $(document).ready(function() {
 $('vitrine_about').readmore({
   speed: 75,
@@ -369,7 +370,6 @@ $(document).ready(function() {
 		hidearrows: false	//hide arrows if all of the list items are visible
 	});
 });
-
 
 
 

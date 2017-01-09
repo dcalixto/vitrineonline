@@ -9,10 +9,10 @@
       <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Montar sua vitrine e poste seus produtos sem custo</li>
     </ul>
     <ul>
-      <li><%=content_tag(:span, nil)%>Estilizar e administrar sua vitrine com facilidade</li>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Estilizar e administrar sua vitrine com facilidade</li>
     </ul>
     <ul>
-      <li><%=content_tag(:span, nil)%>Ter exposição 24hrs por dia além da capacidade de criar e fortalecer sua marca</li>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Ter exposição 24hrs por dia além da capacidade de criar e fortalecer sua marca</li>
     </ul>
   </div>
 </div>
@@ -23,14 +23,15 @@
   <%= render 'shared/error_messages', :target => @user %>
 
   <div class="block margin_top">
-    <h1>Criar Conta
-    </h1>
-    <div class="content">
+      <div class="square_box">
+    <h4>Criar Conta
+    </h4>
+    <div class="subcontent">
 
-      <%= semantic_form_for(@user)  do |f| %>
+      <%= semantic_form_for(@user, :validate => true) do |f| %>
       <%= f.inputs do %>
-      <%= f.input :name,  :label => "Nome",:required=>true %>
-      <%= f.input :surname, :label => "Sobrenome", :required=>true %>
+      <%= f.input :fisrt_name,  :label => "Nome",:required=>true %>
+      <%= f.input :last_name, :label => "Sobrenome", :required=>true %>
 
       <%= f.input :email, :as => :email, :label => "Email",:required=>true %>
       <%= f.input :password, :as => :password, :label =>  "Password", :required=>true %>
@@ -54,4 +55,6 @@
       <% end %>
     </div>
   </div>
+      </div>
 </div>
+

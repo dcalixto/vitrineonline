@@ -12,6 +12,6 @@ class CreatePolicies < ActiveRecord::Migration
       t.timestamps
     end
     add_index :policies, :vitrine_id
-    
+   add_index :policies, [:policieable_id, :policieable_type] 
   end
 end

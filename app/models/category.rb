@@ -11,8 +11,8 @@
 #
 
 class Category < ActiveRecord::Base
-  #extend FriendlyId
-  #friendly_id :name, use: [:slugged, :history]
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
 
   belongs_to :gender
   has_many :subcategories
@@ -20,6 +20,7 @@ class Category < ActiveRecord::Base
   accepts_nested_attributes_for :products
   accepts_nested_attributes_for :subcategories
   attr_accessible :name, :gender_id
+
 
   after_commit :flush_cache
 

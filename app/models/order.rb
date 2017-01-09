@@ -2,33 +2,32 @@ class Order < ActiveRecord::Base
   
    STATUSES = %w(paid sent).freeze
   belongs_to :orderable, polymorphic: true
- # belongs_to :cart
-
+ 
   belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
   belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User'
   belongs_to :product, touch: true
- # belongs_to :color
-  #belongs_to :size
-  belongs_to :material
-  belongs_to :gender
-  belongs_to :category
-  belongs_to :subcategory
-  belongs_to :brand
-  belongs_to :condition
-  has_one    :transaction
+  belongs_to :color
+  belongs_to :size
+  belongs_to :cart
   belongs_to :feedback
-  attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
+  has_one    :transaction
+  has_many :colorships
+  has_many :sizeships
+  has_many :colors, :through => :colorships
+  has_many :sizes, :through => :sizeships
 
-                  :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method, :status,  :color, :size
+# the rest associated with polyphormic
+ # belongs_to :material
+  #belongs_to :brand
+ # belongs_to :condition
+   
+  attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
+                  :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method, 
+                  :status,  :color, :size
 
    
-  
-  # accepts_nested_attributes_for  :color
-  validates :shipping_cost, numericality: { greater_than: 0, allow_nil: true }
+    validates :shipping_cost, numericality: { greater_than: 0, allow_nil: true }
 
-#  has_many :products, as: :orderable
-
-#has_one :color, :through => :products
 
   scope :awaiting_feedback, ->(user) { joins('left join feedbacks on feedbacks.id = orders.feedback_id').where('(buyer_id = ? and buyer_feedback_date is null) or (seller_id = ? and seller_feedback_date is null)', user.id, user.vitrine ? user.vitrine.id : 0).where('status is not null').order(:created_at) }
 

@@ -30,8 +30,8 @@
 
       <%= semantic_form_for(@user, :validate => true) do |f| %>
       <%= f.inputs do %>
-      <%= f.input :name,  :label => "Nome",:required=>true %>
-      <%= f.input :surname, :label => "Sobrenome", :required=>true %>
+      <%= f.input :first_name,  :label => "Nome",:required=>true %>
+      <%= f.input :last_name, :label => "Sobrenome", :required=>true %>
 
       <%= f.input :email, :as => :email, :label => "Email",:required=>true %>
       <%= f.input :password, :as => :password, :label =>  "Password", :required=>true %>

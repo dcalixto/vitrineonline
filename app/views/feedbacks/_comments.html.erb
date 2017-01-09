@@ -1,7 +1,7 @@
 <% post.comments.each do |comment| %>
 <div class="comment">
 
-  <%= link_to comment.user.name, user_path(comment.user) %>
+  <%= link_to comment.user.first_name, user_path(comment.user) %>
   <%= comment.comment %>
 
 </div>

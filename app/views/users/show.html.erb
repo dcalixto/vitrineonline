@@ -1,4 +1,4 @@
-<% title @user.name %>
+<% title @user.first_name %>
 
 <div class="container">
 
@@ -27,8 +27,8 @@
   <h2>
 
      <%=link_to user_path(@user) do %>
-     <%=@user.name %>
-     <%=@user.surname %>
+     <%=@user.first_name %>
+     <%=@user.last_name %>
      <% end %>
 
    </h2>
@@ -36,12 +36,12 @@
 
    <ul class="profile_list">
 <li>
-           <#%if @user.facebook %>
+           <%if @user.facebook %>
 
-          <#%=link_to "https://www.facebook.com/#{@user.facebook}" do %>
-<#%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
-<#% end %>
-<#% end %>
+          <%=link_to "https://www.facebook.com/#{@user.facebook}" do %>
+<%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
+<% end %>
+<% end %>
 
       
         
@@ -50,12 +50,12 @@
 
 
    <li>
-           <#%if @user.twitter %>
+           <%if @user.twitter %>
 
-          <#%=link_to "https://www.twitter.com/#{@user.twitter}" do %>
-<#%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
-<#% end %>
-<#% end %>
+          <%=link_to "https://www.twitter.com/#{@user.twitter}" do %>
+<%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
+<% end %>
+<% end %>
 
       
         

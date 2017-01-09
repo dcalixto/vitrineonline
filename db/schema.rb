@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161118031015) do
+ActiveRecord::Schema.define(:version => 20160823161901) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -65,17 +65,10 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "colors_products", :id => false, :force => true do |t|
-    t.integer "product_id"
-    t.integer "color_id"
-  end
-
-  add_index "colors_products", ["product_id", "color_id"], :name => "index_colors_products_on_product_id_and_color_id"
-  add_index "colors_products", ["product_id"], :name => "index_colors_products_on_product_id"
-
   create_table "colorships", :force => true do |t|
     t.integer  "product_id", :null => false
     t.integer  "color_id",   :null => false
+    t.integer  "order_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -112,8 +105,8 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
 
   create_table "conversation_participants", :force => true do |t|
     t.boolean  "has_read",        :default => false
-    t.integer  "user_id",                            :null => false
-    t.integer  "conversation_id",                    :null => false
+    t.integer  "user_id"
+    t.integer  "conversation_id"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
   end
@@ -183,26 +176,26 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
 
   create_table "impressions", :force => true do |t|
     t.string   "ip_address"
+    t.integer  "product_id"
+    t.integer  "vitrine_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.integer  "impressionable_id"
     t.string   "impressionable_type"
-    t.integer  "impressions_count"
+    t.integer  "impressionable_id"
   end
+
+  add_index "impressions", ["impressionable_id", "impressionable_type"], :name => "index_impressions_on_impressionable_id_and_impressionable_type"
 
   create_table "marketings", :force => true do |t|
     t.string   "ad"
     t.integer  "vitrine_id", :null => false
-    t.string   "slogan"
     t.string   "url"
     t.string   "banner"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
     t.string   "facebook"
     t.string   "twitter"
     t.string   "instagram"
-    t.string   "youtube"
-    t.string   "pinterest"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "marketings", ["vitrine_id"], :name => "index_marketings_on_vitrine_id"
@@ -239,11 +232,6 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
     t.integer  "feedback_id"
     t.integer  "size_id"
     t.integer  "color_id"
-    t.integer  "gender_id"
-    t.integer  "category_id"
-    t.integer  "subcategory_id"
-    t.integer  "condition_id"
-    t.integer  "material_id"
     t.string   "track_number"
     t.datetime "created_at",                                                      :null => false
     t.datetime "updated_at",                                                      :null => false
@@ -251,17 +239,12 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
 
   add_index "orders", ["buyer_id"], :name => "index_orders_on_buyer_id"
   add_index "orders", ["cart_id"], :name => "index_orders_on_cart_id"
-  add_index "orders", ["category_id"], :name => "index_orders_on_category_id"
   add_index "orders", ["color_id"], :name => "index_orders_on_color_id"
-  add_index "orders", ["condition_id"], :name => "index_orders_on_condition_id"
   add_index "orders", ["feedback_id"], :name => "index_orders_on_feedback_id"
-  add_index "orders", ["gender_id"], :name => "index_orders_on_gender_id"
-  add_index "orders", ["material_id"], :name => "index_orders_on_material_id"
   add_index "orders", ["orderable_id", "orderable_type"], :name => "index_orders_on_orderable_id_and_orderable_type"
   add_index "orders", ["product_id"], :name => "index_orders_on_product_id"
   add_index "orders", ["seller_id"], :name => "index_orders_on_seller_id"
   add_index "orders", ["size_id"], :name => "index_orders_on_size_id"
-  add_index "orders", ["subcategory_id"], :name => "index_orders_on_subcategory_id"
 
   create_table "policies", :force => true do |t|
     t.integer  "policieable_id"
@@ -276,6 +259,7 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "policies", ["policieable_id", "policieable_type"], :name => "index_policies_on_policieable_id_and_policieable_type"
   add_index "policies", ["vitrine_id"], :name => "index_policies_on_vitrine_id"
 
   create_table "product_data", :force => true do |t|
@@ -319,38 +303,29 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
     t.integer  "subcategory_id",                                                         :null => false
     t.integer  "material_id"
     t.integer  "condition_id"
-    t.integer  "size_id"
-    t.integer  "color_id"
+    t.integer  "impressions_count"
     t.integer  "brand_id"
     t.string   "meta_keywords"
     t.integer  "quantity",                                            :default => 0
     t.string   "status"
     t.string   "current_step"
+    t.integer  "productable_id"
+    t.string   "productable_type"
     t.datetime "created_at",                                                             :null => false
     t.datetime "updated_at",                                                             :null => false
     t.boolean  "is_shared_on_facebook",                               :default => false
     t.boolean  "is_shared_on_twitter",                                :default => false
-    t.integer  "impressions_count"
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
   add_index "products", ["category_id"], :name => "index_products_on_category_id"
-  add_index "products", ["color_id"], :name => "index_products_on_color_id"
   add_index "products", ["condition_id"], :name => "index_products_on_condition_id"
   add_index "products", ["gender_id"], :name => "index_products_on_gender_id"
   add_index "products", ["material_id"], :name => "index_products_on_material_id"
-  add_index "products", ["size_id"], :name => "index_products_on_size_id"
+  add_index "products", ["productable_id", "productable_type"], :name => "index_products_on_productable_id_and_productable_type"
   add_index "products", ["slug"], :name => "index_products_on_slug"
   add_index "products", ["subcategory_id"], :name => "index_products_on_subcategory_id"
   add_index "products", ["vitrine_id"], :name => "index_products_on_vitrine_id"
-
-  create_table "products_sizes", :id => false, :force => true do |t|
-    t.integer "product_id"
-    t.integer "size_id"
-  end
-
-  add_index "products_sizes", ["product_id", "size_id"], :name => "index_products_sizes_on_product_id_and_size_id"
-  add_index "products_sizes", ["product_id"], :name => "index_products_sizes_on_product_id"
 
   create_table "reports", :force => true do |t|
     t.integer  "reportable_id"
@@ -411,6 +386,7 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
   create_table "sizeships", :force => true do |t|
     t.integer  "product_id", :null => false
     t.integer  "size_id",    :null => false
+    t.integer  "order_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -475,10 +451,9 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
     t.datetime "last_read_messages_at"
     t.datetime "login_at"
     t.string   "avatar"
-    t.string   "banner"
     t.string   "slug"
-    t.string   "name",                                     :null => false
-    t.string   "surname",                                  :null => false
+    t.string   "first_name",                               :null => false
+    t.string   "last_name",                                :null => false
     t.string   "gender",                                   :null => false
     t.boolean  "banned",                :default => false
     t.string   "address"
@@ -500,6 +475,8 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
     t.integer  "otp_counter"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "facebook"
+    t.string   "twitter"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
   end
@@ -515,15 +492,6 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
   add_index "users", ["slug"], :name => "index_users_on_slug"
   add_index "users", ["state_id"], :name => "index_users_on_state_id"
 
-  create_table "views", :force => true do |t|
-    t.integer  "vitrine_id", :null => false
-    t.string   "ip_address"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "views", ["vitrine_id"], :name => "index_views_on_vitrine_id"
-
   create_table "vitrines", :force => true do |t|
     t.string   "logo"
     t.string   "slug"
@@ -537,6 +505,7 @@ ActiveRecord::Schema.define(:version => 20161118031015) do
     t.string   "address_supplement"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "impressions_count"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end

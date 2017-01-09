@@ -49,8 +49,7 @@
 
  
 
-            <p>
-        <%=@vitrine.marketing.slogan %></p>
+        
       <ul>
      
 
@@ -80,7 +79,7 @@
 
         <li>
           <%= content_tag(:span, nil, :class =>"sprite-icons-small_avatar") %>
-          <%=link_to @vitrine.user.name, user_path(@vitrine.user) %>
+          <%=link_to @vitrine.user.first_name, user_path(@vitrine.user) %>
         </li>
 
         <li>
@@ -138,7 +137,7 @@ Descutir
       
       
       <li>
-          Compartilhe:<%= social_share_button_tag(truncate(@vitrine.user.name, :length => 20), :url => url_for(:action => :show, :id => @vitrine.user.id, :only_path => false))  %>
+          Compartilhe:<%= social_share_button_tag(truncate(@vitrine.user.first_name, :length => 20), :url => url_for(:action => :show, :id => @vitrine.user.id, :only_path => false))  %>
         </li>
       
       </ul>

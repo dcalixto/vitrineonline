@@ -44,7 +44,13 @@
     <h4>Mais Informações</h4>
   <div class="subcontent">
 
-  <p class="tip">Descreva seu item</p>
+    <p class="tip">Descreva seu item</p>
+<p clas="tip">
+  Adicione apenas as medidas pertinente ao produto OBS: Todas as medidas serão em Centímetros Comprimento: 67,5cm
+</p>
+
+
+
   <p clas="tip">Para inserir emojis no texto acesse
   <%=link_to nil, "http://www.emoji-cheat-sheet.com" %></p>
   <div class="wmd-panel">
@@ -85,43 +91,49 @@
 
 
 
+  </div>
 
+  <div class="subcontent">
+<h4>Tamanho</h4>
 
-
-
-    <span>
-      <b>Tamanho</b>
-    </span>
-    <%= hidden_field_tag "product[size_ids][]", nil %>
+        <%= hidden_field_tag "product[size_ids][]", nil %>
     <% Size.order(:size).each do |size| %>
     <%= check_box_tag "product[size_ids][]", size.id, @product.size_ids.include?(size.id), id: dom_id(size) %>
     <%= label_tag dom_id(size), size.size %><br>
     <% end %>
-    <span>
-      <b>Cor</b>
-    </span>
+      </div>
+
+      <div class="subcontent">
+
+<h4>Cor</h4>
     <%= hidden_field_tag "product[color_ids][]", nil %>
     <% Color.all.each do |color| %>
     <%= check_box_tag "product[color_ids][]", color.id, @product.color_ids.include?(color.id), id: dom_id(color) %>
     <%= label_tag dom_id(color), color.name %><br>
     <% end %>
+   
+    
+
+    
+    <div class="subcontent">
+ <h4>Material</h4>
+
     <ul>
    
+      <li>
+          <%=  p.collection_select :material_id, Material.all, :id, :name %>
+      </li>
 
-      <b>Material</b>&nbsp;
-      <%=  p.collection_select :material_id, Material.all, :id, :name %>
-    </li>
+       </div>
+  <div class="subcontent">
+<h4>Condição</h4>
+<ul>
     <li>
-      <b>Condição</b>&nbsp;
-      <%=  p.collection_select :condition_id, Condition.all, :id, :condition,  { :class=> 'brand_list'} %>
+           <%=  p.collection_select :condition_id, Condition.all, :id, :condition,  { :class=> 'brand_list'} %>
     </li>
      </ul>
 </div>
 </div>
-<p>
-  Adicione apenas as medidas pertinente ao produto OBS: Todas as medidas serão em Centímetros Comprimento: 67,5cm
-</p>
-
 
 
 <%= p.submit 'Vender', :class =>"btn btn_big" %>

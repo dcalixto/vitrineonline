@@ -35,6 +35,7 @@ class BannerUploader < CarrierWave::Uploader::Base
 
   version :mobile do
     process resize_to_fit: [414, 124]
+     process resize_to_fit: [361, 124]
     process quality: 80
 
     process :strip

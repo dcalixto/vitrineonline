@@ -9,7 +9,7 @@ class CreateImpressions < ActiveRecord::Migration
    t.integer  :impressionable_id, polymorphic: true    
     
     end
-     #add_index :impressions, :product_id
+   
   add_index :impressions, [:impressionable_id, :impressionable_type]
   
   end

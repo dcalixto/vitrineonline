@@ -29,7 +29,7 @@ class CartsController < ApplicationController
           #order.color = Color.find_by_id(params[:color_id])
          
           order.size = size
-         # order.color = color
+          order.color = color
          
           order.condition = condition
           order.material = material

@@ -1,4 +1,4 @@
-<% title @user.name %>
+<% title @user.first_name %>
 
 <div class="container">
 
@@ -27,8 +27,8 @@
   <h2>
 
      <%=link_to user_path(@user) do %>
-     <%=@user.name %>
-     <%=@user.surname %>
+     <%=@user.first_name %>
+     <%=@user.last_name %>
      <% end %>
 
    </h2>

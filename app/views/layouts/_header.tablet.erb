@@ -8,6 +8,11 @@
 </div>
 <% end %>
 <%=render "layouts/shop_cart" %>
+
+<div class="mobile_category">
+<%=link_to 'Categorias', departments_path%>
+</div>
+
 </div>
 </div>
 <div class=inner_blue>
@@ -16,9 +21,7 @@
 <% if current_user %>
 <%=render :partial=> "layouts/user_nav" %>
 <%end %>
-<div class="mobile_category">
-<%=link_to 'Categorias', departments_path%>
-</div>
+
 </div>
 </div>
 <div class="icons_bar">

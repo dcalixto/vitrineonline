@@ -15,8 +15,8 @@
 
   <%= link_to conversation_path(conversation.id),  :class => "message_link conversation" do %>
 
-  <%= user.name %>
-  <%= user.surname %>
+  <%= user.first_name %>
+  <%= user.last_name %>
 
   <p><%= conversation.display_message.body %></p>
   <% end %>

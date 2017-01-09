@@ -126,21 +126,18 @@ border-bottom: 1px solid #e5e5e5;
 }
 
 .block h1 {
-    margin-left: 3px;
-    margin-top: 3px;
-    color: #5a5552;
+       color: #5a5552;
     font-size: 24px;
-    padding: 10px;
+   /* padding: 10px;*/
 }
 
 .block h4 {
 
-    margin: 5px;
 
     text-decoration: none;
 
     line-height: 15px;
-    padding: 5px;
+  
     color: #333;
     font-size: 20px
 }

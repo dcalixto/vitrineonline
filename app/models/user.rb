@@ -3,7 +3,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
 
-  friendly_id :name, use: [:slugged, :history]
+  friendly_id :first_name, use: [:slugged, :history]
 
   before_create :set_last_read_messages_at
 
@@ -102,19 +102,19 @@ acts_as_voter
   end
 
   mount_uploader :avatar, AvatarUploader
-  mount_uploader :banner, BannerUploader
+ 
 
   validates_format_of :postal_code, with: /\A(\d{5})([-]{0,1})(\d{3})\Z/, allow_blank: true
 
   accepts_nested_attributes_for :vitrine, allow_destroy: true
 
-  attr_accessible :email, :confirm_token, :email_confirmation, :email_confirmed, :password, :password_confirmation, :name,
-                  :surname, :avatar, :avatar_id, :gender, :vitrine_attributes, :address, :state_id,
+  attr_accessible :email, :confirm_token, :email_confirmation, :email_confirmed, :password, :password_confirmation, :first_name,
+                  :last_name, :avatar, :avatar_id, :gender, :vitrine_attributes, :address, :state_id,
                   :city_id, :postal_code, :neighborhood, :address_supplement, :about
 
   has_secure_password
 
-  validates_presence_of :email, :password, :name, :surname, :gender, on: :create
+  validates_presence_of :email, :password, :first_name, :last_name, :gender, on: :create
 
   validates :email, email: true,
                     uniqueness: { case_sensitive: false }
@@ -124,7 +124,7 @@ acts_as_voter
                        confirmation: true,
                        if: :is_password_validation_needed?
 
-  validates :name, :surname, length: { within: 1..70 }
+  validates :first_name, :last_name, length: { within: 1..70 }
 
   validates :email, confirmation: true,
                     email: true,

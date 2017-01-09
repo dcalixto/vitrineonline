@@ -47,29 +47,6 @@
 
 
 
-
-    <div class="square_box">
-    <h4>Slogan</h4>
-
-
-      <div class="subcontent">
-
-
-
-        <p class="tip">Slogan ou frase de efeito é uma frase de fácil memorização que resume as características de um produto ou serviço
-        </p>
-
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |mrkt| %>
-        <%= mrkt.inputs do %>
-        <%= mrkt.input :slogan, :as => :text,:label =>  "Slogan" %>
-        <%= mrkt.actions do %>
-        <%= mrkt.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
-</div>
-
 <div class="square_box">
     <h4>Site</h4>
       <div class="subcontent">

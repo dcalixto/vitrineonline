@@ -72,7 +72,13 @@
 
 
 
-.address_list  .label {
+
+.address_list  .label, input {
+    display: block;
+    }
+
+
+/*.address_list  .label {
     display: block;
     float: left;
     padding-top: 10px;
@@ -81,6 +87,6 @@
     text-align: right;
     width: 130px;
 }
-
+*/
 
 .margin_menu {margin-top:50px}

@@ -95,7 +95,12 @@
 /* LEFT ALIGNED LABELS
 --------------------------------------------------------------------------------------------------*/
 
-.formtastic .input .label {
+.formtastic .input   .label {
+  display:block
+}
+
+
+/*.formtastic .input .label {
   display: block;
   float: left;
   padding-top: 10px;
@@ -105,6 +110,8 @@
   width: 130px;
   
 }
+
+
 .formtastic .fragments .label, .formtastic .choices .label {
   position: absolute;
   width: 95%;
@@ -113,6 +120,9 @@
 .formtastic .fragments .label label, .formtastic .choices .label label {
   position: absolute;
 }
+*/
+
+
 
 /* NESTED FIELDSETS AND LEGENDS (radio, check boxes and date/time inputs use nested fieldsets)
 --------------------------------------------------------------------------------------------------*/
