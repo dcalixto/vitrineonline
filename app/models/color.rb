@@ -8,5 +8,5 @@ class Color < ActiveRecord::Base
   accepts_nested_attributes_for :products, :orders
 
 
-#has_one :order, as: :orderable 
+
 end
