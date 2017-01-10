@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
   belongs_to :subcategory
   has_many :images, dependent: :destroy
 
-  has_many :feedbacks, through: :ordeships
+  has_many :feedbacks#, through: :orderable
 
   has_many :reports
   has_many :orders

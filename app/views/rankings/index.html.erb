@@ -15,7 +15,7 @@
 
       <tbody>
  <% if @vitrines %>
-        <% @vitrines.order("created_at desc").limit(10).each do |vitrine| %>
+        <% @vitrines.order.limit(50).each do |vitrine| %>
         <tr>
           <td >
             <%= link_to  vitrine_path(vitrine.id) do %>
