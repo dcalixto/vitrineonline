@@ -2,6 +2,6 @@ class Condition < ActiveRecord::Base
   attr_accessible :name, :condition
   has_many :products
 
-has_many :orders, as: :orderable
+has_one :order, as: :orderable
 
 end

@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   
    STATUSES = %w(paid sent).freeze
-  belongs_to :orderable, polymorphic: true
+
  
   belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
   belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User'
@@ -10,6 +10,7 @@ class Order < ActiveRecord::Base
   belongs_to :size
   belongs_to :cart
   belongs_to :feedback
+  belongs_to :orderable, polymorphic: true
   has_one    :transaction
   has_many :colorships
   has_many :sizeships
