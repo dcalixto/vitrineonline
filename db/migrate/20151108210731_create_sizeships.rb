@@ -2,6 +2,7 @@ class CreateSizeships < ActiveRecord::Migration
   def change
     create_table :sizeships do |t|
       t.integer :product_id, :null => false
+      t.integer  :product_data_id
       t.integer :size_id, :null => false
       t.integer :order_id
 

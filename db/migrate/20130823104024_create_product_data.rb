@@ -7,11 +7,7 @@ class CreateProductData < ActiveRecord::Migration
       t.integer  "category_id"
       t.integer  "gender_id"
       t.integer  "subcategory_id"
-      t.integer  "color_id"
-      t.integer  "size_id"
-      t.integer  "material_id"
-      t.integer  "condition_id"
-      t.integer  "brand_id"
+
       t.datetime "created_at",                                                  :null => false
       t.datetime "updated_at",                                                  :null => false
       t.string   "status"
@@ -25,9 +21,6 @@ class CreateProductData < ActiveRecord::Migration
     add_index :product_data, :category_id
     add_index :product_data, :subcategory_id
     add_index :product_data, :gender_id
-    add_index :product_data, :color_id
-    add_index :product_data, :size_id
-    add_index :product_data, :material_id
-    add_index :product_data, :condition_id
+
   end
 end

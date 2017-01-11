@@ -2,6 +2,7 @@ class CreateColorships < ActiveRecord::Migration
   def change
     create_table :colorships do |t|
       t.integer :product_id, :null => false
+      t.integer  :product_data_id
       t.integer :color_id, :null => false
       t.integer :order_id
  t.timestamps

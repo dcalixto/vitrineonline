@@ -10,14 +10,32 @@ class Product < ActiveRecord::Base
   belongs_to :subcategory
   has_many :images, dependent: :destroy
 
-  has_many :feedbacks#, through: :orderable
+  has_many :feedbacks
 
   has_many :reports
   has_many :orders
   belongs_to :gender
-  belongs_to :material
-  belongs_to :condition
-  belongs_to :brand
+
+
+
+  #belongs_to :material
+ # belongs_to :condition
+  #belongs_to :brand
+
+
+
+ has_many :brandships
+  has_many :brands, :through => :brandships
+
+
+
+  has_many :materialships
+  has_many :materials, :through => :materialships
+
+
+  has_many :conditionships
+  has_many :conditions, :through => :conditionships
+
 
   has_many :sizeships
   has_many :sizes, through: :sizeships
@@ -26,10 +44,10 @@ class Product < ActiveRecord::Base
   has_many :colors, through: :colorships
   has_many :impressions,  as: :impressionable, dependent: :destroy
 
-# belongs_to :productable, polymorphic: true
-  # Allow user to report others
  
-  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images, :brand, :material 
+  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images, :brand, :material , :condition, 
+    :conditionships, :materialships, :brandships
+
   
 
   attr_accessible  :name, :detail, :price, :color_id, :gender_id,
@@ -172,9 +190,13 @@ end
       subcategory_id: subcategory_id,
       size_id: sizes.map(&:id),
       color_id: colors.map(&:id),
-      material_id: material_id,
-      condition_id: condition_id,
-      brand_id: brand_id,
+      material_id: materials.map(&:id),
+      brand_id: brands.map(&:id),
+      condition_id: conditions.map(&:id),
+
+     # material_id: material_id,
+     ## condition_id: condition_id,
+     ## brand_id: brand_id,
       created_at: created_at,
       average_customer_rating: average_customer_rating
     }
