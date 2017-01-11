@@ -23,7 +23,7 @@ class Order < ActiveRecord::Base
    
   attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
                   :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method, 
-                  :status,  :color, :size
+                  :status,  :color, :size,  :orderable_type
 
    
     validates :shipping_cost, numericality: { greater_than: 0, allow_nil: true }

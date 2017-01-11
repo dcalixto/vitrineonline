@@ -11,6 +11,11 @@ class CartsController < ApplicationController
         current_user.cart = Cart.new if current_user.cart.nil?
         color = Color.find_by_id(params[:color_id])
         size =  Size.find_by_id(params[:size_id])
+
+        condition = Condition.find_by_id(params[:condition_id])
+        material = Material.find_by_id(params[:material_id])
+        brand = Brand.find_by_id(params[:brand_id])
+
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
        order = current_user.cart.orders.find_by_product_id_and_status(product.id, nil)
 
