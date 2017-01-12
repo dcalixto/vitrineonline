@@ -20,6 +20,6 @@ class CreateVitrines < ActiveRecord::Migration
     end
     add_index :vitrines, :slug
     add_index :vitrines, :user_id, :unique => true
-
+    add_index :vitrines,  :impressions_count
   end
 end

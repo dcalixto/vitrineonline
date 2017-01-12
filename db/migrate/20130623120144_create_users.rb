@@ -35,7 +35,7 @@ class CreateUsers < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.string :facebook
-        t.string :twitter 
+      t.string :twitter 
 
 
       t.timestamps
@@ -48,7 +48,7 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, :oauth_token, :unique => true
     add_index :users, :confirm_token, :unique => true
     add_index :users, :phone
-   add_index :users, :otp_secret_key
+    add_index :users, :otp_secret_key
     add_index :users, :otp_counter
 
 

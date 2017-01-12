@@ -1,8 +1,7 @@
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
-     # t.integer :orderable_id, polymorphic: true
-      #t.string :orderable_type, polymorphic: true
+  
            
       t.integer :cart_id
       t.integer :seller_id
@@ -14,8 +13,6 @@ class CreateOrders < ActiveRecord::Migration
       t.string :transaction_status
       t.string :status
       t.integer :feedback_id
-      t.integer :size_id
-      t.integer :color_id
       t.string :track_number
 
       t.timestamps
@@ -25,9 +22,8 @@ class CreateOrders < ActiveRecord::Migration
     add_index :orders, :seller_id
     add_index :orders, :buyer_id
     add_index :orders, :feedback_id
-    add_index :orders, :size_id
-    add_index :orders, :color_id
+ 
 
-   # add_index :orders, [:orderable_id, :orderable_type]
+   
   end
 end

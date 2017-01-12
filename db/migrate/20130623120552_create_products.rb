@@ -21,10 +21,9 @@ class CreateProducts < ActiveRecord::Migration
     add_index :products, :vitrine_id
     add_index :products, :category_id
     add_index :products, :subcategory_id
-  
-   
      add_index :products, :gender_id
- 
+   add_index :products, :impressions_count
+
    
   
   end
