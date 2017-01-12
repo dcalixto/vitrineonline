@@ -31,8 +31,8 @@ class Order < ActiveRecord::Base
   has_many :conditionships
   has_many :conditions, :through => :conditionships
 
-  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships,  :brand, :brandships, :material, :materialships,
-    :condition, :conditionships
+  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships,  :brandships, :materialships,
+     :conditionships
 
 
 

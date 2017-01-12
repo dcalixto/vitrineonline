@@ -45,8 +45,7 @@ class Product < ActiveRecord::Base
   has_many :impressions,  as: :impressionable, dependent: :destroy
 
  
-  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images, :brand, :material , :condition, 
-    :conditionships, :materialships, :brandships
+  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images,     :conditionships, :materialships, :brandships
 
   
 
