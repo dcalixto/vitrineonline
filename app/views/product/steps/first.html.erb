@@ -72,10 +72,10 @@
 
 
       <div class="subcontent">
-        <h4>Especificação</h4>
+        <h4>Marca</h4>
 
         <%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
-        <%=  p.collection_select(:brand_ids, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
+        <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
 
       </div>
 
@@ -107,7 +107,7 @@
           <ul>
 
             <li>
-              <%=  p.collection_select(:material_ids, Material.all, :id, :name,  {},{ :multiple => false}) %>
+              <%=  p.collection_select(:material_id, Material.all, :id, :name,  {},{ :multiple => false}) %>
 
             </li>
           </ul>
@@ -116,7 +116,7 @@
           <h4>Condição</h4>
           <ul>
             <li>
-              <%=  p.collection_select(:condition_ids, Condition.all, :id, :condition,  {},{ :multiple => false})%>
+              <%=  p.collection_select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false})%>
 
             </li>
           </ul>

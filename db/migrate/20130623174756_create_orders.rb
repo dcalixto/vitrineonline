@@ -1,8 +1,8 @@
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
-  
-           
+
+
       t.integer :cart_id
       t.integer :seller_id
       t.integer :buyer_id
@@ -15,6 +15,15 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :feedback_id
       t.string :track_number
 
+      t.integer  :brand_id                                             
+      t.integer  :material_id
+      t.integer  :condition_id
+      t.integer  :color_id
+      t.integer  :size_id
+
+
+
+
       t.timestamps
     end
     add_index :orders, :product_id
@@ -22,8 +31,16 @@ class CreateOrders < ActiveRecord::Migration
     add_index :orders, :seller_id
     add_index :orders, :buyer_id
     add_index :orders, :feedback_id
- 
 
-   
+    add_index :orders, :brand_id
+    add_index :orders, :color_id
+    add_index :orders, :size_id
+
+
+    add_index :orders, :material_id
+    add_index :orders, :condition_id
+
+
+
   end
 end

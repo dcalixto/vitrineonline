@@ -6,8 +6,8 @@ class Order < ActiveRecord::Base
   belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
   belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User'
   belongs_to :product, touch: true
-  belongs_to :color
-  belongs_to :size
+  #belongs_to :color
+  #belongs_to :size
   belongs_to :cart
   belongs_to :feedback
  
@@ -19,26 +19,25 @@ class Order < ActiveRecord::Base
   has_many :sizes, :through => :sizeships
 
 
-  has_many :brandships
-  has_many :brands, :through => :brandships
+  belongs_to :brand,  foreign_key: 'brand_id', class_name: 'Brand'
+ 
 
 
+ belongs_to :material, foreign_key: 'material_id', class_name: 'Material'
 
-  has_many :materialships
-  has_many :materials, :through => :materialships
+ 
+
+  belongs_to :condition, foreign_key: 'condition_id', class_name: 'Conndition'
 
 
-  has_many :conditionships
-  has_many :conditions, :through => :conditionships
-
-  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships,  :brandships, :materialships,
-     :conditionships
+  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships,  :brand, :material,
+     :condition
 
 
 
   attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
     :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method, 
-    :status, :size_ids, :color_ids,  :orderable_type, :brand_ids, :material_ids,:condition_ids
+    :status, :size_ids, :color_ids,   :brand_id, :material_id,:condition_id
 
 
   validates :shipping_cost, numericality: { greater_than: 0, allow_nil: true }
@@ -65,9 +64,7 @@ class Order < ActiveRecord::Base
         data.f1 = product.images.first
         data.color = product.colors
         data.size =  product.sizes
-        data.condition =  product.conditions
-        data.brand =  product.brands
-
+          
         data.save
       end
     end

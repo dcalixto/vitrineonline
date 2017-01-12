@@ -74,7 +74,7 @@ acts_as_voter
   end
 
   def full_name
-    "#{name} #{surname}"
+    "#{first_name} #{last_name}"
   end
 
   def user_address

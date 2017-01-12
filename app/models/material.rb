@@ -3,11 +3,10 @@ class Material < ActiveRecord::Base
 
 
 
- has_many :materialships
-  has_many :products, :through => :materialships
-  has_many :orders, :through => :materialships
 
-  accepts_nested_attributes_for :products, :orders
+  has_one :product
+  has_one :order
+  accepts_nested_attributes_for :product, :order
 
 
 end

@@ -15,29 +15,12 @@ class Product < ActiveRecord::Base
   has_many :reports
   has_many :orders
   belongs_to :gender
+belongs_to :brand
+belongs_to :condition
+belongs_to :material
 
 
-
-  #belongs_to :material
- # belongs_to :condition
-  #belongs_to :brand
-
-
-
- has_many :brandships
-  has_many :brands, :through => :brandships
-
-
-
-  has_many :materialships
-  has_many :materials, :through => :materialships
-
-
-  has_many :conditionships
-  has_many :conditions, :through => :conditionships
-
-
-  has_many :sizeships
+ has_many :sizeships
   has_many :sizes, through: :sizeships
 
   has_many :colorships
@@ -45,15 +28,15 @@ class Product < ActiveRecord::Base
   has_many :impressions,  as: :impressionable, dependent: :destroy
 
  
-  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images,     :conditionships, :materialships, :brandships
+  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images,   
+   :brand,:condition,:material
 
-  
-
-  attr_accessible  :name, :detail, :price, :color_id, :gender_id,
-                   :category_id, :subcategory_id, :material_id, :condition_id,
-                   :brand_id, :meta_keywords, :quantity, :status, :vitrine_id, :products, :price,
+  attr_accessible  :name, :detail, :price, :gender_id,
+                   :category_id, :subcategory_id, :material_id, :meta_keywords, :quantity, :status,
+                   :vitrine_id, :products, :price,
                    :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook,
-                   :is_shared_on_twitter,:brand_attributes, :images_attributes
+                   :is_shared_on_twitter,:images_attributes, :brand_attributes, :brand_id, :condition_id
+
 
 
   validates :name, presence: true, length: { maximum: 140 }
@@ -189,13 +172,9 @@ end
       subcategory_id: subcategory_id,
       size_id: sizes.map(&:id),
       color_id: colors.map(&:id),
-      material_id: materials.map(&:id),
-      brand_id: brands.map(&:id),
-      condition_id: conditions.map(&:id),
-
-     # material_id: material_id,
-     ## condition_id: condition_id,
-     ## brand_id: brand_id,
+      material_id: material_id,
+      brand_id: brand_id,
+      condition_id: condition_id,
       created_at: created_at,
       average_customer_rating: average_customer_rating
     }

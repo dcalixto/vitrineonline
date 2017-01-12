@@ -66,11 +66,12 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
   end
 
   create_table "colorships", :force => true do |t|
-    t.integer  "product_id", :null => false
-    t.integer  "color_id",   :null => false
+    t.integer  "product_id",      :null => false
+    t.integer  "product_data_id"
+    t.integer  "color_id",        :null => false
     t.integer  "order_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "colorships", ["color_id"], :name => "index_colorships_on_color_id"
@@ -218,8 +219,6 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
   add_index "messages", ["conversation_participant_id"], :name => "index_messages_on_conversation_participant_id"
 
   create_table "orders", :force => true do |t|
-    t.integer  "orderable_id"
-    t.string   "orderable_type"
     t.integer  "cart_id"
     t.integer  "seller_id"
     t.integer  "buyer_id"
@@ -230,18 +229,23 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
     t.string   "transaction_status"
     t.string   "status"
     t.integer  "feedback_id"
-    t.integer  "size_id"
-    t.integer  "color_id"
     t.string   "track_number"
+    t.integer  "brand_id"
+    t.integer  "material_id"
+    t.integer  "condition_id"
+    t.integer  "color_id"
+    t.integer  "size_id"
     t.datetime "created_at",                                                      :null => false
     t.datetime "updated_at",                                                      :null => false
   end
 
+  add_index "orders", ["brand_id"], :name => "index_orders_on_brand_id"
   add_index "orders", ["buyer_id"], :name => "index_orders_on_buyer_id"
   add_index "orders", ["cart_id"], :name => "index_orders_on_cart_id"
   add_index "orders", ["color_id"], :name => "index_orders_on_color_id"
+  add_index "orders", ["condition_id"], :name => "index_orders_on_condition_id"
   add_index "orders", ["feedback_id"], :name => "index_orders_on_feedback_id"
-  add_index "orders", ["orderable_id", "orderable_type"], :name => "index_orders_on_orderable_id_and_orderable_type"
+  add_index "orders", ["material_id"], :name => "index_orders_on_material_id"
   add_index "orders", ["product_id"], :name => "index_orders_on_product_id"
   add_index "orders", ["seller_id"], :name => "index_orders_on_seller_id"
   add_index "orders", ["size_id"], :name => "index_orders_on_size_id"
@@ -301,16 +305,16 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
     t.integer  "gender_id",                                                              :null => false
     t.integer  "category_id",                                                            :null => false
     t.integer  "subcategory_id",                                                         :null => false
+    t.integer  "impressions_count"
+    t.integer  "color_id"
+    t.integer  "size_d"
+    t.integer  "brand_id"
     t.integer  "material_id"
     t.integer  "condition_id"
-    t.integer  "impressions_count"
-    t.integer  "brand_id"
     t.string   "meta_keywords"
     t.integer  "quantity",                                            :default => 0
     t.string   "status"
     t.string   "current_step"
-    t.integer  "productable_id"
-    t.string   "productable_type"
     t.datetime "created_at",                                                             :null => false
     t.datetime "updated_at",                                                             :null => false
     t.boolean  "is_shared_on_facebook",                               :default => false
@@ -321,8 +325,8 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
   add_index "products", ["category_id"], :name => "index_products_on_category_id"
   add_index "products", ["condition_id"], :name => "index_products_on_condition_id"
   add_index "products", ["gender_id"], :name => "index_products_on_gender_id"
+  add_index "products", ["impressions_count"], :name => "index_products_on_impressions_count"
   add_index "products", ["material_id"], :name => "index_products_on_material_id"
-  add_index "products", ["productable_id", "productable_type"], :name => "index_products_on_productable_id_and_productable_type"
   add_index "products", ["slug"], :name => "index_products_on_slug"
   add_index "products", ["subcategory_id"], :name => "index_products_on_subcategory_id"
   add_index "products", ["vitrine_id"], :name => "index_products_on_vitrine_id"
@@ -384,11 +388,12 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
   end
 
   create_table "sizeships", :force => true do |t|
-    t.integer  "product_id", :null => false
-    t.integer  "size_id",    :null => false
+    t.integer  "product_id",      :null => false
+    t.integer  "product_data_id"
+    t.integer  "size_id",         :null => false
     t.integer  "order_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "sizeships", ["product_id"], :name => "index_sizeships_on_product_id"
@@ -510,6 +515,7 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
     t.datetime "updated_at",         :null => false
   end
 
+  add_index "vitrines", ["impressions_count"], :name => "index_vitrines_on_impressions_count"
   add_index "vitrines", ["slug"], :name => "index_vitrines_on_slug"
   add_index "vitrines", ["user_id"], :name => "index_vitrines_on_user_id", :unique => true
 

@@ -10,6 +10,12 @@ class CreateProducts < ActiveRecord::Migration
       t.integer  :category_id,                                                 :null => false
       t.integer  :subcategory_id,                                              :null => false
       t.integer   :impressions_count
+      t.integer   :color_id
+      t.integer   :size_d 
+      t.integer  :brand_id                                             
+      t.integer  :material_id
+      t.integer  :condition_id
+
       t.string   :meta_keywords
       t.integer  :quantity,                                                     :default => 0
       t.string   :status
@@ -24,7 +30,10 @@ class CreateProducts < ActiveRecord::Migration
      add_index :products, :gender_id
    add_index :products, :impressions_count
 
-   
+       add_index :products, :brand_id
+    add_index :products, :material_id
+    add_index :products, :condition_id
+
   
   end
 end

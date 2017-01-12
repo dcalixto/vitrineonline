@@ -16,9 +16,7 @@ before_filter :authorize_vitrine, only: [:create, :edit, :update]
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
  
-  @product.build_brand
-
-  
+   
   end
 
 def upvote
