@@ -74,7 +74,7 @@
 	<span class="previous"></span>
 	<div class="wrapper">
     <% unless Vitrine.nil? %>
-  							<ul>
+ <ul>
                     <% @vitrines.last(10).each do |v| %>
 
                       <li>
@@ -82,8 +82,9 @@
                         
                         
                         <%= image_tag v.logo.url(:thumb).to_s %>
-                          <%= v.name   %></li>
-                    <% end %>
+                          <%= v.name   %>
+                        <% end %>
+                        </li>
                      <% end %>
 
                     </ul>
@@ -142,7 +143,7 @@
 <div class="content">
   <h2>Estilos
     </h2>
-  <span class="tags">
+  <div class="tags">
 
    <ul class="link_tag">
    <% tag_cloud Product.tag_counts, %w[s m l] do |tag, css_class| %>
@@ -154,6 +155,7 @@
 
   <% end %>
 </ul>
-...
+... </div>
+
   </div>
     </div>

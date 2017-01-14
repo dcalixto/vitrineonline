@@ -71,18 +71,21 @@ order = Order.find(params[:id])
         :ipnNotificationUrl => ipn_notification_order_url(order),
 
         :receiverList => {
-          :receiver => [
-            {
+          :receiver => [{
             :email =>  order.product.vitrine.policy.paypal,
+           # :email =>  "calixtomariaa@gmail.com",
+
             :amount => seller_amount,
-            :primary => true
-         
-            },
-            { :amount => store_amount, 
-             :primary => false
-            }
-          ]
-        },
+           # :amount => 1.0,
+
+            :primary => true,
+            :email => configatron.paypal.merchant,
+           # :email => "admin@vitrineonline.com",
+
+             :amount => store_amount, 
+             
+            # :amount => 1.0, 
+             :primary => false}]},
              :returnUrl => carts_url })
 
 

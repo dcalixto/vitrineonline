@@ -171,6 +171,7 @@ gem 'twitter'
 gem 'memcachier'
 gem 'dalli'
 gem 'memcached-manager'
+
 #MAILER
 
 gem 'resque', github: "dcalixto/resque", :require => "resque/server"
