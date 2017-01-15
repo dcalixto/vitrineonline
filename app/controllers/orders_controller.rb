@@ -73,21 +73,20 @@ order = Order.find(params[:id])
         :receiverList => {
           :receiver => [{
             :email =>  order.product.vitrine.policy.paypal,
-         
+           # :email =>  "calixtomariaa@gmail.com",
 
             :amount => seller_amount,
-       
-          },
-          {
-            #:primary => true,
+           # :amount => 1.0,
+
+           # :primary => true,
             :email => configatron.paypal.merchant,
-       
+           # :email => "admin@vitrineonline.com",
 
              :amount => store_amount, 
              
-  # :primary => false
-          }
-             ]},
+            # :amount => 1.0, 
+             # :primary => false
+             }]},
              :returnUrl => carts_url })
 
 
@@ -103,7 +102,7 @@ order = Order.find(params[:id])
                redirect_to fail_order_path(order)
 
              end
- end
+              end
 
 
   
