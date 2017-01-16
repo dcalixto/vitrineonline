@@ -18,7 +18,8 @@ set :branch, 'master'
 set :forward_agent, true
 set :term_mode, nil
 set :port, '22'
-set :rails_env, 'production'
+#set :rails_env, 'production'
+set :rails_env, 'development'
 set :repository_name, 'vitrineonline'
 set :rbenv_path, '$HOME/.rbenv'# Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
