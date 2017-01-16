@@ -74,13 +74,13 @@ order = Order.find(params[:id])
           :receiver => [{
             :email =>  order.product.vitrine.policy.paypal,
            
-            :amount => seller_amount.to_f,
+            :amount => seller_amount,
             :primary => true
 
                  },
          {:email => configatron.paypal.merchant,
            
-             :amount => store_amount.to_f, 
+             :amount => store_amount, 
              
                       # :primary => false
              }]},
