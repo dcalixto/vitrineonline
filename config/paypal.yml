@@ -1,20 +1,20 @@
 test: &default
 
   # Credentials for REST APIs
-  client_id: EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM
-  client_secret: EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM
+  client_id: Adm-yjdv0q8Mi8XzvFxvlg4vvMGBXFtV2c-wzevyiKLLG_TVE2ySEErYsai2LQRp82cnvLJ-pX-RagtK
+  client_secret: EF6yruPmH5KiUWp_RwerFUq4428q6qcXwf_Kj5fK3xlYi2zr7U65a2FLmTjb8Xa7jR-0NNizbICGirmO
 
   # Mode can be 'live' or 'sandbox'
   mode: sandbox
 
   # Credentials for Classic APIs
   app_id: APP-80W284485P519543T
-  username: jb-us-seller_api1.paypal.com
+  username: admin_api1.vitrineonline.com
   password: WX4WTU3S8MY44S7F
   signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
   # # With Certificate
   # cert_path: "config/cert_key.pem"
-  sandbox_email_address: Platform.sdk.seller@gmail.com
+  sandbox_email_address: admin-facilitator@vitrineonline.com
 
   # # IP Address
   # ip_address: 127.0.0.1

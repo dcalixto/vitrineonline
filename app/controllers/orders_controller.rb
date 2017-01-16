@@ -61,7 +61,7 @@ order = Order.find(params[:id])
 
 
    @api = PayPal::SDK::AdaptivePayments.new
-
+#byebug
 
       @pay = @api.build_pay({
         :actionType => "PAY",
@@ -73,26 +73,23 @@ order = Order.find(params[:id])
         :receiverList => {
           :receiver => [{
             :email =>  order.product.vitrine.policy.paypal,
-           # :email =>  "calixtomariaa@gmail.com",
+           
+            :amount => seller_amount.to_f,
+            :primary => true
 
-            :amount => seller_amount,
-           # :amount => 1.0,
-
-           # :primary => true,
-            :email => configatron.paypal.merchant,
-           # :email => "admin@vitrineonline.com",
-
-             :amount => store_amount, 
+                 },
+         {:email => configatron.paypal.merchant,
+           
+             :amount => store_amount.to_f, 
              
-            # :amount => 1.0, 
-             # :primary => false
+                      # :primary => false
              }]},
              :returnUrl => carts_url })
 
 
 
              @response = @api.pay(@pay)
-
+#byebug
              # Access response
              if @response.success? && @response.payment_exec_status != "ERROR"
                @response.payKey
@@ -110,6 +107,7 @@ order = Order.find(params[:id])
   end
 
   def ipn_notification
+  #  byebug
     ipn = PayPal::SDK::Core::API::IPN.new
     
     ipn.send_back(request.raw_post)
