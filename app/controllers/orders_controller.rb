@@ -68,8 +68,7 @@ order = Order.find(params[:id])
         :cancelUrl => carts_url,
         :currencyCode => "BRL",
         :feesPayer => "SENDER",
-        :ipnNotificationUrl => "http://52.87.228.48/orders/#{order.id}/ipn_notification",
-
+        :ipnNotificationUrl => ipn_notification_order_url(order),
         # "http://52.87.228.48/orders/#{order.id}/ipn_notification"
 
         :receiverList => {
@@ -109,13 +108,14 @@ order = Order.find(params[:id])
 
   def ipn_notification
   #  byebug
-    ipn = PayPal::SDK::Core::API::IPN.valid?
+    ipn = PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
+
     
-    ipn.send_back(request.raw_post)
+  #  ipn.send_back(request.raw_post)
 
 
 # if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
-   #   logger.info("IPN message: VERIFIED")
+      logger.info("IPN message: VERIFIED")
 
 
     if ipn.verified?
