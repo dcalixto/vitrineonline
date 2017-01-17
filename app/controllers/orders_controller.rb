@@ -1,7 +1,7 @@
 # encoding: utf-8
 class OrdersController < ApplicationController
-  #skip_before_filter :authorize, only: :ipn_notification
- # protect_from_forgery except: [:ipn_notification]
+  skip_before_filter :authorize, only: :ipn_notification
+ protect_from_forgery except: [:ipn_notification]
 
   def purchased
     if current_user.cart
@@ -74,13 +74,15 @@ order = Order.find(params[:id])
           :receiver => [{
             :email =>  order.product.vitrine.policy.paypal,
             :amount => seller_amount,
-            :primary => true
+           # :primary => true
 
                  },
-            {:email => configatron.paypal.merchant,
-             :amount => store_amount, 
-                      # :primary => false
-             }]},
+            {
+             :email => configatron.paypal.merchant,
+             :amount => store_amount,
+            # :primary => false
+                     
+                 }]},
              :returnUrl => carts_url })
 
 
@@ -93,7 +95,7 @@ order = Order.find(params[:id])
                redirect_to @api.payment_url(@response)  # Url to complete payment
              else
                @response.error[0].message
-               redirect_to fail_order_path(order)
+               redirect_to fail_order_path(order, error: @response.error[0].message)
 
              end
               end

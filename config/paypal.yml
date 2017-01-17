@@ -1,30 +1,23 @@
-test: &default
+development: &default
 
   # Credentials for REST APIs
-  client_id: Adm-yjdv0q8Mi8XzvFxvlg4vvMGBXFtV2c-wzevyiKLLG_TVE2ySEErYsai2LQRp82cnvLJ-pX-RagtK
-  client_secret: EF6yruPmH5KiUWp_RwerFUq4428q6qcXwf_Kj5fK3xlYi2zr7U65a2FLmTjb8Xa7jR-0NNizbICGirmO
+  #client_id: EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM
+  #client_secret: EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM
 
   # Mode can be 'live' or 'sandbox'
   mode: sandbox
-
-  # Credentials for Classic APIs
   app_id: APP-80W284485P519543T
-  username: admin_api1.vitrineonline.com
-  password: WX4WTU3S8MY44S7F
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
-  # # With Certificate
-  # cert_path: "config/cert_key.pem"
+  username: admin-facilitator_api1.vitrineonline.com
+  password: KVCYT45H5K6PL5GP
+  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AIfJCr4rejJqnwkVMlhOd8s7INDg
   sandbox_email_address: admin-facilitator@vitrineonline.com
 
-  # # IP Address
-  # ip_address: 127.0.0.1
-  # # HTTP Proxy
-  # http_proxy: http://proxy-ipaddress:3129/
 
-  # verbose_logging: true
-
-development:
+test:
   <<: *default
+  mode: sandbox
+
+
 
 production:
   <<: *default
