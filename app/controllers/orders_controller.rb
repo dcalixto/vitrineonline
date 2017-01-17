@@ -108,7 +108,7 @@ order = Order.find(params[:id])
 
   def ipn_notification
   #  byebug
-    ipn = PayPal::SDK::Core::API::IPN.new(params,request.raw_post)
+    ipn = PayPal::SDK::Core::API::IPN.new(request.raw_post)
 
     
    # ipn.send_back(request.raw_post)
