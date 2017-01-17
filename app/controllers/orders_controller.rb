@@ -108,12 +108,12 @@ order = Order.find(params[:id])
 
   def ipn_notification
   #  byebug
-    ipn = PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
-
+    ipn = PayPal::SDK::Core::API::IPN.new
     
+    ipn.send_back(request.raw_post)
 
 
-# if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
+ #if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
       logger.info("IPN message: VERIFIED")
 
 
