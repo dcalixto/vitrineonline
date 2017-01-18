@@ -51,7 +51,12 @@
             <td><%= current_vitrine.name %></td>
             <td>
               <ul>
-                <li><%= image_tag @product.f1.table %></li>
+                <li>
+                    <% unless @product.images.blank? %>
+                  
+                      <%= image_tag @product.images.first.small %>
+                    <%end %></li>
+
                 <li><%= @product.name %></li>
               </ul>
             </td>

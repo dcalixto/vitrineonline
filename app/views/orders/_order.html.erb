@@ -73,14 +73,13 @@
           <td>
             <%= link_to  product_path(product.id) do %>
 
-              <% if product.images.present? %>
-            <%= image_tag product.images.first.url(:table).to_s %>
+              <#% if product.images.present? %>
+              <% unless product.images.blank? %>
+            <%= image_tag product.images.first.url(:small).to_s %>
             <% end %>
 
-            <%= image_tag product.images.first.ifoto.url(:table) %>
-
-            <% end %>
-            <%= link_to product.name, product_path(product.id) %>
+           
+                      <%= link_to product.name, product_path(product.id) %>
             <%= order.quantity %>
             <b class="lista-preco"><%= number_to_currency(order.total_price) %></b>
           </td>
