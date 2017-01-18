@@ -12,7 +12,7 @@ class CreateProductData < ActiveRecord::Migration
       t.integer  "material_id"
       t.integer  "condition_id"
       t.integer  "brand_id"
-
+      t.string   "meta_keywords"
       t.datetime "created_at",                                                  :null => false
       t.datetime "updated_at",                                                  :null => false
       t.string   "status"

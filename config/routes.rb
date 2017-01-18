@@ -81,7 +81,7 @@ mount MemcachedManager::Routes, :at => '/mm'
 
   # VITRINE
   resources :vitrines, only: [:new, :create, :edit, :update, :show] do
-    resources :policies, only: [:edit, :update]
+    resources :policies, only: [:edit, :update, :new, :create]
 
     resources :announcements, only: [:new, :create]
     resources :coupons, only: [:new, :create, :index]

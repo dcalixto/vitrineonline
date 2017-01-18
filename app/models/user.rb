@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
  after_commit :send_user_welcome, :on => :create
  # before_create :confirmation_token
 
-  has_one :vitrine, dependent: :destroy
+  has_one :vitrine, dependent: :destroy, :inverse_of => :user
+
+
   has_one :cart, dependent: :destroy
 
   has_many :orders, foreign_key: 'buyer_id'
@@ -22,7 +24,8 @@ class User < ActiveRecord::Base
   has_many :conversations,
            through: :conversation_participants
 
-  has_many :feedbacks
+  has_many :feedbacks, :inverse_of => :user
+
 
   has_many :comments
 

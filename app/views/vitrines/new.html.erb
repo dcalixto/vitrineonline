@@ -39,10 +39,11 @@
 
 
       <div class="subcontent">
-        <h4>Email do Paypal</h4>
-
-        <%= f.input :codigo,  :label => "CPF OU CNPJ",:required=>true %>
-
+        <h4>Email do PayPal</h4>
+<%= f.semantic_fields_for :policy_attributes  do |p| %>
+      <%= p.inputs :paypal, :label => "PayPal",:required=>true %>
+    <% end %>
+        
       </div>
 
     </div>

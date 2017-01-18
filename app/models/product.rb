@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
 
   default_scope -> { order('created_at DESC') }
 
-  belongs_to :vitrine
+  belongs_to :vitrine, :inverse_of => :products
   belongs_to :category
   belongs_to :subcategory
   has_many :images, dependent: :destroy

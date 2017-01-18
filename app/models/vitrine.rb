@@ -3,11 +3,11 @@ class Vitrine < ActiveRecord::Base
   # include ActiveModel::Validations
   friendly_id :name, use: [:slugged, :history]
 
-  belongs_to :user
+  belongs_to :user, :inverse_of => :vitrine
 
-  has_one :policy, dependent: :destroy
+  has_one :policy, dependent: :destroy,  :inverse_of => :vitrine
 
-  has_many :products, dependent: :destroy
+  has_many :products, dependent: :destroy, :inverse_of => :vitrine
 
   has_one :marketing, dependent: :destroy
  # has_many :views, dependent: :destroy
@@ -23,8 +23,11 @@ has_many :impressions,  as: :impressionable, dependent: :destroy
 
   has_many :announcements, dependent: :destroy
 
- 
- acts_as_votable
+  accepts_nested_attributes_for :policy
+validates_associated :policy, presence: true
+   attr_accessible  :policy_attributes  
+  
+  acts_as_votable
   
   
   
@@ -118,7 +121,7 @@ has_many :impressions,  as: :impressionable, dependent: :destroy
   private
 
   def build_default_models
-    build_policy
+  #  build_policy
     build_marketing
 
     true

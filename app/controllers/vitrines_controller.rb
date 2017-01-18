@@ -121,6 +121,7 @@ end
 
   def new
     @vitrine = Vitrine.new
+   @vitrine.build_policy
   end
 
   def edit
