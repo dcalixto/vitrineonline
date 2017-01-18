@@ -97,7 +97,7 @@ class Order < ActiveRecord::Base
   def decrease_products_count
     product.quantity -= quantity
     product.save
-    OrderMailer.delay.order_confirmation(self)
+    OrderMailer.order_confirmation(self)
   end
 
   def store_fee
