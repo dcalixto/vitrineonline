@@ -47,7 +47,7 @@
        
         <tr class="cell">
                    <td valign="top">
-            <h2>Olá <%= @user.name %></h2>
+            <h2>Olá <%= @user.first_name %></h2>
             <p> Obrigado por se Registrar! Para confirmar sua conta clique no link abaixo.
 </p>
           <%= confirm_email_user_url(@user.confirm_token) %>
