@@ -19,6 +19,8 @@ class CreateProductData < ActiveRecord::Migration
       t.string   "name"
       t.decimal  "price",          :precision => 9, :scale => 2
       t.integer  "quantity",                                     :default => 0
+      t.boolean :is_shared_on_facebook,  default: false
+      t.boolean  :is_shared_on_twitter, default: false
       t.timestamps
     end
     add_index :product_data, :slug

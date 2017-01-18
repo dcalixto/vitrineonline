@@ -15,7 +15,8 @@ class CreateProducts < ActiveRecord::Migration
       t.integer  :brand_id                                             
       t.integer  :material_id
       t.integer  :condition_id
-
+      t.boolean :is_shared_on_facebook,  default: false
+      t.boolean  :is_shared_on_twitter, default: false
       t.string   :meta_keywords
       t.integer  :quantity,                                                     :default => 0
       t.string   :status
