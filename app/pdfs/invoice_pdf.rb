@@ -18,8 +18,9 @@ class InvoicePdf < Prawn::Document
     table_data = [headings]
 
     img = nil
-    if @product.images && @product.images.first.ifoto.thumb
-      img_url = @product.images.first.ifoto.thumb.url
+   
+    if @product.images.present? && @product.images.first.small
+      img_url = @product.images.first.small.url
       if img_url.include?('.jpg') || img_url.include?('.png')
         begin
           if img_url.index('http') == 0

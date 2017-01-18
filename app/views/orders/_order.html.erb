@@ -73,9 +73,8 @@
           <td>
             <%= link_to  product_path(product.id) do %>
 
-              <#% if product.images.present? %>
-              <% unless product.images.blank? %>
-            <%= image_tag product.images.first.url(:small).to_s %>
+              <% if product.images.present? %>
+                          <%= image_tag product.images.first.url(:small).to_s %>
             <% end %>
 
            
