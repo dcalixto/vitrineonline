@@ -106,19 +106,17 @@ order = Order.find(params[:id])
   def fail
   end
 
-  def ipn_notification
-  #  byebug
-    ipn = PayPal::SDK::Core::API::IPN.new(request.raw_post)
 
+
+
+
+
+ def ipn_notification
+    logger.info("We've got an IPN!! raw_post object:")
+    logger.info(request.raw_post)
     
-   # ipn.send_back(request.raw_post)
-
-
-# if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
-      #logger.info("IPN message: VERIFIED")
-
-
-    if ipn.valid?
+    if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
+      logger.info("IPN message: VERIFIED")
       order = Order.find(params[:id])
       if order
         if params[:status] == 'COMPLETED'
@@ -130,14 +128,13 @@ order = Order.find(params[:id])
           transaction.status = params[:status]
           order.transaction = transaction
           order.save
-
         end
       end
+    else
+      logger.info("IPN message: VERIFICATION FAILED")
     end
-
     render nothing: true
   end
-
 
 
   def sent
