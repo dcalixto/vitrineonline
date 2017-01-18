@@ -57,11 +57,11 @@ class Order < ActiveRecord::Base
       data = ProductData.find_by_id(pr_id)
       if data.nil?
         attrs = product.attributes
-        attrs.images.first.delete('ifoto')
+     #   attrs.images.first.delete('ifoto')
         attrs.delete('created_at')
         attrs.delete('updated_at')
         data = ProductData.create(attrs)
-        data.f1 = product.images.first.ifoto
+        data.f1 = product.images.first
         data.color = product.colors
         data.size =  product.sizes
           
