@@ -62,8 +62,8 @@ class Order < ActiveRecord::Base
         attrs.delete('updated_at')
         data = ProductData.create(attrs)
         #data.f1 = product.images.first
-        data.color = product.colors
-        data.size =  product.sizes
+       # data.color = product.colors
+       # data.size =  product.sizes
           
         data.save
       end
