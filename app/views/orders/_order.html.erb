@@ -103,12 +103,12 @@
             <td>
               <ul>
                                  
-                  <% if controller_name == 'order' && action_name == 'purchased' %>
+                   <% if  params[:action] == "purchased" %>
                   <li>Vendedor
                     <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
                 <% end %>
                
-                  <% if controller_name == 'order' && action_name == 'sold' %>
+                     <% if  params[:action] == "sold" %>
                   <li>Comprador
                     <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
                 <% end %>
@@ -130,7 +130,7 @@
                 <% end %>
                 </li>
              
-                  <% if controller_name == 'order' && action_name == 'sold' %> 
+                      <% if  params[:action] == "sold" %>
                   <% if current_seller%>
 
                 <li>
