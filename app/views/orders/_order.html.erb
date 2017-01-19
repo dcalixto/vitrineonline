@@ -19,7 +19,7 @@
     <td>
       <b>
         
-<% if current_user.cart%>
+<% if current_user.carts_url%>
         <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}, order.quantity), :class=> "select_item select_order_quantity", :'data-order-id' => order.id %></b>
     <% end%>
 
@@ -127,14 +127,14 @@
                     <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => false)%></b>
                 <% end %>
                 </li>
-                <% if  params[:action] == "sold" %>
+                <#% if  params[:action] == "sold" %>
                   <li>
                     <label>Código de Rastreamento</label><%=text_field :track_number %></li>
 
                   <li>
                     Marcar como:
                     <%= button_to "Enviado", sent_order_path(order), :class => 'btn_grey btn_small', :method => "get" %></li>
-                <% end %>
+                <#% end %>
               </ul>
             </td>
           <% end %>
