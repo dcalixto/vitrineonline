@@ -130,7 +130,7 @@
                 <% end %>
                 </li>
              
-                      <% if  params[:action] == "sold" %>
+                      <% if  params[:action] == "sold" and params[:status] == Order.statuses[0] %>
                   <% if current_seller%>
 
                 <li>
@@ -144,9 +144,13 @@
                     <li>
                    
                       <% end %>  
-                                                                           <% end %> 
-  
+                      
+                    <% end %> 
+                        <% if   params[:status] == Order.statuses[1] %>
 
+  <label>Código de Rastreamento</label><%=order.track_number %></li>
+
+                  <%end%>
               </ul>
             </td>
           <% end %>

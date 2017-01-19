@@ -51,7 +51,7 @@ $desktop: min-width 1200px;
 
    margin-right:1px;
 
-   width: 121px;
+   width: 140px;
    height: 30px;
 
    margin-top:5px
@@ -66,17 +66,11 @@ $desktop: min-width 1200px;
  .blue_bar {      
    height:40px;
 
-   border-bottom: 1px solid #e8e8e8;
-background-color: #dfe3ee;
-    border-bottom: 1px solid #5f99cf;
-background-color: #dfe3ee;
-
-
     background-color: #f1f1f1;
-    border-bottom: 1px solid #666;
-    border-color: #e5e5e5;
-
- }
+       border-bottom: #e5e5e5;
+       background:#375eb0
+  
+  }
  .inner_blue  {
 
    height:45px;
@@ -94,7 +88,7 @@ background-color: #dfe3ee;
    white-space: nowrap;
    height: 33px;
 
-   border-bottom: 1px solid #e8e8e8;
+  /* border-bottom: 1px solid #e8e8e8;*/
 
    background-color: #fff;
  
@@ -114,7 +108,7 @@ background-color: #dfe3ee;
      display: block;
      white-space: nowrap;
      height: 45px;
-     border-bottom: 1px solid #e8e8e8;
+     /*border-bottom: 1px solid #e8e8e8;*/
 
      background-color: #eee8df;
 
@@ -127,7 +121,7 @@ background-color: #dfe3ee;
      display:block;
 
      font-weight:bold;
-     border-bottom: 1px solid #f1f1f1;
+   /*  border-bottom: 1px solid #f1f1f1;*/
 
 
    }
@@ -201,8 +195,7 @@ background-color: #dfe3ee;
      display:block;
 
      font-weight:bold;
-     border-bottom: 1px solid #f1f1f1;
-border-bottom: 1px solid #e8e8e8;
+    /*border-bottom: 1px solid #e8e8e8;*/
 
 
    }
@@ -250,10 +243,10 @@ border-bottom: 1px solid #e8e8e8;
      white-space: nowrap;
            height: 33px;
 
-     border-bottom: 1px solid #e8e8e8;
+       border-bottom: 1px solid #e8e8e8;
   
    background-color: #e8e8e8;
-
+   background:#305197
    }
 
 
