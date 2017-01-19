@@ -37,15 +37,7 @@
         <%= is_buyer ? feedback.seller_feedback_date.strftime("%d/%m/%Y") : feedback.buyer_feedback_date.strftime("%d/%m/%Y") %></td>
     </td>
     <td>
-           <% if current_user %>
-      <div class="controls">
-        <%= hidden_field_tag 'feedback_id', feedback.id %>
-        <label>Comentário</label>
-        <%= text_field_tag 'comment_input', '', :class => 'comment_input' %>
-        <br/>
-
-      </div>
-      <% end %>
+        
     </td>
 
   </tr>

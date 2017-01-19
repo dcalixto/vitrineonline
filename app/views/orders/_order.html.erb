@@ -102,11 +102,13 @@
             </td>
             <td>
               <ul>
-                <% if  params[:action] == "purchased" %>
+                                 
+                  <% if controller_name == 'order' && action_name == 'purchased' %>
                   <li>Vendedor
                     <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
                 <% end %>
-                <% if  params[:action] == "sold" %>
+               
+                  <% if controller_name == 'order' && action_name == 'sold' %>
                   <li>Comprador
                     <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
                 <% end %>
@@ -127,16 +129,20 @@
                     <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => false)%></b>
                 <% end %>
                 </li>
-                <#% if  params[:action] == "sold" %>
+              
                   <% if controller_name == 'order' && action_name == 'sold' %>
 
                   <li>
                     <label>Código de Rastreamento</label><%=text_field :track_number %></li>
 
                   <li>
+                     <% if  params[:status] == Order.statuses[0] %>
+
                     Marcar como:
                     <%= button_to "Enviado", sent_order_path(order), :class => 'btn_grey btn_small', :method => "get" %></li>
                 <% end %>
+                    <% end %>
+
               </ul>
             </td>
           <% end %>
