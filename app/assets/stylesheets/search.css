@@ -54,6 +54,8 @@ width:100%;
 border: 1px solid #ccc;
 
 height: 31px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
 
      
 }
@@ -74,7 +76,8 @@ padding-bottom: 0;
 background: none;
 
 box-shadow: none;
-
+-webkit-border-radius: 3px;
+border-radius: 3px;
 
 }
 
