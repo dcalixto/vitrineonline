@@ -55,7 +55,7 @@ class ConversationsController < ApplicationController
             @conversation.conversation_participants.create(user_id: user_id)
           end
         else
-          user = User.find_by_name(params[:conversation_participant][:first_name])
+          user = User.find_by(params[:conversation_participant][:first_name])
           if user.nil?
             flash[:error] = 'Usuário inexistente'
             raise ActiveRecord::Rollback

@@ -108,7 +108,7 @@
               <% end %>
               <% if  params[:action] == "sold" %>
               <li>Comprador
-                <%= link_to order.buyer.name, user_path(order.buyer.id) %></li>
+                <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
               <% end %>
               <li>Comprado Em:
                 <b>
