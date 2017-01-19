@@ -2,7 +2,7 @@
   <% product = order.product %>
   <tr>
     <td>
-      <ul>
+      
         <% if product.images.present? %>
           <%= link_to  product_path(product.id) do %>
             <%= image_tag product.images.first.ifoto.url(:thumb).to_s %>
@@ -129,9 +129,9 @@
                     <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => false)%></b>
                 <% end %>
                 </li>
-              
-                  
-   <% if current_seller%>
+             
+                  <% if controller_name == 'order' && action_name == 'sold' %> 
+                  <% if current_seller%>
 
                 <li>
                 <%= form_tag   sent_order_path(order),  :method => :get  do |f| %>
@@ -143,8 +143,9 @@
 
                     <li>
                    
-                     
-                                                                           <% end %>
+                      <% end %>  
+                                                                           <% end %> 
+  
 
               </ul>
             </td>
@@ -155,4 +156,4 @@
   </div>
 <% end %>
 
-      </ul>
+     

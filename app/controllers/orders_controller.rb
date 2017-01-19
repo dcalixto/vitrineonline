@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
  protect_from_forgery except: [:ipn_notification]
 
   def purchased
-    current_seller
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
       @q = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).ransack(params[:q])
