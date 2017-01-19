@@ -37,10 +37,7 @@
         <%= is_buyer ? feedback.seller_feedback_date.strftime("%d/%m/%Y") : feedback.buyer_feedback_date.strftime("%d/%m/%Y") %></td>
     </td>
     <td>
-      <div class="comments" id="comments<%= feedback.id %>">
-        <#%= render :partial => 'comments', :locals => {feedbacks: feedbacks} %>
-      </div>
-      <% if current_user %>
+           <% if current_user %>
       <div class="controls">
         <%= hidden_field_tag 'feedback_id', feedback.id %>
         <label>Comentário</label>

@@ -18,10 +18,13 @@
     </td>
     <td>
       <b>
+        
+<% if current_user.cart%>
         <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}, order.quantity), :class=> "select_item select_order_quantity", :'data-order-id' => order.id %></b>
-    </td>
+    <% end%>
 
-    <td>
+    </td>
+      <td>
       <span class="lista-preco">
         <b><%= number_to_currency(order.product.price) %></b>
       </span>
@@ -124,7 +127,7 @@
                     <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => false)%></b>
                 <% end %>
                 </li>
-                <% if  params[:action] == "sold" %>
+                <% if  params[:status] == Order.statuses[0] %>
                   <li>
                     <label>Código de Rastreamento</label><%=text_field :track_number %></li>
 
