@@ -130,10 +130,11 @@ gem 'md_emoji'
 #gem 'paypal_adaptive'
 gem 'paypal-sdk-adaptivepayments', :ref => '8fb732630247a141d0a5e374da5d640429c56f30'
 gem 'configatron' # , '3.1.3'
-gem 'prawn'#, '1.0.0.rc2'
+#gem 'prawn'#, '1.0.0.rc2'
 #gem 'mymoip'
 
-
+gem 'prawn', '~> 1.2.1'
+gem 'prawn-table', '~> 0.1.0'
 
 
 

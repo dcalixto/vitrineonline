@@ -3,15 +3,18 @@
   <tr>
     <td>
       <ul>
-
+ <% if product.images.present? %>
         <%= link_to  product_path(product.id) do %>
 
-          <% if product.images.present? %>
+         
 
         <%= image_tag product.images.first.ifoto.url(:thumb).to_s %>
 
 
-  <% end %>
+        <% end %>
+
+
+
         <% end %>
 
       </td>
