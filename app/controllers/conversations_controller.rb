@@ -56,7 +56,9 @@ class ConversationsController < ApplicationController
             @conversation.conversation_participants.create(user_id: user_id)
           end
         else
-          user = User.where('conversation_participant like ? or first_name like ?', query, query)
+         
+query = params[:query] # or something ...
+user = User.where('conversation_participant LIKE :query OR first_name LIKE :query', query: "%#{query}%")
 
 
 

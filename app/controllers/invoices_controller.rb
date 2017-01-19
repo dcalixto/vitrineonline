@@ -16,7 +16,7 @@ class InvoicesController < ApplicationController
       format.html
       format.pdf do
         pdf = InvoicePdf.new(current_vitrine, @invoice, @order, @buyer, @product)
-        send_data pdf.render, filename: "invoice_#{@invoice.id}.pdf", type: 'application/pdf'
+        send_data.to_s pdf.render, filename: "invoice_#{@invoice.id}.pdf", type: 'application/pdf'
       end
     end
   end
