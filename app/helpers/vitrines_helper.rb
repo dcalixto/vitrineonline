@@ -22,6 +22,15 @@ include ActsAsTaggableOn::TagsHelper
     redirect_to login_path unless current_vitrine?(@vitrine)
   end
 
+  def current_seller
+    @current_seller ||= current_vitrine.orders
+ 
+  end
+
+ def order
+    orders = Order.find_by_id(params[:id])
+  end
+
 
 
   

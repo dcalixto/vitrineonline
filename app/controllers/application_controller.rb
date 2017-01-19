@@ -35,6 +35,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :current_vitrine
+   helper_method :current_seller
+
   helper_method :vitrine
   helper_method :current_announcement
 

@@ -131,20 +131,20 @@
                 </li>
               
                   
+   <% if current_seller%>
 
                 <li>
-<%= form_tag   sent_order_path(order),  :method => :get  do |f| %>
+                <%= form_tag   sent_order_path(order),  :method => :get  do |f| %>
 
                     <label>Código de Rastreamento</label><%=text_field_tag :track_number %></li>
+ Marcar como:
+                   <%= submit_tag"Enviado",  :class => 'btn_grey btn_small' %>
+<% end %>
 
                     <li>
-                    <% if controller_name == 'order' && action_name == 'sold' %>
-                     <#% if  params[:status] == Order.statuses[0] %>
-
-                   Marcar como:
-                   <%= submit_tag"Enviado",  :class => 'btn_grey btn_small' %>
-                                     <% end %>
-                    <% end %>
+                   
+                     
+                                                                           <% end %>
 
               </ul>
             </td>
