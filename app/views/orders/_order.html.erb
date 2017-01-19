@@ -131,7 +131,7 @@
                 </li>
               
                   
-   <% unless current_seller%>
+   <% if current_seller%>
 
                 <li>
                 <%= form_tag   sent_order_path(order),  :method => :get  do |f| %>
