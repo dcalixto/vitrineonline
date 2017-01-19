@@ -29,7 +29,7 @@
 
       <td>
         <h2>Por</h2>
-        <%= is_buyer ? link_to(seller.name, vitrine_path(seller.id)) : link_to(buyer.name, user_path(buyer.id)) %>
+        <%= is_buyer ? link_to(seller.name, vitrine_path(seller.id)) : link_to(buyer.first_name, user_path(buyer.id)) %>
       </td>
 
       <td>

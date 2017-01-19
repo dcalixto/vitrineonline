@@ -3,59 +3,52 @@
   <tr>
     <td>
       <ul>
- <% if product.images.present? %>
-        <%= link_to  product_path(product.id) do %>
-
-         
-
-        <%= image_tag product.images.first.ifoto.url(:thumb).to_s %>
-
+        <% if product.images.present? %>
+          <%= link_to  product_path(product.id) do %>
+            <%= image_tag product.images.first.ifoto.url(:thumb).to_s %>
+          <% end %>
 
         <% end %>
 
+    </td>
+    <td>
 
+      <%= link_to product.name, product_path(product.id) %>
 
-        <% end %>
+    </td>
+    <td>
+      <b>
+        <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}, order.quantity), :class=> "select_item select_order_quantity", :'data-order-id' => order.id %></b>
+    </td>
 
-      </td>
-      <td>
+    <td>
+      <span class="lista-preco">
+        <b><%= number_to_currency(order.product.price) %></b>
+      </span>
+    </td>
 
-        <%= link_to product.name, product_path(product.id) %>
-
-      </td>
-      <td>
-        <b>
-          <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}, order.quantity), :class=> "select_item select_order_quantity", :'data-order-id' => order.id %></b>
-      </td>
-
-      <td>
-        <span class="lista-preco">
-          <b><%= number_to_currency(order.product.price) %></b>
-        </span>
-      </td>
-
-      <td>
-        <span>
-          <b><%= number_to_currency(order.total_price) %></b>
-        </span>
-      </td>
-      <td>
-        <% if order.status.nil? %>
+    <td>
+      <span>
+        <b><%= number_to_currency(order.total_price) %></b>
+      </span>
+    </td>
+    <td>
+      <% if order.status.nil? %>
 
         <%= button_to 'Remover',  order, :class=> "btn_grey btn_small",  method: :delete %>
-        <% end %>
-      </td>
-      <td>
-        <% if order.status.nil? %>
+      <% end %>
+    </td>
+    <td>
+      <% if order.status.nil? %>
         <%= button_to 'Prosseguir', checkout_order_path(order), method: :get, class: 'btn' %>
 
-        <% end %>
-      </td>
+      <% end %>
+    </td>
 
 
-    </tr>
-  </tbody>
-  <% unless order.status.nil? %>
+  </tr>
+</tbody>
+<% unless order.status.nil? %>
   <div class="block">
     <table class="cart">
       <thead>
@@ -74,77 +67,78 @@
       <tbody>
         <tr>
           <td>
-            <%= link_to  product_path(product.id) do %>
+            <% if product.images.present? %>
+              <%= link_to  product_path(product.id) do %>
 
-              <% if product.images.present? %>
-                          <%= image_tag product.images.first.url(:small).to_s %>
+
+                <%= image_tag product.images.first.url(:small).to_s %>
+              <% end %>
             <% end %>
 
-           
-                      <%= link_to product.name, product_path(product.id) %>
+            <%= link_to product.name, product_path(product.id) %>
             <%= order.quantity %>
             <b class="lista-preco"><%= number_to_currency(order.total_price) %></b>
           </td>
           <% if order.seller == current_vitrine or order.buyer == current_user  %>
-          <td>
-            <ul>
-              <li>
-                <h2>Endereço</h2>
-              </li>
-              <li><%= order.buyer.full_name %></li>
-              <li>
-                <%= order.buyer.user_address if order.buyer.address %></li>
-              <li>
-                <%= order.buyer.user_neighborhood if order.buyer.neighborhood%></li>
-              <li>
-                <%= order.buyer.user_city if order.buyer.city and order.buyer.state %>
-              </li>
-              <li><%= order.buyer.user_postal_code if  order.buyer.postal_code %></li>
-              <li><%= order.buyer.user_address_supplement if order.buyer.address_supplement %></li>
-            </ul>
-          </td>
-          <td>
-            <ul>
-              <% if  params[:action] == "purchased" %>
-              <li>Vendedor
-                <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
-              <% end %>
-              <% if  params[:action] == "sold" %>
-              <li>Comprador
-                <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
-              <% end %>
-              <li>Comprado Em:
-                <b>
-                  <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => false)%>
-                </b>
-              </li>
-              <li>Frete
-                <b><%= order.shipping_method %></b>
-              </li>
-              <li>Custo
-                <b><%= number_to_currency order.shipping_cost %></b>
-              </li>
-              <li><% if params[:status] == Order.statuses[1] %>
-                Enviado em
-                <b>
-                  <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => false)%></b>
+            <td>
+              <ul>
+                <li>
+                  <h2>Endereço</h2>
+                </li>
+                <li><%= order.buyer.full_name %></li>
+                <li>
+                  <%= order.buyer.user_address if order.buyer.address %></li>
+                <li>
+                  <%= order.buyer.user_neighborhood if order.buyer.neighborhood%></li>
+                <li>
+                  <%= order.buyer.user_city if order.buyer.city and order.buyer.state %>
+                </li>
+                <li><%= order.buyer.user_postal_code if  order.buyer.postal_code %></li>
+                <li><%= order.buyer.user_address_supplement if order.buyer.address_supplement %></li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <% if  params[:action] == "purchased" %>
+                  <li>Vendedor
+                    <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
                 <% end %>
-              </li>
-              <% if  params[:action] == "sold" and params[:status] == Order.statuses[0] %>
-              <li>
-                <label>Código de Rastreamento</label><%=text_field :track_number %></li>
+                <% if  params[:action] == "sold" %>
+                  <li>Comprador
+                    <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
+                <% end %>
+                <li>Comprado Em:
+                  <b>
+                    <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => false)%>
+                  </b>
+                </li>
+                <li>Frete
+                  <b><%= order.shipping_method %></b>
+                </li>
+                <li>Custo
+                  <b><%= number_to_currency order.shipping_cost %></b>
+                </li>
+                <li><% if params[:status] == Order.statuses[1] %>
+                  Enviado em
+                  <b>
+                    <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => false)%></b>
+                <% end %>
+                </li>
+                <% if  params[:action] == "sold" and params[:status] == Order.statuses[0] %>
+                  <li>
+                    <label>Código de Rastreamento</label><%=text_field :track_number %></li>
 
-              <li>
-                Marcar como:
-                <%= button_to "Enviado", sent_order_path(order), :class => 'btn_grey btn_small', :method => "get" %></li>
-              <% end %>
-            </ul>
-          </td>
+                  <li>
+                    Marcar como:
+                    <%= button_to "Enviado", sent_order_path(order), :class => 'btn_grey btn_small', :method => "get" %></li>
+                <% end %>
+              </ul>
+            </td>
           <% end %>
         </tr>
       </tbody>
     </table>
   </div>
-  <% end %>
+<% end %>
 
-</ul>
+      </ul>

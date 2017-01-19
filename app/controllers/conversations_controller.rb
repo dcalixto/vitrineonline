@@ -43,6 +43,7 @@ class ConversationsController < ApplicationController
   def new
     @conversation = Conversation.new if current_user
   end
+#(params[:conversation_participant][:first_name])
 
   def create
     Conversation.transaction do
@@ -55,8 +56,9 @@ class ConversationsController < ApplicationController
             @conversation.conversation_participants.create(user_id: user_id)
           end
         else
-          user = User.where(params[:conversation_participant][:first_name])
-          if user.nil?
+          user = User.where("conversation_participant || ' ' || first_name")
+
+                    if user.nil?
             flash[:error] = 'Usuário inexistente'
             raise ActiveRecord::Rollback
           end
