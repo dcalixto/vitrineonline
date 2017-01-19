@@ -127,7 +127,7 @@
                     <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => false)%></b>
                 <% end %>
                 </li>
-                <% if  params[:status] == Order.statuses[0] %>
+                <% if  params[:action] == "sold" %>
                   <li>
                     <label>Código de Rastreamento</label><%=text_field :track_number %></li>
 
