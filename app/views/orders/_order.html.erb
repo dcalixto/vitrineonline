@@ -128,13 +128,15 @@
                 <% end %>
                 </li>
                 <#% if  params[:action] == "sold" %>
+                  <% if controller_name == 'order' && action_name == 'sold' %>
+
                   <li>
                     <label>Código de Rastreamento</label><%=text_field :track_number %></li>
 
                   <li>
                     Marcar como:
                     <%= button_to "Enviado", sent_order_path(order), :class => 'btn_grey btn_small', :method => "get" %></li>
-                <#% end %>
+                <% end %>
               </ul>
             </td>
           <% end %>
