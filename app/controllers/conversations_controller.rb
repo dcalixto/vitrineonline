@@ -60,7 +60,7 @@ class ConversationsController < ApplicationController
 #query = params[:query] # or something ...
  # user = User.where('conversation_participants LIKE :query OR first_name LIKE :query', query: "%#{query}%")
 
- user = User.where(:conversation_participant, :current_user )
+ user = User.where(:conversation_participant, :current_user, :id, :first_name )
 
 #user = User.find_by_first_name(params[:conversation_participant][:first_name])
                     if user.nil?
