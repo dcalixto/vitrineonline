@@ -11,6 +11,7 @@ class InvoicePdf < Prawn::Document
     text "FATURA ##{@invoice.id}"
     move_down 10
     body
+    table table_data
   end
 
   def body
@@ -36,8 +37,8 @@ class InvoicePdf < Prawn::Document
     end
 
     rowspan = img.nil? ? 3 : 4
-
-    table_data[1] = [{ content: user_info, rowspan: rowspan },
+#[1]
+    table_data make_table = [{ content: user_info, rowspan: rowspan },
                      { content: @vitrine.id, rowspan: rowspan, align: :center },
                      { content: @product.name, align: :center, padding_bottom: 0, borders: [] },
                      { content: number_to_currency(@invoice.store_fee), rowspan: rowspan, align: :center },
