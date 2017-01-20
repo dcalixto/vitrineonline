@@ -38,7 +38,7 @@ class InvoicePdf < Prawn::Document
 
     rowspan = img.nil? ? 3 : 4
 #[1]
-    table_data[1]  = make_table = [{ content: user_info, rowspan: rowspan },
+    table_data  = make_table = [{ content: user_info, rowspan: rowspan },
                      { content: @vitrine.id, rowspan: rowspan, align: :center },
                      { content: @product.name, align: :center, padding_bottom: 0, borders: [] },
                      { content: number_to_currency(@invoice.store_fee), rowspan: rowspan, align: :center },
