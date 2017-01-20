@@ -14,4 +14,8 @@ class ConversationParticipant < ActiveRecord::Base
   belongs_to :user
   belongs_to :conversation
   attr_accessible :user_id, :has_read
+
+
+
+
 end

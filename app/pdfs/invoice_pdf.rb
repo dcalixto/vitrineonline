@@ -49,18 +49,18 @@ class InvoicePdf < Prawn::Document
 
 
 
-    product_price_col = { content: number_to_currency(@product.price), align: :center, size: 10, padding_top: 0, borders: [] }
-    quantity_col = { content: "Quantidade: #{@order.quantity}", align: :center, size: 10, padding_top: 0, borders: [:bottom] }
-    image_col = { image: img, padding_left: 20, borders: [], scale: 0.54 }
-    table_data[2] = [img.nil? ? product_price_col : image_col]
-    table_data[3] = [img.nil? ? quantity_col : product_price_col]
-    table_data[4] = [quantity_col] unless img.nil?
+   # product_price_col = { content: number_to_currency(@product.price), align: :center, size: 10, padding_top: 0, borders: [] }
+  #  quantity_col = { content: "Quantidade: #{@order.quantity}", align: :center, size: 10, padding_top: 0, borders: [:bottom] }
+  #  image_col = { image: img, padding_left: 20, borders: [], scale: 0.54 }
+  #  table_data[2] = [img.nil? ? product_price_col : image_col]
+   # table_data[3] = [img.nil? ? quantity_col : product_price_col]
+   # table_data[4] = [quantity_col] unless img.nil?
 
-    table table_data do # , :cell_style => {:borders => [:bottom]}
-      rows(0).style(size: 10, font_style: :bold, align: :center)
-      rows(1).style(size: 10)
-      self.column_widths = { 0 => 140, 1 => 100, 2 => 140, 3 => 70, 4 => 70 }
-    end
+   # table table_data do # , :cell_style => {:borders => [:bottom]}
+   #   rows(0).style(size: 10, font_style: :bold, align: :center)
+    #  rows(1).style(size: 10)
+    #  self.column_widths = { 0 => 140, 1 => 100, 2 => 140, 3 => 70, 4 => 70 }
+   # end
   end
 
   def user_info
