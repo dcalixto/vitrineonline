@@ -19,8 +19,9 @@
     <td>
       <b>
         
-<% unless controller_name == 'cart' && action_name == 'add' %>
-        <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}, order.quantity), :class=> "select_item select_order_quantity", :'data-order-id' => order.id %></b>
+      <% if controller_name == "carts" && action_name == "index" %>
+
+          <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}, order.quantity), :class=> "select_item select_order_quantity", :'data-order-id' => order.id %></b>
     <% end%>
 
     </td>
