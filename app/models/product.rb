@@ -100,6 +100,19 @@ belongs_to :material
     quantity * price
   end
 
+
+
+#before_create :comma_to_delimiter
+
+#def comma_to_delimiter
+# self.price.to_s.gsub(',', '.').to_f
+#end
+
+
+ def price=(price)
+    write_attribute(:price, price.tr(',', '.'))
+  end
+
   # CHECK IF CAN BUY
   def buyable?(user)
     if user.cart
