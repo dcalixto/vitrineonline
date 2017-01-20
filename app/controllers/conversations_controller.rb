@@ -43,7 +43,6 @@ class ConversationsController < ApplicationController
   def new
     @conversation = Conversation.new if current_user
   end
-#(params[:conversation_participant][:first_name])
 
   def create
     Conversation.transaction do
@@ -57,10 +56,6 @@ class ConversationsController < ApplicationController
           end
         else
          
-#query = params[:query] # or something ...
- # user = User.where('conversation_participants LIKE :query OR first_name LIKE :query', query: "%#{query}%")
-
-# user = User.where(:conversation_participant, :current_user, :id, :first_name )
 
 user = User.find_by_first_name(params[:conversation_participant][:first_name])
                     if user.nil?
