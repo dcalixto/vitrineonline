@@ -58,8 +58,11 @@ class ConversationsController < ApplicationController
         else
          
 #query = params[:query] # or something ...
-#user = User.where('conversation_participants LIKE :query OR first_name LIKE :query', query: "%#{query}%")
-user = User.find_by_id(params[:conversation_participant][:id])
+ # user = User.where('conversation_participants LIKE :query OR first_name LIKE :query', query: "%#{query}%")
+
+ user = User.where(:conversation_participant, :first_name => name).first
+
+#user = User.find_by_first_name(params[:conversation_participant][:first_name])
                     if user.nil?
             flash[:error] = 'Usuário inexistente'
             raise ActiveRecord::Rollback
