@@ -373,7 +373,8 @@ $desktop: min-width 1200px;
    display: block;
    vertical-align: middle;
    float: right;
-   font-weight:normal;
+   font-weight:bold;
+   color:#fff;
  }
  .help {
    margin-right: 10px;
@@ -385,13 +386,14 @@ $desktop: min-width 1200px;
    vertical-align: middle;
    float: right;
    list-style: outside none none;
+   
  }
  .top_links {
    padding-top: 8px;
    float: right
  }
  .log_topbar span {
-   border-right: 1px solid #167ac6;
+   border-right: 1px solid #fff;
    line-height: 0.2em;
    height: 10px;
    display: inline-block;
