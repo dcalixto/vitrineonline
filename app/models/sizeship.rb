@@ -9,4 +9,7 @@ class Sizeship < ActiveRecord::Base
  belongs_to :order
 belongs_to :product_data
 
+
+  validates_associated :product
+
 end

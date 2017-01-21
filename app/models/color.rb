@@ -8,6 +8,4 @@ class Color < ActiveRecord::Base
   has_one :order, :through => :colorship
   accepts_nested_attributes_for :products, :order
 
-
-
 end

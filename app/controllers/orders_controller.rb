@@ -67,7 +67,7 @@ order = Order.find(params[:id])
         :actionType => "PAY",
         :cancelUrl => carts_url,
         :currencyCode => "BRL",
-        :feesPayer => "SENDER",
+       # :feesPayer => "SENDER",
         :ipnNotificationUrl => ipn_notification_order_url(order),
         # "http://52.87.228.48/orders/#{order.id}/ipn_notification"
 
