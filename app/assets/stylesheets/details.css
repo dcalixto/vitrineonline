@@ -90,3 +90,32 @@
 */
 
 .margin_menu {margin-top:50px}
+
+
+
+
+.horizonal_list  li {
+     float: left;
+     margin-right: 10px;
+     display: inline-block;
+     float:left;
+padding:5px;
+
+width:100px
+
+}
+
+
+ 
+input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    vertical-align: bottom;
+}
+label.checkbox {
+    vertical-align: top;
+    line-height: 24px;
+    margin: 2px 0;
+    display: block;
+    height: 24px;
+}

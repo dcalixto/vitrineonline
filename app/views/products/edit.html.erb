@@ -29,9 +29,9 @@
 
 
 
-    <h4>
+    <h2>
       <%= link_to @product.name, product_path(@product) %>
-    </h4>
+    </h2>
 
     <div class="subcontent">
 
@@ -40,7 +40,7 @@
       <% unless @product.images.blank? %>
 
 
-  <%= image_tag(@product.images.first.ifoto.url(:big).to_s) %>
+  <%= image_tag(@product.images.first.ifoto.url(:small).to_s) %>
 
 <% end %>
 

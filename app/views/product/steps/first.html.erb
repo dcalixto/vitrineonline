@@ -6,17 +6,16 @@
 </div>
 <div class="box5">
 
+  <%= form_for @product, method: :put, url: wizard_path,  :html => {:multipart => true} do |p| %>
 
+<div class="block">
 
-  <div class="content">
+<h1>Imagens e especifiações</h1>
 
-    <%= form_for @product, method: :put, url: wizard_path,  :html => {:multipart => true} do |p| %>
+  <div class="subcontent">
 
-      <h1>Imagens e especifiações</h1>
-      <hr class="line"></hr>
-      <div class="subcontent_top">
-
-        <h4>Fotos</h4>
+  
+                    <h2>Fotos</h2>
         <%= image_tag @product.images.first.ifoto.url(:thumb) unless @product.images.blank? %>
 
         <p class="tip">Adicione no mínimo 2 fotos</p>
@@ -34,10 +33,11 @@
 
       </div>
 
-
+      <div class="square_box">
+       <h2>Descrição</h2> 
       <div class="subcontent">
 
-      <h4>Mais Informações</h4>
+      
 
         <p class="tip">Descreva seu item</p>
         <p clas="tip">
@@ -57,53 +57,67 @@
           <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
         </div>
       </div>
+</div>
 
 
-
+<div class="square_box">
+  <h2>Estilos</h2>
 
       <div class="subcontent">
-        <h4>Estilos</h4>
-        <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
+                <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
         </p>
         <%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
 
       </div>
+</div>
 
-
+<div class="square_box">
+     <h2>Marca</h2>
 
       <div class="subcontent">
-        <h4>Marca</h4>
-
+     
         <%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
         <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
 
       </div>
+</div>
+<div class="square_box">
+     <h2>Tamanho</h2>
 
-      <div class="subcontent">
-        <h4>Tamanho</h4>
-
+     <div class="subcontent horizonal_list">
+       <ul>
+   
         <%= hidden_field_tag "product[size_ids][]", nil %>
         <% Size.order(:size).each do |size| %>
-          <%= check_box_tag "product[size_ids][]", size.id, @product.size_ids.include?(size.id), id: dom_id(size) %>
-          <%= label_tag dom_id(size), size.size %><br>
+          <li> <%= check_box_tag "product[size_ids][]", size.id, @product.size_ids.include?(size.id), id: dom_id(size) %>
+        <%= label_tag dom_id(size), size.size %>
+          </li>
         <% end %>
+
+       </ul>
       </div>
+</div>
+<div class="square_box">
+   <h2>Cor</h2>
 
-      <div class="subcontent">
-
-        <h4>Cor</h4>
-        <%= hidden_field_tag "product[color_ids][]", nil %>
-        <% Color.all.each do |color| %>
+      <div class="subcontent horizonal_list">
+        <ul>
+               <%= hidden_field_tag "product[color_ids][]", nil %>
+               <% Color.all.each do |color| %>
+                 <li>
           <%= check_box_tag "product[color_ids][]", color.id, @product.color_ids.include?(color.id), id: dom_id(color) %>
-          <%= label_tag dom_id(color), color.name %><br>
-        <% end %>
+          <%= label_tag dom_id(color), color.name %>
+                 </li>
+          
+               <% end %>
 
+        </ul>
+      </div>
+      <div class="square_box">
+  <h2>Material</h2>
 
-
-
-        <div class="subcontent">
-          <h4>Material</h4>
-
+        <div class="subcontent ">
+        
           <ul>
 
             <li>
@@ -112,9 +126,13 @@
             </li>
           </ul>
         </div>
+      </div>
+
+      <div class="square_box">
+        <h2>Condição</h2>
+
         <div class="subcontent">
-          <h4>Condição</h4>
-          <ul>
+                    <ul>
             <li>
               <%=  p.collection_select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false})%>
 
@@ -124,9 +142,11 @@
       </div>
 
 
-      <%= p.submit 'Vender', :class =>"btn btn_big" %>
+      <%= p.submit 'Vender', :class =>"btn_orange btn_big" %>
     <% end %>
 
   </div>
+    </div>
+    </div>
 
 </div>

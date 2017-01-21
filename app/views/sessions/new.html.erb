@@ -10,12 +10,9 @@
   <div class=" block margin_top">
 
       <div class="square_box">
-    <h4>Entrar</h4>
+    <h2>Entrar</h2>
     <div class="content">
-      <%= link_to   "/auth/facebook" do  %>
-
-        <%= content_tag( :i,nil, :class => "sprite-icons-fb_button")  %>
-        <% end %>
+    
       <%= form_tag  sessions_path,  :method => :post  do |f| %>
       <ul>
 
@@ -57,10 +54,10 @@
 
 <div class="box10">
 
-  <div class="block margin_top">
+  <div class="block_white margin_top">
 
     <div class="content ul_disc" id="session_list">
-      <h1>Sou um novo cliente</h1>
+      <h1>Sou um novo usuário</h1>
       <ul>
         <li>Acompanhe as suas encomendas on-line</li>
         <li>Descubra novas vitrines e marcas</li>

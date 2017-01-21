@@ -15,8 +15,8 @@
   <div class="square_box">
 
 
-    <%= "<h4>Produtos Vendidos </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
-    <%= "<h4>Produtos Enviados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
+    <%= "<h1>Produtos Vendidos </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+    <%= "<h1>Produtos Enviados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
 
 
     <div class="subcontent">

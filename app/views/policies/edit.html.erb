@@ -12,7 +12,7 @@
     <h1>Política</h1>
 
       <div class="subcontent">
-        <h4>Pagamento</h4>
+        <h2>Pagamento</h2>
         <ul>
           <li>
             <!--PAYPAL -->
@@ -43,25 +43,30 @@
       </div>
 
         <div class="square_box">
-            <h4>Envio</h4>
-      <div class="subcontent">
+            <h2>Envio</h2>
+      <div class="subcontent horizonal_list ">
 
 
         <p class="tip">Indique as formas de envio disponível</p>
           <%= form_for @policy, :url => vitrine_policy_path, :method => :put do |s| %>
-        <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+            <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+            <ul>
         <%= hidden_field_tag "policy[shipping_ids][]", nil %>
         <% Shipping.all.each do |shipping| %>
+          <li>
         <%= check_box_tag "policy[shipping_ids][]", shipping.id, @policy.shipping_ids.include?(shipping.id), id: dom_id(shipping)%>
         <%= label_tag dom_id(shipping), shipping.kind %>
+          </li>
         <% end %>
-        <%= s.submit "Salvar", :class => 'btn' %>
-            <% end %>
+                  <%= s.submit "Salvar", :class => 'btn' %>
+                <% end %>
+                  </ul>
+
       </div>
       </div>
 
       <div class="square_box">
-          <h4>Garantias</h4>
+          <h2>Garantias</h2>
       <div class="subcontent">
 
 

@@ -32,23 +32,24 @@
 
 <div class="sugestion_carousel liquid" >
 	<span class="previous"></span>
-	<div class="wrapper">
+        <div class="wrapper">
+           <% unless @product.images.blank? %>
     <ul>
 
             <% @suggestions.each do |item| %>
               <li>
             <%= link_to product_path(item) do  %>
-            <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
+            <%= image_tag item.images.first.url(:thumb).to_s %>
             <%= item.name %>
               <%= item.price %>
             <% end %>
             </li>
             <% end %>
-  </ul>
+    </ul>
+  <% end %>
 	</div>
 	<span class="next"></span>
 </div>
-
 
 
 
@@ -66,6 +67,7 @@
       <div class="subcontent">
 
   <h2>Clientes que comprarm este produto também compraram</h2>
+<% unless @product.images.blank? %>
 
   <ul class="content-slider">
 
@@ -82,6 +84,7 @@
     </ul>
 
 
+<% end %>
 
   </div>
 
@@ -221,7 +224,8 @@
 
 <div class="similar_carousel liquid" >
 	<span class="previous"></span>
-	<div class="wrapper">
+        <div class="wrapper">
+          <% unless @product.images.blank? %>
     <ul>
    <%  @similarities_for_vitrine.each do |item| %>
 
@@ -233,6 +237,7 @@
     </li>
       <% end %>
 </ul>
+<% end %>
 
  	</div>
 	<span class="next"></span>
