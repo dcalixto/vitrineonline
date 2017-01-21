@@ -28,7 +28,7 @@ module ApplicationHelper
     else
       0
     end
-    end
+  end
 
   def num_new_comments
     current_user.posts.joins(:comments).where('comments.user_id != ? and not comments.read', current_user.id).count
@@ -40,7 +40,7 @@ module ApplicationHelper
       title: 'Vitrineonline - Monte sua Vitrine desenvolva sua marca',
       description: 'Monte sua vitrine, desenvolva sua marca, compre e venda roupas, calçados, acessórios e equipamentos',
 
-     keywords: 'vitrine, social, ofertas, oferta, loja, estilo, moda, calçados, camisas, cordões, pulseiras, brincos, comprar, roupas, vender, ecommerce, loja virtual, online'
+      keywords: 'vitrine, social, ofertas, oferta, loja, estilo, moda, calçados, camisas, cordões, pulseiras, brincos, comprar, roupas, vender, ecommerce, loja virtual, online'
 
     }
   end
@@ -82,22 +82,22 @@ module ApplicationHelper
         total > 0 ? " #{total}" : ''
       end
     end
-    end
+  end
 
   def markdown(text)
     if text.blank?
       nil
     else
-    #  markdown = Redcarpet::Markdown.new(MdEmoji::Render, :no_intra_emphasis => true,
-    #  hard_wrap: true, filter_html: true, safe_links_only: true,
-    #  no_intraemphasis: true, autolink: true)
+      markdown = Redcarpet::Markdown.new(MdEmoji::Render, :no_intra_emphasis => true,
+                                         hard_wrap: true, filter_html: true, safe_links_only: true,
+                                         no_intraemphasis: true, autolink: true)
 
-      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(
-                                          hard_wrap: true, filter_html: true, safe_links_only: true),
-                                       no_intraemphasis: true, autolink: true)
+      # markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(
+      #                                     hard_wrap: true, filter_html: true, safe_links_only: true),
+      #                                 no_intraemphasis: true, autolink: true)
       markdown.render(text).html_safe
- end
     end
+  end
 
 
 

@@ -122,7 +122,7 @@ gem 'formtastic', github: "dcalixto/formtastic", :branch => '3.1.3'
 
 # MARKUP LANGUAGE
 gem 'redcarpet'
-#gem 'md_emoji'
+gem 'md_emoji'
 
 
 
