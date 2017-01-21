@@ -293,9 +293,6 @@ GEM
     mail_form (1.6.0)
       actionmailer (>= 3.2, < 5.1)
       activemodel (>= 3.2, < 5.1)
-    md_emoji (1.0.2)
-      railties (>= 3.1.0)
-      redcarpet (>= 2.0)
     memcached-manager (1.0.0)
       dalli
       sinatra
@@ -556,7 +553,6 @@ DEPENDENCIES
   letter_opener
   lograge
   mail_form
-  md_emoji
   memcached-manager
   memcachier
   meta-tags
