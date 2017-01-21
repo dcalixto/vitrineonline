@@ -3,9 +3,10 @@ class Color < ActiveRecord::Base
   
  
   has_many :colorships
+  has_one :colorship
   has_many :products, :through => :colorships
-  has_many :orders, :through => :colorships
-  accepts_nested_attributes_for :products, :orders
+  has_one :order, :through => :colorship
+  accepts_nested_attributes_for :products, :order
 
 
 

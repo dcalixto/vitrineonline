@@ -47,26 +47,26 @@
                     </li>
                     <li>Tamanho
                       <b>
-                        <%= product.sizes.find { |s| s.size }.size  %></b>
+                        <%= order.size.size %></b>
                       </li>
                       <li>Cor
                         <b>
                                                
-                          <%= product.colors.find { |i| i.name }.name   %>
+                          <%= order.color.name %>
                           </b>
 
                       </li>
                         <li>Material
                           <b>
-                            <%= product.material.name %></b>
+                            <%= order.material.name %></b>
                           </li>
                           <li>Marca
                             <b>
-                              <%= product.brand.name%></b>
+                              <%= order.brand.name%></b>
                             </li>
                             <li>Condição
                               <b>
-                                <%= product.condition.condition %></b>
+                                <%= order.condition.condition %></b>
                               </li>
                               <li>Vitrine
                                 <%= link_to @order.seller.vitrine_name, vitrine_path(@order.seller) %></li>

@@ -12,11 +12,16 @@ class Order < ActiveRecord::Base
   belongs_to :feedback
  
   has_one    :transaction
-  has_many :colorships
-  has_many :colors, :through => :colorships
-  has_many :sizeships
+ # has_one :colorship
+  ##has_one :color, :through => :colorship
+  
+  
+   belongs_to :color
+   belongs_to :size
 
-  has_many :sizes, :through => :sizeships
+ # has_one :sizeship
+
+ # has_one :size, :through => :sizeship
 
 
   belongs_to :brand,  foreign_key: 'brand_id', class_name: 'Brand'
@@ -27,17 +32,17 @@ class Order < ActiveRecord::Base
 
  
 
-  belongs_to :condition, foreign_key: 'condition_id', class_name: 'Conndition'
+  belongs_to :condition, foreign_key: 'condition_id', class_name: 'Condition'
 
 
-  accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships,  :brand, :material,
+  accepts_nested_attributes_for :size,  :brand, :material,
      :condition
-
-
+#:sizeship, 
+# :color, :colorship,
 
   attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
     :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method, 
-    :status, :size_ids, :color_ids,   :brand_id, :material_id,:condition_id
+    :status,  :color_id, :size_id,  :brand_id, :material_id,:condition_id
 
 
   validates :shipping_cost, numericality: { greater_than: 0, allow_nil: true }
@@ -48,7 +53,7 @@ class Order < ActiveRecord::Base
   after_update :create_product_data
 
   after_commit ->(order) do
-    ProductRecommender.delay.add_order(order)
+    ProductRecommender.add_order(order)
   end, on: :create
 
   def create_product_data

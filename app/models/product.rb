@@ -128,11 +128,11 @@ belongs_to :material
   after_touch :reindex
 
   after_commit ->(product) do
-    ProductRecommender.delay.add_product(product)
+    ProductRecommender.add_product(product)
   end, if: :persisted?
 
   after_commit ->(product) do
-    ProductRecommender.delay.delete_product(product)
+    ProductRecommender.delete_product(product)
   end, on: :destroy
 
   searchkick word_start: [:name],

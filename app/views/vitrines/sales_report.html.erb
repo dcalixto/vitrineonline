@@ -37,6 +37,15 @@
 
       <div class="square_box">
     <h1>Relatório de Vendas</h1>
+<div class="tip_box">
+ <select name="chart_options" id="chart_options">
+        <option value="0">Ultima Semana</option>
+        <option value="1">Ultimo Mês</option>
+      </select>
+      <br/><br/>
+</div>
+
+
 
     <div class="subcontent">
 
@@ -52,11 +61,7 @@
     <% unless @most_sold_product.nil? %>
     <div id="sales_chart_options">
       &nbsp;Período:
-      <select name="chart_options" id="chart_options">
-        <option value="0">Ultima Semana</option>
-        <option value="1">Ultimo Mês</option>
-      </select>
-      <br/><br/>
+     
     </div>
     <% end %>
   </div>

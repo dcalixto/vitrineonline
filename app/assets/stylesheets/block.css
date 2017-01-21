@@ -77,6 +77,8 @@ background:#fff;
     white-space: normal;
     display: block;
     overflow: hidden;
+        background-color: #f7f7f7;
+    border: 1px solid #ddd;
 }
 
 .block_search {

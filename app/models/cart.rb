@@ -11,7 +11,6 @@ class Cart < ActiveRecord::Base
   attr_accessor :address, :neighborhood, :postal_code, :address_supplement
 
   attr_accessible :user_attributes, :address, :neighborhood, :postal_code, :address_supplement
-
   # def user
   #    us = User.find_by_id(attributes['user_id'])
   #    end
