@@ -1,0 +1,30 @@
+
+ <div class="similar_carousel liquid" >
+
+      <span class="previous"></span>
+
+      <div class="wrapper">
+       
+
+
+      <ul>
+
+        <%  @similarities.each do |item| %>
+          <li>
+            <%= link_to product_path(item) do  %>
+              <%= image_tag item.images.first.url(:thumb).to_s %>
+              <%= item.name %>
+
+              <%= item.price %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+
+
+    </div>
+      <span class="next"></span>
+    </div>
+
+

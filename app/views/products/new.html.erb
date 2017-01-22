@@ -27,19 +27,19 @@
 <h2>Selecione as categorias</h2>
 <div class="form-group">
 <%=p.label :gender_id, 'Genero' %>&nbsp;
-<%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control' } %>
+<%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control select_item' } %>
 </div>
  </br>
 
 <div class="form-group">
 <%=p.label :category_id, 'Categoria' %>&nbsp;
-<%=dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Categoria' }, { class: 'form-control' } %>
+<%=dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Categoria' }, { class: 'form-control select_item' } %>
 </div>
  </br>
 
 <div class="form-group">
 <%=p.label :subcategory_id, 'Subcategoria' %>&nbsp;
-<%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control' } %>
+<%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control select_item' } %>
 </div>
 </div>
 <div class="subcontent">

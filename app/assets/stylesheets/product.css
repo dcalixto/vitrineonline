@@ -119,9 +119,9 @@ img#rating_line  {display: inline;
 }
 .select_item {
   display: block;
-  width: 100%;
-  height: 36px;
-  padding: 8px 12px;
+  width: auto;
+  height: 32px;
+  padding: 8px 10px;
   line-height: 1.28571;
   color: #666;
   background-color: #FFF;

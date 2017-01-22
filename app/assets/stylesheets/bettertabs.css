@@ -33,13 +33,13 @@ background-color: #fff;
 color: #555;
 
 cursor: default; }
-div.bettertabs ul.tabs li.active a.active  { color: black; font-weight:bold; border-bottom:2px solid #47CC1B}
+div.bettertabs ul.tabs li.active a.active  { color: #1e59d3; font-weight:bold; border-bottom:2px solid #ffae25}
 
 div.bettertabs ul.tabs li a {  text-decoration: none; float: left; }
 div.bettertabs ul.tabs li a:link,
 div.bettertabs ul.tabs li a:visited { color: #444; }
-div.bettertabs ul.tabs li a:hover { color: #000; border-bottom:2px solid #47CC1B }
-div.bettertabs ul.tabs li a:active { color: #933; }
+div.bettertabs ul.tabs li a:hover { color: #000; border-bottom:2px solid #ffae25 }
+div.bettertabs ul.tabs li a:active { color: #1e59d3; }
 div.bettertabs ul.tabs li a.ajax-loading { color: #666; }
 
 div.bettertabs div.content {   background-color: #fff; clear: left; }

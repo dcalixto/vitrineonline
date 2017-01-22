@@ -3,49 +3,44 @@
 
 
 
-    <h1>Avaliações</h1>
-  
-      <div class="subcontent">
-        <%= link_to  product_path(@product.id) do %>
-<% if @product.images.present? %>
+  <h1>Avaliações</h1>
+
+  <div class="subcontent">
+    <%= link_to  product_path(@product.id) do %>
+      <% if @product.images.present? %>
         <%= image_tag @product.images.first.ifoto.url(:thumb).to_s %>
-<% end %>
-        <% end %>
+      <% end %>
+    <% end %>
 
-        <%= link_to  product_path(@product.id)  do %>
-        <%= @product.name %>
-        <% end%>
-      </div>
+    <%= link_to  product_path(@product.id)  do %>
+      <%= @product.name %>
+    <% end%>
+  </div>
 
 
-      <div class="subcontent">
-      <li class="lista-time">
-        <%= link_to  vitrine_path(@product.vitrine.id)  do %>
+  <div class="subcontent">
+    <li class="lista-time">
+      <%= link_to  vitrine_path(@product.vitrine.id)  do %>
         Por
         <%= @product.vitrine.name %>
-        <% end%>
-        <%= timeago_tag(@product.created_at, :nojs => true, :date_only => false)%>
-      </li>
-    </div>
+      <% end%>
+      <%= timeago_tag(@product.created_at, :nojs => true, :date_only => false)%>
+    </li>
+  </div>
 
-    <table class="block_search">
-      <tr>
-       
-        <td class="sort">
+  <table class="block_search">
+    <tr>
 
-          Ordernar por
-          <%= sort_link @q, :created_at, "Data" %>
-          |
-          <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
-        </td>
-      </tr>
-    </table>
+    <%= render :partial => 'shared/sort_feedback'%>
 
-    <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+    </tr>
+  </table>
 
-    <%= render :partial => 'feedbacks/feedbacks' %>
+  <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
 
-  
+  <%= render :partial => 'feedbacks/feedbacks' %>
+
+
 
   <div class="block_pagination">
     <div class="digg_pagination">

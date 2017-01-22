@@ -16,7 +16,6 @@ class CartsController < ApplicationController
         brand = Brand.find_by_id(params[:brand_id])
 
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
-        # order = current_user.cart.orders.find_by_product_id_and_status(product.id, nil)
 
         order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id(product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id)
 

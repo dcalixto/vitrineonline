@@ -1,170 +1,139 @@
 
 
 
-  <div class="content">
+<div class="content">
 
 
   <div class="subcontent_top">
 
-      <%= render 'announcements/announcement_for_all' %>
+    <%= render 'announcements/announcement_for_all' %>
 
   </div>
 
-  
 
-
-<div class="subcontent">
-  <h2>Produtos Similares aos da <%= @vitrine.name %></h2>
-
-
-
-
-  <div class="similar_carousel liquid" >
-	<span class="previous"></span>
-	<div class="wrapper">
-    <ul>
-   <%  @similarities.each do |item| %>
-     <li> <%= link_to product_path(item) do  %>
-  <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
-  <%= item.name %>
-  <%= item.price %>
-<% end %>
-     </li>
-  <% end %>
-</ul>
-
- 	</div>
-	<span class="next"></span>
-</div>
-
-
-
-
-</div>
 
 
   <div class="subcontent">
-<h2>Produtos Adicionados recentemente pela <%=@vitrine.name %></h2>
+    <h2>Produtos Similares aos da <%= @vitrine.name %></h2>
+
+
+    <%= render :partial => 'shared/similarities'%>
 
 
 
-<p>Total
-  <%= @vitrine.products.count %>
-  Produtos</p>
+
+  </div>
 
 
- <table class="block_search">
+  <div class="subcontent">
+    <h2>Produtos Adicionados recentemente pela <%=@vitrine.name %></h2>
+
+
+
+    <p>Total
+    <%= @vitrine.products.count %>
+    Produtos</p>
+
+
+    <table class="block_search">
       <tr>
         <td>
 
           <%= search_form_for @q, url:search_products_vitrines_path, method: :post  do |f| %>
 
-          <%= f.text_field :name_cont %>
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
+            <%= f.text_field :name_cont %>
+            <%= f.submit "Buscar", :class=>"btn_grey" %>
 
           <% end %>
         </td>
-        <td class="sort">
+      
 
-          Ordernar por
-          <%= sort_link @q, :created_at, "Data" %>
-          |
-          <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
-        </td>
+        <%= render :partial => 'shared/sort_feedback'%>
+
       </tr>
+
+ 
+
+
     </table>
 
 
 
-<div id="searchResults">
-<table id="posts" class="product_table">
-<tbody class="page">
-<tr>
-<% @products.each do |product|%>
-<td>
-<%=link_to product_path(product.id), :class=>"product" do %>
-<%if product.images.present? %>
-<%=image_tag product.images.first.ifoto.url(:thumb).to_s, :class=>"productImg" %>
-<% end %>
-<span class="productName">
-<%=product.name %></span>
-<span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
+    <div id="searchResults">
+      <table id="posts" class="product_table">
+        <tbody class="page">
+          <tr>
+            <% @products.each do |product|%>
+              <td>
+                <%=link_to product_path(product.id), :class=>"product" do %>
+                  <%if product.images.present? %>
+                    <%=image_tag product.images.first.ifoto.url(:thumb).to_s, :class=>"productImg" %>
+                  <% end %>
+                  <span class="productName">
+                    <%=product.name %></span>
+                  <span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
 
 
-<% if product.feedbacks %>
-<div class="productFeeback">
-<div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
-<%=@total_feedbacks %>
-</div>
-<% end %>
-<span class="by">Por
-<%=product.vitrine.name %></span>
-<% end %>
-</td>
-<% end %>
-</tr>
-
-
-
-
-</tbody>
-</table>
-</div>
+                  <% if product.feedbacks %>
+                    <div class="productFeeback">
+                      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+                      <%=@total_feedbacks %>
+                    </div>
+                  <% end %>
+                  <span class="by">Por
+                    <%=product.vitrine.name %></span>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
 
 
 
 
-
-<div class="block_pagination">
-<div class="digg_pagination">
-<%=will_paginate @products,:container=> false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
-
-
-</div>
-</div>
-
-
-
-   
-
-</div>
-
-
-
-
-
-
-    <div class="subcontent">
-      <h2>Avaliações recebidas recentemente
-      </h2>
-
-
-<table class="block_search">
-      <tr>
-       
-        <td class="sort">
-
-          Ordernar por
-          <%= sort_link @q, :created_at, "Data" %>
-          |
-          <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
-        </td>
-      </tr>
-    </table>
-
-
-
-      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
-      <%= render :partial => 'feedbacks/feedbacks' %>
-   
-    
+        </tbody>
+      </table>
     </div>
 
 
-    <div class="subcontent">
-      <h2>Formas de Pagamentos disponível</h2>
-      <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
-      <% unless @vitrine.policy.blank? %>
+
+
+
+  <%= render :partial => 'shared/product_pagination'%>
+
+
+
+
+  </div>
+
+
+
+
+
+
+  <div class="subcontent">
+    <h2>Avaliações recebidas recentemente
+    </h2>
+
+
+    <table class="block_search">
+      <tr>
+ <%= render :partial => 'shared/sort_feedback'%>
+      </tr>
+    </table>
+
+
+
+    <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+    <%= render :partial => 'feedbacks/feedbacks' %>
+
+
+  </div>
+
+
+  <div class="subcontent">
+    <h2>Formas de Pagamentos disponível</h2>
+    <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
+    <% unless @vitrine.policy.blank? %>
     </div>
 
     <div class="subcontent">
@@ -178,9 +147,9 @@
         </li>
 
         <% @vitrine.policy.shippings.each do |shipping| %>
-        <li>
-          <b><%= shipping.kind %></b>
-        </li>
+          <li>
+            <b><%= shipping.kind %></b>
+          </li>
         <% end %>
       </ul>
 
@@ -189,56 +158,21 @@
     <div class="subcontent">
       <h2>Garantias Oferecidas pelo Vendedor</h2>
       <p><%= markdown(@vitrine.policy.guarantee) %></p>
-      <% end %>
-   
+    <% end %>
+
     </div>
 
 
 
 
-                <div class="subcontent">
-              <h2>Veja Também</h2>
+    <div class="subcontent">
+      <h2>Veja Também</h2>
+
+      <%= render :partial => 'shared/suggestion'%>
 
 
-  <div class="similar_carousel liquid" >
-	<span class="previous"></span>
-	<div class="wrapper">
-  <ul>
-
-            <% @suggestions.each do |item| %>
-              <li>
-            <%= link_to product_path(item) do  %>
-            <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
-            <%= item.name %>
-              <%= item.price %>
-            <% end %>
-            </li>
-            <% end %>
-  </ul>
-
- 	</div>
-	<span class="next"></span>
-</div>
-
-
-
-
-
-        
-
-
+    </div>
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-              </div>
 

@@ -8,7 +8,7 @@
        -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 
-    padding: 8px 10px;
+
     margin-bottom: 20px;
     color: #4c4a42;
     text-align: left;
@@ -18,7 +18,7 @@
 
    
        background-color: #f7f7f7;
-    padding: 20px;
+  padding:20px; 
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin-bottom: 10px;

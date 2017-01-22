@@ -2,244 +2,243 @@
 <%description @product.name  %>
 <% keywords  @product.tag_list %>
 <div class="container">
-<div class="box1"
-<% breadcrumb :products, @products %>
+  <div class="box1"
+    <% breadcrumb :products, @products %>
 
-  <div class="margin_top">
-    <%= render 'shared/flash_messages' %>
+    <div class="margin_top">
+      <%= render 'shared/flash_messages' %>
 
-  </div>
-</div>
-
-<!-- Imagens do product   -->
-
-
-<div class="box9">
-
-  <div id="placeholder">
-<% if @product.images.first.present? %>
-    <%= image_tag @product.images.first.ifoto.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
-    <%= render_showcase %>
-    <% end %>
+    </div>
   </div>
 
-</div>
-
-<div class="box9  white">
- <%= form_tag  add_to_carts_path(@product),  :method => :post  do |f| %>
-  <div class"content">
+  <!-- Imagens do product   -->
 
 
-      <div>
-        <h1 id="item_name"><%= @product.name %></h1>
-      </div>
+  <div class="box9">
+
+    <div id="placeholder">
+      <% if @product.images.first.present? %>
+        <%= image_tag @product.images.first.ifoto.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
+        <%= render_showcase %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="box9  white">
+    <%= form_tag  add_to_carts_path(@product),  :method => :post  do |f| %>
+      <div class"content">
 
 
-
-
-  
-
-
-      <div>
-<ul>
-    <li>   <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
-        <%=link_to @product.vitrine.name, vitrine_path(@product.vitrine),  :title => "Nome" %>
-      </li>
-      <li>
-       <% if @product.vitrine.user.online? == true %>
-          <span class="status_online"> Online </span>
-          <% else %>
-            <span class="status_offline"> Offline </span>
-            <% end %>
-</li>
-</ul>
-      </div>
-
-
-      <!-- Fim-->
-
-      <!--Descrição   -->
-    <ul>
-    
-
-      <li>
-        <hr class="line"></hr>
-
-        <span>Preço:
-          <strong><%= number_to_currency(@product.price, :unit => "R$") %></strong></span>
-      </li>
-
-
-      <li>
-
-        <span>Disponível:
-          <strong><%= @product.quantity%></strong>
-        </span>
-      </li>
-
-
-
-    
-
- <li>
-
-
-        <% if @product.vitrine.feedbacks %>
-<div id="rating_line">
-
-      <%=link_to  feedbacks_product_path(:id=> @product.id)  do %>
-
-            <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>">
-          <span class="feedCounter"><%= @total_feedbacks %>
-            Avaliações</span>
+        <div>
+          <h1 id="item_name"><%= @product.name %></h1>
         </div>
 
-          <% end %>
-  </div>
 
-      <% end %>
-  </li>
+
+
+
+
+
+        <div>
+          <ul>
+            <li>   <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
+            <%=link_to @product.vitrine.name, vitrine_path(@product.vitrine),  :title => "Nome" %>
+            </li>
+            <li>
+              <% if @product.vitrine.user.online? == true %>
+                <span class="status_online"> Online </span>
+              <% else %>
+                <span class="status_offline"> Offline </span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+
+
+        <!-- Fim-->
+
+        <!--Descrição   -->
+        <ul>
+
+
+          <li>
+            <hr class="line"></hr>
+
+            <span>Preço:
+              <strong><%= number_to_currency(@product.price, :unit => "R$") %></strong></span>
+          </li>
+
+
+          <li>
+
+            <span>Disponível:
+              <strong><%= @product.quantity%></strong>
+            </span>
+          </li>
+
+
+
+
+
+          <li>
+
+
+            <% if @product.vitrine.feedbacks %>
+              <div id="rating_line">
+
+                <%=link_to  feedbacks_product_path(:id=> @product.id)  do %>
+
+                  <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>">
+                    <span class="feedCounter"><%= @total_feedbacks %>
+                    Avaliações</span>
+                  </div>
+
+                <% end %>
+              </div>
+
+            <% end %>
+          </li>
 
 
 
           <span class="span">ID</span>
           <b class="span">
             #<%= @product.id %></b>
-        </li>
-        <li>
-          Site:
-          <% if @product.vitrine.marketing.url%>
-        <%=link_to  "#{@product.vitrine.marketing.url}", url_with_protocol(@product.vitrine.marketing.url), :target => '_blank' %>
-        <% end %>
-        </li>
-
-
-
-
-
-
-
-    </ul>
-
-
-  </div>
-
-  <div class="content">
-    <%= link_to  "https://www.paypal.com/br"  do %>
-
-    <%= content_tag(:span, nil, :class => 'sprite-icons-paypal_protect') %>
-
-    <% end %>
-
-    Saiba mais em:
-    <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
-  </div>
-
-</div>
-
-
-<div class="box10">
-
-
-  <div class="block">
-
-    <div class="tip_box wrapper ">
-
-   
-
-   
-
-      <ul>
-        <li>
-
-          <h3 id="item_price"><%= number_to_currency(@product.price, :unit => "R$") %></h3>
-        </li>
-
-      </ul>
-
-      <div class="left_info item_information">
-        <ul>
-          <li >
-            <b>Quantidade</b>&nbsp;
-
-            <%= select_tag  :quantity, options_for_select((1..@product.quantity).collect{ |q| [q, q]}) %>
-
-          </li>
-          <li >
-            <b>Cor</b>&nbsp;
-
-            <%= select_tag :color_id, options_for_select(@colors_for_dropdown.unshift(['Selecionar Cor', nil])) %>
-
-
-
-       <span>
-
-
           </li>
           <li>
-            <b>Tamanho</b>&nbsp;
-
-            <%= select_tag :size_id, options_for_select(@sizes_for_dropdown.unshift(['Selecionar Tamanho', nil]))%>
-
+            Site:
+            <% if @product.vitrine.marketing.url%>
+              <%=link_to  "#{@product.vitrine.marketing.url}", url_with_protocol(@product.vitrine.marketing.url), :target => '_blank' %>
+            <% end %>
           </li>
+
+
+
+
+
 
 
         </ul>
 
 
-
       </div>
 
+      <div class="content">
+        <%= link_to  "https://www.paypal.com/br"  do %>
+
+          <%= content_tag(:span, nil, :class => 'sprite-icons-paypal_protect') %>
+
+        <% end %>
+
+        Saiba mais em:
+        <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+      </div>
+
+  </div>
+
+
+  <div class="box10">
+
+
+    <div class="block">
+
+      <div class="tip_box wrapper div_select ">
 
 
 
-      <div class="horizontal_buttons">
+
+
         <ul>
-        
+          <li>
+
+            <h3 id="item_price"><%= number_to_currency(@product.price, :unit => "R$") %></h3>
+          </li>
+
+        </ul>
+
+        <div class="left_info item_information">
+          <ul>
+            <li >
+              <%= label_tag "Quantidade" %>
+              <%= select_tag  :quantity, options_for_select((1..@product.quantity).collect{ |q| [q, q]}), :class=>"select_item" %>
+
+            </li>
+            <li >
+              <%= label_tag "Cor" %>
+
+              <%= select_tag :color_id, options_for_select(@colors_for_dropdown.unshift(['Selecionar', nil])), :class=>"select_item" %>
+
+
+
+              <span>
+
+
+            </li>
+            <li>
+              <%= label_tag "Tamanho" %>
+
+              <%= select_tag :size_id, options_for_select(@sizes_for_dropdown.unshift(['Selecionar', nil])), :class=>"select_item"%>
+
+            </li>
+
+
+          </ul>
+
+
+
+        </div>
+
+
+
+
+        <div class="horizontal_buttons">
+          <ul>
+
 
             <% if current_user %>
-            <%if @product.buyable?(current_user) %>
+              <%if @product.buyable?(current_user) %>
 
-        
 
-          
 
-          <li>
 
-            <div class="add_to_car">
 
-              <%= submit_tag("Adicionar a sacola", :class => 'btn btn_big', :'data-submit-form' => true) do %>
-              <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
+                <li>
+
+                  <div class="add_to_car">
+
+                    <%= submit_tag("Adicionar a sacola", :class => 'btn btn_big', :'data-submit-form' => true) do %>
+                      <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
+                    <%end %>
+
+                  </div>
+
+                <%end %>
+
               <%end %>
 
-            </div>
-
-            <%end %>
-
-            <%end %>
-
-          </li>
+                </li>
 
 
-          <li> <span> Compartilhe: <%= social_share_button_tag(truncate(@product.name, :length => 20), :url => url_for(:action => :show, :id => @product.id, :only_path => false))  %></span>
-       
-          </li>
+                <li> <span> Compartilhe: <%= social_share_button_tag(truncate(@product.name, :length => 20), :url => url_for(:action => :show, :id => @product.id, :only_path => false))  %></span>
 
-        </ul>
+                </li>
 
-      </div>
+          </ul>
+
+        </div>
       <%end %>
 
-   
 
+
+      </div>
+    </div>
+
+
+
+
+    <!-- Fim-->
   </div>
-</div>
-
-    
-
-
-  <!-- Fim-->
-</div>
 
 
 
@@ -248,51 +247,51 @@
 
       <%= bettertabs :simpletabs do |tab| %>
         <%= tab.link :product_show, 'Resumo' do %>
-        <%= render 'product_show' %>
-    <% end %>
+          <%= render 'product_show' %>
+        <% end %>
         <%= tab.link :feedbacks, "#{pluralize(@product.feedbacks.size, "Avaliações") }"  do %>
-        <%= render 'feedbacks' %>
+          <%= render 'feedbacks' %>
         <% end %>
 
         <%= tab.link :message, 'Mensagem' do %>
-        <%=render 'message_box' %>
+          <%=render 'message_box' %>
         <% end %>
 
-             <% end %>
+      <% end %>
     </div>
 
 
-  
-</div>
-
-
-
-<div class="box11">
-<div class="content">
-  <h2>Estilos
-   </h2>
-  <span class="link_tag">
-
-    <ul>
-
-      <% @product.vitrine.tag_list.each do |tag| %>
-        <li>
-          <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @product.vitrine.id) %>
-        </li>
-
-    <% end %>
-    </ul>
-  </span>
-
-
-
-
- <% unless @product.vitrine.user.city.blank? %>
-  <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@product.vitrine.address}" %>
-  <% end %>
 
   </div>
 
-</div>
+
+
+  <div class="box11">
+    <div class="content">
+      <h2>Estilos
+      </h2>
+      <span class="link_tag">
+
+        <ul>
+
+          <% @product.vitrine.tag_list.each do |tag| %>
+            <li>
+              <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @product.vitrine.id) %>
+            </li>
+
+          <% end %>
+        </ul>
+      </span>
+
+
+
+
+      <% unless @product.vitrine.user.city.blank? %>
+        <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@product.vitrine.address}" %>
+      <% end %>
+
+    </div>
+
+  </div>
 </div>
 

@@ -38,7 +38,6 @@
 *= require details
 *= require jquery.fancybox
 *= require jquery.raty
-*= require token-input
 *= require tipsy
 *= require select2
 *= require breakpoints
@@ -56,6 +55,11 @@
 
 
  */
+
+
+
+
+/**= require token-input*/
 
 
 .title {
@@ -82,3 +86,6 @@
 }
 
 .list a {font-size:12px}
+
+
+#token-input-product_tags {display: none;}

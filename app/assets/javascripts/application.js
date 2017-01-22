@@ -5,7 +5,7 @@
 //= require raphael.min
 //= require jquery.fancybox.pack
 //= require jquery.raty
-//= require jquery.tokeninput
+
 //= require jquery.tipsy
 //= require jquery-dynamic-selectable
 //= require select2
@@ -32,7 +32,7 @@
 //= require_tree .
 
 
-
+//require jquery.tokeninput
 
 $(document).ready(function() {
 NProgress.configure({ showSpinner: false });

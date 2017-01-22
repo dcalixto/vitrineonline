@@ -121,7 +121,7 @@
           <ul>
 
             <li>
-              <%=  p.collection_select(:material_id, Material.all, :id, :name,  {},{ :multiple => false}) %>
+              <%=  p.collection_select(:material_id, Material.all, :id, :name,  {},{ :multiple => false,  :class=>"select_item"}) %>
 
             </li>
           </ul>
@@ -131,10 +131,10 @@
       <div class="square_box">
         <h2>Condição</h2>
 
-        <div class="subcontent">
+        <div class="subcontent ">
                     <ul>
             <li>
-              <%=  p.collection_select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false})%>
+              <%=  p.collection_select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false,  :class=>"select_item"})%>
 
             </li>
           </ul>

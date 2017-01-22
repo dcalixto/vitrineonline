@@ -12,4 +12,11 @@ class OrderMailer < ActionMailer::Base
     @buyer = order.buyer
     mail(to: @order.buyer.email, subject: 'Confirmação da Compra', &:html)
   end
+
+ def order_confirmation_seller(order)
+    @order = order
+    @seller = order.seller
+    mail(to: @order.seller.email, subject: 'Confirmação da Venda', &:html)
+  end
+
 end

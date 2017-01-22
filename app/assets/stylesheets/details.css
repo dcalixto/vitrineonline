@@ -119,3 +119,27 @@ label.checkbox {
     display: block;
     height: 24px;
 }
+
+
+
+
+
+
+
+
+
+
+.div_select {
+        line-height: 200%;
+}
+.div_select label {
+    text-align: right;
+    float: left;
+    margin-right: 5px;
+    display:inline-block;
+    }
+.div_select input{
+    float: left;
+}
+
+

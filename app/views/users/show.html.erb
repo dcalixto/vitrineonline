@@ -167,47 +167,5 @@
 
 
 
-<div class="box1">
-  <div class="block">
-      <div class="content">
-        <div class="subcontent">
-    <h2>Veja Também</h2>
-
-
-
-
-  <div class="sugestion_carousel liquid" >
-	<span class="previous"></span>
-	<div class="wrapper">
-     <ul>
-
-            <% @suggestions.each do |item| %>
-              <li>
-            <%= link_to product_path(item) do  %>
-            <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
-            <%= item.name %>
-              <%= item.price %>
-            <% end %>
-            </li>
-            <% end %>
-  </ul>
-
- 	</div>
-	<span class="next"></span>
-</div>
-
-
-
-
-
-</div>
-
-
-
-    </div>
-
-  </div>
-
-  </div>
 </div>
 </div>
