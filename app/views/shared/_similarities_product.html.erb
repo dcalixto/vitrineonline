@@ -6,7 +6,7 @@
             <%  @similarities_for_vitrine.each do |item| %>
 
               <li>  <%= link_to product_path(item) do  %>
-                <%= image_tag item.images.first.url(:small).to_s %>
+                <%= image_tag item.images.first.ifoto.url(:small).to_s %>
                 <%= item.name %>
                 <%= item.price %>
               <% end %>

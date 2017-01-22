@@ -12,7 +12,7 @@
         <%  @similarities.each do |item| %>
           <li>
             <%= link_to product_path(item) do  %>
-              <%= image_tag item.images.first.url(:thumb).to_s %>
+              <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
               <%= item.name %>
 
               <%= item.price %>

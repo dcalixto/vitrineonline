@@ -21,6 +21,8 @@ font-weight:bold;
 }
 .awaiting_feedback_table td, .completed_feedback_table td {
   padding: 4px;
+    border-bottom: #ddd 1px solid;
+
 }
 .awaiting_feedback_table .comment_tr td {
   padding-bottom: 20px;
