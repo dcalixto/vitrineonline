@@ -66,10 +66,12 @@ $desktop: min-width 1200px;
  .blue_bar {      
    height:40px;
 
-    background-color: #f1f1f1;
        border-bottom: #e5e5e5;
-       background:#375eb0
-  
+       background:#375eb0;
+         background: #f5f5f5; 
+
+ 
+    border-bottom: 1px solid #ccc; 
   }
  .inner_blue  {
 
@@ -245,8 +247,9 @@ $desktop: min-width 1200px;
 
        border-bottom: 1px solid #e8e8e8;
   
-   background-color: #e8e8e8;
-   background:#305197
+  
+   background:#305197;
+     background:#fff; 
    }
 
 
@@ -350,11 +353,11 @@ $desktop: min-width 1200px;
 
  .log_topbar {
    float: right;
-   overflow: auto;
+   /*overflow: auto;*/
    vertical-align: baseline;
    width: auto;
    position: relative;
-   margin-top: 13px
+   margin-top: 5px
  }
 
  ul.log_topbar li {
@@ -374,8 +377,7 @@ $desktop: min-width 1200px;
    vertical-align: middle;
    float: right;
    font-weight:bold;
-   color:#fff;
- }
+   }
  .help {
    margin-right: 10px;
    font-size: 13px;
@@ -392,7 +394,7 @@ $desktop: min-width 1200px;
    padding-top: 8px;
    float: right
  }
- .log_topbar span {
+/* .log_topbar span {
    border-right: 1px solid #fff;
    line-height: 0.2em;
    height: 10px;
@@ -401,4 +403,4 @@ $desktop: min-width 1200px;
    margin-right: 10px;
 
 
- }
+ }*/

@@ -5,7 +5,6 @@
 //= require raphael.min
 //= require jquery.fancybox.pack
 //= require jquery.raty
-
 //= require jquery.tipsy
 //= require jquery-dynamic-selectable
 //= require select2
@@ -18,17 +17,15 @@
 //= Markdown.Editor
 //= Markdown.Sanitizer
 //= stretchtext
-//= dropzone_banner
-//= user_banner
+//= dropzone_avatar
+//= dropzone_images
+//= dropzone_logo
 //= readmore
 //= tipsy
-
 //= require jquery.bettertabs.min
 //= require nprogress
-
 //= require jquery.liquidcarousel
-//= pagination
-
+//= dropit
 //= require_tree .
 
 
@@ -197,72 +194,47 @@ $(document).ready(function() {
 });
 
 
-// FILE UPLOAD
-
-
-$(document).ready(function(){
-	// disable auto discover
-	Dropzone.autoDiscover = false;
-
- 
-	//dropzone.on("success", function(file) {
-		//this.removeFile(file)
-		//$.getScript("/edit")
-//	})
-
-
-  $("#vitrine_logo_dropzone").dropzone({
-    maxFilesize: 2, // Set the maximum file size to 256 MB
-    maxFiles: 1,
-    dictDefaultMessage: "Solte suas imagens aqui",
-    paramName: "vitrine[logo]", // Rails expects the file upload to be something like model[field_name]
-    addRemoveLinks: true, // Don't show remove links on dropzone itself.
-    dictRemoveFile: 'Remover',
-    acceptedFiles: "image/*"
-  });
-
-  //dropzone.on("success", function(file) {
-  //	this.removeFile(file)
-    /*$.getScript("/edit")*/
-  //})
-
-
-
-});
-
 
 
 
 
 // POSTS
-var bind_comment_handler = function() {
-  $('.comment_input').unbind('keyup');
-  $('.comment_input').keyup(function(event) {
-    if (event.keyCode == 13 && $(this).val().length > 0) {
-      var comment_value = $(this).val();
-      var post_id = $(this).prev().val();
-      $.post('/feedbacks/comment', {
-        feedback_id: feedback_id,
-        comment: comment_value
-      }, function() {
-        $('#comments' + feedback_id).load('/feedbacks/comments?post_id=' + feedback_id);
-      });
-    }
-  });
-};
+//var bind_comment_handler = function() {
+  //$('.comment_input').unbind('keyup');
+//  $('.comment_input').keyup(function(event) {
+  //  if (event.keyCode == 13 && $(this).val().length > 0) {
+ //     var comment_value = $(this).val();
+  //    var post_id = $(this).prev().val();
+  //    $.post('/feedbacks/comment', {
+  //      feedback_id: feedback_id,
+  //      comment: comment_value
+   //   }, function() {
+  //      $('#comments' + feedback_id).load('/feedbacks/comments?post_id=' + feedback_id);
+  //    });
+ //   }
+ // });
+//};
+
+//$(document).ready(function() {
+//  if (typeof(total_feedback_pages) != 'undefined' && $('#more_feedbacks').length > 0) {
+//    $('#more_feedbacks').pageless({
+ //     totalPages: total_feedback_pages,
+ //     url: '/feedbacks/',
+ //     loaderHtml: '<div></div>'
+ //   });
+
+ // }
+//  bind_comment_handler();
+//});
+
+
+
+
+//USER_TOPBAR_LINKS
 
 $(document).ready(function() {
-  if (typeof(total_feedback_pages) != 'undefined' && $('#more_feedbacks').length > 0) {
-    $('#more_feedbacks').pageless({
-      totalPages: total_feedback_pages,
-      url: '/feedbacks/',
-      loaderHtml: '<div></div>'
-    });
-
-  }
-  bind_comment_handler();
+    $('.ymenu').dropit();
 });
-
 
 // ANNOUNCEMENT
 

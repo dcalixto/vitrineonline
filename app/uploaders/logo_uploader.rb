@@ -26,6 +26,15 @@ class LogoUploader < CarrierWave::Uploader::Base
    end
 
 
+
+version :show do
+    process resize_to_fit: [180, 150]
+    process quality: 80
+
+    process :strip
+   end
+
+
    version :mobile do
     process resize_to_fit: [126, 64]
     process quality: 80

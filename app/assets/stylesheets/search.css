@@ -81,7 +81,7 @@ box-shadow: none;
 
 
  #search_input:hover {
-   outline:none;border:1px solid #ffe28e}
+   outline:none;border:1px solid blue}
 
 
 
@@ -123,9 +123,9 @@ border-radius: 0 2px 2px 0;
  
 
 
- background: #ffe28e;
+ background: blue;
  
-  border: solid #eabb32 1px;
+  border: solid blue 1px;
 
 
 

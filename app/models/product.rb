@@ -26,8 +26,7 @@ belongs_to :material
   has_many :colorships
   has_many :colors, through: :colorships
   has_many :impressions,  as: :impressionable, dependent: :destroy
-
- 
+  
   accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images,   
    :brand,:condition,:material
 
@@ -99,6 +98,8 @@ belongs_to :material
   def subtotal
     quantity * price
   end
+
+
 
 
 

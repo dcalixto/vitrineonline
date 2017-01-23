@@ -103,7 +103,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    respond_to do |format|
+     respond_to do |format|
       format.html do
         @states = State.all
         @cities = City.where('state_id = ?', State.first.id)

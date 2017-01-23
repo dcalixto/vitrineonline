@@ -173,7 +173,7 @@ gem 'twitter'
 gem 'memcachier'
 gem 'dalli'
 gem 'memcached-manager'
-
+gem 'identity_cache'
 #MAILER
 
 gem 'resque', github: "dcalixto/resque", :require => "resque/server"

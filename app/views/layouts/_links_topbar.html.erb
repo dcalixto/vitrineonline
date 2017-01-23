@@ -1,4 +1,24 @@
 <div class="log_topbar">
+
+<ul class="ymenu">
+    <li>
+        <a href="#">Dropdown2</a>
+        <ul>
+            <li><a href="#">Some Action 1</a></li>
+            <li><a href="#">Some Action 2</a></li>
+            <li><a href="#">Some Action 3</a></li>
+            <li><a href="#">Some Action 4</a></li>
+        </ul>
+    </li>
+</ul>
+
+  <ul class="ymenu">
+
+    <a href="#">Dropdown</a>
+
+
+
+
 <ul>
 <% if current_user %>
 <li class="top_avatar" title="<%=current_user.first_name %>">
@@ -6,7 +26,7 @@
 Olá, <%=current_user.first_name %>
 <%end%>
 </li>
-<li class="padding_top">
+<li class="padding_top drop">
 <%=link_to "Conta", edit_user_path(current_user), :title=> "Conta" %>
 <span></span>
 </li>
@@ -19,13 +39,14 @@ Olá, <%=current_user.first_name %>
 <%=link_to 'Ajuda?', page_path("comprar")%>
 </li>
 <li>
-<%=link_to 'Abrir Conta', signup_path %>
+  <%=button_to 'Abrir Conta', signup_path, :class=> "btn_orange btn",method: :get %>
 <span></span>
 </li>
 <li>
-<%=link_to 'Entrar', login_path %>
+<%=button_to 'Entrar', login_path, :class=> "btn btn",method: :get %>
 <span></span>
 </li>
 <% end %>
 </ul>
+  </ul>
 </div>

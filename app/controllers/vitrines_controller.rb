@@ -164,17 +164,22 @@ end
   end
 
   def update
+
+ @vitrine = Vitrine.find(params[:id])
+  # if @page.try(:update_attributes, page_params)
+
+
     respond_to do |format|
       format.html do
-        @vitrine = current_vitrine
-        if @vitrine.update_attributes(params[:vitrine])
-
-          redirect_to(action: 'edit', id: @vitrine, format: :html, only_path: true)
+       # @vitrine = current_vitrine
+       if @vitrine.update_attributes(params[:vitrine])
+ 
+          redirect_to(action: :edit, id: @vitrine, only_path: true, format: :html)
           flash[:notice] = "#{@vitrine.name} atualiazada"
 
 
         else
-          render :edit, format: :html
+          render :edit#, format: :html
         end
       end
       format.json do
@@ -183,6 +188,11 @@ end
       end
     end
   end
+
+
+
+
+
 
   def sales_report
     end_time = Time.now
