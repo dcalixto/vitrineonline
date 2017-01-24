@@ -232,9 +232,9 @@ $(document).ready(function() {
 
 //USER_TOPBAR_LINKS
 
-$(document).ready(function() {
-    $('.ymenu').dropit();
-});
+//$(document).ready(function() {
+//    $('#jq-dropdown-1').jqDropdown
+//});
 
 // ANNOUNCEMENT
 
@@ -325,6 +325,9 @@ $(document).ready(function() {
 		hidearrows: false	//hide arrows if all of the list items are visible
 	});
 });
+
+
+
 
 
 

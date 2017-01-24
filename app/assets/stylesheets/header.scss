@@ -353,10 +353,10 @@ $desktop: min-width 1200px;
 
  .log_topbar {
    float: right;
-   /*overflow: auto;*/
+   overflow: auto;
    vertical-align: baseline;
    width: auto;
-   position: relative;
+  /* position: relative;*/
    margin-top: 5px
  }
 

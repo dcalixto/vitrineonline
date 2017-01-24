@@ -1,97 +1,135 @@
 /*
- * Dropit v1.1.0
- * http://dev7studios.com/dropit
+ * jQuery Dropdown: A simple dropdown plugin
  *
- * Copyright 2012, Dev7studios
- * Free to use and abuse under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
+ * Contribute: https://github.com/claviska/jquery-dropdown
+ *
+ * @license: MIT license: http://opensource.org/licenses/MIT
+ *
  */
+if (jQuery) (function ($) {
 
-;(function($) {
+    $.extend($.fn, {
+        jqDropdown: function (method, data) {
 
-    $.fn.dropit = function(method) {
-
-        var methods = {
-
-            init : function(options) {
-                this.dropit.settings = $.extend({}, this.dropit.defaults, options);
-                return this.each(function() {
-                    var $el = $(this),
-                         el = this,
-                         settings = $.fn.dropit.settings;
-
-                    // Hide initial submenus
-                    $el.addClass('dropit')
-                    .find('>'+ settings.triggerParentEl +':has('+ settings.submenuEl +')').addClass('dropit-trigger')
-                    .find(settings.submenuEl).addClass('dropit-submenu').hide();
-
-                    // Open on click
-                    $el.off(settings.action).on(settings.action, settings.triggerParentEl +':has('+ settings.submenuEl +') > '+ settings.triggerEl +'', function(){
-                        // Close click menu's if clicked again
-                        if(settings.action == 'click' && $(this).parents(settings.triggerParentEl).hasClass('dropit-open')){
-                            settings.beforeHide.call(this);
-                            $(this).parents(settings.triggerParentEl).removeClass('dropit-open').find(settings.submenuEl).hide();
-                            settings.afterHide.call(this);
-                            return false;
-                        }
-
-                        // Hide open menus
-                        settings.beforeHide.call(this);
-                        $('.dropit-open').removeClass('dropit-open').find('.dropit-submenu').hide();
-                        settings.afterHide.call(this);
-
-                        // Open this menu
-                        settings.beforeShow.call(this);
-                        $(this).parents(settings.triggerParentEl).addClass('dropit-open').find(settings.submenuEl).show();
-                        settings.afterShow.call(this);
-
-                        return false;
-                    });
-
-                    // Close if outside click
-                    $(document).on('click', function(){
-                        settings.beforeHide.call(this);
-                        $('.dropit-open').removeClass('dropit-open').find('.dropit-submenu').hide();
-                        settings.afterHide.call(this);
-                    });
-
-                    // If hover
-                    if(settings.action == 'mouseenter'){
-                        $el.on('mouseleave', '.dropit-open', function(){
-                            settings.beforeHide.call(this);
-                            $(this).removeClass('dropit-open').find(settings.submenuEl).hide();
-                            settings.afterHide.call(this);
-                        });
-                    }
-
-                    settings.afterLoad.call(this);
-                });
+            switch (method) {
+                case 'show':
+                    show(null, $(this));
+                    return $(this);
+                case 'hide':
+                    hide();
+                    return $(this);
+                case 'attach':
+                    return $(this).attr('data-jq-dropdown', data);
+                case 'detach':
+                    hide();
+                    return $(this).removeAttr('data-jq-dropdown');
+                case 'disable':
+                    return $(this).addClass('jq-dropdown-disabled');
+                case 'enable':
+                    hide();
+                    return $(this).removeClass('jq-dropdown-disabled');
             }
 
-        };
+        }
+    });
 
-        if (methods[method]) {
-            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if (typeof method === 'object' || !method) {
-            return methods.init.apply(this, arguments);
+    function show(event, object) {
+
+        var trigger = event ? $(this) : object,
+            jqDropdown = $(trigger.attr('data-jq-dropdown')),
+            isOpen = trigger.hasClass('jq-dropdown-open');
+
+        // In some cases we don't want to show it
+        if (event) {
+            if ($(event.target).hasClass('jq-dropdown-ignore')) return;
+
+            event.preventDefault();
+            event.stopPropagation();
         } else {
-            $.error( 'Method "' +  method + '" does not exist in dropit plugin!');
+            if (trigger !== object.target && $(object.target).hasClass('jq-dropdown-ignore')) return;
+        }
+        hide();
+
+        if (isOpen || trigger.hasClass('jq-dropdown-disabled')) return;
+
+        // Show it
+        trigger.addClass('jq-dropdown-open');
+        jqDropdown
+            .data('jq-dropdown-trigger', trigger)
+            .show();
+
+        // Position it
+        position();
+
+        // Trigger the show callback
+        jqDropdown
+            .trigger('show', {
+                jqDropdown: jqDropdown,
+                trigger: trigger
+            });
+
+    }
+
+    function hide(event) {
+
+        // In some cases we don't hide them
+        var targetGroup = event ? $(event.target).parents().addBack() : null;
+
+        // Are we clicking anywhere in a jq-dropdown?
+        if (targetGroup && targetGroup.is('.jq-dropdown')) {
+            // Is it a jq-dropdown menu?
+            if (targetGroup.is('.jq-dropdown-menu')) {
+                // Did we click on an option? If so close it.
+                if (!targetGroup.is('A')) return;
+            } else {
+                // Nope, it's a panel. Leave it open.
+                return;
+            }
         }
 
-    };
+        // Hide any jq-dropdown that may be showing
+        $(document).find('.jq-dropdown:visible').each(function () {
+            var jqDropdown = $(this);
+            jqDropdown
+                .hide()
+                .removeData('jq-dropdown-trigger')
+                .trigger('hide', { jqDropdown: jqDropdown });
+        });
 
-    $.fn.dropit.defaults = {
-        action: 'click', // The open action for the trigger
-        submenuEl: 'ul', // The submenu element
-        triggerEl: 'a', // The trigger element
-        triggerParentEl: 'li', // The trigger parent element
-        afterLoad: function(){}, // Triggers when plugin has loaded
-        beforeShow: function(){}, // Triggers before submenu is shown
-        afterShow: function(){}, // Triggers after submenu is shown
-        beforeHide: function(){}, // Triggers before submenu is hidden
-        afterHide: function(){} // Triggers before submenu is hidden
-    };
+        // Remove all jq-dropdown-open classes
+        $(document).find('.jq-dropdown-open').removeClass('jq-dropdown-open');
 
-    $.fn.dropit.settings = {};
+    }
+
+    function position() {
+
+        var jqDropdown = $('.jq-dropdown:visible').eq(0),
+            trigger = jqDropdown.data('jq-dropdown-trigger'),
+            hOffset = trigger ? parseInt(trigger.attr('data-horizontal-offset') || 0, 10) : null,
+            vOffset = trigger ? parseInt(trigger.attr('data-vertical-offset') || 0, 10) : null;
+
+        if (jqDropdown.length === 0 || !trigger) return;
+
+        // Position the jq-dropdown relative-to-parent...
+        if (jqDropdown.hasClass('jq-dropdown-relative')) {
+            jqDropdown.css({
+                left: jqDropdown.hasClass('jq-dropdown-anchor-right') ?
+                    trigger.position().left - (jqDropdown.outerWidth(true) - trigger.outerWidth(true)) - parseInt(trigger.css('margin-right'), 10) + hOffset :
+                    trigger.position().left + parseInt(trigger.css('margin-left'), 10) + hOffset,
+                top: trigger.position().top + trigger.outerHeight(true) - parseInt(trigger.css('margin-top'), 10) + vOffset
+            });
+        } else {
+            // ...or relative to document
+            jqDropdown.css({
+                left: jqDropdown.hasClass('jq-dropdown-anchor-right') ?
+                    trigger.offset().left - (jqDropdown.outerWidth() - trigger.outerWidth()) + hOffset : trigger.offset().left + hOffset,
+                top: trigger.offset().top + trigger.outerHeight() + vOffset
+            });
+        }
+    }
+
+    $(document).on('click.jq-dropdown', '[data-jq-dropdown]', show);
+    $(document).on('click.jq-dropdown', hide);
+    $(window).on('resize', position);
 
 })(jQuery);
