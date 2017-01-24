@@ -72,8 +72,15 @@ $(document).ready(function() {
    });
 });
 
+//TIP
+
 $(document).ready(function() {
     $('.user_nav li a').tipsy({gravity: 'n'});
+});
+
+
+$(document).ready(function() {
+    $('#shopcart a').tipsy({gravity: 'n'});
 });
 
 // CHANGE ORDER QUANTITY

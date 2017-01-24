@@ -19,10 +19,9 @@ $desktop: min-width 1200px;
   margin: 0px auto;
   width: 100%;
 
-  /*position: fixed;
-  top: 0;
+   top: 0;
   left: 0;
-  z-index: 9999;*/
+  z-index: 9999;
  }
 
 
@@ -67,12 +66,10 @@ $desktop: min-width 1200px;
    height:40px;
 
        border-bottom: #e5e5e5;
-       background:#375eb0;
-         background: #f5f5f5; 
+             background: #f5f5f5; 
 
- 
-    border-bottom: 1px solid #ccc; 
-  }
+ background:#2260e4
+      }
  .inner_blue  {
 
    height:45px;
@@ -248,8 +245,8 @@ $desktop: min-width 1200px;
        border-bottom: 1px solid #e8e8e8;
   
   
-   background:#305197;
-     background:#fff; 
+   background:#1757b2
+     
    }
 
 
@@ -377,6 +374,7 @@ $desktop: min-width 1200px;
    vertical-align: middle;
    float: right;
    font-weight:bold;
+   color:#fff
    }
  .help {
    margin-right: 10px;
