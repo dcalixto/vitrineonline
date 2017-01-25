@@ -17,6 +17,7 @@ Vitrineonline::Application.configure do
   #  Bullet.console = true
   #  Bullet.rails_logger = true
 
+config.identity_cache_store = :dalli_store, 'mem'
 
 
   # Show full error reports and disable caching

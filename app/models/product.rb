@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   extend FriendlyId
- include IdentityCache
+ 
   friendly_id :name, use: [:slugged, :history]
 
   default_scope -> { order('created_at DESC') }
@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   belongs_to :vitrine, :inverse_of => :products
   belongs_to :category
   belongs_to :subcategory
-  has_many :images, dependent: :destroy
+  has_many :images, dependent: :destroy 
 
   has_many :feedbacks
 
@@ -49,7 +49,7 @@ belongs_to :material
 validates_associated :images, :sizes, :colors, presence: true, on: :update
 
 
-cache_has_many :images, :embed => true
+
 
  acts_as_votable 
   #
@@ -59,8 +59,8 @@ cache_has_many :images, :embed => true
   # scope :open_orders, -> { where(workflow_state: "open") }
 
 
-
-
+ include IdentityCache 
+   cache_has_many :images, :embed => true 
 
 
 #  cattr_accessor :form_steps do
@@ -108,12 +108,23 @@ validates_associated :images, :sizes, :colors, presence: true, on: :update
 
   after_commit :flush_cache
 
+
+def fetch_images
+  Rails.cache.fetch([id, 'images']) { images.to_a }
+end
+
+
+
   def self.cached_find(id)
     Rails.cache.fetch([name, id], expires_in: 5.minutes) { find(id) }
   end
 
   def flush_cache
     Rails.cache.delete([self.class.name, id])
+
+  images.each do |images|
+    Rails.cache.delete([images.ifoto_id, 'ifoto'])
+  end
   end
 
   def cached_product

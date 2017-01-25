@@ -1,0 +1,200 @@
+
+<div class="content">
+
+
+
+  <div class="subcontent_top">
+
+
+    <ul>
+
+      <% unless @product.images.blank? %>
+        <%  @product.images.offset(4).each do |i| %>
+          <li>
+            <%= link_to product_path(i) do  %>
+              <%= image_tag(i.ifoto.url(:big).to_s)%>
+            <% end %>
+
+          </li>
+        <% end %>
+
+      <% end %>
+    </ul>
+  </div>
+
+
+
+  <div class="subcontent">
+
+    <h2>Clientes que viram este produto também viram</h2>
+
+
+
+       <%= render :partial => 'shared/suggestion'%>
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+  <div class="subcontent">
+
+    <h2>Clientes que comprarm este produto também compraram</h2>
+
+    <%= render :partial => 'shared/similarities_product'%>
+
+   
+  </div>
+
+
+
+
+
+
+
+  <div class="subcontent">
+    <h2>Descrições do Produto</h2>
+    <p><% if @product.detail.present? %>
+    <%= markdown(@product.detail) %>
+  <% end %></p>
+  </div>
+
+
+
+  <div class="subcontent">
+    <h2>Detalhes do produto</h2>
+    <div class="left_info">
+      <ul>
+        <% if @product.condition.present? %>
+          <li>
+            <span>Condição
+            </span>
+            <b><%= @product.condition.condition%></b>
+          </li>
+        <%end %>
+        <% if @product.material.present? %>
+
+          <li>
+            <span>Material</span>
+            <b><%= @product.material.name %></b>
+          </li>
+        <% end %>
+
+
+        <% if @product.brand.present? %>
+
+          <li>
+            <span>Marca</span>
+            <b><%= @product.brand.name%></b>
+          </li>
+        <% end %>
+
+
+
+
+      </ul>
+
+    </div>
+
+
+  </div>
+
+
+
+  <div class="subcontent">
+
+    <h2>Formas de Pagamento</h2>
+
+    <%= link_to  "https://www.paypal.com/br"  do %>
+
+      <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
+    <% end %>
+
+    <% unless @product.vitrine.policy.blank? %>
+    <% end %>
+
+  </div>
+
+  <div class="subcontent">
+
+    <h2>Formas de Envio</h2>
+
+    <ul>
+
+      <li>
+        <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+      </li>
+
+      <% @product.vitrine.policy.shippings.each do |shipping| %>
+        <li>
+          <b><%= shipping.kind %></b>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+
+  <div class="subcontent">
+
+    <h2>Garantias do Vendedor </h2>
+
+    <p><%= markdown(@product.vitrine.policy.guarantee) %></p>
+    <% unless @product.vitrine.policy.shippings.blank? %>
+    <% end %>
+
+  </div>
+
+  <div class="subcontent">
+
+    <h2>Avaliação dos clientes</h2>
+
+    <table class="block_search">
+      <tr>
+
+       <%= render :partial => 'shared/sort_feedback'%>
+
+      </tr>
+    </table>
+
+    <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+    <%= render :partial => 'feedbacks/feedbacks' %>
+
+
+
+
+
+  </div>
+
+  <div class="subcontent">
+
+    <h2>Produtos similares a esta vitrine</h2>
+
+
+
+<%= render :partial => 'shared/vitrine_carousel'%>
+
+
+
+   
+
+  </div>
+
+
+
+
+
+
+</div>
+
+
+

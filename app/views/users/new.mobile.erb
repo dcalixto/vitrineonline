@@ -24,16 +24,17 @@
 
   <div class="block margin_top">
       <div class="square_box">
-    <h4>Criar Conta
-    </h4>
+    <h2>Criar Conta
+    </h2>
     <div class="subcontent">
 
       <%= semantic_form_for(@user, :validate => true) do |f| %>
       <%= f.inputs do %>
-      <%= f.input :fisrt_name,  :label => "Nome",:required=>true %>
+      <%= f.input :first_name,  :label => "Nome",:required=>true %>
       <%= f.input :last_name, :label => "Sobrenome", :required=>true %>
 
       <%= f.input :email, :as => :email, :label => "Email",:required=>true %>
+       <%= f.input :phone, :as => :phone, :label => "Celular",:required=>true %>
       <%= f.input :password, :as => :password, :label =>  "Password", :required=>true %>
 
       <%= f.input :password_confirmation, :as => :password, :label => "Confirmar Password", :required=>true   %>

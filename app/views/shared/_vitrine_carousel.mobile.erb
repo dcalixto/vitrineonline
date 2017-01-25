@@ -1,0 +1,23 @@
+ <div class="similar_carousel liquid" >
+      <span class="previous"></span>
+      <div class="wrapper">
+        <% unless @product.images.blank? %>
+          <ul>
+            <%  @similarities_for_vitrine.each do |item| %>
+
+              <li>  <%= link_to product_path(item) do  %>
+                <%= image_tag item.images.first.url(:small).to_s %>
+                <%= item.name %>
+                <%= item.price %>
+              <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+      </div>
+      <span class="next"></span>
+    </div>
+
+
+

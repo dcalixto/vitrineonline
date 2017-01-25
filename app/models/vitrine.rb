@@ -29,8 +29,8 @@ validates_associated :policy, presence: true
   
   acts_as_votable
   
-  
-  
+ include IdentityCache 
+   cache_has_many :products, :embed => true 
   
   # TODO: COUPONS AND REPORT
   # has_many :coupons, as: :couponable #

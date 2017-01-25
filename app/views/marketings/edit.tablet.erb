@@ -10,65 +10,10 @@
 
 
 
-    <div class="square_box">
-
-  <h1>Banners</h1>
-
-    <div class="subcontent">
-
-
-   <%= image_tag(current_vitrine.marketing.banner.url(:mobile).to_s) %>
-
-
-
-    <p class="tip">Os Banners serão redimencionandos para 986 x 215 e 414 x 165</p>
-
-
-
-      <%= form_for(@marketing, :url => vitrine_marketing_path, :method => :put, html: { multipart: true, id: "banner", class: "dropzone"}) do |banner|  %>
-
-
-              <div class="fallback">
-
-                <%= banner.file_field :img %><br>
-                <%= banner.submit "Salvar" %>
-              </div>
 
 
 
 
-
-    <% end %>
-  </div>
-
-  </div>
-
-
-
-
-
-
-    <div class="square_box">
-    <h4>Slogan</h4>
-
-
-      <div class="subcontent">
-
-
-
-        <p class="tip">Slogan ou frase de efeito é uma frase de fácil memorização que resume as características de um produto ou serviço
-        </p>
-
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |mrkt| %>
-        <%= mrkt.inputs do %>
-        <%= mrkt.input :slogan, :as => :text,:label =>  "Slogan" %>
-        <%= mrkt.actions do %>
-        <%= mrkt.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
-</div>
 
 <div class="square_box">
     <h4>Site</h4>
@@ -93,10 +38,10 @@
 
 
         <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |face| %>
-        <%= url.inputs do %>
-        <%= url.input :facebook, :label => "Facebook da sua vitrine" %>
-        <%= url.actions do %>
-        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <%= face.inputs do %>
+        <%= face.input :facebook, :label => "Facebook da sua vitrine" %>
+        <%= face.actions do %>
+        <%= face.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
         <% end %>
         <% end %>
         <% end %>
@@ -110,26 +55,10 @@
 
 
         <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |twi| %>
-        <%= url.inputs do %>
-        <%= url.input :twitter, :label => "Twitter da sua vitrine" %>
-        <%= url.actions do %>
-        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
-</div>
-
-<div class="square_box">
-    <h4>Youtube</h4>
-      <div class="subcontent">
-
-
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |youtube| %>
-        <%= url.inputs do %>
-        <%= url.input :youtube, :label => "Youtube da sua vitrine" %>
-        <%= url.actions do %>
-        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <%= twi.inputs do %>
+        <%= twi.input :twitter, :label => "Twitter da sua vitrine" %>
+        <%= twi.actions do %>
+        <%= twi.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
         <% end %>
         <% end %>
         <% end %>
@@ -137,38 +66,6 @@
 </div>
 
 
-<div class="square_box">
-    <h4>Pinterest</h4>
-      <div class="subcontent">
-
-
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |pin| %>
-        <%= url.inputs do %>
-        <%= url.input :youtube, :label => "Pinterest da sua vitrine" %>
-        <%= url.actions do %>
-        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
-    </div>
-
-
-<div class="square_box">
-    <h4>Instagram</h4>
-      <div class="subcontent">
-
-
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |insta| %>
-        <%= url.inputs do %>
-        <%= url.input :instagram, :label => "Instagram da sua vitrine" %>
-        <%= url.actions do %>
-        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
-    </div>
 
 
 

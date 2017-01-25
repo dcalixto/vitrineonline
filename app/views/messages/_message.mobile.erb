@@ -1,19 +1,18 @@
-<div class="messagebox">
+<ul class="messagebox">
+<li class="row">
 
-<div class="row">
 
-
-  <div class="cell">
+  <li class="cell">
 <div class="avatar">
   <%= link_to(image_tag(message.user.avatar.url(:mobile).to_s), user_path(message.user)) %>
 </div>
-</div>
+</li>
 
-  <div class="cell messagecontent">
+  <li class="cell messagecontent">
 
   <%= link_to user_path(message.user) do %>
-  <%= message.user.name %>
-  <%= message.user.surname %>
+  <%= message.user.first_name %>
+  <%= message.user.last_name %>
   <% end %>
   <p><%= message.body %></p>
 
@@ -23,11 +22,12 @@
 
 
 
-</div>
+</li>
 
 
 
 
 
-</div>
-</div>
+</li>
+</ul>
+

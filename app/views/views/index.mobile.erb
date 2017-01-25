@@ -14,8 +14,8 @@
       xkey: 'day',
       ykeys: ['count'],
       labels: ['Visitantes'],
-      lineColors: ['#365d98'],
-      pointFillColors: ['#225198']
+      lineColors: ['#F29C33'],
+      pointFillColors: ['#d98825']
     });
   };
 
@@ -24,7 +24,12 @@
       ? week_stats
       : month_stats);
   };
+
+
 </script>
+
+
+
 
 
 
@@ -41,20 +46,14 @@
       <%= render 'shared/flash_messages' %>
     </div>
 
+
+    <div class="square_box">
     <h1>Visualizações</h1>
-<hr class="line"></hr>
-    <div class="content">
+<div class="tip_box">
+          
 
-      <div class="subcontent_top">
-        <p class="tip">A visualisação lhe ajudará a compreender e posicionar melhor sua vitrine e produtos</p>
-
-        <h4><%=link_to current_vitrine.name, vitrine_path(current_vitrine),  :title => "Nome" %></h4>
-
-        <!-- CHART CONTAINER  -->
-        <div id="visitors_chart"></div>
-        <!-- View options  -->
-        <div class="tip_box">
-          <div id="visitors_chart_options">
+        
+<div id="visitors_chart_options">
             <strong>&nbsp;Período:</strong>
             <select id="chart_options" name="chart_options">
               <option value="0">Semana Passada</option>
@@ -62,8 +61,16 @@
             </select>
             <br/><br/>
           </div>
+</div>
+      <div class="subcontent">
+        <p class="tip">A visualisação lhe ajudará a compreender e posicionar melhor sua vitrine e produtos</p>
 
-        </div>
+        <h4><%=link_to current_vitrine.name, vitrine_path(current_vitrine),  :title => "Nome" %></h4>
+
+        <!-- CHART CONTAINER  -->
+        <div id="visitors_chart"></div>
+        <!-- View options  -->
+        
       </div>
 
       <div class="subcontent">
@@ -105,7 +112,7 @@
               <td>
                 <%= link_to  product_path(e.id) do %>
                 <% if e.images.present? %>
-                <%= image_tag e.images.first.url(:small).to_s %>
+                <%= image_tag e.images.first.ifoto.url(:small).to_s %>
                 <% end %>
                 <%=  e.name %>
                 <% end %>
@@ -135,3 +142,4 @@
   </div>
   <!-- PAGINATION-->
 </div>
+
