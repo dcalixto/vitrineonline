@@ -1,1 +1,0 @@
-$("#tab_container .nav_section").html("<%= escape_javascript(%w[feedbacks message_user].include?(params[:view]) ? render(params[:view]) : render("show")) %>");

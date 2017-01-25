@@ -7,9 +7,9 @@ cache_sweeper :vitrine_sweeper
   def show
     @vitrine = Vitrine.cached_find(params[:id])
 
-    if request.path != vitrine_path(@vitrine)
-      redirect_to @vitrine, status: :moved_permanently
-    end
+   # if request.path != vitrine_path(@vitrine)
+   #   redirect_to @vitrine, status: :moved_permanently
+   # end
     canonical_url url_for(@vitrine)
     @total_from_buyers = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).count
     #  @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)

@@ -19,7 +19,9 @@ class Category < ActiveRecord::Base
   has_many :products
   accepts_nested_attributes_for :products
   accepts_nested_attributes_for :subcategories
-  attr_accessible :name, :gender_id
+  attr_accessible
+  
+  #attr_accessible :name, :gender_id
 
 
   after_commit :flush_cache

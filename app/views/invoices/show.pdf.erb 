@@ -1,0 +1,83 @@
+<% title "Fatura" %>
+
+<div class="box3">
+  <div class="block  margin_top">
+  <div class="square_box">
+    <h1>Fatura #<%= @invoice.id %></h1>
+
+    <%= render 'shared/flash_messages' %>
+
+    <div class="content">
+      <table class="invoice_show">
+        <tr>
+          <th>
+            <h2>Usuário</h2>
+          </th>
+          <th>
+            <h2>Vitrine</h2>
+          </th>
+          <th>
+            <h2>Produto</h2>
+          </th>
+          <th>
+            <h2>Preço</h2>
+          </th>
+          <th>
+            <h2>Qtd</h2>
+          </th>
+          <th>
+            <h2>Comissão</h2>
+          </th>
+          <th>
+            <h2>Data</h2>
+          </th>
+          <th>
+            <h2>Download</h2>
+          </th>
+        </tr>
+        <tbody>
+          <tr>
+            <td>
+              <ul>
+                <li><%= @buyer.full_name %></li>
+                <li><%= @buyer.user_address if  @buyer.address %></li>
+                <li><%= @buyer.user_neighborhood if  @buyer.neighborhood %></li>
+                <li><%= @buyer.user_city if  @buyer.city %>
+                </li>
+                <li><%= @buyer.user_postal_code  if  @buyer.postal_code %></li>
+                <li><%= @buyer.user_address_supplement if   @buyer.address_supplement %></li>
+              </ul>
+            </td>
+            <td><%= current_vitrine.name %></td>
+            <td>
+              <ul>
+                <li>
+                    <% unless @product.images.blank? %>
+                  
+                      <%= image_tag @product.images.first.small %>
+                    <%end %></li>
+
+                <li><%= @product.name %></li>
+              </ul>
+            </td>
+            <td>
+
+              <%= number_to_currency(@product.price) %>
+
+            </td>
+            <td>
+              Quantidade
+              <%= @order.quantity %>
+
+            </td>
+            <td><%= number_to_currency @invoice.store_fee %></td>
+            <td><%= @invoice.created_at.strftime('%d/%m/%Y') %></td>
+          
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+  </div>
+

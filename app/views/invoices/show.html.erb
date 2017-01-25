@@ -72,7 +72,9 @@
             </td>
             <td><%= number_to_currency @invoice.store_fee %></td>
             <td><%= @invoice.created_at.strftime('%d/%m/%Y') %></td>
-            <td><%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, :pdf) %></td>
+            <td><%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>
+          
+                   </td>
           </tr>
         </tbody>
       </table>

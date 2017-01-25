@@ -1,8 +1,8 @@
 # encoding: utf-8
 class Product::StepsController < ApplicationController
   include Wicked::Wizard
-  steps *Product.form_steps
-
+  #steps *Product.form_steps
+  steps(*Product.wizard_steps) 
   def show
     @product = Product.find(params[:product_id])
     render_wizard
@@ -10,10 +10,12 @@ class Product::StepsController < ApplicationController
 
   def update
     @product = Product.find(params[:product_id])
- 
-    if @product.update_attributes(params[:product])
+  # params[:product][:form_step] = step
+    
 
-      #facebook sharing
+      
+    if @product.update_attributes(params[:product])
+       #facebook sharing
       if @product.is_shared_on_facebook
         begin
           client = Koala::Facebook::API.new cookies[:facebook_auth_token]
@@ -61,11 +63,11 @@ class Product::StepsController < ApplicationController
 
   private
 
-  def pet_params(step)
-    permitted_attributes = case step
-                           when 'first'
-                             []
+#def product_params(step)
+   #permitted_attributes = case step
+     #                      when 'first'
+      #                       []
 
-                           end
-  end
+       #                   end
+  #end
 end

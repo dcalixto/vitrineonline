@@ -121,7 +121,9 @@ end
     @product = current_vitrine.products.build(params[:product])
     if @product.save
       # redirect_to wizard_path(steps.first, product_id: @product.id)
-      redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html)
+      #redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html)
+  redirect_to product_step_path(@product, Product.wizard_steps.first, only_path: true, format: :html)
+
 
     else
       render :new, format: :html

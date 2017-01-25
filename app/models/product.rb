@@ -34,35 +34,74 @@ belongs_to :material
                    :category_id, :subcategory_id, :material_id, :meta_keywords, :quantity, :status,
                    :vitrine_id, :products, :price,
                    :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook,
-                   :is_shared_on_twitter,:images_attributes, :brand_attributes, :brand_id, :condition_id
-
+                   :is_shared_on_twitter,:images_attributes, :brand_attributes, 
+                   :brand_id, :condition_id
 
 
   validates :name, presence: true, length: { maximum: 140 }
   validates :price, presence: true
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+
+
+
+#validates :image_id, :size_id, :color_id,      presence: true, on: :update
+validates_associated :images, :sizes, :colors, presence: true, on: :update
+
  acts_as_votable 
   #
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags
 
-  # validates :name,      :presence => true, :if => :active_or_name?
-  #  validates :two,     :presence => true, :if => :active_or_two?
-  #  validates :preview,  :presence => true, :if => :active_or_preview?
-
   # scope :open_orders, -> { where(workflow_state: "open") }
 
-  cattr_accessor :form_steps do
+
+
+
+
+
+#  cattr_accessor :form_steps do
+   # %w(first)
+ # end
+
+ # attr_accessor :form_step
+
+
+
+
+  cattr_accessor :wizard_steps do
     %w(first)
   end
 
-  attr_accessor :form_step
+  attr_accessor :wizard_step
 
-  def required_for_step?(step)
-    return true if form_step.nil?
-    return true if form_steps.index(step.to_s) <= form_steps.index(form_step)
-  end
+
+validates_associated :images, :sizes, :colors, presence: true, on: :update
+  #validates :material,  :condition, presence: true, if: -> { form_step?(:first) }
+
+ 
+
+  #def required_for_step?(step)
+  #  return true if form_step.nil?
+  #  return true if form_steps.index(step.to_s) <= form_steps.index(form_step)
+
+
+ # end
+
+
+  
+ include Wicked::Wizard::Validations
+
+    #This method defines the step names. You still need to call `step` in the controller.
+    def self.wizard_steps
+        [
+            "first"
+          ]
+    end
+
+
+
+
 
   after_commit :flush_cache
 

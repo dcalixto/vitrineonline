@@ -1,0 +1,1419 @@
+<!DOCTYPE HTML SYSTEM>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Brakeman Report</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript">
+    function toggle(context) {
+      var elem = document.getElementById(context);
+
+      if (elem.style.display != "block")
+        elem.style.display = "block";
+      else
+        elem.style.display = "none";
+
+      elem.parentNode.scrollIntoView();
+    }
+
+    $(document).ready(function() {
+      $('table').DataTable({
+        searching: false,
+        paging:    false,
+        info:      false
+      });
+    });
+  </script>
+  <style>
+    /* CSS style used for HTML reports */
+
+body {
+  font-family: sans-serif;
+  color: #161616;
+}
+
+a {
+  color: #161616;
+}
+
+p {
+  font-weight: bold;
+  font-size: 11pt;
+  color: #2D0200;
+ }
+
+ th {
+   background-color: #980905;
+   border-bottom: 5px solid #530200;
+   color: white;
+   font-size: 11pt;
+   padding: 1px 8px 1px 8px;
+ }
+
+ td {
+   border-bottom: 2px solid white;
+   font-family: monospace;
+   padding: 5px 8px 1px 8px;
+ }
+
+ table {
+   background-color: #FCF4D4;
+   border-collapse: collapse;
+ }
+
+ h1 {
+   color: #2D0200;
+   font-size: 14pt;
+ }
+
+ h2 {
+   color: #2D0200;
+   font-size: 12pt;
+ }
+
+ span.high-confidence {
+   font-weight:bold;
+   color: red;
+ }
+
+ span.med-confidence {
+ }
+
+ span.weak-confidence {
+   color:gray;
+ }
+
+ div.warning_message {
+   cursor: pointer;
+ }
+
+ div.warning_message:hover {
+   background-color: white;
+ }
+
+ table caption {
+   background-color: #FFE;
+   padding: 2px;
+ }
+
+ table.context {
+   margin-top: 5px;
+   margin-bottom: 5px;
+   border-left: 1px solid #90e960;
+   color: #212121;
+ }
+
+ tr.context {
+   background-color: white;
+ }
+
+ tr.first {
+   border-top: 1px solid #7ecc54;
+   padding-top: 2px;
+ }
+
+ tr.error {
+  background-color: #f4c1c1 !important
+ }
+
+ tr.near_error {
+  background-color: #f4d4d4 !important
+ }
+
+ tr.alt {
+   background-color: #e8f4d4;
+ }
+
+ td.context {
+   padding: 2px 10px 0px 6px;
+   border-bottom: none;
+ }
+
+ td.context_line {
+   padding: 2px 8px 0px 7px;
+   border-right: 1px solid #b3bda4;
+   border-bottom: none;
+   color: #6e7465;
+ }
+
+ pre.context {
+   margin-bottom: 1px;
+ }
+
+ .user_input {
+   background-color: #fcecab;
+ }
+
+ div.render_path {
+   display: none;
+   background-color: #ffe;
+   padding: 5px;
+   margin: 2px 0px 2px 0px;
+ }
+
+ div.template_name {
+   cursor: pointer;
+ }
+
+ div.template_name:hover {
+   background-color: white;
+ }
+
+  </style>
+</head>
+<body>
+
+<h1>Brakeman Report</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Application Path</th>
+      <th>Rails Version</th>
+      <th>Brakeman Version</th>
+      <th>Report Time</th>
+      <th>Checks Performed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/Users/danielcalixto/vitrineonline</td>
+      <td>3.2.22</td>
+      <td>3.4.1
+      <td>
+        2017-01-25 00:19:53 -0200<br><br>
+        23.480774 seconds
+      </td>
+      <td>BasicAuth, BasicAuthTimingAttack, ContentTag, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, StripTags, SymbolDoSCVE, TranslateBug, UnsafeReflection, ValidationRegex, WithoutProtection, XMLDoS, YAMLParsing</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h2 id='summary'>Summary</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Scanned/Reported</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Controllers</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <td>Models</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <td>Templates</td>
+      <td>209</td>
+    </tr>
+    <tr>
+      <td>Errors</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Security Warnings</td>
+      <td>57 <span class='high-confidence'>(5)</span></td>
+    </tr>
+  
+    <tr>
+      <td>Ignored Warnings</td>
+      <td>0</td>
+    </tr>
+  
+  </tbody>
+</table>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Warning Type</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td>Basic Auth</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Cross Site Scripting</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Denial of Service</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>File Access</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Format Validation</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Assignment</td>
+      <td>48</td>
+    </tr>
+  
+    <tr>
+      <td>Redirect</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>SQL Injection</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Session Setting</td>
+      <td>1</td>
+    </tr>
+  
+  </tbody>
+</table>
+<br>
+<div onClick="toggle('errors_table');">  <h2>Exceptions raised during the analysis (click to see them)</h2 ></div>
+  <div>
+    <div id='errors_table' style='display:none'> 
+      <table>
+        <thead>
+          <tr>
+            <th>Error</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          <tr>
+            <td>/Users/danielcalixto/vitrineonline/app/views/vitrines/detalhes.html.erb:5 :: parse error on value [&quot;end&quot;, 5] (kEND)</td>
+            <td>
+              
+                Could not parse /Users/danielcalixto/vitrineonline/app/views/vitrines/detalhes.html.erb
+              
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+    </div>
+  </div>
+<h2>Security Warnings</h2>  
+<table>
+  <thead>
+    <tr>
+      <th>Confidence</th>
+      <th>Class</th>
+      <th>Method</th>
+      <th>Warning Type</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td><span class='high-confidence'>High</span></td>
+      <td>Admin::BaseController</td>
+      <td>http_authentication</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/basic_auth/">Basic Auth</a></td>
+      <td><div class='warning_message' onClick="toggle('context1');toggle('message1');toggle('full_message1')" >Basic authentication password stored in source code near line 28: (password == &quot;admin&quot;)<table id='context1' class='context' style='display:none'><caption>app/controllers/admin/base_controller.rb</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>23</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>  ADMIN_USERNAME = &#39;admin&#39; # HTTP Basic admin username</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>24</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  ADMIN_PASSWORD = &#39;admin&#39; # HTTP Basic admin password</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>26</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  def http_authentication</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>27</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    authenticate_or_request_with_http_basic do |username, password|</pre>
+            </td>
+          </tr>
+          <tr class='context error'>
+            <td class='context_line'>
+              <pre class='context'>28</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      username == ADMIN_USERNAME &amp;&amp; password == ADMIN_PASSWORD</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>29</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    end</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>30</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  end</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>32</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>end</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+    <tr>
+      <td><span class='high-confidence'>High</span></td>
+      <td>OrdersController</td>
+      <td>sent</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/redirect/">Redirect</a></td>
+      <td><div class='warning_message' onClick="toggle('context5');toggle('message5');toggle('full_message5')" ><span id='message5' style='display:block' >Possible unprotected redirect near line 151: redirect_to(&quot;#{sold_orders_path}?status=#{Order.statuses...</span><span id='full_message5' style='display:none'>Possible unprotected redirect near line 151: redirect_to(&quot;#{sold_orders_path}?status=#{<span class="user_input">Order.statuses[0]</span>}&quot;, :flash =&gt; ({ :success =&gt; &quot;Estado Mudado&quot; }))</span><table id='context5' class='context' style='display:none'><caption>app/controllers/orders_controller.rb</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>146</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>    if order</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>147</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      order.status = Order.statuses[1]</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>148</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      order.transaction.update_attribute(:updated_at, Time.zone.now)</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>150</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      order.save</pre>
+            </td>
+          </tr>
+          <tr class='context error'>
+            <td class='context_line'>
+              <pre class='context'>151</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      redirect_to &quot;#{sold_orders_path}?status=#{Order.statuses[0]}&quot;,</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>152</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      flash: { success: &#39;Estado Mudado&#39; }</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>153</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    end</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>154</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  end</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>156</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  def index</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+    <tr>
+      <td><span class='high-confidence'>High</span></td>
+      <td></td>
+      <td></td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/session_setting/">Session Setting</a></td>
+      <td><div class='warning_message' onClick="toggle('context6');toggle('message6');toggle('full_message6')" >Session secret should not be included in version control near line 1<table id='context6' class='context' style='display:none'><caption>config/initializers/secret_token.rb</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first error'>
+          <td class='context_line'>
+            <pre class='context'>1</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>Vitrineonline::Application.config.secret_token = &#39;229be4125fad81169e8ebc0d1d0ec22c3ca5f6be6f27bdef5aac64172792792807270062fa4271ebea9733c4ab908318aa3223c882c1d8ba913d7110cf3c29d9&#39;</pre>
+          </td>
+        </tr>
+</tbody></table></div></td>
+    </tr>
+  
+    <tr>
+      <td><span class='high-confidence'>High</span></td>
+      <td></td>
+      <td></td>
+      <td><a rel="no-referrer" href="https://groups.google.com/d/msg/ruby-security-ann/8B2iV2tPRSE/JkjCJkSoCgAJ">Cross Site Scripting</a></td>
+      <td><div class='warning_message' onClick="toggle('context2');toggle('message2');toggle('full_message2')" ><span id='message2' style='display:block' >Rails 3.2.22 content_tag does not escape double quotes in attribute values (CVE-2016-6316). Upgrade t...</span><span id='full_message2' style='display:none'>Rails 3.2.22 content_tag does not escape double quotes in attribute values (CVE-2016-6316). Upgrade to 3.2.22.4 near line 398</span><table id='context2' class='context' style='display:none'><caption>Gemfile.lock</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>393</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>      rack</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>394</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    rack-ssl (1.3.4)</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>395</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      rack</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>396</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    rack-test (0.6.3)</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>397</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      rack (&gt;= 1.0)</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>398</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    rails (3.2.22)</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>399</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      actionmailer (= 3.2.22)</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>400</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      actionpack (= 3.2.22)</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>401</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      activerecord (= 3.2.22)</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>402</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      activeresource (= 3.2.22)</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>403</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      activesupport (= 3.2.22)</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+    <tr>
+      <td><span class='med-confidence'>Medium</span></td>
+      <td>Product::StepsController</td>
+      <td>update</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/file_access/">File Access</a></td>
+      <td><div class='warning_message' onClick="toggle('context3');toggle('message3');toggle('full_message3')" ><span id='message3' style='display:block' >Model attribute used in file name near line 48: File.new(Product.find(params[:product_id]).images.fir...</span><span id='full_message3' style='display:none'>Model attribute used in file name near line 48: File.new(<span class="user_input">Product.find(params[:product_id]).images.first.ifoto.path</span>)</span><table id='context3' class='context' style='display:none'><caption>app/controllers/product/steps_controller.rb</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>43</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>            config.access_token_secret = cookies[:twitter_auth_secret]</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>44</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>          end</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>46</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>          status = &quot;Hello! I have added new product &#39;#{@product.name}&#39;: #{product_url(@product)}&quot;</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>47</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>          if @product.images.length &gt; 0</pre>
+            </td>
+          </tr>
+          <tr class='context error'>
+            <td class='context_line'>
+              <pre class='context'>48</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>            client.update_with_media status, File.new(@product.images.first.ifoto.path)</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>49</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>          else</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>50</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>            client.update status</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>51</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>          end</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>52</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        rescue StandardError =&gt; e</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>53</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>          logger.error e.message</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+    <tr>
+      <td><span class='med-confidence'>Medium</span></td>
+      <td>Product</td>
+      <td>for_ids_with_order</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/sql_injection/">SQL Injection</a></td>
+      <td><div class='warning_message' onClick="toggle('context7');toggle('message7');toggle('full_message7')" ><span id='message7' style='display:block' >Possible SQL injection near line 122: where(:id =&gt; ids).order((nil or &quot;(#{ids.map do  &quot;id=#{i}&quot;  end....</span><span id='full_message7' style='display:none'>Possible SQL injection near line 122: where(:id =&gt; ids).order((nil or &quot;(#{<span class="user_input">ids.map do  &quot;id=#{i}&quot;  end.join(&quot;,&quot;)</span>}) DESC&quot;))</span><table id='context7' class='context' style='display:none'><caption>app/models/product.rb</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>117</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>    Product.cached_find(product_id)</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>118</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  end</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>120</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  scope :for_ids_with_order, -&gt;(ids) {</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>121</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    order = ids.blank? ? nil : &quot;(#{ids.map { |i| &quot;id=#{i}&quot; }.join(&#39;,&#39;)}) DESC&quot;</pre>
+            </td>
+          </tr>
+          <tr class='context error'>
+            <td class='context_line'>
+              <pre class='context'>122</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    where(id: ids).order(order)</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>123</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  }</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>125</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  # AVERAGE BUYER RATING</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>126</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  def average_customer_rating</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>127</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    feedbacks.where(&#39;buyer_feedback_date is not null&#39;).rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+    <tr>
+      <td><span class='med-confidence'>Medium</span></td>
+      <td></td>
+      <td></td>
+      <td><a rel="no-referrer" href="https://groups.google.com/d/msg/rubyonrails-security/9oLY_FCzvoc/w9oI9XxbFQAJ">Denial of Service</a></td>
+      <td><div class='warning_message' onClick="toggle('context4');toggle('message4');toggle('full_message4')" ><span id='message4' style='display:block' >Rails 3.2.22 is vulnerable to denial of service via mime type caching (CVE-2016-0751). Upgrade to Rai...</span><span id='full_message4' style='display:none'>Rails 3.2.22 is vulnerable to denial of service via mime type caching (CVE-2016-0751). Upgrade to Rails version 3.2.22.1 near line 398</span><table id='context4' class='context' style='display:none'><caption>Gemfile.lock</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>393</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>      rack</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>394</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    rack-ssl (1.3.4)</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>395</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      rack</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>396</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    rack-test (0.6.3)</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>397</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      rack (&gt;= 1.0)</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>398</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    rails (3.2.22)</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>399</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      actionmailer (= 3.2.22)</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>400</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      actionpack (= 3.2.22)</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>401</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      activerecord (= 3.2.22)</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>402</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      activeresource (= 3.2.22)</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>403</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      activesupport (= 3.2.22)</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+  </tbody>
+</table>
+<p>Model Warnings</p>
+<table>
+  <thead>
+    <tr>
+      <th>Confidence</th>
+      <th>Model</th>
+      <th>Warning Type</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td><span class='high-confidence'>High</span></td>
+      <td>User</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/format_validation/">Format Validation</a></td>
+      <td><div class='warning_message' onClick="toggle('context8');toggle('message8');toggle('full_message8')" ><span id='message8' style='display:block' >Insufficient validation for &#39;password&#39; using /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/. Use \A and \z as anc...</span><span id='full_message8' style='display:none'>Insufficient validation for &#39;password&#39; using /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/. Use \A and \z as anchors near line 126</span><table id='context8' class='context' style='display:none'><caption>app/models/user.rb</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>122</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>  validates :email, email: true,</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>123</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>                    uniqueness: { case_sensitive: false }</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>125</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  validates :password, length: { within: 6..60 },</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>126</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>                       format: { with: /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/, message: &quot;Deve ter pelo menos 6 caracteres e incluir um número e uma letra&quot; },</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>127</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>                       confirmation: true,</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>128</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>                       if: :is_password_validation_needed?</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>130</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  validates :first_name, :last_name, length: { within: 1..70 }</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>City</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :state_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Colorship</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :product_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Colorship</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :order_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Colorship</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :product_data_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>ConversationParticipant</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :user_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Impression</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :product_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Marketing</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :vitrine_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Order</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :cart_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Order</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :product_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Order</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :buyer_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Order</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :seller_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Order</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :color_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Order</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :size_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Order</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :brand_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Order</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :material_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Order</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :condition_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Policy</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :vitrine_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Policy</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :shipping_ids</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Product</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :gender_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Product</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :category_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Product</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :subcategory_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Product</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :material_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Product</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :vitrine_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Product</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :size_ids</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Product</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :color_ids</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Product</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :brand_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Product</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :condition_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>ProductData</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :gender_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>ProductData</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :category_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>ProductData</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :subcategory_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>ProductData</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :material_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>ProductData</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :condition_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>ProductData</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :brand_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>ProductData</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :vitrine_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>ProductData</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :size_ids</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>ProductData</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :color_ids</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Shipman</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :policy_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Shipman</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :shipping_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Sizeship</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :product_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Sizeship</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :size_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Sizeship</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :order_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Sizeship</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :product_data_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Subcategory</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :category_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>Transaction</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :transaction_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>User</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :avatar_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>User</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :state_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>User</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :city_id</td>
+    </tr>
+  
+    <tr>
+      <td><span class='weak-confidence'>Weak</span></td>
+      <td>View</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/mass_assignment/">Mass Assignment</a></td>
+      <td>Potentially dangerous attribute available for mass assignment: :vitrine_id</td>
+    </tr>
+  
+  </tbody>
+</table><p>View Warnings</p>
+<table>
+  <thead>
+    <tr>
+      <th>Confidence</th>
+      <th>Template</th>
+      <th>Warning Type</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td><span class='med-confidence'>Medium</span></td>
+      <td>
+        
+          products/show (ProductsController#show)
+        
+      </td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/link_to_href">Cross Site Scripting</a></td>
+      <td><div class='warning_message' onClick="toggle('context9');toggle('message9');toggle('full_message9')" ><span id='message9' style='display:block' >Unsafe model attribute in link_to href near line 112: link_to(&quot;#{<span class="user_input">Product.cached_find(params[:id])</span>.vit...</span><span id='full_message9' style='display:none'>Unsafe model attribute in link_to href near line 112: link_to(&quot;#{<span class="user_input">Product.cached_find(params[:id])</span>.vitrine.marketing.url}&quot;, url_with_protocol(<span class="user_input">Product.cached_find(params[:id])</span>.vitrine.marketing.url), :target =&gt; &quot;_blank&quot;)</span><table id='context9' class='context' style='display:none'><caption>app/views/products/show.html.erb</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>107</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>            #&lt;%= @product.id %&gt;&lt;/b&gt;</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>108</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>          &lt;/li&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>109</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>          &lt;li&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>110</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>            Site:</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>111</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>            &lt;% if @product.vitrine.marketing.url%&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>112</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>              &lt;%=link_to  &quot;#{@product.vitrine.marketing.url}&quot;, url_with_protocol(@product.vitrine.marketing.url), :target =&gt; &#39;_blank&#39; %&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>113</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>            &lt;% end %&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>114</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>          &lt;/li&gt;</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+  </tbody>
+</table>
+</body></html>

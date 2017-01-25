@@ -11,8 +11,7 @@ gem 'rails', '3.2.22'
 
 #ANALYTICS
 
-gem 'rollbar' , '~> 2.13.2'
-#gem 'newrelic_rpm'
+gem 'rollbar'
 
 #TABS
 gem 'bettertabs', github: "dcalixto/bettertabs"
@@ -102,10 +101,6 @@ gem 'correios-frete'
 
 gem 'mina', github: "dcalixto/mina-1", :tag => 'v1.0.6' 
 
-
-
-#,  github: "dcalixto/mina", 
-#gem 'mina-foreman', github: "dcalixto/mina-foreman"
 # SHIPPING & PROMO CODE
 
 #gem 'promo'
@@ -127,15 +122,20 @@ gem 'md_emoji'
 
 
 # PAYMENT
-#gem 'paypal_adaptive'
+
 gem 'paypal-sdk-adaptivepayments', :ref => '8fb732630247a141d0a5e374da5d640429c56f30'
 gem 'configatron' # , '3.1.3'
-#gem 'prawn', '1.0.0.rc2'
-#gem 'mymoip'
 
-gem 'prawn', '~> 1.2.1'
-gem 'prawn-table', '~> 0.1.0'
 
+
+#gem 'prawn', '~> 1.2.1'
+#gem 'prawn-table', '~> 0.1.0'
+
+
+
+#INVOICE DOWNLOAD
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 
 # ADMIN & SECURITY
@@ -191,7 +191,7 @@ gem 'thin'
 
 #MILTISETP FORM
 gem 'wicked'
-
+gem 'wicked-wizard-validations', github: "dcalixto/wicked-wizard-validations"
 
 gem 'test-unit', '~> 3.0'
 
@@ -227,8 +227,6 @@ end
 
 
 #MAILER
-gem  'premailer'
-gem 'nokogiri'
 group :production do
   gem 'pg'
 end

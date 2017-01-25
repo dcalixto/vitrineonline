@@ -51,7 +51,7 @@ position: relative;
 box-sizing: border-box;
 
 width:100%;
-border: 1px solid #ccc;
+border: 1px solid #1b4aae;
 
 height: 31px;
 
@@ -81,7 +81,7 @@ box-shadow: none;
 
 
  #search_input:hover {
-   outline:none;border:1px solid blue}
+   outline:none;border:1px solid #ffe28e}
 
 
 

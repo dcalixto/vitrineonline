@@ -5,6 +5,11 @@
   &gt; Postar
 </div>
 <div class="box5">
+<div class="flash_box">
+<%=render 'shared/flash_messages' %>
+<%=render 'shared/error_messages', :target=> @product %>
+</div>
+
 
   <%= form_for @product, method: :put, url: wizard_path,  :html => {:multipart => true} do |p| %>
 
