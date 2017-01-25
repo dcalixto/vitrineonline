@@ -136,7 +136,6 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (3.5.0)
       activerecord (>= 3.2, < 5)
-    acts_as_commentable (4.0.2)
     acts_as_votable (0.10.0)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
@@ -186,6 +185,7 @@ GEM
     daemons (1.2.4)
     dalli (2.7.6)
     debug_inspector (0.0.2)
+    device_detector (1.0.0)
     domain_name (0.5.20161129)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.1.2)
@@ -518,7 +518,6 @@ PLATFORMS
 DEPENDENCIES
   act_as_cnpj_cpf
   acts-as-taggable-on (~> 3.4)
-  acts_as_commentable
   acts_as_votable (~> 0.10.0)
   admin_interface!
   annotate
@@ -536,6 +535,7 @@ DEPENDENCIES
   configatron
   correios-frete
   dalli
+  device_detector
   dotenv-rails
   dropzonejs-rails
   dynamic_form

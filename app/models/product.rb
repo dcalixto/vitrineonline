@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   extend FriendlyId
-
+ include IdentityCache
   friendly_id :name, use: [:slugged, :history]
 
   default_scope -> { order('created_at DESC') }
@@ -47,6 +47,9 @@ belongs_to :material
 
 #validates :image_id, :size_id, :color_id,      presence: true, on: :update
 validates_associated :images, :sizes, :colors, presence: true, on: :update
+
+
+cache_has_many :images, :embed => true
 
  acts_as_votable 
   #

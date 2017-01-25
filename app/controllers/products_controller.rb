@@ -75,7 +75,8 @@ end
   end
 
   def show
-    @product = Product.cached_find(params[:id])
+    #@product = Product.cached_find(params[:id])
+    @product = Product.fetch(id)
     canonical_url url_for(@product)
     @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
     @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)

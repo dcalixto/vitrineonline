@@ -44,6 +44,10 @@ gem 'acts_as_votable', '~> 0.10.0'
 # CHART
 #gem 'chartjs-ror'
 
+
+#USER AGENTE DETECTOR
+gem 'device_detector'
+
 # MOBILE
 
 gem 'mobile-fu'
@@ -69,8 +73,7 @@ gem 'gretel'
 gem 'friendly_id'
 
 
-#CLIENT SIDE VALIDATION
-#gem 'html5_validators',  github: "dcalixto/html5_validators"
+
 
 #DB ANOTATION
 gem 'annotate' # , :git => 'git://github.com/ctran/annotate_models.git'
@@ -105,8 +108,7 @@ gem 'mina', github: "dcalixto/mina-1", :tag => 'v1.0.6'
 
 #gem 'promo'
 
-# COMMENTABLE SYSTEM
-gem 'acts_as_commentable'
+
 
 # FORM
 gem 'formtastic', github: "dcalixto/formtastic", :branch => '3.1.3'
@@ -128,8 +130,6 @@ gem 'configatron' # , '3.1.3'
 
 
 
-#gem 'prawn', '~> 1.2.1'
-#gem 'prawn-table', '~> 0.1.0'
 
 
 

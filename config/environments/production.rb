@@ -12,6 +12,7 @@ Vitrineonline::Application.configure do
   # Compress JavaScripts and CSS
   config.assets.compress = true
   config.cache_store = :dalli_store,   '127.0.0.1:11211', {:namespace => Vitrineonline, expires_in: 1.day, :compress => true }
+  config.identity_cache_store = :mem_cache_store, Memcached::Rails.new(:servers => ["127.0.0.1:11211"])
 config.action_controller.default_url_options = { host: '52.87.228.48' }
   config.lograge.enabled = true
 

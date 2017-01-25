@@ -39,6 +39,12 @@ validates_associated :policy, presence: true
   belongs_to :city
   belongs_to :state
 
+
+
+
+
+
+
   mount_uploader :logo, LogoUploader
 
   reverse_geocoded_by :latitude, :longitude do |obj, results|
