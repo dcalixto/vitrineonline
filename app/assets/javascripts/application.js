@@ -26,7 +26,7 @@
 //= require nprogress
 //= require jquery.liquidcarousel
 //= dropit
-//= tabby
+
 //= require_tree .
 
 
@@ -292,12 +292,6 @@ $(document).ready(function() {
 	});
 });
 
-
-
-$(document).ready(function() {
-
-tabby.init();
-});
 
 
 

@@ -5,9 +5,9 @@ class Size < ActiveRecord::Base
   has_many :sizeships
   has_many :products, :through => :sizeships
   has_many :orders, :through => :sizeships
- accepts_nested_attributes_for :products, :orders
+ accepts_nested_attributes_for :products, :orders,  :product_data
 
-
+has_one :product_data
 
 cattr_accessor :form_steps do
     %w(first)

@@ -8,8 +8,6 @@ class ProductData < ActiveRecord::Base
   belongs_to :condition
   belongs_to :brand
 
-  #belongs_to :color
-  #belongs_to :size
 
 
 

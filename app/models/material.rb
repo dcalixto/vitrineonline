@@ -6,7 +6,8 @@ class Material < ActiveRecord::Base
 
   has_one :product
   has_one :order
-  accepts_nested_attributes_for :product, :order
+  has_one :product_data
+  accepts_nested_attributes_for :product, :order,  :product_data
 
 
 end
