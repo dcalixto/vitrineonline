@@ -6,7 +6,7 @@
 	-webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 border-radius: 3px;
-
+background-color: #f1f1f1;
 
 
 }
@@ -19,7 +19,7 @@ border-radius: 3px;
 
 
     padding: 6px 10px 0;
-    background: #ffffff;
+ 
     border-radius: 3px 3px 0 0;
 }
 

@@ -214,7 +214,7 @@ function hideAnnouncement(announcement_created_at) {
 
 
 //PRODUCT_ADD TAB
-$('.wizard_tabs').tabslet();
+
 
 
 //JQUERU CHAINED SELECTS

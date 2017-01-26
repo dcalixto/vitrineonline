@@ -2,20 +2,33 @@
 <%description @product.feedbacks  %>
 <% keywords  @product.feedbacks %>
 
-<div class="box6">
+<div class="box3">
   <div class="block margin_top">
     <h1>Avaliações</h1>
 <hr class="line"></hr>
     <div class="content">
 
       <div class="subcontent">
-      <li class="lista-time">
+        <ul>
+        <li class="lista-time">
+
+        <%= link_to  product_path(@product.id), :title => @product.name do %>
+        <% if @product.images.present? %>
+        <%= image_tag @product.images.first.ifoto.url(:big).to_s, :alt => @product.name %>
+        <% end %>
+        <%=  @product.name  %>
+        <% end %>
+    
+
+
+
         <%= link_to  vitrine_path(@product.vitrine.id)  do %>
         Por
         <%= @product.vitrine.name %>
         <% end%>
         <%= timeago_tag(@product.created_at, :nojs => true, :date_only => false)%>
-      </li>
+        </li>
+        </ul>
     </div>
 
     <table class="block_search">
