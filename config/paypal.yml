@@ -21,8 +21,8 @@ test:
 
 production:
   <<: *default
-  mode: live
+  mode: sandbox
   app_id: APP-8TU98166249274123
-  username: admin_api1.vitrineonline.com
-  password: 8CYZME3C4YAEJVD2
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A
+#  username: admin_api1.vitrineonline.com
+#  password: 8CYZME3C4YAEJVD2
+# signature: AFcWxV21C7fd0v3bYYYRCpSSRl31Ak0xPIy-QieczmS5X.b6k8jLOC8A
