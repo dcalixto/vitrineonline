@@ -1,5 +1,5 @@
 class Color < ActiveRecord::Base
-  attr_accessible :name, :hex
+ attr_accessible :name, :product_id, :order_id, :product_data_id
 
 
   has_many :colorships
@@ -7,7 +7,7 @@ class Color < ActiveRecord::Base
  
   has_many :products, :through => :colorships
   has_one :order, :through => :colorship
-  has_many :product_datas, :through => :colorships
+
   accepts_nested_attributes_for :products, :order
 
 

@@ -1,8 +1,7 @@
 class Image < ActiveRecord::Base
   # attr_accessible :title, :body
-#include IdentityCache::WithoutPrimaryIndex
- attr_accessible :ifoto
+  attr_accessible :ifoto, :product_id, :product_data_id
   belongs_to :product
-belongs_to :product_data
-    mount_uploader :ifoto, FotoUploader
+  belongs_to :product_data
+  mount_uploader :ifoto, FotoUploader
 end
