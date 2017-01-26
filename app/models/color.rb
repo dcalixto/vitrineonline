@@ -16,30 +16,9 @@ class Color < ActiveRecord::Base
 
 
 
-  include Wicked::Wizard::Validations
+ 
 
 
-  #returns the current step for the associated user
-  def current_step
-    product.current_step 
-  end
-
-  # returns the wizard steps for the User class
-  def wizard_steps
-    Product.wizard_steps
-  end
-
-  # Specify validations on Address which should apply when the user is on or past 
-  # the address_details step
-  def self.color_id_validations
-    {
-
-      color_id: {
-        presence: {
-          presence: true      }
-      }
-    }
-  end
 
 
 

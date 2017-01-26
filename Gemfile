@@ -191,7 +191,7 @@ gem 'thin'
 
 #MILTISETP FORM
 gem 'wicked'
-gem 'wicked-wizard-validations', github: "dcalixto/wicked-wizard-validations"
+
 
 gem 'test-unit', '~> 3.0'
 

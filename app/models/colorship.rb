@@ -9,7 +9,7 @@ class Colorship < ActiveRecord::Base
   belongs_to :product_data
 
 
-  validates_associated :product
+  
 
 
 

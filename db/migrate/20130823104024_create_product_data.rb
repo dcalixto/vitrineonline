@@ -16,6 +16,7 @@ class CreateProductData < ActiveRecord::Migration
       t.datetime "created_at",                                                  :null => false
       t.datetime "updated_at",                                                  :null => false
       t.string   "status"
+       t.string   "current_step"
       t.string   "name"
       t.decimal  "price",          :precision => 9, :scale => 2
       t.integer  "quantity",                                     :default => 0

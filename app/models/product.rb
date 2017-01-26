@@ -33,8 +33,8 @@ belongs_to :material
   attr_accessible  :name, :detail, :price, :gender_id,
                    :category_id, :subcategory_id, :material_id, :meta_keywords, :quantity, :status,
                    :vitrine_id, :products, :price,
-                   :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook,
-                   :is_shared_on_twitter,:images_attributes, :brand_id, 
+                   :size_ids, :color_ids,  :tag_list, :is_shared_on_facebook,
+                   :is_shared_on_twitter,:images_attributes, 
                    :brand_id, :condition_id
 
 

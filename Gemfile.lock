@@ -94,13 +94,6 @@ GIT
       coffee-rails
       sass-rails
 
-GIT
-  remote: https://github.com/dcalixto/wicked-wizard-validations.git
-  revision: fdd833a5a31811672f50bd67449d6ca93281136c
-  specs:
-    wicked-wizard-validations (0.0.2)
-      wicked (~> 1.3.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -601,7 +594,6 @@ DEPENDENCIES
   twitter
   uglifier (>= 1.0.3)
   wicked
-  wicked-wizard-validations!
   wicked_pdf
   will_paginate
   wkhtmltopdf-binary
