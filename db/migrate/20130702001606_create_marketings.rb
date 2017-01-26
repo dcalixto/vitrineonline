@@ -9,6 +9,8 @@ class CreateMarketings < ActiveRecord::Migration
         t.string :facebook
         t.string :twitter
         t.string :instagram 
+        t.string :pinterest
+        t.string :youtube
       t.timestamps
     end
      add_index :marketings, :vitrine_id
