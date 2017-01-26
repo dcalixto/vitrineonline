@@ -191,7 +191,7 @@ font-size: 15px;
     background: #fff;
     padding: 10px;
     overflow: auto;
-    /*border-top: solid 1px #ddd;*/
+    border-top: solid 1px #ddd;
 }
 
 .subcontent_top {

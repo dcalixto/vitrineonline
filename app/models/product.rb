@@ -35,7 +35,7 @@ belongs_to :material
                    :vitrine_id, :products, :price,
                    :size_ids, :color_ids,  :tag_list, :is_shared_on_facebook,
                    :is_shared_on_twitter,:images_attributes, 
-                   :brand_id, :condition_id
+                   :brand_id, :condition_id, :brand_attributes
 
 
   validates :name, presence: true, length: { maximum: 140 }
