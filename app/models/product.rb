@@ -34,7 +34,7 @@ belongs_to :material
                    :category_id, :subcategory_id, :material_id, :meta_keywords, :quantity, :status,
                    :vitrine_id, :products, :price,
                    :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook,
-                   :is_shared_on_twitter,:images_attributes, :brand_attributes, 
+                   :is_shared_on_twitter,:images_attributes, :brand_id, 
                    :brand_id, :condition_id
 
 

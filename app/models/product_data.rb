@@ -23,11 +23,11 @@ class ProductData < ActiveRecord::Base
   accepts_nested_attributes_for :sizes, :sizeships, :colors, :colorships, :images, :brand, :material , :condition 
       
 
-  attr_accessible  :id, :slug, :name, :detail, :price,  :gender_id,
+  attr_accessible  :id, :slug,  :detail, :price,  :gender_id,
                    :category_id, :subcategory_id, :material_id, :condition_id,
                    :brand_id, :meta_keywords, :quantity, :status, :vitrine_id,  :price,
                    :size_ids, :color_ids, :state, :tag_list, :is_shared_on_facebook,
-                   :is_shared_on_twitter, :images_attributes, :brand_attributes
+                   :is_shared_on_twitter, :images_attributes, :brand_id
 
 
 
