@@ -2,45 +2,43 @@
 
 <%= render "shared/order_menu" %>
 
-<div class="box3">
+<div class="box5">
   <%= render 'shared/flash_messages' %>
   <%= render 'shared/error_messages', :target => @product %>
+</div>
 
 
 
 
+  <div class="box5">
 
-  <%= semantic_form_for @product  do |p| %>
-  <%= p.inputs do %>
+ 
+<%= semantic_form_for @product  do |p| %>
+   <div class="block ">
 
-  <!-- Categoria -->
-
-  <!-- Seção-->
-  <div class="block margin_top">
-
-      <div class="square_box">
+  
 
 
-
+ <%= p.inputs do %>
 
 
 
 
 
 
+ 
+ 
 
-    <h2>
+    <h1>
       <%= link_to @product.name, product_path(@product) %>
-    </h2>
-
-    <div class="subcontent">
+    </h1>
 
 
 
-      <% unless @product.images.blank? %>
+      <% if @product.images.present? %>
 
 
-  <%= image_tag(@product.images.first.ifoto.url(:small).to_s) %>
+  <%= image_tag(@product.images.first.ifoto.url(:big).to_s) %>
 
 <% end %>
 
@@ -60,9 +58,16 @@
 
       <%= p.actions do %>
       <%= p.action :submit, :label => "Atualizar", :button_html => { :class => "btn"} %>
-      <% end %>
-      <% end %>
-      <% end %>
-    </div>
-    </div>
+    <% end %>
+
+              
+ <% end %>
+
+   
   </div>
+  
+         
+<% end %>
+
+  </div>
+     

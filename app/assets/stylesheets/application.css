@@ -46,7 +46,7 @@
 *= require stretchtext
 *= require carousel
 *= require bettertabs
-
+*= require responsive_tabs
 *= require tag
 *= require tags
 *= require liquidcarousel

@@ -19,19 +19,17 @@
 
 
 
-<div data-tabs class="tabsx">
-    <p>
-        <span><a data-tab href="#tab1">Imagem e descrição</a></span>
-        <span><a data-tab href="#tab2">Estilos e Marcas</a></span>
-        <span><a data-tab href="#tab3">Tamanho e Cor</a></span>
-        <span><a data-tab href="#tab3">Material e Condição</a></span>
 
-    </p>
-</div>
+ <div id="horizontalTab">
+        <ul>
+            <li><a href="#tab-1">Imagem e descrição</a></li>
+            <li><a href="#tab-2">Estilos e Marcas</a></li>
+            <li><a href="#tab-3">Tamanho e Cor</a></li>
+            <li><a href="#tab-4">Material e Condição</a></li>
+                    </ul>
 
-<div data-tabs-content>
-    <div data-tabs-pane class="tabs-pane active" id="tab1">
-  <h1>Imagens e especifiações</h1>
+        <div id="tab-1">
+            <h1>Imagens e especifiações</h1>
 
         <div class="subcontent">
 
@@ -80,13 +78,14 @@
 
               <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
             </div>
+        
           </div>
         
 
-       
-    </div>
-    <div data-tabs-pane class="tabs-pane" id="tab2">
-    <h2>Estilos</h2>
+        
+        </div>
+        <div id="tab-2">
+            <h2>Estilos</h2>
 
           <div class="subcontent">
             <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
@@ -103,13 +102,84 @@
             <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
         </div>
 
+        
+        
+        </div>
+        <div id="tab-3">
+   <h2>Tamanho</h2>
 
+          <div class="subcontent horizonal_list">
+            <ul>
+
+              <%= hidden_field_tag "product[size_ids][]", nil %>
+              <% Size.order(:size).each do |size| %>
+                <li> <%= check_box_tag "product[size_ids][]", size.id, @product.size_ids.include?(size.id), id: dom_id(size) %>
+                <%= label_tag dom_id(size), size.size %>
+                </li>
+              <% end %>
+
+            </ul>
+          </div>
+                          <h2>Cor</h2>
+
+          <div class="subcontent horizonal_list">
+            <ul>
+              <%= hidden_field_tag "product[color_ids][]", nil %>
+              <% Color.all.each do |color| %>
+                <li>
+                  <%= check_box_tag "product[color_ids][]", color.id, @product.color_ids.include?(color.id), id: dom_id(color) %>
+                  <%= label_tag dom_id(color), color.name %>
+                </li>
+
+              <% end %>
+
+            </ul>
+          </div>
+
+
+                  
+        
+        
+        
+        
+        </div>
+        <div id="tab-4">
+            <h2>Material</h2>
+
+            <div class="subcontent ">
+
+              <ul>
+
+                <li>
+                  <%=  p.collection_select(:material_id, Material.all, :id, :name,  {},{ :multiple => false,  :class=>"select_item"}) %>
+
+                </li>
+              </ul>
             </div>
-    <div data-tabs-pane class="tabs-pane" id="tab3">
-        <p><strong>Seasons</strong></p>
-        <p>Winter, summer, spring or fall?</p>
+        
+                     <h2>Condição</h2>
+
+            <div class="subcontent ">
+              <ul>
+                <li>
+                  <%=  p.collection_select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false,  :class=>"select_item"})%>
+
+                </li>
+              </ul>
+            </div>
+                 
+        
+        </div>
+       
     </div>
-</div>		
+
+
+
+
+
+
+
+ </div>		
 
 
 
@@ -128,7 +198,5 @@
 
 
                  <% end %>
-
-           </div>
 
 </div>

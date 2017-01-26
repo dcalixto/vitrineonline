@@ -79,7 +79,11 @@ validates_associated :images, :sizes, :colors, presence: true, on: :update
 
   end
   validates :size_ids, :presence => true, :if => :active?
+  validates :color_ids, :presence => true, :if => :active?
+ validates :material_id, :presence => true, :if => :active?
+ validates :condition_id, :presence => true, :if => :active?
 
+ validates :images, :presence => true, :if => :active?
 def active?
   status == 'active'
 end
