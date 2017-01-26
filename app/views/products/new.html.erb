@@ -15,6 +15,8 @@
 
 <div class="block margin_top">
   <%=form_for @product do |p| %>
+<%=p.button "Próximo", :class=> "btn btn_big" %>
+
 <h1>Adicionar Produto</h1>
 <hr class="line"></hr>
 <div class="content">
@@ -24,10 +26,16 @@
 <%=p.text_field :name, :label=>"Nome"%>
 </div>
 <div class="subcontent">
+
+  <table>
+    <tr>
+      <td>
 <h2>Selecione as categorias</h2>
 <div class="form-group">
 <%=p.label :gender_id, 'Genero' %>&nbsp;
 <%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control select_item' } %>
+
+      
 </div>
  </br>
 
@@ -41,9 +49,14 @@
 <%=p.label :subcategory_id, 'Subcategoria' %>&nbsp;
 <%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control select_item' } %>
 </div>
+
 </div>
-<div class="subcontent">
-<h2>Marca Própria</h2>
+
+</td>
+<td>
+
+
+  <h2>Marca Própria</h2>
 
  
  <p class="tip">Se você tem sua marca por favor adicione
@@ -53,10 +66,8 @@
   <%=b.text_field :name, :label=>"Nome"%>
 <% end %>
 
-   
-</div>
 
-<div class="subcontent">
+
 <h2>Preço e Quantidade</h2>
 <ul>
   <li>
@@ -70,6 +81,13 @@
 <%=p.text_field  :price, :label=>"Preço R$" %>
 </li>
 </ul>
+
+
+</td>
+    </tr>
+  </table>
+
+
 </div>
 <div class="subcontent  horizonal_list ">
   <h2>Compartilhe</h2>
@@ -86,7 +104,6 @@
 </div>
 </div>
 </div>
-<%=p.button "Próximo", :class=> "btn btn_big" %>
 <% end %>
 
 

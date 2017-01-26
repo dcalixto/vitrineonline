@@ -63,46 +63,30 @@ validates_associated :images, :sizes, :colors, presence: true, on: :update
    cache_has_many :images, :embed => true 
 
 
-#  cattr_accessor :form_steps do
-   # %w(first)
- # end
-
- # attr_accessor :form_step
-
-
-
-
-  cattr_accessor :wizard_steps do
+  cattr_accessor :form_steps do
     %w(first)
   end
 
-  attr_accessor :wizard_step
+  attr_accessor :form_step
 
-
-validates_associated :images, :sizes, :colors, presence: true, on: :update
-  #validates :material,  :condition, presence: true, if: -> { form_step?(:first) }
 
  
 
-  #def required_for_step?(step)
-  #  return true if form_step.nil?
-  #  return true if form_steps.index(step.to_s) <= form_steps.index(form_step)
+  def required_for_step?(step)
+    return true if form_step.nil?
+    return true if form_steps.index(step.to_s) <= form_steps.index(form_step)
 
 
- # end
+  end
+  validates :size_ids, :presence => true, :if => :active?
+
+def active?
+  status == 'active'
+end
 
 
-  
- include Wicked::Wizard::Validations
 
-    #This method defines the step names. You still need to call `step` in the controller.
-    def self.wizard_steps
-        [
-            "first"
-          ]
-    end
-
-
+ 
 
 
 
@@ -155,14 +139,7 @@ end
 
 
 
-
-#before_create :comma_to_delimiter
-
-#def comma_to_delimiter
-# self.price.to_s.gsub(',', '.').to_f
-#end
-
-
+#PRICE FIX
  def price=(price)
     write_attribute(:price, price.tr(',', '.'))
   end

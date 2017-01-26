@@ -51,7 +51,7 @@ position: relative;
 box-sizing: border-box;
 
 width:100%;
-border: 1px solid #1b4aae;
+border: 1px solid #d6d6d6;
 
 height: 31px;
 
@@ -61,7 +61,6 @@ height: 31px;
 
 
 #search_input input {
-border-bottom: 1px solid #b2f3fc; 
 
 background: transparent;
 border: 0;
@@ -81,7 +80,7 @@ box-shadow: none;
 
 
  #search_input:hover {
-   outline:none;border:1px solid #ffe28e}
+   outline:none;border:1px solid blue}
 
 
 
@@ -122,11 +121,9 @@ border-radius: 0 2px 2px 0;
        color: #333;
  
 
-
-background: #ffe28e;
- 
-  border: solid #eabb32 1px;
-
+border:solid 1px;
+    border-color: #d3d3d3;
+    background: #f8f8f8;
 
 
     }

@@ -1,0 +1,52 @@
+  <h1>Imagens e especifiações</h1>
+
+        <div class="subcontent">
+
+
+
+
+
+
+          <h2>Fotos</h2>
+          <%= image_tag @product.images.first.ifoto.url(:thumb) unless @product.images.blank? %>
+
+          <p class="tip">Adicione no mínimo 2 fotos</p>
+          <p class="tip">
+          Se você tem dúvida de como tirar suas fotos acesse o link
+          <%= link_to 'Fotografia', page_path('fotografia') %></p>
+
+          <ul class="image_info">
+            <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
+            <li class="tip">As imagens serão redimencionandas para 245 x 135 de altura</li>
+          </ul>
+
+          <div class="dropzone" id="images" data-update-url="<%= product_path(@product) + '?authenticity_token=' + form_authenticity_token %>"></div>
+
+
+        </div>
+
+                <h2>Descrição</h2> 
+          <div class="subcontent">
+
+
+
+            <p class="tip">Descreva seu item</p>
+            <p clas="tip">
+            Adicione apenas as medidas pertinente ao produto OBS: Todas as medidas serão em Centímetros Comprimento: 67,5cm
+            </p>
+
+
+
+            <p clas="tip">Para inserir emojis no texto acesse
+            <%=link_to nil, "http://www.emoji-cheat-sheet.com" %></p>
+            <div class="wmd-panel">
+              <div id="wmd-button-bar"></div>
+
+              <%=p.text_area :detail, :id=> "wmd-input", :class=> "wmd-input", :placeholder => "Descrição"%>
+
+
+              <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+            </div>
+          </div>
+        
+

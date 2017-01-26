@@ -26,6 +26,7 @@
 //= require nprogress
 //= require jquery.liquidcarousel
 //= dropit
+//= tabby
 //= require_tree .
 
 
@@ -204,45 +205,6 @@ $(document).ready(function() {
 
 
 
-
-// POSTS
-//var bind_comment_handler = function() {
-  //$('.comment_input').unbind('keyup');
-//  $('.comment_input').keyup(function(event) {
-  //  if (event.keyCode == 13 && $(this).val().length > 0) {
- //     var comment_value = $(this).val();
-  //    var post_id = $(this).prev().val();
-  //    $.post('/feedbacks/comment', {
-  //      feedback_id: feedback_id,
-  //      comment: comment_value
-   //   }, function() {
-  //      $('#comments' + feedback_id).load('/feedbacks/comments?post_id=' + feedback_id);
-  //    });
- //   }
- // });
-//};
-
-//$(document).ready(function() {
-//  if (typeof(total_feedback_pages) != 'undefined' && $('#more_feedbacks').length > 0) {
-//    $('#more_feedbacks').pageless({
- //     totalPages: total_feedback_pages,
- //     url: '/feedbacks/',
- //     loaderHtml: '<div></div>'
- //   });
-
- // }
-//  bind_comment_handler();
-//});
-
-
-
-
-//USER_TOPBAR_LINKS
-
-//$(document).ready(function() {
-//    $('#jq-dropdown-1').jqDropdown
-//});
-
 // ANNOUNCEMENT
 
 function hideAnnouncement(announcement_created_at) {
@@ -250,6 +212,9 @@ function hideAnnouncement(announcement_created_at) {
   $("#announcement").slideUp();
 }
 
+
+//PRODUCT_ADD TAB
+$('.wizard_tabs').tabslet();
 
 
 //JQUERU CHAINED SELECTS
@@ -270,12 +235,6 @@ $(function() {
 });
 
 
-// SEARCH AUTOCOMPLETE
-
-
-
-
-// TOKEN INPUT TAGS
 
 
 
@@ -335,7 +294,10 @@ $(document).ready(function() {
 
 
 
+$(document).ready(function() {
 
+tabby.init();
+});
 
 
 

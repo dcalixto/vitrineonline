@@ -1,0 +1,25 @@
+   <h2>Material</h2>
+
+            <div class="subcontent ">
+
+              <ul>
+
+                <li>
+                  <%=  p.collection_select(:material_id, Material.all, :id, :name,  {},{ :multiple => false,  :class=>"select_item"}) %>
+
+                </li>
+              </ul>
+            </div>
+        
+                     <h2>Condição</h2>
+
+            <div class="subcontent ">
+              <ul>
+                <li>
+                  <%=  p.collection_select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false,  :class=>"select_item"})%>
+
+                </li>
+              </ul>
+            </div>
+         
+

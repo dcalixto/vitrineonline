@@ -1,8 +1,8 @@
 # encoding: utf-8
 class Product::StepsController < ApplicationController
   include Wicked::Wizard
-  #steps *Product.form_steps
-  steps(*Product.wizard_steps) 
+  steps *Product.form_steps
+ # steps(*Product.wizard_steps) 
   def show
     @product = Product.find(params[:product_id])
     render_wizard
@@ -12,10 +12,10 @@ class Product::StepsController < ApplicationController
     @product = Product.find(params[:product_id])
   # params[:product][:form_step] = step
     
-
+params[:product][:status] = 'active' if step == steps.last
       
     if @product.update_attributes(params[:product])
-       #facebook sharing
+            #facebook sharing
       if @product.is_shared_on_facebook
         begin
           client = Koala::Facebook::API.new cookies[:facebook_auth_token]
@@ -54,8 +54,9 @@ class Product::StepsController < ApplicationController
           @product.update_attribute :is_shared_on_twitter, false
         end
       end
-
       redirect_to order_stocks_path(current_vitrine.id)
+      
+
     else
       render_wizard @product
     end

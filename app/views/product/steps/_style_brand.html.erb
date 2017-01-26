@@ -1,0 +1,18 @@
+    <h2>Estilos</h2>
+
+          <div class="subcontent">
+            <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
+            </p>
+            <%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
+
+                </div>
+
+                <h2>Marca</h2>
+
+          <div class="subcontent">
+
+            <%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
+            <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
+        </div>
+
+
