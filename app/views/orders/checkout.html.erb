@@ -25,8 +25,11 @@
       <tbody>
         <tr>
           <td >
-              <% if product.images.present? %>
-            <%= image_tag product.images.first.ifoto.url(:thumb).to_s %>
+            <% if product.images.present? %>
+              <%= link_to do %>
+                <%= image_tag product.images.first.ifoto.url(:thumb).to_s %>
+                <% end %>
+
             <% end %>
           </td>
           <td class="sumary">

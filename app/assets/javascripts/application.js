@@ -30,7 +30,7 @@
 //= require_tree .
 
 
-// require jquery_ujs
+/*require jquery_ujs */
 
 $(document).ready(function() {
 NProgress.configure({ showSpinner: false });

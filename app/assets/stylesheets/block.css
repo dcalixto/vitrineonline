@@ -78,10 +78,9 @@ border-radius: 2px 2px 2px 2px;
     white-space: normal;
     display: block;
     overflow: hidden;
-       /* background-color: #f7f7f7;*/
+      background-color: #f7f7f7;
     border: 1px solid #ddd;
-     background-color: #fff;
-
+     
 }
 
 
