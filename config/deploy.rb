@@ -2,7 +2,7 @@ require 'mina/rails'
 require 'mina/git'
  require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (https://rvm.io)
-load "config/recipes/monit"
+require "config/recipes/monit"
 # Basic settings:
 #   domain       - The hostname to SSH to.
 #   deploy_to    - Path to deploy into.
