@@ -27,7 +27,16 @@ set :rbenv_path, '$HOME/.rbenv'# Optional settings:
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
 # set :shared_dirs, fetch(:shared_dirs, []).push('log')
- set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
+ set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'public/uploads')
+
+
+
+
+set :shared_paths, %w[
+  public/uploads
+  
+]
+
 
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
@@ -38,6 +47,9 @@ task :environment do
 
   # For those using RVM, use this to load an RVM version@gemset.
   # invoke :'rvm:use', 'ruby-1.9.3-p125@default'
+
+ # queue! %[mkdir -p "#{deploy_to}/shared/public/uploads"]
+ # queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/uploads"]
 end
 
 # Put any custom commands you need to run at setup
