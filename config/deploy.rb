@@ -34,12 +34,6 @@ set :rbenv_path, '$HOME/.rbenv'
 
 
 
-set :server, ENV['to'] || default_server
-invoke :"env:#{server}"
-
-  # Allow calling as `mina deploy at=master`
-  set :branch, ENV['at']  if ENV['at']
-
 
 
 set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
