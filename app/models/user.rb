@@ -113,7 +113,7 @@ acts_as_voter
 
   attr_accessible :email, :confirm_token, :email_confirmation, :email_confirmed, :password, :password_confirmation, :first_name,
                   :last_name, :avatar, :avatar_id, :gender, :vitrine_attributes, :address, :state_id,
-                  :city_id, :postal_code, :neighborhood, :address_supplement, :about
+                  :city_id, :postal_code, :neighborhood, :address_supplement, :about, :phone
 
   has_secure_password
 
