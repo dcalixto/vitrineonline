@@ -2,7 +2,15 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'
-require 'mina-stack'
+#require 'mina-stack'
+
+
+require "mina-stack/version"
+require 'mina-stack/defaults'
+require 'mina-stack/base'
+require 'mina-stack/setup'
+
+
 
 set :app,                 'vitrineonline'
 set :server_name,         'vitrineonline.com'
@@ -23,6 +31,47 @@ invoke :"env:#{server}"
 
 # Allow calling as `mina deploy at=master`
 set :branch, ENV['at']  if ENV['at']
+
+
+
+ set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
+
+
+
+
+task :setup do
+  # command %{rbenv install 2.3.0}
+
+ in_path(fetch(:shared_path)) do
+
+    command %[mkdir config]
+
+    # Create database.yml for Postgres if it doesn't exist
+    path_database_yml = "config/database.yml"
+    database_yml = %[production:
+    database: #{fetch(:user)}
+    adapter: postgresql
+    password: 152567
+    encoding: Unicode
+    database: vitrineonline_production
+    pool: 5
+    timeout: 5000]
+    command %[test -e #{path_database_yml} || echo "#{database_yml}" > #{path_database_yml}]
+
+    # Create secrets.yml if it doesn't exist
+    path_secrets_yml = "config/secrets.yml"
+    secrets_yml = %[production:\n  secret_key_base:\n    #{`rake secret`.strip}]
+    command %[test -e #{path_secrets_yml} || echo "#{secrets_yml}" > #{path_secrets_yml}]
+    
+    # Remove others-permission for config directory
+    command %[chmod -R o-rwx config]
+
+    
+   
+  end
+
+
+end
 
 
 
