@@ -2,13 +2,10 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'
-#require 'mina-stack'
+require 'mina-stack'
 
 
-#require "mina-stack/version"
-require 'mina-stack/defaults'
-require 'mina-stack/base'
-require 'mina-stack/setup'
+
 
 
 
