@@ -12,9 +12,20 @@ require 'mina-stack'
 set :app,                 'vitrineonline'
 set :server_name,         'vitrineonline.com'
 set :keep_releases,       1
-set :default_server,      :production
 set :branch, 'master'
 set :identity_file, '/Users/danielcalixto/gsg-keypair'
+
+set :domain,              '52.87.228.48'
+set :user,                'ubuntu'
+set :deploy_to,           '/home/ubuntu/vitrineonline'
+set :repository,          'git@github.com:dcalixto/vitrineonline.git'
+set :deploy_server,       'production'                   # just a handy name of the server
+set :rails_env,           'production'
+set :branch,              'master'
+
+
+
+
 
 set :forward_agent, true
 set :term_mode, nil
@@ -26,12 +37,12 @@ set :rbenv_path, '$HOME/.rbenv'
 set :server, ENV['to'] || default_server
 invoke :"env:#{server}"
 
-# Allow calling as `mina deploy at=master`
-set :branch, ENV['at']  if ENV['at']
+  # Allow calling as `mina deploy at=master`
+  set :branch, ENV['at']  if ENV['at']
 
 
 
- set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
+set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
 
 
 
@@ -39,7 +50,7 @@ set :branch, ENV['at']  if ENV['at']
 task :setup do
   # command %{rbenv install 2.3.0}
 
- in_path(fetch(:shared_path)) do
+  in_path(fetch(:shared_path)) do
 
     command %[mkdir config]
 
@@ -59,12 +70,12 @@ task :setup do
     path_secrets_yml = "config/secrets.yml"
     secrets_yml = %[production:\n  secret_key_base:\n    #{`rake secret`.strip}]
     command %[test -e #{path_secrets_yml} || echo "#{secrets_yml}" > #{path_secrets_yml}]
-    
+
     # Remove others-permission for config directory
     command %[chmod -R o-rwx config]
 
-    
-   
+
+
   end
 
 
@@ -80,8 +91,8 @@ end
 
 set :server_stack,                  %w(
                                       monit
-                                                                         
-                                    )
+
+)
 
 set :shared_paths,                  %w(
                                       tmp
@@ -89,7 +100,7 @@ set :shared_paths,                  %w(
                                       config/database.yml
                                       config/application.yml
                                       public/uploads
-                                    )
+)
 
 set :monitored,                     %w(
                                       nginx
@@ -97,7 +108,7 @@ set :monitored,                     %w(
                                       redis
                                       private_pub
                                       memcached
-                                    )
+)
 
 task :environment do
   invoke :'rbenv:load'
@@ -113,8 +124,8 @@ task :deploy do
     invoke :'rails:assets_precompile'
 
     to :launch do
-     # invoke :'private_pub:restart'
-       in_path(fetch(:current_path)) do
+      # invoke :'private_pub:restart'
+      in_path(fetch(:current_path)) do
         command %{mkdir -p tmp/}
         command %{touch tmp/restart.txt}
       end
