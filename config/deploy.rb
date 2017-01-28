@@ -2,7 +2,7 @@ require 'mina/rails'
 require 'mina/git'
  require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (https://rvm.io)
-
+load "config/recipes/monit"
 # Basic settings:
 #   domain       - The hostname to SSH to.
 #   deploy_to    - Path to deploy into.
@@ -27,7 +27,7 @@ set :rbenv_path, '$HOME/.rbenv'# Optional settings:
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
 # set :shared_dirs, fetch(:shared_dirs, []).push('log')
- set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'public/uploads')
+ set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
 
 
 
@@ -36,6 +36,17 @@ set :shared_paths, %w[
   public/uploads
   
 ]
+
+
+
+set :monitored,                     %w(
+                                      nginx
+                                      postgresql
+                                      redis
+                                      private_pub
+                                      memcached
+                                    )
+
 
 
 # This task is the environment that is loaded for all remote run commands, such as
@@ -48,14 +59,18 @@ task :environment do
   # For those using RVM, use this to load an RVM version@gemset.
   # invoke :'rvm:use', 'ruby-1.9.3-p125@default'
 
- # queue! %[mkdir -p "#{deploy_to}/shared/public/uploads"]
- # queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/uploads"]
+  queue! %[mkdir -p "#{deploy_to}/shared/public/uploads"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/uploads"]
 end
 
 # Put any custom commands you need to run at setup
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup do
   # command %{rbenv install 2.3.0}
+
+
+
+
 
 
 
@@ -82,6 +97,10 @@ task :setup do
     
     # Remove others-permission for config directory
     command %[chmod -R o-rwx config]
+
+    
+    command %[mkdir public/uploads]
+
   end
 
 
