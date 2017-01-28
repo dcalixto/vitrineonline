@@ -7,7 +7,7 @@ class Subcategory < ActiveRecord::Base
   belongs_to :category
   has_many :products
   accepts_nested_attributes_for :products
-  attr_accessible :products_attributes, :name,  :category_id
+  attr_accessible :products_attributes, :name,  :slug,  :category_id
 
 
   after_commit :flush_cache

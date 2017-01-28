@@ -200,7 +200,7 @@ gem 'jquery-rails' # , "< 3.0.0"
 gem 'jquery-rails-cdn'
 gem 'oj'
 gem 'json'
-gem 'jquery-ui-rails' # , '~> 4.2.1'
+#gem 'jquery-ui-rails' # , '~> 4.2.1'
 
 group :assets do
   gem 'sass-rails'

@@ -45,9 +45,6 @@ belongs_to :material
 
 
 
-#validates :image_id, :size_id, :color_id,      presence: true, on: :update
-validates_associated :images, :sizes, :colors, presence: true, on: :update
-
 
 
 

@@ -51,8 +51,8 @@ config.autoload_paths += %W(#{config.root}/app/sweepers)
     # Enable the asset pipeline
     config.assets.enabled = true
     config.exceptions_app = routes
-    config.assets.precompile += ['jquery.js']
-
+    #config.assets.precompile += ['jquery.js']
+    config.assets.precompile += ['jquery2.js']
     config.assets.version = '1.0'
 
     config.middleware.use Rack::Attack

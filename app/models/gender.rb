@@ -10,7 +10,7 @@ class Gender < ActiveRecord::Base
   accepts_nested_attributes_for :categories
   accepts_nested_attributes_for :products
   accepts_nested_attributes_for :subcategories
-  attr_accessible :gender, :categories_attributes, :subcategories_attributes
+  attr_accessible :gender, :slug, :categories_attributes, :subcategories_attributes
 
 
   after_commit :flush_cache

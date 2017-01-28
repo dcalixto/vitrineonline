@@ -21,7 +21,7 @@ class Category < ActiveRecord::Base
   accepts_nested_attributes_for :subcategories
   
   
-  attr_accessible :name, :gender_id
+  attr_accessible :name,:slug,  :gender_id
 
 
   after_commit :flush_cache
