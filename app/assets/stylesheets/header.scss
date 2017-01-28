@@ -71,7 +71,10 @@ $desktop: min-width 1200px;
 
  
     border-bottom: 1px solid #e5e5e5;
- background-color: #f1f1f1;
+ /*background-color: #f1f1f1;*/
+ 
+    background-color: #fff;
+
 
 
       }
@@ -79,7 +82,7 @@ $desktop: min-width 1200px;
 
    height:45px;
  
- background:#f1f1f1;
+ background:#fff;
    width:100%;
    display: block;
  }
@@ -94,7 +97,8 @@ $desktop: min-width 1200px;
 
    border-bottom: 1px solid #e8e8e8;
 
-   background-color: #fff;
+   
+   background: #f8f8f8;
  
  }
 
@@ -113,7 +117,7 @@ $desktop: min-width 1200px;
      white-space: nowrap;
      height: 45px;
   
- background:#f1f1f1;
+background: #f8f8f8;
 
  border-bottom: 1px solid #e8e8e8;
 
@@ -251,7 +255,7 @@ $desktop: min-width 1200px;
 
   
   
-     background: #fff;
+  background: #f8f8f8;
        }
 
 
