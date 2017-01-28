@@ -98,7 +98,6 @@ set :shared_paths,                  %w(
 
 set :monitored,                     %w(
                                       nginx
-                                      postgresql
                                       redis
                                       private_pub
                                       memcached
