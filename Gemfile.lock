@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/dcalixto/mina-stack-1.git
-  revision: 09be1ebb12a878b462234ab89d8fc165a04d1690
+  revision: b5dfd98a1264952bce2247a7ae116cddb736e5e4
   specs:
     mina-stack (0.0.22)
       highline
@@ -219,7 +219,7 @@ GEM
     execjs (2.7.0)
     faraday (0.10.1)
       multipart-post (>= 1.2, < 3)
-    faye (1.2.3)
+    faye (1.2.4)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
       eventmachine (>= 0.12.0)
@@ -370,7 +370,7 @@ GEM
     polyamorous (1.3.1)
       activerecord (>= 3.0)
     polyglot (0.3.5)
-    power_assert (1.0.0)
+    power_assert (1.0.1)
     powerpack (0.1.1)
     predictor (2.3.1)
       redis (>= 3.0.0)
