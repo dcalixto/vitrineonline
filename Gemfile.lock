@@ -38,6 +38,24 @@ GIT
       actionpack (>= 3.2.13)
 
 GIT
+  remote: https://github.com/dcalixto/mina-stack-1.git
+  revision: 09be1ebb12a878b462234ab89d8fc165a04d1690
+  specs:
+    mina-stack (0.0.22)
+      highline
+      mina (<= 0.3.1)
+      rake
+
+GIT
+  remote: https://github.com/dcalixto/mina.git
+  revision: 662268241cf185603d1d0c2e50cd297b8f09f968
+  tag: v0.3.1
+  specs:
+    mina (0.3.1)
+      open4 (~> 1.3.4)
+      rake
+
+GIT
   remote: https://github.com/dcalixto/no_cache_control.git
   revision: b58e2930009d1a45ebd4348008702860edcf66e7
   specs:
@@ -306,13 +324,6 @@ GEM
       rack-contrib (~> 1.1)
       railties (>= 3.0.0, < 5.1.0)
     mime-types (1.25.1)
-    mina (0.3.1)
-      open4 (~> 1.3.4)
-      rake
-    mina-stack (0.0.22)
-      highline
-      mina (<= 0.3.1)
-      rake
     mini_magick (4.6.0)
     mini_portile2 (2.1.0)
     mobile-fu (1.3.1)
@@ -556,8 +567,8 @@ DEPENDENCIES
   memcachier
   meta-tags
   meta_request
-  mina
-  mina-stack
+  mina!
+  mina-stack!
   mini_magick
   mobile-fu
   no_cache_control!

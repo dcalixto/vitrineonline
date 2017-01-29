@@ -102,8 +102,10 @@ gem 'correios-frete'
 
 # DEPLOY
 
-gem 'mina', github: "dcalixto/mina"#, :tag => 'v1.0.6' 
-gem 'mina-stack-1', "dcalixto/mina-stack-1", group: :development, require: false
+gem 'mina', github: "dcalixto/mina", :tag => 'v0.3.1'
+gem 'mina-stack',  github:"dcalixto/mina-stack-1", group: :development, require: false
+
+
 # SHIPPING & PROMO CODE
 
 #gem 'promo'
