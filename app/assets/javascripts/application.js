@@ -1,4 +1,4 @@
-
+//= require jquery_ujs
 //= require jquery.timeago
 //= require private_pub
 //= require morris.min
@@ -30,7 +30,7 @@
 //= require_tree .
 
 
-/*require jquery_ujs */
+
 
 $(document).ready(function() {
 NProgress.configure({ showSpinner: false });

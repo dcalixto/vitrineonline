@@ -102,8 +102,8 @@ gem 'correios-frete'
 
 # DEPLOY
 
-gem 'mina'#, github: "dcalixto/mina-1"#, :tag => 'v1.0.6' 
-gem 'mina-stack', group: :development, require: false
+gem 'mina', github: "dcalixto/mina"#, :tag => 'v1.0.6' 
+gem 'mina-stack-1', "dcalixto/mina-stack-1", group: :development, require: false
 # SHIPPING & PROMO CODE
 
 #gem 'promo'
@@ -200,7 +200,7 @@ gem 'jquery-rails' # , "< 3.0.0"
 gem 'jquery-rails-cdn'
 gem 'oj'
 gem 'json'
-#gem 'jquery-ui-rails' # , '~> 4.2.1'
+gem 'jquery-ui-rails' # , '~> 4.2.1'
 
 group :assets do
   gem 'sass-rails'
