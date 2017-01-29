@@ -1,0 +1,613 @@
+GIT
+  remote: https://github.com/dcalixto/admin_interface.git
+  revision: c4eb77b39764d5387b640b32089015f98804ec3f
+  specs:
+    admin_interface (2.2.5)
+
+GIT
+  remote: https://github.com/dcalixto/bettertabs.git
+  revision: 773ac5d34b627083426c7126f9774b0072e1ddec
+  specs:
+    bettertabs (1.4.2)
+      jquery-rails
+      rails (>= 3.1.0)
+
+GIT
+  remote: https://github.com/dcalixto/bullet.git
+  revision: 31792175a6dee7dfe11b75f56d33fb39791fa7eb
+  tag: 5.4.3
+  specs:
+    bullet (5.4.3)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
+
+GIT
+  remote: https://github.com/dcalixto/dynamic_selectable.git
+  revision: 546717f51ff2ff3ea30c59fe8fd2ad32cb6f6040
+  specs:
+    dynamic_selectable (1.0.0)
+      coffee-script (~> 2.3)
+      rails (~> 3.2)
+
+GIT
+  remote: https://github.com/dcalixto/formtastic.git
+  revision: 51589ebc49430dc5168e060b0cc4b9a0ed8b90c1
+  branch: 3.1.3
+  specs:
+    formtastic (3.1.3)
+      actionpack (>= 3.2.13)
+
+GIT
+  remote: https://github.com/dcalixto/mina-stack-1.git
+  revision: b315828dc4bc04e463dd8e5fb42844dbc096e9a8
+  specs:
+    mina-stack (0.0.22)
+      highline
+      mina (<= 0.3.1)
+      rake
+
+GIT
+  remote: https://github.com/dcalixto/mina.git
+  revision: 662268241cf185603d1d0c2e50cd297b8f09f968
+  tag: v0.3.1
+  specs:
+    mina (0.3.1)
+      open4 (~> 1.3.4)
+      rake
+
+GIT
+  remote: https://github.com/dcalixto/no_cache_control.git
+  revision: b58e2930009d1a45ebd4348008702860edcf66e7
+  specs:
+    no_cache_control (1.0.0)
+
+GIT
+  remote: https://github.com/dcalixto/rack-secure_headers.git
+  revision: 2b75b65c64550589e14594f3bdb826cce1b5547a
+  specs:
+    rack-secure_headers (0.0.3)
+      rack (~> 1.4)
+
+GIT
+  remote: https://github.com/dcalixto/resque.git
+  revision: df9dea4dc319e1675919cdd0539d213117c72701
+  specs:
+    resque (1.27.0)
+      mono_logger (~> 1.0)
+      multi_json (~> 1.0)
+      redis-namespace (~> 1.3)
+      sinatra (>= 0.9.2)
+      vegas (~> 0.1.2)
+
+GIT
+  remote: https://github.com/dcalixto/resque_mailer.git
+  revision: 42591ca0574bf279a29ee405494a00faaac31f67
+  specs:
+    resque_mailer (2.2.7)
+      actionmailer (>= 3.0)
+
+GIT
+  remote: https://github.com/dcalixto/searchkick.git
+  revision: 1f76d066f83bc0ad5e6748e116748909cb1f0f9a
+  specs:
+    searchkick (1.2.1)
+      activemodel
+      elasticsearch (>= 1)
+      hashie
+
+GIT
+  remote: https://github.com/dcalixto/social-share-button.git
+  revision: 97ee9fd68c1893726ef7ae30fbfc3a18670dbec9
+  specs:
+    social-share-button (0.1.10)
+      coffee-rails
+      sass-rails
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    act_as_cnpj_cpf (1.1.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+    actionmailer (3.2.22)
+      actionpack (= 3.2.22)
+      mail (~> 2.5.4)
+    actionpack (3.2.22)
+      activemodel (= 3.2.22)
+      activesupport (= 3.2.22)
+      builder (~> 3.0.0)
+      erubis (~> 2.7.0)
+      journey (~> 1.0.4)
+      rack (~> 1.4.5)
+      rack-cache (~> 1.2)
+      rack-test (~> 0.6.1)
+      sprockets (~> 2.2.1)
+    activemodel (3.2.22)
+      activesupport (= 3.2.22)
+      builder (~> 3.0.0)
+    activerecord (3.2.22)
+      activemodel (= 3.2.22)
+      activesupport (= 3.2.22)
+      arel (~> 3.0.2)
+      tzinfo (~> 0.3.29)
+    activeresource (3.2.22)
+      activemodel (= 3.2.22)
+      activesupport (= 3.2.22)
+    activesupport (3.2.22)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
+    acts_as_votable (0.10.0)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
+    annotate (2.7.1)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 12.0)
+    ar_transaction_changes (1.1.0)
+      activerecord (>= 3.0, < 6.0, != 4.2.3)
+    arel (3.0.3)
+    ast (2.3.0)
+    backports (3.6.8)
+    bcrypt-ruby (3.0.1)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
+    brakeman (3.4.1)
+    breakpoint (2.7.1)
+      sass (~> 3.3)
+      sassy-maps (< 1.0.0)
+    buftok (0.2.0)
+    builder (3.0.4)
+    byebug (9.0.6)
+    callsite (0.0.11)
+    canonical_dude (2.1.0)
+      rails (>= 3.2)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+    coderay (1.1.1)
+    coffee-rails (3.2.2)
+      coffee-script (>= 2.2.0)
+      railties (~> 3.2.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
+    configatron (4.5.0)
+    cookiejar (0.3.3)
+    correios-frete (1.10.0)
+      log-me (~> 0.0.10)
+      nokogiri (~> 1.6.8.1)
+      sax-machine (~> 1.3)
+    daemons (1.2.4)
+    dalli (2.7.6)
+    debug_inspector (0.0.2)
+    device_detector (1.0.0)
+    domain_name (0.5.20161129)
+      unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.2.0)
+    dotenv-rails (2.2.0)
+      dotenv (= 2.2.0)
+      railties (>= 3.2, < 5.1)
+    dropzonejs-rails (0.7.3)
+      rails (> 3.1)
+    dynamic_form (1.1.4)
+    elasticsearch (5.0.1)
+      elasticsearch-api (= 5.0.1)
+      elasticsearch-transport (= 5.0.1)
+    elasticsearch-api (5.0.1)
+      multi_json
+    elasticsearch-transport (5.0.1)
+      faraday
+      multi_json
+    em-http-request (1.1.5)
+      addressable (>= 2.3.4)
+      cookiejar (!= 0.3.1)
+      em-socksify (>= 0.3)
+      eventmachine (>= 1.0.3)
+      http_parser.rb (>= 0.6.0)
+    em-socksify (0.3.1)
+      eventmachine (>= 1.0.0.beta.4)
+    equalizer (0.0.11)
+    erubis (2.7.0)
+    eventmachine (1.2.1)
+    execjs (2.7.0)
+    faraday (0.10.1)
+      multipart-post (>= 1.2, < 3)
+    faye (1.2.4)
+      cookiejar (>= 0.3.0)
+      em-http-request (>= 0.3.0)
+      eventmachine (>= 0.12.0)
+      faye-websocket (>= 0.9.1)
+      multi_json (>= 1.0.0)
+      rack (>= 1.0.0)
+      websocket-driver (>= 0.5.1)
+    faye-websocket (0.10.6)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.5.1)
+    foreman (0.83.0)
+      thor (~> 0.19.1)
+    friendly_id (4.0.10.1)
+      activerecord (>= 3.0, < 4.0)
+    geocoder (1.4.1)
+    git-version-bump (0.15.1)
+    gretel (3.0.9)
+      rails (>= 3.1.0)
+    has_scope (0.6.0)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
+    hashie (3.4.6)
+    high_voltage (3.0.0)
+    highline (1.7.8)
+    hike (1.2.3)
+    http (2.1.0)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 1.0.1)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (1.0.1)
+    http_parser.rb (0.6.0)
+    i18n (0.7.0)
+    i18n-country-translations (1.2.3)
+      i18n (~> 0.5)
+      railties (>= 3.0)
+    i18n_country_select (1.1.7)
+      i18n (~> 0.5)
+      i18n-country-translations (~> 1.0, >= 1.0.3)
+      unicode_utils (~> 1.0, >= 1.0.0)
+    identity_cache (0.2.5)
+      activerecord (>= 3.2)
+      ar_transaction_changes (~> 1.0)
+    inherited_resources (1.6.0)
+      actionpack (>= 3.2, < 5)
+      has_scope (~> 0.6.0.rc)
+      railties (>= 3.2, < 5)
+      responders
+    journey (1.0.4)
+    jquery-rails (3.1.4)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+    jquery-rails-cdn (1.1.2)
+      jquery-rails
+    jquery-raty-rails (0.0.1)
+      rails (~> 3.2.3)
+    jquery-ui-rails (6.0.1)
+      railties (>= 3.2.16)
+    json (1.8.6)
+    jwt (1.5.6)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    koala (2.4.0)
+      addressable
+      faraday
+      multi_json (>= 1.3.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
+    libv8 (3.16.14.17)
+    log-me (0.0.10)
+    lograge (0.3.6)
+      actionpack (>= 3)
+      activesupport (>= 3)
+      railties (>= 3)
+    mail (2.5.4)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mail_form (1.6.0)
+      actionmailer (>= 3.2, < 5.1)
+      activemodel (>= 3.2, < 5.1)
+    md_emoji (1.0.2)
+      railties (>= 3.1.0)
+      redcarpet (>= 2.0)
+    memcached-manager (1.0.0)
+      dalli
+      sinatra
+      sinatra-contrib
+      thin (~> 1.6.2)
+      vegas
+    memcachier (0.0.2)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
+    meta-tags (2.4.0)
+      actionpack (>= 3.2.0, <= 5.1.0)
+    meta_request (0.4.0)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.1.0)
+    mime-types (1.25.1)
+    mini_magick (4.6.0)
+    mini_portile2 (2.1.0)
+    mobile-fu (1.3.1)
+      rack-mobile-detect
+      rails
+    mono_logger (1.1.0)
+    multi_json (1.12.1)
+    multi_xml (0.6.0)
+    multipart-post (2.0.0)
+    naught (1.1.0)
+    nokogiri (1.6.8.1)
+      mini_portile2 (~> 2.1.0)
+    oauth (0.5.1)
+    oauth2 (1.3.0)
+      faraday (>= 0.8, < 0.11)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    oj (2.18.1)
+    omniauth (1.3.2)
+      hashie (>= 1.2, < 4)
+      rack (>= 1.0, < 3)
+    omniauth-facebook (4.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.4.0)
+      oauth2 (~> 1.0)
+      omniauth (~> 1.2)
+    omniauth-twitter (1.3.0)
+      omniauth-oauth (~> 1.1)
+      rack
+    open4 (1.3.4)
+    parser (2.3.3.1)
+      ast (~> 2.2)
+    paypal-sdk-adaptivepayments (1.117.1)
+      paypal-sdk-core (~> 0.3.0)
+    paypal-sdk-core (0.3.4)
+      multi_json (~> 1.0)
+      xml-simple
+    pg (0.19.0)
+    polyamorous (1.3.1)
+      activerecord (>= 3.0)
+    polyglot (0.3.5)
+    power_assert (1.0.1)
+    powerpack (0.1.1)
+    predictor (2.3.1)
+      redis (>= 3.0.0)
+    private_pub (1.0.3)
+      faye
+    public_suffix (2.0.5)
+    rack (1.4.7)
+    rack-attack (5.0.1)
+      rack
+    rack-cache (1.7.0)
+      rack (>= 0.4)
+    rack-contrib (1.4.0)
+      git-version-bump (~> 0.15)
+      rack (~> 1.4)
+    rack-mobile-detect (0.4.0)
+      rack
+    rack-protection (1.5.3)
+      rack
+    rack-ssl (1.3.4)
+      rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rails (3.2.22)
+      actionmailer (= 3.2.22)
+      actionpack (= 3.2.22)
+      activerecord (= 3.2.22)
+      activeresource (= 3.2.22)
+      activesupport (= 3.2.22)
+      bundler (~> 1.0)
+      railties (= 3.2.22)
+    rails-timeago (2.15.0)
+      actionpack (>= 3.1)
+      activesupport (>= 3.1)
+    railties (3.2.22)
+      actionpack (= 3.2.22)
+      activesupport (= 3.2.22)
+      rack-ssl (~> 1.3.2)
+      rake (>= 0.8.7)
+      rdoc (~> 3.4)
+      thor (>= 0.14.6, < 2.0)
+    rainbow (2.2.1)
+    rake (11.3.0)
+    ransack (1.8.2)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3)
+    rdoc (3.12.2)
+      json (~> 1.4)
+    redcarpet (3.4.0)
+    redis (3.3.3)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
+    ref (2.0.0)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
+    rollbar (2.14.0)
+      multi_json
+    rubocop (0.47.1)
+      parser (>= 2.3.3.1, < 3.0)
+      powerpack (~> 0.1)
+      rainbow (>= 1.99.1, < 3.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-progressbar (1.8.1)
+    ruby_gntp (0.3.4)
+    sass (3.4.23)
+    sass-rails (3.2.6)
+      railties (~> 3.2.0)
+      sass (>= 3.1.10)
+      tilt (~> 1.3)
+    sassy-maps (0.4.0)
+      sass (~> 3.3)
+    sax-machine (1.3.2)
+    select2-rails (4.0.3)
+      thor (~> 0.14)
+    simple_form (2.1.3)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+    simple_oauth (0.3.1)
+    sinatra (1.3.6)
+      rack (~> 1.4)
+      rack-protection (~> 1.3)
+      tilt (~> 1.3, >= 1.3.3)
+    sinatra-contrib (1.3.2)
+      backports (>= 2.0)
+      eventmachine
+      rack-protection
+      rack-test
+      sinatra (~> 1.3.0)
+      tilt (~> 1.3)
+    sprockets (2.2.3)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.13)
+    test-unit (3.2.3)
+      power_assert
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
+      ref
+    thin (1.6.4)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (~> 1.0)
+    thor (0.19.4)
+    thread_safe (0.3.5)
+    tilt (1.4.1)
+    treetop (1.4.15)
+      polyglot
+      polyglot (>= 0.3.1)
+    twitter (6.0.0)
+      addressable (~> 2.5)
+      buftok (~> 0.2.0)
+      equalizer (= 0.0.11)
+      faraday (~> 0.10.0)
+      http (~> 2.1)
+      http_parser.rb (~> 0.6.0)
+      memoizable (~> 0.4.2)
+      naught (~> 1.1)
+      simple_oauth (~> 0.3.1)
+    tzinfo (0.3.52)
+    uglifier (3.0.4)
+      execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
+    unicode-display_width (1.1.3)
+    unicode_utils (1.4.0)
+    uniform_notifier (1.10.0)
+    vegas (0.1.11)
+      rack (>= 1.0.0)
+    websocket-driver (0.6.5)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
+    wicked (1.3.1)
+      railties (>= 3.0.7)
+    wicked_pdf (1.1.0)
+    will_paginate (3.1.5)
+    wkhtmltopdf-binary (0.12.3.1)
+    xml-simple (1.1.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  act_as_cnpj_cpf
+  acts-as-taggable-on (~> 3.4)
+  acts_as_votable (~> 0.10.0)
+  admin_interface!
+  annotate
+  bcrypt-ruby (~> 3.0.0)
+  better_errors
+  bettertabs!
+  binding_of_caller
+  brakeman
+  breakpoint (~> 2.7.0)
+  bullet!
+  byebug
+  canonical_dude
+  carrierwave (~> 0.9.0)
+  coffee-rails
+  configatron
+  correios-frete
+  dalli
+  device_detector
+  dotenv-rails
+  dropzonejs-rails
+  dynamic_form
+  dynamic_selectable!
+  foreman
+  formtastic!
+  friendly_id
+  geocoder
+  gretel
+  high_voltage
+  i18n_country_select
+  identity_cache
+  inherited_resources
+  jquery-rails
+  jquery-rails-cdn
+  jquery-raty-rails
+  jquery-ui-rails
+  json
+  kaminari
+  koala (~> 2.2)
+  letter_opener
+  lograge
+  mail_form
+  md_emoji
+  memcached-manager
+  memcachier
+  meta-tags
+  meta_request
+  mina!
+  mina-stack!
+  mini_magick
+  mobile-fu
+  no_cache_control!
+  oj
+  omniauth
+  omniauth-facebook
+  omniauth-twitter
+  paypal-sdk-adaptivepayments
+  pg
+  predictor
+  private_pub
+  rack-attack
+  rack-secure_headers!
+  rails (= 3.2.22)
+  rails-timeago
+  ransack
+  redcarpet
+  resque!
+  resque_mailer!
+  rollbar
+  rubocop
+  ruby_gntp
+  sass-rails
+  searchkick!
+  select2-rails
+  simple_form
+  sinatra
+  sinatra-contrib (~> 1.3.2)
+  social-share-button!
+  sqlite3
+  test-unit (~> 3.0)
+  therubyracer
+  thin
+  twitter
+  uglifier (>= 1.0.3)
+  wicked
+  wicked_pdf
+  will_paginate
+  wkhtmltopdf-binary
+
+BUNDLED WITH
+   1.10.6
