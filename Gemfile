@@ -44,6 +44,9 @@ gem 'acts_as_votable', '~> 0.10.0'
 # CHART
 #gem 'chartjs-ror'
 
+#TASK SHEDULE
+gem 'whenever', require: false
+
 
 #USER AGENTE DETECTOR
 gem 'device_detector'
