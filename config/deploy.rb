@@ -87,9 +87,7 @@ set :monitored,                     %w(
                                       redis
                                       private_pub
                                       memcached
-                                      fail2ban
-                                      postfix
-                                      sshd
+                                    
 )
 
 task :environment do
