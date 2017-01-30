@@ -9,7 +9,7 @@ set :server_name,         'vitrineonline.com'
 set :keep_releases,       1
 set :branch, 'master'
 set :identity_file, '/Users/danielcalixto/gsg-keypair'
-#set :domain,              '52.87.228.48'
+set :domain,              '52.87.228.48'
 #set :user,                'ubuntu'
 set :deploy_to,           '/home/ubuntu/vitrineonline'
 #set :repository,          'git@github.com:dcalixto/vitrineonline.git'
