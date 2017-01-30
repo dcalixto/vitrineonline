@@ -11,7 +11,7 @@ set :branch, 'master'
 set :identity_file, '/Users/danielcalixto/gsg-keypair'
 #set :domain,              '52.87.228.48'
 #set :user,                'ubuntu'
-#set :deploy_to,           '/home/ubuntu/vitrineonline'
+set :deploy_to,           '/home/ubuntu/vitrineonline'
 #set :repository,          'git@github.com:dcalixto/vitrineonline.git'
 #set :deploy_server,       'production'                   # just a handy name of the server
 #set :rails_env,           'production'
