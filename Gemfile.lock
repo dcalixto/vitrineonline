@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/dcalixto/mina-stack-1.git
-  revision: b190fcf7c34c4b464f5e5eeb6faecf7f66f25753
+  revision: 99c4c35ed10f8f88bad881f04a9d68847c6f4bcf
   specs:
     mina-stack (0.0.22)
       highline
