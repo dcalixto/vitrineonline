@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/dcalixto/mina-stack-1.git
-  revision: aaf2245ba4aef440b1377987c8047960d22153ea
+  revision: 3535bcfedc42b4cdc8c13b5b5d2251de91e90166
   specs:
     mina-stack (0.0.22)
       highline
@@ -235,14 +235,14 @@ GEM
       thor (~> 0.19.1)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
-    geocoder (1.4.1)
+    geocoder (1.4.2)
     git-version-bump (0.15.1)
     gretel (3.0.9)
       rails (>= 3.1.0)
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
-    hashie (3.4.6)
+    hashie (3.5.1)
     high_voltage (3.0.0)
     highline (1.7.8)
     hike (1.2.3)
@@ -255,7 +255,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
-    i18n (0.7.0)
+    i18n (0.8.0)
     i18n-country-translations (1.2.3)
       i18n (~> 0.5)
       railties (>= 3.0)
@@ -266,10 +266,10 @@ GEM
     identity_cache (0.2.5)
       activerecord (>= 3.2)
       ar_transaction_changes (~> 1.0)
-    inherited_resources (1.6.0)
-      actionpack (>= 3.2, < 5)
-      has_scope (~> 0.6.0.rc)
-      railties (>= 3.2, < 5)
+    inherited_resources (1.7.0)
+      actionpack (>= 3.2, < 5.1)
+      has_scope (~> 0.6)
+      railties (>= 3.2, < 5.1)
       responders
     journey (1.0.4)
     jquery-rails (3.1.4)
