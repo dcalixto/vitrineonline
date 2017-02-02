@@ -30,7 +30,7 @@ set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/
   ruby_version = File.read('.ruby-version').strip
   raise "Couldn't determine Ruby version: Do you have a file .ruby-version in your project root?" if ruby_version.empty?
   queue %{
-    source PATH="$HOME/.rbenv"
+    source /home/ubuntu/.rbenv/bin/rbenv
     rbenv use #{ruby_version} || exit 1
   }
 end
