@@ -4,11 +4,11 @@ require 'mina/git'
 require 'mina/rbenv'
 require 'mina-stack'
 
-set :app,                 'vitrineonline'
-set :server_name,         'vitrineonline.com'
-set :keep_releases,       1
+#set :app,                 'vitrineonline'
+#set :server_name,         'vitrineonline.com'
+#set :keep_releases,       1
 set :branch, 'master'
-set :identity_file, '/Users/danielcalixto/gsg-keypair'
+set :identity_file, '~/.ec2/gsg-keypair'
 set :domain,              '52.87.228.48'
 set :user,                'ubuntu'
 set :deploy_to,           '/home/ubuntu/vitrineonline'
@@ -101,12 +101,14 @@ task :deploy do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
+    invoke :'deploy:cleanup'
+
 
     to :launch do
       # invoke :'private_pub:restart'
       in_path(fetch(:current_path)) do
-        command %{mkdir -p tmp/}
-        command %{touch tmp/restart.txt}
+     queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
+      queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       end
 
     end
