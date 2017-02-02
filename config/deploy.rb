@@ -26,6 +26,17 @@ set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/
 
 
 
+ task :environment do
+  ruby_version = File.read('.ruby-version').strip
+  raise "Couldn't determine Ruby version: Do you have a file .ruby-version in your project root?" if ruby_version.empty?
+  queue %{
+    source PATH="$HOME/.rbenv"
+    rbenv use #{ruby_version} || exit 1
+  }
+end
+
+
+
 task :setup do
   # command %{rbenv install 2.3.0}
 
