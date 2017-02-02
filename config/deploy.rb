@@ -71,27 +71,6 @@ end
 
 
 
-set :server_stack,                  %w(
-                                      monit
-
-)
-
-set :shared_paths,                  %w(
-                                      tmp
-                                      log
-                                      config/database.yml
-                                      config/application.yml
-                                      public/uploads
-)
-
-set :monitored,                     %w(
-                                      nginx
-                                      postgresql
-                                      redis
-                                      private_pub
-                                      memcached
-                                    
-)
 
 desc "Deploys the current version to the server."
 task :deploy do
