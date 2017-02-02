@@ -19,50 +19,12 @@ set :branch,              'master'
 set :forward_agent, true
 set :term_mode, nil
 set :port, '22'
-set :rbenv_path, '$HOME/.rbenv'
+set_default  :rbenv_path, '$HOME/.rbenv'
 
 #set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
 
 
-
-
-
-
-#task :setup do
-  # command %{rbenv install 2.3.0}
-
- # in_path(fetch(:shared_path)) do
-
-  #  command %[mkdir config]
-
-    # Create database.yml for Postgres if it doesn't exist
-   # path_database_yml = "config/database.yml"
-   # database_yml = %[production:
-   # database: #{fetch(:user)}
-   # adapter: postgresql
-   # password: 152567
-   # encoding: Unicode
-   # database: vitrineonline_production
-   # pool: 5
-   # timeout: 5000]
-   # command %[test -e #{path_database_yml} || echo "#{database_yml}" > #{path_database_yml}]
-
-    # Create secrets.yml if it doesn't exist
-    #path_secrets_yml = "config/secrets.yml"
-    #secrets_yml = %[production:\n  secret_key_base:\n    #{`rake secret`.strip}]
-    #command %[test -e #{path_secrets_yml} || echo "#{secrets_yml}" > #{path_secrets_yml}]
-
-    # Remove others-permission for config directory
-    #command %[chmod -R o-rwx config]
-
-
-
-  #end
-
-
-#end
-
-
+set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log', 'public/uploads']
 
 task :environment do
   # If you're using rbenv, use this to load the rbenv environment.
@@ -130,10 +92,6 @@ set :monitored,                     %w(
                                       memcached
                                     
 )
-
-task :environment do
-  invoke :'rbenv:load'
-end
 
 desc "Deploys the current version to the server."
 task :deploy do
