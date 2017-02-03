@@ -71,10 +71,6 @@ end
 
 desc "Deploys the current version to the server."
 task :deploy do
-    queue %(
- echo "-----> Loading environment"
- #{echo_cmd %(source ~/.bashrc)}
- )
 
  queue 'export PATH="$PATH:$HOME/.rbenv/shims'
 #queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
