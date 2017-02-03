@@ -64,6 +64,7 @@ task :environment do
 
 
   invoke :'rbenv:load'
+  command %[ export PATH="$PATH:$HOME/.rbenv/shims" ]
 
 end
 #end
@@ -72,7 +73,7 @@ end
 desc "Deploys the current version to the server."
 task :deploy do
 
- queue 'export PATH="$PATH:$HOME/.rbenv/shims'
+# queue 'export PATH="$PATH:$HOME/.rbenv/shims'
 #queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
 #queue 'echo "path=$PATH"'
 
