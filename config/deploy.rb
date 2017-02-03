@@ -76,8 +76,9 @@ task :deploy do
  #{echo_cmd %(source ~/.bashrc)}
  )
 
-queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
-queue 'echo "path=$PATH"'
+ queue 'export PATH="$PATH:$HOME/.rbenv/shims'
+#queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
+#queue 'echo "path=$PATH"'
 
   deploy do
  
