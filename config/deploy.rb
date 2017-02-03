@@ -59,6 +59,10 @@ task :environment do
  #{echo_cmd %(source ~/.bashrc)}
  )
 
+
+ # this doesn't include the paths above :(
+
+
   invoke :'rbenv:load'
 
 end
@@ -77,12 +81,8 @@ end
 
 desc "Deploys the current version to the server."
 task :deploy do
-invoke :environment 
-# invoke :env
-
-#queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
-#queue 'echo "path=$PATH"' # this doesn't include the paths above :(
-invoke :'bundle:install'
+queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
+queue 'echo "path=$PATH"'
 
   deploy do
  
