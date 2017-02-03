@@ -13,7 +13,7 @@ namespace :env do
     set :term_mode, nil
     set :port, '22'
     set :repository_name, 'vitrineonline'
-    set :rbenv_path, '$HOME/.rbenv'
+    set_default :rbenv_path, "$HOME/.rbenv"
     set :branch,              'master'
     invoke :defaults                                         # load rest of the config
   end

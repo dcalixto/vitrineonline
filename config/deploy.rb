@@ -8,6 +8,8 @@ set :app,                 'vitrineonline'
 set :server_name,         'vitrineonline.com'
 set :keep_releases,       9
 set :default_server,      :production
+set_default :bundle_bin, 'bundle'
+set_default :bundle_path, './vendor/bundle'
 set :server, ENV['to'] || default_server
 invoke :"env:#{server}"
 
@@ -34,6 +36,23 @@ set :monitored,                     %w(
                                        memcached
                                                                       )
 
+
+task :'rbenv:load' do
+  queue %{
+    echo "-----> Loading rbenv"
+    #{echo_cmd %{export PATH="#{rbenv_path}/bin:$PATH"}}
+
+    if ! which rbenv >/dev/null; then
+      echo "! rbenv not found"
+      echo "! If rbenv is installed, check your :rbenv_path setting."
+      exit 1
+    fi
+
+    #{echo_cmd %{eval "$(rbenv init -)"}}
+  }
+end
+
+
 task :environment do
   queue %(
  echo "-----> Loading environment"
@@ -45,13 +64,16 @@ task :environment do
 end
 
 
+
+
 desc "Deploys the current version to the server."
 task :deploy do
+invoke :environment 
+# invoke :'rbenv:load'
 
-
-queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
-queue 'echo "path=$PATH"' # this doesn't include the paths above :(
-invoke :'bundle:install'
+#queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
+#queue 'echo "path=$PATH"' # this doesn't include the paths above :(
+#invoke :'bundle:install'
 
   deploy do
  
