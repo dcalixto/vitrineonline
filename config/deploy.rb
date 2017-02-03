@@ -8,8 +8,8 @@ set :app,                 'vitrineonline'
 set :server_name,         'vitrineonline.com'
 set :keep_releases,       9
 set :default_server,      :production
-#set_default :bundle_bin, 'bundle'
-#set_default :bundle_path, './vendor/bundle'
+set_default :bundle_bin, 'bundle'
+set_default :bundle_path, './vendor/bundle'
 set :server, ENV['to'] || default_server
 invoke :"env:#{server}"
 
@@ -63,17 +63,26 @@ task :environment do
 
 end
 
+task :env do
 
+  queue %{
+      echo "-----> Loading environment"
+      #{echo_cmd %[source "/home/ubuntu/.rbenv/versions/2.2.2/bin/ruby"]}  ------> this line as suggested by you didn't work hence tried the below line but still failed with the same problem
+            #{echo_cmd %[source "/home/ubuntu/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0"]} 
+    }
+
+
+end
 
 
 desc "Deploys the current version to the server."
 task :deploy do
 invoke :environment 
-# invoke :'rbenv:load'
+ invoke :env
 
 #queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
 #queue 'echo "path=$PATH"' # this doesn't include the paths above :(
-#invoke :'bundle:install'
+invoke :'bundle:install'
 
   deploy do
  
