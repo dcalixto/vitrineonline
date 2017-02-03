@@ -66,22 +66,12 @@ task :environment do
   invoke :'rbenv:load'
 
 end
-
-#task :env do
-
-#  queue %{
-#      echo "-----> Loading environment"
-#      #{echo_cmd %[source "/home/ubuntu/.rbenv/versions/2.2.2/bin/ruby"]}  ------> this line as suggested by you didn't work hence tried the below line but still failed with the same problem
-            #{echo_cmd %[source "/home/ubuntu/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0"]} 
-#    }
-
-
 #end
 
 
 desc "Deploys the current version to the server."
 task :deploy do
-queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
+queue 'export PATH=$HOME/.rbenv/bin:$PATH'
 queue 'echo "path=$PATH"'
 
   deploy do
