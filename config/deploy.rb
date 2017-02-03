@@ -76,6 +76,10 @@ task :deploy do
 # queue 'export PATH="$PATH:$HOME/.rbenv/shims'
 #queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
 #queue 'echo "path=$PATH"'
+   invoke :'rbenv:load'
+
+  command %[ export PATH="$PATH:$HOME/.rbenv/shims" ]
+
 
   deploy do
  
