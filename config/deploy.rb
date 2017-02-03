@@ -38,31 +38,6 @@ set :monitored,                     %w(
 
 
 
-set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log', 'public/uploads']
-
-
-task setup: :environment do
-  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/log")
-  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log")
-
-  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/config")
-  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config")
-
-  queue! %(touch "#{deploy_to}/#{shared_path}/config/database.yml")
-  queue! %(touch "#{deploy_to}/#{shared_path}/config/secrets.yml")
-  queue %(echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml' and 'secrets.yml'.")
-
-  queue! %[mkdir -p "#{deploy_to}/shared/public/uploads"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/uploads"]
-
-
-  queue %(
-    repo_host=`echo $repo | sed -e 's/.*@//g' -e 's/:.*//g'` &&
-    repo_port=`echo $repo | grep -o ':[0-9]*' | sed -e 's/://g'` &&
-    if [ -z "${repo_port}" ]; then repo_port=22; fi &&
-    ssh-keyscan -p $repo_port -H $repo_host >> ~/.ssh/known_hosts
-  )
-end
 
 
 
