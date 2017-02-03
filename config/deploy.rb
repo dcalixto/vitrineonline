@@ -35,9 +35,6 @@ set :monitored,                     %w(
                                                                       )
 
 task :environment do
-  # If you're using rbenv, use this to load the rbenv environment.
-  # Be sure to commit your .ruby-version or .rbenv-version to your repository.
-
   queue %(
  echo "-----> Loading environment"
  #{echo_cmd %(source ~/.bashrc)}
@@ -45,13 +42,15 @@ task :environment do
 
   invoke :'rbenv:load'
 
-  # For those using RVM, use this to load an RVM version@gemset.
-  # invoke :'rvm:use[ruby-1.9.3-p125@default]'
 end
 
 
 desc "Deploys the current version to the server."
 task :deploy do
+
+queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
+queue 'echo "path=$PATH"' # this doesn't include the paths above :(
+
   deploy do
  
     invoke :'git:clone'
@@ -60,6 +59,7 @@ task :deploy do
     invoke :'rails:db_migrate'
     invoke :'bower:install_assets'
     invoke :'rails:assets_precompile'
+     invoke :'deploy:cleanup'
 
     to :launch do
       invoke :'private_pub:restart'
