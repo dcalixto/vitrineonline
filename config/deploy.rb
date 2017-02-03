@@ -48,8 +48,10 @@ end
 desc "Deploys the current version to the server."
 task :deploy do
 
+
 queue 'export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims'
 queue 'echo "path=$PATH"' # this doesn't include the paths above :(
+invoke :'bundle:install'
 
   deploy do
  
