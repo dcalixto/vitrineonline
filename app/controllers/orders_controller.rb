@@ -28,8 +28,7 @@ class OrdersController < ApplicationController
   end
 
 
- def user_address
- end
+ 
 
   def update
     order = Order.find(params[:id])
