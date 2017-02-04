@@ -23,11 +23,9 @@ class OrdersController < ApplicationController
     @order = current_user.cart.orders.find(params[:id])
     if current_user.address.blank?
      # redirect_to new_user_changes_path(current_user)
-      redirect_to :back
+      redirect_to edit_user_path
 
-     # flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
-     flash[:notice] =   "Antes de prosseguir clique aqui #{view_context.link_to(new_user_changes_path(current_user)
-)}."
+      flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
     end
   end
 
