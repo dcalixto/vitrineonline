@@ -40,8 +40,7 @@ class ApplicationController < ActionController::Base
   helper_method :vitrine
   helper_method :current_announcement
 
-  helper_method :new_user_address_path
-
+  
 
   def authorize
     if current_user.nil?

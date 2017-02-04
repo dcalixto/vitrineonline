@@ -108,4 +108,10 @@ class Order < ActiveRecord::Base
   def store_fee
     total_price * configatron.store_fee
   end
+
+
+  def new_user_address_path
+  new_user_address_path
+  end
+
 end
