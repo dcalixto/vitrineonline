@@ -26,7 +26,8 @@ class OrdersController < ApplicationController
       redirect_to :back
 
      # flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
-     flash[:notice] =   %Q[Antes de prosseguir clique aqui <a href="/users/#{current_user}/changes/new"></a>]
+     flash[:notice] =   "Antes de prosseguir clique aqui #{view_context.link_to(new_user_changes_path(current_user)
+)}.".html_safe
     end
   end
 
