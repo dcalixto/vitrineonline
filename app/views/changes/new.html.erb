@@ -1,13 +1,12 @@
+
 <div class="square_box">
 
 <h2>Endereço</h2>
 
 <div class="subcontent">
 <p class="tip">Adicione o seu endereço de entrega para facilitar a vida do vendedor</p>
-<%=form_for  @address_form, url: user_address_path, method: :post   do |ad| %>
-
- 
-   <ul class="address_list">
+<%=form_for @changes_form, url: user_changes_path, method: :post    do |ad| %>
+  <ul class="address_list">
     <li> <%= label_tag :address, "Endereço", :class=>"label" %><%= ad.text_field  :address, :label=> "Endereço" %></li>
   <li> <%= label_tag :neighborhood, "Bairro", :class=>"label" %><%=ad.text_field  :neighborhood, :label=> "Bairro"%></li>
 
