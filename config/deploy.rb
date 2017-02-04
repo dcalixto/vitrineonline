@@ -13,12 +13,12 @@ set_default :bundle_path, './vendor/bundle'
 set :server, ENV['to'] || default_server
 invoke :"env:#{server}"
 
-# Allow calling as `mina deploy at=master`
-set :branch, ENV['at']  if ENV['at']
+  # Allow calling as `mina deploy at=master`
+  set :branch, ENV['at']  if ENV['at']
 
 set :server_stack,                  %w(
                                                                        monit
-                                                                        )
+)
 
 set :shared_paths,                  %w(
                                       tmp
@@ -26,7 +26,7 @@ set :shared_paths,                  %w(
                                       config/database.yml
                                       config/application.yml
                                       public/uploads
-                                    )
+)
 
 set :monitored,                     %w(
                                        nginx
@@ -34,7 +34,7 @@ set :monitored,                     %w(
                                        redis
                                        private_pub
                                        memcached
-                                                                      )
+)
 
 
 
@@ -60,8 +60,8 @@ end
 task :environment do
   queue %(
  echo "-----> Loading environment"
- #{echo_cmd %(source ~/.bashrc)}
- )
+    #{echo_cmd %(source ~/.bashrc)}
+  )
 
 
 
@@ -76,20 +76,20 @@ end
 desc "Deploys the current version to the server."
 task :deploy do
 
-   invoke :'rbenv:load'
+  invoke :'rbenv:load'
 
   command %[ export PATH="$PATH:$HOME/.rbenv/shims" ]
 
 
   deploy do
- 
+
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'bower:install_assets'
     invoke :'rails:assets_precompile'
-     invoke :'deploy:cleanup'
+    invoke :'deploy:cleanup'
 
     to :launch do
       invoke :'private_pub:restart'

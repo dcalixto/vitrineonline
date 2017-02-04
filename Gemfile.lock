@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/dcalixto/mina-stack-1.git
-  revision: 21723951b1d03139c16984fb3bb05d2ae43f065e
+  revision: 6ddfcfaa02263613d6046ae161df7b7a118374cf
   specs:
     mina-stack (0.0.22)
       highline
@@ -246,7 +246,7 @@ GEM
     high_voltage (3.0.0)
     highline (1.7.8)
     hike (1.2.3)
-    http (2.1.0)
+    http (2.2.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 1.0.1)
