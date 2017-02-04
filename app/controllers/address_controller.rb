@@ -1,6 +1,7 @@
 class AddressController < ApplicationController
 
-
+def index
+end
  def new
     @address_form = AddressForm.new(current_user)
   end
