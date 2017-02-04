@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 
      # flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
      flash[:notice] =   "Antes de prosseguir clique aqui #{view_context.link_to(new_user_changes_path(current_user)
-)}.".html_safe
+)}."
     end
   end
 
