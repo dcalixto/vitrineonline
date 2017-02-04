@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
   def checkout
     @order = current_user.cart.orders.find(params[:id])
     if current_user.address.blank?
-      redirect_to :back
+      redirect_to :address_user_path
       flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
     end
   end

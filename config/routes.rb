@@ -46,6 +46,7 @@ mount MemcachedManager::Routes, :at => '/mm'
       get :message
       get :message_user
 
+ get :address
 
 
     end
