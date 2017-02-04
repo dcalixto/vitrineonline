@@ -78,17 +78,17 @@ class CartsController < ApplicationController
     @suggestions = Product.unscoped.for_ids_with_order(ids)
   end
 
-  def user_address
-    @user = current_user
+ # def user_address
+ #   @user = current_user
 
-    if @user.update_attributes(params[:user])
-      redirect_to carts_path
-      flash[:notice] = 'Conta atualiazada'
-    else
-      redirect_to carts_path
-      flash[:error] = 'erro'
-    end
-  end
+ #   if @user.update_attributes(params[:user])
+  #    redirect_to carts_path
+  #    flash[:notice] = 'Conta atualiazada'
+  #  else
+   #   redirect_to carts_path
+   #   flash[:error] = 'erro'
+   # end
+ # end
 
 
 
