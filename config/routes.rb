@@ -39,6 +39,7 @@ mount MemcachedManager::Routes, :at => '/mm'
 
   resources :users, only: [:new, :create, :edit, :update, :show] do
     resources :passwords
+    resources :address
        member do
       #  get :products
       get :confirm_email
@@ -46,7 +47,6 @@ mount MemcachedManager::Routes, :at => '/mm'
       get :message
       get :message_user
 
- get :address
 
 
     end
@@ -69,6 +69,9 @@ mount MemcachedManager::Routes, :at => '/mm'
   end
 
   resources :password_resets, only: [:new, :create, :update, :edit]
+
+
+
 
   resources :conversations do
     resources :messages, only: [:create, :show]
