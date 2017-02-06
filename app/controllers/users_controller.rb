@@ -21,6 +21,10 @@ class UsersController < ApplicationController
 
   end
 
+def welcome
+  
+end
+
   def user_feedbacks
     @user = User.cached_find(params[:id])
 
@@ -56,7 +60,7 @@ class UsersController < ApplicationController
       cookies[:auth_token] = {:value => @user.auth_token, :expires => 3.month.from_now}
         redirect_to  page_path('welcome')
 
-      redirect_to root_url
+             #redirect_to root_url
      # flash[:success] = "Bem vindo a Vitrineonline #{(@user.first_name)}".html_safe
     else
       render :new

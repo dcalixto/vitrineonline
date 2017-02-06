@@ -15,10 +15,26 @@
 
 <div class="block margin_top">
   <%=form_for @product do |p| %>
-<%=p.button "Próximo", :class=> "btn btn_big" %>
 
-<h1>Adicionar Produto</h1>
-<hr class="line"></hr>
+
+    <table class="block_search">
+      <tr>
+        <td>
+
+      <h1>Adicionar Produto</h1>
+        </td>
+      
+        <td>
+          <%=p.button "Próximo", :class=> "btn btn_big" %>
+        </td>
+
+      </tr>
+
+ 
+
+
+    </table>
+    
 <div class="content">
 
 <div class="subcontent_top">

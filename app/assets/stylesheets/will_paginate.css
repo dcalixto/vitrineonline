@@ -40,9 +40,9 @@ padding: 7px 12px;
   .digg_pagination .current {
     font-style: normal;
     font-weight: bold;
-    background: #F90831;
+    background: #e4d226;
     color: white;
-    border: 1px solid #e4072d; }
+    border: 1px solid #c7b612; }
   .digg_pagination a {
     text-decoration: none;
     

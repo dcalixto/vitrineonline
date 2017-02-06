@@ -96,8 +96,10 @@
 --------------------------------------------------------------------------------------------------*/
 
 .formtastic .input   .label {
-  display:block
-}
+  display:block;
+  background: transparent;
+  color:#999
+   }
 
 
 /*.formtastic .input .label {
@@ -132,7 +134,7 @@
 }
 .formtastic .choices-group {
   float: left;
-  width: 74%;
+ /* width: 74%;*/
   margin: 0;
   vertical-align: middle;
 }
@@ -170,7 +172,7 @@
   background: #a80000;
   color: #fff;
   padding: 1px 3px;
-  max-width: 73%;
+ /* max-width: 73%;*/
   list-style: square;
   display: inline;
   padding: 0.2em;
@@ -191,22 +193,22 @@
 --------------------------------------------------------------------------------------------------*/
 
 .formtastic .stringish input {
-  width: 40%;
+  width: 99%
 }
 .formtastic .stringish input[size], .formtastic .stringish input[max] {
   width: auto;
-  max-width: 50%;
+ /* max-width: 50%;*/
 }
 
 /* TEXTAREA OVERRIDES
 --------------------------------------------------------------------------------------------------*/
 
 .formtastic .text textarea {
-  width: 60%;
+ /* width: 60%;*/
 }
 .formtastic .text textarea[cols] {
   width: auto;
-  max-width: 60%;
+ /* max-width: 60%;*/
 }
 
 /* HIDDEN OVERRIDES
@@ -265,7 +267,7 @@
 }
 .formtastic .fragments-group {
   float: left;
-  width: 74%;
+ /* width: 74%;*/
   margin: 0;
   padding: 0 0 0 25%;
 }

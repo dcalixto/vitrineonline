@@ -23,7 +23,6 @@
 *= require flash
 *= require formstatic
 *= require container
-*= require normalize
 *= require order
 *= require tables
 *= require footer
@@ -51,7 +50,8 @@
 *= require tags
 *= require liquidcarousel
 
-
+*= require main_mobile
+*= require normalize_mobile
 
 
  */
@@ -59,6 +59,7 @@
 
 
 
+/* require normalize*/
 
 
 

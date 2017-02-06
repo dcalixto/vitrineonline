@@ -55,6 +55,7 @@ border: 1px solid #d6d6d6;
 
 height: 31px;
 
+border: 1px solid #247832
 
      
 }
@@ -106,24 +107,13 @@ z-index: 1;
   display: inline-block;
  max-width: none;
 
-
-
-
-
-
-
 -webkit-border-radius: 0 2px 2px 0;
 border-radius: 0 2px 2px 0;
-
- 
-
- 
        color: #333;
- 
-
 border:solid 1px;
-    border-color: #d3d3d3;
-    background: #f8f8f8;
+background: #ffe28e;
+ 
+  border: solid #eabb32 1px;
 
 
     }
@@ -142,7 +132,6 @@ border:solid 1px;
       opacity: 0.6;
       filter: alpha(opacity=60);
     }
-
 
 
 

@@ -9,10 +9,10 @@
 
   <div class=" block margin_top">
 
-      <div class="square_box">
+   
+        <div class="content">
     <h2>Entrar</h2>
-    <div class="content">
-    
+
       <%= form_tag  sessions_path,  :method => :post  do |f| %>
       <ul>
 
@@ -47,26 +47,26 @@
 
       <% end %>
     </div>
-    </div>
+ 
   </div>
 
 </div>
 
 <div class="box10">
 
-  <div class="block_white margin_top">
+  <div class="block margin_top">
 
     <div class="content ul_disc" id="session_list">
-      <h1>Sou um novo usuário</h1>
+      <h1>Veja também</h1>
       <ul>
         <li>Acompanhe as suas encomendas on-line</li>
         <li>Descubra novas vitrines e marcas</li>
         <li>Veja o histórico de seus pedidos e mais</li>
+        <li>  <%=  link_to 'Ainda não tem sua conta?', signup_path%></li>
 
       </ul>
 
-      <%=  button_to 'Criar Conta', signup_path, :class => 'btn_orange  btn_big', :method => "get"%>
-
+    
     </div>
   </div>
 </div>

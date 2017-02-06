@@ -1,4 +1,8 @@
-<div class="log_topbar">
+
+ <% if current_user %>
+
+
+<div class="log_topbar_after">
 
 
 
@@ -7,8 +11,7 @@
 
 
   <ul>
-    <% if current_user %>
-      <li class="top_avatar" title="<%=current_user.first_name %>">
+         <li class="top_avatar" title="<%=current_user.first_name %>">
         <%=link_to user_path(current_user) do %>
           Olá, <%=current_user.first_name %>
       <%end%>
@@ -37,9 +40,7 @@
         <li><%=link_to "Conta", edit_user_path(current_user), :title=> "Conta" %>
       </li>
 
-      <li>
-        <%=link_to 'Ajuda?', page_path("comprar")%>
-      </li>
+      
 <li class="jq-dropdown-divider"></li> 
 
 
@@ -48,22 +49,26 @@
         </ul>
 
       </div>
-
-
+  </ul>
+</div>
 
 
     <% else %>
+<div class="log_topbar_before">
+
+  <ul>
       <li>
         <%=link_to 'Ajuda?', page_path("comprar")%>
       </li>
       <li>
-        <%=button_to 'Abrir Conta', signup_path, :class=> "btn_grey btn",method: :get %>
+        <%=button_to 'Abrir Conta', signup_path, :class=> "btn_green",method: :get %>
         <span></span>
       </li>
       <li>
-        <%=button_to 'Entrar', login_path, :class=> "btn btn",method: :get %>
+        <%=button_to 'Entrar', login_path, :class=> "btn_grey",method: :get %>
         <span></span>
       </li>
-    <% end %>
-  </ul>
+     </ul>
 </div>
+ <% end %>
+

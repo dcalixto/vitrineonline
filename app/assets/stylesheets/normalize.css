@@ -468,7 +468,7 @@ html {
     margin: 0px;
     height: 100%;
     width: 100%;
-            
+      background: #fff;
 
 }
 
@@ -561,17 +561,22 @@ textarea {
      line-height: 16px;
      
      padding: 5px 4px;
-     width: 50%;
-
+     
      margin: 0em;
-     font: normal normal normal 11px/normal 'Lucida Grande';
+     font: Helvetica;
+     font-size:12px;
+     font-weight:normal;
      cursor: auto;
-     border: 1px solid #ccc;
-     outline: none;
+       outline: none;
+         border: solid 1px #999;
+         box-sizing: border-box;
+    padding: 4px 7px 5px;
+    width: 99%
+
    }
    select {
      display: inline-block;
-     width: 50%;
+    /* width: 50%;*/
      height: 20px;
      padding: 4px;
      margin-bottom: 9px;
@@ -860,3 +865,13 @@ h2, h4 {font-weight:normal;}
 
 
 .ul_disc {list-style-type:disc}
+
+
+
+body, td, div, .p, a {
+    font-family: arial,sans-serif;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+body[Attributes Style] {
+    background-color: rgb(255, 255, 255);
+   }

@@ -11,7 +11,7 @@ div.bettertabs ul.tabs {   padding: 0 8px;
 
 
   border-bottom-color: #AAA;
- background: #eee; }
+ background: #f2f2f2; }
 div.bettertabs ul.tabs li {
 
 
@@ -29,20 +29,20 @@ div.bettertabs ul.tabs li {
 }
 div.bettertabs ul.tabs li.active { height: 25px; /*background-color: #fff;*/ border-bottom: none;/*border: solid 1px #CCC;*/
 border-bottom: none;
-background-color: #fff;
+/*background-color: #fff;*/
 color: #555;
 
 cursor: default; }
-div.bettertabs ul.tabs li.active a.active  { color: #10b22d; font-weight:bold; border-bottom:2px solid #c51d12}
+div.bettertabs ul.tabs li.active a.active  { color: #0047b7; font-weight:bold; border-bottom:2px solid #e5b900}
 
 div.bettertabs ul.tabs li a {  text-decoration: none; float: left; }
 div.bettertabs ul.tabs li a:link,
 div.bettertabs ul.tabs li a:visited { color: #444; }
-div.bettertabs ul.tabs li a:hover { color: #000; border-bottom:2px solid #c51d12 }
-div.bettertabs ul.tabs li a:active { color: #1e59d3; }
+div.bettertabs ul.tabs li a:hover { color: #000; border-bottom:2px solid #e5b900 }
+div.bettertabs ul.tabs li a:active { color: #0047b7; }
 div.bettertabs ul.tabs li a.ajax-loading { color: #666; }
 
-div.bettertabs div.content {   background-color: #fff; clear: left; }
+div.bettertabs div.content {  /* background-color: #fff; */clear: left; }
 div.bettertabs div.content.hidden { display: none; }
 
 

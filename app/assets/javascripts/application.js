@@ -123,6 +123,27 @@ $("#main-nav").menuAim({
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // SELECT2 (TAGS)
 $(document).ready(function() {
   $('#product_tags').select2({
@@ -218,6 +239,9 @@ function hideAnnouncement(announcement_created_at) {
 
 
 
+
+
+
  $(document).ready(function () {
             var $tabs = $('#horizontalTab');
             $tabs.responsiveTabs({
@@ -239,7 +263,6 @@ function hideAnnouncement(announcement_created_at) {
             });
 
         });
-
 
 
 

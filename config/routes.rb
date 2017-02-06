@@ -36,10 +36,11 @@ mount MemcachedManager::Routes, :at => '/mm'
   resources :reports, only: [:new, :create]
 
   # USER
+get 'welcome', to: 'users#welcome', as: 'welcome'
 
   resources :users, only: [:new, :create, :edit, :update, :show] do
     resources :passwords,only: [:new, :create]
-       resources :changes, only: [:new, :create]
+      
        member do
       #  get :products
       get :confirm_email

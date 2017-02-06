@@ -155,8 +155,9 @@ end
   def create
     @vitrine = current_user.build_vitrine(params[:vitrine])
     if @vitrine.save
-      redirect_to(action: :edit, id: @vitrine, only_path: true)
-      flash[:success] = "#{@vitrine.name} criada com sucesso, boa sorte em seu empreendimento #{@vitrine.user.first_name}".html_safe
+           redirect_to  page_path('welcome_vitrine')
+
+    #  flash[:success] = "#{@vitrine.name} criada com sucesso, boa sorte em seu empreendimento #{@vitrine.user.first_name}".html_safe
 
     else
       render :new

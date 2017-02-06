@@ -12,7 +12,31 @@
 
 
   <%= form_for @product, method: :put, url: wizard_path,  :html => {:multipart => true} do |p| %>
- <%= p.submit 'Vender', :class =>"btn btn_big" %>
+
+
+<div class="block margin_top">
+
+
+    <table class="block_search">
+      <tr>
+        <td>
+
+      <h1>Postar</h1>
+        </td>
+      
+        <td>
+        <%= p.submit 'Postar', :class =>"btn btn_big" %>
+
+        </td>
+
+      </tr>
+
+ 
+
+
+    </table>
+
+
 
     <div class="block">
 
@@ -199,4 +223,5 @@
 
                  <% end %>
 
+</div>
 </div>

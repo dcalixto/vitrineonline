@@ -63,15 +63,13 @@ $desktop: min-width 1200px;
  }
 
  .blue_bar {      
-   height:40px;
+   height:45px;
 
   
              
 
-
- 
-    border-bottom: 1px solid #e5e5e5;
- background-color: #f1f1f1;
+  background-color:#3d6eb3;
+      background-color: #007bc4;
  
    
   
@@ -82,8 +80,7 @@ $desktop: min-width 1200px;
  .inner_blue  {
 
    height:45px;
- 
- background:#fff;
+  background-color: #3b5998;
    width:100%;
    display: block;
  }
@@ -96,10 +93,9 @@ $desktop: min-width 1200px;
    white-space: nowrap;
    height: 33px;
 
-   border-bottom: 1px solid #e8e8e8;
-
+ 
    
-   background: #fff;
+    background-color: #3b5998;
  
  }
 
@@ -118,9 +114,8 @@ $desktop: min-width 1200px;
      white-space: nowrap;
      height: 45px;
   
-background: #fff;
+ background-color: #3b5998;
 
- border-bottom: 1px solid #e8e8e8;
 
 
    }
@@ -251,11 +246,9 @@ background: #fff;
      display: block;
      white-space: nowrap;
            height: 33px;
+ background-color: #f2f2f2;
+ border-bottom: 1px solid #ccc;
 
-     border-bottom: 1px solid #e8e8e8;
-
-  
-  background:#fff;
        }
 
 
@@ -357,40 +350,60 @@ background: #fff;
 
  /*  TOP BAR USER LOG IN */
 
- .log_topbar {
+  .log_topbar_before {
    float: right;
    overflow: auto;
    vertical-align: baseline;
    width: auto;
   /* position: relative;*/
-   margin-top: 5px
- }
+margin-right:30px;
+   margin-top:10px
+    }
 
- ul.log_topbar li {
+
+
+ .log_topbar_after {
+   float: right;
+   overflow: auto;
+   vertical-align: baseline;
+   width: auto;
+  /* position: relative;*/
+margin-right:30px;
+   margin-top:15px
+    }
+
+
+
+ ul.log_topbar_after li {
+   display: inline;
+ }
+  ul.log_topbar_before li {
    display: inline;
  }
 
- .log_topbar li, .info_area li {
+
+
+ .log_topbar_after li, .log_topbar_before li, .info_area li {
    float: left;
-   margin-right: 5px;
+   margin-right: 1px;
    margin-left: 7px;
    vertical-align: middle;
    display: list-item;
    text-align: -webkit-match-parent;
  }
- .log_topbar ul li a, .info_area ul li a {
+ .log_topbar_after ul li a, .log_topbar_before ul li a, .info_area ul li a {
    display: block;
    vertical-align: middle;
    float: right;
    font-weight:bold;
-  
+ color:#fff 
    }
  .help {
    margin-right: 10px;
    font-size: 13px;
    margin-top: 10px
  }
- .log_topbar ul, .info_area ul {
+ .log_topbar_after ul, .log_topbar_before ul,  .info_area ul {
    display: block;
    vertical-align: middle;
    float: right;
@@ -398,7 +411,7 @@ background: #fff;
    
  }
  .top_links {
-   padding-top: 8px;
+   padding-top: 1px;
    float: right
  }
 /* .log_topbar span {
