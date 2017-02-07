@@ -151,44 +151,91 @@ img#rating_line  {display: inline;
 
 
 #searchResults_list  td.image_cell {
-    width: 180px;
-    height:180px;
-    overflow: hidden;
+      overflow: hidden;
     display: inline-block;
     white-space: nowrap;
+          position: relative;
+
+
+      width: 180px;
+    max-height: 150px;
+    max-height: auto;
+    float: left;
     
 }
 
 
+
+#searchResults  td.image_cell {
+      overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+          position: relative;
+
+
+      width: 150px;
+    max-height: 150px;
+    max-height: auto;
+    float: left;
+    
+}
+
+.product .productImg {
+        display: block;
+     vertical-align: top;
+    text-decoration: none;
+
+   max-width: 100%;
+    height: auto;}
+
+
+
+
 #searchResults_list  td.info_cell {
-    width: 355px;
-    height:180px;
-    overflow: hidden;
+   width: 180px;
+   height:180px;
+      overflow: hidden;
     display: inline-block;
     white-space: nowrap;
      
      
 }
-
-
 
 
 
 
 #searchResults td {
-    width: 180px;
-    height:265px;
+    width: 200px;
+    height:260px;
     overflow: hidden;
     display: inline-block;
     white-space: nowrap;
+    border:solid 1px red
+
     
 }
 
 
-#searchResults img {
-   max-width: 170px;
-    max-width: 170px;
-  }
+#searchResults_list td {
+    width: 260px;
+    height:200px;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    border:solid 1px red
+
+    
+}
+
+
+
+/*#searchResults img {
+   max-width: 150px;
+    max-width: 150px;
+    overflow: hidden;
+    position: relative;
+     -o-object-fit: contain;
+  }*/
 
 
  
@@ -239,13 +286,6 @@ font-weight:bold;
 
 }
 
-#searchResults .product {
-
-  max-width: 170px;
-
-
-    
-}
 
 
 #searchResults .product::after {
@@ -277,12 +317,12 @@ font-weight:bold;
 color: #888
 }
 .product .productImg {
-   width: 170px;
-   /* height: 170px;*/
-     display: block;
+        display: block;
      vertical-align: top;
     text-decoration: none;
-}
+
+   max-width: 100%;
+    height: auto;}
 
 
 

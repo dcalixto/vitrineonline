@@ -58,15 +58,20 @@
   color: #666
 }
 
-.breadcrumbs {
-  padding: 5px;
- 
-  margin-bottom:5px
-}
-.breadcrumbs a {
-  color: #888;
-}
 
+
+.breadcrumbs{
+    width: 780px;
+    margin: 10px;
+    display: block;
+    float: left;}
+.breadcrumbs, .breadcrumbs a {
+    color: #666;
+    text-align: left;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight:bold
+}
 
 .address_list li { margin-bottom:10px}
 

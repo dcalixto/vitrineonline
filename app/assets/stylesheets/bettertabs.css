@@ -1,6 +1,6 @@
 
 
-div.bettertabs {  }
+div.bettertabs {}
 
 div.bettertabs ul.tabs {   padding: 0 8px;
   margin: 0;
@@ -42,7 +42,7 @@ div.bettertabs ul.tabs li a:hover { color: #000; border-bottom:2px solid #e5b900
 div.bettertabs ul.tabs li a:active { color: #0047b7; }
 div.bettertabs ul.tabs li a.ajax-loading { color: #666; }
 
-div.bettertabs div.content {  /* background-color: #fff; */clear: left; }
+div.bettertabs div.content {  /* background-color: #fff; */clear: left; overflow:hidden }
 div.bettertabs div.content.hidden { display: none; }
 
 

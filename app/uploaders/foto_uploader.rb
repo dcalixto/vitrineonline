@@ -25,7 +25,7 @@ class FotoUploader < CarrierWave::Uploader::Base
 
 
   version :thumb do
-    process resize_to_fit: [170, 170]
+    process resize_to_fit: [150, 150]
     process quality: 80
 
     process :strip

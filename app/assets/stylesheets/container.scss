@@ -32,6 +32,7 @@ $desktop: min-width 1200px;
     display: block;
     line-height: 1.34;
     
+    overflow:hidden
 
   }
   #header {
@@ -63,7 +64,7 @@ $desktop: min-width 1200px;
     max-width: 1000px;
     display: block;
     line-height: 1.34;
-       margin-top:75px
+      overflow:auto
 
   }
   #header {
@@ -97,7 +98,8 @@ $desktop: min-width 1200px;
     max-width: 1000px;
     display: block;
     line-height: 1.34;
-       
+         overflow:hidden
+
 
   }
   #header {
@@ -169,7 +171,8 @@ $desktop: min-width 1200px;
     max-width: 1000px;
     line-height: 1.34;
     display: block;
-     
+       overflow:hidden
+
   }
   #header {
     width: 100%;
