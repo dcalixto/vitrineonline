@@ -61,7 +61,7 @@ belongs_to :material
 
 
   cattr_accessor :form_steps do
-    %w(first)
+    %w(first preview)
   end
 
   attr_accessor :form_step

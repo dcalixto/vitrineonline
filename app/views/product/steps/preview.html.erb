@@ -1,0 +1,81 @@
+<% title @product.name%>
+<%description @product.name  %>
+
+  <!-- Imagens do product   -->
+
+
+
+  <div class="box1">
+  <%= form_for @product, method: :put, url: wizard_path,  :html => {:multipart => true} do |f| %>
+
+<div class="block">
+          <h1 id="item_name"><%= @product.name %></h1>
+        </div>
+
+   <table class="block_search">
+      <tr>
+        <td>
+
+      <h1>Visualizar</h1>
+        </td>
+      
+        <td>
+        <%= f.submit 'Postar', :class =>"btn btn_big" %>
+
+        </td>
+
+      </tr>
+
+ 
+
+
+    </table>
+   
+
+
+
+        <div class="block">
+          <h1 id="item_name"><%= @product.name %></h1>
+        </div>
+ </div>
+
+  <div class="box10">
+
+<div id="placeholder">
+      <% if @product.images.first.present? %>
+        <%= image_tag @product.images.first.ifoto.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
+        <%= render_showcase %>
+      <% end %>
+    </div>
+    
+
+  </div>
+
+
+    <!-- Fim-->
+ 
+
+  <div class="box4">
+    <div class ="block">
+
+      <%= bettertabs :simpletabs do |tab| %>
+        <%= tab.link :product_show, 'Resumo' do %>
+          <%= render 'product_show' %>
+        <% end %>
+      
+
+
+      <% end %>
+    </div>
+
+
+
+  </div>
+
+
+
+  
+   <% end %>
+
+
+

@@ -55,8 +55,8 @@ params[:product][:status] = 'active' if step == steps.last
         end
       end
       redirect_to order_stocks_path(current_vitrine.id)
-      
-
+     # redirect_to product_step_path(@product, Product.form_steps.preview, only_path: true, format: :html) 
+#render_wizard @product
     else
       render_wizard @product
     end
