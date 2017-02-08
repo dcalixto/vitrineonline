@@ -4,6 +4,22 @@
   margin-right: 13px;
   vertical-align: middle;
 }
+#helper_link {
+  width: auto;
+
+  float: right;
+  margin-right: 10px;
+  margin-left: 20px;
+  margin-top: 15px;
+  display:block;
+}
+
+#helper_link a {
+  color:#fff
+
+}
+
+
 #shopcart {
   /* margin-left: 40px;*/
   width: auto;
@@ -11,7 +27,7 @@
   float: right;
   margin-right: 10px;
   margin-left: 20px;
-  margin-top: 5px;
+  margin-top: 10px;
   display:block
 }
 #shopcart span {

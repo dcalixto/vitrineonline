@@ -16,6 +16,13 @@
   <% end %>
 </div>
 
-<div class="helper_link">
+
+
+ <% if current_user.nil? %>
+
+
+<div id="helper_link">
         <%=link_to 'Ajuda?', page_path("comprar")%>
-      </div>
+</div>
+
+<% end %>
