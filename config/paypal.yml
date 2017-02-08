@@ -7,10 +7,10 @@ development: &default
   # Mode can be 'live' or 'sandbox'
   mode: sandbox
   app_id: APP-80W284485P519543T
-  username: admin-facilitator_api1.vitrineonline.com
-  password: KVCYT45H5K6PL5GP
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AIfJCr4rejJqnwkVMlhOd8s7INDg
-  sandbox_email_address: admin-facilitator@vitrineonline.com
+  username: contato_api1.vitrineonline.com
+  password: UQ76DVGEEBJ6CZYA
+  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AIpKUwoaMgqlL363s4Rk8jqFHD.6
+  sandbox_email_address: contato_api1.vitrineonline.com
 
 
 test:
