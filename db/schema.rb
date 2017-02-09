@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160823161901) do
+ActiveRecord::Schema.define(:version => 20170209143236) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -297,14 +297,14 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
   add_index "product_data", ["vitrine_id"], :name => "index_product_data_on_vitrine_id"
 
   create_table "products", :force => true do |t|
-    t.integer  "vitrine_id",                                                             :null => false
+    t.integer  "vitrine_id",                                                               :null => false
     t.string   "slug"
-    t.string   "name",                                                                   :null => false
-    t.decimal  "price",                 :precision => 9, :scale => 2
+    t.string   "name",                                                                     :null => false
+    t.decimal  "price",                   :precision => 9, :scale => 2
     t.text     "detail"
-    t.integer  "gender_id",                                                              :null => false
-    t.integer  "category_id",                                                            :null => false
-    t.integer  "subcategory_id",                                                         :null => false
+    t.integer  "gender_id",                                                                :null => false
+    t.integer  "category_id",                                                              :null => false
+    t.integer  "subcategory_id",                                                           :null => false
     t.integer  "impressions_count"
     t.integer  "color_id"
     t.integer  "size_d"
@@ -312,16 +312,30 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
     t.integer  "material_id"
     t.integer  "condition_id"
     t.string   "meta_keywords"
-    t.integer  "quantity",                                            :default => 0
+    t.integer  "quantity",                                              :default => 0
     t.string   "status"
     t.string   "current_step"
-    t.datetime "created_at",                                                             :null => false
-    t.datetime "updated_at",                                                             :null => false
-    t.boolean  "is_shared_on_facebook",                               :default => false
-    t.boolean  "is_shared_on_twitter",                                :default => false
+    t.datetime "created_at",                                                               :null => false
+    t.datetime "updated_at",                                                               :null => false
+    t.boolean  "is_shared_on_facebook",                                 :default => false
+    t.boolean  "is_shared_on_twitter",                                  :default => false
+    t.integer  "cached_votes_total",                                    :default => 0
+    t.integer  "cached_votes_score",                                    :default => 0
+    t.integer  "cached_votes_up",                                       :default => 0
+    t.integer  "cached_votes_down",                                     :default => 0
+    t.integer  "cached_weighted_score",                                 :default => 0
+    t.integer  "cached_weighted_total",                                 :default => 0
+    t.float    "cached_weighted_average",                               :default => 0.0
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
+  add_index "products", ["cached_votes_down"], :name => "index_products_on_cached_votes_down"
+  add_index "products", ["cached_votes_score"], :name => "index_products_on_cached_votes_score"
+  add_index "products", ["cached_votes_total"], :name => "index_products_on_cached_votes_total"
+  add_index "products", ["cached_votes_up"], :name => "index_products_on_cached_votes_up"
+  add_index "products", ["cached_weighted_average"], :name => "index_products_on_cached_weighted_average"
+  add_index "products", ["cached_weighted_score"], :name => "index_products_on_cached_weighted_score"
+  add_index "products", ["cached_weighted_total"], :name => "index_products_on_cached_weighted_total"
   add_index "products", ["category_id"], :name => "index_products_on_category_id"
   add_index "products", ["condition_id"], :name => "index_products_on_condition_id"
   add_index "products", ["gender_id"], :name => "index_products_on_gender_id"
@@ -503,7 +517,7 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
     t.string   "name"
     t.string   "codigo"
     t.text     "about"
-    t.integer  "user_id",            :null => false
+    t.integer  "user_id",                                  :null => false
     t.string   "address"
     t.string   "neighborhood"
     t.string   "postal_code"
@@ -511,10 +525,24 @@ ActiveRecord::Schema.define(:version => 20160823161901) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "impressions_count"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.integer  "cached_votes_total",      :default => 0
+    t.integer  "cached_votes_score",      :default => 0
+    t.integer  "cached_votes_up",         :default => 0
+    t.integer  "cached_votes_down",       :default => 0
+    t.integer  "cached_weighted_score",   :default => 0
+    t.integer  "cached_weighted_total",   :default => 0
+    t.float    "cached_weighted_average", :default => 0.0
   end
 
+  add_index "vitrines", ["cached_votes_down"], :name => "index_vitrines_on_cached_votes_down"
+  add_index "vitrines", ["cached_votes_score"], :name => "index_vitrines_on_cached_votes_score"
+  add_index "vitrines", ["cached_votes_total"], :name => "index_vitrines_on_cached_votes_total"
+  add_index "vitrines", ["cached_votes_up"], :name => "index_vitrines_on_cached_votes_up"
+  add_index "vitrines", ["cached_weighted_average"], :name => "index_vitrines_on_cached_weighted_average"
+  add_index "vitrines", ["cached_weighted_score"], :name => "index_vitrines_on_cached_weighted_score"
+  add_index "vitrines", ["cached_weighted_total"], :name => "index_vitrines_on_cached_weighted_total"
   add_index "vitrines", ["impressions_count"], :name => "index_vitrines_on_impressions_count"
   add_index "vitrines", ["slug"], :name => "index_vitrines_on_slug"
   add_index "vitrines", ["user_id"], :name => "index_vitrines_on_user_id", :unique => true
