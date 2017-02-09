@@ -1,7 +1,6 @@
 <div class="subcontent">
   <div class="block">
-    <h4>Mensagem</h4>
-    <% @conversation = Conversation.new %>
+       <% @conversation = Conversation.new %>
     <%= form_for @conversation do |f| %>
     <div class="doubt">
       <%= hidden_field :conversation_participants, :vitrine_id, :value => @vitrine.user_id %>
@@ -9,7 +8,7 @@
         <li><%= text_area :message, :body, :rows => 3, class: 'form-control'%></li>
       </ul>
     </div>
-    <div><%= f.button 'Enviar', :class => 'btn_grey' %></div>
+    <div><%= f.button 'Enviar', :class => 'btn' %></div>
     <% end %>
   </div>
 </div>

@@ -19,9 +19,13 @@
 
 
     </div>
-    <div class="messagebox" id="message_list">
-
-      <%= render partial: 'conversation', :collection => @conversations %>
+    <div class="content" >
+     <table class="zebra_branca" id="message_list">
+        
+      <tbody>
+ <%= render partial: 'conversations/conversation', collection: @conversations  %>
+        </tbody>
+</table>
 
 
 
