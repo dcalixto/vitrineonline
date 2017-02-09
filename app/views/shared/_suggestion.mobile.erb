@@ -6,14 +6,35 @@
         <ul>
 
           <% @suggestions.each do |item| %>
-            <li>
-              <%= link_to product_path(item) do  %>
-                <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
-                <%= item.name %>
-                <%= item.price %>
-              <% end %>
-            </li>
-          <% end %>
+             <li>
+            <%= link_to product_path(item),  :class=>"product" do  %>
+              <%= image_tag item.images.first.ifoto.url(:thumb).to_s, :class=>"productImg" %>
+            <span class="productName">
+
+              <%= item.name %>
+            </span>
+
+             <span class="price">
+               <%= item.price %>
+             </span>
+
+
+  <% if item.feedbacks %>
+                    <div class="productFeeback">
+                      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+                      <%=@total_feedbacks %>
+                    </div>
+                     <% end %>
+
+                                   <span class="by">Por
+                    <%=item.vitrine.name %>
+                  </span>
+               
+
+            <% end %>
+          </li>
+        <% end %>
+
         </ul>
 
 

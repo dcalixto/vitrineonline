@@ -274,7 +274,7 @@
 
         <ul>
 
-          <% @product.vitrine.tag_list.each do |tag| %>
+          <% @product.vitrine.tag_list.take(22).each do |tag| %>
             <li>
               <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @product.vitrine.id) %>
             </li>

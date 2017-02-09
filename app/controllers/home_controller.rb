@@ -4,10 +4,7 @@ class HomeController < ApplicationController
   # caches_action :index, :layout => false
 
 
-
-
   def index
-    @products = Product.all
     @vitrines = Vitrine.all
 
     @feedbacks = Feedback.includes(:vitrines, :products)
@@ -16,10 +13,13 @@ class HomeController < ApplicationController
     # suggestions for current visitor
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
- 
-  # @tags = ActsAsTaggableOn::Tag.most_used
- #@tags = Vitrine.tag_list
- 
+
+    if params[:tag]
+
+      @products = Product.tagged_with(params[:tag]).order('DESC').limit(22)
+    else
+      @products = Product.all
+    end
   end
 
 

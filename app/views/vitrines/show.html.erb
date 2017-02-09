@@ -153,7 +153,7 @@
 
         <ul>
 
-          <% @vitrine.tag_list.each do |tag| %>
+          <% @vitrine.tag_list.take(50).each do |tag| %>
             <li>
               <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
             </li>
