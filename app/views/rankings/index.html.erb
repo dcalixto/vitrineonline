@@ -15,8 +15,11 @@
 
       <tbody>
  <% if @vitrines %>
-        <% Vitrine.order(:cached_votes_up).take(50).each do |vitrine| %>
-        <tr>
+        <% Vitrine.order(:cached_votes_up).take(50).each do |vitrine, i| %>
+          <tr>
+
+            <td> <%= i %></td>
+
           <td >
             <%= link_to  vitrine_path(vitrine.id) do %>
             <%= image_tag vitrine.logo.url(:mobile).to_s %>
