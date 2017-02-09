@@ -1,7 +1,7 @@
 
 <tr>
   <td class="block_avatar">
-    <%= link_to(image_tag(message.user.avatar.url(:message).to_s), user_path(message.user)) %>
+    <%= link_to(image_tag(message.user.avatar.url(:mobile).to_s), user_path(message.user)) %>
   </td>
   <td class="body">
     <%= link_to user_path(message.user) do %>
