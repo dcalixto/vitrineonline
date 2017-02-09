@@ -12,20 +12,22 @@
 </div>
 
 
+ <%= form_for @product,  :html => {:multipart => true} do |p| %>
+
 
 <div class="block margin_top">
-  <%=form_for @product do |p| %>
 
 
     <table class="block_search">
       <tr>
         <td>
 
-      <h1>Adicionar Produto</h1>
+      <h1>Postar</h1>
         </td>
       
         <td>
-          <%=p.button "Próximo", :class=> "btn btn_big" %>
+        <%= p.submit 'Postar', :class =>"btn btn_big" %>
+
         </td>
 
       </tr>
@@ -34,6 +36,175 @@
 
 
     </table>
+
+
+
+    <div class="block">
+
+
+
+
+
+ <div id="horizontalTab">
+        <ul>
+                      <li><a href="#tab-1">Imagem e descrição</a></li>
+            <li><a href="#tab-2">Estilos e Marcas</a></li>
+            <li><a href="#tab-3">Tamanho e Cor</a></li>
+            <li><a href="#tab-4">Material e Condição</a></li>
+            <li><a href="#tab-5">Nome e preço</a></li>
+
+                    </ul>
+
+        <div id="tab-1">
+            <h1>Imagens e especifiações</h1>
+
+        <div class="subcontent">
+
+
+
+
+
+
+          <h2>Fotos</h2>
+          <%= image_tag @product.images.first.ifoto.url(:thumb) unless @product.images.blank? %>
+
+          <p class="tip">Adicione no mínimo 2 fotos</p>
+          <p class="tip">
+          Se você tem dúvida de como tirar suas fotos acesse o link
+          <%= link_to 'Fotografia', page_path('fotografia') %></p>
+
+          <ul class="image_info">
+            <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
+            <li class="tip">As imagens serão redimencionandas para 245 x 135 de altura</li>
+          </ul>
+
+          <div class="dropzone" id="images" data-update-url="<%= product_path(@product) + '?authenticity_token=' + form_authenticity_token %>"></div>
+
+
+        </div>
+
+                <h2>Descrição</h2> 
+          <div class="subcontent">
+
+
+
+            <p class="tip">Descreva seu item</p>
+            <p clas="tip">
+            Adicione apenas as medidas pertinente ao produto OBS: Todas as medidas serão em Centímetros Comprimento: 67,5cm
+            </p>
+
+
+
+            <p clas="tip">Para inserir emojis no texto acesse
+            <%=link_to nil, "http://www.emoji-cheat-sheet.com" %></p>
+            <div class="wmd-panel">
+              <div id="wmd-button-bar"></div>
+
+              <%=p.text_area :detail, :id=> "wmd-input", :class=> "wmd-input", :placeholder => "Descrição"%>
+
+
+              <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+            </div>
+        
+          </div>
+        
+
+        
+        </div>
+        <div id="tab-2">
+            <h2>Estilos</h2>
+
+          <div class="subcontent">
+            <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
+            </p>
+            <%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
+
+                </div>
+
+                <h2>Marca</h2>
+
+          <div class="subcontent">
+
+            <%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
+            <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
+        </div>
+
+        
+        
+        </div>
+        <div id="tab-3">
+   <h2>Tamanho</h2>
+
+          <div class="subcontent horizonal_list">
+            <ul>
+
+              <%= hidden_field_tag "product[size_ids][]", nil %>
+              <% Size.order(:size).each do |size| %>
+                <li> <%= check_box_tag "product[size_ids][]", size.id, @product.size_ids.include?(size.id), id: dom_id(size) %>
+                <%= label_tag dom_id(size), size.size %>
+                </li>
+              <% end %>
+
+            </ul>
+          </div>
+                          <h2>Cor</h2>
+
+          <div class="subcontent horizonal_list">
+            <ul>
+              <%= hidden_field_tag "product[color_ids][]", nil %>
+              <% Color.all.each do |color| %>
+                <li>
+                  <%= check_box_tag "product[color_ids][]", color.id, @product.color_ids.include?(color.id), id: dom_id(color) %>
+                  <%= label_tag dom_id(color), color.name %>
+                </li>
+
+              <% end %>
+
+            </ul>
+          </div>
+
+
+                  
+        
+        
+        
+        
+        </div>
+        <div id="tab-4">
+            <h2>Material</h2>
+
+            <div class="subcontent ">
+
+              <ul>
+
+                <li>
+                  <%=  p.collection_select(:material_id, Material.all, :id, :name,  {},{ :multiple => false,  :class=>"select_item"}) %>
+
+                </li>
+              </ul>
+            </div>
+        
+                     <h2>Condição</h2>
+
+            <div class="subcontent ">
+              <ul>
+                <li>
+                  <%=  p.collection_select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false,  :class=>"select_item"})%>
+
+                </li>
+              </ul>
+            </div>
+                 
+        
+        </div>
+
+
+
+
+ <div id="tab-5">
+         <div class="block margin_top">
+  
+
     
 <div class="content">
 
@@ -120,10 +291,47 @@
 </div>
 </div>
 </div>
-<% end %>
+
+
+                 
+        
+        </div>
+       
 
 
 
+
+
+
+
+
+
+       
     </div>
-  </div>
-</div>
+
+
+
+
+
+
+
+ </div>		
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+                 <% end %>
+
