@@ -2,7 +2,7 @@
   
   <td class="block_avatar">
       <%= link_to conversation_path(conversation.id), :class => "message_link" do %>
-          <%= image_tag user.avatar.url(:message).to_s %>
+          <%= image_tag user.avatar.url(:small).to_s %>
       <% end %>
     </td>
     <td class="message_body">
