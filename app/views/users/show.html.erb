@@ -152,10 +152,13 @@
       <% end %>
            <%= tab.link :vitrines,  "Vitrines Curtidas" do %>
       <%=render 'users/vitrines' %>
-      <% end %>
+    <% end %>
+    <% if current_user %>
       <%= tab.link :message, 'Mensagem'  do %>
       <%=render 'message_box' %>
-      <% end %>
+    <% end %>
+        <% end %>
+
     <% end %>
   </div>
 

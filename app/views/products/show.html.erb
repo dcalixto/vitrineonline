@@ -252,11 +252,11 @@
         <%= tab.link :feedbacks, "#{pluralize(@product.feedbacks.size, "Avaliações") }"  do %>
           <%= render 'feedbacks' %>
         <% end %>
-
+        <%if current_user %>
         <%= tab.link :message, 'Mensagem' do %>
           <%=render 'message_box' %>
         <% end %>
-
+      <% end %>
       <% end %>
     </div>
 

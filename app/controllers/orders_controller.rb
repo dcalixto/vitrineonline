@@ -71,7 +71,7 @@ order = Order.find(params[:id])
       @pay = @api.build_pay({
         :actionType => "PAY",
         :cancelUrl => carts_url,
-        :currencyCode => "USD",
+        :currencyCode => "BRL",
        # :feesPayer => "SENDER",
         :ipnNotificationUrl => ipn_notification_order_url(order), 
 

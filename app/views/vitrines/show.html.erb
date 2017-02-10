@@ -196,9 +196,12 @@
         <%= tab.link :about, 'Sobre' do %>
           <%=render 'about' %>
         <% end %>
+           <%if current_user %>
+
         <%= tab.link :message, 'Mensagem' do %>
           <%=render 'message_box' %>
         <% end %>
+    <% end %>
 
 
       <% end %>
