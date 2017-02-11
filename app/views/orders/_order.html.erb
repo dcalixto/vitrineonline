@@ -1,19 +1,24 @@
 <tbody>
   <% product = order.product %>
   <tr>
+          
     <td>
-      
+      <% if controller_name == "carts" && action_name == "index" %>
+
         <% if product.images.present? %>
           <%= link_to  product_path(product.id) do %>
             <%= image_tag product.images.first.ifoto.url(:thumb).to_s %>
           <% end %>
 
         <% end %>
+  <% end%>
 
     </td>
     <td>
+  <% if controller_name == "carts" && action_name == "index" %>
 
       <%= link_to product.name, product_path(product.id) %>
+   <% end %>
 
     </td>
     <td>
@@ -26,25 +31,40 @@
 
     </td>
       <td>
-      <span class="lista-preco">
-        <b><%= number_to_currency(order.product.price) %></b>
+        <span class="lista-preco">
+          <% if controller_name == "carts" && action_name == "index" %>
+
+            <b><%= number_to_currency(order.product.price) %></b>
+             <% end%>
+
       </span>
     </td>
 
     <td>
       <span>
-        <b><%= number_to_currency(order.total_price) %></b>
+         <% if controller_name == "carts" && action_name == "index" %>
+
+           <b><%= number_to_currency(order.total_price) %></b>
+               <% end%>
+
       </span>
     </td>
     <td>
       <% if order.status.nil? %>
+         <% if controller_name == "carts" && action_name == "index" %>
 
-        <%= button_to 'Remover',  order, :class=> "btn_grey btn_small",  method: :delete %>
+
+           <%= button_to 'Remover',  order, :class=> "btn_grey btn_small",  method: :delete %>
+             <% end%>
+
       <% end %>
     </td>
     <td>
       <% if order.status.nil? %>
+         <% if controller_name == "carts" && action_name == "index" %>
+
         <%= button_to 'Prosseguir', checkout_order_path(order), method: :get, class: 'btn' %>
+  <% end%>
 
       <% end %>
     </td>
@@ -52,8 +72,10 @@
 
   </tr>
 </tbody>
-<% unless order.status.nil? %>
-  <div class="block">
+
+
+
+ <div class="block">
     <table class="cart">
       <thead>
         <tr>
@@ -69,6 +91,9 @@
         </tr>
       </thead>
       <tbody>
+
+<% unless order.status.nil? %>
+ 
         <tr>
           <td>
             <% if product.images.present? %>
@@ -156,9 +181,11 @@
             </td>
           <% end %>
         </tr>
+      <% end %>
+
       </tbody>
     </table>
   </div>
-<% end %>
+
 
      
