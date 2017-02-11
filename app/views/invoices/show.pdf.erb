@@ -52,7 +52,7 @@
                 <li>
                     <% unless @product.images.blank? %>
                   
-                   <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
+                   <%= wicked_pdf_image_tag @product.images.first.ifoto.url(:small).to_s %>
                     <%end %></li>
 
                 <li><%= @product.name %></li>

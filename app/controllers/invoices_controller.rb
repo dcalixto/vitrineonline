@@ -1,3 +1,4 @@
+  # encoding: utf-8
 class InvoicesController < ApplicationController
   before_filter :authorize_vitrine, only: [:index, :show]
 
