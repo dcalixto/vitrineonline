@@ -15,24 +15,21 @@
           <tr>
             <th>Trasação</th>
             <th>Comissão</th>
-          </tr>
-        </thead>
-        <tr>
-         
-          <td class="sort">
+            <th>Data</th>
+
+ <th >
 
             Ordernar Por
 
             <%= sort_link @q, :created_at, "Data" %>
-          </td>
-        </tr>
-      </table>
+          </th>
 
 
-    <div class="subcontent">
+          </tr>
+        </thead>
 
-           <table class="zebra_branca margin_top">
-
+ 
+          
         <tbody>
           <% @invoices.each do |invoice| %>
           <tr>
@@ -40,6 +37,8 @@
             <td><%= link_to "Trasação # #{invoice.id}", vitrine_invoice_path(current_vitrine, invoice.id) %></td>
             <td><%= number_to_currency invoice.store_fee %></td>
             <td><%= invoice.created_at.strftime('%d/%m/%Y') %></td>
+              <td></td>
+
             <% end %>
           </tr>
           <% end %>

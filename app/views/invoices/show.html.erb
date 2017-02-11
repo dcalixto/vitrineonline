@@ -1,40 +1,75 @@
+
+
+
+
+
 <% title "Fatura" %>
 <%= render "shared/vitrine_menu" %>
 <div class="box3">
   <div class="block  margin_top">
-  <div class="square_box">
     <h1>Fatura #<%= @invoice.id %></h1>
 
     <%= render 'shared/flash_messages' %>
 
     <div class="content">
-      <table class="invoice_show">
+      <table>
+
+
+        <tr>
+          <td >
+            <%= image_tag('logo.png')  %>
+          </td>
+
+          <td>
+            Avenida Roberto Silveira nº 95A, Chácara da Saudade, Paraty/RJ
+          </td>
+          <td>
+            <b>Vitrine</b>
+
+            <td>
+              <b>Forma de Pagamento</b>
+
+              <td>
+        </tr>
+
+
+
+
         <tr>
           <th>
-            <h2>Usuário</h2>
+            <b>Usuário</b>
+          </th>
+
+          <th>
+            <b>Produto</b>
           </th>
           <th>
-            <h2>Vitrine</h2>
+            <b>Preço</b>
           </th>
           <th>
-            <h2>Produto</h2>
+            <b>Qtd</b>
           </th>
           <th>
-            <h2>Preço</h2>
+            <b>Comissão</b>
           </th>
           <th>
-            <h2>Qtd</h2>
+            <b>Data</b>
           </th>
           <th>
-            <h2>Comissão</h2>
-          </th>
-          <th>
-            <h2>Data</h2>
-          </th>
-          <th>
-            <h2>Download</h2>
+            <b>Download</b>
           </th>
         </tr>
+
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%= current_vitrine.name %></td>
+
+            <td>Paypal</td>
+          </tr>
+        </tbody>
+
         <tbody>
           <tr>
             <td>
@@ -43,19 +78,18 @@
                 <li><%= @buyer.user_address if  @buyer.address %></li>
                 <li><%= @buyer.user_neighborhood if  @buyer.neighborhood %></li>
                 <li><%= @buyer.user_city if  @buyer.city %>
-                </li>
-                <li><%= @buyer.user_postal_code  if  @buyer.postal_code %></li>
-                <li><%= @buyer.user_address_supplement if   @buyer.address_supplement %></li>
+              </li>
+              <li><%= @buyer.user_postal_code  if  @buyer.postal_code %></li>
+              <li><%= @buyer.user_address_supplement if   @buyer.address_supplement %></li>
               </ul>
             </td>
-            <td><%= current_vitrine.name %></td>
             <td>
               <ul>
                 <li>
-                    <% unless @product.images.blank? %>
-                  
-                      <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
-                    <%end %></li>
+                  <% unless @product.images.blank? %>
+
+                    <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
+                  <%end %></li>
 
                 <li><%= @product.name %></li>
               </ul>
@@ -66,19 +100,19 @@
 
             </td>
             <td>
-              Quantidade
               <%= @order.quantity %>
 
             </td>
             <td><%= number_to_currency @invoice.store_fee %></td>
             <td><%= @invoice.created_at.strftime('%d/%m/%Y') %></td>
             <td><%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>
-          
-                   </td>
+
+          </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-  </div>
+
+

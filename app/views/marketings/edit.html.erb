@@ -16,10 +16,10 @@
 
 
 
-<div class="square_box">
-    <h4>Site</h4>
       <div class="subcontent">
 
+
+    <h4>Site</h4>
 
        
         <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |url| %>
@@ -31,12 +31,12 @@
         <% end %>
         <% end %>
       </div>
-</div>
 
-<div class="square_box">
-    <h4>Facebook</h4>
+
+
+  
       <div class="subcontent">
-
+  <h4>Facebook</h4>
 
         <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |face| %>
         <%= face.inputs do %>
@@ -47,13 +47,41 @@
         <% end %>
         <% end %>
       </div>
-</div>
 
 
-<div class="square_box">
-    <h4>Twitter</h4>
+    <div class="subcontent">
+  <h4>Youtube</h4>
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |y| %>
+        <%= y.inputs do %>
+        <%= y.input :youtube, :label => "Seu Canal" %>
+        <%= y.actions do %>
+        <%= y.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+
+
+
+  <div class="subcontent">
+  <h4>Instagram</h4>
+
+        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |i| %>
+        <%= i.inputs do %>
+        <%= i.input :instagram, :label => "Seu Instagram" %>
+        <%= i.actions do %>
+        <%= i.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+
+
+
+  
       <div class="subcontent">
-
+  <h4>Twitter</h4>
 
         <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |twi| %>
         <%= twi.inputs do %>
@@ -64,7 +92,7 @@
         <% end %>
         <% end %>
       </div>
-</div>
+
 
 
 
