@@ -1,7 +1,7 @@
 # encoding: utf-8
 class OrdersController < ApplicationController
-  skip_before_filter :authorize, only: :ipn_notification
- protect_from_forgery except: [:ipn_notification]
+#  skip_before_filter :authorize, only: :ipn_notification
+ #protect_from_forgery except: [:ipn_notification]
 
   def purchased
     if current_user.cart

@@ -58,5 +58,7 @@ config.autoload_paths += %W(#{config.root}/app/sweepers)
     config.middleware.use Rack::Attack
 
 
+    Rails.root.join("/data/public")
+
   end
 end

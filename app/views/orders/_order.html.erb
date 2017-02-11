@@ -75,7 +75,7 @@
               <%= link_to  product_path(product.id) do %>
 
 
-                <%= image_tag product.images.first.url(:small).to_s %>
+                <%= image_tag product.images.first.ifoto.url(:small).to_s %>
               <% end %>
             <% end %>
 

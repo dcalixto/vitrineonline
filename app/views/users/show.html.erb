@@ -99,7 +99,16 @@
    
    <%end %>
 
-     
+
+ <li>
+            <% if @user.feedbacks %>
+              <%= content_tag(:span, nil, :class =>"sprite-icons-small_star") %>
+
+              <div><%=@total_from_sellers %></div>
+            <% end %>
+
+          </li>
+
 
 <% end %>
 
