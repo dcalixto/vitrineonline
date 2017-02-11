@@ -8,7 +8,7 @@
   </div>
 
   <div class="block  margin_top">
-    <div class="square_box">
+    <div class="content">
     <h1>Fatura</h1>
  <table class="zebra_branca ">
         <thead>
@@ -18,15 +18,7 @@
           </tr>
         </thead>
         <tr>
-          <td>
-
-            <%= search_form_for @q, url:   invoices_vitrine_invoices_path, method: :post  do |f| %>
-
-            <%= f.text_field :id_cont %>
-            <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-            <% end %>
-          </td>
+         
           <td class="sort">
 
             Ordernar Por

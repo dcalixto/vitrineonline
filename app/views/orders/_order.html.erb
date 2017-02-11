@@ -1,9 +1,9 @@
 <tbody>
   <% product = order.product %>
   <tr>
-          
+   <% if controller_name == "carts" && action_name == "index" %>        
     <td>
-      <% if controller_name == "carts" && action_name == "index" %>
+     
 
         <% if product.images.present? %>
           <%= link_to  product_path(product.id) do %>
@@ -11,63 +11,73 @@
           <% end %>
 
         <% end %>
-  <% end%>
+
 
     </td>
+  <% end%>
+    <% if controller_name == "carts" && action_name == "index" %>
+
     <td>
-  <% if controller_name == "carts" && action_name == "index" %>
 
       <%= link_to product.name, product_path(product.id) %>
-   <% end %>
-
+ 
     </td>
+      <% end %>
+  <% if controller_name == "carts" && action_name == "index" %>
+
     <td>
       <b>
         
-      <% if controller_name == "carts" && action_name == "index" %>
-
+    
           <%= select_tag  :quantity, options_for_select((1..product.quantity).collect{ |q| [q, q]}, order.quantity), :class=> "select_item select_order_quantity", :'data-order-id' => order.id %></b>
-    <% end%>
-
+    
     </td>
+    <% end%>
+   <% if controller_name == "carts" && action_name == "index" %>
+
       <td>
         <span class="lista-preco">
-          <% if controller_name == "carts" && action_name == "index" %>
-
+       
             <b><%= number_to_currency(order.product.price) %></b>
-             <% end%>
-
+             
       </span>
-    </td>
+      </td>
+      <% end%>
+
+ <% if controller_name == "carts" && action_name == "index" %>
 
     <td>
       <span>
-         <% if controller_name == "carts" && action_name == "index" %>
-
+        
            <b><%= number_to_currency(order.total_price) %></b>
-               <% end%>
-
+             
       </span>
     </td>
+      <% end%>
+
+
+ <% if order.status.nil? %>
+
+
     <td>
-      <% if order.status.nil? %>
-         <% if controller_name == "carts" && action_name == "index" %>
+              <% if controller_name == "carts" && action_name == "index" %>
 
 
            <%= button_to 'Remover',  order, :class=> "btn_grey btn_small",  method: :delete %>
              <% end%>
 
-      <% end %>
     </td>
+        <% end %>
+ <% if order.status.nil? %>
+
     <td>
-      <% if order.status.nil? %>
-         <% if controller_name == "carts" && action_name == "index" %>
+              <% if controller_name == "carts" && action_name == "index" %>
 
         <%= button_to 'Prosseguir', checkout_order_path(order), method: :get, class: 'btn' %>
   <% end%>
 
-      <% end %>
-    </td>
+          </td>
+<% end %>
 
 
   </tr>
