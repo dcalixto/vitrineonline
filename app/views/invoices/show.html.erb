@@ -7,74 +7,37 @@
 <%= render "shared/vitrine_menu" %>
 <div class="box3">
   <div class="block  margin_top">
-    <h1>Fatura #<%= @invoice.id %></h1>
+     <%= render 'shared/flash_messages' %>
 
-    <%= render 'shared/flash_messages' %>
+    <div class="payment_reicept">
+      <div class="payment_reicept_top">
+ <div class="payment_reicept_logo">
 
-    <div class="content">
-      <table>
-
-
-        <tr>
-          <td >
-            <%= image_tag('logo.png')  %>
-          </td>
-
-          <td>
-            Avenida Roberto Silveira nº 95A, Chácara da Saudade, Paraty/RJ
-          </td>
-          <td>
-            <b>Vitrine</b>
-
-            <td>
-              <b>Forma de Pagamento</b>
-
-              <td>
-        </tr>
-  <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td><%= current_vitrine.name %></td>
-
-            <td>Paypal</td>
-          </tr>
-        </tbody>
+   <%= image_tag('logo.png')  %>
 
 
-      </table>
-      <table>
 
+ </div>
 
-        <tr>
-          <th>
-            <b>Usuário</b>
-          </th>
+ <h1>Comprovante de pagamento</h1>
+      </div>
 
-          <th>
-            <b>Produto</b>
-          </th>
-          <th>
-            <b>Preço</b>
-          </th>
-          <th>
-            <b>Qtd</b>
-          </th>
-          <th>
-            <b>Comissão</b>
-          </th>
-          <th>
-            <b>Data</b>
-          </th>
-          <th>
-            <b>Download</b>
-          </th>
-        </tr>
+      
+ <div class="payment_reicept_section">
+   <div>
 
-              <tbody>
-          <tr>
-            <td>
-              <ul>
+   <ul>
+     <li> Avenida Roberto Silveira nº 95A</li>
+     <li> Chácara da Saudade, Paraty/RJ</li>
+        
+   </ul>
+
+ </div>
+
+ <div>
+     
+     
+      <ul>
                 <li><%= @buyer.full_name %></li>
                 <li><%= @buyer.user_address if  @buyer.address %></li>
                 <li><%= @buyer.user_neighborhood if  @buyer.neighborhood %></li>
@@ -83,35 +46,105 @@
               <li><%= @buyer.user_postal_code  if  @buyer.postal_code %></li>
               <li><%= @buyer.user_address_supplement if   @buyer.address_supplement %></li>
               </ul>
-            </td>
+ 
+
+
+
+ </div>   
+
+ </div>
+
+
+
+ <div>
+   <dl>
+   <dt>Data de pagamento</dt>
+   <dd><%= @invoice.created_at.strftime('%d/%m/%Y') %></dd>
+   <dt>Id da fatura</dt>
+   <dd> #<%= @invoice.id %><dd>
+   <dt>Forma de pagamento</dt>
+   <dd>paypal<dd>
+   <dt>Vitrine</dt>
+   <dd><%= current_vitrine.name %></dd>
+
+   </dl>
+
+
+  
+
+
+ <div class="content">
+
+
+
+      <table>
+
+
+        <tr>
+
+          <th>Descrição</th>
+          <th></th>
+        
+        </tr>
+
+              <tbody>
+          <tr>
             <td>
-              <ul>
-                <li>
-                  <% unless @product.images.blank? %>
+Item:
+  <% unless @product.images.blank? %>
 
                     <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
-                  <%end %></li>
+                  <%end %>
 
-                <li><%= @product.name %></li>
-              </ul>
+
+
+
+            </td>
+
+
+            <td>
+                        Nome:     
+                <%= @product.name %>
+                          </td>
+          </tr>
+
+          <tr>
+
+            <td>
+              Quantidade:
+                <%= @order.quantity %>
+
             </td>
             <td>
-
+              Preço:
               <%= number_to_currency(@product.price) %>
 
             </td>
+          </tr>
+
+          <tr>
             <td>
-              <%= @order.quantity %>
+               Comissão:
 
             </td>
-            <td><%= number_to_currency @invoice.store_fee %></td>
-            <td><%= @invoice.created_at.strftime('%d/%m/%Y') %></td>
-            <td><%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>
+            <td>
+              <%= number_to_currency @invoice.store_fee %>            </td>
 
-          </td>
+          </tr>
+
+          <tr>
+            <td>
+              Baixar:
+            </td>
+            <td>
+<%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>
+            </td>
+
           </tr>
         </tbody>
       </table>
+         </div>
+
     </div>
   </div>
 </div>
