@@ -12,7 +12,7 @@
 
   <div class="block margin_top">
 
-    <div class="square_box">
+  
     <%= render 'shared/flash_messages' %>
 
     <%= "<h1>Produtos Comprados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
@@ -81,16 +81,34 @@
 
 
 
-  <div class="block">
-
+ 
     <div class="content">
 
-
+ <table class="cart">
+      <thead>
+        <tr>
+          <th>
+            Item
+          </th>
+          <th>
+            Vendedor
+          </th>
+          <th>
+            Estado
+          </th>
+        </tr>
+      </thead>
+      <tbody>
 
 
 
       <%= render  partial: 'orders/order', collection: @orders %>
 
+
+
+ </tbody>
+    </table>
+ 
     </div>
 
 
@@ -107,7 +125,7 @@
 
     </div>
     <% end %>
+  
   </div>
   </div>
-  </div>
-</div>
+
