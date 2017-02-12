@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
     @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])    # suggestions for current visitor
+   
+    
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
 

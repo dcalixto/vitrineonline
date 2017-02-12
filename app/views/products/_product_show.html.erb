@@ -35,8 +35,6 @@
 
 
 
-
-
   </div>
 
 
@@ -53,6 +51,10 @@
 
 
   <div class="subcontent">
+    
+<hr class="line"></hr>
+
+
     <h2>Descrições do Produto</h2>
     <p><% if @product.detail.present? %>
     <%= markdown(@product.detail) %>
@@ -62,6 +64,10 @@
 
 
   <div class="subcontent">
+    
+<hr class="line"></hr>
+
+
     <h2>Detalhes do produto</h2>
     <div class="left_info">
       <ul>
@@ -103,6 +109,9 @@
 
   <div class="subcontent">
 
+<hr class="line"></hr>
+
+
     <h2>Formas de Pagamento</h2>
 
     <%= link_to  "https://www.paypal.com/br"  do %>
@@ -116,6 +125,9 @@
   </div>
 
   <div class="subcontent">
+
+<hr class="line"></hr>
+
 
     <h2>Formas de Envio</h2>
 
@@ -136,6 +148,9 @@
 
   <div class="subcontent">
 
+<hr class="line"></hr>
+
+
     <h2>Garantias do Vendedor </h2>
 
     <p><%= markdown(@product.vitrine.policy.guarantee) %></p>
@@ -145,6 +160,9 @@
   </div>
 
   <div class="subcontent">
+
+<hr class="line"></hr>
+
 
     <h2>Avaliação dos clientes</h2>
 

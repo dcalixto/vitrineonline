@@ -32,11 +32,11 @@
     <div class="subcontent">
 
       <% if params[:view] != Feedback::FROM_SELLERS %>
-      Dos Compradores:
+        <b>Media de avaliação dos Compradores:</b>
       <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
       <% end %>
       <% if params[:view] != Feedback::FROM_BUYERS %>
-      Dos Vendedores:
+        <b>Media de avaliação dos Vendedores:</b>
       <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>"></div>
       <% end %>
       <div class="feedback_view_selector">

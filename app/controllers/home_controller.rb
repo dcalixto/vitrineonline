@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     @orders = Order.includes(:products)
 
     # suggestions for current visitor
-    ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
+    ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :orders)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
 
     if params[:tag]

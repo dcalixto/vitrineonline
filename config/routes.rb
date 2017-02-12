@@ -1,4 +1,3 @@
-
 Vitrineonline::Application.routes.draw do
 
 
@@ -153,10 +152,9 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       post :buy
       post :ipn_notification
       get :fail
-      get :fail2
-      get :sold
+           get :sold
       get :purchased
-      get :sent
+      put :sent
       get :paid
    
     end
@@ -187,11 +185,15 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
   get 'products/tags' => 'products#tags', :as => :tags
 
 
+  
+
     # PRODUCTS
   resources :products do
     member do
       get :sold_info
       get :buyer
+      get :views
+
       get :seller
       get :tag
       get :feedbacks

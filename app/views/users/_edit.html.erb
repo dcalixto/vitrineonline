@@ -17,9 +17,11 @@
 </div>
 </div>
 
-<div class="square_box">
-  <h2>Avatar</h2>
+ 
 <div class="subcontent">
+
+<hr class="line"></hr>
+ <h2>Avatar</h2>
 
 <div class="preview-template">
 <%=image_tag @user.avatar.url(:thumb).to_s %>
@@ -32,12 +34,15 @@
 </div>
 <% end %>
 </div>
-</div>
 
 
-<div class="square_box">
-  <h2>Email</h2>
-<div class="subcontent">
+
+
+ <div class="subcontent">
+   <hr class="line"></hr>
+
+ <h2>Email</h2>
+
 
 <p class="tip">Seu email atual</p>
 <%=semantic_form_for(@user, html: { id: 'email' }) do |em| %>
@@ -50,13 +55,16 @@
 <% end %>
 <% end %>
 </div>
-</div>
 
-<div class="square_box">
 
-<h2>Endereço</h2>
+
+
+
 
 <div class="subcontent">
+     <hr class="line"></hr>
+
+  <h2>Endereço</h2>
 <p class="tip">Adicione o seu endereço de entrega para facilitar a vida do vendedor</p>
 <%=form_for @user, :method=> :put do |ad| %>
   <ul class="address_list">
@@ -87,13 +95,15 @@
 <%=ad.submit"Salvar",  :class => "btn" %>
 <% end %>
 </div>
-</div>
 
 
-<div class="square_box">
-<h2>Encerrar Conta</h2>
+
+
+
 <div class="subcontent">
+     <hr class="line"></hr>
 
+<h2>Encerrar Conta</h2>
 <p>
 <b>O que acontece quando você fechar sua conta?</b>
 </p>
@@ -105,7 +115,7 @@
 </div>
 </div>
 </div>
-</div>
+
 
 
 

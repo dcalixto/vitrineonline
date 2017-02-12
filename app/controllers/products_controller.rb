@@ -1,4 +1,8 @@
 # encoding: utf-8
+
+require 'product_recommender'
+
+
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
@@ -99,6 +103,14 @@ end
 
     # similarities for current product in product's vitrine (same ids but filter by vitrine)
     @similarities_for_vitrine = Product.unscoped.where(vitrine_id: @product.vitrine_id).for_ids_with_order(ids)
+
+  
+  
+  
+    
+  
+  
+  
   end
 
   def feedbacks
@@ -138,6 +150,20 @@ end
   end
  
 
+
+
+
+def views
+   @product = Product.cached_find(params[:id])
+    # chart data
+    end_time = Time.now
+    @week_stats = prepare_stats(end_time - 6.days, end_time)
+    @month_stats = prepare_stats(end_time - 30.days, end_time)
+ 
+
+
+
+end
 
 
 
@@ -188,6 +214,20 @@ end
       end
     end
   end
+
+
+
+  def prepare_stats(start_time, end_time)
+     @product = Product.cached_find(params[:id])
+
+    result = @product.impressions.stats(start_time..end_time).to_a.map(&:serializable_hash)
+    start_time.to_date.upto(end_time.to_date) do |date|
+      result << { count: 0, day: date } unless result.any? { |s| s['day'] == date.to_formatted_s(:db) }
+    end
+    result
+  end
+
+
 
   private
 

@@ -26,6 +26,10 @@
 
 
   <div class="subcontent">
+    
+<hr class="line"></hr>
+
+
     <h2>Produtos Adicionados recentemente pela <%=@vitrine.name %></h2>
 
 
@@ -96,12 +100,19 @@
 
 
   <div class="subcontent">
+    
+<hr class="line"></hr>
+
+
     <h2>Formas de Pagamentos disponível</h2>
     <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
     <% unless @vitrine.policy.blank? %>
     </div>
 
     <div class="subcontent">
+
+<hr class="line"></hr>
+
 
       <h2>Formas de Envio disponível</h2>
 
@@ -121,6 +132,10 @@
     </div>
 
     <div class="subcontent">
+      
+<hr class="line"></hr>
+
+
       <h2>Garantias Oferecidas pelo Vendedor</h2>
       <p><%= markdown(@vitrine.policy.guarantee) %></p>
     <% end %>
@@ -131,6 +146,10 @@
 
 
     <div class="subcontent">
+      
+<hr class="line"></hr>
+
+
       <h2>Veja Também</h2>
 
       <%= render :partial => 'shared/suggestion'%>

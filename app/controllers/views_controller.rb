@@ -13,6 +13,9 @@ class ViewsController < ApplicationController
     @month_stats = prepare_stats(end_time - 30.days, end_time)
   end
 
+
+
+
   protected
 
   def prepare_stats(start_time, end_time)

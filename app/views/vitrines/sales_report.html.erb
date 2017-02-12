@@ -35,14 +35,37 @@
   <div class="block margin_top">
 
 
-      <div class="square_box">
-    <h1>Relatório de Vendas</h1>
-<div class="tip_box">
- <select name="chart_options" id="chart_options">
-        <option value="0">Ultima Semana</option>
+      <div class="content">
+        <h1>Relatório de Vendas</h1>
+
+
+ <table class="zebra_branca">
+          <tbody>
+              <tr>
+                  <td>
+ <%= link_to  vitrine_path(current_vitrine) do %>
+         <%= image_tag @current_vitrine.logo.url(:thumb).to_s %>
+          <% end %>
+                  </td>
+                  <td>
+<div id="visitors_chart_options">
+            <strong>&nbsp;Período:</strong>
+            <select id="chart_options" name="chart_options">
+             <option value="0">Ultima Semana</option>
         <option value="1">Ultimo Mês</option>
-      </select>
-      <br/><br/>
+            </select>
+            <br/><br/>
+
+</div>
+
+                  </td>
+              </tr>
+          </tbody>
+  </table>
+
+
+
+
 </div>
 
 
@@ -50,8 +73,7 @@
     <div class="subcontent">
 
 
-  <h4> Gráfico </h4>
-  <p class="tip">O relatório de vendas lhe ajudará a manter uma média semanal e mensal do fluxo de vendas</p>
+   <p class="tip">O relatório de vendas lhe ajudará a manter uma média semanal e mensal do fluxo de vendas</p>
 
 
 

@@ -152,7 +152,7 @@
                   <% if current_seller%>
 
                 <li>
-                <%= form_tag   sent_order_path(order),  :method => :get  do |f| %>
+                <%= form_tag   sent_order_path(order),  :method => :put  do |f| %>
 
                     <label>Código de Rastreamento</label><%=text_field_tag :track_number %></li>
  Marcar como:
