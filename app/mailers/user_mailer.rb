@@ -3,7 +3,7 @@
 class UserMailer < ActionMailer::Base
   default from: 'VITRINEONLINE'
  # include Resque::Mailer
-
+ add_template_helper(EmailHelper)
 
   def registration_confirmation(user)
   #user = User.find(user_id)
