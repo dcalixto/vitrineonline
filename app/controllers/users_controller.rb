@@ -56,10 +56,11 @@ end
     @vitrine = Vitrine.new(params[:vitrine])
 
     if @user.save
-      @user.authenticate(params[:user][:password])
+      UserMailer.registration_confirmation(@user).deliver
+   #   @user.authenticate(params[:user][:password])
       @user.update_attribute(:login_at, Time.zone.now)
       @user.update_attribute(:ip_address, request.remote_ip)
-      cookies[:auth_token] = {:value => @user.auth_token, :expires => 3.month.from_now}
+   #   cookies[:auth_token] = {:value => @user.auth_token, :expires => 3.month.from_now}
         redirect_to  page_path('welcome')
 
              #redirect_to root_url

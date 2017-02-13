@@ -8,7 +8,6 @@ class UserMailer < ActionMailer::Base
   def registration_confirmation(user)
     #user = User.find(user_id)
 
-   
     @user = user
     mail(to: user.email, subject: 'Confirmar Registro', &:html)
   end

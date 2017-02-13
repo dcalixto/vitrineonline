@@ -60,30 +60,30 @@ belongs_to :material
    cache_has_many :images, :embed => true 
 
 
-  cattr_accessor :form_steps do
-    %w(first preview)
-  end
+ # cattr_accessor :form_steps do
+ #   %w(first preview)
+#  end
 
-  attr_accessor :form_step
+ # attr_accessor :form_step
 
 
  
 
-  def required_for_step?(step)
-    return true if form_step.nil?
-    return true if form_steps.index(step.to_s) <= form_steps.index(form_step)
+ # def required_for_step?(step)
+ #   return true if form_step.nil?
+ #   return true if form_steps.index(step.to_s) <= form_steps.index(form_step)
 
 
-  end
-  validates :size_ids, :presence => true, :if => :active?
-  validates :color_ids, :presence => true, :if => :active?
- validates :material_id, :presence => true, :if => :active?
- validates :condition_id, :presence => true, :if => :active?
+ # end
+#  validates :size_ids, :presence => true, :if => :active?
+#  validates :color_ids, :presence => true, :if => :active?
+## validates :material_id, :presence => true, :if => :active?
+# validates :condition_id, :presence => true, :if => :active?
 
- validates :images, :presence => true, :if => :active?
-def active?
-  status == 'active'
-end
+# validates :images, :presence => true, :if => :active?
+##def active?
+#  status == 'active'
+#end
 
 
 

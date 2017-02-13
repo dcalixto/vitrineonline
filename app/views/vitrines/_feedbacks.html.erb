@@ -1,33 +1,54 @@
 
+
+
+
+
 <div class="content">
-  <h1>Avaliações</h1>
 
-
-  <div class="subcontent_top">
-    <li class="lista-time">
-
-      Criada em:
-      <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => false)%>
-    </li>
-  </div>
-
-
-
-  <table class="block_search">
+  <table class="blank_table">
     <tr>
-       <%= render :partial => 'shared/sort_feedback'%>
+
+         <td>
+        <b>Vitrine Criada em:</b>
+        <span class="lista-time">
+          <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => false)%>
+
+        </span>
+         </td>
+            <td>
+
+        <b>Média de Avaliações</b><div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+      </td>
 
     </tr>
   </table>
 
-  <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+  <table class="block_search">
+    <tr>
+      <td>
+
+        <%= search_form_for @q, url: search_feedbacks_vitrines_path, method: :post  do |f| %>
+
+          <%= f.text_field :name_cont %>
+          <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+        <% end %>
+
+      </td>
+      <td>
+
+        <%= render :partial => 'shared/sort_feedback'%>
+      </td>
+    </tr>
+  </table>
 
   <%= render :partial => 'feedbacks/feedbacks' %>
 
 
-<%= render :partial => 'shared/feedback_pagination'%>
-
-
+  <%= render :partial => 'shared/feedback_pagination'%>
 </div>
+
 
 

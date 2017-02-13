@@ -14,83 +14,50 @@
 <h1>Site e Social</h1>
 
 
-
+  <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |mkt| %>
+        <%= mkt.inputs do %>
 
       <div class="subcontent">
 
 
-    <h4>Site</h4>
+    <b>Site</b>
 
        
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |url| %>
-        <%= url.inputs do %>
-        <%= url.input :url, :label => "Site da sua vitrine" %>
-        <%= url.actions do %>
-        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
+  
+        <%= mkt.input :url, :label => "Site da sua vitrine" %>
+           </div>
 
 
 
   
       <div class="subcontent">
-  <h4>Facebook</h4>
+  <b>Facebook</b>
 
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |face| %>
-        <%= face.inputs do %>
-        <%= face.input :facebook, :label => "Facebook da sua vitrine" %>
-        <%= face.actions do %>
-        <%= face.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
+             <%= mkt.input :facebook, :label => "Facebook da sua vitrine" %>
+           </div>
 
 
     <div class="subcontent">
-  <h4>Youtube</h4>
-
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |y| %>
-        <%= y.inputs do %>
-        <%= y.input :youtube, :label => "Seu Canal" %>
-        <%= y.actions do %>
-        <%= y.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
+  <b>Youtube</b>
+        <%= mkt.input :youtube, :label => "Seu Canal" %>
+         </div>
 
 
 
   <div class="subcontent">
-  <h4>Instagram</h4>
+  <b>Instagram</b>
 
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |i| %>
-        <%= i.inputs do %>
-        <%= i.input :instagram, :label => "Seu Instagram" %>
-        <%= i.actions do %>
-        <%= i.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
+            <%= mkt.input :instagram, :label => "Seu Instagram" %>
+          </div>
 
 
 
   
       <div class="subcontent">
-  <h4>Twitter</h4>
+  <b>Twitter</b>
 
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |twi| %>
-        <%= twi.inputs do %>
-        <%= twi.input :twitter, :label => "Twitter da sua vitrine" %>
-        <%= twi.actions do %>
-        <%= twi.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
+               <%= mkt.input :twitter, :label => "Twitter da sua vitrine" %>
+     
       </div>
 
 
@@ -100,4 +67,11 @@
 
 
   </div>
+
+     <%= mkt.actions do %>
+        <%= mkt.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+
 </div>

@@ -249,7 +249,7 @@
         <%= tab.link :product_show, 'Resumo' do %>
           <%= render 'product_show' %>
         <% end %>
-        <%= tab.link :feedbacks, "#{pluralize(@product.feedbacks.size, "Avaliações") }"  do %>
+        <%= tab.link :feedbacks, "Avaliações" "(#{@product.feedbacks.size})"  do %>
           <%= render 'feedbacks' %>
         <% end %>
         <%if current_user %>

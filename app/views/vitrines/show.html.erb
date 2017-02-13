@@ -185,11 +185,12 @@
         <%= tab.link :vitrine_show, 'Resumo' do %>
           <%= render 'vitrine_show' %>
         <% end %>
-        <%= tab.link :products, "#{pluralize(@vitrine.products.size, "Produtos") }"  do %>
+        <%= tab.link :products, "Produtos" "(#{@vitrine.products.size})"  do %>
           <%=render 'products' %>
         <% end %>
 
-        <%= tab.link :feedbacks, "#{pluralize(@vitrine.feedbacks.size, "Avaliações") }"  do %>
+
+        <%= tab.link :feedbacks, "Avaliações" "(#{@vitrine.feedbacks.size})"  do %>
           <%= render 'feedbacks' %>
         <% end %>
 

@@ -7,29 +7,53 @@ class SessionsController < ApplicationController
 
   def create
 
-    user = User.find_by_email(params[:email])
+    user = User.find_by_email(params[:email].downcase)
     if user && user.authenticate(params[:password])
       user.update_attribute(:login_at, Time.zone.now)
       user.update_attribute(:ip_address, request.remote_ip)
-      if params[:remember_me]
-        cookies.permanent[:auth_token] = user.auth_token
-     
-
-        
+      if user.email_confirmed
+       # params[:remember_me]
+      #  cookies.permanent[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now} 
+        logar
+        redirect_to root_url
       else
-        cookies[:auth_token] = { :value => user.auth_token }
+         flash.now[:alert] = "Primeiramente ative sua conta, verifique seu email com nosso email de confirmação"
+ render :new
 
- #httponly: true, :expires => 1.year.from_now
+      #  cookies[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now}
+ 
+
       end
-      redirect_to root_url #, :notice => "Logado!"
+     # redirect_to root_url #, :notice => "Logado!"
     else
-      flash.now[:alert] = "Email ou Password inválido"
+      flash.now[:alert] = "Email,  Password inválido ou conta inativa"
       render :new
     end
   end
 
 
-  
+ 
+  def create
+      user = User.find_by_email(params[:email].downcase)
+      if user && user.authenticate(params[:password])
+      if user.email_confirmed
+          sign_in user
+        redirect_back_or user
+      else
+        flash.now[:error] = 'Please activate your account by following the 
+        instructions in the account confirmation email you received to proceed'
+        render 'new'
+      end
+      else
+        flash.now[:error] = 'Invalid email/password combination' # Not quite right!
+        render 'new'
+      end
+  end
+
+
+
+
+
   def omniauth_callback
     auth_hash = request.env['omniauth.auth']
 

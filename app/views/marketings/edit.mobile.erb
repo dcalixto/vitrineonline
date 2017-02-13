@@ -11,59 +11,55 @@
 
 
 
+<h1>Site e Social</h1>
 
 
+  <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |mkt| %>
+        <%= mkt.inputs do %>
 
-
-<div class="square_box">
-    <h4>Site</h4>
       <div class="subcontent">
 
+
+    <h4>Site</h4>
 
        
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |url| %>
-        <%= url.inputs do %>
-        <%= url.input :url, :label => "Site da sua vitrine" %>
-        <%= url.actions do %>
-        <%= url.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
-</div>
+  
+        <%= mkt.input :url, :label => "Site da sua vitrine" %>
+           </div>
 
-<div class="square_box">
-    <h4>Facebook</h4>
+
+
+  
       <div class="subcontent">
+  <h4>Facebook</h4>
+
+             <%= mkt.input :facebook, :label => "Facebook da sua vitrine" %>
+           </div>
 
 
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |face| %>
-        <%= face.inputs do %>
-        <%= face.input :facebook, :label => "Facebook da sua vitrine" %>
-        <%= face.actions do %>
-        <%= face.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-      </div>
-</div>
+    <div class="subcontent">
+  <h4>Youtube</h4>
+        <%= mkt.input :youtube, :label => "Seu Canal" %>
+         </div>
 
 
-<div class="square_box">
-    <h4>Twitter</h4>
+
+  <div class="subcontent">
+  <h4>Instagram</h4>
+
+            <%= mkt.input :instagram, :label => "Seu Instagram" %>
+          </div>
+
+
+
+  
       <div class="subcontent">
+  <h4>Twitter</h4>
 
-
-        <%= semantic_form_for @marketing, :url => vitrine_marketing_path, :method => :put do |twi| %>
-        <%= twi.inputs do %>
-        <%= twi.input :twitter, :label => "Twitter da sua vitrine" %>
-        <%= twi.actions do %>
-        <%= twi.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
+               <%= mkt.input :twitter, :label => "Twitter da sua vitrine" %>
+     
       </div>
-</div>
+
 
 
 
@@ -71,5 +67,12 @@
 
 
   </div>
+
+     <%= mkt.actions do %>
+        <%= mkt.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+
 </div>
 

@@ -7,10 +7,11 @@ class User < ActiveRecord::Base
 
   before_create :set_last_read_messages_at
 
-  before_create { generate_token(:auth_token) }
- after_commit :send_user_welcome, :on => :create
+ # before_create { generate_token(:auth_token) }
+ #after_commit :send_user_welcome, :on => :create
  # before_create :confirmation_token
 
+ after_commit  :confirmation_token, :on => :create
   has_one :vitrine, dependent: :destroy, :inverse_of => :user
 
 
@@ -145,9 +146,9 @@ acts_as_voter
   #    SendCode.new.send_sms(:to => self.phone, :body => "Codigo #{self.otp_code}")
   #  end
 
-  def send_user_welcome
-    UserMailer.user_welcome(self).deliver
-  end
+ # def send_user_welcome
+ #   UserMailer.user_welcome(self).deliver
+ # end
 
   def send_password_reset
     generate_token(:password_reset_token)

@@ -11,11 +11,7 @@
       <tbody>
       <tr>
         <td>
-    <%= link_to  product_path(@product.id) do %>
-      <% if @product.images.present? %>
-        <%= image_tag @product.images.first.ifoto.url(:thumb).to_s %>
-      <% end %>
-    <% end %>
+  
         </td>
         <td>
 
@@ -24,19 +20,24 @@
     <% end%>
         </td>
         <td>
-  <ul>
-    <li class="lista-time">
-      <%= link_to  vitrine_path(@product.vitrine.id)  do %>
-        Por
-        <%= @product.vitrine.name %>
-      <% end%>
-      <%= timeago_tag(@product.created_at, :nojs => true, :date_only => false)%>
+
+          <b>Produto Adicionado em: </b>
+ <span class="lista-time">
+           <%= timeago_tag(@product.created_at, :nojs => true, :date_only => false)%>
   
     
     
-    </li>
-    </ul>
+    </span>
+
         </td>
+        <td>
+          <b>Vitrine:</b>
+           <%= link_to  vitrine_path(@product.vitrine.id)  do %>
+              <%= @product.vitrine.name %>
+      <% end%>
+
+        </td>
+        
         <td>
             <b>Média de Avaliações</b>
     <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
@@ -77,12 +78,7 @@
 
   </div>
 
-  <div class="block_pagination">
-    <div class="digg_pagination">
-      <%= will_paginate @feedbacks,:container => false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
-
-    </div>
-  </div>
+ <%= render :partial => 'shared/feedback_pagination'%>
 
 </div>
 
