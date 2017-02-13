@@ -13,10 +13,8 @@ class SessionsController < ApplicationController
       user.update_attribute(:ip_address, request.remote_ip)
       if user.email_confirmed
        # params[:remember_me]
-      #  cookies.permanent[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now} 
-        logar
-        redirect_to root_url
-      else
+        cookies.permanent[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now} 
+             else
          flash.now[:alert] = "Primeiramente ative sua conta, verifique seu email com nosso email de confirmação"
  render :new
 
@@ -24,7 +22,7 @@ class SessionsController < ApplicationController
  
 
       end
-     # redirect_to root_url #, :notice => "Logado!"
+     redirect_to root_url #, :notice => "Logado!"
     else
       flash.now[:alert] = "Email,  Password inválido ou conta inativa"
       render :new

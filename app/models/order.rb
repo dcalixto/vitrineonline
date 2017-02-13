@@ -12,16 +12,12 @@ class Order < ActiveRecord::Base
   belongs_to :feedback
  
   has_one    :transaction
- # has_one :colorship
-  ##has_one :color, :through => :colorship
-  
+
   
    belongs_to :color
    belongs_to :size
 
- # has_one :sizeship
 
- # has_one :size, :through => :sizeship
 
 
   belongs_to :brand,  foreign_key: 'brand_id', class_name: 'Brand'
