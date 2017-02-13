@@ -5,22 +5,22 @@
 
 
   <div class="subcontent">
-        <%= link_to  vitrine_path(@vitrine.id) do %>
-          <%= image_tag @vitrine.logo.url(:thumb).to_s %>
-          <%= @vitrine.name %>
 
-        <% end %>
+  <b>Média de Avaliações</b>
 
-              </div>
+    <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+
+  </div>
 
 
 
       <div class="subcontent">
-      <li class="lista-time">
+      <span class="lista-time">
 
         Criada em:
         <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => false)%>
-      </li>
+      </span>
     </div>
 
 
@@ -37,10 +37,7 @@
         </td>
       </tr>
     </table>
-
-    <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
-
-    <%= render :partial => 'feedbacks/feedbacks' %>
+     <%= render :partial => 'feedbacks/feedbacks' %>
 
 
 

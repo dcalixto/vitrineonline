@@ -37,6 +37,11 @@
     </li>
     </ul>
         </td>
+        <td>
+            <b>Média de Avaliações</b>
+    <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+        </td>
       </tr>
       </tbody>
     </table>
@@ -68,10 +73,7 @@
         </td>
       </tr>
     </table>
-    <b>Média de Avaliações</b>
-    <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
-
-    <%= render :partial => 'feedbacks/feedbacks' %>
+      <%= render :partial => 'feedbacks/feedbacks' %>
 
   </div>
 
