@@ -232,7 +232,7 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
   # FOOTERS & TOP NAV
   resources :contacts, only: [:index, :new, :create]
 
-  resources :images, only: [:new, :create]
+  resources :images, only: [:new, :create, :edit,:update]
   resources :logo, only: [:edit, :update]
   resources :avatar, only: [:edit, :update]
   

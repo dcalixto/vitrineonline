@@ -27,32 +27,35 @@
             <% if product.images.present? %>
             <%= image_tag(product.images.first.ifoto.url(:small).to_s, :alt => product.name) %>
           <% end %>
-          <ul>
-            <li>
-            <%= link_to product.name, product_path(product), :title => product.name %>
-            </li>
-            <li>
 
+          </td>
+          <td>
+
+            <%= link_to product.name, product_path(product), :title => product.name %>
+          </td>
+          <td>
             <% if order.buyer == current_user %>
             Comprado de
             <%= link_to order.seller.name, vitrine_path(order.seller) %>
-            </li>
-            <li>
+          </td>
+          <td>
+            
             Por
             <%= number_to_currency product.price %>
-            </li>
-            <li>
+          </td>
+          <td>
+            
             <% else %>
             Vendido para
             <%= link_to order.buyer.full_name, user_path(order.buyer) %>
           <% end %>
-            </li>
-            <li>
+            </td>
+            <td>
 
             Em
             <%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %>
-            </li>
-          </ul>
+            </td>
+          </tr>
             <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
           </td>
         </tr>

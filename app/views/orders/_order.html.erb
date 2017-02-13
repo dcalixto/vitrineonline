@@ -95,17 +95,16 @@
                 <%= image_tag product.images.first.ifoto.url(:small).to_s %>
               <% end %>
             <% end %>
-            <ul>
-              <li>
+            
                 <%= link_to product.name, product_path(product.id) %>
-              </li>
-              <li>
+              </td>
+              <td>
                 <%= order.quantity %>
-              </li>
-              <li>
+              </td>
+              <td>
                 <b class="lista-preco"><%= number_to_currency(order.total_price) %></b>
-              </li>
-            </ul>
+              
+            
           </td>
           <% if order.seller == current_vitrine or order.buyer == current_user  %>
             <td>

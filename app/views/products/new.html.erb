@@ -66,7 +66,7 @@
 
 
     <h2>Fotos</h2>
-    <%= image_tag @product.images.first.ifoto.url(:thumb) unless @product.images.blank? %>
+    <##%= image_tag @product.images.first.ifoto.url(:thumb) unless @product.images.blank? %>
 
     <p class="tip">Adicione no mínimo 2 fotos</p>
     <p class="tip">
@@ -78,7 +78,15 @@
     <li class="tip">As imagens serão redimencionandas para 245 x 135 de altura</li>
     </ul>
 
-    <div class="dropzone" id="images" data-update-url="<#%= product_path(Product) + '?authenticity_token=' + form_authenticity_token %>"></div>
+ <div class="dropzone" id="images" data-update-url="<%= images_path(@image) + '?authenticity_token=' + form_authenticity_token %>"></div>
+
+   
+<#%=form_for(@image, html: { multipart: true, class: "dropzone", id: "images"}) do |f| %>
+<div class="fallback">
+<#%=f.file_field :ifoto %><br>
+<#%=f.submit "Salvar" %>
+</div>
+<#% end %>
 
 
 
@@ -146,8 +154,10 @@
 
   <div class="subcontent horizonal_list">
   <ul>
+ <%= hidden_field_tag "size_ids", nil %>
 
   <%=p.collection_check_boxes :size_ids, Size.all, :id, :size %>
+ <%= label_tag "Tamanho" %>
 
   <#%= hidden_field_tag "product[size_ids][]", nil %>
 <#% Size.order(:size).each do |size| %>
@@ -191,9 +201,9 @@
 
 
     <div id="tab-4">
-      <h2>Material</h2>
-
+    
       <div class="subcontent ">
+  <h2>Material</h2>
 
         <ul>
 
@@ -204,9 +214,10 @@
         </ul>
       </div>
 
-      <h2>Condição</h2>
+    
 
       <div class="subcontent ">
+          <h2>Condição</h2>
         <ul>
           <li>
             <%=  p.collection_select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false,  :class=>"select_item"})%>
@@ -215,8 +226,6 @@
         </ul>
       </div>
 
-
-    </div>
 
 
     </div>
@@ -232,27 +241,21 @@
 
         <h2>Nome do seu produto</h2>
         <%=p.text_field :name, :label=>"Nome"%>
-      </div>
-      <div class="subcontent">
+           <div class="subcontent">
 
-        <table>
-          <tr>
-            <td>
-              <h2>Selecione as categorias</h2>
+                    <h2>Selecione as categorias</h2>
               <div class="form-group">
                 <%=p.label :gender_id, 'Genero' %>&nbsp;
                 <%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control select_item' } %>
 
 
               </div>
-              </br>
-
+           
               <div class="form-group">
                 <%=p.label :category_id, 'Categoria' %>&nbsp;
                 <%=dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Categoria' }, { class: 'form-control select_item' } %>
               </div>
-              </br>
-
+             
               <div class="form-group">
                 <%=p.label :subcategory_id, 'Subcategoria' %>&nbsp;
                 <%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control select_item' } %>
@@ -260,9 +263,7 @@
 
       </div>
 
-            </td>
-            <td>
-
+           
 
               <h2>Marca Própria</h2>
 
@@ -291,15 +292,9 @@
               </ul>
 
 
-            </td>
-          </tr>
-        </table>
+            </div>
 
-
-    </div>
-
-
-    <div class="subcontent  horizonal_list ">
+ <div class="subcontent  horizonal_list ">
       <h2>Compartilhe</h2>
       <ul><li>
           <%= p.check_box :is_shared_on_facebook %>
@@ -314,6 +309,10 @@
        
 </div>
 
+    </div>
+
+
+   
             
 
 

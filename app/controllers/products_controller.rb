@@ -20,7 +20,8 @@ before_filter :authorize_vitrine, only: [:create, :edit, :update]
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
  
-   
+  @image = @product.images.build
+
   end
 
 def upvote
@@ -55,7 +56,7 @@ end
   def update
     @product = Product.find(params[:id])
     respond_to do |format|
-      format.html do
+     # format.html do
         if @product.update_attributes(params[:product])
          Product.reindex
 
@@ -65,17 +66,17 @@ end
           render :edit
         end
       end
-      format.json do
-        if params[:images] && params[:images][:ifoto]
-          params[:images][:ifoto].values.each do |ifoto|
-            image = @product.images.build
-            image.ifoto = ifoto
-            image.save
-          end
-        end
-        render :nothing => true
-      end
-    end
+      #format.json do
+      #  if params[:images] && params[:images][:ifoto]
+       #   params[:images][:ifoto].values.each do |ifoto|
+       #     image = @product.images.build
+       #     image.ifoto = ifoto
+       #     image.save
+       #   end
+      #  end
+      #  render :nothing => true
+    #  end
+   # end
   end
 
   def show
@@ -83,6 +84,8 @@ end
    
     canonical_url url_for(@product)
     @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
+  
+    
     @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
      @colors_for_dropdown = @product.colors.collect{ |co| [co.name, co.id]}
@@ -134,11 +137,14 @@ end
 
   
     @product = current_vitrine.products.build(params[:product])
-  
+ 
+     @image = @product.images.build(params[:image])
+    
+    #format.html do
 
+respond_to do |format|
+      format.html do
  if @product.save
-              
-
 
       #redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html)
  #redirect_to product_step_path(@product, Product.wizard_steps.first, only_path: true, format: :html)
@@ -147,8 +153,32 @@ end
     else
       render :new, format: :html
     end
+
+      end
+  format.json do
+        @product.save
+        render :nothing => true
+      end
+end
+
+
+
+
+ #format.json do
+      #  if params[:images] && params[:images][:ifoto]
+       #   params[:images][:ifoto].values.each do |ifoto|
+       #     image = @product.images.build
+       #     image.ifoto = ifoto
+       #     image.save
+       #   end
+      #  end
+      #  render :nothing => true
+    #  end
+   # end
+
+
+
   end
- 
 
 
 

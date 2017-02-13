@@ -13,3 +13,6 @@ $(document).ready(function () {
         url: $('#images').data('update-url')
     });
 });
+
+
+

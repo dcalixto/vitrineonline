@@ -172,7 +172,7 @@ end
 
     respond_to do |format|
       format.html do
-       # @vitrine = current_vitrine
+     
        if @vitrine.update_attributes(params[:vitrine])
  
           redirect_to(action: :edit, id: @vitrine, only_path: true, format: :html)
