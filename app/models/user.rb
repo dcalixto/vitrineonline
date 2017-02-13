@@ -7,11 +7,11 @@ class User < ActiveRecord::Base
 
   before_create :set_last_read_messages_at
 
- # before_create { generate_token(:auth_token) }
+  before_create { generate_token(:auth_token) }
  #after_commit :send_user_welcome, :on => :create
- # before_create :confirmation_token
+ ##before_create :confirmation_token
 
- after_commit  :confirmation_token, :on => :create
+after_commit  :confirmation_token, :on => :create
   has_one :vitrine, dependent: :destroy, :inverse_of => :user
 
 
