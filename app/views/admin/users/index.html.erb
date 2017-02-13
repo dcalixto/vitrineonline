@@ -20,11 +20,12 @@
   <thead>
     <tr>
       <th class="checkbox"><%= image_tag "admin/true.png" %></th>
-        <th><%= sort_link(@search, :name) %></th>
+        <th><%= sort_link(@search, :first_name) %></th>
         <th><%= sort_link(@search, :email) %></th>
         <th><%= sort_link(@search, :admin) %></th>
         <th><%= sort_link(@search, :banned) %></th>
         <th><%= sort_link(@search, :email_confirmed) %></th>
+
         <th></th>
     </tr>
   </thead>

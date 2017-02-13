@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       user.update_attribute(:ip_address, request.remote_ip)
       if user.email_confirmed
        # params[:remember_me]
-        cookies.permanent[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now} 
+        cookies[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now} 
              else
          flash.now[:alert] = "Primeiramente ative sua conta, verifique seu email com nosso email de confirmação"
  render :new
@@ -31,24 +31,6 @@ class SessionsController < ApplicationController
 
 
  
-  def create
-      user = User.find_by_email(params[:email].downcase)
-      if user && user.authenticate(params[:password])
-      if user.email_confirmed
-          sign_in user
-        redirect_back_or user
-      else
-        flash.now[:error] = 'Please activate your account by following the 
-        instructions in the account confirmation email you received to proceed'
-        render 'new'
-      end
-      else
-        flash.now[:error] = 'Invalid email/password combination' # Not quite right!
-        render 'new'
-      end
-  end
-
-
 
 
 
