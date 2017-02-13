@@ -61,10 +61,10 @@ end
       @user.update_attribute(:login_at, Time.zone.now)
       @user.update_attribute(:ip_address, request.remote_ip)
    #   cookies[:auth_token] = {:value => @user.auth_token, :expires => 3.month.from_now}
-        redirect_to  page_path('welcome')
+       
 
-             #redirect_to root_url
-     # flash[:success] = "Bem vindo a Vitrineonline #{(@user.first_name)}".html_safe
+      redirect_to root_url
+      flash[:success] = "Um Email de confirmação foi enviado para seu email".html_safe
     else
       render :new
       flash[:error] = 'Ooooppss, algo deu errado!'.html_safe
@@ -77,7 +77,8 @@ end
       user.email_activate
       flash[:success] = "Bem vindo a Vitrineonline  Seu email foi confirmado.
       Por favor logue para continuar.".html_safe
-      redirect_to login_url
+      #redirect_to login_url
+       redirect_to  page_path('welcome')
     else
       flash[:error] = "Desculpa. Usuário inexistente"
       redirect_to root_url
