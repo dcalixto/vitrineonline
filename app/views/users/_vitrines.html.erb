@@ -14,14 +14,13 @@
         <% @user.find_up_voted_items.each do |vitrine| %>
         <tr>
             <td >
-                <ul>
-                    <li>
+              
             <%= link_to  vitrine_path(vitrine.id) do %>
             <%= image_tag vitrine.logo.url(:mobile).to_s %>
 <%= vitrine.name %>
             <% end %>
-                    </li>
-                    <li>
+            </td>
+            <td>
 
 
              <% if current_user.voted_as_when_voted_for vitrine %>
@@ -31,9 +30,7 @@
            <%= link_to "Curtir",  like_vitrine_path(vitrine, type: "up"), method: "put" %>
 
   <% end %> 
-                    </li>
-                </ul>
-          </td>
+                              </td>
 
          
 

@@ -158,8 +158,9 @@
     <%= bettertabs :simpletabs do |tab| %>
       <%= tab.link :feedbacks, 'Resumo' do %>
       <%= render 'user_show' %>
-      <% end %>
-           <%= tab.link :vitrines,  "Vitrines Curtidas" do %>
+    <% end %>
+
+                <%= tab.link :vitrines,  "Vitrines Curtidas"   do %>
       <%=render 'users/vitrines' %>
     <% end %>
     <% if current_user %>

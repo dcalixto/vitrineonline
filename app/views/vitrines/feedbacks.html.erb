@@ -11,9 +11,10 @@
       <tbody>
         <tr>
              <td>
-          <b>Vitrine:</b>
+         
            <%= link_to  vitrine_path(@vitrine.id)  do %>
-              <%= @vitrine.name %>
+             
+      <%= image_tag(@vitrine.logo.url(:thumb).to_s) %>
       <% end%>
 
         </td>

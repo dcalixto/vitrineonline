@@ -131,7 +131,7 @@
     <div class="subcontent">
     <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
     </p>
-    <#%= p.select :tag_list, options_for_tags(Product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
+    <%= p.select :tag_list, options_for_tags(@product.tag_list), {}, { id: 'product_tags', multiple: true } %>
 
   </div>
 
@@ -177,6 +177,12 @@
         <h2>Cor</h2>
 
         <div class="subcontent horizonal_list">
+    
+     <%= hidden_field_tag "color_ids", nil %>
+
+  <%=p.collection_check_boxes :color_ids, Color.all, :id, :name %>
+ <%= label_tag "Cor" %>    
+        
         <ul>
         <#%= hidden_field_tag "product[color_ids][]", nil %>
       <#% Color.all.each do |color| %>

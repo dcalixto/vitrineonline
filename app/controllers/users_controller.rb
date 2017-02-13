@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   cache_sweeper :user_sweeper
 
   def show
+    
     @user = User.cached_find(params[:id])
     canonical_url url_for(@user)
 
@@ -26,6 +27,49 @@ class UsersController < ApplicationController
 def welcome
   
 end
+
+
+
+
+
+
+  def feedbacks
+
+
+  begin
+      @user = User.cached_find(params[:id])
+    rescue
+      @user = nil
+    end
+
+    unless @user.nil?
+ @user = User.cached_find(params[:id])
+    # @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
+    @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
+    @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+    @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
+
+    respond_to do |format|
+      format.html { render 'feedbacks' }
+    end
+
+        
+    end
+
+
+
+
+     end
+
+
+ 
+
+
+
+
+
+
+
 
   def user_feedbacks
     @user = User.cached_find(params[:id])
@@ -79,6 +123,8 @@ end
       Por favor logue para continuar.".html_safe
       #redirect_to login_url
        redirect_to  page_path('welcome')
+          cookies[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now} 
+       
     else
       flash[:error] = "Desculpa. Usuário inexistente"
       redirect_to root_url

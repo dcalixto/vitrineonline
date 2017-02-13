@@ -3,28 +3,69 @@
   <hr class="line"></hr>
   <div class="content">
 
- <table class="block_search">
-      <tr>
-       
-        <td class="sort">
 
-          Ordernar por
-          <%= sort_link @q, :created_at, "Data" %>
-          |
-          <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
-        </td>
-      </tr>
-    </table>
 
-    <div class="subcontent_top">
 
-<b>Média de Avaliações</b>
 
-    <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>"></div>
-    <%= render :partial => 'feedbacks/feedbacks' %>
 
+<div class="content">
+
+  <table class="blank_table">
+    <tr>
+
+         <td>
+        <b>Usuário criado em:</b>
+        <span class="lista-time">
+          <%= timeago_tag(@user.created_at, :nojs => true, :date_only => false)%>
+
+        </span>
+         </td>
+            <td>
+
+        <b>Média de Avaliações</b><div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>"></div>
+
+      </td>
+
+    </tr>
+  </table>
+
+
+  <table class="block_search">
+    <tr>
+      <td>
+
+        <%= search_form_for @q, url: search_feedbacks_users_path, method: :post  do |f| %>
+
+          <%= f.text_field :seller_comment_cont %>
+          <%= f.submit "Buscar", :class=>"btn_grey" %>
+
+        <% end %>
+
+      </td>
+      <td>
+
+        <%= render :partial => 'shared/sort_feedback'%>
+      </td>
+    </tr>
+  </table>
+
+  <%= render :partial => 'feedbacks/feedbacks' %>
+
+
+  <%= render :partial => 'shared/feedback_pagination'%>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+ 
 
   </div>
 

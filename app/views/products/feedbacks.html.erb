@@ -16,7 +16,8 @@
         <td>
 
     <%= link_to  product_path(@product.id)  do %>
-      <%= @product.name %>
+  
+      <%= image_tag(@product.images.first.ifoto.url(:thumb).to_s) %>
     <% end%>
         </td>
         <td>
