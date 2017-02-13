@@ -6,9 +6,9 @@ class UserMailer < ActionMailer::Base
 
 
   def registration_confirmation(user)
-    #user = User.find(user_id)
+  user = User.find(user_id)
 
-    @user = user
+   # @user = user
     mail(to: user.email, subject: 'Confirmar Registro', &:html)
   end
 
@@ -25,10 +25,10 @@ class UserMailer < ActionMailer::Base
     mail to: user.email, subject: 'Password Alterado', &:html
    end
 
-  def user_welcome(user_id)
+  #def user_welcome(user_id)
    # @user = user
-    @user = User.find(user_id)
+   # @user = User.find(user_id)
 
-    mail to: user.email, subject: 'Bem Vindo', &:html
-  end
+    #mail to: user.email, subject: 'Bem Vindo', &:html
+  #end
 end

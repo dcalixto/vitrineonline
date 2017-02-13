@@ -186,7 +186,7 @@ acts_as_voter
   def email_activate
     self.email_confirmed = true
     self.confirm_token = nil
-    send_user_welcome
+   # send_user_welcome
     save!(validate: false)
     end
 
