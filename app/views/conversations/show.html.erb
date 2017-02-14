@@ -7,31 +7,37 @@
     <%= render 'shared/error_messages', :target => @conversation  %>
 
   </div>
+</div>
+
+
+
+
+
+
+
+<div class="box5">
 
   <div class="block margin_top">
-    <div class="chatboxhead">
-    <h1>Conversa</h1>
-  </div>
-<div id="message_box" class="content">
 
 
 
+    <div class="row chat-window col-xs-5 col-md-3">
+  <div class="panel panel-default">
 
 
-    <div class="chatboxcontent" id="conversation_<%= @conversation.id %>">
+    <div  class="chatboxhead"><span>Conversa</span></div>
+  <div id="message_box" class="content">
+    
+
+
+    <table class="chatboxcontent panel-body msg_container_base" id="conversation_<%= @conversation.id %>">
+        
+      <tbody>
       <%= render partial: 'messages/message', collection: @messages  %>
-    </div>
-
+      </tbody>
+    </table>
 
   </div>
-
-
-</div>
-</div>
-
-
-<div class="box1">
-  <div class="block margin_top">
 <div class="chatboxinput">
   <%= semantic_form_for  [@conversation,  @new_message] do |f| %>
 
@@ -44,5 +50,46 @@
   <% end %>
 
 </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 </div>
+
+</div>
+

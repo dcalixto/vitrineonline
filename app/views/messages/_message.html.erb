@@ -1,16 +1,29 @@
 
-<tr>
-  <td class="block_avatar">
-    <%= link_to(image_tag(message.user.avatar.url(:mobile).to_s), user_path(message.user)) %>
-  </td>
-  <td class="body">
-    <%= link_to user_path(message.user) do %>
-        <%= message.user.first_name %> <%= message.user.last_name %>
+<tr class="body row msg_container">
+  <td >
+    <div class="block_avatar">
+      <%= link_to(image_tag(message.user.avatar.url(:mobile).to_s), user_path(message.user)) %>
+    </div>
+    <div class"message_body">
+    <ul>
+      <li>
+     <%= link_to user_path(message.user) do %>
+      <%= message.user.first_name %> <%= message.user.last_name %>
+   
     <% end %>
-    <p><%= message.body %></p>
- 
-    <%= timeago_tag(message.created_at, :nojs => true, :date_only => false) %>
+      </li>
+      <li>
+        <p><%= message.body %></p>
+      </li>
+    </ul>
+    </div>
   </td>
+
+    <td>
+    <%= timeago_tag(message.created_at, :nojs => true, :date_only => false) %>
+
+     </td>
+
 </tr>
 
 

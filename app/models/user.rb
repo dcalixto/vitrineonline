@@ -157,6 +157,14 @@ acts_as_voter
     UserMailer.password_reset(self).deliver
   end
 
+
+ def send_password_change
+    self.password_change_at = Time.zone.now
+    save!
+    UserMailer.password_change(self).deliver
+  end
+
+
   def last_read_messages_at
     if read_attribute(:last_read_messages_at).nil?
       created_at

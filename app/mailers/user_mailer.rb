@@ -20,6 +20,13 @@ class UserMailer < ActionMailer::Base
     mail to: user.email, subject: 'Password Resetado', &:html
   end
 
+  
+  def password_change(user)
+    @user = user
+    mail to: user.email, subject: 'Password Alterado', &:html
+  end
+
+
   def new_password(user)
     @user = user
     mail to: user.email, subject: 'Password Alterado', &:html

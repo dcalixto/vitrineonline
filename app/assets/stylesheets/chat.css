@@ -12,5 +12,34 @@
 
 
 #message_box {
-  max-height: 640px
+  max-height: 640px;
+  background:#eee;
+    }
+
+.chatboxhead {background:#32a32f;padding-top:10px;padding-bottom:10px;
+
+-webkit-border-radius: 3px 3px 0 0;
+border-radius: 3px 3px 0 0;
+}
+.chatboxhead span {color:#fff;font-size:18px;font-weight:bold;margin-left:10px}
+
+
+.chatboxcontent { overflow-y: scroll;
+}
+
+.body div{ float:left;padding:10px}
+.body {border-bottom 1px solid #000}
+
+
+tr.body  td {
+  border-bottom:1px solid #e0e0e0;
+}
+
+.chatboxinput {padding:30px;background:#fff;border:1px solid #ddd;
+}
+
+.chatboxinput textarea 
+{
+    width: 50em;
+    height: 4em;
 }
