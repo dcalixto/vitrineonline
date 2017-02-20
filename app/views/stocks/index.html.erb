@@ -21,15 +21,18 @@
         Produtos adicionados</p>
       <table class="block_search">
         <tr>
+             <%= search_form_for @q, url: products_order_stocks_path, method: :post  do |f| %>
           <td>
 
-            <%= search_form_for @q, url: products_order_stocks_path, method: :post  do |f| %>
+         
 
             <%= f.text_field :name_cont %>
+             </td>
+  <td>
+
             <%= f.submit "Buscar", :class=>"btn_grey" %>
 
-            <% end %>
-          </td>
+                    </td>
           <td class="sort">
 
             Ordernar Por
@@ -40,6 +43,8 @@
             <%= sort_link @q, :quantity, "Quantidade" %>
 
           </td>
+            <% end %>
+
         </tr>
       </table>
 

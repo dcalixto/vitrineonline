@@ -2,15 +2,23 @@
 
     <table class="block_search">
       <tr>
-        <td>
-
           <%= search_form_for @q, url:search_products_vitrines_path, method: :post  do |f| %>
 
+        <td>
+
+        
           <%= f.text_field :name_cont %>
+             </td>
+
+ <td>
+
+
           <%= f.submit "Buscar", :class=>"btn_grey" %>
 
-          <% end %>
-        </td>
+              </td>
+
+
+
         <td class="sort">
 
           Ordernar por
@@ -18,6 +26,8 @@
           |
           <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
         </td>
+            <% end %>
+
       </tr>
     </table>
 

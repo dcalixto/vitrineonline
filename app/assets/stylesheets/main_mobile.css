@@ -18,6 +18,8 @@ textarea {
     color: #222;
 }
 
+textarea {height:50px}
+
 body {
     font-size: 1em;
     line-height: 1.4;

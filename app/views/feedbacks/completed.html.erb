@@ -1,6 +1,6 @@
 <% title "Avaliações" %>
 <%= render "shared/feedback_menu" %>
-<div class="box3">
+<div class="box5">
   <div class="block margin_top">
     <div class="square_box">
 
@@ -9,15 +9,22 @@
 
       <table class="block_search">
         <tr>
+           <%= search_form_for @q, url: completed_feedbacks_path, method: :post  do |f| %>
+
+
           <td>
 
-            <%= search_form_for @q, url: completed_feedbacks_path, method: :post  do |f| %>
-
             <%= f.text_field :buyer_comment_cont %>
+
+</td>
+
+
+  <td>
+
+
             <%= f.submit "Buscar", :class=>"btn_grey" %>
 
-            <% end %>
-          </td>
+                     </td>
           <td class="sort">
 
             Ordernar por
@@ -25,6 +32,8 @@
             |
             <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
           </td>
+           <% end %>
+
         </tr>
       </table>
 

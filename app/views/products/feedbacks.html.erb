@@ -57,15 +57,21 @@
 
     <table class="block_search">
       <tr>
+          <%= search_form_for @q, url: search_feedbacks_products_path, method: :post  do |f| %>
         <td>
 
-          <%= search_form_for @q, url: search_feedbacks_products_path, method: :post  do |f| %>
+        
 
           <%= f.text_field :buyer_comment_cont %>
+
+
+
+           </td>
+  </td>
+
           <%= f.submit "Buscar", :class=>"btn_grey" %>
 
-          <% end %>
-        </td>
+               </td>
         <td class="sort">
 
           Ordernar por
@@ -73,6 +79,8 @@
           |
           <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
         </td>
+           <% end %>
+
       </tr>
     </table>
       <%= render :partial => 'feedbacks/feedbacks' %>

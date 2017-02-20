@@ -160,6 +160,9 @@ GEM
     breakpoint (2.7.1)
       sass (~> 3.3)
       sassy-maps (< 1.0.0)
+    browserlog (0.0.2)
+      jquery-rails (~> 3)
+      rails (>= 3.2.18)
     buftok (0.2.0)
     builder (3.0.4)
     byebug (9.0.6)
@@ -271,6 +274,10 @@ GEM
       has_scope (~> 0.6)
       railties (>= 3.2, < 5.1)
       responders
+    invoice_printer (0.0.8)
+      json
+      prawn
+      prawn-layout
     journey (1.0.4)
     jquery-rails (3.1.4)
       railties (>= 3.0, < 5.0)
@@ -367,16 +374,26 @@ GEM
     paypal-sdk-core (0.3.4)
       multi_json (~> 1.0)
       xml-simple
+    pdf-core (0.6.1)
     pg (0.19.0)
     polyamorous (1.3.1)
       activerecord (>= 3.0)
     polyglot (0.3.5)
     power_assert (1.0.1)
     powerpack (0.1.1)
+    prawn (2.1.0)
+      pdf-core (~> 0.6.1)
+      ttfunk (~> 1.4.0)
+    prawn-layout (0.8.4)
     predictor (2.3.1)
       redis (>= 3.0.0)
     private_pub (1.0.3)
       faye
+    public_activity (1.5.0)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
     public_suffix (2.0.5)
     rack (1.4.7)
     rack-attack (5.0.1)
@@ -429,8 +446,6 @@ GEM
     ref (2.0.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
-    rollbar (2.14.0)
-      multi_json
     rubocop (0.47.1)
       parser (>= 2.3.3.1, < 3.0)
       powerpack (~> 0.1)
@@ -485,6 +500,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    ttfunk (1.4.0)
     twitter (6.0.0)
       addressable (~> 2.5)
       buftok (~> 0.2.0)
@@ -533,6 +549,7 @@ DEPENDENCIES
   binding_of_caller
   brakeman
   breakpoint (~> 2.7.0)
+  browserlog (~> 0.0.2)
   bullet!
   byebug
   canonical_dude
@@ -555,6 +572,7 @@ DEPENDENCIES
   i18n_country_select
   identity_cache
   inherited_resources
+  invoice_printer
   jquery-rails
   jquery-rails-cdn
   jquery-raty-rails
@@ -581,8 +599,10 @@ DEPENDENCIES
   omniauth-twitter
   paypal-sdk-adaptivepayments
   pg
+  prawn
   predictor
   private_pub
+  public_activity
   rack-attack
   rack-secure_headers!
   rails (= 3.2.22)
@@ -591,7 +611,6 @@ DEPENDENCIES
   redcarpet
   resque!
   resque_mailer!
-  rollbar
   rubocop
   ruby_gntp
   sass-rails

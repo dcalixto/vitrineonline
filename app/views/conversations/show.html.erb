@@ -15,15 +15,18 @@
 
 
 
-<div class="box5">
+<div class="box6">
 
   <div class="block margin_top">
 
 
 
-    <div class="row chat-window col-xs-5 col-md-3">
-  <div class="panel panel-default">
+    <div class="row chat-window ">
+      <div class="panel panel-default">
+          <div class=" panel-heading top-bar
+">
 
+          </div>
 
     <div  class="chatboxhead"><span>Conversa</span></div>
   <div id="message_box" class="content">
@@ -32,13 +35,13 @@
 
     <table class="chatboxcontent panel-body msg_container_base" id="conversation_<%= @conversation.id %>">
         
-      <tbody>
+      <tbody class="panel-body msg_container_base">
       <%= render partial: 'messages/message', collection: @messages  %>
       </tbody>
     </table>
 
   </div>
-<div class="chatboxinput">
+<div class="chatboxinput panel-footer">
   <%= semantic_form_for  [@conversation,  @new_message] do |f| %>
 
   <%= f.inputs do %>

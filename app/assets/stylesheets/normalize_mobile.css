@@ -31,7 +31,8 @@ html {
     margin: 0px;
     height: 100%;
     width: 100%;
-      background: #fff;
+     
+
 
 }
 
@@ -56,8 +57,9 @@ body {
 
 
 
-background:#fff;
+/* background-color: #f1f1f1;*/
 
+ background-color: #fff;
      line-height: 1.28;
 
      padding: 0;
@@ -537,7 +539,7 @@ input[type="search"] {
 
    textarea {
      resize: vertical;
-     min-height: 100px;
+     
    }
 
 
@@ -592,7 +594,7 @@ input[type="search"] {
 
      line-height: 16px;
      
-     padding: 5px 4px;
+   
      
      margin: 0em;
      font: Helvetica;
@@ -603,7 +605,7 @@ input[type="search"] {
          border: solid 1px #999;
          box-sizing: border-box;
     padding: 4px 7px 5px;
-    width: 99%
+    width: 80%
 
 }
 table {

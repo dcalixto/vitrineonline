@@ -10,7 +10,7 @@ Vitrineonline::Application.routes.draw do
         mount Resque::Server => "/resque"
 mount MemcachedManager::Routes, :at => '/mm'
 
-
+  mount Browserlog::Engine => '/logs'
     namespace :admin do
 
 

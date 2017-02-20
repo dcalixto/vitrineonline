@@ -51,11 +51,10 @@ position: relative;
 box-sizing: border-box;
 
 width:100%;
-border: 1px solid #d6d6d6;
 
 height: 31px;
 
-border: 1px solid #247832
+border: 1px solid #ddd
 
      
 }
@@ -107,13 +106,25 @@ z-index: 1;
   display: inline-block;
  max-width: none;
 
--webkit-border-radius: 0 2px 2px 0;
-border-radius: 0 2px 2px 0;
+-webkit-border-radius: 0 3px 3px 0;
+border-radius: 0 3px 3px 0;
        color: #333;
-border:solid 1px;
-background: #ffe28e;
+
+
+
+
+
+
+
+background: #2aa426;
  
-  border: solid #eabb32 1px;
+
+
+      border: solid 1px #2aa426;
+  
+
+
+
 
 
     }

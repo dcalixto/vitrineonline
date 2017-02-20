@@ -9,9 +9,16 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.22'
 
 
-#ANALYTICS
 
-gem 'rollbar'
+#ACTIVITY
+gem 'public_activity'
+#LOGS
+
+#gem 'rollbar'
+
+gem 'browserlog', '~> 0.0.2'
+gem "lograge"
+
 
 #TABS
 gem 'bettertabs', github: "dcalixto/bettertabs"
@@ -95,8 +102,6 @@ gem 'dynamic_selectable', github: "dcalixto/dynamic_selectable"
 gem 'foreman'
 
 
-#LOG
-gem "lograge"
 
 # CPF CNPJ & FRETE
 gem 'act_as_cnpj_cpf'
@@ -141,6 +146,10 @@ gem 'configatron' # , '3.1.3'
 #INVOICE DOWNLOAD
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+
+gem 'prawn'
+gem 'invoice_printer'
 
 
 # ADMIN & SECURITY

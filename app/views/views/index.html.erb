@@ -39,7 +39,7 @@
 
 
 
-<div class="box5">
+<div class="box6">
 
   <div class="block  margin_top">
     <div class="flash_box">
@@ -92,15 +92,17 @@
       <div class="subcontent">
         <table class="block_search">
           <tr>
+               <%= search_form_for @q, url:    views_vitrine_views_path, method: :post  do |f| %>
             <td>
 
-              <%= search_form_for @q, url:    views_vitrine_views_path, method: :post  do |f| %>
+           
 
               <%= f.text_field :id_cont %>
+            </td>
+            <td>
               <%= f.submit "Buscar", :class=>"btn_grey" %>
 
-              <% end %>
-            </td>
+                        </td>
             <td class="sort">
 
               Ordernar Por
@@ -108,6 +110,8 @@
               |
               <%= sort_link @q, :created_at, "Data" %>
             </td>
+              <% end %>
+
           </tr>
         </table>
 

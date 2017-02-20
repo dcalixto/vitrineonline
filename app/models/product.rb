@@ -8,7 +8,9 @@ class Product < ActiveRecord::Base
   belongs_to :vitrine, :inverse_of => :products
   belongs_to :category
   belongs_to :subcategory
-  has_many :images, dependent: :destroy 
+  has_many :images,inverse_of: :product, dependent: :destroy 
+
+
 
   has_many :feedbacks
 
@@ -224,4 +226,17 @@ end
       average_customer_rating: average_customer_rating
     }
   end
+
+
+
+
+  private
+
+  def build_default_models
+  #  build_policy
+    images.build
+
+    true
+  end
+
  end

@@ -1,6 +1,7 @@
 $(document).ready(function () {
+    
     Dropzone.autoDiscover = false;
-    $('#images').dropzone({// PDF dropzone element
+ $('#product_images').dropzone({// PDF dropzone element
         maxFilesize: 2, // Set the maximum file size to 256 MB
         maxFiles: 10,
         dictDefaultMessage: "Solte suas imagens aqui",
@@ -8,11 +9,21 @@ $(document).ready(function () {
         addRemoveLinks: true, // Don't show remove links on dropzone itself.
         dictRemoveFile: 'Remover',
         uploadMultiple: true,
-        method: 'put',
+       method: 'post',
+
         acceptedFiles: "image/*",
-        url: $('#images').data('update-url')
+        //url: $('#images').data('update-url')
+       
+        url: "/products"
     });
-});
+
+   });
+
+
+
+
+
+
 
 
 

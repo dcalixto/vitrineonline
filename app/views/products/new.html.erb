@@ -1,5 +1,9 @@
 <% title "Adicionar Produto" %>
-<div class="box4">
+
+<div class="box11">
+</div>
+
+<div class="box6">
 
 
 <div class="breadcrumb margin_top">
@@ -66,7 +70,7 @@
 
 
     <h2>Fotos</h2>
-    <##%= image_tag @product.images.first.ifoto.url(:thumb) unless @product.images.blank? %>
+    <%= image_tag @product.images.first.ifoto.url(:thumb) unless @product.images.blank? %>
 
     <p class="tip">Adicione no mínimo 2 fotos</p>
     <p class="tip">
@@ -78,15 +82,20 @@
     <li class="tip">As imagens serão redimencionandas para 245 x 135 de altura</li>
     </ul>
 
- <div class="dropzone" id="images" data-update-url="<%= images_path(@image) + '?authenticity_token=' + form_authenticity_token %>"></div>
+ <div class="ropzone" id="roduct_images" name="mages[ifoto][]" data-post-url="<#%= products_path + '?authenticity_token=' + form_authenticity_token %>"></div>
 
    
-<#%=form_for(@image, html: { multipart: true, class: "dropzone", id: "images"}) do |f| %>
-<div class="fallback">
-<#%=f.file_field :ifoto %><br>
-<#%=f.submit "Salvar" %>
-</div>
-<#% end %>
+
+
+
+ <%= p.fields_for :images, @product.images.build , html: { multipart: true, class: "dropzone", id: "product_images"}  do |f| %>
+     <div class="dropzone" id="product_images">
+       <%= f.label :ifoto %><br>
+       <%= f.file_field :ifoto, :multiple => true, name: "images[ifoto][]"%>
+      
+
+     </div>
+   <% end %>
 
 
 

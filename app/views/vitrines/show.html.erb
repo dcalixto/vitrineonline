@@ -113,14 +113,14 @@
               <% if  current_user.voted_as_when_voted_for @vitrine %>
 
 
-                <%= link_to  dislike_vitrine_path(@vitrine, type: "down"), :class=> "btn_orange", method: "put" do %>
+                <%= link_to  dislike_vitrine_path(@vitrine, type: "down"), :class=> "btn_grey", method: "put" do %>
                   <%= content_tag(:span, nil, :class =>"sprite-icons-small_like") %>
                   Descutir
                 <%end %>
               <% else %>
 
 
-                <%= link_to   like_vitrine_path(@vitrine, type: "up"),:class=> "btn_orange",  method: "put" do %>
+                <%= link_to   like_vitrine_path(@vitrine, type: "up"),:class=> "btn_grey",  method: "put" do %>
                   <%= content_tag(:span, nil, :class =>"sprite-icons-small_like") %>
                   Curtir
 
@@ -174,7 +174,7 @@
 
 
 
-  <div class="box3">
+  <div class="box4">
 
 
 

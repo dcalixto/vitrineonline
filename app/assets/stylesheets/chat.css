@@ -1,6 +1,8 @@
 .messagebox {display: table; border-collapse: collapse; width:100%;line-height: 18px; font-size:14px}
 
-.row {display:table-row; width:100%; border-top: 1px solid #e9e9e9;}
+.row {display:table-row; width:50%;
+
+border-top: 1px solid #e9e9e9;}
 .cell{display:table-cell;}
 
 
@@ -12,9 +14,10 @@
 
 
 #message_box {
-  max-height: 640px;
+  max-height: 340px;
   background:#eee;
-    }
+  overflow-y: scroll;
+      }
 
 .chatboxhead {background:#32a32f;padding-top:10px;padding-bottom:10px;
 
@@ -40,6 +43,6 @@ tr.body  td {
 
 .chatboxinput textarea 
 {
-    width: 50em;
+    
     height: 4em;
 }
