@@ -8,7 +8,7 @@ lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'invoice_printer'
 
-
+  @product = @order.product
 
 item = InvoicePrinter::Document::Item.new(
   name: "#{@product.name}",
