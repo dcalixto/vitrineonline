@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
   include VitrinesHelper
   include AnnouncementsHelper
 
+ include EmailHelper
+
+
+
+
   before_filter :strict_transport_security
   def strict_transport_security
     if request.ssl?

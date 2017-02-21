@@ -181,7 +181,7 @@ gem 'twitter'
 
 
 # CACHE
-gem 'memcachier'
+#gem 'memcachier'
 gem 'dalli'
 gem 'memcached-manager'
 gem 'identity_cache'

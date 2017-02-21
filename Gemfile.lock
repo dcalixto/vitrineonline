@@ -313,7 +313,6 @@ GEM
       sinatra-contrib
       thin (~> 1.6.2)
       vegas
-    memcachier (0.0.2)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     meta-tags (2.4.0)
@@ -596,7 +595,6 @@ DEPENDENCIES
   mail_form
   md_emoji
   memcached-manager
-  memcachier
   meta-tags
   meta_request
   mina!
