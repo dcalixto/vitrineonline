@@ -234,7 +234,7 @@ clear:both;
 
 .left_info li {
     display: block;
-/* border:solid 1px #000;*/
+
     overflow: hidden;
     margin-bottom: 3px;
 }
