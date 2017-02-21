@@ -2,7 +2,7 @@
 class CategoriesController < ApplicationController
  
   
- 
+include CategoryHelper 
   def show
     @category = Category.find(params[:id])
     @products = Product.aggs_search(params.merge(category_id: @category.id))

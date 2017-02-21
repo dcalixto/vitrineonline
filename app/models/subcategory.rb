@@ -24,5 +24,11 @@ class Subcategory < ActiveRecord::Base
     Subcategory.cached_find(subcategory_id)
   end
 
+after_commit :clear_cache
+
+  def clear_cache
+    $redis.del "subcategories"
+  end
+
 
 end

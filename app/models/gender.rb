@@ -27,4 +27,13 @@ class Gender < ActiveRecord::Base
     Gender.cached_find(gender_id)
   end
 
+
+after_commit :clear_cache
+
+  def clear_cache
+    $redis.del "genders"
+  end
+
+
+
 end

@@ -58,8 +58,6 @@ belongs_to :material
   # scope :open_orders, -> { where(workflow_state: "open") }
 
 
- include IdentityCache 
-   cache_has_many :images, :embed => true 
 
 
   cattr_accessor :form_steps do

@@ -11,8 +11,8 @@ Vitrineonline::Application.configure do
   config.assets.compile = true
   # Compress JavaScripts and CSS
   config.assets.compress = true
-  config.cache_store = :dalli_store,   '127.0.0.1:11211', {:namespace => Vitrineonline, expires_in: 1.day, :compress => true }
-config.identity_cache_store = :dalli_store, 'mem'
+  #config.cache_store = :dalli_store,   '127.0.0.1:11211', {:namespace => Vitrineonline, expires_in: 1.day, :compress => true }
+#config.identity_cache_store = :dalli_store, 'mem'
 
 
 config.action_controller.default_url_options = { host: '52.87.228.48' }

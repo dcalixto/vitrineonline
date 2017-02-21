@@ -37,4 +37,16 @@ class Category < ActiveRecord::Base
   def cached_category
     Category.cached_find(category_id)
   end
+
+
+ after_commit :clear_cache
+
+  def clear_cache
+    $redis.del "categories"
+  end
+
+
+
+
+
 end

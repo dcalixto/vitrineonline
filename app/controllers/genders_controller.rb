@@ -1,5 +1,9 @@
 # encoding: utf-8
 class GendersController < ApplicationController
+ 
+   include GenderHelper
+
+  
   def show
     @gender = Gender.find(params[:id])
     @products = Product.aggs_search(params.merge(gender_id: @gender.id))
