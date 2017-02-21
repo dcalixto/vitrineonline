@@ -131,6 +131,7 @@ order = Order.find(params[:id])
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
+          OrderMailer.order_confirmation(self)
           order.save
         end
       end

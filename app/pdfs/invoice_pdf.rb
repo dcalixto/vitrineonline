@@ -8,6 +8,8 @@ lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'invoice_printer'
 
+class InvoicePdf
+
 if @order.present?
 
 item = InvoicePrinter::Document::Item.new(
@@ -65,6 +67,7 @@ InvoicePrinter.print(
   )
 
 
+end
 end
 
 

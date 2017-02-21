@@ -9,7 +9,7 @@ Vitrineonline::Application.routes.draw do
   scope 'dcalixto84abcd152567' do
    # mount ResqueWeb::Engine => "/resque"
         mount Resque::Server => "/resque"
-mount MemcachedManager::Routes, :at => '/mm'
+#mount MemcachedManager::Routes, :at => '/mm'
  
  
     namespace :admin do
