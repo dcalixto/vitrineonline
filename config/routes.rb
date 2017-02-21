@@ -1,6 +1,7 @@
 Vitrineonline::Application.routes.draw do
 
 
+ mount Logster::Web => "/logs"
 
 
    # ADMIN
@@ -9,8 +10,8 @@ Vitrineonline::Application.routes.draw do
    # mount ResqueWeb::Engine => "/resque"
         mount Resque::Server => "/resque"
 mount MemcachedManager::Routes, :at => '/mm'
-
-  mount Browserlog::Engine => '/logs'
+ 
+ 
     namespace :admin do
 
 
@@ -241,4 +242,6 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
   root to: 'home#index'
 
   match '(errors)/:status', to: 'errors#show', constraints: { status: /\d{3}/ } # via: :all
+
+
 end

@@ -16,7 +16,6 @@ cache_sweeper :vitrine_sweeper
 
   #  @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
     @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
-
    # @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
     #  @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 15).order('created_at DESC')
 
@@ -24,12 +23,12 @@ cache_sweeper :vitrine_sweeper
 
 
     @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
-    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+    @feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
 
   
    
       @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
-    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+    @products = @q.result(distinct: true).includes(:images).paginate(page: params[:page], per_page: 22)
 
     # similarities from another vitrines
     ids = ProductRecommender.instance.predictions_for(@vitrine.id, matrix_label: :vitrines)
@@ -85,7 +84,7 @@ cache_sweeper :vitrine_sweeper
       @vitrine = Vitrine.cached_find(params[:id])
    
       @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
-    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+    @products = @q.result(distinct: true).include(:images).paginate(page: params[:page], per_page: 22)
 
          respond_to do |format|
            format.html { render 'products'}

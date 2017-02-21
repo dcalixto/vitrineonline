@@ -12,12 +12,9 @@ gem 'rails', '3.2.22'
 
 #ACTIVITY
 gem 'public_activity'
-#LOGS
 
-#gem 'rollbar'
 
-gem 'browserlog', '~> 0.0.2'
-gem "lograge"
+
 
 
 #TABS
@@ -72,9 +69,6 @@ gem 'i18n_country_select'
 
 
 
-# FIND UNUSED CSS
-#gem 'deadweight'
-#gem 'csscss'
 
 # SEO
 gem 'meta-tags', require: 'meta_tags'
@@ -122,10 +116,9 @@ gem 'mina-stack',  github:"dcalixto/mina-stack-1", group: :development, require:
 
 # FORM
 gem 'formtastic', github: "dcalixto/formtastic", :branch => '3.1.3'
-# ANALYS
 
-#FEEDS
-#gem 'feedjira'
+
+
 
 # MARKUP LANGUAGE
 gem 'redcarpet'
@@ -163,6 +156,10 @@ gem 'no_cache_control',     github: "dcalixto/no_cache_control"
 gem 'carrierwave','~> 0.9.0'
 gem 'mini_magick'
 gem 'dropzonejs-rails'
+
+
+
+
 # RATING PLUGIN
 
 gem 'jquery-raty-rails'
@@ -188,11 +185,24 @@ gem 'memcachier'
 gem 'dalli'
 gem 'memcached-manager'
 gem 'identity_cache'
-#MAILER
+
+
+
+
+# REDIS
+gem 'redis'
+gem 'redis-rails'
+gem 'redis-session-store'
+gem 'hiredis'
+gem 'redis-namespace'
+
+
+
+
+#RESQUE
 
 gem 'resque', github: "dcalixto/resque", :require => "resque/server"
-gem 'resque_mailer',  github: "dcalixto/resque_mailer"
-#gem 'resque-web',    github: "dcalixto/resque-web"#, require: 'resque_web'
+#gem 'resque_mailer',  github: "dcalixto/resque_mailer"
 
 gem "sinatra", require: 'sinatra/base'
 gem "sinatra-contrib", '~> 1.3.2',  require: false
@@ -205,6 +215,16 @@ gem 'thin'
 
 #MILTISETP FORM
 gem 'wicked'
+
+
+
+
+
+
+
+
+
+
 
 
 gem 'test-unit', '~> 3.0'
@@ -240,7 +260,22 @@ end
 
 
 
-#MAILER
+#DB
 group :production do
   gem 'pg'
 end
+
+
+
+#LOGS
+
+gem 'logster'
+gem "lograge"
+
+
+
+
+
+
+
+

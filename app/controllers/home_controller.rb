@@ -19,9 +19,9 @@ class HomeController < ApplicationController
 
     if params[:tag]
 
-      @products = Product.tagged_with(params[:tag]).order('DESC').limit(22)
+      @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
     else
-      @products = Product.all
+      @products = Product.includes(:images,:vitrine).all
     end
   end
 

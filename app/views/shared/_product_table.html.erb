@@ -4,7 +4,8 @@
       <table id="posts" class="product_table">
         <tbody class="page">
           <tr>
-            <% @products.take(22).each do |product|%>
+            <% @products.each do |product|%>
+
               <td>
                 <%=link_to product_path(product.id), :class=>"product" do %>
                   <%if product.images.present? %>

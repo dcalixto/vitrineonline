@@ -6,7 +6,7 @@ class ViewsController < ApplicationController
 
   def index
     @q = Product.joins(:vitrine).where('vitrines.id' => current_vitrine.id).ransack(params[:q])
-    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 20)
+    @products = @q.result(distinct: true).includes(:images).paginate(page: params[:page], per_page: 20)
     # chart data
     end_time = Time.now
     @week_stats = prepare_stats(end_time - 6.days, end_time)

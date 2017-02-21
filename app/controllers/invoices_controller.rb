@@ -14,30 +14,30 @@ class InvoicesController < ApplicationController
     @buyer = @order.buyer
     @product = @order.product
    respond_to do |format|
-      format.html
+    format.html
      format.pdf do
         pdf = InvoicePrinter.new(current_vitrine, @invoice, @order, @product)
-        send_data.to_s pdf.render, filename: "invoice_#{@invoice.id}.pdf", type: 'application/pdf'
+       send_data.to_s pdf.render, filename: "invoice_#{@invoice.id}.pdf", type: 'application/pdf'
      end
-    end
+  end
   end
 
 
 # respond_to do |format|
-  #    format.html
-  #    format.pdf do
-  #      render :pdf => 'file_name',
-   #     :template => 'invoices/show.pdf.erb',
-    #    :layout => 'pdf.html.erb',
-    #    :show_as_html => params[:debug].present?
-    #  end
-   # end
+#      format.html
+ #     format.pdf do
+ #      render :pdf => 'file_name',
+  #     :template => 'invoices/show.pdf.erb',
+  #     :layout => 'pdf.html.erb',
+  #     :show_as_html => params[:debug].present?
+  #   end
+  # end
 
 
-  #end
-#end
-
-
+ # end
 end
+
+
+
 
 

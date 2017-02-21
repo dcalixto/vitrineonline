@@ -59,6 +59,25 @@ config.autoload_paths += %W(#{config.root}/app/sweepers)
 
 
     Rails.root.join("/data/public")
+ 
+
+
+
+    # Cache store
+   # config.cache_store = :redis_store, { host:       ENV['REDIS_HOST'],
+   #                                     port:       ENV['REDIS_PORT'],
+    #                                   db:         ENV['REDIS_DB'],
+     #                                   namespace:  'cache',
+      #                                driver:     :hiredis,
+         #                              expires_in: 90.minutes }
+
+    # Logster
+    Logster.set_environments([:development, :production])
+    Logster.store = Logster::RedisStore.new Redis.new(host:      ENV['REDIS_HOST'],
+                                                      port:      ENV['REDIS_PORT'],
+                                                      db:        ENV['REDIS_DB'],
+                                                      namespace: 'logster',
+                                                     driver:    :hiredis)
 
   end
 end
