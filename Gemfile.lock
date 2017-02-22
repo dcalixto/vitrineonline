@@ -103,13 +103,6 @@ GIT
       coffee-rails
       sass-rails
 
-GIT
-  remote: https://github.com/dcalixto/waiable.git
-  revision: 2ed0f70cc4ee6d9fe1c08020234f4345214830e3
-  specs:
-    waiable (0.0.1)
-      rails
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -639,7 +632,6 @@ DEPENDENCIES
   thin
   twitter
   uglifier (>= 1.0.3)
-  waiable!
   whenever
   wicked
   wicked_pdf

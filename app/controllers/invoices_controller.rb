@@ -14,10 +14,11 @@ class InvoicesController < ApplicationController
     @buyer = @order.buyer
     @product = @order.product
    respond_to do |format|
-    format.html
-     format.pdf do
-        pdf = InvoicePdf.new(current_vitrine, @invoice, @order, @product)
-       send_data.to_s pdf.render, filename: "invoice_#{@invoice.id}.pdf", type: 'application/pdf'
+     format.html { render :show }
+    format.json { render json: @invoice }    
+    format.pdf do
+        pdf = InvoicePdf.new(current_vitrine, @invoice, @order, @product).render
+       send_data.to_s @pdf, filename: "invoice_#{@invoice.id}.pdf", type: 'application/pdf'
      end
   end
   end

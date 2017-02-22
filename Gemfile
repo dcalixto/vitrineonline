@@ -261,7 +261,7 @@ gem 'public_activity'#,  github: "dcalixto/public_activity", :tag => '5.4.3'
 
 
 #WAI-ARIA
-gem 'waiable',  github: "dcalixto/waiable"
+#gem 'waiable',  github: "dcalixto/waiable"
 
 
 #OPENSEARCH

@@ -4,23 +4,25 @@
 #!/usr/bin/env ruby
 # This is an example of a very simple invoice.
 
-lib = File.expand_path('../../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 require 'invoice_printer'
 
 class InvoicePdf
 
-if @order.present?
-
-item = InvoicePrinter::Document::Item.new(
+ def printable_item
+ 
+  
+InvoicePrinter::Document::Item.new(
   name: "#{@order.product.name}",
   quantity: "#{@order.product.quantity}",
     price: "#{@order.product.price}",
   tax: "#{@invoice.store_fee}",
   
 )
+ end
+  def printable_invoice
 
-invoice = InvoicePrinter::Document.new(
+InvoicePrinter::Document.new(
   number: "#{@invoice.id}",
   provider_name: 'Vitrineonline',
   provider_street: 'Avenida Roberto Silveira',
@@ -38,36 +40,35 @@ invoice = InvoicePrinter::Document.new(
   tax:  "#{@invoice.store_fee}",
   total: "#{@order.total_price}",
 payment: "#{@vitrine.policy.paypal}",
-  items: [item],
-  )
+   )
+
+  end
+
+
+ # InvoicePrinter.labels = {
+#  name: 'Fatura',
+#  provider: 'Serviço',
+#  purchaser: 'Usuário',
+#  payment: 'Forma de Pagamento',
+#  issue_date: 'Data',
+#  item: 'Item',
+#  quantity: 'Quantidade',
+#   tax: 'Comissão',
+#   subtotal: 'Subtotal',
+#  total: 'Total'
+#}
 
 
 
-
-  InvoicePrinter.labels = {
-  name: 'Fatura',
-  provider: 'Serviço',
-  purchaser: 'Usuário',
-  payment: 'Forma de Pagamento',
-  issue_date: 'Data',
-  item: 'Item',
-  quantity: 'Quantidade',
-   tax: 'Comissão',
-   subtotal: 'Subtotal',
-  total: 'Total'
-}
-
-
-
-InvoicePrinter.print(
-  document: invoice,
-  labels: labels,
-  logo: 'logo.png'
+#InvoicePrinter.print(
+#  document: invoice,
+#  labels: labels,
+#  logo: 'logo.png'
 #  file_name: 'complex_invoice.pdf',
-  )
+#  )
 
 
-end
+#end
 end
 
 
