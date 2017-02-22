@@ -62,6 +62,13 @@ GIT
     no_cache_control (1.0.0)
 
 GIT
+  remote: https://github.com/dcalixto/opensearchkick.git
+  revision: e5a9afce2d3479bdbf64a3aed41776a7ba30f1cd
+  specs:
+    opensearchkick (0.0.1)
+      confiture (>= 0.1)
+
+GIT
   remote: https://github.com/dcalixto/rack-secure_headers.git
   revision: 2b75b65c64550589e14594f3bdb826cce1b5547a
   specs:
@@ -95,6 +102,13 @@ GIT
     social-share-button (0.1.10)
       coffee-rails
       sass-rails
+
+GIT
+  remote: https://github.com/dcalixto/waiable.git
+  revision: 2ed0f70cc4ee6d9fe1c08020234f4345214830e3
+  specs:
+    waiable (0.0.1)
+      rails
 
 GEM
   remote: http://rubygems.org/
@@ -171,6 +185,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     configatron (4.5.0)
+    confiture (0.1.4)
     cookiejar (0.3.3)
     correios-frete (1.10.0)
       log-me (~> 0.0.10)
@@ -246,7 +261,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
-    i18n (0.8.0)
+    i18n (0.8.1)
     i18n-country-translations (1.2.3)
       i18n (~> 0.5)
       railties (>= 3.0)
@@ -431,13 +446,13 @@ GEM
     redis-rack (1.4.4)
       rack (~> 1.4.0)
       redis-store (~> 1.1.4)
+    redis-rack-cache (1.2.4)
+      rack-cache (~> 1.2)
+      redis-store (~> 1.1.0)
     redis-rails (3.2.4)
       redis-actionpack (~> 3.2.4)
       redis-activesupport (~> 3.2.4)
       redis-store (~> 1.1.4)
-    redis-session-store (0.9.1)
-      actionpack (>= 3, < 5.1)
-      redis (~> 3)
     redis-store (1.1.7)
       redis (>= 2.2)
     ref (2.0.0)
@@ -487,10 +502,10 @@ GEM
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
-    thin (1.6.4)
+    thin (1.7.0)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
-      rack (~> 1.0)
+      rack (>= 1, < 3)
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -591,6 +606,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-twitter
+  opensearchkick!
   paypal-sdk-adaptivepayments
   pg
   prawn
@@ -605,8 +621,8 @@ DEPENDENCIES
   redcarpet
   redis
   redis-namespace
+  redis-rack-cache
   redis-rails
-  redis-session-store
   resque!
   rubocop
   ruby_gntp
@@ -623,6 +639,7 @@ DEPENDENCIES
   thin
   twitter
   uglifier (>= 1.0.3)
+  waiable!
   whenever
   wicked
   wicked_pdf

@@ -10,11 +10,6 @@ gem 'rails', '3.2.22'
 
 
 
-#ACTIVITY
-gem 'public_activity'
-
-
-
 
 
 #TABS
@@ -181,18 +176,12 @@ gem 'twitter'
 
 
 # CACHE
-#gem 'memcachier'
-#gem 'dalli'
-#gem 'memcached-manager'
-#gem 'identity_cache'
-
-
 
 
 # REDIS
 gem 'redis'
 gem 'redis-rails'
-gem 'redis-session-store'
+gem "redis-rack-cache"
 gem 'hiredis'
 gem 'redis-namespace'
 
@@ -264,6 +253,21 @@ end
 group :production do
   gem 'pg'
 end
+
+
+
+#ACTIVITY
+gem 'public_activity'#,  github: "dcalixto/public_activity", :tag => '5.4.3'
+
+
+#WAI-ARIA
+gem 'waiable',  github: "dcalixto/waiable"
+
+
+#OPENSEARCH
+gem 'opensearchkick',  github: "dcalixto/opensearchkick"
+
+
 
 
 

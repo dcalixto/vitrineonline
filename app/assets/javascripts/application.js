@@ -20,7 +20,7 @@
 //= dropzone_avatar
 //= dropzone_images
 //= dropzone_logo
-//= readmore
+
 //= tipsy
 //= require jquery.bettertabs.min
 //= require nprogress

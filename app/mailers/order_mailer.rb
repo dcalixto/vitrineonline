@@ -4,8 +4,7 @@ class OrderMailer < ActionMailer::Base
   default from: 'Vitrineonline'
 
  # include Resque::Mailer
-user = @user.find(params[:id])
-vitrine = @vitrine.find(params[:id])
+
 
 
 

@@ -1,5 +1,8 @@
 # encoding: utf-8
 module ApplicationHelper
+
+ 
+
   def broadcast(channel, &block)
     PrivatePub.publish_message(PrivatePub.message(channel, capture(&block)))
   end

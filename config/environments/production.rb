@@ -15,6 +15,13 @@ Vitrineonline::Application.configure do
 #config.identity_cache_store = :dalli_store, 'mem'
 
 
+
+config.action_dispatch.rack_cache = {
+    metastore:   "redis://localhost:6379/1/metastore",
+    entitystore: "redis://localhost:6379/1/entitystore"
+}
+
+
 config.action_controller.default_url_options = { host: '52.87.228.48' }
   config.lograge.enabled = true
 

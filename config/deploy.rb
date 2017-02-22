@@ -6,10 +6,11 @@ require 'mina-stack'
 
 set :app,                 'vitrineonline'
 set :server_name,         'vitrineonline.com'
-set :keep_releases,       9
+set :keep_releases,       1
 set :default_server,      :production
 set_default :bundle_bin, 'bundle'
 set_default :bundle_path, './vendor/bundle'
+
 set :server, ENV['to'] || default_server
 invoke :"env:#{server}"
 
@@ -32,9 +33,7 @@ set :monitored,                     %w(
                                        nginx
                                        postgresql
                                        redis
-                                       private_pub
-                                       memcached
-)
+                                               )
 
 
 
