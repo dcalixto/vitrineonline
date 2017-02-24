@@ -6,30 +6,23 @@ class ConversationsController < ApplicationController
   def index
     if current_user
       # @conversation = Conversation.new
-       @conversations = current_user.active_conversations
-       .includes(:display_message) #:users
-       .order('conversations.updated_at DESC').paginate(:page => params[:page], :per_page => 22)
+      @conversations = current_user.active_conversations
+      .includes(:display_message) #:users
+      .order('conversations.updated_at DESC').paginate(:page => params[:page], :per_page => 22)
 
       # #@conversation = Conversation.new
 
-   #   @q = @conversations = current_user.active_conversations
-    #                                    .includes(:conversation_participants, :display_message) #:users
-    #                                    .order('conversations.updated_at DESC').ransack(params[:q])
-    #  @conversations = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+      #   @q = @conversations = current_user.active_conversations
+      #                                    .includes(:conversation_participants, :display_message) #:users
+      #                                    .order('conversations.updated_at DESC').ransack(params[:q])
+      #  @conversations = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
     else
       redirect_to root_url
     end
-    end
+  end
 
   def show
-
-
-
-
-
-
-
 
 
     @conversation = current_user.conversations.find(params[:id])
@@ -64,10 +57,10 @@ class ConversationsController < ApplicationController
             @conversation.conversation_participants.create(user_id: user_id)
           end
         else
-         
 
-user = User.find_by_first_name(params[:conversation_participant][:first_name])
-                    if user.nil?
+
+          user = User.find_by_first_name(params[:conversation_participant][:first_name])
+          if user.nil?
             flash[:error] = 'Usuário inexistente'
             raise ActiveRecord::Rollback
           end

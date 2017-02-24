@@ -7,10 +7,10 @@ class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
   before_filter :authorize_vitrine, only: [:create, :edit, :update]
-  
+
   include ProductsHelper 
 
-  
+
   def index
     @products = Product.aggs_search(params)
     # suggestions for current visitor
@@ -24,11 +24,11 @@ class ProductsController < ApplicationController
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
 
-  #  @image =  @product.images.build
+    #  @image =  @product.images.build
 
 
-         @product = current_vitrine.products.build(params[:product])
- @image = @product.images.build
+    @product = current_vitrine.products.build(params[:product])
+    @image = @product.images.build
   end
 
   def upvote
@@ -142,28 +142,28 @@ class ProductsController < ApplicationController
 
   def create
 
-                @product = current_vitrine.products.build(params[:product])
- #@images = @product.images.build
+    @product = current_vitrine.products.build(params[:product])
 
 
- 
- 
+
+
+
 
     respond_to do |format|
-     format.html do
+      format.html do
 
- 
+
         if @product.save
 
 
 
-  params[:images]['ifoto'].each do |k, a|
-          @image = @product.images.create!(:ifoto => a.pop)
-  end
+          params[:images]['ifoto'].each do |k, a|
+            @image = @product.images.create!(:ifoto => a.pop)
+          end
 
-   
 
-   @product.create_activity :create, owner: current_vitrine
+
+          @product.create_activity :create, owner: current_vitrine
           #facebook sharing
           Product.reindex
           if @product.is_shared_on_facebook
@@ -208,124 +208,124 @@ class ProductsController < ApplicationController
         else
           render :new, format: :html
         end
-           end
-     format.json do
+      end
+      format.json do
 
-         render :nothing => true
-
-
-       # @product = current_vitrine.products.build(params[:product])
- #image = @product.images.build(params[:images])
+        render :nothing => true
 
 
-   #   end
-    #  if @product.save
-     #   if params[:images] && params[:images][:ifoto]
-      #    params[:images][:ifoto].values.each do |ifoto|
+        # @product = current_vitrine.products.build(params[:product])
+        #image = @product.images.build(params[:images])
 
-       #            image.ifoto = ifoto
-       #     image.save
-     end
-    # render :nothing => true
 
-         end
-                # end
-  #   end
+        #   end
+        #  if @product.save
+        #   if params[:images] && params[:images][:ifoto]
+        #    params[:images][:ifoto].values.each do |ifoto|
+
+        #            image.ifoto = ifoto
+        #     image.save
+      end
+      # render :nothing => true
+
+    end
+    # end
+    #   end
     #end
 
-  
+
   end
-    
-
- 
 
 
 
 
-  
 
-    def views
+
+
+
+
+  def views
+    @product = Product.cached_find(params[:id])
+    # chart data
+    end_time = Time.now
+    @week_stats = prepare_stats(end_time - 6.days, end_time)
+    @month_stats = prepare_stats(end_time - 30.days, end_time)
+
+
+
+
+  end
+
+
+
+
+  def destroy
+    @product = Product.find(params[:id])
+
+    if @product.destroy
+      Product.reindex
+      expire_fragment('product')
+      flash[:success] = "#{@product.name} removido"
+    end
+  end
+
+  def autocomplete
+    render json: Product.search(params[:query], fields: [{ name: :text_start }], limit: 4).map(&:name)
+  end
+
+  def omniauth_callback
+    cookies[params[:provider] + '_auth_token'] = { value: params[:access_token]}
+    render :nothing => true
+  end
+
+  protected
+
+  def sold_info
+    @product_data = ProductData.find(params[:id])
+    @last_transaction = Transaction.joins(:product).where('products.product_id = ?', @product_data.id).product('transactions.created_at desc').first
+  end
+
+  def log_impression
+    begin
       @product = Product.cached_find(params[:id])
-      # chart data
-      end_time = Time.now
-      @week_stats = prepare_stats(end_time - 6.days, end_time)
-      @month_stats = prepare_stats(end_time - 30.days, end_time)
-
-
-
-
+    rescue
+      @product = nil
     end
-
-
-
-
-    def destroy
-      @product = Product.find(params[:id])
-
-      if @product.destroy
-        Product.reindex
-        expire_fragment('product')
-        flash[:success] = "#{@product.name} removido"
-      end
-    end
-
-    def autocomplete
-      render json: Product.search(params[:query], fields: [{ name: :text_start }], limit: 4).map(&:name)
-    end
-
-    def omniauth_callback
-      cookies[params[:provider] + '_auth_token'] = { value: params[:access_token]}
-      render :nothing => true
-    end
-
-    protected
-
-    def sold_info
-      @product_data = ProductData.find(params[:id])
-      @last_transaction = Transaction.joins(:product).where('products.product_id = ?', @product_data.id).product('transactions.created_at desc').first
-    end
-
-    def log_impression
-      begin
-        @product = Product.cached_find(params[:id])
-      rescue
-        @product = nil
-      end
-      if @product.present?
-        ip_addr = request.remote_ip
-        @impressions = @product.impressions.group(:ip_address).size[ip_addr]
-        if @impressions
-          if @impressions >= 1
-            return false
-          else
-            @product.impressions.create(ip_address: ip_addr)
-          end
+    if @product.present?
+      ip_addr = request.remote_ip
+      @impressions = @product.impressions.group(:ip_address).size[ip_addr]
+      if @impressions
+        if @impressions >= 1
+          return false
         else
           @product.impressions.create(ip_address: ip_addr)
         end
+      else
+        @product.impressions.create(ip_address: ip_addr)
       end
     end
-
-
-
-    def prepare_stats(start_time, end_time)
-      @product = Product.cached_find(params[:id])
-
-      result = @product.impressions.stats(start_time..end_time).to_a.map(&:serializable_hash)
-      start_time.to_date.upto(end_time.to_date) do |date|
-        result << { count: 0, day: date } unless result.any? { |s| s['day'] == date.to_formatted_s(:db) }
-      end
-      result
-    end
-
-
-
-    private
-
-    def correct_product
-      @product = Product.cached_find(params[:id])
-      redirect_to login_path unless current_vitrine?(@product.vitrine)
-    end
-
-
   end
+
+
+
+  def prepare_stats(start_time, end_time)
+    @product = Product.cached_find(params[:id])
+
+    result = @product.impressions.stats(start_time..end_time).to_a.map(&:serializable_hash)
+    start_time.to_date.upto(end_time.to_date) do |date|
+      result << { count: 0, day: date } unless result.any? { |s| s['day'] == date.to_formatted_s(:db) }
+    end
+    result
+  end
+
+
+
+  private
+
+  def correct_product
+    @product = Product.cached_find(params[:id])
+    redirect_to login_path unless current_vitrine?(@product.vitrine)
+  end
+
+
+end

@@ -3,10 +3,10 @@ require 'will_paginate/array'
 class VotesController < ApplicationController
   before_filter :authorize, :correct_user, only: [:create, :edit, :update, :destroy]
   def products
-     
- 
- @products = @user.find_up_voted_items.paginate(page: params[:page], per_page: 22)
- 
+
+
+    @products = @user.find_up_voted_items.paginate(page: params[:page], per_page: 22)
+
   end
 
   def vitrines

@@ -12,17 +12,14 @@ class SessionsController < ApplicationController
       user.update_attribute(:login_at, Time.zone.now)
       user.update_attribute(:ip_address, request.remote_ip)
       if user.email_confirmed
-       # params[:remember_me]
+        # params[:remember_me]
         cookies[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now} 
-             else
-         flash.now[:alert] = "Primeiramente ative sua conta, verifique seu email com nosso email de confirmação"
- render :new
-
-      #  cookies[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now}
+      else
+        flash.now[:alert] = "Primeiramente ative sua conta, verifique seu email com nosso email de confirmação"
+        render :new
  
-
       end
-     redirect_to root_url #, :notice => "Logado!"
+      redirect_to root_url #, :notice => "Logado!"
     else
       flash.now[:alert] = "Email,  Password inválido ou conta inativa"
       render :new
@@ -30,7 +27,7 @@ class SessionsController < ApplicationController
   end
 
 
- 
+
 
 
 
@@ -38,7 +35,7 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
 
     # twitter auth used for product sharing only
-   if auth_hash[:provider] == 'twitter'
+    if auth_hash[:provider] == 'twitter'
       cookies['twitter_auth_token'] = { value: auth_hash[:credentials][:token]}
       cookies['twitter_auth_secret'] = { value: auth_hash[:credentials][:secret]}
       render :text => '<script type="text/javascript">window.close();</script>'
@@ -55,7 +52,7 @@ class SessionsController < ApplicationController
       email_domain = ''
       email_domain = '@facebook.com' if auth_hash[:provider] == 'facebook'
       user = User.new(email: auth_hash[:info][:email] || auth_hash[:info][:nickname] + email_domain, first_name: auth_hash[:info][:first_name] || '', last_name: auth_hash[:info][:last_name] || '',  address: auth_hash[:extra][:location] || '', gender: 'I')
-      
+
       user.password_digest = ''
       user.save!(validate: false)
     end
@@ -75,12 +72,12 @@ class SessionsController < ApplicationController
 
 
   def facebook
-     @facebook ||= Koala::Facebook::API.new(oauth_token)
-     block_given? ? yield(@facebook) : @facebook
-   rescue Koala::Facebook::APIError => e
-     logger.info e.to_s
-     nil
-   end
+    @facebook ||= Koala::Facebook::API.new(oauth_token)
+    block_given? ? yield(@facebook) : @facebook
+  rescue Koala::Facebook::APIError => e
+    logger.info e.to_s
+    nil
+  end
 
 
   def destroy

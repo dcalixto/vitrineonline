@@ -31,13 +31,4 @@ class ViewsController < ApplicationController
 
 
 
-
-
-
-
-
-
-
-
-
 end

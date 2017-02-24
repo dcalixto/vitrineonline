@@ -1,11 +1,11 @@
 # encoding: utf-8
- require 'product_recommender'
+require 'product_recommender'
 class UsersController < ApplicationController
   before_filter :authorize, only: [:edit, :update, :destroy]
   cache_sweeper :user_sweeper
 
   def show
-    
+
     @user = User.cached_find(params[:id])
     canonical_url url_for(@user)
 
@@ -13,8 +13,8 @@ class UsersController < ApplicationController
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
     @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])    # suggestions for current visitor
-   
-    
+
+
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
 
@@ -24,11 +24,9 @@ class UsersController < ApplicationController
 
   end
 
-def welcome
-  
-end
+  def welcome
 
-
+  end
 
 
 
@@ -36,33 +34,33 @@ end
   def feedbacks
 
 
-  begin
+    begin
       @user = User.cached_find(params[:id])
     rescue
       @user = nil
     end
 
     unless @user.nil?
- @user = User.cached_find(params[:id])
-    # @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
-    @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
-    @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
-    @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
+      @user = User.cached_find(params[:id])
+      # @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
+      @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
+      @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+      @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
 
-    respond_to do |format|
-      format.html { render 'feedbacks' }
+      respond_to do |format|
+        format.html { render 'feedbacks' }
+      end
+
+
     end
 
-        
-    end
 
 
 
+  end
 
-     end
 
 
- 
 
 
 
@@ -101,11 +99,11 @@ end
 
     if @user.save
       UserMailer.registration_confirmation(@user).deliver
-   #   @user.authenticate(params[:user][:password])
+      #   @user.authenticate(params[:user][:password])
       @user.update_attribute(:login_at, Time.zone.now)
       @user.update_attribute(:ip_address, request.remote_ip)
-   #   cookies[:auth_token] = {:value => @user.auth_token, :expires => 3.month.from_now}
-       
+      #   cookies[:auth_token] = {:value => @user.auth_token, :expires => 3.month.from_now}
+
 
       redirect_to root_url
       flash[:success] = "Um Email de confirmação foi enviado para seu email".html_safe
@@ -122,9 +120,9 @@ end
       flash[:success] = "Bem vindo a Vitrineonline  Seu email foi confirmado.
       Por favor logue para continuar.".html_safe
       #redirect_to login_url
-       redirect_to  page_path('welcome')
-          cookies[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now} 
-       
+      redirect_to  page_path('welcome')
+      cookies[:auth_token] = { :value => user.auth_token, httponly: true, :expires => 1.year.from_now} 
+
     else
       flash[:error] = "Desculpa. Usuário inexistente"
       redirect_to root_url
@@ -159,7 +157,7 @@ end
 
   def update
     @user = User.find(params[:id])
-     respond_to do |format|
+    respond_to do |format|
       format.html do
         @states = State.all
         @cities = City.where('state_id = ?', State.first.id)
