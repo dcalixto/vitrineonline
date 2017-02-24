@@ -31,7 +31,9 @@ class FeedbacksController < ApplicationController
       flash[:success] = 'Obrigado'
       @order.feedback = feedback
       @order.save
-
+  
+    @feedback.create_activity :create, owner: current_user, recipient: @feedback.user
+    
     else
       flash[:error] = 'Erro'
     end

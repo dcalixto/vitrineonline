@@ -1,3 +1,4 @@
+
 <% conversation.participants(:not => current_user).each do |user| %>
   
   <td class="block_avatar">
@@ -7,8 +8,10 @@
     </td>
     <td class="message_body">
       <%= link_to conversation_path(conversation.id), :class => "message_link" do %>
-          <%= user.first_name %> <%= user.last_name %>
+        <%if conversation.participants.present? %>
 
+          <%= user.first_name %> <%= user.last_name %>
+        <% end %>
           <p><%= conversation.display_message.body %></p>
       <% end %>
      

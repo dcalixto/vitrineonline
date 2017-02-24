@@ -35,6 +35,10 @@ Vitrineonline::Application.routes.draw do
   # REPORTS
   resources :reports, only: [:new, :create]
 
+  # REPORTS
+  resources :notifications, only: [:index]
+
+
   # USER
 get 'welcome', to: 'users#welcome', as: 'welcome'
 

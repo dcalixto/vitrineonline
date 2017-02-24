@@ -4,7 +4,12 @@ class VitrinesController < ApplicationController
    before_filter :authorize_vitrine, only: [:edit, :update]
    before_filter :log_impression, only: [:show]
 cache_sweeper :vitrine_sweeper
-  def show
+ 
+
+include ProductsHelper 
+
+
+def show
     @vitrine = Vitrine.cached_find(params[:id])
 
    # if request.path != vitrine_path(@vitrine)
@@ -147,12 +152,14 @@ end
 def upvote
   @vitrine = Vitrine.cached_find(params[:id])
   @vitrine.upvote_by current_user
+   @vitrine.create_activity :create, owner: current_user
   redirect_to :back
 end
 
 def downvote
    @vitrine = Vitrine.cached_find(params[:id])
   @vitrine.downvote_by current_user
+   @vitrine.create_activity :create, owner: current_user
     redirect_to :back
 end
 

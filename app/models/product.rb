@@ -47,7 +47,9 @@ belongs_to :material
 
 
 
-
+  include PublicActivity::Model
+   
+tracked owner: ->(controller, model) { controller.current_vitrine? ? controller.current_vitrine : controller.current_user }
 
 
  acts_as_votable 
@@ -115,6 +117,17 @@ end
   def cached_product
     Product.cached_find(product_id)
   end
+
+
+
+
+
+ after_commit :clear_cache
+
+  def clear_cache
+    $redis.del "products"
+  end
+
 
   scope :for_ids_with_order, ->(ids) {
     order = ids.blank? ? nil : "(#{ids.map { |i| "id=#{i}" }.join(',')}) DESC"

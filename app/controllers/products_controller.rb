@@ -7,7 +7,11 @@ class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
   before_filter :authorize_vitrine, only: [:create, :edit, :update]
-   def index
+  
+  include ProductsHelper 
+
+  
+  def index
     @products = Product.aggs_search(params)
     # suggestions for current visitor
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
@@ -153,11 +157,13 @@ class ProductsController < ApplicationController
 
 
 
-  params[:images]['ifoto'].each do |a|
+  params[:images]['ifoto'].each do |k, a|
           @image = @product.images.create!(:ifoto => a.pop)
   end
 
-    
+   
+
+   @product.create_activity :create, owner: current_vitrine
           #facebook sharing
           Product.reindex
           if @product.is_shared_on_facebook

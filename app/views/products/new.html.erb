@@ -82,20 +82,28 @@
     <li class="tip">As imagens serão redimencionandas para 245 x 135 de altura</li>
     </ul>
 
- <div class="ropzone" id="roduct_images" name="mages[ifoto][]" data-post-url="<#%= products_path + '?authenticity_token=' + form_authenticity_token %>"></div>
 
-   
+	<%= p.fields_for :images, html: { multipart: true, class: "dropzone", id: "product_images"} do |f| %>
+				<div class="fallback">
+					<%= f.label :ifoto %><br>
+					<% f.file_field :ifoto, id: "files_to_upload", name: "images[ifoto][]", :multiple => true %>
+					<%#:multiple => true, name: "images[ifoto][]", id: "my-awesome-dropzone"%>
+					<div id="my-awesome-dropzone"></div>
+				</div>
+			<% end %>
 
 
 
- <%= p.fields_for :images, @product.images.build , html: { multipart: true, class: "dropzone", id: "product_images"}  do |f| %>
-     <div class="dropzone" id="product_images">
-       <%= f.label :ifoto %><br>
-       <%= f.file_field :ifoto, :multiple => true, name: "images[ifoto][]"%>
+
+
+ <#%= p.fields_for :images, @product.images.build , html: { multipart: true, class: "dropzone", id: "product_images"}  do |f| %>
+     <div class="fallback" >
+       <#%= f.label :ifoto %><br>
+       <#%= f.file_field :ifoto, :multiple => true, name: "images[ifoto][]"%>
       
 
      </div>
-   <% end %>
+   <#% end %>
 
 
 

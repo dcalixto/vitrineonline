@@ -1,7 +1,7 @@
 
 
 <div class="box1">
-  <div class="block_white">
+  <div class="block">
     <div class="content">
       <div class="flash_box">
         <%= render 'shared/flash_messages' %>
@@ -20,13 +20,54 @@
 
 
 <div class="box3">
-  <div class="block_white">
+  <div class="block">
 
 
 
     <div class="content">
       <h2>Produtos Postados Recentemente</h2>
-      <%= render :partial => "shared/product_table" %>
+
+
+
+
+
+
+<div id="searchResults">
+      <table id="posts" class="product_table">
+        <tbody class="page">
+          <tr>
+            <% @products.last(22).each do |product|%>
+
+              <td>
+                <%=link_to product_path(product.id), :class=>"product" do %>
+                  <%if product.images.present? %>
+                    <%=image_tag product.images.first.ifoto.url(:thumb).to_s, :class=>"productImg" %>
+                  <% end %>
+                  <span class="productName">
+                    <%=product.name %></span>
+                  <span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
+
+
+                  <% if product.vitrine.feedbacks.present? %>
+                    <div class="productFeeback">
+                      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+                      <%=@total_feedbacks %>
+                    </div>
+                  <% end %>
+                  <span class="by">Por
+                    <%=product.vitrine.name %></span>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+
+
+
+        </tbody>
+      </table>
+    </div>
+
+
 
       
 

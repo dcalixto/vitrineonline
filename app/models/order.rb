@@ -52,6 +52,16 @@ class Order < ActiveRecord::Base
     ProductRecommender.add_order(order)
   end, on: :create
 
+
+
+include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
+
+
+
+
+
+
   def create_product_data
     if status == Order.statuses[0]
       pr_id = product.id

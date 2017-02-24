@@ -23,4 +23,19 @@ module ProductsHelper
 
 
 
+
+
+  def fetch_products
+    products =  $redis.get("products")
+    if products.nil?
+      products = Product.all.to_json
+      $redis.set("products", products)
+      # Expire the cache, every 3 hours
+      $redis.expire("products",3.hour.to_i)
+    end
+    @products = JSON.load products
+  end
+
+
+
 end

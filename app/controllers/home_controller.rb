@@ -2,7 +2,7 @@
 require 'product_recommender'
 class HomeController < ApplicationController
   # caches_action :index, :layout => false
-
+include ProductsHelper 
 
   def index
     @vitrines = Vitrine.all

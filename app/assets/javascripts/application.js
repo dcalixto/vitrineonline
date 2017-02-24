@@ -44,15 +44,6 @@ NProgress.done();
 
 
 
-$(document).ready(function() {
-$('vitrine_about').readmore({
-  speed: 75,
-  moreLink: '<a href="#">Ler Mais</a>'
-
-});
-
-});
-
 // TWITTER OAUTH
 $(document).ready(function() {
     $('#product_is_shared_on_twitter').click(function (e) {
