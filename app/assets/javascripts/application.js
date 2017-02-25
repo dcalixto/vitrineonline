@@ -1,17 +1,16 @@
-//= require jquery_ujs
-//= require jquery.timeago
+
+
 //= require private_pub
 //= require morris.min
 //= require raphael.min
 
-//= require jquery.raty
+
 //= require jquery.tipsy
 //= require jquery-dynamic-selectable
 
-//= require social-share-button
 
-//= require respond.min
-//= require url.min
+
+
 
 //= Markdown.Converter
 //= Markdown.Editor
@@ -26,7 +25,7 @@
 
 //= require jquery.liquidcarousel
 //= dropit
-//= responsiveTabs
+
 //= require_tree .
 
 
