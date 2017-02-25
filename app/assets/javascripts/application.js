@@ -7,7 +7,7 @@
 //= require jquery.raty
 //= require jquery.tipsy
 //= require jquery-dynamic-selectable
-//= require select2
+
 //= require social-share-button
 
 //= require respond.min
