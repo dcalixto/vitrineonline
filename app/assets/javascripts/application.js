@@ -3,16 +3,16 @@
 //= require private_pub
 //= require morris.min
 //= require raphael.min
-//= require jquery.fancybox.pack
+
 //= require jquery.raty
 //= require jquery.tipsy
 //= require jquery-dynamic-selectable
 //= require select2
 //= require social-share-button
-//= require dropzone
+
 //= require respond.min
 //= require url.min
-//= jquery.menu-aim
+
 //= Markdown.Converter
 //= Markdown.Editor
 //= Markdown.Sanitizer
@@ -23,7 +23,7 @@
 
 //= tipsy
 //= require jquery.bettertabs.min
-//= require nprogress
+
 //= require jquery.liquidcarousel
 //= dropit
 //= responsiveTabs

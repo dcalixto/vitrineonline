@@ -33,5 +33,17 @@ include ActsAsTaggableOn::TagsHelper
 
 
 
+
+  def fetch_vitrines
+    vitrines =  $redis.get("vitrines")
+    if vitrines.nil?
+      vitrines = Vitrine.all.to_json
+      $redis.set("vitrines", vitrines)
+      # Expire the cache, every 3 hours
+      $redis.expire("vitrines",3.hour.to_i)
+    end
+    @vitrines = JSON.load vitrines
+  end
+
   
 end

@@ -61,6 +61,11 @@
 <% cache "js" do %>
 <%=jquery_include_tag :google %>
 <%=javascript_include_tag "application" %>
+
+
+<%= javascript_include_tag "https://cdn.jsdelivr.net/g/fancybox@2.1.5(jquery.fancybox.min.js),dropzone@4.3.0,nprogress@0.1.6,jquery.menu-aim@0.1" %>
+
+
 <% end %>
 <% cache "facebook" do %>
 <%=render "layouts/facebook" %>

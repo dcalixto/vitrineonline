@@ -62,6 +62,17 @@ include PublicActivity::Model
 
   after_commit :flush_cache
 
+
+
+ after_commit :clear_cache
+
+  def clear_cache
+    $redis.del "vitrines"
+  end
+
+
+
+
   def self.cached_find(id)
     Rails.cache.fetch([name, id], expires_in: 5.minutes) { find(id) }
   end
