@@ -41,7 +41,8 @@ gem 'acts_as_votable', '~> 0.10.0'
 
 
 # CHART
-#gem 'chartjs-ror'
+gem "chartkick"
+gem 'groupdate'
 
 #TASK SHEDULE
 gem 'whenever', require: false
@@ -82,9 +83,9 @@ gem 'annotate' # , :git => 'git://github.com/ctran/annotate_models.git'
 gem 'mail_form'
 
 #SELECT
-gem 'select2-rails'
-gem 'dynamic_selectable', github: "dcalixto/dynamic_selectable"
 
+gem 'dynamic_selectable', github: "dcalixto/dynamic_selectable"
+gem "select2-rails"
 
 #FOREMAN
 
@@ -136,8 +137,6 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 
-gem 'prawn'
-gem 'invoice_printer'
 
 
 # ADMIN & SECURITY
@@ -150,7 +149,7 @@ gem 'no_cache_control',     github: "dcalixto/no_cache_control"
 # IMAGE
 gem 'carrierwave','~> 0.9.0'
 gem 'mini_magick'
-gem 'dropzonejs-rails'
+#gem 'dropzonejs-rails'
 
 
 
@@ -219,11 +218,11 @@ gem 'wicked'
 gem 'test-unit', '~> 3.0'
 
 # JAVASCRIPT & JSON
-gem 'jquery-rails' # , "< 3.0.0"
-gem 'jquery-rails-cdn'
+#gem 'jquery-rails' # , "< 3.0.0"
+
 gem 'oj'
 gem 'json'
-gem 'jquery-ui-rails' # , '~> 4.2.1'
+#gem 'jquery-ui-rails' # , '~> 4.2.1'
 
 group :assets do
   gem 'sass-rails'

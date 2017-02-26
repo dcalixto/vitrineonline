@@ -30,10 +30,13 @@
 
 
 
+<%= line_chart  @current_vitrine.impressions.group_by_day(:created_at).count %>
+
+  <%= line_chart @week_stats.to_json.html_safe  %>
 
 
 
-
+ <%= line_chart @month_stats.to_json.html_safe %>
 
 
 

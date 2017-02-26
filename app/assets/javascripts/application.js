@@ -9,9 +9,6 @@
 //= require jquery-dynamic-selectable
 
 
-
-
-
 //= Markdown.Converter
 //= Markdown.Editor
 //= Markdown.Sanitizer
@@ -26,9 +23,16 @@
 //= require jquery.liquidcarousel
 //= dropit
 
+
+//= require chartkick
+
 //= require_tree .
 
 
+
+jQuery(function($) {
+  $('script').attr('defer', 'defer');
+});
 
 
 $(document).ready(function() {
