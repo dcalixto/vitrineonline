@@ -18,8 +18,12 @@
 
     <div id="placeholder">
       <% if @product.images.first.present? %>
-        <%= image_tag @product.images.first.ifoto.url(:big).to_s, :id => 'mainImage', :class=>"circle" %>
-        <%= render_showcase %>
+        <a href="<%= @product.images.first.ifoto.url.to_s %>">
+     
+      
+          <%= image_tag @product.images.first.ifoto.url(:big).to_s, :id => 'mainImage' %>
+          </a>
+                <%= render_showcase %>
       <% end %>
     </div>
 

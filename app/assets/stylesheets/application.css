@@ -35,7 +35,7 @@
 *= require nprogress
 *= require search
 *= require details
-*= require jquery.fancybox
+
 *= require jquery.raty
 *= require tipsy
 *= require select2

@@ -1,14 +1,7 @@
 
-
 //= require private_pub
-//= require morris.min
-//= require raphael.min
-
-
 //= require jquery.tipsy
 //= require jquery-dynamic-selectable
-
-
 //= Markdown.Converter
 //= Markdown.Editor
 //= Markdown.Sanitizer
@@ -16,15 +9,9 @@
 //= dropzone_avatar
 //= dropzone_images
 //= dropzone_logo
-
-//= tipsy
 //= require jquery.bettertabs.min
-
 //= require jquery.liquidcarousel
 //= dropit
-
-
-//= require chartkick
 
 //= require_tree .
 
@@ -120,24 +107,6 @@ $("#main-nav").menuAim({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // SELECT2 (TAGS)
 $(document).ready(function() {
   $('#product_tags').select2({
@@ -160,7 +129,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('.thumbnail').on("click", function(e) {
     $('#mainImage').hide();
-    var i = $('<img />').attr('src', $(this).data('zoom-href')).load(function() {
+    var i = $('<img />').attr('src', $(this).data('-href')).load(function() {
       $('#mainImage').attr('src', i.attr('src')).fadeIn();
     });
     e.preventDefault();
@@ -168,11 +137,11 @@ $(document).ready(function() {
     return false;
   });
   $('#placeholder').click(function() {
-    var img = $("img[data-zoom-href='" + $(this).find('img').attr('src') + "']");
+    var img = $("img[data-href='" + $(this).find('img').attr('src') + "']");
     var index = $("#showcase img").index(img);
-    $.fancybox($('#showcase a'), {
-      index: index
-    });
+    $('#showcase a'), {
+     index: index
+    };
   });
 });
 
