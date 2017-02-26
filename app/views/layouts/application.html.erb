@@ -52,7 +52,7 @@
 <div id=container>
 <%=breadcrumbs separator: "&rsaquo;" %>
 <%=yield %>
-
+<%= yield :charts_js %>
 </div>
 
 
@@ -86,7 +86,7 @@
 <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js" %>
 
 <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-
+<%= javascript_include_tag "//www.google.com/jsapi" %>
 <%=javascript_include_tag "application" %>
 
 
