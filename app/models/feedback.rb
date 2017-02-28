@@ -5,8 +5,8 @@ class Feedback < ActiveRecord::Base
   has_one :order
  has_one :product, through: :order 
 
-include PublicActivity::Model
-  tracked owner: ->(controller, model) { controller && controller.current_user }
+#include PublicActivity::Model
+ # tracked owner: ->(controller, model) { controller && controller.current_user }
 
 #validates_presence_of  :buyer_comment, :seller_comment, nil: false  # this cause a bug - buyer can't post feedback
 

@@ -150,14 +150,14 @@ class VitrinesController < ApplicationController
   def upvote
     @vitrine = Vitrine.cached_find(params[:id])
     @vitrine.upvote_by current_user
-    @vitrine.create_activity :create, owner: current_user
+   
     redirect_to :back
   end
 
   def downvote
     @vitrine = Vitrine.cached_find(params[:id])
     @vitrine.downvote_by current_user
-    @vitrine.create_activity :create, owner: current_user
+   
     redirect_to :back
   end
 

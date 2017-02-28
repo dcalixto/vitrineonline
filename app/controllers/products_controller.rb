@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
 
-    #  @image =  @product.images.build
+
 
 
     @product = current_vitrine.products.build(params[:product])
@@ -156,14 +156,17 @@ class ProductsController < ApplicationController
         if @product.save
 
 
+if params[:images].present?
+            params[:images]['ifoto'].each do |k, a|
+              if !a.blank?
+                @image = @product.images.build(params[:image])
+                @image = @product.images.create!(:ifoto => a)
+              end
+            end
 
-          params[:images]['ifoto'].each do |k, a|
-            @image = @product.images.create!(:ifoto => a.pop)
-          end
 
 
-
-          @product.create_activity :create, owner: current_vitrine
+        
           #facebook sharing
           Product.reindex
           if @product.is_shared_on_facebook
@@ -236,6 +239,8 @@ class ProductsController < ApplicationController
 
   end
 
+
+  end
 
 
 

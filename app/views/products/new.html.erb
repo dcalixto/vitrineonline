@@ -11,99 +11,92 @@
 &gt; Postar
 </div>
 <div class="flash_box">
-  <%=render 'shared/flash_messages' %>
-  <%=render 'shared/error_messages', :target=> @product %>
-  </div>
+<%=render 'shared/flash_messages' %>
+<%=render 'shared/error_messages', :target=> @product %>
+</div>
 
 
-  <%= form_for @product,  :html => {:multipart => true} do |p| %>
+<%= form_for @product,  :html => {:multipart => true} do |p| %>
 
 
-    <div class="block margin_top">
+  <div class="block margin_top">
 
 
-    <table class="block_search">
-    <tr>
-    <td>
+  <table class="block_search">
+  <tr>
+  <td>
 
-    <h1>Postar</h1>
-    </td>
+  <h1>Postar</h1>
+  </td>
 
-    <td>
-    <%= p.submit 'Postar', :class =>"btn btn_big" %>
+  <td>
+  <%= p.submit 'Postar', :class =>"btn btn_big" %>
 
-    </td>
+  </td>
 
-    </tr>
-
-
-
-
-    </table>
+  </tr>
 
 
 
+
+  </table>
 
 
 
 
 
 
-    <div id="horizontalTab">
-    <ul>
-    <li><a href="#tab-1">Imagem e descrição</a></li>
-    <li><a href="#tab-2">Estilos e Marcas</a></li>
-    <li><a href="#tab-3">Tamanho e Cor</a></li>
-    <li><a href="#tab-4">Material e Condição</a></li>
-    <li><a href="#tab-5">Nome e preço</a></li>
-
-    </ul>
-
-    <div id="tab-1">
-    <h1>Imagens e especifiações</h1>
-
-    <div class="subcontent">
 
 
 
+  <div id="horizontalTab">
+  <ul>
+  <li><a href="#tab-1">Imagem e descrição</a></li>
+  <li><a href="#tab-2">Estilos e Marcas</a></li>
+  <li><a href="#tab-3">Tamanho e Cor</a></li>
+  <li><a href="#tab-4">Material e Condição</a></li>
+  <li><a href="#tab-5">Nome e preço</a></li>
 
+  </ul>
 
+  <div id="tab-1">
+  <h1>Imagens e especifiações</h1>
 
-    <h2>Fotos</h2>
-    <%= image_tag @product.images.first.ifoto.url(:thumb) unless @product.images.blank? %>
-
-    <p class="tip">Adicione no mínimo 2 fotos</p>
-    <p class="tip">
-    Se você tem dúvida de como tirar suas fotos acesse o link
-    <%= link_to 'Fotografia', page_path('fotografia') %></p>
-
-    <ul class="image_info">
-    <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
-    <li class="tip">As imagens serão redimencionandas para 245 x 135 de altura</li>
-    </ul>
-
-
-	<%= p.fields_for :images, html: { multipart: true, class: "dropzone", id: "product_images"} do |f| %>
-				<div class="fallback">
-					<%= f.label :ifoto %><br>
-					<% f.file_field :ifoto, id: "files_to_upload", name: "images[ifoto][]", :multiple => true %>
-					<%#:multiple => true, name: "images[ifoto][]", id: "my-awesome-dropzone"%>
-					<div id="my-awesome-dropzone"></div>
-				</div>
-			<% end %>
+  <div class="subcontent">
 
 
 
 
 
- <#%= p.fields_for :images, @product.images.build , html: { multipart: true, class: "dropzone", id: "product_images"}  do |f| %>
-     <div class="fallback" >
-       <#%= f.label :ifoto %><br>
-       <#%= f.file_field :ifoto, :multiple => true, name: "images[ifoto][]"%>
-      
 
-     </div>
-   <#% end %>
+  <h2>Fotos</h2>
+ 
+
+  <p class="tip">Adicione no mínimo 2 fotos</p>
+  <p class="tip">
+  Se você tem dúvida de como tirar suas fotos acesse o link
+  <%= link_to 'Fotografia', page_path('fotografia') %></p>
+
+  <ul class="image_info">
+  <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
+  <li class="tip">As imagens serão redimencionandas para 245 x 135 de altura</li>
+  </ul>
+
+
+
+
+
+
+  <%= p.fields_for :images, html: { multipart: true, class: "dropzone", id: "product_images"} do |f| %>
+    <div class="fallback">
+    <%= f.label :ifoto %><br>
+    <% f.file_field :ifoto, id: "files_to_upload", name: "images[ifoto][]", :multiple => true %>
+        <div class="dropzone"></div>
+    </div>
+  <% end %>
+
+
+
 
 
 
@@ -134,14 +127,14 @@
 
 
 
- </div>
+    </div>
 
 
 
     </div>
 
 
-    
+
     <div id="tab-2">
     <h2>Estilos</h2>
 
@@ -150,36 +143,36 @@
     </p>
     <%= p.select :tag_list, options_for_tags(@product.tag_list), {}, { id: 'product_tags', multiple: true } %>
 
-  </div>
-
- 
-  <div class="subcontent">
-   <h2>Marca</h2>
+    </div>
 
 
-  <%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
-  <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
-  </div>
-
-  </div> 
-
- 
+    <div class="subcontent">
+    <h2>Marca</h2>
 
 
-  <div id="tab-3">
-  <h2>Tamanho</h2>
+    <%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
+    <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'brand_list', :multiple => false}) %>
+    </div>
 
-  <div class="subcontent horizonal_list">
-  <ul>
- <%= hidden_field_tag "size_ids", nil %>
+    </div> 
 
-  <%=p.collection_check_boxes :size_ids, Size.all, :id, :size %>
- <%= label_tag "Tamanho" %>
 
-  <#%= hidden_field_tag "product[size_ids][]", nil %>
-<#% Size.order(:size).each do |size| %>
-<li> <@%= check_box_tag "product[size_ids][]", size.id, @product.sizes_ids.include?(size.id), id: dom_id(size) %>
-                <#%= label_tag dom_id(size), size.size %>
+
+
+    <div id="tab-3">
+    <h2>Tamanho</h2>
+
+    <div class="subcontent horizonal_list">
+    <ul>
+    <%= hidden_field_tag "size_ids", nil %>
+
+    <%=p.collection_check_boxes :size_ids, Size.all, :id, :size %>
+    <%= label_tag "Tamanho" %>
+
+    <#%= hidden_field_tag "product[size_ids][]", nil %>
+  <#% Size.order(:size).each do |size| %>
+  <li> <@%= check_box_tag "product[size_ids][]", size.id, @product.sizes_ids.include?(size.id), id: dom_id(size) %>
+<#%= label_tag dom_id(size), size.size %>
               </li>
               <#% end %>
 
@@ -194,12 +187,12 @@
         <h2>Cor</h2>
 
         <div class="subcontent horizonal_list">
-    
-     <%= hidden_field_tag "color_ids", nil %>
 
-  <%=p.collection_check_boxes :color_ids, Color.all, :id, :name %>
- <%= label_tag "Cor" %>    
-        
+        <%= hidden_field_tag "color_ids", nil %>
+
+        <%=p.collection_check_boxes :color_ids, Color.all, :id, :name %>
+        <%= label_tag "Cor" %>    
+
         <ul>
         <#%= hidden_field_tag "product[color_ids][]", nil %>
       <#% Color.all.each do |color| %>
@@ -216,7 +209,7 @@
 
 
 
-  </div> 
+    </div> 
 
 
 
@@ -224,9 +217,9 @@
 
 
     <div id="tab-4">
-    
+
       <div class="subcontent ">
-  <h2>Material</h2>
+        <h2>Material</h2>
 
         <ul>
 
@@ -237,10 +230,10 @@
         </ul>
       </div>
 
-    
+
 
       <div class="subcontent ">
-          <h2>Condição</h2>
+        <h2>Condição</h2>
         <ul>
           <li>
             <%=  p.collection_select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false,  :class=>"select_item"})%>
@@ -264,89 +257,89 @@
 
         <h2>Nome do seu produto</h2>
         <%=p.text_field :name, :label=>"Nome"%>
-           <div class="subcontent">
+        <div class="subcontent">
 
-                    <h2>Selecione as categorias</h2>
-              <div class="form-group">
-                <%=p.label :gender_id, 'Genero' %>&nbsp;
-                <%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control select_item' } %>
+          <h2>Selecione as categorias</h2>
+          <div class="form-group">
+            <%=p.label :gender_id, 'Genero' %>&nbsp;
+            <%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control select_item' } %>
 
 
-              </div>
-           
-              <div class="form-group">
-                <%=p.label :category_id, 'Categoria' %>&nbsp;
-                <%=dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Categoria' }, { class: 'form-control select_item' } %>
-              </div>
-             
-              <div class="form-group">
-                <%=p.label :subcategory_id, 'Subcategoria' %>&nbsp;
-                <%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control select_item' } %>
-              </div>
+          </div>
+
+          <div class="form-group">
+            <%=p.label :category_id, 'Categoria' %>&nbsp;
+            <%=dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Categoria' }, { class: 'form-control select_item' } %>
+          </div>
+
+          <div class="form-group">
+            <%=p.label :subcategory_id, 'Subcategoria' %>&nbsp;
+            <%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control select_item' } %>
+          </div>
+
+        </div>
+
+
+
+        <h2>Marca Própria</h2>
+
+
+        <p class="tip">Se você tem sua marca por favor adicione
+        </p>
+        <%= p.fields_for  :brand_attributes  do |b| %>
+
+          <%=b.text_field :name, :label=>"Nome"%>
+        <% end %>
+
+
+
+        <h2>Preço e Quantidade</h2>
+        <ul>
+          <li>
+            <%=p.label :quantity, 'Quantidade' %>&nbsp;
+            <%=p.number_field :quantity, :label=>"Quantidade" %>
+          </li>
+  </br>
+  <li>
+    <%=p.label :price, 'Preço' %>&nbsp;
+
+    <%=p.text_field  :price, :label=>"Preço R$" %>
+  </li>
+        </ul>
+
 
       </div>
 
-           
+      <div class="subcontent  horizonal_list ">
+        <h2>Compartilhe</h2>
+        <ul><li>
+            <%= p.check_box :is_shared_on_facebook %>
+            <span class="social-share-button-facebook"></span>
+          </li>
+          <li>
+            &nbsp;&nbsp;&nbsp;
+            <%= p.check_box :is_shared_on_twitter %>
+            <span class="social-share-button-twitter"></span>
+          </li>
+        </ul>
 
-              <h2>Marca Própria</h2>
-
-
-              <p class="tip">Se você tem sua marca por favor adicione
-              </p>
-              <%= p.fields_for  :brand_attributes  do |b| %>
-
-                <%=b.text_field :name, :label=>"Nome"%>
-              <% end %>
-
-
-
-              <h2>Preço e Quantidade</h2>
-              <ul>
-                <li>
-                  <%=p.label :quantity, 'Quantidade' %>&nbsp;
-                  <%=p.number_field :quantity, :label=>"Quantidade" %>
-                </li>
-                </br>
-                <li>
-                  <%=p.label :price, 'Preço' %>&nbsp;
-
-                  <%=p.text_field  :price, :label=>"Preço R$" %>
-                </li>
-              </ul>
-
-
-            </div>
-
- <div class="subcontent  horizonal_list ">
-      <h2>Compartilhe</h2>
-      <ul><li>
-          <%= p.check_box :is_shared_on_facebook %>
-          <span class="social-share-button-facebook"></span>
-        </li>
-        <li>
-          &nbsp;&nbsp;&nbsp;
-          <%= p.check_box :is_shared_on_twitter %>
-          <span class="social-share-button-twitter"></span>
-        </li>
-      </ul>
-       
-</div>
+      </div>
 
     </div>
 
 
-   
-            
 
 
-    </div>
-         
-                 </div>
+
+
+  </div>
+
+  </div>
 
 <% end %>
 
-               
- </div>
+
+</div>
 
 
 

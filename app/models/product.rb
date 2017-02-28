@@ -47,9 +47,9 @@ belongs_to :material
 
 
 
-  include PublicActivity::Model
+ # include PublicActivity::Model
    
-tracked owner: ->(controller, model) { controller.current_vitrine? ? controller.current_vitrine : controller.current_user }
+#tracked owner: ->(controller, model) { controller.current_vitrine? ? controller.current_vitrine : controller.current_user }
 
 
  acts_as_votable 
@@ -63,7 +63,7 @@ tracked owner: ->(controller, model) { controller.current_vitrine? ? controller.
 
 
   cattr_accessor :form_steps do
-    %w(first preview)
+    %w(first)
   end
 
   attr_accessor :form_step

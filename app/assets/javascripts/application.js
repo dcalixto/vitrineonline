@@ -22,15 +22,6 @@ jQuery(function($) {
 });
 
 
-$(document).ready(function() {
-NProgress.configure({ showSpinner: false });
-
-NProgress.start();
-NProgress.done(); 
-
-
-});
-
 
 
 
@@ -220,7 +211,7 @@ function hideAnnouncement(announcement_created_at) {
                   $('.info').html('Tab <strong>' + tab.id + '</strong> activated!');
                 },
                 activateState: function(e, state) {
-                    //console.log(state);
+                    
                     $('.info').html('Switched from <strong>' + state.oldState + '</strong> state to <strong>' + state.newState + '</strong> state!');
                 }
             });
