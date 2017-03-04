@@ -58,15 +58,12 @@ class SessionsController < ApplicationController
       user.save!(validate: false)
     end
 
-    user.update_attribute(:login_at, Time.zone.now)
-
-    user.update_attribute(:ip_address, request.remote_ip)
-    user.update_attribute(:provider, auth_hash[:provider])
+     user.update_attribute(:provider, auth_hash[:provider])
     user.update_attribute(:uid, auth_hash[:uid])
     user.update_attribute(:oauth_token, auth_hash[:credentials][:token])
     user.update_attribute(:oauth_expires_at, Time.at(auth_hash[:credentials][:expires_at]))
 
-    cookies[:auth_token] = { value: user.oauth_token, expires: user.oauth_expires_at}
+   cookies[:auth_token] = { value: user.oauth_token, expires: user.oauth_expires_at}
     redirect_to root_url
   end
 

@@ -47,9 +47,14 @@ belongs_to :material
 
 
 
- # include PublicActivity::Model
-   
-#tracked owner: ->(controller, model) { controller.current_vitrine? ? controller.current_vitrine : controller.current_user }
+
+
+ attr_reader :brand_token
+
+    def brand_token=(id)
+        self.brand_id = id
+    end
+
 
 
  acts_as_votable 
@@ -77,15 +82,15 @@ belongs_to :material
 
 
   end
-#  validates :size_ids, :presence => true, :if => :active?
-#  validates :color_ids, :presence => true, :if => :active?
-## validates :material_id, :presence => true, :if => :active?
-# validates :condition_id, :presence => true, :if => :active?
+  validates :size_ids, :presence => true, :if => :active?
+ validates :color_ids, :presence => true, :if => :active?
+ validates :material_id, :presence => true, :if => :active?
+ validates :condition_id, :presence => true, :if => :active?
 
-# validates :images, :presence => true, :if => :active?
-##def active?
-#  status == 'active'
-#end
+validates :images, :presence => true, :if => :active?
+def active?
+  status == 'active'
+end
 
 
 

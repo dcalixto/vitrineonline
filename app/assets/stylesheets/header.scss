@@ -22,6 +22,15 @@ $desktop: min-width 1200px;
    top: 0;
   left: 0;
   z-index: 9999;
+
+
+
+
+    
+
+
+
+
  }
 
 
@@ -50,7 +59,7 @@ $desktop: min-width 1200px;
 
    margin-right:1px;
 
-   width: 140px;
+   width: 170px;
    height: 30px;
 
    margin-top:5px
@@ -68,17 +77,20 @@ $desktop: min-width 1200px;
   
              
              
-                background:#3f6ebc 
+                      background: #122d98;
 
-          
-      }
+
+   
+ 
+                              }
  .inner_blue  {
 
    height:45px;
      width:100%;
    display: block;
    
-  background:#3f6ebc 
+  background:#f1f1f1;
+
 
  }
 
@@ -91,11 +103,15 @@ $desktop: min-width 1200px;
    height: 33px;
 
  
-   border-bottom: 1px solid rgba(0,0,0,.0975);
+  
+        border-bottom: 1px solid #ebebeb;
+    outline-width: 0;
+    outline: none;
 
 
             
-          background:#fff;
+                 background:#fff;
+               /* background: #122d98;*/
 
  }
 
@@ -245,8 +261,6 @@ $desktop: min-width 1200px;
      display: block;
      white-space: nowrap;
            height: 33px;
- /*background-color: #f2f2f2;*/
- border-bottom: 1px solid #ccc;
 
        }
 
@@ -281,21 +295,16 @@ $desktop: min-width 1200px;
  }
 
  @include breakpoint($desktop){
-   .blue_bar, .inner_blue {
-
-
-
-
-
-   }
-
    .inner_bar, .inner_search, .inner_icons, .inner_blue_icons {
      margin: 0px auto;
      min-width: 960px;
-     max-width: 1200px;
+     max-width: 1300px;
 
      box-sizing: border-box;
      /*  overflow: auto;*/
+
+
+
    }
 
    .logo {
@@ -395,7 +404,8 @@ margin-right:5px;
    vertical-align: middle;
    float: right;
    font-weight:bold;
-color:#fff
+   color:#fff
+
    }
  .help {
    margin-right: 10px;

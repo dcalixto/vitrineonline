@@ -62,30 +62,34 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    respond_to do |format|
-      # format.html do
-      if @product.update_attributes(params[:product])
-        Product.reindex
 
-        redirect_to(action: :show, id: @product, only_path: true)
-        flash[:success] = "#{@product.name} atualizado"
-      else
-        render :edit
+
+
+
+    respond_to do |format|
+      format.html do
+        if @product.update_attributes(params[:product])
+         Product.reindex
+
+          redirect_to(action: :show, id: @product, only_path: true)
+          flash[:success] = "#{@product.name} atualizado"
+        else
+          render :edit
+        end
+      end
+      format.json do
+        if params[:images] && params[:images][:ifoto]
+          params[:images][:ifoto].values.each do |ifoto|
+            image = @product.images.build
+            image.ifoto = ifoto
+            image.save
+          end
+        end
+        render :nothing => true
       end
     end
-    #format.json do
-    #  if params[:images] && params[:images][:ifoto]
-    #   params[:images][:ifoto].values.each do |ifoto|
-    #     image = @product.images.build
-    #     image.ifoto = ifoto
-    #     image.save
-    #   end
-    #  end
-    #  render :nothing => true
-    #  end
-    # end
   end
-
+  
   def show
     @product = Product.cached_find(params[:id])
 
@@ -141,112 +145,15 @@ class ProductsController < ApplicationController
 
 
   def create
-
     @product = current_vitrine.products.build(params[:product])
+    if @product.save
+      # redirect_to wizard_path(steps.first, product_id: @product.id)
+      redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html)
 
-
-
-
-
-
-    respond_to do |format|
-      format.html do
-
-
-        if @product.save
-
-
-if params[:images].present?
-            params[:images]['ifoto'].each do |k, a|
-              if !a.blank?
-                @image = @product.images.build(params[:image])
-                @image = @product.images.create!(:ifoto => a)
-              end
-            end
-
-
-
-        
-          #facebook sharing
-          Product.reindex
-          if @product.is_shared_on_facebook
-            begin
-              client = Koala::Facebook::API.new cookies[:facebook_auth_token]
-              options = {
-                :name => @product.name,
-                :link => product_url(@product),
-                :caption => "#{current_user.full_name} postou um produto",
-                :description => @product.detail || ''
-              }
-              options[:picture] = (root_url[0...-1] + @product.images.first.ifoto.url(:big)) if @product.images.length > 0
-              client.put_wall_post("#{@product.name}", options)
-            rescue StandardError => e
-              logger.error e.message
-              @product.update_attribute :is_shared_on_facebook, false
-            end
-          end
-
-          #twitter sharing
-          if @product.is_shared_on_twitter
-            begin
-              client = Twitter::REST::Client.new do |config|
-                config.consumer_key        = ENV['TWITTER_API_KEY']
-                config.consumer_secret     = ENV['TWITTER_API_SECRET']
-                config.access_token        = cookies[:twitter_auth_token]
-                config.access_token_secret = cookies[:twitter_auth_secret]
-              end
-
-              status = "Olá! adicicionei um novo produto '#{@product.name}': #{product_url(@product)}"
-              if @product.images.length > 0
-                client.update_with_media status, File.new(@product.images.first.ifoto.path)
-              else
-                client.update status
-              end
-            rescue StandardError => e
-              logger.error e.message
-              @product.update_attribute :is_shared_on_twitter, false
-            end
-          end
-          redirect_to order_stocks_path(current_vitrine.id)
-        else
-          render :new, format: :html
-        end
-      end
-      format.json do
-
-        render :nothing => true
-
-
-        # @product = current_vitrine.products.build(params[:product])
-        #image = @product.images.build(params[:images])
-
-
-        #   end
-        #  if @product.save
-        #   if params[:images] && params[:images][:ifoto]
-        #    params[:images][:ifoto].values.each do |ifoto|
-
-        #            image.ifoto = ifoto
-        #     image.save
-      end
-      # render :nothing => true
-
+    else
+      render :new, format: :html
     end
-    # end
-    #   end
-    #end
-
-
   end
-
-
-  end
-
-
-
-
-
-
 
 
   def views

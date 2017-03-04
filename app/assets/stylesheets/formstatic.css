@@ -193,7 +193,7 @@
 --------------------------------------------------------------------------------------------------*/
 
 .formtastic .stringish input {
-  width: 99%
+  width: 80%
 }
 .formtastic .stringish input[size], .formtastic .stringish input[max] {
   width: auto;

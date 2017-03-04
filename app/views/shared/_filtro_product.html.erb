@@ -11,6 +11,7 @@
   <%if @products.aggs['gender_id']['buckets'].present? %>
     <div class="filtro">
       <h3>Genero</h3>
+       
       <ul>
         <% @products.aggs['gender_id']['buckets'].each do |bucket| %>
             <li>
@@ -22,6 +23,7 @@
             </li>
         <% end %>
       </ul>
+      
     </div>
   <% end %>
 

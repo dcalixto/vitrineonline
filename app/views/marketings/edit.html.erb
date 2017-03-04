@@ -58,7 +58,15 @@
   <b>Twitter</b>
 
                <%= mkt.input :twitter, :label => "Twitter da sua vitrine" %>
-     
+
+
+
+               <%= mkt.actions do %>
+        <%= mkt.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+
       </div>
 
 
@@ -69,11 +77,7 @@
 
   </div>
 
-     <%= mkt.actions do %>
-        <%= mkt.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-
   </div>
+  
+     
   </div>

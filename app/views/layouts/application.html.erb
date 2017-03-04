@@ -62,15 +62,17 @@
 <% end %>
 <% cache "js" do %>
   
-<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" %>
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" %>
 
-<#%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.2/rails.min.js" %>
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.2/rails.min.js" %>
 
 
 <%= javascript_include_tag "https://cdn.jsdelivr.net/jquery.menu-aim/0.1/jquery.menu-aim.min.js" %>
 
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/Selectivity.js/2.1.0/selectivity-full.min.js" %>
 
-<#%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.6/js/jquery.fancybox.min.js" %>
 <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js" %>
 
 <%= javascript_include_tag "https://cdn.jsdelivr.net/jquery.responsive-tabs/1.6.1/jquery.responsiveTabs.min.js" %>
@@ -89,10 +91,16 @@
 
 
 
+
+
+
 <%=javascript_include_tag "application" %>
 
 
 <% end %>
+
+
+
 <% cache "facebook" do %>
 <%=render "layouts/facebook" %>
 <% end %>

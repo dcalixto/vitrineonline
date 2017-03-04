@@ -5,10 +5,19 @@ class Product::StepsController < ApplicationController
  # steps(*Product.wizard_steps) 
   def show
     @product = Product.find(params[:product_id])
+    
     render_wizard
+
+
+
+
+ 
    end
 
   def update
+
+
+  
     @product = Product.find(params[:product_id])
   # params[:product][:form_step] = step
     

@@ -32,7 +32,7 @@
 *= require vitrine
 *= require will_paginate
 *= require shopcart
-*= require nprogress
+
 *= require search
 *= require details
 
@@ -53,7 +53,7 @@
 *= require main_mobile
 *= require normalize_mobile
 
-
+*= selectivity
  */
 
 
@@ -93,6 +93,15 @@
 
 
 
+a.morelink {
+	text-decoration:none;
+	outline: none;
+        color:red
+}
+.morecontent span {
+	display: none;
+}
 
+#menu-box-product  span a {
 
-
+    color: #0254EB;}

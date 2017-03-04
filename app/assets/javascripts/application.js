@@ -11,6 +11,7 @@
 //= dropzone_logo
 //= require jquery.bettertabs.min
 //= require jquery.liquidcarousel
+//= jquery.shorten
 //= dropit
 
 //= require_tree .
@@ -97,12 +98,19 @@ $("#main-nav").menuAim({
 
 
 
+// SELECT2 (TAGS)
+
+
+
+
+
+
 
 // SELECT2 (TAGS)
 $(document).ready(function() {
   $('#product_tags').select2({
     tags: true
-  })
+ })
 });
 
 
@@ -110,31 +118,30 @@ $(document).ready(function() {
   $(".brand_list").select2();
   tags: true
 });
-// LIGHTSLIDER
+// READMORE TO TOOGLE FILTER PRODUCTS MENU
+
+
+
+
 
 
 
 
 
 // PRODUCT IMAGE THUMBNAILS, GALLERY AND ZOOM
-$(document).ready(function() {
-  $('.thumbnail').on("click", function(e) {
-    $('#mainImage').hide();
-    var i = $('<img />').attr('src', $(this).data('-href')).load(function() {
-      $('#mainImage').attr('src', i.attr('src')).fadeIn();
-    });
-    e.preventDefault();
 
-    return false;
-  });
-  $('#placeholder').click(function() {
-    var img = $("img[data-href='" + $(this).find('img').attr('src') + "']");
-    var index = $("#showcase img").index(img);
-    $('#showcase a'), {
-     index: index
-    };
-  });
+
+$('.thumbnail').on("click", function(e) {
+$('#mainImage').hide();
+var i = $('<img />').attr('src', $(this).data('href')).load(function() {
+$('#mainImage').attr('src', i.attr('src')).fadeIn();
+console.log('changed');
 });
+e.preventDefault();
+return false;
+});
+
+
 
 
 
@@ -303,6 +310,20 @@ $(document).ready(function() {
 
 
 
+
+
+$(document).ready(function() {
+	
+	
+	$(".filtro").shorten({
+            
+            showChars: 500,
+            moreText: 'Mais',
+            lessText: 'Menos',
+            ellipsesText: ''
+        });
+
+ });
 
 
 

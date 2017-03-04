@@ -12,9 +12,12 @@
   margin-left: 20px;
   margin-top: 15px;
   display:block;
+  }
+
+
+#helper_link a {
+  color:#fff
 }
-
-
 
 
 #shopcart {

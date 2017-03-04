@@ -216,6 +216,7 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       # get 'search'
       get :autocomplete
       get 'auth/:provider/callback', to: 'products#omniauth_callback'
+      get :names
     end
 
     resources(:steps,
