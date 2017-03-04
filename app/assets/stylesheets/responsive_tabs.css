@@ -41,7 +41,7 @@
 
 	background-color: #f1f1f1;
 
-	border-bottom: 4px solid #00c5ad;
+
 	border-radius: 2px;
 
 }
@@ -64,7 +64,8 @@
 
 
 .r-tabs-anchor:hover{
- color: #000; border-bottom:2px solid #c51d12 }
+ color: #000; border-bottom:2px solid #e5b900
+ }
 
 
 /* Disabled tab */
@@ -81,7 +82,7 @@
 
 	border-top-right-radius: 2px;
 	border-top-left-radius: 2px;
-         color: #10b22d; font-weight:bold; border-bottom:2px solid #c51d12
+                     color:#0047b7; font-weight:bold; border-bottom:2px solid #e5b900
 }
 
 /* Tab panel */

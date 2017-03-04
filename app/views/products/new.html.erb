@@ -15,49 +15,63 @@
 
 <div class="block margin_top">
   <%=form_for @product do |p| %>
-<h1>Adicionar Produto</h1>
-<hr class="line"></hr>
+
+
+
+<div class="block margin_top">
+  
+
+    
 <div class="content">
 
 <div class="subcontent_top">
-<h4>Nome do seu produto</h4>
+<h2>Nome do seu produto</h2>
 <%=p.text_field :name, :label=>"Nome"%>
 </div>
 <div class="subcontent">
-<h4>Selecione as categorias</h4>
+
+  <table>
+    <tr>
+      <td>
+<h2>Selecione as categorias</h2>
 <div class="form-group">
 <%=p.label :gender_id, 'Genero' %>&nbsp;
-<%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control' } %>
+<%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control select_item' } %>
+
+      
 </div>
  </br>
 
 <div class="form-group">
 <%=p.label :category_id, 'Categoria' %>&nbsp;
-<%=dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Categoria' }, { class: 'form-control' } %>
+<%=dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Categoria' }, { class: 'form-control select_item' } %>
 </div>
  </br>
 
 <div class="form-group">
 <%=p.label :subcategory_id, 'Subcategoria' %>&nbsp;
-<%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control' } %>
+<%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control select_item' } %>
 </div>
+
 </div>
-<div class="subcontent">
-<h4>Marca Própria</h4>
+
+</td>
+<td>
+
+
+  <h2>Marca Própria</h2>
 
  
  <p class="tip">Se você tem sua marca por favor adicione
     </p>
-  <%= p.fields_for :brand_attributes do |b| %>
+  <%= p.fields_for  :brand_attributes  do |b| %>
  
   <%=b.text_field :name, :label=>"Nome"%>
 <% end %>
 
-   
-</div>
 
-<div class="subcontent">
-<h4>Preço e Quantidade</h4>
+
+<h2>Preço e Quantidade</h2>
 <ul>
   <li>
     <%=p.label :quantity, 'Quantidade' %>&nbsp;
@@ -67,20 +81,44 @@
 <li>
   <%=p.label :price, 'Preço' %>&nbsp;
 
-<%=p.text_field :price, :label=>"Preço R$" %>
+<%=p.text_field  :price, :label=>"Preço R$" %>
 </li>
 </ul>
+
+
+</td>
+    </tr>
+  </table>
+
+
 </div>
-<div class="subcontent">
-  <h4>Compartilhe</h4>
+<div class="subcontent  horizonal_list ">
+  <h2>Compartilhe</h2>
+  <ul><li>
   <%= p.check_box :is_shared_on_facebook %>
   <span class="social-share-button-facebook"></span>
+    </li>
+    <li>
   &nbsp;&nbsp;&nbsp;
   <%= p.check_box :is_shared_on_twitter %>
   <span class="social-share-button-twitter"></span>
+    </li>
+  </ul>
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 <%=p.button "Próximo", :class=> "btn btn_big" %>
 <% end %>
 
