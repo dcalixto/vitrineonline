@@ -6,8 +6,7 @@ class Order < ActiveRecord::Base
   belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
   belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User'
   belongs_to :product, touch: true
-  #belongs_to :color
-  #belongs_to :size
+
   belongs_to :cart
   belongs_to :feedback
  
@@ -33,8 +32,7 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :size,  :brand, :material,
      :condition
-#:sizeship, 
-# :color, :colorship,
+
 
   attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
     :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method, 
