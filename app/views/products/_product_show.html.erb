@@ -11,9 +11,12 @@
       <% unless @product.images.blank? %>
         <%  @product.images.offset(4).each do |i| %>
           <li>
-            <%= link_to product_path(i) do  %>
-              <%= image_tag(i.ifoto.url(:big).to_s)%>
-            <% end %>
+           
+
+
+ <a href="<%= i.ifoto.url.to_s %>"> 
+        <%= image_tag(i.ifoto.url(:big).to_s) %>
+    </a> 
 
           </li>
         <% end %>

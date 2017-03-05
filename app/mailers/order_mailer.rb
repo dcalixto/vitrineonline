@@ -11,13 +11,14 @@ class OrderMailer < ActionMailer::Base
     #order = Order.find(order_id)
     @order = order
   # @buyer = User.find(@order.buyer_id)
-    @buyer = Order.where('buyer_id')
+   @buyer = User.find(@order.user_id)
     mail(to: @buyer.email, subject: 'Confirmação da Compra', &:html)
   end
 
  def order_confirmation_seller(order)
     @order = order
-   @seller = Vitrine.find(@order.seller_id)
+   #@seller = Vitrine.find(@order.seller_id)
+   @seller = Vitrine.find(@order.vitrine_id)
     mail(to: @seller.email, subject: 'Confirmação da Venda', &:html)
   end
 

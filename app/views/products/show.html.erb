@@ -16,13 +16,14 @@
 
   <div class="box9">
 
-    <div id="placeholder">
+    <div id="placeholder" >
       <% if @product.images.first.present? %>
-        <a href="<%= @product.images.first.ifoto.url.to_s %>">
-     
       
-          <%= image_tag @product.images.first.ifoto.url(:big).to_s, :id => 'mainImage' %>
-          </a>
+      <a href="">
+    
+         <%= image_tag @product.images.first.ifoto.url(:big).to_s, :id => 'mainImage', :data => { :img => 'img'} %>
+        </a>
+        
                 <%= render_showcase %>
       <% end %>
     </div>
