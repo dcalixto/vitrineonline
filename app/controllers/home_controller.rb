@@ -23,6 +23,9 @@ class HomeController < ApplicationController
     else
       @products = Product.includes(:images,:vitrine).all
     end
+ 
+  
+  
   end
 
 

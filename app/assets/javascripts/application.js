@@ -142,6 +142,14 @@ return false;
 });
 
 
+// ZOOM PLACEHOLDER IMG
+
+$("#big_img a").click( function() {
+
+     window.location = $(this).children('img').attr('src');
+     return false;
+});
+
 
 
 
@@ -324,7 +332,6 @@ $(document).ready(function() {
         });
 
  });
-
 
 
 
