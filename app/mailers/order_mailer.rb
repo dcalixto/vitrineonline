@@ -10,7 +10,8 @@ class OrderMailer < ActionMailer::Base
   def order_confirmation(order)
     #order = Order.find(order_id)
     @order = order
-   @buyer = User.find(@order.buyer_id)
+  # @buyer = User.find(@order.buyer_id)
+    @buyer = Order.where('buyer_id')
     mail(to: @buyer.email, subject: 'Confirmação da Compra', &:html)
   end
 
