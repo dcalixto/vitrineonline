@@ -118,7 +118,12 @@ order = Order.find(params[:id])
  def ipn_notification
     logger.info("We've got an IPN!! raw_post object:")
     logger.info(request.raw_post)
-    
+   
+ # @buyer = order.buyer_id
+
+# @seller = order.seller_id
+
+
     if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
       logger.info("IPN message: VERIFIED")
       order = Order.find(params[:id])
