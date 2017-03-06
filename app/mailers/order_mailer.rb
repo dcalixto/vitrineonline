@@ -7,7 +7,7 @@ class OrderMailer < ActionMailer::Base
 
 
 
-  def order_confirmation(order,user)
+  def order_confirmation(order)
   
     @order = order
   
