@@ -125,17 +125,17 @@ class Order < ActiveRecord::Base
 
 
 
-def seller
-   order = Order.find_by_id(:id)
+#def seller
+#   order = Order.find_by_id(:id)
   
-order.seller_id
-end
+#order.seller_id
+#end
 
 
-def buyer
-   order = Order.find_by_id(:id)
-order.buyer_id
-end
+#def buyer
+#   order = Order.find_by_id(:id)
+#order.buyer_id
+#end
 
 
 
