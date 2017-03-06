@@ -126,16 +126,29 @@ class Order < ActiveRecord::Base
 
 
 
+  def self.cached_find(id)
+    Rails.cache.fetch([id], expires_in: 5.minutes) { find(id) }
+  end
+
+  def flush_cache
+    Rails.cache.delete([self.class, id])
+  end
+
+  def cached_order
+    Order.cached_find(order_id)
+  end
+
+
 
 
 def seller
-order = Order.find(order_id)
+   Order.cached_find(order_id)
 order.seller_id
 end
 
 
 def buyer
-order = Order.find(order_id)
+   Order.cached_find(order_id)
 order.buyer_id
 end
 
