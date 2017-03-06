@@ -52,17 +52,17 @@ Olá,
 <br/>
 <b>Endereço de Entrega:</b>
 <br/>
-<%= @buyer.full_name %>
+<%= @order.buyer.full_name %>
 <br/>
-<%= @buyer.user_address if @buyer.address %>
+<%= @order.order.buyer.user_address if @order.buyer.address %>
 <br/>
-<%= @buyer.user_neighborhood if @buyer.neighborhood%>
+<%= @order.buyer.user_neighborhood if @order.buyer.neighborhood%>
 <br/>
-<%= @buyer.user_city if @buyer.city and @buyer.state %>
+<%= @order.buyer.user_city if @order.buyer.city and @order.buyer.state %>
 <br/>
-<%= @buyer.user_postal_code if  @buyer.postal_code %>
+<%= @order.buyer.user_postal_code if  @order.buyer.postal_code %>
 <br/>
-<%= @buyer.user_address_supplement if @buyer.address_supplement %>
+<%= @order.buyer.user_address_supplement if @order.buyer.address_supplement %>
 <br/>
 <p>Envio:</p>
 <%= @order.shipping_method %>

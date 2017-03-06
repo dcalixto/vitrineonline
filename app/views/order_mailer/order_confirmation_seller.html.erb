@@ -41,10 +41,10 @@
 Olá,
 <h2><%= @order.seller.first_name %></h2>
 <br/>
-<p>Notificação da compra:</p>
+<p>Notificação da venda:</p>
 <br/>
 <br/>
-<p>Data da compra:</p>
+<p>Data da venda:</p>
 <b>
   <%= @order.created_at.strftime('%B %d, %Y %H:%M') %>
 </b>
@@ -52,17 +52,17 @@ Olá,
 <br/>
 <b>Endereço de Entrega:</b>
 <br/>
-<%= @buyer.full_name %>
+<%= @order.seller.full_name %>
 <br/>
-<%= @buyer.user_address if @buyer.address %>
+<%= @order.seller.user_address if @order.seller.address %>
 <br/>
-<%= @buyer.user_neighborhood if @buyer.neighborhood%>
+<%= @order.seller.user_neighborhood if @order.seller.neighborhood%>
 <br/>
-<%= @buyer.user_city if @buyer.city and @buyer.state %>
+<%= @order.seller.user_city if @order.seller.city and @order.seller.state %>
 <br/>
-<%= @buyer.user_postal_code if  @buyer.postal_code %>
+<%= @order.seller.user_postal_code if  @order.seller.postal_code %>
 <br/>
-<%= @buyer.user_address_supplement if @buyer.address_supplement %>
+<%= @order.seller.user_address_supplement if @order.seller.address_supplement %>
 <br/>
 <p>Envio:</p>
 <%= @order.shipping_method %>
