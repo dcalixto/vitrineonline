@@ -41,8 +41,8 @@ gem 'acts_as_votable', '~> 0.10.0'
 
 
 # CHART
-gem "chartkick"
-gem 'groupdate'
+#gem "chartkick"
+#gem 'groupdate'
 
 #TASK SHEDULE
 gem 'whenever', require: false
@@ -256,7 +256,7 @@ end
 
 
 #ACTIVITY
-gem 'public_activity'#,  github: "dcalixto/public_activity", :tag => '5.4.3'
+#gem 'public_activity'#,  github: "dcalixto/public_activity", :tag => '5.4.3'
 
 
 #WAI-ARIA
@@ -264,7 +264,7 @@ gem 'public_activity'#,  github: "dcalixto/public_activity", :tag => '5.4.3'
 
 
 #OPENSEARCH
-gem 'opensearchkick',  github: "dcalixto/opensearchkick"
+#gem 'opensearchkick',  github: "dcalixto/opensearchkick"
 
 
 

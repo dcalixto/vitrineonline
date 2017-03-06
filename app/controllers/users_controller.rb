@@ -137,8 +137,6 @@ class UsersController < ApplicationController
 
 
 
-
-
   end
 
   def products

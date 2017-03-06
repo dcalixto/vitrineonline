@@ -62,13 +62,6 @@ GIT
     no_cache_control (1.0.0)
 
 GIT
-  remote: https://github.com/dcalixto/opensearchkick.git
-  revision: e5a9afce2d3479bdbf64a3aed41776a7ba30f1cd
-  specs:
-    opensearchkick (0.0.1)
-      confiture (>= 0.1)
-
-GIT
   remote: https://github.com/dcalixto/rack-secure_headers.git
   revision: 2b75b65c64550589e14594f3bdb826cce1b5547a
   specs:
@@ -168,7 +161,6 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
-    chartkick (1.4.2)
     chronic (0.10.2)
     coderay (1.1.1)
     coffee-rails (3.2.2)
@@ -179,7 +171,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     configatron (4.5.0)
-    confiture (0.1.4)
     cookiejar (0.3.3)
     correios-frete (1.10.0)
       log-me (~> 0.0.10)
@@ -236,8 +227,6 @@ GEM
     git-version-bump (0.15.1)
     gretel (3.0.9)
       rails (>= 3.1.0)
-    groupdate (2.5.2)
-      activesupport (>= 3)
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -363,11 +352,6 @@ GEM
       redis (>= 3.0.0)
     private_pub (1.0.3)
       faye
-    public_activity (1.5.0)
-      actionpack (>= 3.0.0)
-      activerecord (>= 3.0)
-      i18n (>= 0.5.0)
-      railties (>= 3.0.0)
     public_suffix (2.0.5)
     rack (1.4.7)
     rack-attack (5.0.1)
@@ -545,7 +529,6 @@ DEPENDENCIES
   byebug
   canonical_dude
   carrierwave (~> 0.9.0)
-  chartkick
   coffee-rails
   configatron
   correios-frete
@@ -558,7 +541,6 @@ DEPENDENCIES
   friendly_id
   geocoder
   gretel
-  groupdate
   high_voltage
   hiredis
   i18n_country_select
@@ -583,12 +565,10 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-twitter
-  opensearchkick!
   paypal-sdk-adaptivepayments
   pg
   predictor
   private_pub
-  public_activity
   rack-attack
   rack-secure_headers!
   rails (= 3.2.22)

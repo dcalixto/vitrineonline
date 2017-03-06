@@ -2,14 +2,12 @@ Vitrineonline::Application.routes.draw do
 
 
  mount Logster::Web => "/logs"
-
+get "/opensearch",  to: "application#opensearch"
 
    # ADMIN
 
   scope 'dcalixto84abcd152567' do
-   # mount ResqueWeb::Engine => "/resque"
-        mount Resque::Server => "/resque"
-#mount MemcachedManager::Routes, :at => '/mm'
+          mount Resque::Server => "/resque"
  
  
     namespace :admin do

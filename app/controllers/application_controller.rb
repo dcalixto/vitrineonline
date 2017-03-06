@@ -25,6 +25,12 @@ class ApplicationController < ActionController::Base
   after_filter :user_activity
 
 
+ def opensearch
+    response.headers['Content-Type'] = 'application/opensearchdescription+xml; charset=utf-8'
+render :layout => false
+ end
+
+
 
   private
 
