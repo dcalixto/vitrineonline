@@ -7,8 +7,8 @@ class OrderMailer < ActionMailer::Base
 
 
 
-  def order_confirmation(order)
-    user = User.find(user_id)
+  def order_confirmation(order,user)
+    @user = user 
     @order = order
     order.buyer = user
 
