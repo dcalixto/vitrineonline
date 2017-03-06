@@ -143,7 +143,7 @@ end
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
-          OrderMailer.order_confirmation(self)
+          OrderMailer.order_confirmation(@order).deliver
           order.save
         end
       end
