@@ -118,4 +118,19 @@ class Order < ActiveRecord::Base
   new_user_address_path
   end
 
+
+
+def seller
+order = Order.find_by_id(attributes['order_id'])
+order.seller_id
+end
+
+
+def buyer
+order = Order.find_by_id(attributes['order_id'])
+order.buyer_id
+end
+
+
+
 end

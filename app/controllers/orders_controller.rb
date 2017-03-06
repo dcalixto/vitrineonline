@@ -64,8 +64,7 @@ order = Order.find(params[:id])
     store_amount = (order.total_price * configatron.store_fee).round(2)
     seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
-
-
+ 
    @api = PayPal::SDK::AdaptivePayments.new
 #byebug
 
@@ -112,6 +111,16 @@ order = Order.find(params[:id])
   end
 
 
+def seller
+order = Order.find(params[:id])
+order.seller_id
+end
+
+
+def buyer
+order = Order.find(params[:id])
+order.buyer_id
+end
 
 
 
@@ -120,9 +129,6 @@ order = Order.find(params[:id])
     logger.info("We've got an IPN!! raw_post object:")
     logger.info(request.raw_post)
    
- # @buyer = order.buyer_id
-
-# @seller = order.seller_id
 
 
     if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)

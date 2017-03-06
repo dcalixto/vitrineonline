@@ -50,12 +50,7 @@ class CartsController < ApplicationController
     end
 
 
-    puts "product: #{product.inspect}"
-    puts "size: #{product.sizes.inspect}"
-    puts "Color: #{product.colors.inspect}"
 
-    puts "Order: #{order.inspect}"
-    puts "Cart: #{current_user.cart.inspect}"
 
   end
 
