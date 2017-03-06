@@ -120,14 +120,22 @@ class Order < ActiveRecord::Base
 
 
 
+
+  after_commit :flush_cache
+
+
+
+
+
+
 def seller
-order = Order.find_by_id(attributes['order_id'])
+order = Order.find(order_id)
 order.seller_id
 end
 
 
 def buyer
-order = Order.find_by_id(attributes['order_id'])
+order = Order.find(order_id)
 order.buyer_id
 end
 
