@@ -1,7 +1,7 @@
 # encoding: utf-8
 class OrdersController < ApplicationController
-#  skip_before_filter :authorize, only: :ipn_notification
- #protect_from_forgery except: [:ipn_notification]
+  skip_before_filter :authorize, only: :ipn_notification
+ protect_from_forgery except: [:ipn_notification]
 
   def purchased
     if current_user.cart
@@ -143,9 +143,11 @@ end
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
-          OrderMailer.order_confirmation(@order).deliver
           order.save
-        end
+          
+
+          end
+        OrderMailer.order_confirmation(order).deliver 
       end
     else
       logger.info("IPN message: VERIFICATION FAILED")
