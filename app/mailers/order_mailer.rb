@@ -4,7 +4,7 @@ class OrderMailer < ActionMailer::Base
   default from: 'Vitrineonline'
 
  # include Resque::Mailer
-
+add_template_helper(EmailHelper)
 
 
   def order_confirmation(order)

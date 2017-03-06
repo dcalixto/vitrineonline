@@ -1,13 +1,14 @@
+
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>VITRINEONLINE</title>
-  <style type="text/css">
-    body, td {
-      color: #000000;
-      font-size: 14px;
-      font-family:  Helvetica, Arial;
-    }
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>VITRINEONLINE</title>
+    <style type="text/css">
+body, td {
+  color: #000000;
+  font-size: 14px;
+  font-family:  Helvetica, Arial;
+}
     .divider {
       background-color: #ddd;
       height: 1px;
@@ -20,137 +21,111 @@
     .cell p {
       margin: 8px 0;
     }
-        #footer {
+    .cell .duration {
+      font-size: 11px;
+      color: #555555;
+    }
+    #footer {
       font-size: 11px;
       color: #555555;
     }
     #footer a {
       color: #555555;
     }
-  </style>
-</head>
-<body>
+    </style>
+  </head>
+  <body>
+    <table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
+      <tr><td  valign="top">
+          <table width="650" id="main" border="0" cellpadding="0" cellspacing="20">
+            <tr>
+              <td id="header" colspan="2">
+                <a href="http://vitrineonline.com/"><%= email_image_tag("logo.png") %></a>
+              </td>
+            </tr>
+
+
+            <tr class="cell">
+              <td valign="top">
+                <h2>Olá <%= @order.seller.name %></h2>
+
+                <p>Notificação da venda:  <b><%= @order.id %></b></p>
+                <p>Data da venda:</p>
+              <b><%= @order.created_at.strftime("%d/%m/%Y") %></b>
+
+
+                </td>
+
+<td valign="top">
+
+ <b>Endereço de Entrega:</b>
+    <br/>
+    <%= @order.buyer.full_name %>
+    <br/>
+    <%= @order.buyer.user_address if @order.buyer.address %>
+    <br/>
+    <%= @order.buyer.user_neighborhood if @order.buyer.neighborhood%>
+    <br/>
+    <%= @order.buyer.user_city if @order.buyer.city and @order.buyer.state %>
+    <br/>
+    <%= @order.buyer.user_postal_code if  @order.buyer.postal_code %>
+    <br/>
+    <%= @order.buyer.user_address_supplement if @order.buyer.address_supplement %>
+
+</td>
+
+
+            </tr>
+            <tr>
+              <td class="divider" colspan="2" bgcolor="#ddd" height="1"></td>
+            </tr>
+
+
+
+            <tr class="cell">
+              <b>Detalhes</b>
+              <td>Item: <%= @order.product.name %></td>
+              <td>Preço: <%= number_to_currency @order.product.price %></td>
+              <td>Quantidade:<%= @order.quantity %></td>
+              <td>Subtotal: <%= number_to_currency @order.quantity * @order.product.price %></td>
+            </tr>
 
 
 
 
 
 
-<br/>
-<br/>
-Olá,
-<h2><%= @order.seller.first_name %></h2>
-<br/>
-<p>Notificação da venda:</p>
-<br/>
-<br/>
-<p>Data da venda:</p>
-<b>
-  <%= @order.created_at.strftime('%B %d, %Y %H:%M') %>
-</b>
-<br/>
-<br/>
-<b>Endereço de Entrega:</b>
-<br/>
-<%= @order.seller.full_name %>
-<br/>
-<%= @order.seller.user_address if @order.seller.address %>
-<br/>
-<%= @order.seller.user_neighborhood if @order.seller.neighborhood%>
-<br/>
-<%= @order.seller.user_city if @order.seller.city and @order.seller.state %>
-<br/>
-<%= @order.seller.user_postal_code if  @order.seller.postal_code %>
-<br/>
-<%= @order.seller.user_address_supplement if @order.seller.address_supplement %>
-<br/>
-<p>Envio:</p>
-<%= @order.shipping_method %>
-<br/>
-<br/>
-<b>Detalhes:</b>
-<br/>
 
 
-
-  <table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
-    <tr><td  valign="top">
-     
-        
-        <table width="650" id="main" border="1" cellpadding="8" cellspacing="20">
-        <tr>
-          <td id="header" colspan="2">
-            <a href="http://vitrineonline.com/"><%= email_image_tag("logo.png") %></a>
-       </td>
-        </tr>
-
-       
-
-        <tr class="cell">
-
-    <td>#</td>
-    <td>Item</td>
-    <td>Preço</td>
-    <td>Quantidade</td>
-     
-    <td>Preço</td>
-  </tr>
-    <tr class="cell">
-    <td><%= @order.quantity %></td>
-    <td><%= @order.product.name %></td>
-    <td><%= number_to_currency @order.product.price %></td>
-    <td><%= @order.quantity %></td>
-    <td><%= number_to_currency @order.quantity * @order.product.price %></td>
-  </tr>
-</table>
+  <tr class="cell">
+              <b>Total</b>
+              <td>Preço: <%= number_to_currency @order.quantity * @order.product.price %></td>
+              <td>Envio: <%= @order.shipping_method %><%= number_to_currency @order.shipping_cost %></td>
+              <td>Total: <%= number_to_currency(@order.quantity * @order.product.price + @order.shipping_cost) %></td>
+              </tr>
 
 
 
 
-<br/>
-<br/>
-<b>Total:</b>
-<br/>
-
-
-<table width="650" id="main" border="1" cellpadding="5" cellspacing="20">
-
-  <tr  class="cell">
-    <td>Preço:</td>
-    <td><%= number_to_currency @order.quantity * @order.product.price %></td>
-  </tr>
-  <tr  class="cell">
-   <td>Envio:</td>
-    <ul>
-      <li><%= @order.shipping_method %></li>
-      <td><li><%= number_to_currency @order.shipping_cost %></li>
-    </ul></td>
-  </tr>
-  <tr  class="cell">
-    <td>
-      <b>Total:</b>
-    </td>
-    <td>
-      <b><%= number_to_currency(@order.quantity * @order.product.price + @order.shipping_cost) %></b>
-    </td>
-  </tr>
-  <tr>
-                       <td class="divider" colspan="2" bgcolor="#ddd" height="1"></td>
-        </tr>
-        <tr>
-          <td id="footer" colspan="2" >
-                      <p>Vitrineonline &copy; 2016
-</p>
-          </td>
-        </tr>
-      </table>
-
-
-      
-      </td></tr>
-  </table>
-</body>
+            <tr>
+              <td id="footer" colspan="2" >
+                <p>Vitrineonline &copy; 2016
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td></tr>
+    </table>
+  </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
