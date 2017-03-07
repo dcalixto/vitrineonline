@@ -16,13 +16,10 @@
       <table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
         <tr><td  valign="top">
             <tr>
-              <td id="header" colspan="2">
+              <td colspan="2">
                 <%= image_tag('logo.png')  %>
               </td>
-            </tr>
 
-
-            <tr class="cell">
               <td valign="top">
 
                 <p >Avenida Roberto Silveira nº 95A</p>
@@ -31,24 +28,13 @@
 
               </td>
 
-              <td valign="top">
- 
-                <b>Endereço de Entrega:</b>
-                <br/>
-                <%= @buyer.full_name %>
-                <br/>
-                <%= @buyer.user_address if @buyer.address %>
-                <br/>
-                <%= @buyer.user_neighborhood if @buyer.neighborhood%>
-                <br/>
-                <%= @buyer.user_city if @buyer.city and @buyer.state %>
-                <br/>
-                <%= @buyer.user_postal_code if  @buyer.postal_code %>
-                <br/>
-                <%= @buyer.user_address_supplement if @buyer.address_supplement %>
 
-              </td>
+            </tr>
 
+
+            <tr class="cell">
+              <td>Data: <%= @invoice.created_at.strftime('%d/%m/%Y') %></td>
+              <td>Número da Fatura:<%= @invoice.id %></td>
 
             </tr>
             <tr>
@@ -58,43 +44,34 @@
 
 
             <tr class="cell">
-              <b>Fatura</b>
-              <td>Data: <%= @invoice.created_at.strftime('%d/%m/%Y') %></td>
-              <td>Número da Fatura:<%= @invoice.id %></td>
-              <td>Forma de pagamento: paypal</td>
-              <td>Vitrine: <%= current_vitrine.name %></td>
-
-            </tr>
+              <b>Descrição</b>
 
 
-            <tr class="cell">
-              <b>Produto</b>
+
               <td>produto:   <% unless @product.images.blank? %>
 
                 <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
               <%end %>
 
               <%= @product.name %></td>
-
               <td>Quantidade:  <%= @order.quantity %></td>
 
               <td>Preço:  <%= number_to_currency(@product.price) %></td>
 
+              <td>Vitrine: <%= current_vitrine.name %></td>
+
+              <td>Forma de pagamento: paypal</td>
+              Comissão:
+
+              <%= number_to_currency @invoice.store_fee %>  
           </td>
           <td>
-            Comissão:
-
-            <%= number_to_currency @invoice.store_fee %>            </td>
+            <%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>
+          </td>
 
             </tr>
-            <tr>
-              <td>
-                <%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>
-              </td>
-            </tr>
 
-                   </td>
-        </tr>
+
       </table>
 
 

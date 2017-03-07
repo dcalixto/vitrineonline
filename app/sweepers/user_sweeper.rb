@@ -16,6 +16,8 @@ expire_fragment('drop')
 expire_fragment('address')
 expire_fragment('user_block')
 expire_fragment('user_info_box')
+expire_fragment('products_home')
+expire_fragment('front_banner')
   end
 
   alias_method :after_create, :sweep

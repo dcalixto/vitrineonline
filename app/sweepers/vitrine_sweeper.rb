@@ -15,6 +15,8 @@ expire_fragment('facebook')
 expire_fragment('drop')
 expire_fragment('vitrine_address')
 expire_fragment('vitrine_block')
+expire_fragment('products_home')
+expire_fragment('front_banner')
 
 expire_fragment('vitrine_info_box')
   end
