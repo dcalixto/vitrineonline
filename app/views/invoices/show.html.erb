@@ -51,9 +51,12 @@
 
                 <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
               <%end %>
+                </td>
 
-              <%= @product.name %></td>
-              <td>Quantidade:  <%= @order.quantity %></td>
+                <td>              <%= @product.name %>
+              </td>
+              
+                            <td>Quantidade:  <%= @order.quantity %></td>
 
               <td>Preço:  <%= number_to_currency(@product.price) %></td>
 
