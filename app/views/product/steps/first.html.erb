@@ -47,7 +47,7 @@
  <div id="horizontalTab">
         <ul>
                       <li><a href="#tab-1">Imagem e descrição</a></li>
-            <li><a href="#tab-2">Estilos e Marcas</a></li>
+            <li><a href="#tab-2">Seções e Marcas</a></li>
             <li><a href="#tab-3">Tamanho e Cor</a></li>
             <li><a href="#tab-4">Material e Condição</a></li>
             <li><a href="#tab-5">Nome e preço</a></li>
@@ -111,10 +111,10 @@
         
         </div>
         <div id="tab-2">
-            <h2>Estilos</h2>
+            <h2>Seções</h2>
 
           <div class="subcontent">
-            <p class="tip">Os estilos facilitam o google e bing a achar de seu produto com mais facilidade
+            <p class="tip">As estilos facilitam  a organização dos seus produtos além do google e bing a achar de seu produto com mais facilidade
             </p>
             <%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
 

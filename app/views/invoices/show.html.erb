@@ -1,152 +1,137 @@
 
-
-
-
-
 <% title "Fatura" %>
 <%= render "shared/vitrine_menu" %>
 <div class="box3">
   <div class="block  margin_top">
-     <%= render 'shared/flash_messages' %>
+    <%= render 'shared/flash_messages' %>
 
-    <div class="payment_reicept">
-      <div class="payment_reicept_top">
- <div class="payment_reicept_logo">
-
-   <%= image_tag('logo.png')  %>
+    <div class="content">
 
 
+      <h1>Comprovante de pagamento</h1>
 
- </div>
 
- <h1>Comprovante de pagamento</h1>
-      </div>
 
-      
- <div class="payment_reicept_section">
-   <div>
 
-   <ul>
-     <li> Avenida Roberto Silveira nº 95A</li>
-     <li> Chácara da Saudade, Paraty/RJ</li>
-        
-   </ul>
+      <table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
+        <tr><td  valign="top">
+            <tr>
+              <td id="header" colspan="2">
+                <%= image_tag('logo.png')  %>
+              </td>
+            </tr>
 
- </div>
 
- <div>
-     
-     
-      <ul>
-                <li><%= @buyer.full_name %></li>
-                <li><%= @buyer.user_address if  @buyer.address %></li>
-                <li><%= @buyer.user_neighborhood if  @buyer.neighborhood %></li>
-                <li><%= @buyer.user_city if  @buyer.city %>
-              </li>
-              <li><%= @buyer.user_postal_code  if  @buyer.postal_code %></li>
-              <li><%= @buyer.user_address_supplement if   @buyer.address_supplement %></li>
-              </ul>
+            <tr class="cell">
+              <td valign="top">
+
+                <p >Avenida Roberto Silveira nº 95A</p>
+                <b> Chácara da Saudade, Paraty/RJ</b>
+
+
+              </td>
+
+              <td valign="top">
  
+                <b>Endereço de Entrega:</b>
+                <br/>
+                <%= @buyer.full_name %>
+                <br/>
+                <%= @buyer.user_address if @buyer.address %>
+                <br/>
+                <%= @buyer.user_neighborhood if @buyer.neighborhood%>
+                <br/>
+                <%= @buyer.user_city if @buyer.city and @buyer.state %>
+                <br/>
+                <%= @buyer.user_postal_code if  @buyer.postal_code %>
+                <br/>
+                <%= @buyer.user_address_supplement if @buyer.address_supplement %>
+
+              </td>
+
+
+            </tr>
+            <tr>
+              <td class="divider" colspan="2" bgcolor="#ddd" height="1"></td>
+            </tr>
 
 
 
- </div>   
+            <tr class="cell">
+              <b>Fatura</b>
+              <td>Data: <%= @invoice.created_at.strftime('%d/%m/%Y') %></td>
+              <td>Número da Fatura:<%= @invoice.id %></td>
+              <td>Forma de pagamento: paypal</td>
+              <td>Vitrine: <%= current_vitrine.name %></td>
 
- </div>
-
-
-
- <div>
-   <dl>
-   <dt>Data de pagamento</dt>
-   <dd><%= @invoice.created_at.strftime('%d/%m/%Y') %></dd>
-   <dt>Id da fatura</dt>
-   <dd> #<%= @invoice.id %><dd>
-   <dt>Forma de pagamento</dt>
-   <dd>paypal<dd>
-   <dt>Vitrine</dt>
-   <dd><%= current_vitrine.name %></dd>
-
-   </dl>
+            </tr>
 
 
-  
+            <tr class="cell">
+              <b>Produto</b>
+              <td>produto:   <% unless @product.images.blank? %>
 
+                <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
+              <%end %>
 
- <div class="content">
+              <%= @product.name %></td>
 
+              <td>Quantidade:  <%= @order.quantity %></td>
 
+              <td>Preço:  <%= number_to_currency(@product.price) %></td>
 
-      <table>
+          </td>
+          <td>
+            Comissão:
 
+            <%= number_to_currency @invoice.store_fee %>            </td>
 
-        <tr>
+            </tr>
+            <tr>
+              <td>
+                <%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>
+              </td>
+            </tr>
 
-          <th>Descrição</th>
-          <th></th>
-        
+                   </td>
         </tr>
-
-              <tbody>
-          <tr>
-            <td>
-Item:
-  <% unless @product.images.blank? %>
-
-                    <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
-                  <%end %>
-
-
-
-
-            </td>
-
-
-            <td>
-                        Nome:     
-                <%= @product.name %>
-                          </td>
-          </tr>
-
-          <tr>
-
-            <td>
-              Quantidade:
-                <%= @order.quantity %>
-
-            </td>
-            <td>
-              Preço:
-              <%= number_to_currency(@product.price) %>
-
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-               Comissão:
-
-            </td>
-            <td>
-              <%= number_to_currency @invoice.store_fee %>            </td>
-
-          </tr>
-
-          <tr>
-            <td>
-              Baixar:
-            </td>
-            <td>
-<%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>
-            </td>
-
-          </tr>
-        </tbody>
       </table>
-         </div>
+
+
 
     </div>
+
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

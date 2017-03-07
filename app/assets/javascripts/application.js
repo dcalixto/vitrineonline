@@ -1,4 +1,4 @@
-
+//= require jquery.raty
 //= require private_pub
 //= require jquery.tipsy
 //= require jquery-dynamic-selectable
@@ -9,7 +9,9 @@
 //= dropzone_avatar
 //= dropzone_images
 //= dropzone_logo
+//= require social-share-button
 //= require jquery.bettertabs.min
+//= require url.min
 //= require jquery.liquidcarousel
 //= jquery.shorten
 //= dropit

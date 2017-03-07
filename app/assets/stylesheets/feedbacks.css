@@ -26,13 +26,13 @@ font-weight:bold;
 }
 .awaiting_feedback_table .comment_tr td {
   padding-bottom: 20px;
-  border-bottom: solid 1px #ddd;
+ 
 }
 .awaiting_feedback_table input[type="radio"] {
   vertical-align: middle;
 }
 .awaiting_feedback_table textarea {
-  width: 60%;
+  width: 80%;
   height: 60px;
   font-size: 12px;
   margin-bottom: 5px;
@@ -46,7 +46,7 @@ font-weight:bold;
   padding-bottom: 10px;
 }
 .completed_feedback_table .comment {
-  width: 45%;
+  width: 80%;
 }
 .feedback_view_selector {
   margin-bottom: 12px;

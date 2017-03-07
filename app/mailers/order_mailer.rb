@@ -21,7 +21,7 @@ add_template_helper(EmailHelper)
  def order_confirmation_seller(order)
   
      @order = order
-       mail(to: @order.seller.email, subject: 'Confirmação da Venda', &:html)
+       mail(to: @order.seller.policy.paypal, subject: 'Confirmação da Venda', &:html)
   end
 
 end

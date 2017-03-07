@@ -7,10 +7,10 @@
         <%= render 'shared/flash_messages' %>
 
       </div>
-
+<% cache "front_banner" do %>
 
       <%= image_tag('front_banner.png')  %>
-
+    <% end %>
 
     </div>
 
@@ -30,6 +30,7 @@
 
 
 
+<% cache "products_home" do %>
 
 
 <div id="searchResults">
@@ -67,7 +68,7 @@
       </table>
     </div>
 
-
+  <% end %>
 
       
 
