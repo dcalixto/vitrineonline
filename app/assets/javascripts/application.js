@@ -15,7 +15,7 @@
 //= require jquery.liquidcarousel
 //= jquery.shorten
 //= dropit
-
+//= require best_in_place
 //= require_tree .
 
 
@@ -337,5 +337,8 @@ $(document).ready(function() {
 
 
 
-
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
 

@@ -141,6 +141,9 @@ GEM
     ast (2.3.0)
     backports (3.6.8)
     bcrypt-ruby (3.0.1)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -520,6 +523,7 @@ DEPENDENCIES
   admin_interface!
   annotate
   bcrypt-ruby (~> 3.0.0)
+  best_in_place (~> 3.0.1)
   better_errors
   bettertabs!
   binding_of_caller

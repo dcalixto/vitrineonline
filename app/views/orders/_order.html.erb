@@ -159,9 +159,15 @@
 
                 <li>
                
-                    <label>Código de Rastreamento</label><%=text_field_tag :track_number %></li>
- Marcar como:
-                   <%= link_to "Enviado",  sent_order_path(order), :class => 'btn btn_small' %>
+                  <label>Código de Rastreamento</label>
+                  
+                   <%= best_in_place :track_number, :type => :input, :url => sold_order_path(order)%> 
+
+                  
+                  <#%=text_field_tag :track_number %></li>
+                Marcar como:
+
+                    <%= link_to "Enviado",  sent_order_path(order), :class => 'btn btn_small' %>
 
                     <li>
                    
