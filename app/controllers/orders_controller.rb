@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
 
     end
  format.json do
-        @order.update_attributes(params[:order])
+        order.update_attributes(params[:order])
         render nothing: true
       end
 
