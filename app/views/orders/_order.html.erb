@@ -161,7 +161,7 @@
                
                   <label>Código de Rastreamento</label>
                   
-                  <%= best_in_place :track_number, :as => :input, :url => sold_order_path(order)%> 
+                  <%= best_in_place order, :track_number, :as => :input, :url => sold_order_path(order)%> 
 
                   
                   <#%=text_field_tag :track_number %></li>
