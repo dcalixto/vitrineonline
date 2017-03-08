@@ -33,6 +33,11 @@ module ApplicationHelper
     end
   end
 
+
+
+
+
+
   def num_new_comments
     current_user.posts.joins(:comments).where('comments.user_id != ? and not comments.read', current_user.id).count
   end
