@@ -523,7 +523,7 @@ DEPENDENCIES
   admin_interface!
   annotate
   bcrypt-ruby (~> 3.0.0)
-  best_in_place (~> 3.0.1)
+  best_in_place
   better_errors
   bettertabs!
   binding_of_caller
