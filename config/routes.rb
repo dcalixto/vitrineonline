@@ -155,7 +155,8 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       post :buy
       post :ipn_notification
       get :fail
-           get :sold
+      match :sold
+      #put :sold
       get :purchased
       get :sent
       get :paid

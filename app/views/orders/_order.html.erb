@@ -158,16 +158,18 @@
                   <% if current_seller%>
 
                 <li>
-               
+              <p>
+  <b>Número Rastreamento:</b> 
                                    
                   <%= best_in_place order, :track_number, :as => :input, :url => sold_order_path(order)%> 
 
-                  
-                 </li>
+              </p>
+                </li>
+                <li>
                 Marcar como:
 
                     <%= link_to "Enviado",  sent_order_path(order), :class => 'btn btn_small' %>
-
+                </li>
                     <li>
                    
                       <% end %>  
@@ -175,7 +177,7 @@
                     <% end %> 
                         <% if   params[:status] == Order.statuses[1] %>
 
-  <label>Código de Rastreamento</label><%=order.track_number %></li>
+  <%=order.track_number %></li>
 
                   <%end%>
               </ul>
