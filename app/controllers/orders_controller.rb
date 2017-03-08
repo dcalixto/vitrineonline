@@ -16,8 +16,23 @@ class OrdersController < ApplicationController
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
+   
+     respond_to do |format|
+    format.html do
+
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+
+    end
+ format.json do
+        @order.update_attributes(params[:order])
+        render nothing: true
+      end
+
+     end
+
+
+
   end
 
   def checkout

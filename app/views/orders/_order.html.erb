@@ -158,13 +158,10 @@
                   <% if current_seller%>
 
                 <li>
-              <p>
-  <b>Número Rastreamento:</b> 
-                                   
-                  <%= best_in_place order, :track_number, :as => :input, :url => sold_order_path(order)%> 
+                                               
+                  <%= best_in_place order, :track_number, :as => :input, :nil => "Número de Rastreamento", :url => sold_order_path(order)%> 
 
-              </p>
-                </li>
+                             </li>
                 <li>
                 Marcar como:
 
