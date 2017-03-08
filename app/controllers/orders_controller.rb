@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
-   
+   @order = Order.find(params[:id])
      respond_to do |format|
     format.html do
 
