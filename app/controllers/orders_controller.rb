@@ -16,21 +16,16 @@ class OrdersController < ApplicationController
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
-
-    
+ @order = Order.find_by_id(params[:id]) 
+    respond_to do |format|
+      format.html do 
     
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+end
 
- @order = Order.find_by_id(params[:id]) 
-
-    
-     respond_to do |format|
       if @current_vitrine.update_attributes(params[order_attributes: [:track_number]])
-
-        
-        
-        
+ 
         format.html { redirect_to :back, notice: 'Comment was successfully updated.' }
         format.json { respond_with_bip(@order) }
       else
@@ -45,8 +40,6 @@ class OrdersController < ApplicationController
   #def order_params
 #  params.require(:vitrine).permit()
 #end 
-
-
 
 
 
