@@ -16,26 +16,45 @@ class OrdersController < ApplicationController
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
-  @order = Order.find_by_id(params[:id]) 
-     respond_to do |format|
-    format.html do
 
+    
+    
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
-    end
-      format.json do
-    @order = Order.update_attributes(params[:order]) 
+ @order = Order.find_by_id(params[:id]) 
 
-               
-       render nothing: true
+    
+     respond_to do |format|
+      if @order.update_attributes(params[:order])
+        format.html { redirect_to :back, notice: 'Comment was successfully updated.' }
+        format.json { respond_with_bip(@order) }
+      else
+        format.html { render action: 'sold' }
+        format.json { respond_with_bip(@order) }
       end
-
-     end
-
-    # end
+    end
 
   end
+
+ def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.json { respond_with_bip(@comment) }
+      else
+        format.html { render action: 'edit' }
+        format.json { respond_with_bip(@comment) }
+      end
+    end
+  end
+
+
+
+
+
+
+
 
   def checkout
     @order = current_user.cart.orders.find(params[:id])

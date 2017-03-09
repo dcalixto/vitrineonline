@@ -11,7 +11,7 @@
         
           <%= user.first_name %> <%= user.last_name %>
         <% end %>
-          <%unless conversation.display_message? %>
+          <%unless conversation.display_message.present? %>
 
           <p><%= conversation.display_message.body %></p>
       <% end %>
