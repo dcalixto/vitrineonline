@@ -16,7 +16,9 @@ class OrdersController < ApplicationController
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
- @order = Order.find_by_id(params[:id]) 
+ @order = Order.find_by_id(params[:id])
+  @vitrine = Vitrine.find(params[:id]) 
+
     respond_to do |format|
       format.html do 
     
@@ -25,7 +27,7 @@ class OrdersController < ApplicationController
 end
       format.json do
 
-      @current_vitrine.update_attributes(params[order_attributes: [:track_number]])
+      @vitrine.update_attributes(params[order_attributes: [:track_number]])
       render nothing: true
 
        # format.html { redirect_to :back, notice: 'Comment was successfully updated.' }
@@ -42,28 +44,6 @@ end
   #def order_params
 #  params.require(:vitrine).permit()
 #end 
-
-
-  def update
-    @user = User.find(params[:id])
-    respond_to do |format|
-      format.html do
-        @states = State.all
-        @cities = City.where('state_id = ?', State.first.id)
-        if @user.update_attributes(params[:user])
-          redirect_to(action: :edit, id: @user, only_path: true, format: :html)
-          flash[:notice] = 'Conta atualiazada'
-
-        else
-          render :edit
-        end
-      end
-      format.json do
-        @user.update_attributes(params[:user])
-        render nothing: true
-      end
-    end
-  end
 
 
 

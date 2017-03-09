@@ -155,8 +155,7 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       post :buy
       post :ipn_notification
       get :fail
-      match :sold
-      #put :sold
+      get :sold
       get :purchased
       get :sent
       get :paid
@@ -170,7 +169,7 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       match :paid
 
       match '/sold?status=sent ' => 'orders#sold', via: [:get, :post], as: :vitrine_sent
-      match '/sold?status=paid ' => 'orders#sold', via: [:get, :post], as: :vitrine_sold
+      match '/sold?status=paid ' => 'orders#sold', via: [:get, :post,:put], as: :vitrine_sold
       match '/purchased?status=paid' => 'orders#purchased', via: [:get, :post], as: :user_paid
       match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :user_sent
     end
