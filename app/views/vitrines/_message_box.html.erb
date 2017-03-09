@@ -8,7 +8,7 @@
  
       <%= hidden_field :conversation_participants, :vitrine_id, :value => @vitrine.user_id, :name => "#{conversation_participant[@vitrine.user_first_name]}" %>
       <ul>
-        <li><%= text_area :message, :body,class: 'form-control span5',data: { emojiable: true }, :rows => 5, :placeholder => "Mensagem" '%></li>
+        <li><%= text_area :message, :body,class: 'form-control span5',data: { emojiable: true }, :rows => 5, :placeholder => "Mensagem" %></li>
       </ul>
     </div>
     <div><%= f.button 'Enviar', :class => 'btn' %></div>
