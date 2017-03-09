@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
 
     
      respond_to do |format|
-      if Order.where('seller_id = ? and status = ?', current_vitrine.id).update_attributes(params[:order])
+      if Order.where('seller_id = ? and status = ?').update_attributes(params[:order])
        
         
         
