@@ -4,9 +4,8 @@
     <%= form_for @conversation, :html => {:class => "conversation_form"}  do |f| %>
     <div class="doubt">
    
-          <div ><input class="span5" id="conversation_username" name="conversation_participant[first_name]" placeholder="Para: Nome" type="text"/>
- 
-      <%= hidden_field :conversation_participants, :vitrine_id, :value => @vitrine.user_id, :name => "#{conversation_participant[@vitrine.user_first_name]}" %>
+         
+      <%= hidden_field :conversation_participants, :vitrine_id, :value => @vitrine.user_id %>
       <ul>
         <li><%= text_area :message, :body,class: 'form-control span5',data: { emojiable: true }, :rows => 5, :placeholder => "Mensagem" %></li>
       </ul>
