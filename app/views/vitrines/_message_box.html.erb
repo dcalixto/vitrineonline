@@ -3,7 +3,9 @@
        <% @conversation = Conversation.new %>
     <%= form_for @conversation do |f| %>
     <div class="doubt">
-      <%= hidden_field :conversation_participants, :vitrine_id, :value => @vitrine.user_id %>
+   
+          
+      <%= hidden_field :conversation_participants, :vitrine_id, :value => @vitrine.user_id, :name => "conversation_participant[first_name]" %>
       <ul>
         <li><%= text_area :message, :body, :rows => 3, class: 'form-control'%></li>
       </ul>

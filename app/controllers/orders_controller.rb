@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
 
     
      respond_to do |format|
-      if @order.update_attributes(params[:order])
+      if Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).update_attributes(params[:order])
         format.html { redirect_to :back, notice: 'Comment was successfully updated.' }
         format.json { respond_with_bip(@order) }
       else
