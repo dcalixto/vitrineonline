@@ -23,14 +23,16 @@ class OrdersController < ApplicationController
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 end
+      format.json do
 
-      if @current_vitrine.update_attributes(params[order_attributes: [:track_number]])
- 
-        format.html { redirect_to :back, notice: 'Comment was successfully updated.' }
-        format.json { respond_with_bip(@order) }
-      else
-        format.html { render action: 'sold' }
-        format.json { respond_with_bip(@order) }
+      @current_vitrine.update_attributes(params[order_attributes: [:track_number]])
+      render nothing: true
+
+       # format.html { redirect_to :back, notice: 'Comment was successfully updated.' }
+       # format.json { respond_with_bip(@order) }
+     # else
+       # format.html { render action: 'sold' }
+       # format.json { respond_with_bip(@order) }
       end
     end
 
@@ -41,6 +43,27 @@ end
 #  params.require(:vitrine).permit()
 #end 
 
+
+  def update
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html do
+        @states = State.all
+        @cities = City.where('state_id = ?', State.first.id)
+        if @user.update_attributes(params[:user])
+          redirect_to(action: :edit, id: @user, only_path: true, format: :html)
+          flash[:notice] = 'Conta atualiazada'
+
+        else
+          render :edit
+        end
+      end
+      format.json do
+        @user.update_attributes(params[:user])
+        render nothing: true
+      end
+    end
+  end
 
 
 
