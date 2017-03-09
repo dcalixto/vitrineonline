@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
 
     
      respond_to do |format|
-      if @current_vitrine.update_attributes(order_params)
+      if @current_vitrine.update_attributes(params[order_attributes: [:track_number]])
 
         
         
@@ -42,9 +42,9 @@ class OrdersController < ApplicationController
   end
 
 
-  def order_params
-  params.require(:vitrine).permit( order_attributes: [:track_number])
-end 
+  #def order_params
+#  params.require(:vitrine).permit()
+#end 
 
 
 
@@ -143,16 +143,7 @@ order = Order.find(params[:id])
   end
 
 
-def seller
-order = Order.find(params[:id])
-order.seller_id
-end
 
-
-def buyer
-order = Order.find(params[:id])
-order.buyer_id
-end
 
 
 
