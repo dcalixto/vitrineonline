@@ -26,8 +26,8 @@ class OrdersController < ApplicationController
 
     
      respond_to do |format|
-      if @order.update_attributes(params[:order])
-       
+      if @current_vitrine.update_attributes(order_params)
+
         
         
         
@@ -41,18 +41,10 @@ class OrdersController < ApplicationController
 
   end
 
- def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { respond_with_bip(@comment) }
-      else
-        format.html { render action: 'edit' }
-        format.json { respond_with_bip(@comment) }
-      end
-    end
-  end
 
+  def order_params
+  params.require(:vitrine).permit( order_attributes: [:track_number])
+end 
 
 
 
