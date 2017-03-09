@@ -26,12 +26,8 @@ class OrdersController < ApplicationController
 
     
      respond_to do |format|
-    #  if Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).update_attributes(params[:order])
+      if Order.where('seller_id = ? and status = ?', current_vitrine.id).update_attributes(params[:order])
        
-        
-   if Order.find(:all, :conditions => ["seller_id = ? and statuts = ?", current_vitrine.id, params[:status] || Order.statuses[0]).each do |obj|
-  obj.update_attributes(...)
-end
         
         
         
