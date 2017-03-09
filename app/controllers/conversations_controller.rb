@@ -7,7 +7,7 @@ class ConversationsController < ApplicationController
     if current_user
       # @conversation = Conversation.new
       @conversations = current_user.active_conversations
-      .includes(:display_message) #:users
+      .includes(:conversation_participants,:display_message) #:users
       .order('conversations.updated_at DESC').paginate(:page => params[:page], :per_page => 22)
 
       # #@conversation = Conversation.new
