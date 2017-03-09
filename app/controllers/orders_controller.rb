@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
-  @order = Order.find_by_id(params[:id]) 
+ # @order = Order.find_by_id(params[:id]) 
      respond_to do |format|
     format.html do
 
@@ -24,12 +24,10 @@ class OrdersController < ApplicationController
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
     end
-       if order.update_attributes(params[:order])
-         # format.json do
+      format.json do
    
-         format.json { respond_with_bip(@order) }
-        
-       # render nothing: true
+               
+       render nothing: true
       end
 
      end
