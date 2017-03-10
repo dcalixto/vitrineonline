@@ -156,16 +156,16 @@
              
                       <% if  params[:action] == "sold" and params[:status] == Order.statuses[0] %>
                   <% if current_seller%>
-
+ <%= form_tag   :url => "/orders/sold?status=sent",  :method => :post  do |f| %>
                 <li>
                                                
-                  <%= best_in_place order, :track_number, :as => :input, :nil => "Número de Rastreamento", :url => "/orders/sold?status=paid"%> 
-
+                  <#%= best_in_place order, :track_number, :as => :input, :nil => "Número de Rastreamento", :url => "/orders/sold?status=paid"%> 
+<label>Código de Rastreamento</label><%=text_field_tag :track_number %></li>
                              </li>
                 <li>
                 Marcar como:
 
-                    <%= link_to "Enviado",  sent_order_path(order), :class => 'btn btn_small' %>
+                               <%= f.submit_tag"Enviado",  :class => 'btn_grey btn_small' %>
                 </li>
                     <li>
                    
