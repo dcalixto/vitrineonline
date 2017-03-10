@@ -2,7 +2,7 @@
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
  protect_from_forgery except: [:ipn_notification]
-
+respond_to :html, :json
   def purchased
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
@@ -16,29 +16,36 @@ class OrdersController < ApplicationController
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
- @order = Order.find_by_id(params[:id])
-  @vitrine = Vitrine.find_by_id(params[:id]) 
 
-    respond_to do |format|
-      format.html do 
+    
+    @order = Order.find_by_id(params[:id])
+#  @vitrine = Vitrine.find_by_id(params[:id]) 
+
+  #  respond_to do |format|
+   #   format.html do 
     
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
-end
-      format.json do
+
+    
+     @order.update_attributes(params[:order])
+    respond_with @order
+    
+    #end
+    #  format.json do
 
      # @vitrine.update_attributes(params[order_attributes: [:track_number]])
     #  @order.update_attributes(params[order_attributes: [:track_number]])
 
-      render nothing: true
+     # render nothing: true
      # respond_with_bip(@order)
        # format.html { redirect_to :back, notice: 'Comment was successfully updated.' }
        # format.json { respond_with_bip(@order) }
      # else
        # format.html { render action: 'sold' }
        # format.json { respond_with_bip(@order) }
-      end
-    end
+    #  end
+   # end
 
   end
 
