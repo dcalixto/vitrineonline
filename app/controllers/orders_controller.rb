@@ -28,7 +28,7 @@ end
       format.json do
 
      # @vitrine.update_attributes(params[order_attributes: [:track_number]])
-      @order.update_attributes(params[:order])
+    #  @order.update_attributes(params[order_attributes: [:track_number]])
 
       render nothing: true
      # respond_with_bip(@order)
