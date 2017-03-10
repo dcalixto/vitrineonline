@@ -2,25 +2,17 @@
 class Product::StepsController < ApplicationController
   include Wicked::Wizard
   steps *Product.form_steps
- # steps(*Product.wizard_steps) 
+
   def show
-    @product = Product.find(params[:product_id])
-    
-    render_wizard
-
-
-
-
- 
+   # @product = Product.find(params[:product_id])
+  @product = Product.cached_find(params[:id])
+    render_wizard 
    end
 
   def update
+  @product = Product.cached_find(params[:id])
+#@product = Product.find(params[:product_id])
 
-
-  
-    @product = Product.find(params[:product_id])
-  # params[:product][:form_step] = step
-    
 params[:product][:status] = 'active' if step == steps.last
       
     if @product.update_attributes(params[:product])
@@ -64,20 +56,9 @@ params[:product][:status] = 'active' if step == steps.last
         end
       end
       redirect_to order_stocks_path(current_vitrine.id)
-     # redirect_to product_step_path(@product, Product.form_steps.preview, only_path: true, format: :html) 
-#render_wizard @product
-    else
+     else
       render_wizard @product
     end
   end
 
-  private
-
-#def product_params(step)
-   #permitted_attributes = case step
-     #                      when 'first'
-      #                       []
-
-       #                   end
-  #end
-end
+ end
