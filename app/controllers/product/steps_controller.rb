@@ -4,15 +4,15 @@ class Product::StepsController < ApplicationController
   steps *Product.form_steps
 
   def show
-    @product = Product.find_by_id(params[:id])
- # @product = Product.cached_find_by_id(params[:id])
+    @product = Product.cached_find(params[:product_id])
+  #@product = Product.cached_find(params[:id])
     render_wizard 
    end
 
   def update
   @product = Product.cached_find(params[:id])
 #@product = Product.find(params[:product_id])
-
+    
 params[:product][:status] = 'active' if step == steps.last
       
     if @product.update_attributes(params[:product])
