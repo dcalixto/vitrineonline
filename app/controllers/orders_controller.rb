@@ -2,7 +2,10 @@
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
  protect_from_forgery except: [:ipn_notification]
-  def purchased
+ 
+ 
+ 
+ def purchased
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
   
@@ -22,11 +25,6 @@ class OrdersController < ApplicationController
 
    
   end
-
-
-  #def order_params
-#  params.require(:vitrine).permit()
-#end 
 
 
 
@@ -146,11 +144,11 @@ order = Order.find(params[:id])
           transaction.status = params[:status]
           order.transaction = transaction
           order.save
-          
+           OrderMailer.order_confirmation(order).deliver 
+
 
           end
-        OrderMailer.order_confirmation(order).deliver 
-      end
+             end
     else
       logger.info("IPN message: VERIFICATION FAILED")
     end
