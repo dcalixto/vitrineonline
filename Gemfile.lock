@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/bernat/best_in_place.git
+  revision: 332eda290cb133683a99d43a30321bab27d85e70
+  specs:
+    best_in_place (3.1.0)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
+GIT
   remote: https://github.com/dcalixto/admin_interface.git
   revision: c4eb77b39764d5387b640b32089015f98804ec3f
   specs:
@@ -141,9 +149,6 @@ GEM
     ast (2.3.0)
     backports (3.6.8)
     bcrypt-ruby (3.0.1)
-    best_in_place (3.1.0)
-      actionpack (>= 3.2)
-      railties (>= 3.2)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -173,7 +178,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    configatron (4.5.0)
+    configatron (4.5.1)
     cookiejar (0.3.3)
     correios-frete (1.10.0)
       log-me (~> 0.0.10)
@@ -278,7 +283,7 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.4.1)
       launchy (~> 2.2)
-    libv8 (3.16.14.17)
+    libv8 (3.16.14.19)
     log-me (0.0.10)
     lograge (0.3.6)
       actionpack (>= 3)
@@ -491,7 +496,7 @@ GEM
       naught (~> 1.1)
       simple_oauth (~> 0.3.1)
     tzinfo (0.3.52)
-    uglifier (3.1.4)
+    uglifier (3.1.6)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -523,7 +528,7 @@ DEPENDENCIES
   admin_interface!
   annotate
   bcrypt-ruby (~> 3.0.0)
-  best_in_place
+  best_in_place!
   better_errors
   bettertabs!
   binding_of_caller
