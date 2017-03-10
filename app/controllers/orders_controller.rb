@@ -18,7 +18,7 @@ respond_to :html, :json
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
 
     
-    @order = Order.find_by_id(params[:id])
+   # @order = Order.find(params[:order_id])
 #  @vitrine = Vitrine.find_by_id(params[:id]) 
 
   #  respond_to do |format|
@@ -28,13 +28,13 @@ respond_to :html, :json
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
     
-     @order.update_attributes(params[:order])
-    respond_with @order
+    # @order.update_attributes(params[:order])
+   # respond_with @order
     
     #end
     #  format.json do
 
-     # @vitrine.update_attributes(params[order_attributes: [:track_number]])
+      #@vitrine.update_attributes(params[order_attributes: [:track_number]])
     #  @order.update_attributes(params[order_attributes: [:track_number]])
 
      # render nothing: true
