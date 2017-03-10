@@ -144,7 +144,7 @@ order = Order.find(params[:id])
           transaction.status = params[:status]
           order.transaction = transaction
           order.save
-           OrderMailer.order_confirmation(order).deliver 
+          # OrderMailer.order_confirmation(order).deliver 
 
 
           end
