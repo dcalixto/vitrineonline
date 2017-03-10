@@ -31,9 +31,8 @@ class UsersController < ApplicationController
 
 
 
-  def feedbacks
 
-
+ def feedbacks
     begin
       @user = User.cached_find(params[:id])
     rescue
@@ -41,23 +40,19 @@ class UsersController < ApplicationController
     end
 
     unless @user.nil?
-      @user = User.cached_find(params[:id])
-      # @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
-      @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
-      @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
-      @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
 
-      respond_to do |format|
-        format.html { render 'feedbacks' }
-      end
+        @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
 
+      
+      @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+
+        @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
 
     end
-
-
-
-
   end
+
+
+
 
 
 
@@ -80,13 +75,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def message_user
-    @user = User.cached_find(params[:id])
-
-    respond_to do |format|
-      format.html { render 'message_user' }
-    end
-  end
+ 
 
   def new
     @user = User.new

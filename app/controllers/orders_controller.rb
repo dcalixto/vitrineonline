@@ -144,11 +144,11 @@ order = Order.find(params[:id])
           transaction.status = params[:status]
           order.transaction = transaction
           order.save
-          # OrderMailer.order_confirmation(order).deliver 
-
+          
 
           end
-             end
+        OrderMailer.order_confirmation(order).deliver 
+      end
     else
       logger.info("IPN message: VERIFICATION FAILED")
     end

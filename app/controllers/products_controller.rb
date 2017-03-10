@@ -104,7 +104,10 @@ class ProductsController < ApplicationController
 
     @sizes_for_dropdown = @product.sizes.collect { |s| [s.size, s.id] }
 
-    @q = Feedback.by_participant(@product, Feedback::FROM_BUYERS).ransack(params[:q])
+   # @q = Feedback.by_participant(@product, Feedback::FROM_BUYERS).ransack(params[:q])
+  
+     @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
+    
     @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 
     # suggestions for current visitor
@@ -147,7 +150,7 @@ class ProductsController < ApplicationController
   def create
     @product = current_vitrine.products.build(params[:product])
     if @product.save
-      # redirect_to wizard_path(steps.first, product_id: @product.id)
+      
       redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html)
 
     else

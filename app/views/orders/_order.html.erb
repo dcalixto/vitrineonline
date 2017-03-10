@@ -156,7 +156,7 @@
              
                       <% if  params[:action] == "sold" and params[:status] == Order.statuses[0] %>
                   <% if current_seller%>
- <%= form_tag   :url => "/orders/sold?status=sent",  :method => :post  do |f| %>
+ <%= form_tag   sent_order_path(order),  :method => :put  do |f| %>
                 <li>
                                                
                   <#%= best_in_place order, :track_number, :as => :input, :nil => "Número de Rastreamento", :url => "/orders/sold?status=paid"%> 
