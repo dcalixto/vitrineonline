@@ -10,8 +10,8 @@ class Product::StepsController < ApplicationController
    end
 
   def update
-  @product = Product.cached_find(params[:id])
-#@product = Product.find(params[:product_id])
+  #@product = Product.cached_find(params[:id])
+@product = Product.cached_find(params[:product_id])
     
 params[:product][:status] = 'active' if step == steps.last
       

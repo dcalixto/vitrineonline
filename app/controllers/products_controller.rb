@@ -151,7 +151,7 @@ class ProductsController < ApplicationController
     @product = current_vitrine.products.build(params[:product])
     if @product.save
       
-      redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html, id: params[:id])
+      redirect_to product_step_path(@product, Product.form_steps.first, only_path: true, format: :html, product_id: params[:product_id])
 
     else
       render :new, format: :html
