@@ -141,7 +141,6 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
   post '/carts/add/:id', to: 'carts#add', as: :add_to_carts
 
  # put '/carts/user_address/', to: 'carts#user_address', as: :user_address
-put '/sold?status=paid', to: 'orders#sold',  as: :vitrine_sold
 
 
   resources :carts, only: [:index]
@@ -170,10 +169,10 @@ put '/sold?status=paid', to: 'orders#sold',  as: :vitrine_sold
       match :sent
       match :paid
       match '/sold?status=sent ' => 'orders#sold', via: [:get, :post], as: :vitrine_sent
-      match '/sold?status=paid ' => 'orders#sold', via: [:get,:put, :post], as: :vitrine_sold
-      put '/sold?status=paid', to: 'orders#sold',  as: :vitrine_sold
+      match '/sold?status=paid ' => 'orders#sold', via: [:get, :post], as: :vitrine_sold
+      put '/:id/sold' => 'orders#sold', via: [:put], as: :vitrine_sold
 
-
+    
       match '/purchased?status=paid' => 'orders#purchased', via: [:get, :post], as: :user_paid
       match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :user_sent
     end

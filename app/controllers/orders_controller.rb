@@ -27,13 +27,10 @@ class OrdersController < ApplicationController
 end
       format.json do
 
-     # @vitrine.update_attributes(params[order_attributes: [:track_number]])
-
-
-
+      @vitrine.update_attributes(params[order_attributes: [:track_number]])
 
       render nothing: true
-      respond_with_bip(@order)
+     # respond_with_bip(@order)
        # format.html { redirect_to :back, notice: 'Comment was successfully updated.' }
        # format.json { respond_with_bip(@order) }
      # else
