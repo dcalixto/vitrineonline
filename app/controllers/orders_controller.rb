@@ -165,12 +165,13 @@ order = Order.find(params[:id])
 
     if order
       order.status = Order.statuses[1]
-      order.transaction.update_attribute(:updated_at, Time.zone.now)
+     order.transaction.update_attribute(:updated_at, Time.zone.now, :track_number)
 
       order.save
       redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}",
       flash: { success: 'Estado Mudado' }
-    end
+  
+  end
   end
 
   def index
