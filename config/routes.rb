@@ -177,6 +177,9 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :user_sent
     end
   end
+
+     put '/orders/:id/sent ' => 'orders#sold', as: :vitrine_sent
+
   resources :transactions, only: [:index, :show]
 
   # CATEGORIES
