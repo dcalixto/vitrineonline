@@ -168,7 +168,7 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       match :purchased
       match :sent
       match :paid
-      match '/sold?status=sent ' => 'orders#sold', via: [:get, :post], as: :vitrine_sent
+      match '/sold?status=sent ' => 'orders#sold', via: [:get, :put, :post], as: :vitrine_sent
       match '/sold?status=paid ' => 'orders#sold', via: [:get,:put, :post], as: :vitrine_sold
      
 
