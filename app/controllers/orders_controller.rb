@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   def sold
   #   if current_vitrine
 
-   @order = Order.where(:seller_id => current_vitrine.id).find(params[:id])
+   @order = Order.where(:seller_id => @vitrine.id).find(params[:id])
 
 
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
