@@ -55,7 +55,7 @@ params[:product][:status] = 'active' if step == steps.last
           @product.update_attribute :is_shared_on_twitter, false
         end
       end
-      redirect_to order_stocks_path(current_vitrine.id)
+      redirect_to(order_stocks_path(current_vitrine.id), :id => @product.id, name: params[:name])
      else
       render_wizard @product
     end
