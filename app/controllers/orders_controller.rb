@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def sold
     # @orders = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).paginate(:per_page => 2, :page => params[:page]).order('created_at DESC')
-@order = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0])
+@order = current_vitrine.orders.find(params[:id])
     
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
