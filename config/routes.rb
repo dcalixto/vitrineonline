@@ -160,13 +160,16 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       get :purchased
       get :sent
       get :paid
-     
+     put :sent
+
     end
 
     collection do
       match :sold
       match :purchased
       match :sent
+      put :sent
+
       match :paid
       match '/sold?status=sent ' => 'orders#sold', via: [:get, :put, :post], as: :vitrine_sent
       match '/sold?status=paid ' => 'orders#sold', via: [:get,:put, :post], as: :vitrine_sold
@@ -178,7 +181,7 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
     end
   end
 
-     put '/:id/sent', to: 'orders#sold', as: :vitrine_sent
+     put '/orders/:id/sent', to: 'orders#sold', as: :vitrine_sent
 
   resources :transactions, only: [:index, :show]
 
