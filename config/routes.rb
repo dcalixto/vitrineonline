@@ -182,6 +182,7 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
   end
 
      put '/orders/:id/sent', to: 'orders#sold', as: :vitrine_sent
+     # put '/orders/:id/sent', to: 'orders#sent', as: :vitrine_sent
 
   resources :transactions, only: [:index, :show]
 

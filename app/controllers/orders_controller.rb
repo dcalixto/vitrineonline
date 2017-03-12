@@ -17,7 +17,9 @@ class OrdersController < ApplicationController
   end
 
   def sold
- 
+  order = Order.find_by_id(params[:id])
+    transaction = Transaction.find_by_id(params[:id])
+
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
@@ -153,7 +155,7 @@ class OrdersController < ApplicationController
 
 
   def sent
-    order = Order.find_by_id(params[:id])
+    order = Order.find(params[:id])
     transaction = Transaction.find_by_id(params[:id])
     #  @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[1]).paginate(:per_page => 22, :page => params[:page])
     @q = Order.where('status = ?', params[:status] || Order.statuses[1]).ransack(params[:q])
