@@ -17,13 +17,26 @@ class OrdersController < ApplicationController
   end
  
   def sold
- #  order = Order.where(params[:id])
-#   puts params[:id]
-#byebug
+order = Order.find(params[:id])
+    transaction = Transaction.find_by_id(params[:id])
 
- @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
+    
+    @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
    
+
+    if order
+      order.status = Order.statuses[0]
+     order.transaction.update_attribute(:updated_at, Time.zone.now, :track_number)
+
+      order.save
+      redirect_to "#{sold_orders_path}?status=#{Order.statuses[1]}",
+      flash: { success: 'Estado Mudado' }
+  
+  end
+
+  
+  
   end
 
 
