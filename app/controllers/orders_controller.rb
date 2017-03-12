@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   end
  
   def sold
-order = Order.find(params[:id])
+order = Order.find_by_id(params[:id])
     transaction = Transaction.find_by_id(params[:id])
 
     
