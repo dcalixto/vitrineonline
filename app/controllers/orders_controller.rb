@@ -1,40 +1,40 @@
 # encoding: utf-8
 class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
- protect_from_forgery except: [:ipn_notification]
- 
- 
- 
- def purchased
+  protect_from_forgery except: [:ipn_notification]
+
+
+
+  def purchased
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
-  
+
       @q = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).ransack(params[:q])
       #  @q = Order.joins(:user, :cart).where('status = ?', current_user.id, cart.id, params[:status] || Order.statuses[0]).ransack(params[:q])
       # @q = Order.where('buyer_id = ? and status = ?', current_user.id, params[:status] || Order.statuses[0]).ransack(params[:q])
       @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
     end
   end
- 
+
   def sold
-    current_vitrine = current_user.vitrine
-    transaction = Transaction.find_by_id(params[:id])
- order = Order.where('seller_id = ? and  status = ?', current_vitrine.id, params[:status] || Order.statuses[0])
-    
+    # #  current_vitrine = current_user.vitrine
+    #   transaction = Transaction.find_by_id(params[:id])
+    # order = Order.where('seller_id = ? and  status = ?', current_vitrine.id, params[:status] || Order.statuses[0])
+
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
-   
 
-   
-  
-  
+
+
+
+
   end
 
 
   def checkout
     @order = current_user.cart.orders.find(params[:id])
     if current_user.address.blank?
-     # redirect_to new_user_changes_path(current_user)
+      # redirect_to new_user_changes_path(current_user)
       redirect_to edit_user_path
 
       flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   end
 
 
- 
+
 
   def update
     order = Order.find(params[:id])
@@ -67,57 +67,57 @@ class OrdersController < ApplicationController
   end
 
   def buy
-order = Order.find(params[:id])
-    
+    order = Order.find(params[:id])
 
 
- 
+
+
     store_amount = (order.total_price * configatron.store_fee).round(2)
     seller_amount = (order.total_price - store_amount) + order.shipping_cost
 
- 
-   @api = PayPal::SDK::AdaptivePayments.new
-#byebug
 
-      @pay = @api.build_pay({
-        :actionType => "PAY",
-        :cancelUrl => carts_url,
-        :currencyCode => "BRL",
-       # :feesPayer => "SENDER",
-        :ipnNotificationUrl => ipn_notification_order_url(order), 
+    @api = PayPal::SDK::AdaptivePayments.new
+    #byebug
 
-        :receiverList => {
-          :receiver => [{
-            :email =>  order.product.vitrine.policy.paypal,
-            :amount => seller_amount,
-            :primary => true
+    @pay = @api.build_pay({
+      :actionType => "PAY",
+      :cancelUrl => carts_url,
+      :currencyCode => "BRL",
+      # :feesPayer => "SENDER",
+      :ipnNotificationUrl => ipn_notification_order_url(order), 
 
-                 },
-            {
-             :email => configatron.paypal.merchant,
-             :amount => store_amount,
-             :primary => false
-                     
-                 }]},
-             :returnUrl => carts_url })
+      :receiverList => {
+        :receiver => [{
+          :email =>  order.product.vitrine.policy.paypal,
+          :amount => seller_amount,
+          :primary => true
 
+        },
+        {
+          :email => configatron.paypal.merchant,
+          :amount => store_amount,
+          :primary => false
 
-
-             @response = @api.pay(@pay)
-#byebug
-             # Access response
-             if @response.success? && @response.payment_exec_status != "ERROR"
-               @response.payKey
-               redirect_to @api.payment_url(@response)  # Url to complete payment
-             else
-               @response.error[0].message
-               redirect_to fail_order_path(order, error: @response.error[0].message)
-
-             end
-              end
+        }]},
+        :returnUrl => carts_url })
 
 
-  
+
+        @response = @api.pay(@pay)
+        #byebug
+        # Access response
+        if @response.success? && @response.payment_exec_status != "ERROR"
+          @response.payKey
+          redirect_to @api.payment_url(@response)  # Url to complete payment
+        else
+          @response.error[0].message
+          redirect_to fail_order_path(order, error: @response.error[0].message)
+
+        end
+  end
+
+
+
   def fail
   end
 
@@ -127,10 +127,10 @@ order = Order.find(params[:id])
 
 
 
- def ipn_notification
+  def ipn_notification
     logger.info("We've got an IPN!! raw_post object:")
     logger.info(request.raw_post)
-   
+
 
 
     if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
@@ -146,9 +146,9 @@ order = Order.find(params[:id])
           transaction.status = params[:status]
           order.transaction = transaction
           order.save
-          
 
-          end
+
+        end
         OrderMailer.order_confirmation(order).deliver 
       end
     else
@@ -167,13 +167,13 @@ order = Order.find(params[:id])
 
     if order
       order.status = Order.statuses[1]
-     order.transaction.update_attribute(:updated_at, Time.zone.now, :track_number)
+      order.transaction.update_attribute(:updated_at, Time.zone.now, :track_number)
 
       order.save
       redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}",
       flash: { success: 'Estado Mudado' }
-  
-  end
+
+    end
   end
 
   def index
