@@ -16,10 +16,7 @@ class OrdersController < ApplicationController
     end
   end
   def sold
-  #   if current_vitrine
-#  @vitrine = current_user.vitrine
-#@order =  @vitrine.orders.find(params[:id])
-@order = Order.find_by_id(params[:id])
+ order = Order.find(params[:id])
 @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
    
