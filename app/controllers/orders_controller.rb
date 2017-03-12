@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
  
   def sold
    order = Order.where(params[:id])
-   puts params[:id]
+   #puts params[:id]
 byebug
 
  @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
