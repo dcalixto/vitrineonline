@@ -119,7 +119,7 @@ Preço
                              </li>
                 <li>
                 Marcar como:
-                          <%= f.submit track_done_order_path, "Adicionar", class: "btn_grey" %>
+                          <%= f.submit "Adicionar", track_done_order_path(@order), method: :put,  class: "btn_grey" %>
                                           </li>
                  
 
