@@ -17,7 +17,7 @@
            <%if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
           <% if current_seller%>
 
-     <%= form_for @order, html: { class: 'form-inline' } do |f| %>
+            <%= form_for @order, :url => track_done_order_path(@order), method: :put,  html: { class: 'form-inline' } do |f| %>
 
 
  <div class="content">
@@ -119,7 +119,7 @@ Preço
                              </li>
                 <li>
                 Marcar como:
-                          <%= f.submit "Adicionar", track_done_order_path(@order), method: :put,  class: "btn_grey" %>
+                          <%= f.submit "Adicionar",  class: "btn_grey" %>
                                           </li>
                  
 
