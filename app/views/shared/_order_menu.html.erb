@@ -28,7 +28,7 @@
     <%= link_to 'Vendidos', "#{sold_orders_path}?status=#{Order.statuses[0]}" %>
   </li>
  
-  <li><%= link_to "Número de Rastreio", track_order_path(order) %></li>
+ 
   
   <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[1] %>">
     <%= link_to 'Enviados', "#{sold_orders_path}?status=#{Order.statuses[1]}" %>
