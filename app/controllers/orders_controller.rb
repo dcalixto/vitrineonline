@@ -42,12 +42,33 @@ class OrdersController < ApplicationController
     if current_user.vitrine.blank?
       # redirect_to new_user_changes_path(current_user)
     
- redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}",
+ redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}"
 
 
       flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
     end
   end
+
+
+
+
+ def updatetrack
+    order = Order.find(params[:id])
+    flash = if order.update_attributes(params[:order])
+              { success: 'Frete Salvo.' }
+            else
+              { error: 'Preço Inválido.' }
+            end
+    if request.xhr?
+      render json: flash
+    else
+      redirect_to "#{sent_orders_path}?status=#{Order.statuses[1]}", flash: flash
+
+    end
+  end
+
+
+
 
   def update
     order = Order.find(params[:id])
