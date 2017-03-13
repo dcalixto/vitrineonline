@@ -17,8 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def sold
-  order = Order.find_by_id(params[:id])
-    transaction = Transaction.find_by_id(params[:id])
+ 
 
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
@@ -31,14 +30,24 @@ class OrdersController < ApplicationController
     @order = current_user.cart.orders.find(params[:id])
     if current_user.address.blank?
       # redirect_to new_user_changes_path(current_user)
-      redirect_to edit_user_path
+        redirect_to edit_user_path
 
       flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
     end
   end
 
 
+ def track
+    @order = current_user.vitrine.orders.find(params[:id])
+    if current_user.vitrine.blank?
+      # redirect_to new_user_changes_path(current_user)
+    
+ redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}",
 
+
+      flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
+    end
+  end
 
   def update
     order = Order.find(params[:id])
