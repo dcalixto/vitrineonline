@@ -1,166 +1,163 @@
-<% title "Checkout" %>
-<div class="box2">
-  <div class="breadcrumb margin_top">
-    <h1>
-      <strong>Detalhes para Entrega</strong>
-      &gt; Confirmar e Pagar</h1>
-  </div>
-</div>
-<div class="box4">
-  <%= render 'shared/flash_messages' %>
-  <%= render 'shared/error_messages', :target => @order %>
-  <div class="block_empty margin_top">
-    <table class="checkout_product">
-      <% product = @order.product %>
+<% title "Número de Rastreio" %>
+
+<%= render "shared/order_menu" %>
+
+<div class="box5">
+    <div class="flash_box">
+      <%= render 'shared/flash_messages' %>
+    </div>
+
+  <div class="block  margin_top">
+
+
+
+    <div class="subcontent">
+      <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
+      </p>
+           <%if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+          <% if current_seller%>
+
+     <%= form_for @order, html: { class: 'form-inline' } do |f| %>
+
+
+ <div class="content">
+
+<table class="cart">
       <thead>
         <tr>
           <th>
             Item
           </th>
           <th>
-            Sumário
+            Quantidade
           </th>
-              </tr>
+          <th>
+Preço
+          </th>
+           <th>
+
+           Comprador
+           </th>
+            <th>
+            Estado
+          </th>
+        </tr>
       </thead>
       <tbody>
+
+
+
+
+  <% product = order.product %>
+ 
+
+<% unless order.status.nil? %>
+ 
         <tr>
-          <td >
+          <td>
             <% if product.images.present? %>
-              <%= link_to do %>
-                <%= image_tag product.images.first.ifoto.url(:thumb).to_s %>
-                <% end %>
+              <%= link_to  product_path(product.id) do %>
 
+
+                <%= image_tag product.images.first.ifoto.url(:small).to_s %>
+              <% end %>
             <% end %>
+            
+                <%= link_to product.name, product_path(product.id) %>
+              </td>
+              <td>
+                <%= order.quantity %>
+              </td>
+              <td>
+                <b class="lista-preco"><%= number_to_currency(order.total_price) %></b>
+              
+            
           </td>
-          <td class="sumary">
-            <ul>
-              <li>
-                <%= link_to product.name, product_path(product.id) %></li>
-              <li>Genero
-                <b>
-                  <%= product.gender.gender %></b>
+          <% if order.seller == current_vitrine  %>
+            <td>
+              <ul>
+                <li>
+                
                 </li>
-                <li>Categoria
+                <li><%= order.buyer.full_name %></li>
+                <li>
+                  <%= order.buyer.user_address if order.buyer.address %></li>
+                <li>
+                  <%= order.buyer.user_neighborhood if order.buyer.neighborhood%></li>
+                <li>
+                  <%= order.buyer.user_city if order.buyer.city and order.buyer.state %>
+                </li>
+                <li><%= order.buyer.user_postal_code if  order.buyer.postal_code %></li>
+                <li><%= order.buyer.user_address_supplement if order.buyer.address_supplement %></li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                                 
+                             
+                     <% if  params[:action] == "sold" %>
+                  <li>Comprador
+                    <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
+                <% end %>
+                <li>Comprado Em:
                   <b>
-                    <%= product.category.name %></b>
-                  </li>
-                  <li>Subcategoria
-                    <b>
-                      <%= product.subcategory.name %></b>
-                    </li>
-                    <li>Tamanho
-                      <b>
-                        <%= order.size.size %></b>
-                      </li>
-                      <li>Cor
-                        <b>
+                    <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => false)%>
+                  </b>
+                </li>
+                <li>Frete
+                  <b><%= order.shipping_method %></b>
+                </li>
+                <li>Custo
+                  <b><%= number_to_currency order.shipping_cost %></b>
+                </li>
+                           
+                                                               <li>
                                                
-                          <%= order.color.name %>
-                          </b>
-
-                      </li>
-                        <li>Material
-                          <b>
-                            <%= order.material.name %></b>
-                          </li>
-                          <li>Marca
-                            <b>
-                              <%= order.brand.name%></b>
-                            </li>
-                            <li>Condição
-                              <b>
-                                <%= order.condition.condition %></b>
-                              </li>
-                              <li>Vitrine
-                                <%= link_to @order.seller.vitrine_name, vitrine_path(@order.seller) %></li>
-                              <li>Quantidade
-                                <b><%= @order.quantity %></b>
-                              </li>
-                              <li>Preço
-                                <b class="lista-preco"><%= number_to_currency @order.total_price %></b>
-                              </li>
-                            </ul>
-                          </td>
-                                              </tbody>
-                      </table>
-                    </div>
-                  </div>
-               
-                  
-                  
-
-
- <div class="box11">
- <div class="block_empty margin_top">
-
-                    </div>
+                                 
+                <label>Código de Rastreamento</label> <%= f.input  :track_number %> 
+</li>
+                             </li>
+                <li>
+                Marcar como:
+                          <%= f.submit "Adicionar", class: "btn_grey" %>
+                                          </li>
                  
 
+                    <li>
+                  
+             
+  <%=order.track_number %></li>
+              </ul>
+            </td>
+                </tr>
+     
 
-</div>
+     
 
-                  
-                  
-                  
-                  
-                  <div class="box10">
-                    <div class="block_empty margin_top">
-                      <table class="checkout_total">
-                        <thead>
-                          <tr>
-                            <th>
-                              Total
-                            </th>
-                            <th></th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tr class="subtotal">
-                          <td >
-                            Subtotal (<%= @order.quantity %>
-                            Item)
-                          </td>
-                          <td>
-                            <b><%= number_to_currency @order.total_price %></b>
-                          </td>
-                        </tr>
-                        <tr class="shipping_cost">
-                          <td >
-                            Frete
-                          </td>
-                          <td>
-                            <% unless @order.shipping_cost.nil? %>
-                            <b>
-                              <%= number_to_currency( @order.shipping_cost) %></b>
-                            <% end %>
-                          </td>
-                        </tr>
-                        <tr class="checkout_bottom">
-                          <td>
-                            Selecione o Frete
-                          </td>
-                          <td>
-                            <%= form_for @order, html: { class: 'form-inline' } do |f| %>
-                                                       <%= f.input :track_number %>
 
-                                           <% end %>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Custo
-                          </td>
-                                                 </tr>
-                        <tr>
-                          <td>
-                            <%= f.submit "Adicionar", class: "btn_grey" %>
-                            <% end %>
-                          </td>
-                        </tr>
-                                             <tr class="checkout_bottom">
-                          <td></td>
-                                                 </tr>
-                      </table>
-                    </div>
-                  </div>
+     
+
+
+
+
+
+  
+    
+    
+    
+ </tbody>
+    </table>
+ 
+    </div>
+  <% end %>
+
+                        <% end %> 
+                                               <% end %> 
+
+    </div>
+
+
+
+  </div>
+ </div>
 
