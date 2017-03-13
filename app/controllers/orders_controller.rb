@@ -53,10 +53,17 @@ class OrdersController < ApplicationController
 
 def track_done
   order = Order.find(params[:id])
-  params[:order] =  { done: !(@order.done) }
-  save_updated
-end
-
+  flash = if order.update_attributes(params[:order])
+              { success: 'Frete Salvo.' }
+            else
+              { error: 'Preço Inválido.' }
+            end
+    if request.xhr?
+      render json: flash
+    else
+      redirect_to track_order_path(order), flash: flash
+    end
+  end
 
 
 
@@ -207,19 +214,6 @@ end
   end
 
 
-
-protected
-def save_updated
-    respond_to do |format|
-      if @order.update_attributes(params[:order])
-        format.html { redirect_to :back, notice: 'Task was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "track" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-end
-end
 
 
 end
