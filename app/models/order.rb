@@ -36,7 +36,7 @@ class Order < ActiveRecord::Base
 
   attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
     :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method, 
-    :status,  :color_id, :size_id,  :brand_id, :material_id,:condition_id
+    :status,  :color_id, :size_id,  :brand_id, :material_id,:condition_id, :track_number
 
 
   validates :shipping_cost, numericality: { greater_than: 0, allow_nil: true }
