@@ -38,8 +38,10 @@ class OrdersController < ApplicationController
 
 
  def track
-    @order = current_user.vitrine.orders.find(params[:id])
-    if current_user.vitrine.blank?
+
+   @current_seller = current_user.vitrine
+    @order = current_seller.orders.find(params[:id])
+    if current_seller.blank?
       # redirect_to new_user_changes_path(current_user)
     
  redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}"
@@ -52,11 +54,11 @@ class OrdersController < ApplicationController
 
 
 def track_done
-  order = Order.find(params[:id])
-  flash = if order.update_attributes(params[:order])
-              { success: 'Frete Salvo.' }
+  @order = Order.find(params[:id])
+   if order.update_attributes(params[:order])
+           flash =   { success: 'Frete Salvo.' }
             else
-              { error: 'Preço Inválido.' }
+           flash =   { error: 'Preço Inválido.' }
             end
     if request.xhr?
       render json: flash
