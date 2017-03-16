@@ -156,7 +156,7 @@
              
                       <% if  params[:action] == "sold" and params[:status] == Order.statuses[0] %>
                   <% if current_seller%>
-                         <#%=   form_tag  :url => { :action => :send, :controller => :order, :id => order.id },  :method => :put do |f|  %>
+                       
                 <li>
                                                
                                  
@@ -164,8 +164,8 @@
                              </li>
                 <li>
                 Marcar como:
- <%= button_to 'Número de Rastreio', track_order_path(order), method: :get, class: 'btn' %>
-                               <#%= submit_tag "Enviado",  :class => 'btn' %>
+ <%= button_to 'Adicionar Rastreio', track_order_path(order), method: :get, class: 'btn' %>
+                             
                 </li>
                  
 
