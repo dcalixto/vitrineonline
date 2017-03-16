@@ -157,11 +157,7 @@
                       <% if  params[:action] == "sold" and params[:status] == Order.statuses[0] %>
                   <% if current_seller%>
                        
-                <li>
-                                               
-                                 
-                <label>Código de Rastreamento</label><%=text_field_tag :track_number %></li>
-                             </li>
+            
                 <li>
                 Marcar como:
  <%= button_to 'Adicionar Rastreio', track_order_path(order), method: :get, class: 'btn' %>

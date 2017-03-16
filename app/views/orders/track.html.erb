@@ -126,9 +126,6 @@ Código
                           <%= f.submit "Adicionar",  class: "btn_grey" %>
                                           </li>
                  
-
-                                          <li> Marcar como:
-                <%= button_to "Enviado", sent_order_path(order), :class => 'btn_grey btn_small', :method => "get" %></li>
               </ul>
             </td>
                 </tr>
@@ -156,7 +153,13 @@ Código
                         <% end %> 
                                                
                       <% end %> 
-                         <% end %> 
+                    <% end %> 
+
+
+                    
+                                           Marcar como:
+                <%= button_to "Enviado", sent_order_path(order), :class => ' btn', :method => "get" %>
+
     </div>
 
 
