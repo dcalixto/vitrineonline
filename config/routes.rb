@@ -182,6 +182,8 @@ put :track_done
   end
 
 
+  get '/orders/:id/sent', to: 'orders#sent' #, as: :vitrine_sent
+
   resources :transactions, only: [:index, :show]
 
   # CATEGORIES
