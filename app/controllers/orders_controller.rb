@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
  redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}"
 
 
-      flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
+      flash[:error] = 'Error'
     end
   end
 
@@ -56,14 +56,34 @@ class OrdersController < ApplicationController
 def track_done
   @order = Order.find(params[:id])
    if order.update_attributes(params[:order])
-           flash =   { success: 'Frete Salvo.' }
+           flash =   { success: 'Número adicionado' }
             else
-           flash =   { error: 'Preço Inválido.' }
+           flash =   { error: 'Erro' }
             end
     if request.xhr?
       render json: flash
     else
       redirect_to track_order_path(order), flash: flash
+    end
+  end
+
+
+
+
+
+
+ def track_sent
+    order = Order.find(params[:id])
+    transaction = Transaction.find_by_id(params[:id])
+ 
+    if order
+      order.status = Order.statuses[1]
+      order.transaction.update_attribute(:updated_at, Time.zone.now)
+
+      order.save
+      redirect_to "#{sold_orders_path}?status=#{Order.statuses[1]}",
+      flash: { success: 'Estado Mudado' }
+
     end
   end
 

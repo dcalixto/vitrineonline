@@ -162,6 +162,7 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       get :paid
 get :track
 put :track_done
+put :track_sent
 
     end
 
