@@ -70,18 +70,7 @@ def track_done
 
 
 def confirmation
-  #if current_user.cart
-   
-
- @buyer = current_user.cart
-    @order = current_user.cart.order.find(params[:id])
-
-
-
-
-
-  #@order = Order.find(params[:id])
-#end
+    @order = current_user.cart.orders.find(params[:id])
 
 end
 
