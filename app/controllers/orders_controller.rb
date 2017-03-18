@@ -70,12 +70,10 @@ def track_done
 
 
 def confirmation
-    order = Order.find_by_id(params[:id])
+    #order = Order.find(params[:id])
 
-   # @order = current_user.cart.orders.find_by_id(params[:id])
-    transaction = Transaction.find_by_id(params[:id])
-
-
+   # @order = current_user.cart.orders.find(params[:id])
+   @order = Order.joins(:user, :cart).where('status = ?', current_user.id, cart.id, params[:status] || Order.statuses[0]). 
 end
 
 
