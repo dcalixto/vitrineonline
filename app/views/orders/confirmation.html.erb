@@ -1,4 +1,7 @@
 <% title "Confirmação" %>
+   <%if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+         
+
 <% if current_user.cart %>
 
 
@@ -20,3 +23,4 @@
  </div>
 
 <% end %>
+ <% end %>
