@@ -46,7 +46,7 @@
 
 
 
-        <div>
+        <div class="status_line">
           <ul>
             <li>   <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
             <%=link_to @product.vitrine.name, vitrine_path(@product.vitrine),  :title => "Nome" %>
@@ -65,7 +65,7 @@
         <!-- Fim-->
 
         <!--Descrição   -->
-        <ul>
+        <ul class="detail_price">
 
 
           <li>
@@ -120,7 +120,7 @@
           </li>
 
 
-          <li>Visualizações<b><%=@product.impressions_count %></b></li>
+          <li>Visualizações: <b><%=@product.impressions_count %></b></li>
 
 
 
@@ -225,11 +225,6 @@
 
                 </li>
 
-
-                <li> <span> <%= social_share_button_tag(truncate(@product.name, :length => 20), :url => url_for(:action => :show, :id => @product.id, :only_path => false))  %></span>
-
-                </li>
-
           </ul>
 
         </div>
@@ -238,6 +233,11 @@
 
 
       </div>
+      
+
+                <%= social_share_button_tag(truncate(@product.name, :length => 20), :url => url_for(:action => :show, :id => @product.id, :only_path => false))  %>
+
+               
     </div>
 
 

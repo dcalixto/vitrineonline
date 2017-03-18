@@ -32,8 +32,8 @@
 
 
             <tr class="cell">
-              <td>Data: <%= @invoice.created_at.strftime('%d/%m/%Y') %></td>
-              <td>Número da Fatura:<%= @invoice.id %></td>
+              <td>Data: <b><%= @invoice.created_at.strftime('%d/%m/%Y') %></b></td>
+              <td>Fatura: <b><%= @invoice.id %></b></td>
 
             </tr>
             <tr>
@@ -43,29 +43,32 @@
 
 
             <tr class="cell">
-              <b>Descrição</b>
+            
 
 
-
-              <td>produto:   <% unless @product.images.blank? %>
+              <td>
+                
+                Item:
+                <% unless @product.images.blank? %>
 
                 <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
               <%end %>
+                <%= @product.name %>
                 </td>
 
-                <td>              <%= @product.name %>
-              </td>
-              
-                            <td>Quantidade:  <%= @order.quantity %></td>
+            
+                           
+                <td>Quantidade:  <b><%= @order.quantity %></b></td>
 
-              <td>Preço:  <%= number_to_currency(@product.price) %></td>
+              <td>Preço:   <b><%= number_to_currency(@product.price) %></b></td>
 
-              <td>Vitrine: <%= current_vitrine.name %></td>
+              <td>Vitrine:  <b><%= current_vitrine.name %></b></td>
 
-              <td>Forma de pagamento: paypal</td>
-              Comissão:
+              <td>Forma de pagamento:  <b>paypal</b></td>
               <td>
-              <%= number_to_currency @invoice.store_fee %>  
+                Comissão:
+
+               <b><%= number_to_currency @invoice.store_fee %>  </b>
           </td>
           <td>
             <%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>

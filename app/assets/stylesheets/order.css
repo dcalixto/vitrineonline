@@ -109,10 +109,13 @@ td.amt {
   background: #fff
 }
 .checkout_total .subtotal {
-  color: #ff5300
+  color: #ff5300;
+  font-size:13px
 }
 .checkout .shipping_cost {
-  width: 50px
+  width: 50px;
+   font-size:13px
+
 }
 .checkout {
   border: solid 1px #f3f3f3

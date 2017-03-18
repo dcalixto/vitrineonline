@@ -89,7 +89,7 @@ gem 'mail_form'
 #SELECT
 
 gem 'dynamic_selectable', github: "dcalixto/dynamic_selectable"
-gem "select2-rails"
+#gem "select2-rails"
 
 #FOREMAN
 

@@ -159,20 +159,20 @@
                        
             
                 <li>
-                Marcar como:
+               
  <%= button_to 'Adicionar Rastreio', track_order_path(order), method: :get, class: 'btn' %>
                              
                 </li>
                  
 
-                    <li>
+                  
                   
                       <% end %>  
                       
                     <% end %> 
                         <% if   params[:status] == Order.statuses[1] %>
-
-  <%=order.track_number %></li>
+  <li>Número
+    <b><%=order.track_number %></b></li>
 
                   <%end%>
               </ul>

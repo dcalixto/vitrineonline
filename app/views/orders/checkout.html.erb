@@ -155,8 +155,8 @@
                         </thead>
                         <tr class="subtotal">
                           <td >
-                            Subtotal (<%= @order.quantity %>
-                            Item)
+                            Subtotal <%= @order.quantity %>
+                          
                           </td>
                           <td>
                             <b><%= number_to_currency @order.total_price %></b>
@@ -196,7 +196,7 @@
                         </tr>
                         <tr>
                           <td>
-                            <%= f.submit "Adicionar", class: "btn_grey" %>
+                            <%= f.submit "Adicionar", class: "btn" %>
                             <% end %>
                           </td>
                         </tr>
@@ -213,7 +213,7 @@
                         <tr class="checkout_bottom">
                           <td></td>
                           <td id="pay_cell">
-                            <%= button_to("Comprar", buy_order_path(@order), method: :post, class: 'btn big') unless @order.shipping_cost.nil? %>
+                            <%= button_to("Comprar", buy_order_path(@order), method: :post, class: 'btn_orange big') unless @order.shipping_cost.nil? %>
                           </td>
                         </tr>
                       </table>
