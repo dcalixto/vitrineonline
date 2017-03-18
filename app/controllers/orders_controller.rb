@@ -69,11 +69,6 @@ def track_done
 
 
 
-def confirmation
-
- @transaction = Transaction.find(params[:id]) 
-end
-
 
  def track_sent
     order = Order.find(params[:id])
@@ -149,7 +144,7 @@ OrderMailer.order_track(order).deliver
           :primary => false
 
         }]},
-        :returnUrl => confirmation_url
+        :returnUrl => transaction_url
     
     
   

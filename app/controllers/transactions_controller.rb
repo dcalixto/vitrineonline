@@ -1,8 +1,10 @@
-# encoding: utf-8
 class TransactionsController < ApplicationController
-  before_filter :authorize
-  def index
-    @transactions = current_vitrine.orders.transaction.where('status is not null')
-    render :index
-   end
+
+def show
+
+ @transaction = Transaction.find(params[:id]) 
+end
+
+
+
 end
