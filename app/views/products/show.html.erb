@@ -141,6 +141,12 @@
         <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
       </div>
 
+
+       
+
+                <%= social_share_button_tag(truncate(@product.name, :length => 20), :url => url_for(:action => :show, :id => @product.id, :only_path => false))  %>
+
+
   </div>
 
 
@@ -233,11 +239,7 @@
 
 
       </div>
-      
-
-                <%= social_share_button_tag(truncate(@product.name, :length => 20), :url => url_for(:action => :show, :id => @product.id, :only_path => false))  %>
-
-               
+                    
     </div>
 
 

@@ -143,7 +143,9 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
  # put '/carts/user_address/', to: 'carts#user_address', as: :user_address
 
 
-  resources :carts, only: [:index]
+
+  resources :carts, only: [:index] 
+  get '/orders/confirmation', to: 'orders#confirmation', as: :confirmation 
   resources :orders, only: [:index, :update, :destroy] do
     resources :stocks, only: [:index, :destroy] do
       collection do

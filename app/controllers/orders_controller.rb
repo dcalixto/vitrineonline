@@ -69,7 +69,13 @@ def track_done
 
 
 
+def confirmation
+  if current_user.cart
+   
+  @order = Order.find(params[:id])
+end
 
+end
 
 
  def track_sent
@@ -83,7 +89,7 @@ def track_done
       order.save
       redirect_to "#{sold_orders_path}?status=#{Order.statuses[1]}",
       flash: { success: 'Estado Mudado' }
-
+OrderMailer.order_track(order).deliver 
     end
   end
 
@@ -146,9 +152,14 @@ def track_done
           :primary => false
 
         }]},
-        :returnUrl => carts_url })
+        :returnUrl => confirmation_url
+    
+    
+  
 
-
+    
+    
+    })
 
         @response = @api.pay(@pay)
         #byebug
@@ -194,10 +205,10 @@ def track_done
           order.transaction = transaction
           order.save
 
+ OrderMailer.order_confirmation(order).deliver 
 
         end
-        OrderMailer.order_confirmation(order).deliver 
-      end
+            end
     else
       logger.info("IPN message: VERIFICATION FAILED")
     end

@@ -24,4 +24,12 @@ add_template_helper(EmailHelper)
        mail(to: @order.seller.policy.paypal, subject: 'Confirmação da Venda', &:html)
   end
 
+
+ def order_track(order)
+    @order = order
+  
+
+    mail(to: @order.buyer.email, subject: 'Número de Rastreio', &:html)
+  end
+
 end

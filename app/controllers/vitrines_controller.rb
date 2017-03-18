@@ -20,7 +20,7 @@ class VitrinesController < ApplicationController
     #  @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
   
     
-    ########@average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
+    @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
   
     
     
@@ -32,9 +32,6 @@ class VitrinesController < ApplicationController
 
 
 
-
-
-    @average_rating_from_buyers = Feedback.joins(:vitrine).where('vitrine.id = ?', @vitrine.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
 
 

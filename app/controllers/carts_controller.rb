@@ -39,8 +39,11 @@ class CartsController < ApplicationController
         end
 
         redirect_to product_path(product)
-        flash[:success] = "#{product.name} adicionado(a) a sacola"
-      else
+        flash[:success] = "#{product.name} adicionado(a) a sacola #{view_context.link_to('ir para o carrinho')}"
+
+
+
+              else
         redirect_to product_path(product)
         flash[:error] = " Erro ao adicionar #{product.name} a sacola"
 
