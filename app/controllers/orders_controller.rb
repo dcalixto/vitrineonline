@@ -87,6 +87,14 @@ OrderMailer.order_track(order).deliver
 
 
 
+def confirmation
+ -  if current_user.cart
+      
+    @order = buyer.orders.transaction.find(params[:id])
+  
+  end
+
+
 
 
   def update
