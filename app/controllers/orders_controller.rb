@@ -92,7 +92,7 @@ def confirmation
     @order = buyer.orders.transaction.find(params[:id])
   end
 
-
+end
 
 
   def update
