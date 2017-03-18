@@ -74,7 +74,7 @@ def confirmation
    
 
  @buyer = current_user.cart
-    @order = current_user.cart.orders.find(params[:id])
+    @order = buyer.orders.find(params[:id])
 
 
 
