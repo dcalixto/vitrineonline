@@ -18,6 +18,7 @@ after_commit  :confirmation_token, :on => :create
   has_one :cart, dependent: :destroy
 
   has_many :orders, foreign_key: 'buyer_id'
+  has_many :transactions
   belongs_to :city, touch: true
   belongs_to :state, touch: true
 

@@ -200,13 +200,17 @@ end
           transaction.store_fee = order.store_fee
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
+          transaction.current_user
           order.transaction = transaction
           order.save
+
 
  OrderMailer.order_confirmation(order).deliver 
 
         end
             end
+
+
     else
       logger.info("IPN message: VERIFICATION FAILED")
     end
@@ -223,7 +227,7 @@ end
 
     if order
       order.status = Order.statuses[1]
-      order.transaction.update_attribute(:updated_at, Time.zone.now, :track_number)
+      order.transaction.update_attribute(:updated_at, Time.zone.now)
 
       order.save
       redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}",

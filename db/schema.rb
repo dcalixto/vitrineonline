@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170223001404) do
+ActiveRecord::Schema.define(:version => 20170318230147) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -474,6 +474,7 @@ ActiveRecord::Schema.define(:version => 20170223001404) do
     t.string   "status"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
+    t.integer  "user_id"
   end
 
   add_index "transactions", ["order_id"], :name => "index_transactions_on_order_id"
