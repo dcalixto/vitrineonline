@@ -91,7 +91,7 @@ class OrdersController < ApplicationController
     if current_user.cart
       @order = buyer.orders.transaction.find(params[:id])
     end
-
+Order.includes(:transactions).where(transactions: { id: nil })
   end
 
 
