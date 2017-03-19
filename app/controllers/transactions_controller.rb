@@ -9,7 +9,7 @@ def show
 
 
 
-  @transacion = current_user.transacions.find(params[:id])
+  @transaction = current_user.transacions.find(params[:id])
   
 end
 
