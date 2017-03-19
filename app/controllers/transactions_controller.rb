@@ -2,7 +2,8 @@ class TransactionsController < ApplicationController
 
 def show
 
-  
+  @transaction = Transaction.find(params[:id])
+
 if @transaction.user_id = @transaction.current_user.id 
 @transaction = Transaction.find(params[:id])
   
