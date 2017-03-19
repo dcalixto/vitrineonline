@@ -3,13 +3,8 @@ class TransactionsController < ApplicationController
 def show
 
   
-
-  @order = Order.find(params[:id])
-    #@transaction = Transaction.find_by_id(params[:id])
-
-
-
-  @transaction = current_user.transactions.find(params[:id])
+@current_user = current_user
+  @transaction = curent_user.transactions.find(params[:id])
   
 end
 
