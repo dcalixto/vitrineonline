@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def sold
- 
+
 
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
@@ -30,21 +30,21 @@ class OrdersController < ApplicationController
     @order = current_user.cart.orders.find(params[:id])
     if current_user.address.blank?
       # redirect_to new_user_changes_path(current_user)
-        redirect_to edit_user_path
+      redirect_to edit_user_path
 
       flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
     end
   end
 
 
- def track
+  def track
 
-   @current_seller = current_user.vitrine
+    @current_seller = current_user.vitrine
     @order = current_seller.orders.find(params[:id])
     if current_seller.blank?
       # redirect_to new_user_changes_path(current_user)
-    
- redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}"
+
+      redirect_to "#{sold_orders_path}?status=#{Order.statuses[0]}"
 
 
       flash[:error] = 'Error'
@@ -53,13 +53,13 @@ class OrdersController < ApplicationController
 
 
 
-def track_done
-  @order = Order.find(params[:id])
-   if order.update_attributes(params[:order])
-           flash =   { success: 'Número adicionado' }
-            else
-           flash =   { error: 'Erro' }
-            end
+  def track_done
+    @order = Order.find(params[:id])
+    if order.update_attributes(params[:order])
+      flash =   { success: 'Número adicionado' }
+    else
+      flash =   { error: 'Erro' }
+    end
     if request.xhr?
       render json: flash
     else
@@ -70,10 +70,10 @@ def track_done
 
 
 
- def track_sent
+  def track_sent
     order = Order.find(params[:id])
     transaction = Transaction.find_by_id(params[:id])
- 
+
     if order
       order.status = Order.statuses[1]
       order.transaction.update_attribute(:updated_at, Time.zone.now)
@@ -81,18 +81,18 @@ def track_done
       order.save
       redirect_to "#{sold_orders_path}?status=#{Order.statuses[1]}",
       flash: { success: 'Estado Mudado' }
-OrderMailer.order_track(order).deliver 
+      OrderMailer.order_track(order).deliver 
     end
   end
 
 
 
-def confirmation
-  if current_user.cart
-    @order = buyer.orders.transaction.find(params[:id])
-  end
+  def confirmation
+    if current_user.cart
+      @order = buyer.orders.transaction.find(params[:id])
+    end
 
-end
+  end
 
 
   def update
@@ -151,25 +151,25 @@ end
 
         }]},
         :returnUrl => transaction_url
-    
-    
-  
 
-    
-    
+
+
+
+
+
     })
 
-        @response = @api.pay(@pay)
-        #byebug
-        # Access response
-        if @response.success? && @response.payment_exec_status != "ERROR"
-          @response.payKey
-          redirect_to @api.payment_url(@response)  # Url to complete payment
-        else
-          @response.error[0].message
-          redirect_to fail_order_path(order, error: @response.error[0].message)
+    @response = @api.pay(@pay)
+    #byebug
+    # Access response
+    if @response.success? && @response.payment_exec_status != "ERROR"
+      @response.payKey
+      redirect_to @api.payment_url(@response)  # Url to complete payment
+    else
+      @response.error[0].message
+      redirect_to fail_order_path(order, error: @response.error[0].message)
 
-        end
+    end
   end
 
 
@@ -200,15 +200,19 @@ end
           transaction.store_fee = order.store_fee
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
-          transaction.user = current_user.transactions
           order.transaction = transaction
           order.save
 
+          transaction = Transaction.find(params[:id])
+          user = current_user
+          user.transactions
+          transaction.save
 
- OrderMailer.order_confirmation(order).deliver 
+
+          OrderMailer.order_confirmation(order).deliver 
 
         end
-            end
+      end
 
 
     else
