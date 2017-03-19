@@ -6,7 +6,7 @@
 <% end %>
 <%= render "shared/order_menu" %>
 
-<div class="box4">
+<div class="box3">
     <div class="flash_box">
       <%= render 'shared/flash_messages' %>
     </div>
@@ -34,9 +34,7 @@
 
             |
             <%= sort_link @q, :created_at, "Data" %>
-            |
-            <%= sort_link @q, :transaction_status, "Pagamento" %>
-
+          
           </td>
         </tr>
       </table>

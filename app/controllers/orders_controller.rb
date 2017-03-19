@@ -198,7 +198,7 @@ Order.includes(:transactions).where(transactions: { id: nil })
           order.decrease_products_count
           transaction = Transaction.new
           transaction.store_fee = order.store_fee
-          transaction.user_id = order.buyer_id
+        #  transaction.user_id = order.buyer_id
 
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]

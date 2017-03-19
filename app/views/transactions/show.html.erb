@@ -11,8 +11,8 @@
 
        <h1>Obrigado pela sua compra</h1>
 
-       Data da compra:   <b><%= @transaction.created_atstrftime('%d/%m/%Y') %></b>
-       Número da compra:     <b><%= @transaction.id %></b>
+       Data da compra:   <b><#%= @transaction.created_atstrftime('%d/%m/%Y') %></b>
+       Número da compra:     <b><#%= @transaction.id %></b>
              
        <p>Um email de confirmação foi enviado para <%=order.buyer.email %> quando o vendedor marcar como enviado outro email com o número de rastreio 
        será enviado para seu email</p>
