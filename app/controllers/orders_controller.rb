@@ -200,7 +200,7 @@ end
           transaction.store_fee = order.store_fee
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
-          transaction.current_user
+          transaction.user = current_user.transactions
           order.transaction = transaction
           order.save
 
