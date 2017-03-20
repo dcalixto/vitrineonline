@@ -184,6 +184,7 @@ put :track_sent
     end
   end
 
+get '/orders/confirmation', to: 'orders#confirmation' #, as: :vitrine_sent
 
   get '/orders/:id/sent', to: 'orders#sent' #, as: :vitrine_sent
 

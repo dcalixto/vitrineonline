@@ -150,7 +150,7 @@ Order.includes(:transactions).where(transactions: { id: nil })
           :primary => false
 
         }]},
-        :returnUrl => transaction_url
+        :returnUrl => orders_confirmation_url
 
 
 
