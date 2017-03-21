@@ -39,9 +39,9 @@ class CartsController < ApplicationController
         end
 
         redirect_to product_path(product)
-       # flash[:success] = "#{product.name} adicionado(a) a sacola #{link_to_carts_path('ir para o carrinho')}"
+        flash[:success] = "#{product.name} adicionado(a) a sacola"
 
-  flash[:success] =   %Q[#{product.name} adicionado(a) a sacola <a href="/carts">ir para o carrinho</a>]
+#  flash[:success] =   %Q[#{product.name} adicionado(a) a sacola <a href="/carts">ir para o carrinho</a>]
 
               else
         redirect_to product_path(product)
