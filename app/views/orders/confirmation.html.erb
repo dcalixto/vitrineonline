@@ -1,8 +1,7 @@
 <% title "Confirmação" %>
 
          
-
-<#% if @transaction.user_id || @transaction.current_user.id %>
+<% if  current_user || params[:status] == Order.statuses[0] %>
 
 
 
@@ -11,8 +10,8 @@
 
        <h1>Obrigado pela sua compra</h1>
 
-       Data da compra:   <b><%= @transaction.created_atstrftime('%d/%m/%Y') %></b>
-       Número da compra:     <b><%= @transaction.id %></b>
+       Data da compra:   <b><%= @order.created_atstrftime('%d/%m/%Y') %></b>
+       Número da compra:     <b><%= @order.id %></b>
              
        <p>Um email de confirmação foi enviado para <%=current_user.email %> quando o vendedor marcar como enviado outro email com o número de rastreio 
        será enviado para seu email</p>
@@ -22,5 +21,5 @@
   </div>
  </div>
 
-<#% end %>
+<% end %>
 
