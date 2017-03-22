@@ -3,10 +3,8 @@ class Feedback < ActiveRecord::Base
   belongs_to :user
   belongs_to :vitrine
   has_one :order
- belongs_to :product#, through: :order 
+ has_many :products, through: :order 
 
-#include PublicActivity::Model
- # tracked owner: ->(controller, model) { controller && controller.current_user }
 
 #validates_presence_of  :buyer_comment, :seller_comment, nil: false  # this cause a bug - buyer can't post feedback
 
