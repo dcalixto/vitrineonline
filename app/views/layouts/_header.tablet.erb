@@ -7,35 +7,27 @@
 <% end %>
 </div>
 <% end %>
-<%=render "layouts/shop_cart" %>
 
-<div class="mobile_category">
-<%=link_to 'Categorias', departments_path%>
-</div>
-
-</div>
-</div>
-<div class=inner_blue>
-<div class=inner_blue_icons>
+<%=render :partial=> "layouts/search" %>
 <%=render :partial=>"layouts/links_topbar" %>
-<% if current_user %>
-<%=render :partial=> "layouts/user_nav" %>
-<%end %>
+<%=render "layouts/shop_cart" %>
 
 </div>
 </div>
 <div class="icons_bar">
 <div class="inner_tab">
-<% cache "busca" do %>
-<%=render :partial=> "layouts/search" %>
-<% end %>
-<% if current_user && current_vitrine %>
-<div class="sell_button">
-<%=button_to "Vender", new_product_path, :class=> 'btn_orange btn_small', :method => "get"
-%>
+
+<%=render "layouts/drop" %>
+
+<div class="desktop_nav>
+
+<% if current_user %>
+<%=render :partial=> "layouts/user_nav" %>
+<%end %>
+
+
 </div>
-<% end %>
 </div>
 </div>
-</div>
+
 

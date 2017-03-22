@@ -41,7 +41,7 @@ img#rating_line  {display: inline;
 }
 #placeholder img {
   max-width: 100%;
-  background: url('fancybox_loading.gif') center center no-repeat;
+  
 }
 #itemprice {
   color: #5ea00d;
@@ -210,7 +210,7 @@ img#rating_line  {display: inline;
     overflow: hidden;
     display: inline-block;
     white-space: nowrap;
-    border:solid 1px red
+   
 
     
 }
@@ -222,7 +222,7 @@ img#rating_line  {display: inline;
     overflow: hidden;
     display: inline-block;
     white-space: nowrap;
-    border:solid 1px red
+    
 
     
 }

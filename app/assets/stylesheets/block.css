@@ -83,8 +83,8 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
       
-overflow:auto;
-    border:solid 1px red 
+overflow:hidden;
+   
 }
 
 

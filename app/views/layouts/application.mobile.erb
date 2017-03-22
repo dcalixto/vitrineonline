@@ -38,15 +38,58 @@
 <div id=container>
 <%=breadcrumbs separator: "&rsaquo;" %>
 <%=yield %>
-<%=render "layouts/drop" %>
+
 </div>
 <% cache "footer" do %>
 <%=render "layouts/footer" %>
 <% end %>
+
+
 <% cache "js" do %>
-<%=jquery_include_tag :google %>
+  
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" %>
+
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.2/rails.min.js" %>
+
+
+<%= javascript_include_tag "https://cdn.jsdelivr.net/jquery.menu-aim/0.1/jquery.menu-aim.min.js" %>
+
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js" %>
+
+<%= javascript_include_tag "https://cdn.jsdelivr.net/jquery.responsive-tabs/1.6.1/jquery.responsiveTabs.min.js" %>
+
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js" %>
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" %>
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.5.4/jquery.timeago.min.js" %>
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js" %>
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" %>
+
+
+
+
+
+
 <%=javascript_include_tag "application" %>
+
+
 <% end %>
+
+
+
+
+
+
+
 <% if logado? %>
 <%=render "layouts/faye" %>
 <%end %>

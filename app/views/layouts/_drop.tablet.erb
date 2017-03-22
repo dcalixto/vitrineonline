@@ -1,53 +1,48 @@
+<% cache "drop" do %>
+  <div id="main-nav">
+<ul>
 
-<div class="box1">
-  <div class="block margin_top">
-    <h4>Departamentos</h4>
-    <div class="content">
-<div class="slinky-menu" >
+<% @genders.each do |gender| %>
 
+  <li class="parentnav">
 
+    <%= link_to  content_tag(:span, gender.gender),  gender_path(:id => gender.id), :class => "tab" %>
+<ul class="subnav">
 
-  <% @genders.each do |gender| %>
+  <div class="panel box">
+ <% gender.categories.each do |category| %>
 
-    <%= link_to  content_tag(:span, gender.gender),  gender_path(:id => gender.id), :class => "tab" %> <span class="stretchsummary">Abrir</span>
+<div class="divider">
+<h3 title="<%=category.name %>"><%= link_to category.name, category_path(:id => category.id )  %></h3>
 
+   <% category.subcategories.each do |subcategory| %>
+   <ul>
+  <li title="<%=subcategory.name %>">
+    <%= link_to subcategory.name, subcategory_path(:id => subcategory.id ) %></li>
+  </ul>
+    <% end %>
+     </div>
+ <% end %>
+ </div>
+</ul>
+</li>
+<% end %>
 
-
-  <span class="stretchdetail ">
-
-
-   <% gender.categories.each do |category| %>
-
-
-
-    <%= link_to category.name, category_path(:id => category.id ), :class => "tab"  %><span class="stretchsummary">Abrir</span>
-
-
-
-
-  <span class="stretchdetail">
-
-     <% category.subcategories.each do |subcategory| %>
-
-      <%= link_to subcategory.name, subcategory_path(:id => subcategory.id ) %>
-
-
-      <% end %>
-
-       </span>
-   <% end %>
-
-
-</span>
-
-
-  <% end %>
-
-</div>
+</ul>
 </div>
 
-</div>
-</div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
 
 
           <!-- Fim -->

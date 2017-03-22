@@ -41,8 +41,16 @@
 <%end%>
 <% end %>
 </li>
+<li>
+<% if current_vitrine %>
+<div class="sell_tablet">
+<%=button_to "Vender", new_product_path, :class=> 'btn_orange btn_small', :method => "get"
+%>
+</div>
+<% end %>
+</li>
+
 </ul>
 </div>
 </div>
-
 

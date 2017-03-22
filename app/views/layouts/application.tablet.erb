@@ -7,13 +7,21 @@
 <%=favicon_link_tag %>
 <meta content=noodp,noydir name=robots/>
 <%=display_meta_tags(default_meta_tags) %>
+
+
 <%=canonical_link_tag %>
-<% set_meta_tags :og=> {
-:site_name => "Vitrineonline",
-:locale => "pt_PT",
-:url => "http://www.vitrineonline.com"
-}
+<%=   display_meta_tags og: {
+  site_name: "Vitrineonline",
+  title:    'Vitrineonline - Monte sua Vitrine',
+   type:     'website',
+   :locale => "pt_PT",
+   url:      'http://vitrineonline.com/',
+  #  image:    'http://ia.media-imdb.com/rock.jpg',
+  description: 'Monte sua vitrine, desenvolva sua vitrine, compre e venda roupas, calçados e acessórios do seu estilo'
+
+  }
 %>
+
 <%=   display_meta_tags twitter: {
   site_name: "Vitrineonline",
   site: '@vitrineonline',
@@ -23,10 +31,17 @@
 #  image: image
 }
 %>
+
+
+
 <meta content=166642276860638 property=fb:app_id/>
 <meta content=Dl2kWPSdv0m1b_iGqTBmnv-GyydEZdoH0p4ZoOjLsBM name=google-site-verification/>
+
+
 <% cache "cs" do %>
-<%=stylesheet_link_tag "application" %>
+  <%=stylesheet_link_tag "application" %>
+
+
 <% end %>
 <%=csrf_meta_tags %>
 </head>
@@ -37,19 +52,65 @@
 <div id=container>
 <%=breadcrumbs separator: "&rsaquo;" %>
 <%=yield %>
-<%=render "layouts/drop" %>
+
 </div>
+
+
+
 <% cache "footer" do %>
 <%=render "layouts/footer" %>
 <% end %>
 <% cache "js" do %>
-<%=jquery_include_tag :google %>
+  
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" %>
+
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery-ujs/1.2.2/rails.min.js" %>
+
+
+<%= javascript_include_tag "https://cdn.jsdelivr.net/jquery.menu-aim/0.1/jquery.menu-aim.min.js" %>
+
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js" %>
+
+<%= javascript_include_tag "https://cdn.jsdelivr.net/jquery.responsive-tabs/1.6.1/jquery.responsiveTabs.min.js" %>
+
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js" %>
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" %>
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.5.4/jquery.timeago.min.js" %>
+
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js" %>
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" %>
+
+
+
+
+
+
 <%=javascript_include_tag "application" %>
+
+
 <% end %>
-<% if logado? %>
+
+
+
+<% cache "facebook" do %>
+<%=render "layouts/facebook" %>
+<% end %>
+<% if current_user %>
 <%=render "layouts/faye" %>
 <%end %>
 <%=render "layouts/analytics" %>
+
+
+
 </body>
 </html>
 
