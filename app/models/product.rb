@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
 
 
 
- has_many :feedbacks, through: :orders
+ has_many :feedbacks#, through: :orders
 
   has_many :reports
   has_many :orders
