@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     #@total_feedbacks = Feedback.includes(:vitrines, :products).where(:products).where('buyer_feedback_date is not null').count
 
  
-   @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
+   @total_feedbacks = Feedback.joins( :product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
 
 
     @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
