@@ -3,7 +3,7 @@ class Feedback < ActiveRecord::Base
   belongs_to :user
   belongs_to :vitrine
   has_one :order
- belongs_to :product, through: :order 
+ belongs_to :product#, through: :order 
 
 #include PublicActivity::Model
  # tracked owner: ->(controller, model) { controller && controller.current_user }
