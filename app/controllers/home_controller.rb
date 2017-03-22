@@ -10,10 +10,10 @@ class HomeController < ApplicationController
 
    
 
-  @total_feedbacks_product  = Product.joins(:feedbacks).where('buyer_feedback_date is not null').count
+ @total_feedbacks = Feedback.joins(:product).where('buyer_feedback_date is not null').count
 
 
-     @average_rating_from_buyers_product = Product.joins(:feedbacks).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+    @average_rating_from_buyers = Feedback.joins(:product).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
 
 
