@@ -219,7 +219,7 @@ end
     products = Product.search query, fields: [{ name: :word_start }], where: conditions,
                                     include: [:images, :feedbacks,:vitrine],
                                      aggs: [:gender_id, :vitrine_id, :category_id, :subcategory_id, :size_id, :color_id, :material_id, :condition_id, :brand_id],
-                                     page: params[:page], suggest: true, highlight: true, per_page: 2, order: [order_options, {created_at: {order: 'desc', ignore_unmapped: true}}]
+                                     page: params[:page], suggest: true, highlight: true, per_page: 22, order: [order_options, {created_at: {order: 'desc', ignore_unmapped: true}}]
 
     products
 end

@@ -16,6 +16,15 @@ class ProductsController < ApplicationController
     # suggestions for current visitor
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
+ 
+  
+    @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
+
+
+    @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+
+
+  
   end
 
   def new
