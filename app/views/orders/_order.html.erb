@@ -36,7 +36,7 @@
    <% if controller_name == "carts" && action_name == "index" %>
 
       <td>
-        <span class="lista-preco">
+        <span class="lista-preco bigger">
        
             <b><%= number_to_currency(order.product.price) %></b>
              
@@ -49,7 +49,7 @@
     <td>
       <span>
         
-           <b><%= number_to_currency(order.total_price) %></b>
+           <b class="bigger"><%= number_to_currency(order.total_price) %></b>
              
       </span>
     </td>
@@ -102,7 +102,7 @@
                 <%= order.quantity %>
               </td>
               <td>
-                <b class="lista-preco"><%= number_to_currency(order.total_price) %></b>
+                <b class="lista-preco bigger"><%= number_to_currency(order.total_price) %></b>
               
             
           </td>
@@ -171,7 +171,7 @@
                       
                     <% end %> 
                         <% if   params[:status] == Order.statuses[1] %>
-  <li>Número
+  <li>Rastreio
     <b><%=order.track_number %></b></li>
 
                   <%end%>

@@ -30,12 +30,12 @@
             <%= link_to product.name, product_path(product), :title => product.name %>
             <br/>
             <% if order.buyer == current_user %>
-            Comprado de
+              <b>COMPRADO</b> de
             <%= link_to order.seller.name, vitrine_path(order.seller) %>
             Por
             <b><%= number_to_currency product.price %></b>
             <% else %>
-            Vendido para
+            <b>VENDIDO</b> para
             <%= link_to order.buyer.full_name, user_path(order.buyer) %>
             <% end %>
             Em

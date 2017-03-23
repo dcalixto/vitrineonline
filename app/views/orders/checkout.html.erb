@@ -77,7 +77,7 @@
                                 <b><%= @order.quantity %></b>
                               </li>
                               <li>Preço
-                                <b class="lista-preco"><%= number_to_currency @order.total_price %></b>
+                                <b class="lista-preco bigger"><%= number_to_currency @order.total_price %></b>
                               </li>
                             </ul>
                           </td>
@@ -154,7 +154,7 @@
                           </tr>
                         </thead>
                         <tr class="subtotal">
-                          <td >
+                          <td class="bigger" >
                             Subtotal <%= @order.quantity %>
                           
                           </td>

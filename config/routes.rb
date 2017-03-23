@@ -58,7 +58,17 @@ get 'welcome', to: 'users#welcome', as: 'welcome'
     collection do
       get :feedbacks
  post '/:id/feedbacks', to: 'users#feedbacks', as: :search_feedbacks
-      match '/:id?simpletabs_selected_tab=feedbacks' => 'users#feedbacks', via: [:get, :post], as: :user_feedbacks
+  post '/:id', to: 'users#show', as: :feedbacks_search
+ 
+  
+ 
+
+    #  match '/:id?simpletabs_selected_tab=feedbacks' => 'users#feedbacks', via: [:get, :post], as: :user_feedbacks
+
+    
+    
+           
+    
     end
   end
 
@@ -119,6 +129,11 @@ get 'welcome', to: 'users#welcome', as: 'welcome'
 
  post '/:id/feedbacks', to: 'vitrines#feedbacks', as: :search_feedbacks
 post '/:id/products', to: 'vitrines#products', as: :search_products
+
+
+
+
+
       get :feedbacks
       get :products
       get :user_votes
@@ -188,7 +203,7 @@ get '/orders/confirmation', to: 'orders#confirmation' #, as: :vitrine_sent
 
   get '/orders/:id/sent', to: 'orders#sent' #, as: :vitrine_sent
 
-  resources :transactions, only: [:index, :show]
+ 
 
   # CATEGORIES
   resources :genders, only: [:show]

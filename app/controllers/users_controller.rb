@@ -11,6 +11,18 @@ class UsersController < ApplicationController
 
     @total_from_sellers = Feedback.by_participant(@user, Feedback::FROM_SELLERS).count
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
+
+
+
+
+ # @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
+
+
+  #  @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+
+
+
+
     @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])    # suggestions for current visitor
 
