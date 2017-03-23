@@ -57,13 +57,14 @@ get 'welcome', to: 'users#welcome', as: 'welcome'
 
     collection do
       get :feedbacks
- post '/:id/feedbacks', to: 'users#feedbacks', as: :search_feedbacks
-  post '/:id', to: 'users#show', as: :feedbacks_search
+ post '/:id/feedbacks', to: 'users#feedbacks', as: :user_feedbacks
+ # post '/:id', to: 'users#show', as: :feedbacks_search
  
   
  
 
-    #  match '/:id?simpletabs_selected_tab=feedbacks' => 'users#feedbacks', via: [:get, :post], as: :user_feedbacks
+ # post '/:id?simpletabs_selected_tab=feedbacks' => 'users#feedbacks', as: :search_feedbacks
+
 
     
     
