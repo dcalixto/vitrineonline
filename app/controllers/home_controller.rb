@@ -9,14 +9,13 @@ class HomeController < ApplicationController
     #@total_feedbacks = Feedback.includes(:vitrines, :products).where(:products).where('buyer_feedback_date is not null').count
 
    
- @total_feedbacks = Product.joins(:feedbacks).count
+# @total_feedbacks = Product.joins(:feedbacks).count
+  @total_feedbacks = Feedback.joins(:product).where('products = ?', @products).where('buyer_feedback_date is not null').count
 
-# @total_feedbacks = Feedback.joins(:product).where('buyer_feedback_date is not null').count
 
+    @average_rating_from_buyers = Feedback.joins(:product).where('products = ?', @products).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
-  #  @average_rating_from_buyers = Feedback.joins(:product).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
-
- @average_rating_from_buyers =  Product.joins(:feedbacks).rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+ #@average_rating_from_buyers =  Product.joins(:feedbacks).rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
 
 
