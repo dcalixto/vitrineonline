@@ -1,81 +1,120 @@
+
 <% title "Fatura" %>
 
 <div class="box3">
   <div class="block  margin_top">
-  <div class="square_box">
-    <h1>Fatura #<%= @invoice.id %></h1>
+
 
     <div class="content">
-      <table class="invoice_show">
-        <tr>
-          <th>
-            <h2>Usuário</h2>
-          </th>
-          <th>
-            <h2>Vitrine</h2>
-          </th>
-          <th>
-            <h2>Produto</h2>
-          </th>
-          <th>
-            <h2>Preço</h2>
-          </th>
-          <th>
-            <h2>Qtd</h2>
-          </th>
-          <th>
-            <h2>Comissão</h2>
-          </th>
-          <th>
-            <h2>Data</h2>
-          </th>
-          <th>
-            <h2>Download</h2>
-          </th>
-        </tr>
-        <tbody>
-          <tr>
-            <td>
-              <ul>
-                <li><%= @buyer.full_name %></li>
-                <li><%= @buyer.user_address if  @buyer.address %></li>
-                <li><%= @buyer.user_neighborhood if  @buyer.neighborhood %></li>
-                <li><%= @buyer.user_city if  @buyer.city %>
-                </li>
-                <li><%= @buyer.user_postal_code  if  @buyer.postal_code %></li>
-                <li><%= @buyer.user_address_supplement if   @buyer.address_supplement %></li>
-              </ul>
-            </td>
-            <td><%= current_vitrine.name %></td>
-            <td>
-              <ul>
-                <li>
-                    <% unless @product.images.blank? %>
-                  
-                   <%= wicked_pdf_image_tag @product.images.first.ifoto.url(:small).to_s %>
-                    <%end %></li>
 
-                <li><%= @product.name %></li>
-              </ul>
-            </td>
-            <td>
 
-              <%= number_to_currency(@product.price) %>
+      <h1>Comprovante de pagamento</h1>
 
-            </td>
-            <td>
-              Quantidade
-              <%= @order.quantity %>
 
-            </td>
-            <td><%= number_to_currency @invoice.store_fee %></td>
-            <td><%= @invoice.created_at.strftime('%d/%m/%Y') %></td>
-          
-          </tr>
-        </tbody>
+
+
+      <table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+              <td colspan="2">
+                <%= image_tag('logo.png')  %>
+              </td>
+
+              <td valign="top">
+
+                <p >Avenida Roberto Silveira nº 95A</p>
+                <b> Chácara da Saudade, Paraty/RJ</b>
+
+
+              </td>
+
+
+            </tr>
+
+
+            <tr class="cell">
+              <td>Data: <b><%= @invoice.created_at.strftime('%d/%m/%Y') %></b></td>
+              <td>Fatura: <b><%= @invoice.id %></b></td>
+
+            </tr>
+            <tr>
+              <td class="divider" colspan="2" bgcolor="#ddd" height="1"></td>
+            </tr>
+
+
+
+            <tr class="cell">
+            
+
+
+              <td>
+                
+                Item:
+                <% unless @product.images.blank? %>
+
+                <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
+              <%end %>
+                <%= @product.name %>
+                </td>
+
+            
+                           
+                <td>Quantidade:  <b><%= @order.quantity %></b></td>
+
+              <td>Preço:   <b><%= number_to_currency(@product.price) %></b></td>
+
+              <td>Vitrine:  <b><%= current_vitrine.name %></b></td>
+
+              <td>Forma de pagamento:  <b>paypal</b></td>
+              <td>
+                Comissão:
+
+               <b><%= number_to_currency @invoice.store_fee %>  </b>
+          </td>
+          <td>
+            <%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>
+          </td>
+
+            </tr>
+
+
       </table>
+
+
+
     </div>
+
   </div>
 </div>
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
