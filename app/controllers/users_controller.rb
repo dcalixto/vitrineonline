@@ -100,7 +100,7 @@ class UsersController < ApplicationController
     @vitrine = Vitrine.new(params[:vitrine])
 
     if @user.save
-   #   UserMailer.registration_confirmation(@user).deliver
+     ## UserMailer.registration_confirmation(@user).deliver
 
     UserMailer.delay_for(3.seconds).registration_confirmation(@user)
 

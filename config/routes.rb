@@ -5,7 +5,7 @@ Vitrineonline::Application.routes.draw do
 
 
   mount Sidekiq::Web => '/sidekiq'
-
+mount Logster::Web => "/logs" 
 
 
 get "/opensearch",  to: "application#opensearch"
@@ -15,7 +15,7 @@ get "/opensearch",  to: "application#opensearch"
   scope 'dcalixto84abcd152567' do
           #mount Resque::Server => "/resque"
  
- mount Logster::Web => "/logs" 
+ 
     namespace :admin do
 
 
