@@ -1,9 +1,9 @@
 Vitrineonline::Application.routes.draw do
 
 
-
-mount Logster::Web => "/logsabcd" 
-
+constraints lambda { |req| req.session["dcalixto"] } do
+mount Logster::Web => "/logs" 
+end
 
 get "/opensearch",  to: "application#opensearch"
 
