@@ -197,7 +197,7 @@ gem 'redis-namespace'
 #gem 'resque_mailer',  github: "dcalixto/resque_mailer"
 #
 #SIDEKICQ MAILER
-gem 'sidekiq_mailer'
+gem 'sidekiq',  github:"dcalixto/sidekiq"
 
 gem "sinatra", require: 'sinatra/base'
 gem "sinatra-contrib", '~> 1.3.2',  require: false

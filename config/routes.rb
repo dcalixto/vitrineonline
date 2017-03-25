@@ -1,4 +1,10 @@
+require 'sidekiq/web'
+
+
 Vitrineonline::Application.routes.draw do
+
+
+  mount Sidekiq::Web => '/sidekiq'
 
 
 

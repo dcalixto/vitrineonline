@@ -16,6 +16,8 @@ Vitrineonline::Application.configure do
 
 
 
+ 
+
 config.action_dispatch.rack_cache = {
     metastore:   "redis://localhost:6379/1/metastore",
     entitystore: "redis://localhost:6379/1/entitystore"

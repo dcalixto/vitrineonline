@@ -2,7 +2,7 @@
 
 class UserMailer < ActionMailer::Base
   default from: 'VITRINEONLINE'
-  include Sidekiq::Mailer
+  #include Sidekiq::Mailer
  add_template_helper(EmailHelper)
 
   def registration_confirmation(user)

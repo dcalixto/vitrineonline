@@ -100,7 +100,10 @@ class UsersController < ApplicationController
     @vitrine = Vitrine.new(params[:vitrine])
 
     if @user.save
-      UserMailer.registration_confirmation(@user).deliver
+   #   UserMailer.registration_confirmation(@user).deliver
+
+    UserMailer.delay_for(3.seconds).registration_confirmation(@user)
+
       #   @user.authenticate(params[:user][:password])
       @user.update_attribute(:login_at, Time.zone.now)
       @user.update_attribute(:ip_address, request.remote_ip)
@@ -117,6 +120,8 @@ class UsersController < ApplicationController
 
   def confirm_email
     user = User.find_by_confirm_token(params[:id])
+   
+    
     if user
       user.email_activate
       flash[:success] = "Bem vindo a Vitrineonline  Seu email foi confirmado.
