@@ -197,8 +197,8 @@ gem 'redis-namespace'
 #gem 'resque_mailer',  github: "dcalixto/resque_mailer"
 #
 #SIDEKICQ MAILER
-gem 'sidekiq',  github:"dcalixto/sidekiq"
-gem 'sidekiq_send_mail'
+#gem 'sidekiq',  github:"dcalixto/sidekiq"
+#gem 'sidekiq_send_mail'
 
 
 

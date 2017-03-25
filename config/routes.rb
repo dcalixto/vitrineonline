@@ -1,11 +1,8 @@
-require 'sidekiq/web'
-
-
 Vitrineonline::Application.routes.draw do
 
 
-  mount Sidekiq::Web => '/sidekiq'
-mount Logster::Web => "/logs" 
+
+mount Logster::Web => "/logsabcd" 
 
 
 get "/opensearch",  to: "application#opensearch"
