@@ -1,15 +1,15 @@
 Vitrineonline::Application.routes.draw do
 
 
- mount Logster::Web => "/logs"
+
 get "/opensearch",  to: "application#opensearch"
 
    # ADMIN
 
   scope 'dcalixto84abcd152567' do
-          mount Resque::Server => "/resque"
+          #mount Resque::Server => "/resque"
  
- 
+ mount Logster::Web => "/logs" 
     namespace :admin do
 
 

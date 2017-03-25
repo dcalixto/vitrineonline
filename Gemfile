@@ -193,8 +193,11 @@ gem 'redis-namespace'
 
 #RESQUE
 
-gem 'resque', github: "dcalixto/resque", :require => "resque/server"
+#gem 'resque', github: "dcalixto/resque", :require => "resque/server"
 #gem 'resque_mailer',  github: "dcalixto/resque_mailer"
+#
+#SIDEKICQ MAILER
+gem 'sidekiq_mailer'
 
 gem "sinatra", require: 'sinatra/base'
 gem "sinatra-contrib", '~> 1.3.2',  require: false
