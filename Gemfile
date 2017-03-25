@@ -198,6 +198,9 @@ gem 'redis-namespace'
 #
 #SIDEKICQ MAILER
 gem 'sidekiq',  github:"dcalixto/sidekiq"
+gem 'sidekiq_send_mail'
+
+
 
 gem "sinatra", require: 'sinatra/base'
 gem "sinatra-contrib", '~> 1.3.2',  require: false

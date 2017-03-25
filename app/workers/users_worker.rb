@@ -5,10 +5,10 @@ class UsersWorker
     # Do something
  # end
 
-  def perform email
+ # def perform email
   #  UserMailer.signup_confirmation(@user).deliver_now	
 
-  UserMailer.registration_confirmation(@user).deliver
+ # UserMailer.registration_confirmation(@user).deliver
   
-  end
+ # end
 end
