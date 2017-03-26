@@ -2,7 +2,7 @@
 class FeedbacksController < ApplicationController
   before_filter :authorize, :awaiting_count
   skip_after_filter :flash_to_headers
- 
+
   def awaiting_count
     @awaiting_feedback_count = Order.awaiting_feedback(current_user).count
   end
@@ -27,13 +27,22 @@ class FeedbacksController < ApplicationController
     feedback.attributes = params[:feedback]
     feedback.user = @order.buyer
     feedback.vitrine = @order.seller
+
+            feedbackship = Feedbackship.new
+            feedbackship.product_id = @order.product_id
+             feedbackship.feedback_id = @order.feedback_id
+            feedbackship.order_id = @order.id
+            feedback.feedbackships = feedbackship
+
+
+
     if feedback.save
       flash[:success] = 'Obrigado'
       @order.feedback = feedback
       @order.save
-  
-  
-    
+
+
+
     else
       flash[:error] = 'Erro'
     end
