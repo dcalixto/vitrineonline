@@ -14,17 +14,14 @@ class VitrinesController < ApplicationController
 
   
     canonical_url url_for(@vitrine)
-    @total_from_buyers = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).count
-    #  @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
+  
+    
+    
+      #  @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
 
     #  @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
   
-    
-    @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
-  
-    
-    
-    
+ 
     # @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
     #  @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 15).order('created_at DESC')
 
@@ -32,7 +29,10 @@ class VitrinesController < ApplicationController
 
 
 
-
+  @total_from_buyers = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).count
+     
+    @average_rating_from_buyers = Feedback.average_rating(@vitrine.user.products, Feedback::FROM_BUYERS)
+  
 
 
     @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
