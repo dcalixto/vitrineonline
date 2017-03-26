@@ -11,8 +11,10 @@ class Product < ActiveRecord::Base
   has_many :images,inverse_of: :product, dependent: :destroy 
 
 
+has_many :feedbacks
 
- has_many :feedbacks#, through: :orders
+has_many :feedbackships
+
 
   has_many :reports
   has_many :orders

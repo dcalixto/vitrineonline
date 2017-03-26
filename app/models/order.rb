@@ -17,7 +17,7 @@ class Order < ActiveRecord::Base
    belongs_to :size
 
 
-
+has_many :feedbackships
 
   belongs_to :brand,  foreign_key: 'brand_id', class_name: 'Brand'
  

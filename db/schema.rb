@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170318230147) do
+ActiveRecord::Schema.define(:version => 20170326080659) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -160,6 +160,18 @@ ActiveRecord::Schema.define(:version => 20170318230147) do
   add_index "feedbacks", ["product_id"], :name => "index_feedbacks_on_product_id"
   add_index "feedbacks", ["user_id"], :name => "index_feedbacks_on_user_id"
   add_index "feedbacks", ["vitrine_id"], :name => "index_feedbacks_on_vitrine_id"
+
+  create_table "feedbackships", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "feedback_id"
+    t.integer  "order_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "feedbackships", ["feedback_id"], :name => "index_feedbackships_on_feedback_id"
+  add_index "feedbackships", ["order_id"], :name => "index_feedbackships_on_order_id"
+  add_index "feedbackships", ["product_id"], :name => "index_feedbackships_on_product_id"
 
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false

@@ -6,6 +6,11 @@ class Feedback < ActiveRecord::Base
  has_one :product, through: :order 
 
 
+has_many :feedbackships
+
+
+#belongs_to :feedbackable, polymorphic: true
+
 #validates_presence_of  :buyer_comment, :seller_comment, nil: false  # this cause a bug - buyer can't post feedback
 
 
