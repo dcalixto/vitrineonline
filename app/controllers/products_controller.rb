@@ -22,9 +22,9 @@ class ProductsController < ApplicationController
 
   #  @average_rating_from_buyers = Feedback.joins(:product).where('products = ?', @products).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
-  @total_from_buyers = Feedback.by_participant(@products, Feedback::FROM_BUYERS).count
+  @total_feedbacks = Feedback.by_participant(@products, Feedback::FROM_BUYERS).count
       
-    @average_rating_from_buyers = Feedback.average_rating(@products, Feedback::FROM_BUYERS)
+    @average_rating = Feedback.average_rating(@products, Feedback::FROM_BUYERS)
  
 
 

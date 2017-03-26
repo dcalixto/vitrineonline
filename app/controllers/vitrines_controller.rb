@@ -31,7 +31,7 @@ class VitrinesController < ApplicationController
 
   @total_from_buyers = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).count
      
-    @average_rating_from_buyers = Feedback.average_rating(@vitrine.products, Feedback::FROM_BUYERS)
+    @average_rating_from_buyers = Feedback.average_rating(@vitrine.user.products, Feedback::FROM_BUYERS)
   
 
 

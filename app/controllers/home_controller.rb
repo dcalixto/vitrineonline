@@ -7,11 +7,11 @@ class HomeController < ApplicationController
   def index
     @vitrines = Vitrine.all
 
-  @total_feedbacks = Feedback.joins(:product).where('products = ?', @products).where('buyer_feedback_date is not null').count
-
-
-    @average_rating_from_buyers = Feedback.joins(:product).where('products = ?', @products).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
-
+ 
+     @total_feedbacks = Feedback.by_participant(@products, Feedback::FROM_BUYERS).count
+      
+    @average_rating = Feedback.average_rating(@products, Feedback::FROM_BUYERS)
+    
     @orders = Order.includes(:products)
 
     # suggestions for current visitor
