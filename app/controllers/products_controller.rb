@@ -48,7 +48,8 @@ class ProductsController < ApplicationController
 
 
     @product = current_vitrine.products.build(params[:product])
-    @image = @product.images.build
+     # @product = current_vitrine.build_brand
+       @product.build_brand
   end
 
   def upvote
@@ -169,6 +170,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_vitrine.products.build(params[:product])
+     @product.build_brand
     if @product.save
       
     redirect_to product_step_path(@product.id, Product.form_steps.first, :product_id => @product.id, only_path: true, format: :html)

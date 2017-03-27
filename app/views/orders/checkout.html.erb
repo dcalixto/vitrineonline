@@ -36,47 +36,47 @@
             <ul>
               <li>
                 <%= link_to product.name, product_path(product.id) %></li>
-              <li>Genero
+              <li>Genero:
                 <b>
                   <%= product.gender.gender %></b>
                 </li>
-                <li>Categoria
+                <li>Categoria:
                   <b>
                     <%= product.category.name %></b>
                   </li>
-                  <li>Subcategoria
+                  <li>Subcategoria:
                     <b>
                       <%= product.subcategory.name %></b>
                     </li>
-                    <li>Tamanho
+                    <li>Tamanho:
                       <b>
                         <%= order.size.size %></b>
                       </li>
-                      <li>Cor
+                      <li>Cor:
                         <b>
                                                
                           <%= order.color.name %>
                           </b>
 
                       </li>
-                        <li>Material
+                        <li>Material:
                           <b>
                             <%= order.material.name %></b>
                           </li>
-                          <li>Marca
+                          <li>Marca:
                             <b>
                               <%= order.brand.name%></b>
                             </li>
-                            <li>Condição
+                            <li>Condição:
                               <b>
                                 <%= order.condition.condition %></b>
                               </li>
-                              <li>Vitrine
+                              <li>Vitrine:
                                 <%= link_to @order.seller.vitrine_name, vitrine_path(@order.seller) %></li>
-                              <li>Quantidade
+                              <li>Quantidade:
                                 <b><%= @order.quantity %></b>
                               </li>
-                              <li>Preço
+                              <li>Preço:
                                 <b class="lista-preco bigger"><%= number_to_currency @order.total_price %></b>
                               </li>
                             </ul>
