@@ -12,15 +12,13 @@ class HomeController < ApplicationController
 #from_nil = Picture.where(imageable: nil).where_values.reduce(:and)
 
 
-       #
-#@total_feedbacks = Feedback.joins(:products).where('products = ?', @products).where('buyer_feedback_date is not null').count
+   @total_feedbacks = Product.joins(:feedbacks).where('feedbacks = ?', @feedbacks).where('buyer_feedback_date is not null').count
 
 
-#@average_rating = Feedback.joins(:products).where('products = ?', @products).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+@average_rating = Product.joins(:feedbacks).where('feedbacks = ?', @feedbacks).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
 
-
-#  @total_feedbacks = Feedback.by_participant(@vitrine.user.products, Feedback::FROM_BUYERS).count
+ # @total_feedbacks = Feedback.by_participant(@products.feedbacks, Feedback::FROM_BUYERS).count
      
  #   @average_rating = Feedback.average_rating(@vitrine.user.products, Feedback::FROM_BUYERS)
   
