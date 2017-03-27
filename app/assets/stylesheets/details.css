@@ -150,4 +150,26 @@ label.checkbox {
     float: left;
 }
 
+.sendship {padding: 5px;
+;width:80px;height:30px; background:orange;color:#fff;
+  -webkit-border-radius: 3px 3px 3px 3px;
+    border-radius: 3px 3px 3px 3px
+
+}
+
+.feed_buy {padding: 5px;
+;width:80px;height:30px; background:blue;color:#fff;
+  -webkit-border-radius: 3px 3px 3px 3px;
+    border-radius: 3px 3px 3px 3px
+
+}
+
+.feed_sell {padding: 5px;
+;width:80px;height:30px; background:orange;color:#fff;
+  -webkit-border-radius: 3px 3px 3px 3px;
+    border-radius: 3px 3px 3px 3px
+
+}
+
+
 

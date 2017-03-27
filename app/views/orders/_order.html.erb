@@ -127,8 +127,11 @@
             <td>
               <ul>
                                  
-                   <% if  params[:action] == "purchased" %>
-                  <li>Vendedor
+                <% if  params[:action] == "purchased" %>
+                  <li>Número: <b><%= order.transaction.transaction_id %></b>
+
+
+                  <li>Vendedor:
                     <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
                 <% end %>
                
@@ -141,14 +144,19 @@
                     <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => false)%>
                   </b>
                 </li>
-                <li>Frete
+                <li>Frete:
                   <b><%= order.shipping_method %></b>
                 </li>
-                <li>Custo
+                <li>Custo:
                   <b><%= number_to_currency order.shipping_cost %></b>
                 </li>
+ <li>Estado:
+   <span class="sendship">A Enviar</span>
+                </li>
+
+
                 <li><% if params[:status] == Order.statuses[1] %>
-                  Enviado em
+                  Enviado em:
                   <b>
                     <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => false)%></b>
                 <% end %>

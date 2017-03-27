@@ -201,14 +201,17 @@ class OrdersController < ApplicationController
           transaction.status = params[:status]
           order.transaction = transaction
 
-           feedbackship = Feedbackship.new
+         
+          if order.save
+
+            feedbackship = Feedbackship.new
             feedbackship.product_id = order.product_id
              feedbackship.feedback_id = order.feedback_id
             feedbackship.order_id = order.id
-
-          order.save
+            feedbackship.save
           OrderMailer.order_confirmation(order).deliver
- 
+          end
+          
         end
       end
 

@@ -14,7 +14,7 @@
     <%= link_to 'Comprados', "#{purchased_orders_path}?status=#{Order.statuses[0]}" %>
   </li>
   <li class="<%= 'active' if params[:status].nil? || params[:status] == Order.statuses[1] %>">
-    <%= link_to 'Marcado como Enviado pelo Vendedor', "#{purchased_orders_path}?status=#{Order.statuses[1]}" %>
+    <%= link_to 'Enviados', "#{purchased_orders_path}?status=#{Order.statuses[1]}" %>
   </li>
 </ul>
 <% if current_user.vitrine %>
