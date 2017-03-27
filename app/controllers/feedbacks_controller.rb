@@ -34,6 +34,11 @@ class FeedbacksController < ApplicationController
       @order.feedback = feedback
       @order.save
 
+          feedbackship = Feedbackship.new
+            feedbackship.product_id = order.product_id
+             feedbackship.feedback_id = order.feedback_id
+            feedbackship.order_id = order.id
+            feedbackship.save
 
 
     else
