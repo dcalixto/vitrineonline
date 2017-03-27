@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
   belongs_to :subcategory
   has_many :images,inverse_of: :product, dependent: :destroy 
 
-
+has_many :feedbackships
 has_many :feedbacks, through: :feedbackships
 
 
