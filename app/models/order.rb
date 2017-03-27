@@ -31,7 +31,7 @@ has_many :feedbackships
 
 
   accepts_nested_attributes_for :size,  :brand, :material,
-     :condition
+     :condition, :transaction
 
 
   attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
