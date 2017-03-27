@@ -49,7 +49,7 @@ body, td {
               <td valign="top">
                 <h2>Olá <%= @order.buyer.first_name %></h2>
 
-                <p>Notificação da compra:  <b><%= @order.id %></b></p>
+                <p>Notificação da compra:  <b><%= @order.transaction.transaction_id %></b></p>
                 <b>Data da compra:</b>
               <b><%= @order.created_at.strftime("%d/%m/%Y") %></b>
 

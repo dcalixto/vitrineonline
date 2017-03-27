@@ -28,13 +28,6 @@ class FeedbacksController < ApplicationController
     feedback.user = @order.buyer
     feedback.vitrine = @order.seller
 
-            feedbackship = Feedbackship.new
-            feedbackship.product_id = @order.product_id
-             feedbackship.feedback_id = @order.feedback_id
-            feedbackship.order_id = @order.id
-            feedback.feedbackships = feedbackship
-
-
 
     if feedback.save
       flash[:success] = 'Obrigado'

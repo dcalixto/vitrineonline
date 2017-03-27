@@ -200,6 +200,12 @@ class OrdersController < ApplicationController
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
+
+           feedbackship = Feedbackship.new
+            feedbackship.product_id = order.product_id
+             feedbackship.feedback_id = order.feedback_id
+            feedbackship.order_id = order.id
+
           order.save
           OrderMailer.order_confirmation(order).deliver
  

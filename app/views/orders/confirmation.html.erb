@@ -9,8 +9,8 @@
 
      <h1>Obrigado pela sua compra </h1>
 
-       Data da compra:   <b><#%= current_user.transactions.last.created_at.strftime('%d/%m/%Y') %></b>
-       Número da compra:     <b><#%= current_user.transactions.last.id %></b>
+       Data da compra:   <b><%= current_user.transactions.last.created_at.strftime('%d/%m/%Y') %></b>
+       Número da compra:     <b><%= current_user.transactions.last.transaction_id %></b>
              
        <p>Um email de confirmação foi enviado para <b><%=current_user.email %></b> quando o vendedor marcar como enviado outro email com o número de rastreio 
        será enviado para seu email</p>
