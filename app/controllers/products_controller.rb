@@ -115,10 +115,10 @@ class ProductsController < ApplicationController
     @product = Product.cached_find(params[:id])
 
     canonical_url url_for(@product)
-    @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
+ #   @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
 
 
-    @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+ #   @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
     @colors_for_dropdown = @product.colors.collect{ |co| [co.name, co.id]}
 
