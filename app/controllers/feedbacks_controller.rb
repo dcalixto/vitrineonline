@@ -40,7 +40,7 @@ class FeedbacksController < ApplicationController
       feedbackship.feedback_id = @order.feedback_id
       feedbackship.order_id = @order.id
      
-      @product.buyer_rating = feedback.buyer_rating
+
 
       feedbackship.save
 
@@ -50,6 +50,12 @@ class FeedbacksController < ApplicationController
     else
       flash[:error] = 'Erro'
     end
+    
+  @product.buyer_rating = @feedback.buyer_rating
+  @product.update_attributes
+
+
+
     redirect_to action: :awaiting
   end
 end
