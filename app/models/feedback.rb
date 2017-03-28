@@ -6,8 +6,8 @@ class Feedback < ActiveRecord::Base
 # has_one :product, through: :order 
 
 
-has_one :feedbackship
-has_one :product, through: :feedbackship
+has_many :feedbackships
+has_many :products, through: :feedbackships
 
 
 #belongs_to :feedbackable, polymorphic: true

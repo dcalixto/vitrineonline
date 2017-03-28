@@ -14,7 +14,7 @@ has_many :feedbackships
 has_many :feedbacks, through: :feedbackships
 
 
-#has_many :feedbackships
+
 
 
   has_many :reports

@@ -34,7 +34,12 @@ feedbacks = Feedback.scoped
      
   #  @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
   
-@average_customer_rating = @vitrine.feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+@average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+
+
+
+ @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
+
 
 @total_feedbacks  = feedbacks.where('buyer_feedback_date is not null').count
 
