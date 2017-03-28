@@ -23,7 +23,7 @@ class FeedbacksController < ApplicationController
 
   def create
        @order = Order.find_by_id(params[:order_id])
-       @product = @order.product
+       @product = Product.find_by_id(params[:product_id])
     feedback = @order.feedback.nil? ? Feedback.new : @order.feedback
     feedback.attributes = params[:feedback]
     feedback.user = @order.buyer
@@ -34,14 +34,16 @@ class FeedbacksController < ApplicationController
       flash[:success] = 'Obrigado'
       @order.feedback = feedback
       @order.save
+      @product.buyer_rating = feedback.buyer_rating
+      @product.save
+
 
       feedbackship = Feedbackship.new
       feedbackship.product_id = @order.product_id
       feedbackship.feedback_id = @order.feedback_id
       feedbackship.order_id = @order.id
      
-
-
+ 
       feedbackship.save
 
      
@@ -51,8 +53,6 @@ class FeedbacksController < ApplicationController
       flash[:error] = 'Erro'
     end
     
-  @product.buyer_rating = @feedback.buyer_rating
-  @product.update_attributes
 
 
 
