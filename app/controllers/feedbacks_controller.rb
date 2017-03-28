@@ -40,7 +40,7 @@ class FeedbacksController < ApplicationController
       feedbackship.feedback_id = @order.feedback_id
       feedbackship.order_id = @order.id
       @product = feedbackship.product_id
-      @product.buyer_rating = @feedback.buyer_rating
+      @product.buyer_rating = feedback.buyer_rating
 
       feedbackship.save
 
