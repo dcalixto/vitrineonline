@@ -8,6 +8,8 @@ class Product < ActiveRecord::Base
   belongs_to :vitrine, :inverse_of => :products
   belongs_to :category
   belongs_to :subcategory
+ belongs_to :transaction
+  
   has_many :images,inverse_of: :product, dependent: :destroy 
 
 has_many :feedbackships

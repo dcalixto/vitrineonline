@@ -2,7 +2,7 @@ class Transaction < ActiveRecord::Base
   # attr_accessible :title, :body
   belongs_to :order # , :touch => true
   belongs_to :user # , :touch => true
-
+  has_one :product
   attr_accessible :store_fee, :transaction_id, :status,:order_id,:user_id
 
   scope :stats, ->(date_range) { select('DATE(transactions.created_at) as day, count(*) as count').group('DATE(transactions.created_at)').where(created_at: date_range) }
