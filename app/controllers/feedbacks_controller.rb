@@ -39,10 +39,14 @@ class FeedbacksController < ApplicationController
       feedbackship.product_id = @order.product_id
       feedbackship.feedback_id = @order.feedback_id
       feedbackship.order_id = @order.id
-      @product = @order.product
-      @product.buyer_rating = feedback.buyer_rating
-
+     
       feedbackship.save
+
+
+      @product = feedbackship.product.id
+      @product.buyer_rating = feedback.buyer_rating
+      @product.update_attributes
+
 
 
     else
