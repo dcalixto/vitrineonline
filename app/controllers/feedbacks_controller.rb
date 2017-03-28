@@ -23,7 +23,7 @@ class FeedbacksController < ApplicationController
 
   def create
        @order = Order.find_by_id(params[:order_id])
-       @product = Product.find_by_id(params[:product_id])
+       @product = Product.find(params[:id])
     feedback = @order.feedback.nil? ? Feedback.new : @order.feedback
     feedback.attributes = params[:feedback]
     feedback.user = @order.buyer
