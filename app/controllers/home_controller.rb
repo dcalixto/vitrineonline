@@ -24,7 +24,7 @@ class HomeController < ApplicationController
   
 #feedbacks = Feedback.all
 
-@average_customer_rating = Product.feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+@average_customer_rating = @products.feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
 
 
 
