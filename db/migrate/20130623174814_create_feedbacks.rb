@@ -2,8 +2,7 @@ class CreateFeedbacks < ActiveRecord::Migration
   def change
     create_table :feedbacks do |t|
 
-      t.integer :feedbackable_id, polymorphic: true
-      t.string :feedbackable_type, polymorphic: true
+   
       
 
       t.text     :seller_comment
@@ -24,7 +23,7 @@ class CreateFeedbacks < ActiveRecord::Migration
     add_index :feedbacks, :user_id
     add_index :feedbacks, :vitrine_id
     add_index :feedbacks, :product_id
-    add_index :feedbacks, [:feedbackable_id, :feedbackable_type]
+  
 
   end
 end

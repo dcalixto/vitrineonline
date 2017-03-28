@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170326080659) do
+ActiveRecord::Schema.define(:version => 20170328082403) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -355,6 +355,7 @@ ActiveRecord::Schema.define(:version => 20170326080659) do
     t.integer  "cached_weighted_score",                                 :default => 0
     t.integer  "cached_weighted_total",                                 :default => 0
     t.float    "cached_weighted_average",                               :default => 0.0
+    t.integer  "buyer_rating"
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
