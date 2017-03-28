@@ -38,7 +38,7 @@ feedbacks = Feedback.scoped
 
 
 
- @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
+ @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
 
 
 @total_feedbacks  = feedbacks.where('buyer_feedback_date is not null').count

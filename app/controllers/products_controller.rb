@@ -100,12 +100,7 @@ class ProductsController < ApplicationController
     @product = Product.cached_find(params[:id])
 
     canonical_url url_for(@product)
-    @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
-
-
-   @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
-
-
+  
 
     @colors_for_dropdown = @product.colors.collect{ |co| [co.name, co.id]}
 
@@ -130,7 +125,12 @@ class ProductsController < ApplicationController
     @similarities_for_vitrine = Product.unscoped.where(vitrine_id: @product.vitrine_id).for_ids_with_order(ids)
 
 
+feedbacks = Feedback.scoped
 
+  @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
+
+
+   @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
 
 
