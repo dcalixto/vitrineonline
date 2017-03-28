@@ -17,23 +17,11 @@ class ProductsController < ApplicationController
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
  
-  # @total_feedbacks_from_buyers = Feedback.joins(:product).where('products = ?', @products).where('buyer_feedback_date is not null').count
+
+  @average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
 
 
-  #  @average_rating_from_buyers = Feedback.joins(:product).where('products = ?', @products).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
- 
-
-
- # @total_feedbacks = Feedback.joins(:product).where('products = ?', @products).where('buyer_feedback_date is not null').count
-
-
-  #  @average_rating_from_buyers = Feedback.joins(:product).where('products = ?', @products).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
-
-
- #@total_feedbacks = Feedback.by_participant(@products, Feedback::FROM_BUYERS).count
-      
-  #  @average_rating = Feedback.average_rating(@products, Feedback::FROM_BUYERS)
  
 
   end
@@ -119,6 +107,14 @@ class ProductsController < ApplicationController
 
 
   # @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+
+
+   @average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+
+feedbacks = Feedback.scoped
+
+
+
 
     @colors_for_dropdown = @product.colors.collect{ |co| [co.name, co.id]}
 

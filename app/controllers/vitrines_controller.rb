@@ -11,6 +11,7 @@ class VitrinesController < ApplicationController
 
   def show
     @vitrine = Vitrine.cached_find(params[:id])
+feedbacks = Feedback.scoped
 
   
     canonical_url url_for(@vitrine)

@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   def index
     @vitrines = Vitrine.all
 
-  # feedbacks = Feedback.all
+
 
 feedbacks = Feedback.scoped
 
@@ -39,13 +39,20 @@ feedbacks = Feedback.scoped
       @average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
 
 
+ @total_feedbacks  = feedbacks.where('buyer_feedback_date is not null').count
+
 
 
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
     else
      
       @products = Product.includes(:images,:vitrine).all
+   
+      
       @average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+
+ @total_feedbacks  = feedbacks.where('buyer_feedback_date is not null').count
+
 
 
 
