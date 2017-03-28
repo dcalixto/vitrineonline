@@ -122,6 +122,15 @@ validates_associated :policy, presence: true
     ActsAsTaggableOn::Tag.joins(:taggings).joins("inner join products on products.id = taggings.taggable_id and taggings.taggable_type = 'Product'").where('products.vitrine_id = ?', id).group('tags.id').order(:name)
   end
 
+
+
+  # AVERAGE BUYER RATING
+  def average_customer_rating
+    feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+  end
+
+
+
   before_create :build_default_models
 
   accepts_nested_attributes_for :policy, :products,
