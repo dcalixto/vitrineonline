@@ -43,9 +43,9 @@ class FeedbacksController < ApplicationController
       feedbackship.save
 
 
-      @product = feedbackship.product.id
-      @product.buyer_rating = feedback.buyer_rating
-      @product.update_attributes
+     # @product = feedbackship.product.id
+    #  @product.buyer_rating = feedback.buyer_rating
+     # @product.update_attributes
 
 
 
