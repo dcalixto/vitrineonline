@@ -34,8 +34,9 @@ feedbacks = Feedback.scoped
      
   #  @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
   
-@average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+@average_customer_rating = @vitrine.feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
 
+@total_feedbacks  = feedbacks.where('buyer_feedback_date is not null').count
 
 
     @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
@@ -140,8 +141,9 @@ feedbacks = Feedback.scoped
     @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
     @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
 
-@average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+@average_customer_rating = @vitrine.feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
 
+@total_feedbacks  = feedbacks.where('buyer_feedback_date is not null').count
 
 
   end

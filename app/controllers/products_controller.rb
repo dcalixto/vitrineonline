@@ -18,10 +18,7 @@ class ProductsController < ApplicationController
     @suggestions = Product.unscoped.for_ids_with_order(ids)
  
 
-  @average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
-
-
-
+ 
  
 
   end
@@ -103,16 +100,10 @@ class ProductsController < ApplicationController
     @product = Product.cached_find(params[:id])
 
     canonical_url url_for(@product)
-  #  @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
+    @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
 
 
-  # @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
-
-
-   @average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
-
-feedbacks = Feedback.scoped
-
+   @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
 
 
