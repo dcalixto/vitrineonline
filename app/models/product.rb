@@ -149,6 +149,38 @@ end
     feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
   end
 
+
+
+
+
+
+
+ FROM_BUYERS = 'from_buyers'
+
+  NOT_RATED = 0
+
+ 
+  attr_accessible :buyer_rating
+
+  scope :by_participant, lambda { |user, from_who|
+    case from_who
+    when FROM_BUYERS
+      where('product_id = ? and buyer_feedback_date is not null', product ? product.id : 0).order('buyer_feedback_date desc') }
+
+  
+  scope :rated, ->(from_who) { where("#{from_who == Feedback::FROM_BUYERS ? 'buyer_rating'} <> ?", Feedback::NOT_RATED) }
+
+  def self.average_rating(from_who)
+    case from_who
+    when FROM_BUYERS
+      by_participant(from_who).rated(from_who).average(:buyer_rating)
+   end
+
+
+
+
+
+
   # GET VISITOR ID
   def impression_count
     impressions.count

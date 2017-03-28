@@ -35,6 +35,8 @@ class FeedbacksController < ApplicationController
       @order.feedback = feedback
       @order.save
       @product.buyer_rating = feedback.buyer_rating
+      @product.buyer_feedback_date = feedback.buyer_feedback_date
+
       @product.save
 
 
