@@ -145,15 +145,15 @@ end
   }
 
   # AVERAGE BUYER RATING
-  def average_customer_rating
-    where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
-  end
+ # def average_customer_rating
+ #   where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+ # end
 
 
 
- FROM_BUYERS = 'from_buyers'
+ #FROM_BUYERS = 'from_buyers'
 
-  NOT_RATED = 0
+ ## NOT_RATED = 0
 
  
   attr_accessible :buyer_rating
