@@ -12,8 +12,8 @@ class HomeController < ApplicationController
  def index
 
 
- #  @probacks = Product.includes(:probacks)
-    
+#  @probacks =  Prodback
+
    @vitrines = Vitrine.all
 
  
@@ -33,7 +33,7 @@ class HomeController < ApplicationController
 # controller
 products_ids = @products.collect(&:id)
 @average_rating  = 
-  Prodbacks.where(product_id: products_ids).
+  Prodback.where(product_id: products_ids).
     by_participant.rated.
     group(:product_id).
     average(:buyer_rating)
@@ -53,7 +53,7 @@ products_ids = @products.collect(&:id)
 # controller
 products_ids = @products.collect(&:id)
 @average_rating  = 
-  Prodbacks.where(product_id: products_ids).
+  Prodback.where(product_id: products_ids).
     by_participant.rated.
     group(:product_id).
     average(:buyer_rating)
