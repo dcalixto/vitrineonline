@@ -6,9 +6,21 @@ class HomeController < ApplicationController
  include VitrinesHelper 
  
   
+
+def average_rating_t
+    @probacks = Product.joins(:probacks)
+
+   @probacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+  end
+
+
  
  def index
-    @vitrines = Vitrine.all
+
+
+   @probacks = Product.includes(:probacks)
+    
+   @vitrines = Vitrine.all
 
  
     @orders = Order.includes(:products)
@@ -21,21 +33,17 @@ class HomeController < ApplicationController
 
 
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
-  
-    
-    
-    
-    
-      @total_feedbacks = Proback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
-    @average_rating = Proback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated.average(:buyer_rating)
+ @average_rating  = Product.joins(:probacks).where(:probacks => ('buyer_feedback_date is not null') ).rated.average(:buyer_rating) || 0
 
-
+ 
     
     
     else
   
       @products = Product.includes(:images,:vitrine).all
    
+@average_rating = Product.joins(:probacks).where(:probacks => ('buyer_feedback_date is not null') ).rated.average(:buyer_rating) || 0
+
 
 
   
