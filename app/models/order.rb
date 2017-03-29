@@ -11,13 +11,10 @@ class Order < ActiveRecord::Base
   belongs_to :feedback
  
   has_one    :transaction
- has_one    :prodback
+ 
   
    belongs_to :color
    belongs_to :size
-
-
-#has_many :feedbackships
 
   belongs_to :brand,  foreign_key: 'brand_id', class_name: 'Brand'
  

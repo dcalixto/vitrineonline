@@ -11,14 +11,14 @@ class Product < ActiveRecord::Base
  belongs_to :transaction
   
   has_many :images,inverse_of: :product, dependent: :destroy 
-
+  has_many :orders
 has_many :feedbacks, through: :orders
 
 has_many :prodbacks
 
 
   has_many :reports
-  has_many :orders
+
   belongs_to :gender
 belongs_to :brand
 belongs_to :condition
