@@ -33,14 +33,14 @@ class HomeController < ApplicationController
 # controller
 products_ids = @products.collect(&:id)
 @average_rating  = 
-  Prodback.where(product_id: products_ids).
+  Feedback.where(product_id: products_ids).
     where('buyer_feedback_date is not null').rated.
-   # group(:product_id).
+    group(:product_id).
     average(:buyer_rating)
 
 
   @total_feedbacks   = 
-  Prodback.where(product_id: products_ids).
+  Feedback.where(product_id: products_ids).
     where('buyer_feedback_date is not null').count
 
 
@@ -60,16 +60,16 @@ products_ids = @products.collect(&:id)
 products_ids = @products.collect(&:id)
 
 @average_rating  = 
-  Prodback.where(product_id: products_ids).
+  Feedback.where(product_id: products_ids).
     where('buyer_feedback_date is not null').rated.
-    #group(:product_id).
+    group(:product_id).
     average(:buyer_rating)
   
   end
 
 
     @total_feedbacks   = 
-  Prodback.where(product_id: products_ids).
+  Feedback.where(product_id: products_ids).
     where('buyer_feedback_date is not null').count
     
   end

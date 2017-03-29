@@ -1,7 +1,7 @@
 class Prodback < ActiveRecord::Base
   # attr_accessible :title, :body
 
-belongs_to :product
+#belongs_to :product
 
  attr_accessible :buyer_comment,  :buyer_rating,:buyer_feedback_date,:product_id
 

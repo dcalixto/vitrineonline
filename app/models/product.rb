@@ -12,9 +12,9 @@ class Product < ActiveRecord::Base
   
   has_many :images,inverse_of: :product, dependent: :destroy 
   has_many :orders
-has_many :feedbacks, through: :orders
+has_many :feedbacks, through: :orders, inverse_of: :product
 
-has_many :prodbacks
+#has_many :prodbacks
 
 
   has_many :reports
