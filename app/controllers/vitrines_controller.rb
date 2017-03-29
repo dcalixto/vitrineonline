@@ -45,8 +45,9 @@ class VitrinesController < ApplicationController
 
 
 
-  @average_customer_rating  = Product.average_rating
-      
+
+      @average_rating  = Product.average_rating
+ 
       
      # @total_feedbacks  = Product.where('buyer_feedback_date is not null').count
  @total_feedbacks = Product.by_participant.count

@@ -145,9 +145,9 @@ end
   }
 
   # AVERAGE BUYER RATING
- # def average_customer_rating
- #   where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
- # end
+ def average_customer_rating
+    feedbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+  end
 
 
 
