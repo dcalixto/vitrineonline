@@ -7,12 +7,6 @@ class HomeController < ApplicationController
  
   
 
-def average_rating_t
-    @probacks = Product.joins(:probacks)
-
-   @probacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
-  end
-
 
  
  def index
@@ -33,7 +27,7 @@ def average_rating_t
 
 
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
- @average_rating  = Product.joins(:probacks).where(:probacks => ('buyer_feedback_date is not null') ).rated.average(:buyer_rating) || 0
+ @average_rating  = Product.joins(:prodbacks).where(:probacks => ('buyer_feedback_date is not null') ).rated.average(:buyer_rating) || 0
 
  
     
@@ -42,7 +36,7 @@ def average_rating_t
   
       @products = Product.includes(:images,:vitrine).all
    
-@average_rating = Product.joins(:probacks).where(:probacks => ('buyer_feedback_date is not null') ).rated.average(:buyer_rating) || 0
+@average_rating = Product.joins(:prodbacks).where(:probacks => ('buyer_feedback_date is not null') ).rated.average(:buyer_rating) || 0
 
 
 
