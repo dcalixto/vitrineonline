@@ -12,7 +12,7 @@ class Feedback < ActiveRecord::Base
 
 #belongs_to :feedbackable, polymorphic: true
 
-#validates_presence_of  :buyer_comment, :seller_comment, nil: false  # this cause a bug - buyer can't post feedback
+
 
 
   FROM_BUYERS = 'from_buyers'

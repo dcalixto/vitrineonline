@@ -162,13 +162,16 @@ end
  
   attr_accessible :buyer_rating
 
-  scope :by_participant, lambda { |user, from_who|
+  scope :by_participant, lambda { |from_who|
     case from_who
     when FROM_BUYERS
-      where('product_id = ? and buyer_feedback_date is not null', product ? product.id : 0).order('buyer_feedback_date desc') }
+      where('product_id = ? and buyer_feedback_date is not null', product ? product.id : 0).order('buyer_feedback_date desc') 
 
-  
-  scope :rated, ->(from_who) { where("#{from_who == Feedback::FROM_BUYERS ? 'buyer_rating'} <> ?", Feedback::NOT_RATED) }
+  end
+}
+
+
+  scope :rated, ->(from_who) { where("#{from_who == Product::FROM_BUYERS ? 'buyer_rating' : 'seller_rating'} <> ?", Product::NOT_RATED) }
 
   def self.average_rating(from_who)
     case from_who
