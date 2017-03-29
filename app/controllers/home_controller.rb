@@ -34,8 +34,9 @@ class HomeController < ApplicationController
 products_ids = @products.collect(&:id)
 @average_rating  = 
   Prodbacks.where(product_id: products_ids).
-    by_participant.rated.average.
-    group(:product_id)
+    by_participant.rated.
+    group(:product_id).
+    average(:buyer_rating)
     
     else
   
@@ -53,8 +54,10 @@ products_ids = @products.collect(&:id)
 products_ids = @products.collect(&:id)
 @average_rating  = 
   Prodbacks.where(product_id: products_ids).
-    by_participant.rated.average.
-    group(:product_id)
+    by_participant.rated.
+    group(:product_id).
+    average(:buyer_rating)
+
 
 
 
