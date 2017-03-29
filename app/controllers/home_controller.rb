@@ -46,6 +46,9 @@ class HomeController < ApplicationController
 # @total_feedbacks = Product.prodbacks.by_participant.count
 
 
+prodbacks = Product.prodbacks
+
+
 @total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
 
 
@@ -60,7 +63,8 @@ class HomeController < ApplicationController
 
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
     else
-     
+     prodbacks = Product.prodbacks
+
       @products = Product.includes(:images,:vitrine).all
    
      # @average_customer_rating = Product.where('buyer_feedback_date is not null').rated(Product::FROM_BUYERS).average(:buyer_rating) || 0
