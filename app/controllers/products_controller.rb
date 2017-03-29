@@ -109,9 +109,9 @@ class ProductsController < ApplicationController
 
    # @q = Feedback.by_participant(@product, Feedback::FROM_BUYERS).ransack(params[:q])
   
-    # @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
+     @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
     
-   # @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+   @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 
     # suggestions for current visitor
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
