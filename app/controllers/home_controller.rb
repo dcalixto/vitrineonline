@@ -36,8 +36,8 @@ feedbacks = Feedback.scoped
     @suggestions = Product.unscoped.for_ids_with_order(ids)
 
     if params[:tag]
-      @average_customer_rating = @products.where('buyer_feedback_date is not null').rated(Product::FROM_BUYERS).average(:buyer_rating) || 0
- @total_feedbacks  = @products.where('buyer_feedback_date is not null').count
+      @average_customer_rating = Product.where('buyer_feedback_date is not null').rated(Product::FROM_BUYERS).average(:buyer_rating) || 0
+ @total_feedbacks  = Product.where('buyer_feedback_date is not null').count
 
 
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
@@ -45,12 +45,12 @@ feedbacks = Feedback.scoped
      
       @products = Product.includes(:images,:vitrine).all
    
-      @average_customer_rating = @products.where('buyer_feedback_date is not null').rated(Product::FROM_BUYERS).average(:buyer_rating) || 0
+      @average_customer_rating = Product.where('buyer_feedback_date is not null').rated(Product::FROM_BUYERS).average(:buyer_rating) || 0
 
 
       
     #  @average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
- @total_feedbacks  = @products.where('buyer_feedback_date is not null').count
+ @total_feedbacks  = Product.where('buyer_feedback_date is not null').count
 
  
 
