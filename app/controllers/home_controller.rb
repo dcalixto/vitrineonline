@@ -37,7 +37,13 @@ products_ids = @products.collect(&:id)
     where('buyer_feedback_date is not null').rated.
    # group(:product_id).
     average(:buyer_rating)
-    
+
+
+  @total_feedbacks   = 
+  Prodback.where(product_id: products_ids).
+    where('buyer_feedback_date is not null').count
+
+
     else
   
       @products = Product.includes(:images,:vitrine).all
@@ -62,6 +68,14 @@ products_ids = @products.collect(&:id)
   end
 
 
+    @total_feedbacks   = 
+  Prodback.where(product_id: products_ids).
+    where('buyer_feedback_date is not null').count
+    
+  end
+
+
+
 
  end
-end
+
