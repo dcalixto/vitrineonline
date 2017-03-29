@@ -49,13 +49,13 @@
                   <span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
 
 
-              <#% if product.vitrine.feedbacks.present? %>
+              <% if product.prodbacks.present? %>
                     <div class="productFeeback">
                       <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating  %>"></div>
 
                       <%=@total_feedbacks %>
                     </div>
-                  <#% end %>
+                  <% end %>
                   <span class="by">Por
                     <%=product.vitrine.name %></span>
                 <% end %>
