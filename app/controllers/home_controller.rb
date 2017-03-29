@@ -35,7 +35,7 @@ products_ids = @products.collect(&:id)
 @average_rating  = 
   Prodback.where(product_id: products_ids).
     where('shop_date is not null').rated.
-    group(:product_id).
+   # group(:product_id).
     average(:buyer_rating)
     
     else
@@ -56,7 +56,7 @@ products_ids = @products.collect(&:id)
 @average_rating  = 
   Prodback.where(product_id: products_ids).
     where('shop_date is not null').rated.
-    group(:product_id).
+    #group(:product_id).
     average(:buyer_rating)
   
   end
