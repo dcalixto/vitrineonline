@@ -155,6 +155,8 @@ end
 
 
 
+
+
  FROM_BUYERS = 'from_buyers'
 
   NOT_RATED = 0
@@ -178,7 +180,7 @@ end
     when FROM_BUYERS
       by_participant(from_who).rated(from_who).average(:buyer_rating)
    end
-
+  end
 
 
 
