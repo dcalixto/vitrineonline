@@ -35,7 +35,7 @@ products_ids = @products.collect(&:id)
 @average_rating  = 
   Feedback.where(product_id: products_ids).
     where('buyer_feedback_date is not null').rated.
-  ##  group(:product_id).
+    group(:product_id).
     average(:buyer_rating)
 
 
@@ -62,7 +62,7 @@ products_ids = @products.collect(&:id)
 @average_rating  = 
   Feedback.where(product_id: products_ids).
     where('buyer_feedback_date is not null').rated.
-  #  group(:product_id).
+    group(:product_id).
     average(:buyer_rating)
   
   end
