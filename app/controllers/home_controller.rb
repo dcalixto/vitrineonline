@@ -12,7 +12,7 @@ class HomeController < ApplicationController
  def index
 
 
-   @probacks = Product.includes(:probacks)
+ #  @probacks = Product.includes(:probacks)
     
    @vitrines = Vitrine.all
 
