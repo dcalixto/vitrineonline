@@ -107,9 +107,9 @@ class ProductsController < ApplicationController
 
     @sizes_for_dropdown = @product.sizes.collect { |s| [s.size, s.id] }
 
-   # @q = Feedback.by_participant(@product, Feedback::FROM_BUYERS).ransack(params[:q])
+    @q = Feedback.by_participant(@product, Feedback::FROM_BUYERS).ransack(params[:q])
   
-     @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
+  # @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
     
    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 
