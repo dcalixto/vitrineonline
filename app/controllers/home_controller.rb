@@ -55,8 +55,8 @@ prodbacks = @product.prodbacks
    # @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
 
 
- @total_feedbacks = Prodback.by_participant(product).count
-    @average_rating = Prodback.average_rating(product)
+ @total_feedbacks = Prodback.by_participant.count
+    @average_rating = Prodback.average_rating
      
  #   @average_rating = Feedback.average_rating(@vitrine.user.products, Feedback::FROM_BUYERS)
 
