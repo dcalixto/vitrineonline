@@ -95,7 +95,7 @@
 
                 <%=link_to  feedbacks_product_path(:id=> @product.id)  do %>
 
-                  <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating %>">
+                  <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers  %>">
                     <span class="feedCounter"><%= @total_feedbacks %>
                     Avaliações</span>
                   </div>

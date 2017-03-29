@@ -45,12 +45,18 @@ class VitrinesController < ApplicationController
 
 
 
+products_ids = @vitrine.products.collect(&:id)
+@average_rating  = 
+  Feedback.where(product_id: products_ids).
+    where('buyer_feedback_date is not null').rated.(Feedback::FROM_BUYERS).
+  group(:product_id).
+    average(:buyer_rating) || 0
 
-    #  @average_rating  = @vitrine.products.average_rating
- 
-      
-     # @total_feedbacks  = Product.where('buyer_feedback_date is not null').count
-# @total_feedbacks = @vitrine.products.by_participant.count
+
+
+  @total_feedbacks   = 
+  Feedback.where(product_id: products_ids).
+    where('buyer_feedback_date is not null').count
 
 
 
