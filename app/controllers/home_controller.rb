@@ -10,8 +10,7 @@ class HomeController < ApplicationController
  def index
     @vitrines = Vitrine.all
 
-prodbacks = @product.prodbacks
-
+prodbacks = Prodback.scoped
 
 #@total_feedbacks = Product.joins.(:orders).where('orders = ?',@orders).where('buyer_feedback_date is not null').count
 #from_nil = Picture.where(imageable: nil).where_values.reduce(:and)
@@ -44,7 +43,7 @@ prodbacks = @product.prodbacks
       
       
      # @total_feedbacks  = Product.where('buyer_feedback_date is not null').count
-# @total_feedbacks = Product.prodbacks.by_participant.count
+ @total_feedbacks = Product.prodbacks.by_participant.count
 
 
 
@@ -52,11 +51,11 @@ prodbacks = @product.prodbacks
 #@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
 
 
-   # @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+   @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
 
 
- @total_feedbacks = Prodback.by_participant.count
-    @average_rating = Prodback.average_rating
+# @total_feedbacks = Prodback.by_participant.count
+ #   @average_rating = Prodback.average_rating
      
  #   @average_rating = Feedback.average_rating(@vitrine.user.products, Feedback::FROM_BUYERS)
 
@@ -78,16 +77,15 @@ prodbacks = @product.prodbacks
  # @total_feedbacks = Product.prodbacks.by_participant.count
 
 
-
-#@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
-
-
-  #  @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
 
 
+    @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
 
- @total_feedbacks = Prodback.by_participant(product).count
-    @average_rating = Prodback.average_rating(product)
+
+
+# @total_feedbacks = Prodback.by_participant(product).count
+  #  @average_rating = Prodback.average_rating(product)
 
     end
  
