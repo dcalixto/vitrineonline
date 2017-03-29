@@ -146,7 +146,7 @@ end
 
   # AVERAGE BUYER RATING
   def average_customer_rating
-    where('buyer_feedback_date is not null').rated(Product::FROM_BUYERS).average(:buyer_rating) || 0
+    where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
   end
 
 
@@ -158,22 +158,28 @@ end
  
   attr_accessible :buyer_rating
 
-  scope :by_participant, lambda { |from_who|
-    case from_who
-    when FROM_BUYERS
-      where('buyer_feedback_date is not null').order('buyer_feedback_date desc') 
+#  scope :by_participant, lambda { |from_who|
+  #  case from_who
+   # when FROM_BUYERS
+     
+ # end
+#}
 
-  end
-}
+
+scope :by_participant, -> {  where('buyer_feedback_date is not null').order('buyer_feedback_date desc') }
 
 
-  scope :rated, ->(from_who) { where("#{from_who == Product::FROM_BUYERS ? 'buyer_rating' : 'seller_rating'} <> ?", Product::NOT_RATED) }
+scope :rated, -> {  where('buyer_rating is not null') }
 
-  def self.average_rating(from_who)
-    case from_who
-    when FROM_BUYERS
-      by_participant(from_who).rated(from_who).average(:buyer_rating)
-   end
+
+ # scope :rated, ->(from_who) { where("#{from_who == Product::FROM_BUYERS ? 'buyer_rating' : 'seller_rating'} <> ?", Product::NOT_RATED) }
+
+  def self.average_rating#(from_who)
+   # case from_who
+   # when FROM_BUYERS
+      by_participant.rated.average(:buyer_rating) #|| 0
+
+  # end
   end
 
 

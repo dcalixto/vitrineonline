@@ -39,11 +39,11 @@ feedbacks = Feedback.scoped
    #   @average_customer_rating = Product.where('buyer_feedback_date is not null').rated(Product::FROM_BUYERS).average(:buyer_rating) || 0
 
       
-        @average_customer_rating  = Product.average_rating(FROM_BUYERS)
+        @average_customer_rating  = Product.average_rating
       
       
      # @total_feedbacks  = Product.where('buyer_feedback_date is not null').count
- @total_feedbacks = Product.by_participant(FROM_BUYERS).count
+ @total_feedbacks = Product.by_participant.count
 
 
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
