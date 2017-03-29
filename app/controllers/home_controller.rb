@@ -10,6 +10,7 @@ class HomeController < ApplicationController
  def index
     @vitrines = Vitrine.all
 
+prodbacks = @product.prodbacks
 
 
 #@total_feedbacks = Product.joins.(:orders).where('orders = ?',@orders).where('buyer_feedback_date is not null').count
@@ -46,16 +47,16 @@ class HomeController < ApplicationController
 # @total_feedbacks = Product.prodbacks.by_participant.count
 
 
-prodbacks = Product.prodbacks
 
 
-@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
+#@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
 
 
-    @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+   # @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
 
 
-
+ @total_feedbacks = Prodback.by_participant(product).count
+    @average_rating = Prodback.average_rating(product)
      
  #   @average_rating = Feedback.average_rating(@vitrine.user.products, Feedback::FROM_BUYERS)
 
@@ -63,8 +64,7 @@ prodbacks = Product.prodbacks
 
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
     else
-     prodbacks = Product.prodbacks
-
+  
       @products = Product.includes(:images,:vitrine).all
    
      # @average_customer_rating = Product.where('buyer_feedback_date is not null').rated(Product::FROM_BUYERS).average(:buyer_rating) || 0
@@ -79,12 +79,15 @@ prodbacks = Product.prodbacks
 
 
 
-@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
+#@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
 
 
-    @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+  #  @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
 
 
+
+ @total_feedbacks = Prodback.by_participant(product).count
+    @average_rating = Prodback.average_rating(product)
 
     end
  
