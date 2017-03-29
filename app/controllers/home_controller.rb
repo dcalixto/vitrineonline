@@ -5,12 +5,7 @@ class HomeController < ApplicationController
   include ProductsHelper 
  include VitrinesHelper 
  
-  # AVERAGE BUYER RATING
-  def average_rating
-    prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
-  end
- 
- 
+  
  
  def index
     @vitrines = Vitrine.all
@@ -51,10 +46,10 @@ class HomeController < ApplicationController
 # @total_feedbacks = Product.prodbacks.by_participant.count
 
 
-@total_feedbacks = Product.average_rating.count
+@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
 
 
-    @average_rating  = Product.average_rating
+    @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
 
 
 
@@ -80,10 +75,11 @@ class HomeController < ApplicationController
 
 
 
-@total_feedbacks = Product.average_rating.count
+@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
 
 
-    @average_rating  = Product.average_rating
+    @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+
 
 
     end
