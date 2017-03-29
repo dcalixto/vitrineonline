@@ -34,7 +34,7 @@ class HomeController < ApplicationController
 products_ids = @products.collect(&:id)
 @average_rating  = 
   Prodback.where(product_id: products_ids).
-    where('shop_date is not null').rated.
+    where('buyer_feedback_date  not null').rated.
    # group(:product_id).
     average(:buyer_rating)
     
@@ -55,7 +55,7 @@ products_ids = @products.collect(&:id)
 
 @average_rating  = 
   Prodback.where(product_id: products_ids).
-    where('shop_date is not null').rated.
+    where('buyer_feedback_date is not null').rated.
     #group(:product_id).
     average(:buyer_rating)
   
