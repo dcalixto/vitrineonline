@@ -29,8 +29,13 @@ class HomeController < ApplicationController
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
 # @average_rating  = Product.joins(:prodbacks).where(:probacks => ('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0 )
 
-@average_rating = Product.joins(:prodbacks).where.not(prodbacks: {buyer_feedback_date: nil}).rated.average(:buyer_rating) || 0
-    
+#@average_rating = Product.joins(:prodbacks).where.not(prodbacks: {buyer_feedback_date: nil}).rated.average(:buyer_rating) || 0
+# controller
+products_ids = @products.collect(&:id)
+@average_rating  = 
+  Prodbacks.where(product_id: products_ids).
+    by_participant.rated.
+    group(:product_id)
     
     else
   
@@ -38,9 +43,21 @@ class HomeController < ApplicationController
    
 #@average_rating  = Product.joins(:prodbacks).where(:prodbacks => ('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0 )
 
-@average_rating = Product.joins(:prodbacks).where.not(prodbacks: {buyer_feedback_date: nil}).rated.average(:buyer_rating) || 0
+#@average_rating = Product.joins(:prodbacks).where.not(prodbacks: {buyer_feedback_date: nil}).rated.average(:buyer_rating) || 0
     
    
+
+
+
+# controller
+products_ids = @products.collect(&:id)
+@average_rating  = 
+  Prodbacks.where(product_id: products_ids).
+    by_participant.rated.
+    group(:product_id)
+
+
+
   
   end
 
