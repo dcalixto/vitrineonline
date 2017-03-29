@@ -50,21 +50,15 @@ prodbacks = Prodback.scoped
 #@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
 
 
-   #@average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+#@average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
 
 
-  # @average_rating  = Product.includes(:prodbacks)#('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+ @average_rating  = Product.includes(:prodbacks).where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+
+@total_feedbacks =  Product.includes(:prodbacks).where('buyer_feedback_date is not null').count
 
 
 
-
-
-@products.each do |i|
-@average_rating   = i.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
-@total_feedbacks = i.prodbacks.where('buyer_feedback_date is not null').count
-
-    end
- 
 
 
 
@@ -103,11 +97,9 @@ prodbacks = Prodback.scoped
 
 
   
-@products.each do |i|
-@average_rating   = i.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
-@total_feedbacks = i.prodbacks.where('buyer_feedback_date is not null').count
+ @average_rating  = Product.includes(:prodbacks).where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
 
-    end
+@total_feedbacks =  Product.includes(:prodbacks).where('buyer_feedback_date is not null').count
  
 
   
