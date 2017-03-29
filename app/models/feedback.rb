@@ -18,9 +18,9 @@ class Feedback < ActiveRecord::Base
   scope :by_participant, lambda { |user, from_who|
     case from_who
     when FROM_BUYERS
-      where('vitrine_id = ? and buyer_feedback_date is not null', user.vitrine ? user.vitrine.id : 0).order('buyer_feedback_date desc')
+      where('vitrine_id = ? and buyer_feedback_date is not null', user.vitrine ? user.vitrine.id : 0).order('buyer_feedback_date')
     when FROM_SELLERS
-      where('user_id = ? and seller_feedback_date is not null', user.id).order('seller_feedback_date desc')
+      where('user_id = ? and seller_feedback_date is not null', user.id).order('seller_feedback_date')
     else
       where('(user_id = ? and seller_feedback_date is not null) or (vitrine_id = ? and buyer_feedback_date is not null)', user.id, user.vitrine ? user.vitrine.id : 0).order('updated_at desc')
       end
