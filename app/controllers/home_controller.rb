@@ -4,13 +4,16 @@ class HomeController < ApplicationController
   # caches_action :index, :layout => false
   include ProductsHelper 
  include VitrinesHelper 
-  def index
-    @vitrines = Vitrine.all
+ 
   # AVERAGE BUYER RATING
   def average_rating
     prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
   end
-
+ 
+ 
+ 
+ def index
+    @vitrines = Vitrine.all
 
 
 
