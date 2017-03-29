@@ -151,6 +151,13 @@ end
 
 
 
+   # AVERAGE BUYER RATING
+  def average_rating
+    prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+  end
+
+
+
 
 
 

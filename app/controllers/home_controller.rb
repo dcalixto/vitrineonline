@@ -43,10 +43,11 @@ class HomeController < ApplicationController
 # @total_feedbacks = Product.prodbacks.by_participant.count
 
 
-@total_feedbacks = Product.joins(:prodbacks).by_participant.count
+@total_feedbacks = Product.average_rating.count
 
 
-    @average_rating  = Product.joins(:prodbacks).average_rating
+    @average_rating  = Product.average_rating
+
 
 
      
@@ -71,11 +72,10 @@ class HomeController < ApplicationController
 
 
 
+@total_feedbacks = Product.average_rating.count
 
-@total_feedbacks = Product.joins(:prodbacks).by_participant.count
 
-
-    @average_rating  = Product.joins(:prodbacks).average_rating
+    @average_rating  = Product.average_rating
 
 
     end
