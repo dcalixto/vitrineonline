@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
   
   has_many :images,inverse_of: :product, dependent: :destroy 
 
-#has_many :feedbacks, through: :orders
+has_many :feedbacks, through: :orders
 
 has_many :prodbacks
 
@@ -151,12 +151,7 @@ end
 
 
 
-   # AVERAGE BUYER RATING
-  def average_rating
-    prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
-  end
-
-
+ 
 
 
 
