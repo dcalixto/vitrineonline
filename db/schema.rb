@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170328165559) do
+ActiveRecord::Schema.define(:version => 20170329061036) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -295,6 +295,20 @@ ActiveRecord::Schema.define(:version => 20170328165559) do
   add_index "policies", ["policieable_id", "policieable_type"], :name => "index_policies_on_policieable_id_and_policieable_type"
   add_index "policies", ["vitrine_id"], :name => "index_policies_on_vitrine_id"
 
+  create_table "prodbacks", :force => true do |t|
+    t.text     "buyer_comment"
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.integer  "buyer_rating"
+    t.datetime "buyer_feedback_date"
+    t.integer  "cached_buyer_rating_total"
+    t.float    "cached_weighted_average"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "prodbacks", ["product_id"], :name => "index_prodbacks_on_product_id"
+
   create_table "product_data", :force => true do |t|
     t.string   "slug"
     t.integer  "vitrine_id",                                                  :null => false
@@ -357,6 +371,7 @@ ActiveRecord::Schema.define(:version => 20170328165559) do
     t.float    "cached_weighted_average",                               :default => 0.0
     t.integer  "buyer_rating"
     t.integer  "transaction_id"
+    t.datetime "buyer_feedback_date"
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"

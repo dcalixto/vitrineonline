@@ -12,11 +12,9 @@ class Product < ActiveRecord::Base
   
   has_many :images,inverse_of: :product, dependent: :destroy 
 
-#has_many :feedbackships
 has_many :feedbacks, through: :orders
 
-
-
+has_many :prodbacks
 
 
   has_many :reports
@@ -151,36 +149,7 @@ end
   end
 
 
- #FROM_BUYERS = 'from_buyers'
 
- ## NOT_RATED = 0
-
- 
-  attr_accessible :buyer_rating
-
-#  scope :by_participant, lambda { |from_who|
-  #  case from_who
-   # when FROM_BUYERS
-     
- # end
-#}
-
-
-scope :by_participant, -> {  where('buyer_feedback_date is not null').order('buyer_feedback_date desc') }
-
-
-scope :rated, -> {  where('buyer_rating is not null') }
-
-
- # scope :rated, ->(from_who) { where("#{from_who == Product::FROM_BUYERS ? 'buyer_rating' : 'seller_rating'} <> ?", Product::NOT_RATED) }
-
-  def self.average_rating#(from_who)
-   # case from_who
-   # when FROM_BUYERS
-      by_participant.rated.average(:buyer_rating) || 0
-
-  # end
-  end
 
 
 
