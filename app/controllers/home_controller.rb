@@ -27,7 +27,7 @@ class HomeController < ApplicationController
 
 
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
- @average_rating  = Product.joins(:prodbacks).where(:probacks => ('buyer_feedback_date is not null') ).rated.average(:buyer_rating) || 0
+ @average_rating  = Product.joins(:prodbacks).where(:probacks => ('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0 )
 
  
     
@@ -36,8 +36,7 @@ class HomeController < ApplicationController
   
       @products = Product.includes(:images,:vitrine).all
    
-@average_rating = Product.joins(:prodbacks).where(:probacks => ('buyer_feedback_date is not null') ).rated.average(:buyer_rating) || 0
-
+@average_rating  = Product.joins(:prodbacks).where(:probacks => ('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0 )
 
 
   
