@@ -177,7 +177,7 @@ scope :rated, -> {  where('buyer_rating is not null') }
   def self.average_rating#(from_who)
    # case from_who
    # when FROM_BUYERS
-      by_participant.rated.average(:buyer_rating) #|| 0
+      by_participant.rated.average(:buyer_rating) || 0
 
   # end
   end

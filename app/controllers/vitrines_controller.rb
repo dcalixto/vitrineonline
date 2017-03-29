@@ -11,8 +11,6 @@ class VitrinesController < ApplicationController
 
   def show
     @vitrine = Vitrine.cached_find(params[:id])
-feedbacks = Feedback.scoped
-
   
     canonical_url url_for(@vitrine)
   
@@ -34,14 +32,28 @@ feedbacks = Feedback.scoped
      
   #  @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
   
-@average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+#@average_customer_rating = feedbacks.where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
 
 
 
  @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
 
 
-@total_feedbacks  = feedbacks.where('buyer_feedback_date is not null').count
+#@total_feedbacks  = feedbacks.where('buyer_feedback_date is not null').count
+
+
+
+
+
+  @average_customer_rating  = Product.average_rating
+      
+      
+     # @total_feedbacks  = Product.where('buyer_feedback_date is not null').count
+ @total_feedbacks = Product.by_participant.count
+
+
+
+
 
 
     @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])

@@ -9,9 +9,6 @@ class HomeController < ApplicationController
 
 
 
-feedbacks = Feedback.scoped
-
-
 #@total_feedbacks = Product.joins.(:orders).where('orders = ?',@orders).where('buyer_feedback_date is not null').count
 #from_nil = Picture.where(imageable: nil).where_values.reduce(:and)
 
