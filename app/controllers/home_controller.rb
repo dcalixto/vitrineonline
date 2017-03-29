@@ -43,15 +43,31 @@ prodbacks = Prodback.scoped
       
       
      # @total_feedbacks  = Product.where('buyer_feedback_date is not null').count
- @total_feedbacks = Product.prodbacks.by_participant.count
+# @total_feedbacks = Product.prodbacks.by_participant.count
 
-
-
+  # @total_feedbacks = Product.includes(:prodbacks)#.by_participant.count
 
 #@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
 
 
-   @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+   #@average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+
+
+  # @average_rating  = Product.includes(:prodbacks)#('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+
+
+
+
+
+@products.each do |i|
+@average_rating   = i.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+@total_feedbacks = i.prodbacks.where('buyer_feedback_date is not null').count
+
+    end
+ 
+
+
+
 
 
 # @total_feedbacks = Prodback.by_participant.count
@@ -77,23 +93,27 @@ prodbacks = Prodback.scoped
  # @total_feedbacks = Product.prodbacks.by_participant.count
 
 
-@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
+#@total_feedbacks = Product.prodbacks.where('buyer_feedback_date is not null').count
 
 
-    @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+ #   @average_rating  = Product.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+
+# @total_feedbacks = Product.includes(:prodbacks)
+ # @average_rating  = Product.includes(:prodbacks)
 
 
-
-# @total_feedbacks = Prodback.by_participant(product).count
-  #  @average_rating = Prodback.average_rating(product)
+  
+@products.each do |i|
+@average_rating   = i.prodbacks.where('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0
+@total_feedbacks = i.prodbacks.where('buyer_feedback_date is not null').count
 
     end
  
-  
+
   
   end
 
 
 
-
+ end
 end
