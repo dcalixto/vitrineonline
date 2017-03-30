@@ -34,12 +34,11 @@ class FeedbacksController < ApplicationController
       @order.feedback = feedback
       @order.save
 
-     # prodback = Prodback.new
-   #   prodback.product_id = @order.product_id
-   #   prodback.buyer_comment = feedback.buyer_comment
-   #   prodback.buyer_rating = feedback.buyer_rating
-   #   prodback.buyer_feedback_date = feedback.buyer_feedback_date  
-   #   prodback.save
+      feedbackship = Feedbackship.new
+       feedbackship.product_id = @order.product_id
+      feedbackship.feedback_id = feedback.id
+       feedbackship.order_id = @order.id
+     feedbackship.save
 
 
 
