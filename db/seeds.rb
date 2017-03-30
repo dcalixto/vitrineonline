@@ -6111,6 +6111,7 @@ end
 size_list = [
   "P",
   "M",
+  "G",
   "GG",
 
 ]

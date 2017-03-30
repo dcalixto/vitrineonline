@@ -3,20 +3,13 @@ require 'product_recommender'
 class HomeController < ApplicationController
   # caches_action :index, :layout => false
   include ProductsHelper 
- include VitrinesHelper 
- 
-  
+  include VitrinesHelper 
+
+  def index
 
 
- 
- def index
+    @vitrines = Vitrine.all
 
-
-feedbacks = Feedback.scoped
-
-   @vitrines = Vitrine.all
-
- 
     @orders = Order.includes(:products)
 
     # suggestions for current visitor
@@ -27,61 +20,28 @@ feedbacks = Feedback.scoped
 
 
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
-# @average_rating  = Product.joins(:prodbacks).where(:probacks => ('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0 )
-
-#@average_rating = Product.joins(:prodbacks).where.not(prodbacks: {buyer_feedback_date: nil}).rated.average(:buyer_rating) || 0
-# controller
-products_ids = @products.collect(&:id)
-#@average_rating  = 
-#  feedbacks.where(product_id: products_ids).
- #   where('buyer_feedback_date is not null').rated.(Feedback::FROM_BUYERS).
-  #  group(:product_id).
-  #  average(:buyer_rating) || 0
+      products_ids = @products.collect(&:id)
 
 
-@average_rating = feedbacks.where(product_id: products_ids).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
+      @average_rating_from_buyers = Feedback.joins(:product).where(product_id: products_ids).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
-
-
-
-
-
-
-  @total_feedbacks   = 
-  feedbacks.where(product_id: products_ids).
-    where('buyer_feedback_date is not null').count
+      @total_feedbacks  = Feedback.joins(:product).where(product_id: products_ids).where('buyer_feedback_date is not null').count
 
 
     else
-  
+
       @products = Product.includes(:images,:vitrine).all
-   
-#@average_rating  = Product.joins(:prodbacks).where(:prodbacks => ('buyer_feedback_date is not null').rated.average(:buyer_rating) || 0 )
 
-#@average_rating = Product.joins(:prodbacks).where.not(prodbacks: {buyer_feedback_date: nil}).rated.average(:buyer_rating) || 0
-    
-   
+      # controller
+      products_ids = @products.collect(&:id)
 
 
+      @average_rating_from_buyers = Feedback.joins(:product).where(product_id: products_ids).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
-# controller
-products_ids = @products.collect(&:id)
+      @total_feedbacks  = Feedback.joins(:product).where(product_id: products_ids).where('buyer_feedback_date is not null').count
 
-
-@average_rating = feedbacks.where(product_id: products_ids).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating) || 0
-
+    end
 
 
-
-
-    @total_feedbacks   = 
-  feedbacks.where(product_id: products_ids).
-    where('buyer_feedback_date is not null').count
-    
   end
-
-
-
-
- end
 end

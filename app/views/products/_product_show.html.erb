@@ -194,31 +194,31 @@
 
   <table class="block_search">
     <tr>
-       <#%= search_form_for @q, url: search_feedbacks_products_path, method: :post  do |f| %>
+       <%= search_form_for @q, url: search_feedbacks_products_path, method: :post  do |f| %>
       <td>
 
        
 
-        <#%= f.text_field :buyer_comment_cont %>
+        <%= f.text_field :buyer_comment_cont %>
       </td>
       <td>
-          <#%= f.submit "Buscar", :class=>"btn_grey" %>
+          <%= f.submit "Buscar", :class=>"btn_grey" %>
 
      
       </td>
       <td>
 
-        <#%= render :partial => 'shared/sort_feedback'%>
+        <%= render :partial => 'shared/sort_feedback'%>
       </td>
-         <#% end %>
+         <% end %>
 
     </tr>
   </table>
 
-  <#%= render :partial => 'feedbacks/feedbacks' %>
+  <%= render :partial => 'feedbacks/feedbacks' %>
 
 
-  <#%= render :partial => 'shared/feedback_pagination'%>
+  <%= render :partial => 'shared/feedback_pagination'%>
 </div>
 
 

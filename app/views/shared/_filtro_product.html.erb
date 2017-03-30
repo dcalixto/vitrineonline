@@ -141,7 +141,7 @@
       <ul>
         <% @products.aggs['brand_id']['buckets'].each do |bucket| %>
           <li>
-            <%= link_to_unless_current Brand.find(bucket['key']).name, params.merge(brand_id: bucket['key']) %> <%= bucket['doc_count'] %>
+            <%= link_to_unless_current Brand.find(bucket['key']).name, params.merge({(:brand_id) => bucket['key']}) %> <%= bucket['doc_count'] %>
           </li>
         <% end %>
       </ul>
@@ -151,4 +151,6 @@
 </div>
 </div>
 
-<!--Fim -->
+
+
+
