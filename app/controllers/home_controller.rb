@@ -84,4 +84,4 @@ products_ids = @products.collect(&:id)
 
 
  end
-
+end
