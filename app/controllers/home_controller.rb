@@ -23,9 +23,14 @@ class HomeController < ApplicationController
       products_ids = @products.collect(&:id)
 
 
-      @average_rating_from_buyers = Feedback.joins(:product).where(product_id: products_ids).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+      
+@average_rating= Feedback.joins(:product).where('products.id IN (?)', products_ids).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
-      @total_feedbacks  = Feedback.joins(:product).where(product_id: products_ids).where('buyer_feedback_date is not null').count
+
+
+
+
+      @total_feedbacks  =Feedback.joins(:product).where('products.id IN (?)', products_ids).where('buyer_feedback_date is not null').count
 
 
     else
@@ -36,9 +41,9 @@ class HomeController < ApplicationController
       products_ids = @products.collect(&:id)
 
 
-      @average_rating_from_buyers = Feedback.joins(:product).where(product_id: products_ids).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+   @average_rating= Feedback.joins(:product).where('products.id IN (?)', products_ids).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
-      @total_feedbacks  = Feedback.joins(:product).where(product_id: products_ids).where('buyer_feedback_date is not null').count
+      @total_feedbacks  =Feedback.joins(:product).where('products.id IN (?)', products_ids).where('buyer_feedback_date is not null').count
 
     end
 
