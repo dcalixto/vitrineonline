@@ -13,11 +13,16 @@ class Product < ActiveRecord::Base
   has_many :images,inverse_of: :product, dependent: :destroy 
   has_many :orders
   has_many :feedbacks, through: :orders, inverse_of: :product
+has_many :buyer_feedbacks, -> { from_buyers }, through: :orders, class_name: Feedback
+has_many :rated_buyer_feedbacks, -> { from_buyers_with_rates }, through: :orders, class_name: Feedback
 
 
 
 #has_many :feedbackships
 #has_many :feedbacks,  through: :feedbackships
+
+
+
 
   belongs_to :gender
   belongs_to :brand

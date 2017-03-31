@@ -28,6 +28,11 @@ class Feedback < ActiveRecord::Base
 
   scope :rated, ->(from_who) { where("#{from_who == Feedback::FROM_BUYERS ? 'buyer_rating' : 'seller_rating'} <> ?", Feedback::NOT_RATED) }
 
+
+scope :from_buyers, -> { where('buyer_feedback_date is not null') }
+scope :from_buyers_with_rates, -> { from_buyers.rated(Feedback::FROM_BUYERS) }
+
+
   def self.average_rating(user, from_who)
     case from_who
     when FROM_BUYERS
