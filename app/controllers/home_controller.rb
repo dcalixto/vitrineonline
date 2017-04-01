@@ -24,14 +24,14 @@ class HomeController < ApplicationController
    
     
     
-@average_rating_from_buyers = {}
-@total_feedbacks = {}
+#@average_rating_from_buyers = {}
+#@total_feedbacks = {}
 
-@products.each do |product|
-feedbacks = Feedback.from_buyers_for_product(product.id)
-@total_feedbacks[product.id] = feedbacks.size
-@average_rating_from_buyers[product.id] = feedbacks.rated(Feedback::FROM_BUYERS).average(:buyer_rating)
-end
+#@products.each do |product|
+#feedbacks = Feedback.from_buyers_for_product(product.id)
+#@total_feedbacks[product.id] = feedbacks.size
+#@average_rating_from_buyers[product.id] = feedbacks.rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+#end
     
     else
 
@@ -39,14 +39,14 @@ end
    
     
     
-    @average_rating_from_buyers = {}
-@total_feedbacks = {}
+  #  @average_rating_from_buyers = {}
+#@total_feedbacks = {}
 
-@products.each do |product|
-feedbacks = Feedback.from_buyers_for_product(product.id)
-@total_feedbacks[product.id] = feedbacks.size
-@average_rating_from_buyers[product.id] = feedbacks.rated(Feedback::FROM_BUYERS).average(:buyer_rating)
-end
+#@products.each do |product|
+#feedbacks = Feedback.from_buyers_for_product(product.id)
+#@total_feedbacks[product.id] = feedbacks.size
+##@average_rating_from_buyers[product.id] = feedbacks.rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+#end
 
     
     
