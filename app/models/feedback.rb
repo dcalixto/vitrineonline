@@ -56,6 +56,8 @@ scope :from_buyers_for_product, ->(product_id) { joins(:product).where(products:
 def feedback_product
 
 product.total_feedbacks += 1
+
+
 product.average_rating = product.feedbacks.where('buyer_feedback_date IS NOT NULL').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
 product.save
