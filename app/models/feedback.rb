@@ -6,7 +6,7 @@ class Feedback < ActiveRecord::Base
  has_one :product, through: :order#,  inverse_of: :feedback
 
 
-after_create :feedback_product
+after_commit :feedback_product, on: :create
 
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'
@@ -42,11 +42,11 @@ after_create :feedback_product
 
 
 
-def self.from_buyers_for_product(product_id)
-joins(:product)
-.where(products: { id: product_id })
-.where.not(buyer_feedback_date: nil) 
-end
+#def self.from_buyers_for_product(product_id)
+#joins(:product)
+#.where(products: { id: product_id })
+#.where.not(buyer_feedback_date: nil) 
+#end
 
 
 
