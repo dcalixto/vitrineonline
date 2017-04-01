@@ -53,10 +53,9 @@
 
            
                     <div class="productFeeback">
-                      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating %>"></div>
+                      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= product.rate_from_buyers %>"></div>
 
-
-                      <%=@total_feedbacks %>
+                      <%=product.feedback_counter %>
                     </div>
                 
                   <span class="by">Por
