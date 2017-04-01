@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170401170802) do
+ActiveRecord::Schema.define(:version => 20170401204609) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -374,6 +374,8 @@ ActiveRecord::Schema.define(:version => 20170401170802) do
     t.datetime "buyer_feedback_date"
     t.integer  "feedback_counter",                                      :default => 0
     t.integer  "rate_from_buyers",                                      :default => 0
+    t.integer  "total_feedbacks",                                       :default => 0
+    t.integer  "average_rating",                                        :default => 0
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
