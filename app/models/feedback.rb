@@ -8,8 +8,6 @@ class Feedback < ActiveRecord::Base
 
   after_commit :feedback_product, on: :create
 
-  after_commit :proback, on: :create
-
 
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'
@@ -56,23 +54,6 @@ class Feedback < ActiveRecord::Base
     product.save
 
   end
-
-
-
-  def proback
-
-
-    proback = Proback.new
-    proback.product_id = product.id
-    proback.feedback_id = feedback.id
-    proback.user_id = feedback.user_id
-    proback.buyer_comment  = feedback.buyer_comment
-    proback.buyer_rating   = feedback.buyer_rating
-    proback.buyer_feedback_date   = feedback.buyer_feedback_date
-    proback.save
-
-  end
-
 
 
 
