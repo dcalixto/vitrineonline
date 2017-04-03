@@ -11,8 +11,7 @@
 
   <tbody>
     <% @probacks.each do |proback| %>
-    <% is_buyer = @user.nil? ? false : @user.id == buyer.id %>
-      
+         
       <tr>
 
 
@@ -23,9 +22,8 @@
 
       <td>
 
-             <%=   link_to(buyer.first_name, user_path(buyer.id)) %>
-
-             <#%= link_to(user.first_name, user_path(user.id)) %>
+          
+             <#%= link_to(user.id.first_name, user_path(user.id)) %>
       </td>
 
       <td>
