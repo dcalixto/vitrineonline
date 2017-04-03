@@ -11,7 +11,9 @@
 
   <tbody>
     <% @probacks.each do |proback| %>
-    <tr>
+    <% is_buyer = @user.nil? ? false : @user.id == buyer.id %>
+      
+      <tr>
 
 
       <td>
@@ -20,7 +22,10 @@
         <%= proback.buyer_comment %></td>
 
       <td>
-             <%= link_to(user.first_name, user_path(user.id)) %>
+
+             <%= is_buyer ?  link_to(buyer.first_name, user_path(buyer.id)) %>
+
+             <#%= link_to(user.first_name, user_path(user.id)) %>
       </td>
 
       <td>
