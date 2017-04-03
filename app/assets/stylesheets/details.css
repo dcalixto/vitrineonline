@@ -151,14 +151,14 @@ label.checkbox {
 }
 
 .sendship {padding: 5px;
-;width:80px;height:20px; background:orange;color:#fff;
+;width:80px;height:15px; background:orange;color:#fff;
   -webkit-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px
 
 }
 
 .sendship_sent {padding: 5px;
-;width:80px;height:20px; background:green;color:#fff;
+;width:80px;height:15px; background:green;color:#fff;
   -webkit-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px
 
@@ -166,14 +166,14 @@ label.checkbox {
 
 
 .feed_buy {padding: 5px;
-;width:80px;height:20px; background:blue;color:#fff;
+;width:80px;height:15px; background:blue;color:#fff;
   -webkit-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px
 
 }
 
 .feed_sell {padding: 5px;
-;width:80px;height:20px; background:orange;color:#fff;
+;width:80px;height:15px; background:orange;color:#fff;
   -webkit-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px
 

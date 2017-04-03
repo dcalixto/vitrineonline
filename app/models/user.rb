@@ -28,7 +28,7 @@ after_commit  :confirmation_token, :on => :create
 
   has_many :feedbacks, :inverse_of => :user
 
-
+  has_many :probacks, :inverse_of => :user
   has_many :comments
 
   # TODO: MAKE REPORTS
