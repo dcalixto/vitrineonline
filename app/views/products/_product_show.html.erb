@@ -194,7 +194,7 @@
 
   <table class="block_search">
     <tr>
-       <%= search_form_for @q, url: search_feedbacks_products_path, method: :post  do |f| %>
+       <%= search_form_for @q, url: search_probacks_products_path, method: :post  do |f| %>
       <td>
 
        
@@ -208,17 +208,16 @@
       </td>
       <td>
 
-        <#%= render :partial => 'shared/sort_feedback'%>
+        <%= render :partial => 'shared/sort_proback'%>
       </td>
          <% end %>
 
     </tr>
   </table>
 
-  <#%= render :partial => 'feedbacks/feedbacks' %>
   <%= render :partial => 'probacks/probacks' %>
 
-  <#%= render :partial => 'shared/feedback_pagination'%>
+
 </div>
 
 

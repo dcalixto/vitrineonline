@@ -241,8 +241,15 @@ get '/orders/confirmation', to: 'orders#confirmation' #, as: :vitrine_sent
 
     collection do
       get :created_at
-      post '/:id', to: 'products#show', as: :feedbacks_search
-      post '/:id/feedbacks', to: 'products#feedbacks', as: :search_feedbacks
+     # post '/:id', to: 'products#show', as: :feedbacks_search
+      #post '/:id/feedbacks', to: 'products#feedbacks', as: :search_feedbacks
+     
+
+      post '/:id', to: 'products#show', as: :probacks_search
+      post '/:id/probacks', to: 'products#probacks', as: :search_probacks
+
+      
+      
       # get 'search'
       get :autocomplete
       get 'auth/:provider/callback', to: 'products#omniauth_callback'
