@@ -128,15 +128,16 @@
               <ul>
                                  
                 <% if  params[:action] == "purchased" %>
-                  <li>Número: <b><%= order.transaction.transaction_id %></b>
+                  <li>Número: <b><%= order.transaction.transaction_id %></b></li>
 
 
                   <li>Vendedor:
                     <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
                 <% end %>
                
-                     <% if  params[:action] == "sold" %>
-                  <li>Comprador
+                <% if  params[:action] == "sold" %>
+                  <li>Número: <b><%= order.transaction.transaction_id %></b></li>
+                  <li>Comprador:
                     <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
                 <% end %>
                 <li>Comprado Em:
@@ -150,12 +151,26 @@
                 <li>Custo:
                   <b><%= number_to_currency order.shipping_cost %></b>
                 </li>
+                <% if params[:status] == Order.statuses[0] %>
+
  <li>Estado:
    <span class="sendship">A Enviar</span>
                 </li>
+              <% end %>
 
 
-                <li><% if params[:status] == Order.statuses[1] %>
+         <% if params[:status] == Order.statuses[1] %>
+
+ <li>Estado:
+   <span class="sendship_sent">Enviado</span>
+                </li>
+              <% end %>
+
+
+
+
+              <li><% if params[:status] == Order.statuses[1] %>
+
                   Enviado em:
                   <b>
                     <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => false)%></b>
@@ -179,7 +194,7 @@
                       
                     <% end %> 
                         <% if   params[:status] == Order.statuses[1] %>
-  <li>Rastreio
+  <li>Rastreio:
     <b><%=order.track_number %></b></li>
 
                   <%end%>
