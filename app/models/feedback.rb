@@ -3,10 +3,13 @@ class Feedback < ActiveRecord::Base
   belongs_to :user
   belongs_to :vitrine
   has_one :order
- has_one :product, through: :order#,  inverse_of: :feedback
+  has_one :product, through: :order#,  inverse_of: :feedback
 
 
-after_commit :feedback_product, on: :create
+  after_commit :feedback_product, on: :create
+
+  after_commit :proback, on: :create
+
 
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'
@@ -25,14 +28,14 @@ after_commit :feedback_product, on: :create
       where('user_id = ? and seller_feedback_date is not null', user.id).order('seller_feedback_date desc')
     else
       where('(user_id = ? and seller_feedback_date is not null) or (vitrine_id = ? and buyer_feedback_date is not null)', user.id, user.vitrine ? user.vitrine.id : 0).order('updated_at desc')
-      end
+    end
   }
 
   scope :rated, ->(from_who) { where("#{from_who == Feedback::FROM_BUYERS ? 'buyer_rating' : 'seller_rating'} <> ?", Feedback::NOT_RATED) }
 
-scope :from_buyers_for_product, ->(product_id) { joins(:product).where(products: { id: product_id }).where.not(buyer_feedback_date: nil) }
+  scope :from_buyers_for_product, ->(product_id) { joins(:product).where(products: { id: product_id }).where.not(buyer_feedback_date: nil) }
 
-  
+
   def self.average_rating(user, from_who)
     case from_who
     when FROM_BUYERS
@@ -44,15 +47,33 @@ scope :from_buyers_for_product, ->(product_id) { joins(:product).where(products:
 
 
 
-def feedback_product
+  def feedback_product
 
-product.total_feedbacks += 1
+    product.total_feedbacks += 1
+
+    product.average_rating = product.feedbacks.where('buyer_feedback_date IS NOT NULL').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+
+    product.save
+
+  end
 
 
-product.average_rating = product.feedbacks.where('buyer_feedback_date IS NOT NULL').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
-product.save
+  def proback
 
-end
+
+    proback = Proback.new
+    proback.product_id = product.id
+    proback.feedback_id = feedback.id
+    proback.user_id = feedback.user_id
+    proback.buyer_comment  = feedback.buyer_comment
+    proback.buyer_rating   = feedback.buyer_rating
+    proback.buyer_feedback_date   = feedback.buyer_feedback_date
+    proback.save
+
+  end
+
+
+
 
 end

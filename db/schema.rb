@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170401204609) do
+ActiveRecord::Schema.define(:version => 20170403194353) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -294,6 +294,21 @@ ActiveRecord::Schema.define(:version => 20170401204609) do
 
   add_index "policies", ["policieable_id", "policieable_type"], :name => "index_policies_on_policieable_id_and_policieable_type"
   add_index "policies", ["vitrine_id"], :name => "index_policies_on_vitrine_id"
+
+  create_table "probacks", :force => true do |t|
+    t.text     "buyer_comment"
+    t.integer  "user_id"
+    t.integer  "feedback_id"
+    t.integer  "product_id"
+    t.integer  "buyer_rating"
+    t.datetime "buyer_feedback_date"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "probacks", ["feedback_id"], :name => "index_probacks_on_feedback_id"
+  add_index "probacks", ["product_id"], :name => "index_probacks_on_product_id"
+  add_index "probacks", ["user_id"], :name => "index_probacks_on_user_id"
 
   create_table "prodbacks", :force => true do |t|
     t.text     "buyer_comment"

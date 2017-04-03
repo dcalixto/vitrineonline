@@ -14,11 +14,7 @@ class Product < ActiveRecord::Base
   has_many :orders
   has_many :feedbacks, through: :orders#, inverse_of: :product
   
-#has_many :buyer_feedbacks, -> { from_buyers }, through: :orders, source: :feedback
-#has_many :rated_buyer_feedbacks, -> { from_buyers_with_rates }, through: :orders, source: :feedback
 
-#has_many :feedbackships
-#has_many :feedbacks,  through: :feedbackships
 
 
 
