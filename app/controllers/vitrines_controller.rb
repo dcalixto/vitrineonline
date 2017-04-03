@@ -44,25 +44,6 @@ class VitrinesController < ApplicationController
 
 
 
-
-products_ids = @vitrine.products.collect(&:id)
-@average_rating  = 
-  Feedback.where(product_id: products_ids).
-    where('buyer_feedback_date is not null').rated.(Feedback::FROM_BUYERS).
-  group(:product_id).
-    average(:buyer_rating) || 0
-
-
-
-  @total_feedbacks   = 
-  Feedback.where(product_id: products_ids).
-    where('buyer_feedback_date is not null').count
-
-
-
-
-
-
     @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
 
