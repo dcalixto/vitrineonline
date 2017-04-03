@@ -44,15 +44,6 @@ scope :from_buyers_for_product, ->(product_id) { joins(:product).where(products:
 
 
 
-
-#def self.from_buyers_for_product(product_id)
-#joins(:product)
-#.where(products: { id: product_id })
-#.where.not(buyer_feedback_date: nil) 
-#end
-
-
-
 def feedback_product
 
 product.total_feedbacks += 1

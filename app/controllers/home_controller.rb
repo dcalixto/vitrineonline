@@ -20,10 +20,6 @@ class HomeController < ApplicationController
 
 
       @products = Product.includes(:images,:vitrine).tagged_with(params[:tag]).order('DESC').limit(22)
-     @total_feedbacks = Product.total_feedbacks
-
-@average_rating  = Product.average_rating
-
    
     
 
@@ -32,10 +28,7 @@ class HomeController < ApplicationController
 
       @products = Product.includes(:images,:vitrine).all
    
-
-@total_feedbacks = Product.total_feedbacks
-
-@average_rating  = Product.average_rating
+      
     
       
     
