@@ -5,9 +5,15 @@ class Product::StepsController < ApplicationController
 
   def show
     @product = Product.cached_find(params[:product_id])
-  #@product = Product.cached_find(params[:id])
     render_wizard 
-   end
+ 
+  
+  
+  
+ # @brand = JSON.parse @brand
+##@brand_list = @brand.map { |v| v['name'] }
+  
+  end
 
   def update
   #@product = Product.cached_find(params[:id])
