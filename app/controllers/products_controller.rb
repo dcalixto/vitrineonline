@@ -65,6 +65,7 @@ class ProductsController < ApplicationController
     format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name }}}
   end
 
+
     @products = Product.tagged_with(params[:tag]).where(vitrine_id: params[:vitrine]).paginate(per_page: 20, page: params[:page])
   end
 

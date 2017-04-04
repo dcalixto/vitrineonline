@@ -121,7 +121,7 @@
 
 <%= p.text_field :tag_list,
                  :id => "product_tags",
-                 "data-pre" => @product.tags.map(&:attributes).to_json %>
+                 "data-pre" => @product.vitrine.tag_list.map(&:attributes).to_json %>
 
 
 
@@ -272,17 +272,7 @@
 <td>
 
 
-  <h2>Marca Própria</h2>
-
- 
- <p class="tip">Se você tem sua marca por favor adicione
-    </p>
-  <%= p.fields_for  :brand_attributes  do |b| %>
- 
-  <%=b.text_field :name, :label=>"Nome"%>
-<% end %>
-
-
+  
 
 <h2>Preço e Quantidade</h2>
 <ul>
