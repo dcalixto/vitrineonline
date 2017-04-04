@@ -132,13 +132,10 @@
 
           <div class="subcontent">
 
-            <#%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
-            <#%=  p.select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'rand_list', :multiple => false}) %>
+            <%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
+            <%=  p.select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'rand_list', :multiple => false}) %>
    
         <%=p.label :brand_id, 'Marca' %>&nbsp;
-<%=dynamic_collection_select :product, :brand_id,  Brand.all, :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Marca' }, { class: 'form-control select_item' } %>
-
-
           
           
           
@@ -209,12 +206,8 @@
 
                 <li>
 
-<%=p.label :material_id, 'Material' %>&nbsp;
-<%=dynamic_collection_select :product, :material_id,  Material.all, :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Material' }, { class: 'form-control select_item' } %>
 
-
-
-                  <#%=  p.collection_select(:material_id, Material.all, :id, :name,  {},{ :multiple => false,  :class=>"select_item"}) %>
+                  <%=  p.select(:material_id, Material.all, :id, :name,  {},{ :multiple => false,  :class=>"select_item"}) %>
 
                 </li>
               </ul>
@@ -225,7 +218,7 @@
             <div class="subcontent ">
               <ul>
                 <li>
-                  <%=  p.collection_select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false,  :class=>"select_item"})%>
+                  <%=  p.select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false,  :class=>"select_item"})%>
 
                 </li>
               </ul>
