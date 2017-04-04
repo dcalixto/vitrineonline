@@ -15,7 +15,7 @@
 //= require jquery.liquidcarousel
 //= jquery.shorten
 //= dropit
-//= jquery.tokeninput
+
 
 //= require_tree .
 
@@ -208,15 +208,6 @@ function hideAnnouncement(announcement_created_at) {
 
 //PRODUCT_ADD TAB
 
-
-$(function() {
-  $("#product_tags").tokenInput("/products/tags.json", {
-    prePopulate:       $("#product_tags").data("pre"),
-    preventDuplicates: true,
-    noResultsText:     "No results, needs to be created.",
-    animateDropdown:   false
-  });
-});
 
 
 

@@ -116,12 +116,8 @@
           <div class="subcontent">
             <p class="tip">As estilos facilitam  a organização dos seus produtos além do google e bing a achar de seu produto com mais facilidade
             </p>
-            <#%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
+            <%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
 
-
-<%= p.text_field :tag_list,
-                 :id => "product_tags",
-                 "data-pre" => @product.vitrine.tag_list.map(&:attributes).to_json %>
 
 
 
