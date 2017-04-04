@@ -49,7 +49,7 @@
 *= require tag
 *= require tags
 *= require liquidcarousel
-
+*= require token-input
 *= require main_mobile
 *= require normalize_mobile
 

@@ -116,7 +116,15 @@
           <div class="subcontent">
             <p class="tip">As estilos facilitam  a organização dos seus produtos além do google e bing a achar de seu produto com mais facilidade
             </p>
-            <%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
+            <#%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
+
+
+<%= p.text_field :tag_list,
+                 :id => "product_tags",
+                 "data-pre" => @product.tags.map(&:attributes).to_json %>
+
+
+
 
                 </div>
 
@@ -124,10 +132,32 @@
 
           <div class="subcontent">
 
-            <%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
-            <%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'rand_list', :multiple => false}) %>
+            <#%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
+            <#%=  p.select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'rand_list', :multiple => false}) %>
    
-                 </div>
+        <%=p.label :brand_id, 'Marca' %>&nbsp;
+<%=dynamic_collection_select :product, :brand_id,  Brand.all, :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Marca' }, { class: 'form-control select_item' } %>
+
+
+          
+          
+          
+          
+  <h2>Marca Própria</h2>
+
+ 
+ <p class="tip">Se você tem sua marca por favor adicione
+    </p>
+  <%= p.fields_for  :brand_attributes  do |b| %>
+ 
+  <%=b.text_field :name, :label=>"Nome"%>
+<% end %>
+
+
+          
+          
+          
+          </div>
 
         
         
@@ -178,7 +208,13 @@
               <ul>
 
                 <li>
-                  <%=  p.collection_select(:material_id, Material.all, :id, :name,  {},{ :multiple => false,  :class=>"select_item"}) %>
+
+<%=p.label :material_id, 'Material' %>&nbsp;
+<%=dynamic_collection_select :product, :material_id,  Material.all, :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Material' }, { class: 'form-control select_item' } %>
+
+
+
+                  <#%=  p.collection_select(:material_id, Material.all, :id, :name,  {},{ :multiple => false,  :class=>"select_item"}) %>
 
                 </li>
               </ul>
