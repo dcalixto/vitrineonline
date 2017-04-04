@@ -132,8 +132,8 @@
 
           <div class="subcontent">
 
-            <%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
-            <%=  p.select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'rand_list', :multiple => false}) %>
+            <#%=p.label :brand_id, 'Outras Marcas' %>&nbsp; 
+            <#%=  p.select(:brand_id, Brand.all, :id, :name, {},{ :class=> 'rand_list', :multiple => false}) %>
    
         <%=p.label :brand_id, 'Marca' %>&nbsp;
           
@@ -207,7 +207,7 @@
                 <li>
 
 
-                  <%=  p.select(:material_id, Material.all, :id, :name,  {},{ :multiple => false,  :class=>"select_item"}) %>
+                  <#%=  p.select(:material_id, Material.all, :id, :name,  {},{ :multiple => false,  :class=>"select_item"}) %>
 
                 </li>
               </ul>
@@ -218,7 +218,7 @@
             <div class="subcontent ">
               <ul>
                 <li>
-                  <%=  p.select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false,  :class=>"select_item"})%>
+                  <#%=  p.select(:condition_id, Condition.all, :id, :condition,  {},{ :multiple => false,  :class=>"select_item"})%>
 
                 </li>
               </ul>
