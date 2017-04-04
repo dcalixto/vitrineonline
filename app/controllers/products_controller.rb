@@ -115,15 +115,13 @@ class ProductsController < ApplicationController
 
 
 
-  @q = Proback.joins(:product,:user).where('products.id = ? and users.id = ?', @product.id, @user.id).ransack(params[:q])
+  @q = Proback.joins(:product,:user).where('products.id = ?', @product.id, @user.id).ransack(params[:q])
     
   
   
   
   
-  
-  
-  
+
   
   
   
