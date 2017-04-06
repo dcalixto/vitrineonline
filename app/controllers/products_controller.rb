@@ -102,6 +102,7 @@ class ProductsController < ApplicationController
   
   def show
     @product = Product.cached_find(params[:id])
+@user = @proback.user
 
     canonical_url url_for(@product)
   
@@ -122,12 +123,9 @@ class ProductsController < ApplicationController
   @q = Proback.joins(:product,:user).where('products.id = ? and users.id = ?', @product.id, @user.id).ransack(params[:q])
     
   
-  
-  
-  
 
-  
-  
+
+
   
   @probacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 
