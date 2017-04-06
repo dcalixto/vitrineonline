@@ -102,9 +102,10 @@ class ProductsController < ApplicationController
   
   def show
     @product = Product.cached_find(params[:id])
-@user =  Proback.find(params[:user_id])
+@user =  @product.probacks.where('user.id = ?', @user.id)
+   
 
-    canonical_url url_for(@product)
+canonical_url url_for(@product)
   
 
     @colors_for_dropdown = @product.colors.collect{ |co| [co.name, co.id]}
