@@ -106,6 +106,23 @@ class VitrinesController < ApplicationController
   end
 
 
+
+ def branded
+    @brand = current_vitrine.build_brand(params[:brand])
+  end
+  
+  def branded_true
+    @brand = current_vitrine.build_brand(params[:brand])
+    if @brand.update_attributes(params[:brand])
+      redirect_to "#{root_path}?branded=#{Vitrine.branded[true]}"
+
+
+    end
+
+  end
+
+
+
   def user_votes
 
     @users = User.paginate(page: params[:page], per_page: 22)
@@ -162,6 +179,11 @@ class VitrinesController < ApplicationController
       format.json { render json: @tags.collect { |t| { id: t.name, name: t.name } } }
     end
   end
+
+
+
+
+
 
 
 

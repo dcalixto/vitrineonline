@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170403194353) do
+ActiveRecord::Schema.define(:version => 20170405202456) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(:version => 20170403194353) do
   create_table "brands", :force => true do |t|
     t.string   "name"
     t.string   "slug"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "vitrine_id"
+    t.boolean  "branded",    :default => false
   end
 
   add_index "brands", ["slug"], :name => "index_brands_on_slug"
@@ -247,6 +249,15 @@ ActiveRecord::Schema.define(:version => 20170403194353) do
   add_index "messages", ["conversation_id"], :name => "index_messages_on_conversation_id"
   add_index "messages", ["conversation_participant_id"], :name => "index_messages_on_conversation_participant_id"
 
+  create_table "obrands", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "obrands", ["slug"], :name => "index_obrands_on_slug"
+
   create_table "orders", :force => true do |t|
     t.integer  "cart_id"
     t.integer  "seller_id"
@@ -391,6 +402,8 @@ ActiveRecord::Schema.define(:version => 20170403194353) do
     t.integer  "rate_from_buyers",                                      :default => 0
     t.integer  "total_feedbacks",                                       :default => 0
     t.integer  "average_rating",                                        :default => 0
+    t.integer  "obrand_id"
+    t.boolean  "branded",                                               :default => false
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
@@ -583,7 +596,7 @@ ActiveRecord::Schema.define(:version => 20170403194353) do
     t.string   "name"
     t.string   "codigo"
     t.text     "about"
-    t.integer  "user_id",                                  :null => false
+    t.integer  "user_id",                                    :null => false
     t.string   "address"
     t.string   "neighborhood"
     t.string   "postal_code"
@@ -591,8 +604,8 @@ ActiveRecord::Schema.define(:version => 20170403194353) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "impressions_count"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.integer  "cached_votes_total",      :default => 0
     t.integer  "cached_votes_score",      :default => 0
     t.integer  "cached_votes_up",         :default => 0
@@ -600,6 +613,7 @@ ActiveRecord::Schema.define(:version => 20170403194353) do
     t.integer  "cached_weighted_score",   :default => 0
     t.integer  "cached_weighted_total",   :default => 0
     t.float    "cached_weighted_average", :default => 0.0
+    t.boolean  "branded",                 :default => false
   end
 
   add_index "vitrines", ["cached_votes_down"], :name => "index_vitrines_on_cached_votes_down"

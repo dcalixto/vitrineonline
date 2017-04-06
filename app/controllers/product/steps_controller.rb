@@ -10,9 +10,6 @@ class Product::StepsController < ApplicationController
   
   
   
- # @brand = JSON.parse @brand
-##@brand_list = @brand.map { |v| v['name'] }
-  
   end
 
   def update

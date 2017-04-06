@@ -10,10 +10,11 @@ class Vitrine < ActiveRecord::Base
   has_many :products, dependent: :destroy, :inverse_of => :vitrine
 
   has_one :marketing, dependent: :destroy
- # has_many :views, dependent: :destroy
+
 
 has_many :impressions,  as: :impressionable, dependent: :destroy
 
+has_one :brand
 
 
   has_many :feedbacks, dependent: :destroy
@@ -25,7 +26,7 @@ has_many :impressions,  as: :impressionable, dependent: :destroy
 
   accepts_nested_attributes_for :policy
 validates_associated :policy, presence: true
-   attr_accessible  :policy_attributes  
+   attr_accessible  :policy_attributes, :branded
   
   acts_as_votable
   

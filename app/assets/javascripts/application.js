@@ -15,7 +15,7 @@
 //= require jquery.liquidcarousel
 //= jquery.shorten
 //= dropit
-
+//= require selectize
 
 //= require_tree .
 
@@ -109,23 +109,24 @@ $("#main-nav").menuAim({
 
 
 
-// SELECT2 (TAGS)
-$(document).ready(function() {
-  $('#product_tags').select2({
-    tags: true
- })
+
+
+$('#product_tags').selectize({
+    delimiter: ',',
+    persist: false,
+    create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
 });
 
 
-$(document).ready(function() {
-  $(".brand_list").select2();
-  tags: true
+$('#brand_list').selectize({
+    create: true,
+    sortField: 'text'
 });
-// READMORE TO TOOGLE FILTER PRODUCTS MENU
-
-
-
-
 
 
 

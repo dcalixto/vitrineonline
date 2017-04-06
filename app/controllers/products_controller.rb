@@ -28,13 +28,15 @@ class ProductsController < ApplicationController
     @genders = Gender.all
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
+   @brands = Brand.all
 
+ @conditions = Condition.all
 
+ @materials = Material.all
 
 
     @product = current_vitrine.products.build(params[:product])
-     # @product = current_vitrine.build_brand
-       @product.build_brand
+          
   end
 
   def upvote
@@ -59,11 +61,6 @@ class ProductsController < ApplicationController
 
 
   def tags
-
-  @tags = ActsAsTaggableOn::Tag.where("tags.name LIKE ?", "%#{params[:q]}%") 
-  respond_to do |format|
-    format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name }}}
-  end
 
 
     @products = Product.tagged_with(params[:tag]).where(vitrine_id: params[:vitrine]).paginate(per_page: 20, page: params[:page])
@@ -154,9 +151,7 @@ class ProductsController < ApplicationController
  
       
       
-  @total_feedbacks  = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
-
-
+ 
   end
 
   def feedbacks
@@ -178,8 +173,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_vitrine.products.build(params[:product])
-     @product.build_brand
-    if @product.save
+         if @product.save
       
     redirect_to product_step_path(@product.id, Product.form_steps.first, :product_id => @product.id, only_path: true, format: :html)
     else

@@ -38,7 +38,7 @@
 
 *= require jquery.raty
 *= require tipsy
-*= require select2
+
 *= require breakpoints
 *= require dropzone
 *= require markdown
@@ -49,7 +49,7 @@
 *= require tag
 *= require tags
 *= require liquidcarousel
-
+ *= require product_tag
 *= require main_mobile
 *= require normalize_mobile
 

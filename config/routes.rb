@@ -148,12 +148,36 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       #  get :update_vitrine_select, as: :update_vitrine_select
       get :report
       get :tag
+     # get :branded
+     # put :branded_true
       #  match :feedbacks
     end
+
+
+ 
   end
+
+
+ resources :brands, only: [:new,:create] 
+
+
+
+#get '/vitrines/branded', to: 'vitrines#branded', as: :branded
+#put '/vitrines/branded_true', to: 'vitrines#branded_true', as: :branded_true
+
+
+
+
 
 #TODO CHANGE FEEDBACK VITRINE
   post '/vitrines/:id' => 'vitrines#show'
+
+
+
+
+
+
+
 
 
   # ORDER & CART & TRANSACTION
@@ -256,11 +280,20 @@ get '/orders/confirmation', to: 'orders#confirmation' #, as: :vitrine_sent
       get :names
     end
 
+
+
+
+
     resources(:steps,
               controller: 'product/steps',
               only: [:show, :update]
              )
   end
+
+
+
+
+
 
   namespace :dynamic_selectable do
     get 'categories/:category_id/subcategories', to: 'category_subcategories#index', as: :category_subcategories

@@ -16,6 +16,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string :track_number
 
       t.integer  :brand_id                                             
+       t.integer  :obrand_id     
       t.integer  :material_id
       t.integer  :condition_id
       t.integer  :color_id
@@ -33,6 +34,8 @@ class CreateOrders < ActiveRecord::Migration
     add_index :orders, :feedback_id
 
     add_index :orders, :brand_id
+     add_index :orders, :obrand_id
+
     add_index :orders, :color_id
     add_index :orders, :size_id
 

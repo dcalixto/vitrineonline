@@ -31,9 +31,6 @@ gem 'searchkick',  github: "dcalixto/searchkick"
 gem 'byebug'
 
 
-#EDIT IN PLACE
-#gem 'best_in_place'#, '~> 3.0.1'
-gem 'best_in_place', github: 'bernat/best_in_place'
 # SUGGESTIONS
 gem 'predictor'
 
@@ -189,7 +186,7 @@ gem 'hiredis'
 gem 'redis-namespace'
 
 
-
+gem "selectize-rails"
 
 #RESQUE
 

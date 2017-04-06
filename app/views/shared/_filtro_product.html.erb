@@ -147,6 +147,27 @@
       </ul>
     </div>
   <% end %>
+
+
+
+
+  <%if @products.aggs['obrand_id']['buckets'].present? %>
+    <div class="filtro">
+      <h3>Marca Independente</h3>
+      <ul>
+        <% @products.aggs['obrand_id']['buckets'].each do |bucket| %>
+          <li>
+            <%= link_to_unless_current Obrand.find(bucket['key']).name, params.merge({(:obrand_id) => bucket['key']}) %> <%= bucket['doc_count'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+
 </div>
 </div>
 </div>

@@ -14,7 +14,7 @@ class CartsController < ApplicationController
         size = Size.find_by_id(params[:size_id])
         material = Material.find_by_id(params[:material_id])
         brand = Brand.find_by_id(params[:brand_id])
-
+       
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
 
         order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id(product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id)
@@ -32,6 +32,7 @@ class CartsController < ApplicationController
           order.condition = product.condition
           order.material = product.material
           order.brand = product.brand
+         
           current_user.cart.orders << order
         else # increase quantity
           order.quantity += quantity

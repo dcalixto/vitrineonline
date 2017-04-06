@@ -43,15 +43,27 @@
 </li>
 
 <li>
-<% if current_vitrine %>
+<% if current_vitrine.branded == true %>
 <div class="sell_tablet">
 <%=button_to "Vender", new_product_path, :class=> 'btn_orange btn_small', :method => "get"
 %>
 </div>
-<% end %>
+
 </li>
 
+<% else %>
+  <li>
 
+  <div class="sell_tablet">
+
+<%=button_to "Vender",  new_brand_path, :class=> 'btn_orange btn_small', :method => "get"
+%>
+
+  </div>
+
+</li>
+
+<% end %>
 </ul>
 </div>
 </div>

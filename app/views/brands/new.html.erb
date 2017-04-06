@@ -1,0 +1,42 @@
+<% title "Adicione sua marca" %>
+<div class="box4">
+
+
+<div class="flash_box">
+<%=render 'shared/flash_messages' %>
+<%=render 'shared/error_messages', :target=> @brand %>
+</div>
+
+
+
+<div class="block margin_top">
+  <%=form_for @brand, :url => brands_path,  :method => :post   do |b| %>
+
+
+<div class="content">
+
+<div class="subcontent">
+<h1>Adicione sua Marca</h1>
+
+<h2>Se você tem alguma marca por favor adicione</h2>
+
+
+<p> Uma vez adionado esse formulário não aparecerá mais</p>
+
+<%=b.text_field :name, :label=>"Nome"%>
+
+
+<%=b.button "Adicionar", :class=> "btn btn_big" %>
+
+
+
+<% end %>
+
+
+<%= link_to "Depois", root_path %>
+
+    </div>
+  </div>
+</div>
+
+</div>

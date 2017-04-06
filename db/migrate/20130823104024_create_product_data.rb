@@ -12,6 +12,7 @@ class CreateProductData < ActiveRecord::Migration
       t.integer  "material_id"
       t.integer  "condition_id"
       t.integer  "brand_id"
+      t.integer  "obrand_id"
       t.string   "meta_keywords"
       t.datetime "created_at",                                                  :null => false
       t.datetime "updated_at",                                                  :null => false
@@ -32,6 +33,9 @@ class CreateProductData < ActiveRecord::Migration
     add_index :product_data, :color_id
     add_index :product_data, :size_id
     add_index :product_data, :material_id
+   add_index :product_data, :brand_id
+   add_index :product_data, :obrand_id
+
     add_index :product_data, :condition_id
   end
 end
