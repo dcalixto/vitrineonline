@@ -102,8 +102,7 @@ class ProductsController < ApplicationController
   
   def show
     @product = Product.cached_find(params[:id])
-@user =  User.cached_find(params[:id])
-
+@user =  Proback.find(params[:user_id])
 
     canonical_url url_for(@product)
   
