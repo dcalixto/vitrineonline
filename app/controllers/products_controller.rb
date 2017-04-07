@@ -119,7 +119,7 @@ canonical_url url_for(@product)
   # @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 
 
-
+byebug
   @q = Proback.joins(:product,:user).where('products.id = ? and users.id = ?', @product.id, params[:user_id]).ransack(params[:q])
     
   

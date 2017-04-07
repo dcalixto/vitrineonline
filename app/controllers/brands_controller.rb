@@ -11,7 +11,7 @@ class BrandsController < ApplicationController
  
       @current_vitrine = params[:branded] == "1"
       
-      @current_vitrine.update_attributes(:branded => true)
+      current_vitrine.update_attributes(:branded => true)
       redirect_to new_product_path
 flash[:success] = "Sua marca foi adicionada".html_safe
     end
