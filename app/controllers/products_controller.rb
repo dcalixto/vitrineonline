@@ -127,9 +127,9 @@ canonical_url url_for(@product)
 
 
   
-  @probacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+ # @probacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
 
-
+@probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
 
 
     # suggestions for current visitor
