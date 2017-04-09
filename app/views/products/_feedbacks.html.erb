@@ -23,27 +23,12 @@
 
   <table class="block_search">
     <tr>
-        <%= search_form_for @q, url: search_probacks_products_path, method: :post  do |f| %>
-      <td>
-
-      
-
-        <%= f.text_field :buyer_comment_cont %>
-
-
-
-         </td>
- <td>
-
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
-
   
-      </td>
       <td>
 
         <%= render :partial => 'shared/sort_feedback'%>
       </td>
-            <% end %>
+            
 
     </tr>
   </table>

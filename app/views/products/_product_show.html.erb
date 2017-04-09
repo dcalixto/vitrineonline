@@ -183,9 +183,9 @@
         </span>
          </td>
             <td>
-
+ <%=link_to  probacks_product_path(:id=> @product.id)  do %>
         <b>Média de Avaliações</b><div class="feedback_stars_rating" data-read-only="true" data-score="<%= @product.average_rating %>"></div>
-
+      <% end %>
       </td>
 
     </tr>
@@ -194,23 +194,12 @@
 
   <table class="block_search">
     <tr>
-       <%= search_form_for @q, url: probacks_search_products_path, method: :post  do |f| %>
-      <td>
-
-       
-
-        <%= f.text_field :buyer_comment_cont %>
-      </td>
-      <td>
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
-
      
-      </td>
       <td>
 
         <%= render :partial => 'shared/sort_proback'%>
       </td>
-         <% end %>
+         
 
     </tr>
   </table>
