@@ -17,7 +17,16 @@
          </td>
             <td>
 
+                <%=link_to  feedbacks_vitrine_path(:id=> @vitrine.id)  do %>
+
         <b>Média de Avaliações</b><div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+ <% end %>
+
+
+
+           
+
 
       </td>
 
@@ -27,20 +36,9 @@
 
   <table class="block_search">
     <tr>
-         <%= search_form_for @q, url: search_feedbacks_vitrines_path, method: :post  do |f| %>
-      <td>
-
      
 
-        <%= f.text_field :buyer_rating_cont %>
-          </td>
-
-         <td>
-
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-     
-      </td>
+  
       <td>
 
         <%= render :partial => 'shared/sort_feedback'%>

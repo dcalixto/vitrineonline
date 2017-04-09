@@ -21,9 +21,10 @@
         </span>
          </td>
             <td>
+ <%=link_to  feedbacks_user_path(:id=> @user.id)  do %>
 
         <b>Média de Avaliações</b><div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_sellers %>"></div>
-
+      <% end %>
       </td>
 
     </tr>
@@ -32,26 +33,11 @@
 
   <table class="block_search">
     <tr>
-        <%= search_form_for @q, url: search_feedbacks_users_path, method: :post  do |f| %>
-
-
-      <td>
-
-                <%= f.text_field :seller_comment_cont %>
-  </td>
-
-
           <td>
-          <%= f.submit "Buscar", :class=>"btn_grey" %>
-
-       
-      </td>
-      <td>
 
         <%= render :partial => 'shared/sort_feedback'%>
       </td>
-       <% end %>
-
+     
     </tr>
   </table>
 
