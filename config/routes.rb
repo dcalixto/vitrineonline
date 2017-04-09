@@ -121,6 +121,9 @@ get :feedbacks
     end
 
     member do
+      
+      get :feedbacks
+
       get :policy
       get :message
       get :message_box
