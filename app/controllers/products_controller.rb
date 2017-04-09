@@ -112,23 +112,9 @@ canonical_url url_for(@product)
 
     @sizes_for_dropdown = @product.sizes.collect { |s| [s.size, s.id] }
 
- #   @q = Feedback.by_participant(@product, Feedback::FROM_BUYERS).ransack(params[:q])
-  
- #  @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
-    
-  # @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
-
 
 #byebug
   @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
-    
-  
-
-
-
-  
- # @probacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
-
 @probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
 
 
@@ -152,7 +138,7 @@ canonical_url url_for(@product)
  
   end
 
-  def feedbacks
+  def probacks
     begin
       @product = Product.cached_find(params[:id])
     rescue
@@ -161,10 +147,13 @@ canonical_url url_for(@product)
 
     unless @product.nil?
 
-      @q = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').ransack(params[:q])
-      @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+       @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
+    
+@probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
 
-      @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
+
+
+     @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
     end
   end
 
