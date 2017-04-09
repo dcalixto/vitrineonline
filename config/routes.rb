@@ -255,7 +255,7 @@ get '/orders/confirmation', to: 'orders#confirmation' #, as: :vitrine_sent
 
       get :seller
       get :tag
-      get :feedbacks
+      get :probacks
       get :next_step
       get :report, to: 'products#report'
       get :message_product
