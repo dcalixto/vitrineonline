@@ -2,6 +2,10 @@
 .feedback-container .feedback-container table, .feedback_view_selector {
   width: 100%;
 }
+
+.completed_feedback_table th {
+  text-align: left;
+}
 .no_awaiting {
 
   text-align: center;

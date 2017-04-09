@@ -66,14 +66,22 @@ class VitrinesController < ApplicationController
   end
 
 
-  def vitrine_feedbacks
-    @vitrine = Vitrine.cached_find(params[:id])
 
-    respond_to do |format|
-      format.html { render 'feedbacks'}
-    end
 
-  end
+
+
+ # def vitrine_feedbacks
+  #  @vitrine = Vitrine.cached_find(params[:id])
+
+  #  respond_to do |format|
+  #    format.html { render 'feedbacks'}
+  #  end
+
+  #  @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
+  #  @feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+
+
+#  end
 
   def vitrine_products
 

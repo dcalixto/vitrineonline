@@ -238,7 +238,11 @@ class OrdersController < ApplicationController
   end
 
   def calculate_ship
-    frete = Correios::Frete::Calculador.new cep_origem: '23970-000',
+    frete = Correios::Frete::Calculador.new cep_origem: "#{@order.seller.post_code}",
+      :peso => "#{@order.product.weight}",
+      :comprimento =>  "#{@order.product.weight}",
+      :largura =>  "#{@order.product.weight}",
+      :altura =>  "#{@order.product.weight}",
       cep_destino: params[:post_code]
     servicos = frete.calcular :sedex, :pac
     @pac = servicos[:pac].valor
