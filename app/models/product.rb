@@ -203,7 +203,7 @@ class Product < ActiveRecord::Base
       conditions[:material_id] = params[:material_id] if params[:material_id].present?
       conditions[:condition_id] = params[:condition_id] if params[:condition_id].present?
       conditions[:brand_id] = params[:brand_id] if params[:brand_id].present?
-      conditions[:obrand_id] = params[:obrand_id] if params[:obrand_id].present?
+    
 
       conditions[:quantity] = { gt: 0 } # quantity should be greather than 0
 
@@ -213,7 +213,7 @@ class Product < ActiveRecord::Base
 
       products = Product.search query, fields: [{ name: :word_start }], where: conditions,
         include: [:images, :feedbacks,:vitrine],
-        aggs: [:gender_id, :vitrine_id, :category_id, :subcategory_id, :size_id, :color_id, :material_id, :condition_id, :brand_id, :obrand_id],
+        aggs: [:gender_id, :vitrine_id, :category_id, :subcategory_id, :size_id, :color_id, :material_id, :condition_id, :brand_id],
         page: params[:page], suggest: true, highlight: true, per_page: 22, order: [order_options, {created_at: {order: 'desc', ignore_unmapped: true}}]
 
       products
@@ -232,7 +232,6 @@ class Product < ActiveRecord::Base
         color_id: colors.map(&:id),
         material_id: material_id,
         brand_id: brand_id,
-        obrand_id: obrand_id,
         condition_id: condition_id,
         created_at: created_at,
         average_customer_rating: average_customer_rating

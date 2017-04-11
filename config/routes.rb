@@ -188,8 +188,12 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
 
  # put '/carts/user_address/', to: 'carts#user_address', as: :user_address
 
+post  '/orders/:id/checkout', to: 'orders#checkout', as: :calculate_ship
 
- resources :transactions, only: [:show] 
+ #post "/orders/:id/checkout" , as: "calculate_ship"
+
+
+resources :transactions, only: [:show] 
 
   resources :carts, only: [:index] 
    resources :orders, only: [:index, :update, :destroy] do
