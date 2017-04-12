@@ -1,4 +1,4 @@
-
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <% title "Fatura" %>
 
 <div class="box3">
@@ -16,8 +16,11 @@
       <table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
                   <tr>
               <td colspan="2">
-                <%= image_tag('logo.png')  %>
-              </td>
+        
+              
+<%= wicked_pdf_image_tag('logo.png') %>
+
+                </td>
 
               <td valign="top">
 
@@ -51,7 +54,7 @@
                 Item:
                 <% unless @product.images.blank? %>
 
-                <%= image_tag @product.images.first.ifoto.url(:small).to_s %>
+<%= wicked_pdf_image_tag @product.images.first.ifoto.url(:small).to_s %>
               <%end %>
                 <%= @product.name %>
                 </td>
@@ -70,11 +73,7 @@
 
                <b><%= number_to_currency @invoice.store_fee %>  </b>
           </td>
-          <td>
-            <%= link_to 'Download', vitrine_invoice_path(current_vitrine, @invoice.id, format: 'pdf') %>
-          </td>
-
-            </tr>
+                </tr>
 
 
       </table>

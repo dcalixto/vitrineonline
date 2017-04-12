@@ -2,7 +2,7 @@
 
 <%= render "shared/order_menu" %>
 
-<div class="box5">
+<div class="box3">
     <div class="flash_box">
       <%= render 'shared/flash_messages' %>
     </div>
@@ -101,7 +101,7 @@ Preço
                 <% end %>
                 <li>Comprado Em:
                   <b>
-                    <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => false)%>
+                    <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => true)%>
                   </b>
                 </li>
                 <li>Frete
@@ -114,11 +114,11 @@ Preço
                     <li>
                   
 Código
-  <%=order.track_number %></li> 
+<b> <%=order.track_number %></b></li> 
                                                                <li>
                                                
                                  
-                <label>Rastreamento:</label> <%= f.text_field   :track_number %> 
+               <%= f.text_field   :track_number %> 
 </li>
                              </li>
                 <li>

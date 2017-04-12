@@ -33,6 +33,9 @@ render :layout => false
 
 
 
+
+
+
   private
 
   def user_activity

@@ -142,7 +142,7 @@
                 <% end %>
                 <li>Comprado Em:
                   <b>
-                    <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => false)%>
+                    <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => true)%>
                   </b>
                 </li>
                 <li>Frete:
@@ -173,7 +173,7 @@
 
                   Enviado em:
                   <b>
-                    <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => false)%></b>
+                    <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => true)%></b>
                 <% end %>
                 </li>
              
