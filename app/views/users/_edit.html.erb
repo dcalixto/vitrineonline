@@ -112,12 +112,8 @@
 </p>
 <br>
 
-<%= button_to 'Encerrar',  { action: :destroy, id:  current_user.id }, 
-       method: :delete,:class => 'btn_red',
-       data: { confirm: "Confirmar?" } 
-%>
-
-
+ <%= button_to 'Encerrar',  current_user, :data => { :confirm => 'Confirmar?' }, method: :delete, :class => 'btn_red' %>
+    
 </div>
 </div>
 </div>
