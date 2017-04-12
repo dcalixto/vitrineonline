@@ -182,6 +182,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
     if @user.destroy
       Product.reindex
       cookies.delete(:auth_token)
