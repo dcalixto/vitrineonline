@@ -111,7 +111,13 @@
 <p>Seu perfil de compras, não serão exibidos na vitrineonline. As pessoas que tentarem ver o seu perfil , ou uma das avaliações da de seu perfil vai ver uma mensagem que a página não está disponível.
 </p>
 <br>
-<%=button_to 'Encerrar', current_user, :data=> { :confirm => 'Confirmar?' }, method: :delete, :class => 'btn_red' %>
+
+<%= button_to 'Encerrar',  { action: :destroy, id:  current_user.id }, 
+       method: :delete,:class => 'btn_red',
+       data: { confirm: "Confirmar?" } 
+%>
+
+
 </div>
 </div>
 </div>

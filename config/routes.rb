@@ -42,7 +42,7 @@ get "/opensearch",  to: "application#opensearch"
   # USER
 get 'welcome', to: 'users#welcome', as: 'welcome'
 
-  resources :users, only: [:new, :create, :edit, :update, :show] do
+  resources :users, only: [:new, :create, :edit, :update, :show, :destroy] do
     resources :passwords,only: [:new, :create]
       
        member do
