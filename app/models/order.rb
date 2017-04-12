@@ -43,6 +43,11 @@ class Order < ActiveRecord::Base
 
   after_update :create_product_data
 
+
+ # after_commit :create_product_data, on: :update
+
+
+
   after_commit ->(order) do
     ProductRecommender.add_order(order)
   end, on: :create

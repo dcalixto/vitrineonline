@@ -7,7 +7,7 @@ class Vitrine < ActiveRecord::Base
 
   has_one :policy, dependent: :destroy,  :inverse_of => :vitrine
 
-  has_many :products, dependent: :destroy, :inverse_of => :vitrine
+  has_many :products,:inverse_of => :vitrine
 
   has_one :marketing, dependent: :destroy
 
@@ -17,7 +17,7 @@ has_many :impressions,  as: :impressionable, dependent: :destroy
 has_one :brand
 
 
-  has_many :feedbacks, dependent: :destroy
+  has_many :feedbacks 
 
   has_many :orders, foreign_key: 'seller_id'
   has_many :invoices, through: :orders, source: :transaction
