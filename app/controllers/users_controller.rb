@@ -53,12 +53,18 @@ class UsersController < ApplicationController
 
     unless @user.nil?
 
-        @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
-
-      
-      @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+       # @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
+       
+    #  @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+  @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
+  
 
         @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
+
+
+
+
+
 
     end
   end

@@ -51,10 +51,15 @@ class VitrinesController < ApplicationController
 
     unless @vitrine.nil?
    
-      # @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
-      @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
-      @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+     @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
+    #  @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
+    #  @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
       @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
+      
+      
+      
+
+ 
 
 
 
