@@ -44,7 +44,7 @@
 
 
 
-
+ <% if @product.vitrine.present?  %>
 
         <div class="status_line">
           <ul>
@@ -60,6 +60,7 @@
             </li>
           </ul>
         </div>
+ <% end %>
 
 
         <!-- Fim-->
@@ -114,9 +115,14 @@
           </li>
           <li>
             Site:
+            
+ <% if @product.vitrine.present?  %>
+
             <% if @product.vitrine.marketing.url%>
               <%=link_to  "#{@product.vitrine.marketing.url}", url_with_protocol(@product.vitrine.marketing.url), :target => '_blank' %>
             <% end %>
+              <% end %>
+
           </li>
 
 
@@ -292,11 +298,14 @@
       </span>
 
 
+<% if @product.vitrine.present?  %>
 
 
       <% unless @product.vitrine.user.city.blank? %>
         <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@product.vitrine.address}" %>
       <% end %>
+          <% end %>
+
 
     </div>
 

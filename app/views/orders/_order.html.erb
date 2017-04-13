@@ -132,14 +132,24 @@
 
 
                   <li>Vendedor:
+                    <% if order.seller.present? %>
                     <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
                 <% end %>
-               
+                <% end %>
+
                 <% if  params[:action] == "sold" %>
-                  <li>Número: <b><%= order.transaction.transaction_id %></b></li>
+                   <% if order.transaction.present? %>
+
+                     <li>Número: <b><%= order.transaction.transaction_id %></b></li>
+                         <% end %>
+
                   <li>Comprador:
+                    <% if order.buyer.present? %>
+
                     <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
                 <% end %>
+                  <% end %>
+
                 <li>Comprado Em:
                   <b>
                     <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => true)%>
@@ -173,8 +183,12 @@
 
                   Enviado em:
                   <b>
+                      <% if order.transaction.present? %>
+
                     <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => true)%></b>
                 <% end %>
+                  <% end %>
+
                 </li>
              
                       <% if  params[:action] == "sold" and params[:status] == Order.statuses[0] %>

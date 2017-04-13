@@ -149,12 +149,11 @@ canonical_url url_for(@product)
 
        @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
     
-@probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+@probacks = @q.result.includes(:user).paginate(per_page: 22, page: params[:page])
 
 
 
-     #@average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
-    end
+        end
   end
 
 
