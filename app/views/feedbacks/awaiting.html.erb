@@ -29,6 +29,7 @@
             <% end %>
             <%= link_to product.name, product_path(product), :title => product.name %>
             <br/>
+               <% if order.buyer.present? %>
             <% if order.buyer == current_user %>
               <span class="feed_buy">Comprado</span> de
             <%= link_to order.seller.name, vitrine_path(order.seller) %>
@@ -37,7 +38,9 @@
             <% else %>
           <span class="feed_sell">Vendido</span> para
             <%= link_to order.buyer.full_name, user_path(order.buyer) %>
-            <% end %>
+          <% end %>
+          <% end %>
+
             Em
             <b><%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %></b>
             <br/>
