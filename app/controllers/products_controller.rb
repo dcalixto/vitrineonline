@@ -139,15 +139,9 @@ canonical_url url_for(@product)
   end
 
   def probacks
-    begin
+  
       @product = Product.cached_find(params[:id])
-    rescue
-      @product = nil
-    end
-
-    unless @product.nil?
-
-      
+       
 
 
 # @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
@@ -158,7 +152,7 @@ canonical_url url_for(@product)
 
 
 
-        end
+    
   end
 
 
