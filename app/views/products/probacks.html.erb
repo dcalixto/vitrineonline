@@ -54,7 +54,7 @@
 
 
 
-      <%= render :partial => 'probacks/probacks' %>
+      <%= render :partial => 'probacks/probacks', :locals => { probacks: @probacks }  %>
 
   </div>
 <%= render :partial => 'shared/proback_pagination', :locals => { probacks: @probacks } %> 
