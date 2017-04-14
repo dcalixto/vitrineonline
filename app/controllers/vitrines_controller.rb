@@ -43,13 +43,9 @@ class VitrinesController < ApplicationController
   def feedbacks
 
 
-    begin
+   
       @vitrine = Vitrine.cached_find(params[:id])
-    rescue
-      @vitrine = nil
-    end
-
-    unless @vitrine.nil?
+  
    
      @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
     #  @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
@@ -62,8 +58,6 @@ class VitrinesController < ApplicationController
  
 
 
-
-    end
 
 
 

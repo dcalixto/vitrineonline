@@ -147,7 +147,7 @@ canonical_url url_for(@product)
 # @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
 #@probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
 
-  @probacks =  Proback.joins(:product).where('products.id = ?', @product.id).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
+  @probacks =  Proback.joins(:product).where('products.id = ?', @product.id).paginate(:per_page => 22, :page => params[:page])
   
 
 

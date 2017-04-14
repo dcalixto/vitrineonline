@@ -1,3 +1,4 @@
+ 
 
 <div class="feed">
 <table class="completed_feedback_table">
@@ -15,9 +16,8 @@
       <tr>
 
 
-      <td>
-
-              <div class="feedback_stars_rating" data-read-only="true" data-score="<%= proback.buyer_rating %>"></div>
+        <td>
+                     <div class="feedback_stars_rating" data-read-only="true" data-score="<%= proback.buyer_rating %>"></div>
         <%= proback.buyer_comment %></td>
 
       <td>
@@ -47,7 +47,7 @@
 <tfoot>
   <tr>
     <td colspan="4">
-  <#%= render :partial => 'shared/proback_pagination'%>
+  <%= render :partial => 'shared/proback_pagination'%>
      
 
     </td>
@@ -55,3 +55,5 @@
 </tfoot>
 </table>
 </div>
+
+

@@ -45,15 +45,9 @@ class UsersController < ApplicationController
 
 
  def feedbacks
-    begin
+  
       @user = User.cached_find(params[:id])
-    rescue
-      @user = nil
-    end
-
-    unless @user.nil?
-
-       # @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
+        # @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
        
     #  @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
   @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
@@ -66,7 +60,7 @@ class UsersController < ApplicationController
 
 
 
-    end
+
   end
 
 
