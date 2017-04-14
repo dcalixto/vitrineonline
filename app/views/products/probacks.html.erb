@@ -54,76 +54,10 @@
 
 
 
-
- 
-
-<div class="feed">
-<table class="completed_feedback_table">
-  <tr>
-    <th>  <b>Avaliação</b>
-    
-    </th>
-    <th><b>Por:</b></th>
-    <th><b>Data</b></th>
-  </tr>
-
-  <tbody>
-    <% @probacks.each do |proback| %>
-        
-      <tr>
-
-
-        <td>
-    <div class="feedback_stars_rating" data-read-only="true" data-score="<%= proback.buyer_rating %>"></div>
-        <%= proback.buyer_comment %></td>
-
-      <td>
-
-          
-             
-     <%=   link_to(proback.user.first_name, user_path(proback.user_id))%>
-
-      
-      
-      </td>
-
-      <td>
-             <%= proback.buyer_feedback_date.strftime("%d/%m/%Y") %></td>
-    
-      
-      </td>
-    <td>
-        
-    </td>
-
-  </tr>
-  <% end %>
-
- 
-</tbody>
-<tfoot>
-  <tr>
-    <td colspan="4">
-  <#%= render :partial => 'shared/proback_pagination'%>
-     
-
-    </td>
-  </tr>
-</tfoot>
-</table>
-</div>
-
-
-    
-
-
-
-
-
-
-      <#%= render :partial => 'probacks/probacks' %>
+      <%= render :partial => 'probacks/probacks' %>
 
   </div>
+<%= render :partial => 'shared/proback_pagination', :locals => { probacks: @probacks } %> 
 
  <#%= render :partial => 'shared/proback_pagination'%>
 
