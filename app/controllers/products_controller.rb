@@ -144,8 +144,8 @@ class ProductsController < ApplicationController
 
   
   
-   @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
-    @feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+   #@q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
+    #@feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
   
   end
 
