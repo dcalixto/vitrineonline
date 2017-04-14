@@ -16,10 +16,10 @@ class ProductsController < ApplicationController
     # suggestions for current visitor
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
- 
 
- 
- 
+
+
+
 
   end
 
@@ -28,15 +28,15 @@ class ProductsController < ApplicationController
     @genders = Gender.all
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
-   @brands = Brand.all
+    @brands = Brand.all
 
- @conditions = Condition.all
+    @conditions = Condition.all
 
- @materials = Material.all
+    @materials = Material.all
 
 
     @product = current_vitrine.products.build(params[:product])
-          
+
   end
 
   def upvote
@@ -79,7 +79,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html do
         if @product.update_attributes(params[:product])
-         Product.reindex
+          Product.reindex
 
           redirect_to(action: :show, id: @product, only_path: true)
           flash[:success] = "#{@product.name} atualizado"
@@ -99,13 +99,12 @@ class ProductsController < ApplicationController
       end
     end
   end
-  
+
   def show
     @product = Product.cached_find(params[:id])
-@product.average_rating 
 
-canonical_url url_for(@product)
-  
+    canonical_url url_for(@product)
+
 
     @colors_for_dropdown = @product.colors.collect{ |co| [co.name, co.id]}
 
@@ -113,9 +112,9 @@ canonical_url url_for(@product)
     @sizes_for_dropdown = @product.sizes.collect { |s| [s.size, s.id] }
 
 
-#byebug
-  @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
-@probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+    #byebug
+    @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
+    @probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
 
 
     # suggestions for current visitor
@@ -131,36 +130,25 @@ canonical_url url_for(@product)
 
 
 
-
- 
-      
-      
- 
   end
 
   def probacks
-  
-      @product = Product.cached_find(params[:id])
-       
 
+    @product = Product.find(params[:id])
 
-# @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
-#@probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+    # @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
+    #@probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
 
-  @probacks =  Proback.joins(:product).where('products.id = ?', @product.id).paginate(:per_page => 22, :page => params[:page])
-  
-
-
-
-    
+    @probacks =  Proback.joins(:product).where('products.id = ?', @product.id).paginate(:per_page => 22, :page => params[:page])
+ # @probacks = Proback.by_participant(@product.boutique.user, Feedback::FROM_SELLERS).paginate(:page => params[:page])
   end
 
 
   def create
     @product = current_vitrine.products.build(params[:product])
-         if @product.save
-      
-    redirect_to product_step_path(@product.id, Product.form_steps.first, :product_id => @product.id, only_path: true, format: :html)
+    if @product.save
+
+      redirect_to product_step_path(@product.id, Product.form_steps.first, :product_id => @product.id, only_path: true, format: :html)
     else
       render :new, format: :html
     end
@@ -173,9 +161,6 @@ canonical_url url_for(@product)
     end_time = Time.now
     @week_stats = prepare_stats(end_time - 6.days, end_time)
     @month_stats = prepare_stats(end_time - 30.days, end_time)
-
-
-
 
   end
 
