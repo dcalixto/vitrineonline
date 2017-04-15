@@ -10,6 +10,11 @@
   <%= render 'shared/flash_messages' %>
   <%= render 'shared/error_messages', :target => @order %>
   <div class="block_empty margin_top">
+
+    <h2>Confirme sua compra</h2>
+    <p>O seu pedido ainda não foi finalizado. Certifique-se de conferir seu pedido cuidadosamente e com precisão antes de tomar o último passo ao enviar para nosso sistema</p>
+
+
     <table class="checkout_product">
       <% product = @order.product %>
       <thead>
@@ -97,7 +102,7 @@
          <thead>
         <tr>
                   <th>
-            Endereço de Entrega
+           Entrega
           </th>
         </tr>
       </thead>
@@ -105,7 +110,7 @@
         <tr>
                                    <td >
                             <ul >
-                              <li><%= current_user.full_name %></li>
+                              <li><b><%= current_user.full_name %></b></li>
                               <%unless current_user.user_address.nil? %>
                               <li>
                                 <%= current_user.user_address %></li>
@@ -126,7 +131,8 @@
                               <% end %>
                               <%unless current_user.postal_code.nil? %>
                               <li><%= current_user.user_postal_code %></li>
-                              <% end%>
+                            <% end%>
+                            <li><%=link_to "Editar", edit_user_path(current_user)%></li>
                             </ul>
                           </td>
                         </tbody>
@@ -135,12 +141,37 @@
                  
 
 
+ </div>
+
+
+
+
+ <div class="box11">
+   <div class="block_empty margin_top">
+
+
+
+     <h2> Forma de Pagamento </h2>
+     
+<%= link_to  "https://www.paypal.com/br"  do %>
+            <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
+            <% end %>
+     
+                    </div>
+
 </div>
 
-                  
-                  
-                  
-                  
+
+
+
+
+
+
+
+
+
+
+
                   <div class="box10">
                     <div class="block_empty margin_top">
                       <table class="checkout_total">
@@ -173,22 +204,10 @@
                             <% end %>
                           </td>
                         </tr>
-                        <tr class="checkout_bottom">
+                        <tr class="checkout_bottom greybox">
 
 
-                          <td>
-                             Checar Preço com os Correios
-                           Pac: <#%= @pac %> 
-                           Sedex: <#%= @sedex %> 
-                
-  <#%= form_tag "/orders/:id/checkout" do |f| %>
-<#%= text_field_tag 'code' %>
-<#%= submit_tag 'Consultar' %>
-<#% end %>
-
-
-
-                          </td>
+               
 
                           
                           <td>

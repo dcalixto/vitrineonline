@@ -16,7 +16,7 @@
           <p><%= conversation.display_message.body %></p>
       <% end %>
      
-      <%= timeago_tag(conversation.created_at, :nojs => true, :date_only => false) %>
+      <%= timeago_tag(conversation.created_at, :nojs => true, :date_only => true) %>
     </td>
 <% end %>
 

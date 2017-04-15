@@ -76,7 +76,7 @@
       <ul>
         <% if @product.condition.present? %>
           <li>
-            <span>Condição
+            <span>Condição:
             </span>
             <b><%= @product.condition.condition%></b>
           </li>
@@ -84,7 +84,7 @@
         <% if @product.material.present? %>
 
           <li>
-            <span>Material</span>
+            <span>Material:</span>
             <b><%= @product.material.name %></b>
           </li>
         <% end %>
@@ -93,7 +93,7 @@
         <% if @product.brand.present? %>
 
           <li>
-            <span>Marca</span>
+            <span>Marca:</span>
             <b><%= @product.brand.name%></b>
           </li>
         <% end %>

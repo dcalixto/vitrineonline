@@ -169,7 +169,7 @@
 
         <ul>
           <li>
-
+ <%= label_tag "Preço:" %>
             <h3 id="item_price"><%= number_to_currency(@product.price, :unit => "R$") %></h3>
           </li>
 
@@ -178,14 +178,14 @@
         <div class="left_info item_information">
           <ul>
             <li >
-              <%= label_tag "Quantidade" %>
-              <%= select_tag  :quantity, options_for_select((1..@product.quantity).collect{ |q| [q, q]}), :class=>"select_item" %>
+              <%= label_tag "Quantidade:" %>
+              <%= select_tag  :quantity, options_for_select((1..@product.quantity).collect{ |q| [q, q]})%>
 
             </li>
             <li >
-              <%= label_tag "Cor" %>
+              <%= label_tag "Cor:" %>
 
-              <%= select_tag :color_id, options_for_select(@colors_for_dropdown.unshift(['Selecionar', nil])), :class=>"select_item" %>
+              <%= select_tag :color_id, options_for_select(@colors_for_dropdown.unshift(['Selecionar', nil]))%>
 
 
 
@@ -194,9 +194,9 @@
 
             </li>
             <li>
-              <%= label_tag "Tamanho" %>
+              <%= label_tag "Tamanho:" %>
 
-              <%= select_tag :size_id, options_for_select(@sizes_for_dropdown.unshift(['Selecionar', nil])), :class=>"select_item"%>
+              <%= select_tag :size_id, options_for_select(@sizes_for_dropdown.unshift(['Selecionar', nil]))%>
 
             </li>
 
