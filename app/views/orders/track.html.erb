@@ -12,6 +12,8 @@
 
 
     <div class="subcontent">
+      <h1>Adionar Rastreio</h1>
+
       <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
       </p>
            <%if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
@@ -79,7 +81,7 @@ Preço
                 <li>
                 
                 </li>
-                <li><%= order.buyer.full_name %></li>
+                <li><b><%= order.buyer.full_name %></b></li>
                 <li>
                   <%= order.buyer.user_address if order.buyer.address %></li>
                 <li>
@@ -93,27 +95,29 @@ Preço
             </td>
             <td>
               <ul>
-                                 
-                             
-                     <% if  params[:action] == "sold" %>
-                  <li>Comprador
+
+                                   <% if order.transaction.present? %>
+
+                     <li>Prdido: <b><%= order.transaction.transaction_id %></b></li>
+                       
+                
+                              <li>Comprador:
                     <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
-                <% end %>
-                <li>Comprado Em:
+                              <li>Vendido Em:
                   <b>
                     <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => true)%>
                   </b>
                 </li>
-                <li>Frete
+                <li>Frete:
                   <b><%= order.shipping_method %></b>
                 </li>
-                <li>Custo
+                <li>Custo:
                   <b><%= number_to_currency order.shipping_cost %></b>
                 </li>
                           
                     <li>
                   
-Código
+Código:
 <b> <%=order.track_number %></b></li> 
                                                                <li>
                                                

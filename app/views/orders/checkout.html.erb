@@ -1,9 +1,14 @@
 <% title "Checkout" %>
 <div class="box2">
   <div class="breadcrumb margin_top">
-    <h1>
-      <strong>Detalhes para Entrega</strong>
-      &gt; Confirmar e Pagar</h1>
+
+
+  <h1>Confirme sua compra</h1>
+    <p>O seu pedido ainda não foi finalizado. Certifique-se de conferir seu pedido cuidadosamente e com precisão antes de tomar o último passo ao enviar para nosso sistema</p>
+
+
+
+    
   </div>
 </div>
 <div class="box4">
@@ -11,10 +16,7 @@
   <%= render 'shared/error_messages', :target => @order %>
   <div class="block_empty margin_top">
 
-    <h2>Confirme sua compra</h2>
-    <p>O seu pedido ainda não foi finalizado. Certifique-se de conferir seu pedido cuidadosamente e com precisão antes de tomar o último passo ao enviar para nosso sistema</p>
-
-
+  
     <table class="checkout_product">
       <% product = @order.product %>
       <thead>
@@ -174,6 +176,11 @@
 
                   <div class="box10">
                     <div class="block_empty margin_top">
+
+                      <p>Confirme com o vendedor a forma de envio e o preço do frete</p>
+
+
+
                       <table class="checkout_total">
                         <thead>
                           <tr>
@@ -184,6 +191,7 @@
                             <th></th>
                           </tr>
                         </thead>
+                        <tbody class="greybox">
                         <tr class="subtotal">
                           <td class="bigger" >
                             Subtotal <%= @order.quantity %>
@@ -204,7 +212,7 @@
                             <% end %>
                           </td>
                         </tr>
-                        <tr class="checkout_bottom greybox">
+                        <tr class="checkout_bottom ">
 
 
                
@@ -252,6 +260,7 @@
                             <%= button_to("Comprar", buy_order_path(@order), method: :post, class: 'btn_orange big') unless @order.shipping_cost.nil? %>
                           </td>
                         </tr>
+                        </tbody>
                       </table>
                     </div>
                   </div>

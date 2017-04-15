@@ -113,7 +113,7 @@
                 <li>
                 
                 </li>
-                <li><%= order.buyer.full_name %></li>
+                <li><b><%= order.buyer.full_name %></b></li>
                 <li>
                   <%= order.buyer.user_address if order.buyer.address %></li>
                 <li>
@@ -129,7 +129,7 @@
               <ul>
                                  
                 <% if  params[:action] == "purchased" %>
-                  <li>Número: <b><%= order.transaction.transaction_id %></b></li>
+                  <li>Pedido: <b><%= order.transaction.transaction_id %></b></li>
 
 
                   <li>Vendedor:
@@ -141,7 +141,7 @@
                 <% if  params[:action] == "sold" %>
                    <% if order.transaction.present? %>
 
-                     <li>Número: <b><%= order.transaction.transaction_id %></b></li>
+                     <li>Prdido: <b><%= order.transaction.transaction_id %></b></li>
                          <% end %>
 
                   <li>Comprador:
