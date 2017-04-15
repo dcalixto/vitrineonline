@@ -1,7 +1,3 @@
-<#% title @product.name%>
-<#%description @product.probacks  %>
-<##% keywords  @product.probacks %>
-
 <div class="box3">
   <div class="block margin_top">
     <h1>Avaliações</h1>
@@ -52,6 +48,19 @@
 
 
 
+    <table class="block_search">
+      <tr>
+        <td>
+
+        <td class="sort">
+
+          Ordernar por
+          <%= sort_link @q, :created_at, "Data" %>
+          |
+          <%= sort_link @q, :buyer_rating, "Avaliação" %>
+        </td>
+      </tr>
+    </table>
 
 
       <%= render :partial => 'probacks/probacks', collection: @probacks %>

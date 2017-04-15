@@ -1,6 +1,4 @@
-<% title @user.first_name%>
-<%description @user.feedbacks  %>
-<% keywords  @user.feedbacks %>
+
 
 <div class="box3">
   <div class="block margin_top">
@@ -54,9 +52,9 @@
         <td class="sort">
 
           Ordernar por
-          <#%= sort_link @q, :created_at, "Data" %>
+          <%= sort_link @q, :created_at, "Data" %>
           |
-          <#%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
+          <%= sort_link @q, :feedback_stars_rating, "Avaliação" %>
         </td>
       </tr>
     </table>

@@ -136,16 +136,13 @@ class ProductsController < ApplicationController
 
     @product = Product.find(params[:id])
 
-    # @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
-    #@probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+     @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
+    @probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
 
-    @probacks =  Proback.joins(:product).where('products.id = ?', @product.id)#.paginate(:per_page => 22, :page => params[:page])
+   # @probacks =  Proback.joins(:product).where('products.id = ?', @product.id)#.paginate(:per_page => 22, :page => params[:page])
  # @probacks = Proback.by_participant(@product.boutique.user, Feedback::FROM_SELLERS).paginate(:page => params[:page])
 
-  
-  
-   #@q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
-    #@feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+
   
   end
 
