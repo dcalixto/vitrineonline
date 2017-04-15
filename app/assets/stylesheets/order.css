@@ -37,7 +37,7 @@
 .checkout_product, .checkout_address, .checkout_total {
   width: 100%;
   clear: both;
-  background: none repeat scroll 0% 0% #fff;
+  background: none repeat scroll 0% 0%;
   font-size: 13px;
   border-collapse: separate;
 }
@@ -56,7 +56,7 @@
 .checkout tbody td {
   padding: 20px 5px 15px;
   vertical-align: center;
-  background: none repeat scroll 0% 0% #FFF;
+  background: none repeat scroll 0% 0%;
   font-size: 13px;
   width: 200px;
   word-wrap: break-word;
@@ -94,20 +94,16 @@
   font: 24px Arial, sans-serif;
   font-weight: bold
 }
-#orderTotal td {
-  background-color: #FFF;
-}
+
 td.amt {
   font-size: 12px;
   font-weight: bold;
 }
 .amt {
   text-align: right;
-  background: #fff;
+ 
 }
-.checkout .checkout_bottom {
-  background: #fff
-}
+
 .checkout_total .subtotal {
   color: #ff5300;
   font-size:13px

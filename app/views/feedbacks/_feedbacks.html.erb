@@ -36,7 +36,9 @@
         <%= is_buyer ? feedback.seller_comment : feedback.buyer_comment %></td>
 
       <td>
-             <%= is_buyer ? link_to(seller.name, vitrine_path(seller.id)) : link_to(buyer.first_name, user_path(buyer.id)) %>
+        <% if seller.present? && buyer.present? %>
+          <%= is_buyer ? link_to(seller.name, vitrine_path(seller.id)) : link_to(buyer.first_name, user_path(buyer.id)) %>
+          <% end %>
       </td>
 
       <td>
