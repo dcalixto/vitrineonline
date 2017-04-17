@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170415194736) do
+ActiveRecord::Schema.define(:version => 20170417213439) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -313,6 +313,8 @@ ActiveRecord::Schema.define(:version => 20170415194736) do
     t.integer  "quantity",                                            :default => 0
     t.boolean  "is_shared_on_facebook",                               :default => false
     t.boolean  "is_shared_on_twitter",                                :default => false
+    t.integer  "total_feedbacks",                                     :default => 0
+    t.float    "average_rating",                                      :default => 0.0
   end
 
   add_index "pdata", ["brand_id"], :name => "index_pdata_on_brand_id"
@@ -351,6 +353,7 @@ ActiveRecord::Schema.define(:version => 20170415194736) do
     t.datetime "buyer_feedback_date"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "pdata_id"
   end
 
   add_index "probacks", ["feedback_id"], :name => "index_probacks_on_feedback_id"

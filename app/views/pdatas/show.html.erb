@@ -115,7 +115,6 @@
           </li>
 
 
-          <li>Visualizações: <b><%=@pdata.impressions_count %></b></li>
 
 
 
@@ -138,9 +137,6 @@
 
 
        
-
-                <%= social_share_button_tag(truncate(@pdata.name, :length => 20), :url => url_for(:action => :show, :id => @pdata.id, :only_path => false))  %>
-
 
   </div>
 
