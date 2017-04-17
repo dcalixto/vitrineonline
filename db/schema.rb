@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170417213439) do
+ActiveRecord::Schema.define(:version => 20170417220917) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -156,6 +156,8 @@ ActiveRecord::Schema.define(:version => 20170417213439) do
     t.float    "cached_weighted_average"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.string   "buyer_name"
+    t.string   "seller_name"
   end
 
   add_index "feedbacks", ["feedbackable_id", "feedbackable_type"], :name => "index_feedbacks_on_feedbackable_id_and_feedbackable_type"

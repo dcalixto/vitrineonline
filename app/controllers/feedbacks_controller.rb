@@ -27,7 +27,8 @@ class FeedbacksController < ApplicationController
     feedback.attributes = params[:feedback]
     feedback.user = @order.buyer
     feedback.vitrine = @order.seller
-
+    feedback.buyer_name = @order.buyer.first_name
+    feedback.seller_name = @order.seller.name
 
     if feedback.save
       flash[:success] = 'Obrigado'

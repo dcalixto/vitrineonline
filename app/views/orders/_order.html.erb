@@ -88,14 +88,13 @@
  
         <tr>
           <td>
-            <% if product.images.present? %>
+            <% if product.present? %>
               <%= link_to  product_path(product.id) do %>
 
 
                 <%= image_tag product.images.first.ifoto.url(:small).to_s %>
               <% end %>
-            <% end %>
-            
+                        
                 <%= link_to product.name, product_path(product.id) %>
               </td>
               <td>
@@ -104,7 +103,8 @@
               <td>
                 <b class="lista-preco bigger"><%= number_to_currency(order.total_price) %></b>
               
-            
+            <% end %>
+
               </td>
 
           <% if order.seller == current_vitrine or order.buyer == current_user  %>
