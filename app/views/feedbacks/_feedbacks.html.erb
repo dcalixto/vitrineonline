@@ -21,14 +21,33 @@
     <% is_buyer = @user.nil? ? false : @user.id == buyer.id %>
     <tr>
 
+      <% if product.present? %>
+
       <td>
-                <%= link_to  product_path(product.id), :title => product.name do %>
+      
+        <%= link_to  product_path(product.id), :title => product.name do %>
         <% if product.images.present? %>
         <%= image_tag product.images.first.ifoto.url(:small).to_s, :alt => product.name %>
         <% end %>
         <%=  product.name  %>
         <% end %>
       </td>
+
+    <% else %>
+
+  <td>
+      
+        <%= link_to  pdata_path(pdata.id), :title => pdata.name do %>
+        <% if pdata.images.present? %>
+        <%= image_tag pdata.f1.to_s, :alt => pdata.name %>
+        <% end %>
+        <%=  pdata.name  %>
+        <% end %>
+      </td>
+
+ <% end %>
+
+
 
       <td>
 

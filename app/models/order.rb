@@ -41,7 +41,7 @@ class Order < ActiveRecord::Base
 
   scope :awaiting_feedback, ->(user) { joins('left join feedbacks on feedbacks.id = orders.feedback_id').where('(buyer_id = ? and buyer_feedback_date is null) or (seller_id = ? and seller_feedback_date is null)', user.id, user.vitrine ? user.vitrine.id : 0).where('status is not null').order(:created_at) }
 
-  after_update :create_product_data
+  after_update :create_pdata
 
 
  # after_commit :create_product_data, on: :update
@@ -62,19 +62,21 @@ class Order < ActiveRecord::Base
 
 
 
-  def create_product_data
+  def create_pdata
+      product = Product.find_by_id(attributes['product_id'])
+
     if status == Order.statuses[0]
       pr_id = product.id
-      data = ProductData.find_by_id(pr_id)
+      data = Pdata.find_by_id(pr_id)
       if data.nil?
         attrs = product.attributes
      #   attrs.images.first.delete('ifoto')
         attrs.delete('created_at')
         attrs.delete('updated_at')
-        data = ProductData.create(attrs)
-        #data.f1 = product.images.first
-       # data.color = product.colors
-       # data.size =  product.sizes
+        data = Pdata.create(attrs)
+        data.f1 = product.images.first
+      # data.color = product.colors
+      #  data.size =  product.sizes
           
         data.save
       end
@@ -83,7 +85,7 @@ class Order < ActiveRecord::Base
 
   def product
     prod = Product.find_by_id(attributes['product_id'])
-    prod = ProductData.find_by_id(attributes['product_id']) if prod.nil?
+    prod = Pdata.find_by_id(attributes['product_id']) if prod.nil?
     prod
   end
 

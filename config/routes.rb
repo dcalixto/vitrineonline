@@ -251,7 +251,10 @@ get '/orders/confirmation', to: 'orders#confirmation' #, as: :vitrine_sent
   get 'products/tags' => 'products#tags', :as => :tags
 
 
-  
+resources :pdatas, only: [:show]
+
+
+
 
     # PRODUCTS
   resources :products do

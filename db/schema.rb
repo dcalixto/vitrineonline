@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170410210544) do
+ActiveRecord::Schema.define(:version => 20170415194736) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -290,6 +290,42 @@ ActiveRecord::Schema.define(:version => 20170410210544) do
   add_index "orders", ["seller_id"], :name => "index_orders_on_seller_id"
   add_index "orders", ["size_id"], :name => "index_orders_on_size_id"
 
+  create_table "pdata", :force => true do |t|
+    t.string   "slug"
+    t.integer  "vitrine_id",                                                             :null => false
+    t.string   "f1"
+    t.text     "detail"
+    t.integer  "category_id"
+    t.integer  "gender_id"
+    t.integer  "subcategory_id"
+    t.integer  "color_id"
+    t.integer  "size_id"
+    t.integer  "material_id"
+    t.integer  "condition_id"
+    t.integer  "brand_id"
+    t.string   "meta_keywords"
+    t.datetime "created_at",                                                             :null => false
+    t.datetime "updated_at",                                                             :null => false
+    t.string   "status"
+    t.string   "current_step"
+    t.string   "name"
+    t.decimal  "price",                 :precision => 9, :scale => 2
+    t.integer  "quantity",                                            :default => 0
+    t.boolean  "is_shared_on_facebook",                               :default => false
+    t.boolean  "is_shared_on_twitter",                                :default => false
+  end
+
+  add_index "pdata", ["brand_id"], :name => "index_pdata_on_brand_id"
+  add_index "pdata", ["category_id"], :name => "index_pdata_on_category_id"
+  add_index "pdata", ["color_id"], :name => "index_pdata_on_color_id"
+  add_index "pdata", ["condition_id"], :name => "index_pdata_on_condition_id"
+  add_index "pdata", ["gender_id"], :name => "index_pdata_on_gender_id"
+  add_index "pdata", ["material_id"], :name => "index_pdata_on_material_id"
+  add_index "pdata", ["size_id"], :name => "index_pdata_on_size_id"
+  add_index "pdata", ["slug"], :name => "index_pdata_on_slug"
+  add_index "pdata", ["subcategory_id"], :name => "index_pdata_on_subcategory_id"
+  add_index "pdata", ["vitrine_id"], :name => "index_pdata_on_vitrine_id"
+
   create_table "policies", :force => true do |t|
     t.integer  "policieable_id"
     t.string   "policieable_type"
@@ -353,6 +389,8 @@ ActiveRecord::Schema.define(:version => 20170410210544) do
     t.string   "name"
     t.decimal  "price",          :precision => 9, :scale => 2
     t.integer  "quantity",                                     :default => 0
+    t.string   "f1"
+    t.string   "vitrine_name"
   end
 
   add_index "product_data", ["category_id"], :name => "index_product_data_on_category_id"
