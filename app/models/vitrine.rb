@@ -28,9 +28,7 @@ has_one :brand
 validates_associated :policy, presence: true
    attr_accessible  :policy_attributes, :branded
 
-
-  validates_presence_of :code
-  validates_uniqueness_of :code
+  after_commit  :create_code, :on => :create
 
 
 
@@ -161,8 +159,11 @@ validates_associated :policy, presence: true
   end
 
 
+
+
+
 protected
-  def before_validation_on_create
+  def create_code
     self.code = rand(36**8).to_s(36) if self.new_record? and self.code.nil?
   end
 
