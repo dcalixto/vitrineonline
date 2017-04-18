@@ -50,9 +50,13 @@ class Product < ActiveRecord::Base
 
 
   
-   after_create  :create_code
+   before_create  :createcode
 
-
+ def createcode
+    if code.blank?
+    self.code = rand(36**8).to_s(36)
+    end
+  end
 
   acts_as_votable 
   #
@@ -246,12 +250,7 @@ class Product < ActiveRecord::Base
     end
 
 
- def create_code
-    if code.blank?
 
-    self.code = rand(36**8).to_s(36)
-    end
-  end
 
 
 

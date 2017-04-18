@@ -6,10 +6,7 @@ class InvoicesController < ApplicationController
     @q = current_vitrine.invoices.ransack(params[:q])
     @invoices = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
     render :index
-    @order = @invoice.order 
-  @transaction = @order.transaction
- @invoice.id = @transaction.transaction_id
-  end
+   end
 
   def show
     @invoice = current_vitrine.invoices.find(params[:id])

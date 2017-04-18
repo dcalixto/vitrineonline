@@ -190,6 +190,8 @@ class OrdersController < ApplicationController
     if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
       logger.info("IPN message: VERIFIED")
       order = Order.find(params[:id])
+       product = order.product
+
       if order
         if params[:status] == 'COMPLETED'
           order.status = Order.statuses[0]
@@ -201,7 +203,6 @@ class OrdersController < ApplicationController
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
-           
            product.quantity -= quantity
            product.save
 

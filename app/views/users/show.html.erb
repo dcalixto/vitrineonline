@@ -119,6 +119,9 @@
        <span class="status_offline"> Offline </span>
        <% end %>
      </li>
+
+  Código: <b><%=@user.code %></b>
+
 <li>Criado(a) em: <%= timeago_tag(@user.created_at, :nojs => true, :date_only => true)  %></li>
      </ul>
  </div>
