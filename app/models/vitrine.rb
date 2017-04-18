@@ -28,8 +28,7 @@ has_one :brand
 validates_associated :policy, presence: true
    attr_accessible  :policy_attributes, :branded
 
-  after_commit  :create_code, :on => :create
-
+  before_create  :create_code
 
 
   acts_as_votable
@@ -148,6 +147,15 @@ validates_associated :policy, presence: true
                   :address, :neighborhood, :latitude, :longitude, :neighborhood, :postal_code, :address_supplement, :code, :about
 
   # CACHE
+  #
+    def create_code
+    if code.blank?
+
+    self.code = rand(36**8).to_s(36)
+    end
+  end
+
+
 
   private
 
@@ -161,13 +169,6 @@ validates_associated :policy, presence: true
 
 
 
-
-  def create_code
-    if code.blank?
-
-    self.code = rand(36**8).to_s(36) 
-    end
-  end
 
 
 
