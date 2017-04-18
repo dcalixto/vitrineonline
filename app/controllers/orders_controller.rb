@@ -199,10 +199,10 @@ class OrdersController < ApplicationController
           transaction = Transaction.new
           transaction.store_fee = order.store_fee
           transaction.user_id = order.buyer_id
-         # transaction.product = order.product
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
+           product = order.product
            product.quantity -= quantity
            product.save
 

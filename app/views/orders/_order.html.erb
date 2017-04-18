@@ -55,6 +55,15 @@
     </td>
       <% end%>
 
+ <% if controller_name == "carts" && action_name == "index" %>
+
+      <td>
+           <b>
+             <%= @product.code %></b>
+      </td>
+
+  <% end%>
+
 
  <% if order.status.nil? %>
 
