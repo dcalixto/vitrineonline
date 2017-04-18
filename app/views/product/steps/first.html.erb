@@ -1,9 +1,5 @@
 
-<div class="box1">
 
-  <strong>Passo 2</strong>
-  &gt; Postar
-</div>
 <div class="box5">
   <div class="flash_box">
     <%=render 'shared/flash_messages' %>
@@ -172,7 +168,47 @@
           </div>
 
 
-                  
+           <h2>Dimensões e peso</h2>
+
+          <div class="subcontent horizonal_list">
+            <ul>
+              <li>
+
+<%=p.text_field  :height, :label=>"Altura" %>
+     </li>
+ <li>
+
+   <%=p.text_field  :width, :label=>"Largura" %>
+  </li>
+
+    <li>
+
+<%=p.text_field  :diamenter, :label=>"Diâmetro" %>
+  </li>
+
+ <li>
+
+   <%=p.text_field  :length, :label=>"Comprimento" %>
+     </li>
+
+    <li>
+
+<%=p.text_field  :weight, :label=>"Peso" %>
+
+
+
+                                </li>
+
+             
+            </ul>
+          </div>
+
+
+
+        
+        
+        
+        
         
         
         
