@@ -41,11 +41,17 @@ class Order < ActiveRecord::Base
 
   scope :awaiting_feedback, ->(user) { joins('left join feedbacks on feedbacks.id = orders.feedback_id').where('(buyer_id = ? and buyer_feedback_date is null) or (seller_id = ? and seller_feedback_date is null)', user.id, user.vitrine ? user.vitrine.id : 0).where('status is not null').order(:created_at) }
 
-  after_update :create_pdata
+  after_commit  :create_pdata, on: :update
+
 
 
  # after_commit :create_product_data, on: :update
 
+
+
+
+  validates_presence_of :code
+  validates_uniqueness_of :code
 
 
   after_commit ->(order) do
@@ -127,20 +133,10 @@ class Order < ActiveRecord::Base
 
   
 
-
-
-#def seller
-#   order = Order.find_by_id(:id)
-  
-#order.seller_id
-#end
-
-
-#def buyer
-#   order = Order.find_by_id(:id)
-#order.buyer_id
-#end
-
+protected
+  def before_validation_on_create
+    self.code = rand(36**8).to_s(36) if self.new_record? and self.code.nil?
+  end
 
 
 end

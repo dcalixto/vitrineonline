@@ -7,7 +7,7 @@ class Vitrine < ActiveRecord::Base
 
   has_one :policy, dependent: :destroy,  :inverse_of => :vitrine
 
-  has_many :products,:inverse_of => :vitrine
+  has_many :products,:inverse_of => :vitrine,  dependent: :destroy
 
   has_one :marketing, dependent: :destroy
 
@@ -27,7 +27,13 @@ has_one :brand
   accepts_nested_attributes_for :policy
 validates_associated :policy, presence: true
    attr_accessible  :policy_attributes, :branded
-  
+
+
+  validates_presence_of :code
+  validates_uniqueness_of :code
+
+
+
   acts_as_votable
   
 
@@ -153,4 +159,14 @@ validates_associated :policy, presence: true
 
     true
   end
+
+
+protected
+  def before_validation_on_create
+    self.code = rand(36**8).to_s(36) if self.new_record? and self.code.nil?
+  end
+
+
+
+
 end

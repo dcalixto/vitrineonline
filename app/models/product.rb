@@ -47,6 +47,13 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
 
+
+
+  validates_presence_of :code
+  validates_uniqueness_of :code
+
+
+
   acts_as_votable 
   #
 
@@ -249,5 +256,16 @@ class Product < ActiveRecord::Base
 
       true
     end
+
+
+
+
+
+protected
+  def before_validation_on_create
+    self.code = rand(36**8).to_s(36) if self.new_record? and self.code.nil?
+  end
+
+
 
 end

@@ -16,6 +16,6 @@ class Policy < ActiveRecord::Base
   validates :paypal, uniqueness: { case_sensitive: false },
                      length: { within: 1..70 }
 
-#<D-d>accepts_nested_attributes_for :vitrine
+
  validates_presence_of :vitrine
 end
