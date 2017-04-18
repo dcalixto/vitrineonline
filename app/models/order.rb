@@ -119,6 +119,7 @@ class Order < ActiveRecord::Base
   end
 
   def decrease_products_count
+    product = order.product
     product.quantity -= quantity
     product.save
    
