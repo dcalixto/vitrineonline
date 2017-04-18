@@ -6,8 +6,8 @@ class Feedback < ActiveRecord::Base
   has_one :product, through: :order#,  inverse_of: :feedback
 
 
-  after_commit :feedback_product, on: :create
-
+  #after_commit :feedback_product, on: :create
+after_create :feedback_product
 
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'
@@ -46,7 +46,7 @@ class Feedback < ActiveRecord::Base
 
 
   def feedback_product
-
+if FROM_BUYERS
     product.total_feedbacks += 1
 
     product.average_rating = product.feedbacks.where('buyer_feedback_date IS NOT NULL').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
@@ -55,6 +55,7 @@ class Feedback < ActiveRecord::Base
 
   end
 
+ end
 
 
 end

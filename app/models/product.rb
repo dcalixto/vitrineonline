@@ -50,7 +50,7 @@ class Product < ActiveRecord::Base
 
 
   
-  after_commit  :create_code, :on => :create
+   before_create  :create_code
 
 
 
@@ -246,6 +246,13 @@ class Product < ActiveRecord::Base
     end
 
 
+ def create_code
+    if code.blank?
+
+    self.code = rand(36**8).to_s(36)
+    end
+  end
+
 
 
     private
@@ -259,12 +266,6 @@ class Product < ActiveRecord::Base
 
 
 
-
-
-protected
-  def create_code
-    self.code = rand(36**8).to_s(36) if self.new_record? and self.code.nil?
-  end
 
 
 

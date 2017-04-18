@@ -8,7 +8,7 @@
     <% end %>
   </td>
 
-  <td><%= product.id %></td>
+  <td><%= product.code %></td>
   <td class="lista-preco_stock">
     <span>
       <b><%=  number_to_currency(product.price, :unit => "R$") %></b>
@@ -45,13 +45,13 @@
 
                   <div class="feedback_stars_rating" data-read-only="true" data-score="<%= product.average_rating  %>">
                     <span class="feedCounter"><%= product.total_feedbacks %>
-                    Avaliações</span>
+                    </span>
                   </div>
 
                 <% end %>
   </td>
   <td>
-    <%= timeago_tag(product.created_at, :nojs => true, :date_only => false)%>
+    <%= timeago_tag(product.created_at, :nojs => true, :date_only => true)%>
 
   </td>
   <td><%= button_to  'Editar', edit_product_path(product), :class => 'btn_grey btn_small', :method => "get"  %></td>

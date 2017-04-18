@@ -6,6 +6,9 @@ class InvoicesController < ApplicationController
     @q = current_vitrine.invoices.ransack(params[:q])
     @invoices = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
     render :index
+ 
+  @transaction = @order.transaction
+ @invoice.id = @transaction.transaction_id
   end
 
   def show
@@ -13,7 +16,13 @@ class InvoicesController < ApplicationController
     @order = @invoice.order
     @buyer = @order.buyer
     @product = @order.product
-  #  respond_to do |format|
+      @transaction = @order.transaction
+ @invoice.id = @transaction.transaction_id
+  
+
+
+
+    #  respond_to do |format|
   #    format.html { render :show }
   ##    format.json { render json: @invoice }    
    #   format.pdf do

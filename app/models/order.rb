@@ -51,7 +51,7 @@ class Order < ActiveRecord::Base
 
 
  
-  after_commit  :create_code, :on => :create
+   before_create  :create_code
 
 
 
@@ -137,8 +137,13 @@ class Order < ActiveRecord::Base
 
 
   def create_code
-    self.code = rand(36**8).to_s(36) if self.new_record? and self.code.nil?
+    if code.blank?
+
+    self.code = rand(36**8).to_s(36)
+    end
   end
+
+
 
 
 end
