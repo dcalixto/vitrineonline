@@ -135,7 +135,7 @@ class Order < ActiveRecord::Base
 
   
 
-protected
+
   def create_code
     self.code = rand(36**8).to_s(36) if self.new_record? and self.code.nil?
   end

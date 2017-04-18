@@ -162,11 +162,12 @@ validates_associated :policy, presence: true
 
 
 
-protected
   def create_code
-    self.code = rand(36**8).to_s(36) if self.new_record? and self.code.nil?
-  end
+    if code.blank?
 
+    self.code = rand(36**8).to_s(36) 
+    end
+  end
 
 
 
