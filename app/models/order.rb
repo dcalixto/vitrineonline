@@ -51,7 +51,7 @@ class Order < ActiveRecord::Base
 
 
  
-   before_create  :create_code
+   after_create  :create_code
 
 
 
@@ -82,7 +82,10 @@ class Order < ActiveRecord::Base
         attrs.delete('created_at')
         attrs.delete('updated_at')
         data = Pdata.create(attrs)
-        data.f1 = product.images.first
+        data.f1 = product.images.first.ifoto
+        data.average_rating = product.average_rating
+         data.total_feedbacks = product.total_feedbacks
+
       # data.color = product.colors
       #  data.size =  product.sizes
           

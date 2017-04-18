@@ -50,7 +50,7 @@ class Product < ActiveRecord::Base
 
 
   
-   before_create  :create_code
+   after_create  :create_code
 
 
 

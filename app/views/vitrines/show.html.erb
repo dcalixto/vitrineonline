@@ -22,11 +22,7 @@
 
       <ul class="profile_list">
 
- <li>
-   Código: <b><%=@vitrine.code %></b>
 
-
-        </li>
 
         <li>
           <%if @vitrine.marketing.facebook%>
@@ -138,6 +134,11 @@
 
           <% end %>
 
+           <li>
+   Código: <b><%=@vitrine.code %></b>
+
+
+        </li>
           <li>Criada em: <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => true)  %></li>
 
 

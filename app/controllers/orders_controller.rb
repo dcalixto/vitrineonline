@@ -201,7 +201,10 @@ class OrdersController < ApplicationController
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
-          decrease_products_count
+           
+           product.quantity -= quantity
+           product.save
+
           order.save
           OrderMailer.order_confirmation(order).deliver
           

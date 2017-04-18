@@ -66,6 +66,10 @@ acts_as_voter
 
   after_commit :flush_cache
 
+
+   before_create  :create_code
+
+
   def self.cached_find(id)
     Rails.cache.fetch([name, id], expires_in: 5.minutes) { find(id) }
   end
@@ -198,6 +202,16 @@ acts_as_voter
    # send_user_welcome
     save!(validate: false)
     end
+
+
+   def create_code
+    if code.blank?
+
+    self.code = rand(36**8).to_s(36)
+    end
+  end
+
+
 
   private
 
