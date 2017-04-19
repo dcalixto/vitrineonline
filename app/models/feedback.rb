@@ -49,13 +49,13 @@ after_create :feedback_product
 product = Product.find_by_id(attributes['product_id'])
 
    user = User.find_by_id(attributes['user_id'])
- if user.id
+# if user
    product.total_feedbacks += 1
     product.average_rating = product.feedbacks.where('buyer_feedback_date IS NOT NULL').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
     product.save
 
-  end
+#  end
 
  end
 
