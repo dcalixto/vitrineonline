@@ -45,16 +45,18 @@ class Order < ActiveRecord::Base
 
 
 
- # after_commit :create_product_data, on: :update
-
-
-
-
- 
-   #before_create  :createcode
-
-
 after_commit :createcode, on: :create
+
+
+
+def decrease_products
+   
+    product.quantity -= quantity
+    product.save
+   
+  end
+
+
 
   def createcode
     if code.blank?
@@ -129,13 +131,7 @@ after_commit :createcode, on: :create
     product.price * quantity
   end
 
-  def decrease_products_count
-   
-    product.quantity -= quantity
-    product.save
-   
-  end
-
+  
   def store_fee
     total_price * configatron.store_fee
   end

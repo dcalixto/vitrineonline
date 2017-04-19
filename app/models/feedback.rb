@@ -9,6 +9,10 @@ class Feedback < ActiveRecord::Base
   #after_commit :feedback_product, on: :create
 after_create :feedback_product
 
+before_save doproback, :if => 'from_buyers'
+
+
+
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'
 
@@ -60,4 +64,21 @@ after_create :feedback_product
  end
 
 
+
+
+
+def doproback
+
+   proback = Proback.new
+    proback.product_id = order.product_id
+    proback.pdata_id = order.product_id
+    proback.feedback_id = feedback.id
+    proback.user_id = feedback.user_id
+    proback.buyer_comment  = feedback.buyer_comment
+    proback.buyer_rating   = feedback.buyer_rating
+    proback.buyer_feedback_date   = feedback.buyer_feedback_date
+    proback.save
+
+
+end
 end
