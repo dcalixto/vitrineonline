@@ -34,9 +34,13 @@ before_save :doproback, :if =>  :from_buyers
 
   scope :from_buyers_for_product, ->(product_id) { joins(:product).where(products: { id: product_id }).where.not(buyer_feedback_date: nil) }
 
- scope :from_buyers, ->(user_id) { joins(:user).where(users: { id: user_id }) }
+ def from_buyers
+user = User.find_by_id(attributes['user_id'])
+
+  #  ->(user_id) { joins(:user).where(users: { id: user_id }) }
 
 
+ end
 
 
   def self.average_rating(user, from_who)
