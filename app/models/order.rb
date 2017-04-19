@@ -51,7 +51,18 @@ class Order < ActiveRecord::Base
 
 
  
-   after_create  :create_code
+   before_create  :createcode
+
+
+
+
+  def createcode
+    if code.blank?
+
+    self.code = rand(36**8).to_s(36)
+    end
+  end
+
 
 
 
@@ -138,14 +149,6 @@ class Order < ActiveRecord::Base
 
 
   
-
-
-  def create_code
-    if code.blank?
-
-    self.code = rand(36**8).to_s(36)
-    end
-  end
 
 
 
