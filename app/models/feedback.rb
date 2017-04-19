@@ -9,9 +9,7 @@ class Feedback < ActiveRecord::Base
   #after_commit :feedback_product, on: :create
 after_create :feedback_product
 
-before_save :doproback, :if => user.id
-
-
+before_save :doproback, :if =>  Feedback::FROM_BUYERS
 
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'
