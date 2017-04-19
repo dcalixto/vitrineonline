@@ -51,10 +51,10 @@ class Order < ActiveRecord::Base
 
 
  
-   before_create  :createcode
+   #before_create  :createcode
 
 
-
+after_commit :createcode, on: :create
 
   def createcode
     if code.blank?

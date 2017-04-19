@@ -36,7 +36,7 @@ class FeedbacksController < ApplicationController
       @order.save
 
     
-
+if  feedback.user = @order.buyer
    proback = Proback.new
     proback.product_id = @order.product_id
     proback.pdata_id = @order.product_id
@@ -46,7 +46,7 @@ class FeedbacksController < ApplicationController
     proback.buyer_rating   = feedback.buyer_rating
     proback.buyer_feedback_date   = feedback.buyer_feedback_date
     proback.save
-
+end
 
 
     else
