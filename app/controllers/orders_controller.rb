@@ -207,7 +207,7 @@ class OrdersController < ApplicationController
       if order
         if params[:status] == 'COMPLETED'
           order.status = Order.statuses[0]
-          order.decrease_products_count
+         # order.decrease_products_count
           transaction = Transaction.new
           transaction.store_fee = order.store_fee
           transaction.user_id = order.buyer_id
