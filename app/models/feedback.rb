@@ -9,8 +9,7 @@ class Feedback < ActiveRecord::Base
   #after_commit :feedback_product, on: :create
 after_create :feedback_product
 
-before_save :doproback, :if =>  Feedback::FROM_BUYERS
-
+before_save :doproback, :if =>  :from_buyers
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'
 
@@ -34,6 +33,10 @@ before_save :doproback, :if =>  Feedback::FROM_BUYERS
   scope :rated, ->(from_who) { where("#{from_who == Feedback::FROM_BUYERS ? 'buyer_rating' : 'seller_rating'} <> ?", Feedback::NOT_RATED) }
 
   scope :from_buyers_for_product, ->(product_id) { joins(:product).where(products: { id: product_id }).where.not(buyer_feedback_date: nil) }
+
+ scope :from_buyers, ->(user_id) { joins(:user).where(users: { id: user_id }) }
+
+
 
 
   def self.average_rating(user, from_who)
