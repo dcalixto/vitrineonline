@@ -46,7 +46,7 @@ after_create :feedback_product
 
 
   def feedback_product
-  if Feedback::FROM_BUYERS
+  if user.id
     product.total_feedbacks += 1
 
     product.average_rating = product.feedbacks.where('buyer_feedback_date IS NOT NULL').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
