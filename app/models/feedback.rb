@@ -35,9 +35,11 @@ before_save :doproback, :if =>  :from_buyers
   scope :from_buyers_for_product, ->(product_id) { joins(:product).where(products: { id: product_id }).where.not(buyer_feedback_date: nil) }
 
  def from_buyers
+order = Order.find_by_id(attributes['order_id'])
+
 user = User.find_by_id(attributes['user_id'])
 
-  #  ->(user_id) { joins(:user).where(users: { id: user_id }) }
+ product = Product.find_by_id(attributes['product_id'])
 
 
  end
@@ -75,6 +77,8 @@ user = User.find_by_id(attributes['user_id'])
 def doproback
 order = Order.find_by_id(attributes['order_id'])
    proback = Proback.new
+   order = Order.find_by_id(attributes['order_id'])
+
     proback.product_id = order.product_id
     proback.pdata_id = order.product_id
     proback.feedback_id = feedback.id
