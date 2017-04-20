@@ -7,9 +7,9 @@ class Feedback < ActiveRecord::Base
 
 
   #after_commit :feedback_product, on: :create
-after_create :feedback_product
+  after_create :feedback_product
 
-before_save :doproback, :if =>  :from_buyers
+  before_save :doproback, :if =>  :from_buyers
   FROM_BUYERS = 'from_buyers'
   FROM_SELLERS = 'from_sellers'
 
@@ -34,15 +34,13 @@ before_save :doproback, :if =>  :from_buyers
 
   scope :from_buyers_for_product, ->(product_id) { joins(:product).where(products: { id: product_id }).where.not(buyer_feedback_date: nil) }
 
- def from_buyers
-order = Order.find_by_id(attributes['order_id'])
-
-user = User.find_by_id(attributes['user_id'])
-
- product = Product.find_by_id(attributes['product_id'])
+  def from_buyers
+    order = Order.find_by_id(attributes['order_id'])
+    user = User.find_by_id(attributes['user_id'])
+    product = Product.find_by_id(attributes['product_id'])
 
 
- end
+  end
 
 
   def self.average_rating(user, from_who)
@@ -57,28 +55,25 @@ user = User.find_by_id(attributes['user_id'])
 
 
   def feedback_product
-order = Order.find_by_id(attributes['order_id'])
 
-user = User.find_by_id(attributes['user_id'])
-
- product = order.product_id
-
- product.total_feedbacks += 1
+    order = Order.find_by_id(attributes['order_id'])
+    product = order.product_id
+    product.total_feedbacks += 1
     product.average_rating = product.feedbacks.where('buyer_feedback_date IS NOT NULL').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
     product.save
 
 
- end
+  end
 
 
 
 
 
-def doproback
-order = Order.find_by_id(attributes['order_id'])
-   proback = Proback.new
-   order = Order.find_by_id(attributes['order_id'])
+  def doproback
+  #  order = Order.find_by_id(attributes['order_id'])
+    proback = Proback.new
+    order = Order.find_by_id(attributes['order_id'])
 
     proback.product_id = order.product_id
     proback.pdata_id = order.product_id
@@ -90,5 +85,5 @@ order = Order.find_by_id(attributes['order_id'])
     proback.save
 
 
-end
+  end
 end
