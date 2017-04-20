@@ -216,8 +216,9 @@ class OrdersController < ApplicationController
           order.transaction = transaction
 
           product = order.product
-          quantity = product.quantity
-          product.quantity -= quantity
+         # quantity = product.quantity
+          #product.quantity -= quantity
+          product.decrement!(:quantity, params[:quantity])
           product.save
 
           order.save
