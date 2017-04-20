@@ -117,22 +117,6 @@ img#rating_line  {display: inline;
   font-weight:normal;
   margin-bottom: 18px;
 }
-.select_item {
-  display: block;
-  width: auto;
-  height: 32px;
-  padding: 8px 10px;
-  line-height: 1.28571;
-  color: #666;
-  background-color: #FFF;
-  background-image: none;
-  border: 1px solid #999;
-  border-radius: 6px;
-  box-shadow: 0px 0px 3px #999 inset;
-  transition: box-shadow 0.3s ease 0s;
-}
-
-
 
 
 
@@ -401,5 +385,33 @@ height: 170px;}*/
 
 
 .status_line li{padding:3px;display:block}
-.detail_price {font-size:12px}
+.detail_price {font-size:13px}
+.detail_price li {margin-top:3px}
 
+
+
+#divider{
+    position: absolute;
+    top: 0;
+    left: -43px;
+    height: 100%;
+    width: 42px;
+    pointer-events: none;
+    background-position: -227px 0;
+}
+
+
+#shadow {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    height: 100%;
+    width: 1px;
+    background: #ddd;
+    background: -moz-linear-gradient(top,#fff 0,rgba(255,255,255,0) 20%,rgba(255,255,255,0) 80%,#fff 100%),#ddd;
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#fff),color-stop(20%,rgba(255,255,255,0)),color-stop(80%,rgba(255,255,255,0)),color-stop(100%,#fff)),#ddd;
+    background: -webkit-linear-gradient(top,#fff 0,rgba(255,255,255,0) 20%,rgba(255,255,255,0) 80%,#fff 100%),#ddd;
+    background: -o-linear-gradient(top,#fff 0,rgba(255,255,255,0) 20%,rgba(255,255,255,0) 80%,#fff 100%),#ddd;
+    background: -ms-linear-gradient(top,#fff 0,rgba(255,255,255,0) 20%,rgba(255,255,255,0) 80%,#fff 100%),#ddd;
+    background: linear-gradient(to bottom,#fff 0,rgba(255,255,255,0) 20%,rgba(255,255,255,0) 80%,#fff 100%),#ddd;
+}

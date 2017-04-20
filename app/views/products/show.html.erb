@@ -64,13 +64,13 @@
 
 
         <!-- Fim-->
-
+  <hr class="line margin_top"></hr>
         <!--Descrição   -->
         <ul class="detail_price">
 
 
           <li>
-            <hr class="line"></hr>
+          
 
             <span>Preço:
               <strong class="bigger"><%= number_to_currency(@product.price, :unit => "R$") %></strong></span>
@@ -157,11 +157,15 @@
 
 
   <div class="box10">
-
+<div id="divider"></div>
+  <div id="shadow"></div>
 
     <div class="block">
 
       <div class="tip_box wrapper div_select ">
+
+  
+
 
 
 
@@ -225,7 +229,7 @@
 
                   <div class="add_to_cart">
 
-                    <%= submit_tag("Adicionar a sacola", :class => 'btn btn_big', :'data-submit-form' => true) do %>
+                    <%= submit_tag("Adicionar a sacola", :class => 'btn_orange btn_big', :'data-submit-form' => true) do %>
                       <%= content_tag(:i, nil, :class=>"add_to_cart_icon")  %>
                     <%end %>
 
