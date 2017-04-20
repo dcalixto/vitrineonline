@@ -56,7 +56,7 @@ class Feedback < ActiveRecord::Base
 
   def feedback_product
 
-   # order = Order.find_by_id(attributes['order_id'])
+    order = Order.find_by_id(attributes['order_id'])
     feedback = Feedback.find_by_id(attributes['id'])
     order = feedback.order
     product = order.product_id
