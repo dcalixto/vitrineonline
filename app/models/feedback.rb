@@ -57,16 +57,17 @@ user = User.find_by_id(attributes['user_id'])
 
 
   def feedback_product
-#product = Product.find_by_id(attributes['product_id'])
+order = Order.find_by_id(attributes['order_id'])
 
- #  user = User.find_by_id(attributes['user_id'])
-# if user
-   product.total_feedbacks += 1
+user = User.find_by_id(attributes['user_id'])
+
+ product = order.product_id
+
+ product.total_feedbacks += 1
     product.average_rating = product.feedbacks.where('buyer_feedback_date IS NOT NULL').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
     product.save
 
-#  end
 
  end
 
