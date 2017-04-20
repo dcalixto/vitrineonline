@@ -73,7 +73,7 @@ user = User.find_by_id(attributes['user_id'])
 
 
 def doproback
-
+order = Order.find_by_id(attributes['order_id'])
    proback = Proback.new
     proback.product_id = order.product_id
     proback.pdata_id = order.product_id

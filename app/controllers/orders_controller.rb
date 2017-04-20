@@ -119,6 +119,8 @@ class OrdersController < ApplicationController
 
   
   def decrease_products_count
+     order = Order.find(params[:id])
+
     product = order.product
     product.quantity -= quantity
     product.save
@@ -207,7 +209,7 @@ class OrdersController < ApplicationController
       if order
         if params[:status] == 'COMPLETED'
           order.status = Order.statuses[0]
-        #  order.decrease_products
+         # order.decrease_products_count
           transaction = Transaction.new
           transaction.store_fee = order.store_fee
           transaction.user_id = order.buyer_id
@@ -216,10 +218,9 @@ class OrdersController < ApplicationController
           order.transaction = transaction
 
           product = order.product
-         # quantity = product.quantity
-          product.quantity -= order.quantity
-         # product.decrement!(:quantity, params[:quantity])
-          product.save
+          quantity = product.quantity
+         product.quantity -= order.quantity
+         product.save
 
           order.save
          
