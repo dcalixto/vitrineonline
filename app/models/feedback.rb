@@ -56,10 +56,10 @@ class Feedback < ActiveRecord::Base
 
   def feedback_product
 
-    order = Order.find_by_id(attributes['order_id'])
-   # feedback = Feedback.find_by_id(attributes['feedback_id'])
-   # order = feedback.order
-    product = order.product
+   # order = Order.find_by_id(attributes['order_id'])
+    feedback = Feedback.find_by_id(attributes['feedback_id'])
+    order = feedback.order
+    product = order.product_id
     product.total_feedbacks += 1
     product.average_rating = product.feedbacks.where('buyer_feedback_date IS NOT NULL').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
