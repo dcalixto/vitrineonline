@@ -29,18 +29,29 @@
             <% end %>
             <%= link_to product.name, product_path(product), :title => product.name %>
             <br/>
+            </td>
             <% if order.buyer == current_user %>
+                <td>
+
             Comprado de
             <%= link_to order.seller.name, vitrine_path(order.seller) %>
+            </td>
+            <td>
             Por
             <%= number_to_currency product.price %>
-            <% else %>
+            </td>
+          <% else %>
+            <td>
             Vendido para
             <%= link_to order.buyer.full_name, user_path(order.buyer) %>
-            <% end %>
+            </td>
+          <% end %>
+          <td>
             Em
             <%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %>
             <br/>
+            </td>
+            <td>
             <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
           </td>
         </tr>
