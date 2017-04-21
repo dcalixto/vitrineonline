@@ -45,50 +45,43 @@
                   <td >
                     <ul>
                       <li>
+                        Item:
                     <% if product.images.present? %>
                       <%= image_tag(product.images.first.ifoto.url(:small).to_s, :alt => product.name) %>
                     <% end %>
                     <%= link_to product.name, product_path(product), :title => product.name %>
                  
                     <b><%= number_to_currency product.price %></b>
-                  </li>
-
+               
 
 
                   <% if order.buyer == current_user %>
-                    <li>
-                    Por:
+                                   Por:
                       <span class="feed_buy">Comprado</span> de
                       <% if order.seller.present? %>
 
                         <%= link_to order.seller.name, vitrine_path(order.seller) %>
                       <% end %>
-                    </li>
-                  <% else %>
-                    <li>
-                    Por:
+                                    <% else %>
+                                       Por:
                       <span class="feed_sell">Vendido</span> para
                       <% if order.buyer.present? %>
 
                         <%= link_to order.buyer.full_name, user_path(order.buyer) %>
                       <% end %>
-                    </li>
-
+                  
                   <% end %>
 
 
 
-                  <li>
-                    Data:
+                                     Data:
                     <% if order.transaction.present? %>
 
                       <b><%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %></b>
                     <% end %>
-                  </li>
+              
 
-
-                  <li>
-Avaliação:
+                Avaliação:
                     <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
                   </li>
 
