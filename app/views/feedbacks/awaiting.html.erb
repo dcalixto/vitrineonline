@@ -13,8 +13,19 @@
       <div class="no_awaiting">
         <%= 'Você não tem espera de avaliações.' %>
       </div>
-      <% end %>
-      <table class="awaiting_feedback_table">
+    <% end %>
+
+
+
+
+
+
+
+    <table class="awaiting_feedback_table">
+
+
+
+
         <% @awaiting_feedbacks_orders.each do |order| %>
         <% product = order.product %>
         <% who = current_user.id == order.buyer.id ? 'buyer_' : 'seller_' %>
@@ -22,6 +33,27 @@
         <%= hidden_field_tag :order_id, order.id %>
         <%= hidden_field_tag "feedback[#{who}feedback_date]", DateTime.now %>
         <%= hidden_field_tag "feedback[#{who}rating]", 0, :id => "feedback_#{order.id}_score" %>
+
+
+
+
+ <tr>
+    <th>
+<b>Item</b>
+    </th>
+    <th>  <b>Por</b>
+    
+    </th>
+    <th><b>Preço</b></th>
+    <th><b>Data</b></th>
+      <th><b>Avaliação</b></th>
+
+  </tr>
+
+
+
+
+
         <tr>
           <td>
             <% if product.images.present? %>
@@ -39,8 +71,7 @@
                                  <% end %>
             </td>
             <td>
-            Por
-            <b><%= number_to_currency product.price %></b>
+                     <b><%= number_to_currency product.price %></b>
             </td>
 
           <% else %>
@@ -55,12 +86,11 @@
               <td>
          <% if order.transaction.present? %>
 
-            Em
-            <b><%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %></b>
+                       <b><%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %></b>
              <% end %>
               </td>
               <td>
-            <br/>
+                       <br/>
             <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
           </td>
         </tr>
