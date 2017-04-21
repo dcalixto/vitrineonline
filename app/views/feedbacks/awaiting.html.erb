@@ -25,18 +25,6 @@
 
 
 
-
-        <% @awaiting_feedbacks_orders.each do |order| %>
-        <% product = order.product %>
-        <% who = current_user.id == order.buyer.id ? 'buyer_' : 'seller_' %>
-        <%= form_tag({action: :create}) do %>
-        <%= hidden_field_tag :order_id, order.id %>
-        <%= hidden_field_tag "feedback[#{who}feedback_date]", DateTime.now %>
-        <%= hidden_field_tag "feedback[#{who}rating]", 0, :id => "feedback_#{order.id}_score" %>
-
-
-
-
  <tr>
     <th>
 <b>Item</b>
@@ -49,6 +37,18 @@
       <th><b>Avaliação</b></th>
 
   </tr>
+
+
+
+
+        <% @awaiting_feedbacks_orders.each do |order| %>
+        <% product = order.product %>
+        <% who = current_user.id == order.buyer.id ? 'buyer_' : 'seller_' %>
+        <%= form_tag({action: :create}) do %>
+        <%= hidden_field_tag :order_id, order.id %>
+        <%= hidden_field_tag "feedback[#{who}feedback_date]", DateTime.now %>
+        <%= hidden_field_tag "feedback[#{who}rating]", 0, :id => "feedback_#{order.id}_score" %>
+
 
 
 

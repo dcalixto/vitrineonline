@@ -30,6 +30,7 @@ font-weight:bold;
 }
 .awaiting_feedback_table .comment_tr td {
   padding-bottom: 20px;
+  width:100%;
  
 }
 .awaiting_feedback_table input[type="radio"] {
@@ -37,6 +38,8 @@ font-weight:bold;
 }
 
 .comment_tr {width:100%}
+
+.comment_tr td {display:block;width:99.9%;clear:both}
 
 .awaiting_feedback_table textarea {
   width: 100%;
