@@ -92,15 +92,15 @@
              <% end %>
               </td>
               <td>
-                       <br/>
+                    
             <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
           </td>
         </tr>
         <tr class="comment_tr">
-          <td>
+          <div>
             <%= text_area_tag "feedback[#{who}comment]" %>
             <%= submit_tag 'Avaliar', :class => 'btn' %>
-          </td>
+          </div>
         </tr>
         <% end %>
         <% end %>
