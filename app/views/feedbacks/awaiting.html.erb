@@ -25,6 +25,21 @@
 
 
 
+<tr>
+    <th>
+<b>Item</b>
+    </th>
+    <th>  <b>Preço</b>
+    
+    </th>
+    <th><b>Por:</b></th>
+    <th><b>Data</b></th>
+     <th><b>Avaliação</b></th>
+
+  </tr>
+
+
+
          
 
           <tbody>
@@ -45,8 +60,7 @@
                   <td >
                     <ul>
                       <li>
-                        Item:
-                    <% if product.images.present? %>
+                                        <% if product.images.present? %>
                       <%= image_tag(product.images.first.ifoto.url(:small).to_s, :alt => product.name) %>
                     <% end %>
                     <%= link_to product.name, product_path(product), :title => product.name %>
