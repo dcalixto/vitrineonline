@@ -29,29 +29,37 @@
             <% end %>
             <%= link_to product.name, product_path(product), :title => product.name %>
             <br/>
-                          <% if order.buyer == current_user %>
+          </td>
+          <% if order.buyer == current_user %>
+            <td>
                             <span class="feed_buy">Comprado</span> de
                              <% if order.seller.present? %>
 
                                <%= link_to order.seller.name, vitrine_path(order.seller) %>
                                  <% end %>
-
+            </td>
+            <td>
             Por
             <b><%= number_to_currency product.price %></b>
-            <% else %>
+            </td>
+
+          <% else %>
+            <td>
               <span class="feed_sell">Vendido</span> para
                  <% if order.buyer.present? %>
 
             <%= link_to order.buyer.full_name, user_path(order.buyer) %>
           <% end %>
+            </td>
               <% end %>
-
+              <td>
          <% if order.transaction.present? %>
 
             Em
             <b><%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %></b>
              <% end %>
-
+              </td>
+              <td>
             <br/>
             <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
           </td>
