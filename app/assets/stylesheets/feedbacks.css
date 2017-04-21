@@ -25,7 +25,7 @@ font-weight:bold;
 }
 .awaiting_feedback_table td, .completed_feedback_table td {
   padding: 4px;
-    border-bottom: #ddd 1px solid;
+    border-bottom: #ccc 1px solid;
 
 }
 .awaiting_feedback_table .comment_tr td {
@@ -39,7 +39,7 @@ font-weight:bold;
 
 .comment_tr {width:100%}
 
-.comment_tr td {display:block;width:99.9%;clear:both}
+.comment_tr td {width:99.9%;clear:both;background:#ddd}
 
 .awaiting_feedback_table textarea {
   width: 100%;
@@ -77,6 +77,20 @@ font-weight:bold;
     margin: 0;
     padding: 0;
     border: 0;
-    border: 1px solid #999;
     width: 100%;
 }
+
+
+.atable ul {
+   list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+.atable ul li {
+
+display: inline;
+list-style-type: none;
+padding-right: 20px;
+}  

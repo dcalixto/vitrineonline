@@ -54,58 +54,55 @@
 
 
 
-                <tr>
-                  <td>
+                <tr class="atable">
+                  <td >
+                    <ul>
+                      <li>
                     <% if product.images.present? %>
                       <%= image_tag(product.images.first.ifoto.url(:small).to_s, :alt => product.name) %>
                     <% end %>
                     <%= link_to product.name, product_path(product), :title => product.name %>
-                                   </td>
-                  <td>
+                 
                     <b><%= number_to_currency product.price %></b>
-                  </td>
+                  </li>
 
 
 
                   <% if order.buyer == current_user %>
-                    <td>
+                    <li>
                       <span class="feed_buy">Comprado</span> de
                       <% if order.seller.present? %>
 
                         <%= link_to order.seller.name, vitrine_path(order.seller) %>
                       <% end %>
-                    </td>
+                    </li>
                   <% else %>
-                    <td>
+                    <li>
                       <span class="feed_sell">Vendido</span> para
                       <% if order.buyer.present? %>
 
                         <%= link_to order.buyer.full_name, user_path(order.buyer) %>
                       <% end %>
-                    </td>
+                    </li>
 
                   <% end %>
 
 
 
-                  <td>
+                  <li>
                     <% if order.transaction.present? %>
 
                       <b><%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %></b>
                     <% end %>
-                  </td>
+                  </li>
 
 
-                  <td>
+                  <li>
 
                     <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
-                  </td>
+                  </li>
 
-
-                </tr>
-
-                <tr>
-                  <td>
+                    </ul>
                   </td>
                 </tr>
                 <tr class="comment_tr">
