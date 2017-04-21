@@ -1,13 +1,13 @@
 
-/* glue: 0.11.1 hash: 768490de5e */
-.sprite-icons-paypal_cards,
+/* glue: 0.11.1 hash: 2d51daa0c6 */
+        .sprite-icons-paypal_cards,
 .sprite-icons-paypal_protect,
 .sprite-icons-paypal-icon,
 .sprite-icons-logo_big,
 .sprite-icons-logo,
 .sprite-icons-paypal_icon2,
-.sprite-icons-5star,
 .sprite-icons-logo_small,
+.sprite-icons-5star,
 .sprite-icons-comodo_secure,
 .sprite-icons-shipping,
 .sprite-icons-4star,
@@ -32,210 +32,232 @@
 .sprite-icons-small_star,
 .sprite-icons-small_like,
 .sprite-icons-small_avatar {
-  background-image: url('icons.png');
-  background-repeat: no-repeat;
-  display: inline-block;
+            background-image: url('icons.png');
+            background-repeat: no-repeat;
+            display: inline-block;
 
-}
-
-.sprite-icons-paypal_cards {
-  background-position: 0 0;
-  width: 319px;
-  height: 110px;
-}
-
-.sprite-icons-paypal_protect {
-  background-position: 0 -110px;
-  width: 280px;
-  height: 50px;
-}
-
-.sprite-icons-paypal-icon {
-  background-position: 0 -160px;
-  width: 191px;
-  height: 29px;
-}
-
-.sprite-icons-logo_big {
-  background-position: 0 -189px;
-  width: 178px;
-  height: 19px;
-}
-
-.sprite-icons-logo {
-  background-position: 0 -208px;
-  width: 166px;
-  height: 18px;
-}
-
-.sprite-icons-paypal_icon2 {
-  background-position: 0 -226px;
-  width: 163px;
-  height: 50px;
-}
-
-.sprite-icons-5star {
-  background-position: -191px -160px;
-  width: 100px;
-  height: 20px;
-}
-
-.sprite-icons-logo_small {
-  background-position: -178px -189px;
-  width: 99px;
-  height: 10px;
-}
-
-.sprite-icons-comodo_secure {
-  background-position: -319px 0;
-  width: 95px;
-  height: 53px;
-}
-
-.sprite-icons-shipping {
-  background-position: -319px -53px;
-  width: 80px;
-  height: 52px;
-}
-
-.sprite-icons-4star {
-  background-position: -319px -105px;
-  width: 80px;
-  height: 20px;
-}
-
-.sprite-icons-3star {
-  background-position: -319px -125px;
-  width: 60px;
-  height: 20px;
-}
-
-.sprite-icons-2star {
-  background-position: -319px -145px;
-  width: 40px;
-  height: 20px;
-}
-
-.sprite-icons-youtube_circle {
-  background-position: -319px -165px;
-  width: 32px;
-  height: 32px;
-}
-
-.sprite-icons-twitter_circle {
-  background-position: -351px -165px;
-  width: 32px;
-  height: 32px;
-}
-
-.sprite-icons-pinterest_circle {
-  background-position: -319px -197px;
-  width: 32px;
-  height: 32px;
-}
-
-.sprite-icons-facebook_circle {
-  background-position: -351px -197px;
-  width: 32px;
-  height: 32px;
-}
-
-.sprite-icons-instagram_circle {
-  background-position: -383px -165px;
-  width: 30px;
-  height: 30px;
-}
-
-.sprite-icons-message {
-  background-position: -383px -197px;
-  width: 27px;
-  height: 23px;
-}
-
-.sprite-icons-truck {
-  background-position: -379px -125px;
-  width: 26px;
-  height: 17px;
-}
-
-.sprite-icons-vitrine {
-  background-position: -359px -145px;
-  width: 25px;
-  height: 20px;
-}
-
-.sprite-icons-sacola {
-  background-position: -384px -145px;
-  width: 25px;
-  height: 20px;
-}
-
-.sprite-icons-feedback {
-  background-position: -319px -229px;
-  width: 25px;
-  height: 25px;
-}
-
-.sprite-icons-box {
-  background-position: -344px -229px;
-  width: 22px;
-  height: 25px;
-}
-
-.sprite-icons-1star {
-  background-position: -366px -229px;
-  width: 20px;
-  height: 20px;
-}
-
-.sprite-icons-location {
-  background-position: -399px -53px;
-  width: 11px;
-  height: 16px;
-}
-
-.sprite-icons-criar-check {
-  background-position: -386px -229px;
-  width: 16px;
-  height: 11px;
-}
-
-.sprite-icons-lupa {
-  background-position: -399px -69px;
-  width: 15px;
-  height: 15px;
-  margin-left:10px;
+        }
+        
+        .sprite-icons-paypal_cards {
+            background-position: 0 0;
+            width: 319px;
+            height: 110px;
+        }
+        
+        .sprite-icons-paypal_protect {
+            background-position: 0 -110px;
+            width: 280px;
+            height: 50px;
+        }
+        
+        .sprite-icons-paypal-icon {
+            background-position: 0 -160px;
+            width: 191px;
+            height: 29px;
+        }
+        
+        .sprite-icons-logo_big {
+            background-position: 0 -189px;
+            width: 175px;
+            height: 19px;
+        }
+        
+        .sprite-icons-logo {
+            background-position: 0 -208px;
+            width: 168px;
+            height: 18px;
+        }
+        
+        .sprite-icons-paypal_icon2 {
+            background-position: 0 -226px;
+            width: 163px;
+            height: 50px;
+        }
+        
+        .sprite-icons-logo_small {
+            background-position: -191px -160px;
+            width: 100px;
+            height: 11px;
+        }
+        
+        .sprite-icons-5star {
+            background-position: -163px -226px;
+            width: 100px;
+            height: 20px;
+        }
+        
+        .sprite-icons-comodo_secure {
+            background-position: -319px 0;
+            width: 95px;
+            height: 53px;
+        }
+        
+        .sprite-icons-shipping {
+            background-position: -319px -53px;
+            width: 80px;
+            height: 52px;
+        }
+        
+        .sprite-icons-4star {
+            background-position: -319px -105px;
+            width: 80px;
+            height: 20px;
+        }
+        
+        .sprite-icons-3star {
+            background-position: -319px -125px;
+            width: 60px;
+            height: 20px;
+        }
+        
+        .sprite-icons-2star {
+            background-position: -319px -145px;
+            width: 40px;
+            height: 20px;
+        }
+        
+        .sprite-icons-youtube_circle {
+            background-position: -319px -165px;
+            width: 32px;
+            height: 32px;
+        }
+        
+        .sprite-icons-twitter_circle {
+            background-position: -351px -165px;
+            width: 32px;
+            height: 32px;
+        }
+        
+        .sprite-icons-pinterest_circle {
+            background-position: -319px -197px;
+            width: 32px;
+            height: 32px;
+        }
+        
+        .sprite-icons-facebook_circle {
+            background-position: -351px -197px;
+            width: 32px;
+            height: 32px;
+        }
+        
+        .sprite-icons-instagram_circle {
+            background-position: -383px -165px;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .sprite-icons-message {
+            background-position: -383px -197px;
+            width: 27px;
+            height: 23px;
+        }
+        
+        .sprite-icons-truck {
+            background-position: -379px -125px;
+            width: 26px;
+            height: 17px;
+        }
+        
+        .sprite-icons-vitrine {
+            background-position: -359px -145px;
+            width: 25px;
+            height: 20px;
+        }
+        
+        .sprite-icons-sacola {
+            background-position: -384px -145px;
+            width: 25px;
+            height: 20px;
+        }
+        
+        .sprite-icons-feedback {
+            background-position: -319px -229px;
+            width: 25px;
+            height: 25px;
+        }
+        
+        .sprite-icons-box {
+            background-position: -344px -229px;
+            width: 22px;
+            height: 25px;
+        }
+        
+        .sprite-icons-1star {
+            background-position: -366px -229px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .sprite-icons-location {
+            background-position: -399px -53px;
+            width: 11px;
+            height: 16px;
+        }
+        
+        .sprite-icons-criar-check {
+            background-position: -386px -229px;
+            width: 16px;
+            height: 11px;
+        }
+        
+        .sprite-icons-lupa {
+            background-position: -399px -69px;
+            width: 15px;
+            height: 15px;
+              margin-left:10px;
   position: absolute;
   left: 0;
   top: 0;
   margin-top: 8px;
 
+        }
+        
+        .sprite-icons-small_vitrine {
+            background-position: -399px -84px;
+            width: 14px;
+            height: 12px;
+        }
+        
+        .sprite-icons-small_star {
+            background-position: -399px -105px;
+            width: 14px;
+            height: 14px;
+        }
+        
+        .sprite-icons-small_like {
+            background-position: -319px -254px;
+            width: 14px;
+            height: 12px;
+        }
+        
+        .sprite-icons-small_avatar {
+            background-position: -280px -110px;
+            width: 14px;
+            height: 13px;
+        }
 
-}
 
-.sprite-icons-small_vitrine {
-  background-position: -399px -84px;
-  width: 14px;
-  height: 12px;
-}
 
-.sprite-icons-small_star {
-  background-position: -399px -105px;
-  width: 14px;
-  height: 14px;
-}
 
-.sprite-icons-small_like {
-  background-position: -319px -254px;
-  width: 14px;
-  height: 12px;
-}
 
-.sprite-icons-small_avatar {
-  background-position: -280px -110px;
-  width: 14px;
-  height: 13px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
