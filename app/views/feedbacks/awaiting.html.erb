@@ -25,20 +25,7 @@
 
 
 
-          <tr>
-            <th>
-              <b>Item</b>
-            </th>
-            <th>  <b>Preço</b>
-
-            </th>
-            <th><b>Por</b></th>
-            <th><b>Data</b></th>
-            <th><b>Avaliação</b></th>
-
-          </tr>
-
-
+         
 
           <tbody>
             <% @awaiting_feedbacks_orders.each do |order| %>
@@ -70,6 +57,7 @@
 
                   <% if order.buyer == current_user %>
                     <li>
+                    Por:
                       <span class="feed_buy">Comprado</span> de
                       <% if order.seller.present? %>
 
@@ -78,6 +66,7 @@
                     </li>
                   <% else %>
                     <li>
+                    Por:
                       <span class="feed_sell">Vendido</span> para
                       <% if order.buyer.present? %>
 
@@ -90,6 +79,7 @@
 
 
                   <li>
+                    Data:
                     <% if order.transaction.present? %>
 
                       <b><%= order.transaction.created_at.strftime("%d/%m/%Y") if order.transaction %></b>
@@ -98,7 +88,7 @@
 
 
                   <li>
-
+Avaliação:
                     <div class="feedback_stars_rating" data-target-score="#feedback_<%= order.id%>_score"></div>
                   </li>
 
