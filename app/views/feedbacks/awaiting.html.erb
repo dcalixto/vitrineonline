@@ -29,10 +29,10 @@
     <th>
 <b>Item</b>
     </th>
-    <th>  <b>Por</b>
+    <th>  <b>Preço</b>
     
     </th>
-    <th><b>Preço</b></th>
+    <th><b>Por</b></th>
     <th><b>Data</b></th>
       <th><b>Avaliação</b></th>
 
@@ -62,6 +62,12 @@
             <%= link_to product.name, product_path(product), :title => product.name %>
             <br/>
           </td>
+ <td>
+                     <b><%= number_to_currency product.price %></b>
+            </td>
+
+
+
           <% if order.buyer == current_user %>
             <td>
                             <span class="feed_buy">Comprado</span> de
@@ -70,11 +76,7 @@
                                <%= link_to order.seller.name, vitrine_path(order.seller) %>
                                  <% end %>
             </td>
-            <td>
-                     <b><%= number_to_currency product.price %></b>
-            </td>
-
-          <% else %>
+                     <% else %>
             <td>
               <span class="feed_sell">Vendido</span> para
                  <% if order.buyer.present? %>
