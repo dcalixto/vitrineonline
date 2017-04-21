@@ -55,11 +55,14 @@ Pedido:
 
                       <h2><%= order.transaction.transaction_id %></h2>
                     <% end %>
+
+
+
                  
+<ul>
 
 
                       <li>
-Item:
 
                                         <% if product.images.present? %>
                       <%= image_tag(product.images.first.ifoto.url(:small).to_s, :alt => product.name) %>
