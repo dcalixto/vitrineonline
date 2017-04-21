@@ -32,20 +32,6 @@
           <tbody class="atable">
 
 
-
-<tr>
-  <td>
-    <ul>
-      <li>Item:</li>
-      <li>Preço:</li>
-<li>Por:</li>
-<li>Data:</li>
-
-<li>Avaliação:</li>
-
-</tr>
-
-
             <% @awaiting_feedbacks_orders.each do |order| %>
               <% product = order.product %>
               <% who = current_user.id == order.buyer.id ? 'buyer_' : 'seller_' %>
@@ -62,7 +48,19 @@
                 <tr >
                   <td >
                     <ul>
+
                       <li>
+
+                                    <% if order.transaction.present? %>
+
+                      <h2><%= order.transaction.transaction_id %><h2>
+                    <% end %>
+                 
+
+
+                      <li>
+Item:
+
                                         <% if product.images.present? %>
                       <%= image_tag(product.images.first.ifoto.url(:small).to_s, :alt => product.name) %>
                     <% end %>
@@ -73,16 +71,28 @@
                       </li>
 
 
+
+ <li>Código:
+                    <b><%=  product.code %></b>
+                      </li>
+
+
+
+
+
+
                       <% if order.buyer == current_user %>
-                        <li>Por:
-                         <span class="feed_buy">Comprado</span> de
+                         <li>Por:
+
+                          <span class="feed_buy">Comprado</span> de
                       <% if order.seller.present? %>
 
                         <%= link_to order.seller.name, vitrine_path(order.seller) %>
                         </li>
                       <% end %>
+                    <% else %>
                       <li>Por:
-                                    <% else %>
+
                           <span class="feed_sell">Vendido</span> para
                       <% if order.buyer.present? %>
 
