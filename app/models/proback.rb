@@ -9,7 +9,7 @@ class Proback < ActiveRecord::Base
 
 
 
-#after_commit :proback_product, on: :create
+after_commit :proback_product, on: :create
 
 
 
