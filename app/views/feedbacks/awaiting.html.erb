@@ -82,7 +82,7 @@ Item:
 
 
                       <% if order.buyer == current_user %>
-                         <li>Por:
+                         <li>Estado:
 
                           <span class="feed_buy">Comprado</span> de
                       <% if order.seller.present? %>
@@ -91,7 +91,7 @@ Item:
                         </li>
                       <% end %>
                     <% else %>
-                      <li>Por:
+                      <li>Estado:
 
                           <span class="feed_sell">Vendido</span> para
                       <% if order.buyer.present? %>
