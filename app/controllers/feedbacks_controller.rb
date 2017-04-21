@@ -31,7 +31,7 @@ class FeedbacksController < ApplicationController
     feedback.seller_name = @order.seller.name
 
     if feedback.save
-      flash[:success] = 'Obrigado'
+      flash[:success] = 'Avaliação Salva'
       @order.feedback = feedback
       @order.save
 

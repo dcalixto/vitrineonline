@@ -60,7 +60,7 @@
                       <%= image_tag(product.images.first.ifoto.url(:small).to_s, :alt => product.name) %>
                     <% end %>
                     <%= link_to product.name, product_path(product), :title => product.name %>
-                    </td>
+                                   </td>
                   <td>
                     <b><%= number_to_currency product.price %></b>
                   </td>
@@ -103,6 +103,11 @@
 
 
                 </tr>
+
+                <tr>
+                  <td>
+                  </td>
+                </tr>
                 <tr class="comment_tr">
                   <td>
                     <%= text_area_tag "feedback[#{who}comment]" %>
@@ -138,6 +143,9 @@
 
 
         </table>
+        <script language="JavaScript">
+fade_flash();
+        </script>
   </div>
 </div>
 </div>
