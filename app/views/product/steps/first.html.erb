@@ -11,17 +11,17 @@
 
 
 <div class="block margin_top">
+   <h1>Postar</h1>
 
 
     <table class="block_search">
       <tr>
         <td>
 
-      <h1>Postar</h1>
-        </td>
+           </td>
       
         <td>
-        <%= p.submit 'Postar', :class =>"btn btn_big" %>
+        <%= p.submit 'Postar', :class =>"btn btn_big right" %>
 
         </td>
 
@@ -51,8 +51,7 @@
                     </ul>
 
         <div id="tab-1">
-            <h1>Imagens e especifiações</h1>
-
+          
         <div class="subcontent">
 
 
@@ -84,7 +83,7 @@
 
             <p class="tip">Descreva seu item</p>
             <p clas="tip">
-            Adicione apenas as medidas pertinente ao produto OBS: Todas as medidas serão em Centímetros Comprimento: 67,5cm
+         O ideal é que além de descrever o item você adicione as medidas para além de facilitar a compreesão do item ajuda a tirar as dúvidas dos comprardores.
             </p>
 
 
@@ -109,7 +108,7 @@
             <h2>Seções</h2>
 
           <div class="subcontent">
-            <p class="tip">As estilos facilitam  a organização dos seus produtos além do google e bing a achar de seu produto com mais facilidade
+            <p class="tip">As seções facilitam  a organização dos seus produtos além do google e bing a achar de seu produto com mais facilidade
             </p>
             <%= p.select :tag_list, options_for_tags(@product.vitrine.tag_list), {}, { id: 'product_tags', multiple: true } %>
 
@@ -254,7 +253,8 @@
     
 <div class="content">
 
-<div class="subcontent_top">
+  <div class="subcontent_top">
+    <p> Caso você queria revisar ou modificar o nome, categoria, quantidade e se compartilha antes de realmente postar seu item</p>
 <h2>Nome do seu produto</h2>
 <%=p.text_field :name, :label=>"Nome"%>
 </div>

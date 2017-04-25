@@ -210,18 +210,16 @@ class OrdersController < ApplicationController
         if params[:status] == 'COMPLETED'
           order.status = Order.statuses[0]
          # order.decrease_products_count
+          product = order.product
+          quantity = product.quantity
+          product.quantity -= order.quantity
+          product.save
           transaction = Transaction.new
           transaction.store_fee = order.store_fee
           transaction.user_id = order.buyer_id
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
-
-          product = order.product
-          quantity = product.quantity
-         product.quantity -= order.quantity
-         product.save
-
           order.save
          
           OrderMailer.order_confirmation(order).deliver

@@ -415,3 +415,6 @@ height: 170px;}*/
     background: -ms-linear-gradient(top,#fff 0,rgba(255,255,255,0) 20%,rgba(255,255,255,0) 80%,#fff 100%),#ddd;
     background: linear-gradient(to bottom,#fff 0,rgba(255,255,255,0) 20%,rgba(255,255,255,0) 80%,#fff 100%),#ddd;
 }
+
+
+.right {float:right}

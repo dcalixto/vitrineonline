@@ -103,7 +103,7 @@ Pedido:
                       <% end %>
                       </li>
                   <% end %>
-                  <li>Data:
+                  <li>Data do Pedido:
 
 
                                                       <% if order.transaction.present? %>
@@ -124,7 +124,7 @@ Pedido:
                 <tr class="comment_tr">
                   <td>
                     <%= text_area_tag "feedback[#{who}comment]" %>
-                    <%= submit_tag 'Avaliar', :class => 'btn' %>
+                    <%= submit_tag 'Avaliar', :class => 'btn right' %>
                   </td>
                 </tr>
 

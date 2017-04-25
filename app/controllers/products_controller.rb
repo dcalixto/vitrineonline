@@ -196,26 +196,35 @@ class ProductsController < ApplicationController
     @last_transaction = Transaction.joins(:product).where('products.product_id = ?', @product_data.id).product('transactions.created_at desc').first
   end
 
-  def log_impression
-    begin
-      @product = Product.cached_find(params[:id])
-    rescue
-      @product = nil
-    end
-    if @product.present?
-      ip_addr = request.remote_ip
-      @impressions = @product.impressions.group(:ip_address).size[ip_addr]
-      if @impressions
-        if @impressions >= 1
-          return false
-        else
-          @product.impressions.create(ip_address: ip_addr)
-        end
-      else
-        @product.impressions.create(ip_address: ip_addr)
-      end
-    end
-  end
+ # def log_impression
+ #   begin
+ #     @product = Product.cached_find(params[:id])
+ #   rescue
+ #     @product = nil
+ #   end
+ #   if @product.present?
+  #    ip_addr = request.remote_ip
+   #   @impressions = @product.impressions.group(:ip_address).size[ip_addr]
+   #   if @impressions
+    #    if @impressions >= 1
+    #      return false
+     #   else
+     #     @product.impressions.create(ip_address: ip_addr)
+     #   end
+    #  else
+    #    @product.impressions.create(ip_address: ip_addr)
+    #  end
+  #  end
+#  end
+
+
+
+def log_impression
+   @product = Product.cached_find(params[:id])
+  # this assumes you have a current_user method in your authentication system
+  @product.impressions.create(ip_address: request.remote_ip,user_id:current_user.id)
+end
+
 
 
 

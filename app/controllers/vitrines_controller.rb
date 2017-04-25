@@ -273,21 +273,28 @@ class VitrinesController < ApplicationController
 
   protected
 
-  def log_impression
-    ip_addr = request.remote_ip
-    @vitrine = Vitrine.cached_find(params[:id])
-    @impressions = @vitrine.impressions.group(:ip_address).size[ip_addr]
-    if @impressions
-      if @impressions >= 1
-        return false
+ # def log_impression
+ #   ip_addr = request.remote_ip
+ #   @vitrine = Vitrine.cached_find(params[:id])
+ #   @impressions = @vitrine.impressions.group(:ip_address).size[ip_addr]
+  #  if @impressions
+  #    if @impressions >= 1
+   #     return false
 
-      else
-        @vitrine.impressions.create(:ip_address => ip_addr)
-      end
-    else
-      @vitrine.impressions.create(:ip_address => ip_addr)
-    end
-  end
+    #  else
+    #    @vitrine.impressions.create(:ip_address => ip_addr)
+    #  end
+   # else
+   #   @vitrine.impressions.create(:ip_address => ip_addr)
+  #  end
+ # end
+
+
+def log_impression
+   @vitrine = Vitrine.cached_find(params[:id])
+  # this assumes you have a current_user method in your authentication system
+  @vitrine.impressions.create(ip_address: request.remote_ip,user_id:current_user.id)
+end
 
 
 

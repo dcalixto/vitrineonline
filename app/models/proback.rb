@@ -1,5 +1,5 @@
 class Proback < ActiveRecord::Base
-  attr_accessible :product_id, :buyer_comment,:buyer_rating,:buyer_feedback_date, :user_id
+  attr_accessible :product_id, :buyer_comment,:buyer_rating,:buyer_feedback_date, :user_id, :total_feedbacks, :average_rating
 
 
   belongs_to :user

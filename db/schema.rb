@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170420045732) do
+ActiveRecord::Schema.define(:version => 20170422015333) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -216,6 +216,7 @@ ActiveRecord::Schema.define(:version => 20170420045732) do
     t.datetime "updated_at",          :null => false
     t.string   "impressionable_type"
     t.integer  "impressionable_id"
+    t.integer  "user_id"
   end
 
   add_index "impressions", ["impressionable_id", "impressionable_type"], :name => "index_impressions_on_impressionable_id_and_impressionable_type"
