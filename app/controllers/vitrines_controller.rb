@@ -293,7 +293,8 @@ class VitrinesController < ApplicationController
 def log_impression
    @vitrine = Vitrine.cached_find(params[:id])
   # this assumes you have a current_user method in your authentication system
-  @vitrine.impressions.create(ip_address: request.remote_ip,user_id:current_user.id)
+  @vitrine.impressions.create(ip_address: request.remote_ip)
+
 end
 
 

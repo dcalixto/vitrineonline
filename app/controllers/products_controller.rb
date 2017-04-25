@@ -222,7 +222,7 @@ class ProductsController < ApplicationController
 def log_impression
    @product = Product.cached_find(params[:id])
   # this assumes you have a current_user method in your authentication system
-  @product.impressions.create(ip_address: request.remote_ip,user_id:current_user.id)
+  @product.impressions.create(ip_address: request.remote_ip)
 end
 
 
