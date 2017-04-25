@@ -35,7 +35,7 @@ class FeedbacksController < ApplicationController
       @order.feedback = feedback
       @order.save
 
-    if   feedback.user == @order.buyer
+    if   current_user == @order.buyer
 
    proback = Proback.new
     proback.product_id = @order.product_id
