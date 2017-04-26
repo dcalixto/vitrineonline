@@ -108,11 +108,15 @@
     <% if product.present? %>
 
       <td>
+      <% if product.images.present? %>
+
+
         <%= link_to  product_path(product.id) do %>
 
           <%= image_tag product.images.first.ifoto.url(:small).to_s %>
           <%=  product.name  %>
         <% end %>
+<% end %>
 
       </td>
 
