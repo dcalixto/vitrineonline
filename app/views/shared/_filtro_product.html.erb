@@ -9,7 +9,7 @@
 
   <%if @products.aggs['gender_id']['buckets'].present? %>
     <div class="filtro">
-      <strong>Genero</strong>
+      <span class="ftitle">Genero</span>
        
       <ul>
         <% @products.aggs['gender_id']['buckets'].each do |bucket| %>
@@ -28,7 +28,7 @@
 
   <%if @products.aggs['vitrine_id']['buckets'].present? %>
     <div class="filtro">
-      <strong>Vitrines</strong>
+      <span class="ftitle">Vitrines</span>
       <ul>
         <% @products.aggs['vitrine_id']['buckets'].each do |bucket| %>
           <li>
@@ -44,7 +44,7 @@
   <% end %>
   <%if @products.aggs['category_id']['buckets'].present? %>
     <div class="filtro">
-      <strong>Categoria</strong>
+      <span class="ftitle">Categoria</span>
       <ul>
         <% @products.aggs['category_id']['buckets'].each do |bucket| %>
           <li>
@@ -69,7 +69,7 @@
 
   <%if @products.aggs['subcategory_id']['buckets'].present? %>
     <div class="filtro">
-      <strong>Tipo</strong>
+      <span  class="ftitle">Tipo</span>
       <ul>
         <% @products.aggs['subcategory_id']['buckets'].each do |bucket| %>
           <li>
@@ -84,7 +84,7 @@
 
   <%if @products.aggs['size_id']['buckets'].present? %>
     <div class="filtro">
-      <strong>Tamamho</strong>
+      <span class="ftitle">Tamamho</span>
       <ul>
         <% @products.aggs['size_id']['buckets'].each do |bucket| %>
           <li>
@@ -97,7 +97,7 @@
 
   <%if @products.aggs['color_id']['buckets'].present? %>
     <div class="filtro">
-      <strong>Cor</strong>
+      <span class="ftitle">Cor</span>
       <ul>
         <% @products.aggs['color_id']['buckets'].each do |bucket| %>
           <li>
@@ -110,7 +110,7 @@
 
   <%if @products.aggs['material_id']['buckets'].present? %>
     <div class="filtro">
-      <strong>Material</strong>
+      <span class="ftitle">Material</span>
       <ul>
         <% @products.aggs['material_id']['buckets'].each do |bucket| %>
           <li>
@@ -123,7 +123,7 @@
 
   <%if @products.aggs['condition_id']['buckets'].present? %>
     <div class="filtro">
-      <strong>Condição</strong>
+      <span>Condição</span>
       <ul>
         <% @products.aggs['condition_id']['buckets'].each do |bucket| %>
           <li>
@@ -136,7 +136,7 @@
 
   <%if @products.aggs['brand_id']['buckets'].present? %>
     <div class="filtro">
-      <strong>Marca</strong>
+      <span class="ftitle">Marca</span>
       <ul>
         <% @products.aggs['brand_id']['buckets'].each do |bucket| %>
           <li>
