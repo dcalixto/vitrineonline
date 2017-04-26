@@ -95,10 +95,9 @@ def decrease_products
         attrs.delete('created_at')
         attrs.delete('updated_at')
         data = Pdata.create(attrs)
-        data.f1 = product.images.first.ifoto
+        data.f1 = product.images.first
         data.average_rating = product.average_rating
-         data.total_feedbacks = product.total_feedbacks
-
+        data.total_feedbacks = product.total_feedbacks
       # data.color = product.colors
       #  data.size =  product.sizes
           
