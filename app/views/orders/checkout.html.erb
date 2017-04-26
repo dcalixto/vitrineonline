@@ -57,11 +57,14 @@
                   <li>Subcategoria:
                     <b>
                       <%= product.subcategory.name %></b>
-                    </li>
+                  </li>
+                  <%if order.size.present? %>
                     <li>Tamanho:
                       <b>
                         <%= order.size.size %></b>
-                      </li>
+                    </li>
+                  <% end %>
+                  <% if order.color.present?%>
                       <li>Cor:
                         <b>
                                                
@@ -69,6 +72,7 @@
                           </b>
 
                       </li>
+                    <% end %>
                         <li>Material:
                           <b>
                             <%= order.material.name %></b>

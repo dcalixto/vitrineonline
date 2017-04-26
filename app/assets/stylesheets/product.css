@@ -248,7 +248,7 @@ font-weight:bold
 }
 
 
-#searchResults .productName{color: #167ac6; font-size:13px;
+#searchResults .productName{color: #167ac6; font-size:15px;
 
      display: block;
     line-height: 1.3em;
@@ -331,7 +331,7 @@ height: 170px;}*/
 
 
  color: #b12704;
-   font-size: 13px;
+   font-size: 14px;
    line-height: 19px !important;
     text-decoration: none;
 }

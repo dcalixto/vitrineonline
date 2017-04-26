@@ -189,3 +189,6 @@ position: relative;
   opacity: 0.6;
   filter: alpha(opacity=60);
 }
+
+
+.margin_bottom {margin-bottom:100px}
