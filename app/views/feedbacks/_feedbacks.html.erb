@@ -38,9 +38,9 @@
   <td>
       
         <%= link_to  pdata_path(pdata.id), :title => pdata.name do %>
-        <% if pdata.images.present? %>
+       
         <%= image_tag pdata.f1.to_s, :alt => pdata.name %>
-        <% end %>
+      
         <%=  pdata.name  %>
         <% end %>
       </td>
