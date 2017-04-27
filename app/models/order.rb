@@ -91,15 +91,14 @@ def decrease_products
       data = Pdata.find_by_id(pr_id)
       if data.nil?
         attrs = product.attributes
-     #   attrs.images.first.delete('ifoto')
         attrs.delete('created_at')
         attrs.delete('updated_at')
         data = Pdata.create(attrs)
-        data.f1 = product.images.first
+        data.remote_f1_url = product.images.first.ifoto.url
         data.average_rating = product.average_rating
         data.total_feedbacks = product.total_feedbacks
-      # data.color = product.colors
-      #  data.size =  product.sizes
+        data.colors = product.colors
+        data.sizes =  product.sizes
           
         data.save
       end
