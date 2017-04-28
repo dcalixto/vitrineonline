@@ -22,10 +22,14 @@
 
       <td>
 
-          
-             
-     <%=   link_to(proback.user.first_name, user_path(proback.user_id))%>
+        <% if proback.user.present? %>
+   
+        <%=   link_to(proback.user.first_name, user_path(proback.user_id))%>
 
+      <% else %>
+
+        <%= proback.buyer_name %>
+      <% end %>
       
       
       </td>

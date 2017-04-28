@@ -45,6 +45,7 @@ class FeedbacksController < ApplicationController
     proback.buyer_comment  = feedback.buyer_comment
     proback.buyer_rating   = feedback.buyer_rating
    proback.buyer_feedback_date   = feedback.buyer_feedback_date
+    proback.buyer_name   = feedback.buyer_name
     proback.save
     end
     

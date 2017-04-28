@@ -13,8 +13,8 @@ class InvoicesController < ApplicationController
     @order = @invoice.order
     @buyer = @order.buyer
     @product = @order.product
-      @transaction = @order.transaction
- @invoice.id = @transaction.transaction_id
+   
+
   
 
 

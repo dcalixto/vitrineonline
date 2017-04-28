@@ -126,6 +126,41 @@
           </li>
 
 
+
+
+   <li>
+          <%if @product.vitrine.marketing.facebook%>
+
+            <%=link_to "https://www.facebook.com/#{@product.vitrine.marketing.facebook}" do %>
+              <%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+
+
+        <li>
+          <%if @product.vitrine.marketing.twitter %>
+
+            <%=link_to "https://www.twitter.com/#{@product.vitrine.marketing.twitter}" do %>
+              <%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+
+
+
+
+
+
+
           <li>Visualizações: <b><%=@product.unique_impression_count %></b></li>
 
 

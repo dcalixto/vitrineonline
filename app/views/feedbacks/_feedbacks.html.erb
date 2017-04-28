@@ -57,7 +57,11 @@
       <td>
         <% if seller.present? && buyer.present? %>
           <%= is_buyer ? link_to(seller.name, vitrine_path(seller.id)) : link_to(buyer.first_name, user_path(buyer.id)) %>
-          <% end %>
+        <% else %>
+
+ <%= is_buyer ? feedback.seller_name : feedback.buyer_name %>
+<% end %>
+
       </td>
 
       <td>

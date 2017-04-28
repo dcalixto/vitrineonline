@@ -176,8 +176,11 @@
 
               <li>Vendedor:
                 <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
-            <% end %>
+            <% else %>
+
+              <li><%= order.seller_name %></li>
           <% end %>
+        <% end %>
 
           <% if  params[:action] == "sold" %>
 
@@ -186,7 +189,10 @@
               <li>Comprador:
 
                 <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
-            <% end %>
+            <% else %>
+
+               <li><%= order.buyer_name %></li>
+             <% end %>
           <% end %>
 
 

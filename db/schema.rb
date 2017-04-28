@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170427223516) do
+ActiveRecord::Schema.define(:version => 20170428194601) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -366,6 +366,7 @@ ActiveRecord::Schema.define(:version => 20170427223516) do
     t.integer  "pdata_id"
     t.integer  "total_feedbacks",     :default => 0
     t.float    "average_rating",      :default => 0.0
+    t.string   "buyer_name"
   end
 
   add_index "probacks", ["feedback_id"], :name => "index_probacks_on_feedback_id"
