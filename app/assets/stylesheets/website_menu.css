@@ -3,19 +3,30 @@
 #menu-box-product {
 
 
-  padding: 10px;
+  padding: 5px;
 
   position: relative;
   width: auto;
   word-wrap: break-word;
   color: #666;
 
- background:#fff
+ background:#fff;
+ display:block;
+ margin-bottom:5px;
+ font-size:13px
     }
 
 
 #menu-box-product a {
     color: #666;
+    margin-bottom:7px;
+    display:inline-block
+}
+
+
+#menu-box-product span a {
+        margin-bottom:10px;
+        display:block
 }
 
 

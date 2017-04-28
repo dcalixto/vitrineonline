@@ -4,7 +4,7 @@ class StocksController < ApplicationController
 
   def index
     @q = Product.joins(:vitrine).where('vitrines.id' => current_vitrine.id).ransack(params[:q])
-    @products = @q.result(distinct: true).includes(:images).paginate(page: params[:page], per_page: 22)
+    @products = @q.result(distinct: true).includes(:images).paginate(page: params[:page], per_page: 22).order('created_at DESC')
       end
 
   def destroy

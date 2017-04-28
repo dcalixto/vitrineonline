@@ -11,13 +11,13 @@ class FeedbacksController < ApplicationController
     @user = current_user
     # @feedbacks = Feedback.by_participant(@user, params[:view]).paginate(:page => params[:page], :per_page => 22)
     @q = Feedback.by_participant(@user, params[:view]).ransack(params[:q])
-    @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+    @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
     @average_rating_from_buyers = Feedback.average_rating(@user, Feedback::FROM_BUYERS)
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
   end
 
   def awaiting
-    @awaiting_feedbacks_orders = Order.awaiting_feedback(current_user).paginate(page: params[:page], per_page: 22)
+    @awaiting_feedbacks_orders = Order.awaiting_feedback(current_user).paginate(page: params[:page], per_page: 22).order('created_at DESC')
     @feedback = Feedback.new
   end
 
@@ -27,8 +27,8 @@ class FeedbacksController < ApplicationController
     feedback.attributes = params[:feedback]
     feedback.user = @order.buyer
     feedback.vitrine = @order.seller
-    feedback.buyer_name = @order.buyer.first_name
-    feedback.seller_name = @order.seller.name
+    feedback.buyer_name = @order.buyer_name
+    feedback.seller_name = @order.seller_name
 
     if feedback.save
       flash[:success] = 'Avaliação Salva'

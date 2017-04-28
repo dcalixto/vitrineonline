@@ -114,7 +114,7 @@ class ProductsController < ApplicationController
 
     #byebug
     @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
-    @probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+    @probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
 
 
     # suggestions for current visitor
@@ -137,7 +137,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
      @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
-    @probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+    @probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
 
    # @probacks =  Proback.joins(:product).where('products.id = ?', @product.id)#.paginate(:per_page => 22, :page => params[:page])
  # @probacks = Proback.by_participant(@product.boutique.user, Feedback::FROM_SELLERS).paginate(:page => params[:page])
@@ -195,27 +195,6 @@ class ProductsController < ApplicationController
     @product_data = ProductData.find(params[:id])
     @last_transaction = Transaction.joins(:product).where('products.product_id = ?', @product_data.id).product('transactions.created_at desc').first
   end
-
- # def log_impression
- #   begin
- #     @product = Product.cached_find(params[:id])
- #   rescue
- #     @product = nil
- #   end
- #   if @product.present?
-  #    ip_addr = request.remote_ip
-   #   @impressions = @product.impressions.group(:ip_address).size[ip_addr]
-   #   if @impressions
-    #    if @impressions >= 1
-    #      return false
-     #   else
-     #     @product.impressions.create(ip_address: ip_addr)
-     #   end
-    #  else
-    #    @product.impressions.create(ip_address: ip_addr)
-    #  end
-  #  end
-#  end
 
 
 

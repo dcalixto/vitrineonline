@@ -123,7 +123,7 @@
 
   <%if @products.aggs['condition_id']['buckets'].present? %>
     <div class="filtro">
-      <span>Condição</span>
+      <span class="ftitle">Condição</span>
       <ul>
         <% @products.aggs['condition_id']['buckets'].each do |bucket| %>
           <li>

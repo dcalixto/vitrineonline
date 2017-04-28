@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170426033630) do
+ActiveRecord::Schema.define(:version => 20170427223516) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -282,6 +282,8 @@ ActiveRecord::Schema.define(:version => 20170426033630) do
     t.datetime "created_at",                                                      :null => false
     t.datetime "updated_at",                                                      :null => false
     t.string   "code"
+    t.string   "seller_name"
+    t.string   "buyer_name"
   end
 
   add_index "orders", ["brand_id"], :name => "index_orders_on_brand_id"
@@ -320,6 +322,9 @@ ActiveRecord::Schema.define(:version => 20170426033630) do
     t.boolean  "is_shared_on_twitter",                                :default => false
     t.integer  "total_feedbacks",                                     :default => 0
     t.float    "average_rating",                                      :default => 0.0
+    t.integer  "user_id"
+    t.string   "vitrine_name"
+    t.string   "user_name"
   end
 
   add_index "pdata", ["brand_id"], :name => "index_pdata_on_brand_id"

@@ -25,7 +25,9 @@ class CartsController < ApplicationController
           order = Order.new
           order.product = product
           order.seller = product.vitrine
+          order.seller_name = product.vitrine.name
           order.buyer = current_user
+          order.buyer_name = current_user.first_name
           order.quantity = quantity
           order.color = color
           order.size = size         

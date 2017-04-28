@@ -1,13 +1,13 @@
 
-/* glue: 0.11.1 hash: 2d51daa0c6 */
+/* glue: 0.11.1 hash: 26347a4ee5 */
         .sprite-icons-paypal_cards,
 .sprite-icons-paypal_protect,
 .sprite-icons-paypal-icon,
 .sprite-icons-logo_big,
-.sprite-icons-logo,
 .sprite-icons-paypal_icon2,
-.sprite-icons-logo_small,
+.sprite-icons-logo,
 .sprite-icons-5star,
+.sprite-icons-logo_small,
 .sprite-icons-comodo_secure,
 .sprite-icons-shipping,
 .sprite-icons-4star,
@@ -58,14 +58,8 @@
         
         .sprite-icons-logo_big {
             background-position: 0 -189px;
-            width: 175px;
-            height: 19px;
-        }
-        
-        .sprite-icons-logo {
-            background-position: 0 -208px;
-            width: 168px;
-            height: 18px;
+            width: 178px;
+            height: 37px;
         }
         
         .sprite-icons-paypal_icon2 {
@@ -74,16 +68,22 @@
             height: 50px;
         }
         
-        .sprite-icons-logo_small {
-            background-position: -191px -160px;
-            width: 100px;
-            height: 11px;
+        .sprite-icons-logo {
+            background-position: -163px -226px;
+            width: 147px;
+            height: 32px;
         }
         
         .sprite-icons-5star {
-            background-position: -163px -226px;
+            background-position: -191px -160px;
             width: 100px;
             height: 20px;
+        }
+        
+        .sprite-icons-logo_small {
+            background-position: -178px -189px;
+            width: 99px;
+            height: 21px;
         }
         
         .sprite-icons-comodo_secure {
@@ -204,12 +204,10 @@
             background-position: -399px -69px;
             width: 15px;
             height: 15px;
-              margin-left:10px;
-  position: absolute;
+          position: absolute;
   left: 0;
   top: 0;
   margin-top: 8px;
-
         }
         
         .sprite-icons-small_vitrine {
@@ -235,28 +233,6 @@
             width: 14px;
             height: 13px;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

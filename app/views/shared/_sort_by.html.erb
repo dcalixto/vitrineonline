@@ -1,11 +1,11 @@
-     <table class="block_search ">
+     <table class="sotable">
 
         <tr>
           <td>
 <p><%=@products.total_entries %> Produtos achados</p>
 
           </td>
-          <td class="sort">
+                  <td class="sort">
 
             Ordernar Por
             <%= select_tag 'order_by', options_for_select([['Preço: Mais Caros', 'price:asc'], ['Preço: Mais Baratos', 'price:desc'], ['Média de Avaliações', 'average_customer_rating:desc'], ['Postado Recentemente', 'created_at:desc']], params[:order_by] || 'created_at:desc'), :class=> "select_item" %>
@@ -13,5 +13,7 @@
 
           </td>
         </tr>
+        
       </table>  
+<hr class="line"></hr>
 

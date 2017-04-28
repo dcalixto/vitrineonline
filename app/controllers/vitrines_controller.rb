@@ -22,12 +22,12 @@ class VitrinesController < ApplicationController
 
 
     @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
-    @feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+    @feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
 
 
 
     @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
-    @products = @q.result(distinct: true).includes(:images).paginate(page: params[:page], per_page: 22)
+    @products = @q.result(distinct: true).includes(:images).paginate(page: params[:page], per_page: 22).order('created_at DESC')
 
     # similarities from another vitrines
     ids = ProductRecommender.instance.predictions_for(@vitrine.id, matrix_label: :vitrines)
@@ -49,7 +49,7 @@ class VitrinesController < ApplicationController
    
   #   @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
       @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
-      @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+      @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
       @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
       
       
@@ -77,7 +77,7 @@ class VitrinesController < ApplicationController
   end
 
    @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
-    @feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page])
+    @feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
 
 
   end
@@ -132,7 +132,7 @@ class VitrinesController < ApplicationController
 
   def user_votes
 
-    @users = User.paginate(page: params[:page], per_page: 22)
+    @users = User.paginate(page: params[:page], per_page: 22).order('created_at DESC')
 
 
 
@@ -145,7 +145,7 @@ class VitrinesController < ApplicationController
     @vitrine = Vitrine.cached_find(params[:id])
 
     @q = Product.joins(:vitrine).where('vitrines.id' => @vitrine.id).ransack(params[:q])
-    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+    @products = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
 
 
 
@@ -273,21 +273,6 @@ class VitrinesController < ApplicationController
 
   protected
 
- # def log_impression
- #   ip_addr = request.remote_ip
- #   @vitrine = Vitrine.cached_find(params[:id])
- #   @impressions = @vitrine.impressions.group(:ip_address).size[ip_addr]
-  #  if @impressions
-  #    if @impressions >= 1
-   #     return false
-
-    #  else
-    #    @vitrine.impressions.create(:ip_address => ip_addr)
-    #  end
-   # else
-   #   @vitrine.impressions.create(:ip_address => ip_addr)
-  #  end
- # end
 
 
 def log_impression

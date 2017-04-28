@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
 
   def index
     @q = current_vitrine.invoices.ransack(params[:q])
-    @invoices = @q.result(distinct: true).paginate(page: params[:page], per_page: 22)
+    @invoices = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
     render :index
    end
 
