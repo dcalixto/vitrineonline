@@ -49,6 +49,7 @@
 *= require product_tag
 *= require main
 *= require normalize
+*= require nprogress
 
 
  */

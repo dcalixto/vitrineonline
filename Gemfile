@@ -11,6 +11,8 @@ gem 'rails', '3.2.22'
 #DATE
 #gem 'stamp'
 
+#PROGRESSBAR
+#gem 'nprogress-rails'
 
 #TABS
 gem 'bettertabs', github: "dcalixto/bettertabs"

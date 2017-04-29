@@ -17,6 +17,8 @@
 //= dropit
 //= require selectize
 
+//= require nprogress
+
 //= require_tree .
 
 
@@ -24,6 +26,26 @@
 jQuery(function($) {
   $('script').attr('defer', 'defer');
 });
+
+
+ 
+$(document).ready(function() {
+NProgress.configure({ showSpinner: false });
+
+NProgress.start();
+NProgress.done(); 
+
+
+});
+
+
+
+NProgress.configure({
+  showSpinner: false,
+  ease: 'ease',
+  speed: 500
+});
+
 
 
 
@@ -334,6 +356,8 @@ $(document).ready(function() {
         });
 
  });
+
+
 
 
 
