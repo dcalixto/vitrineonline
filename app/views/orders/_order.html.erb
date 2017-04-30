@@ -1,5 +1,7 @@
+<% product = order.product %>
+<% if product.present? %>
 <tbody>
-  <% product = order.product %>
+
   <tr>
     <% if controller_name == "carts" && action_name == "index" %>
 
@@ -260,8 +262,9 @@
     <% end %>
   </tr>
 <% end %>
+</tbody>
 
-
+<% end %>
 
 
 
