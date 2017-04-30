@@ -43,7 +43,7 @@ class Order < ActiveRecord::Base
 
   after_commit  :create_pdata, on: :update
 
- after_commit  :create_odata, on: :update
+ after_commit  :create_odata, on: :create
 
 
 after_commit :createcode, on: :create
@@ -126,13 +126,13 @@ def decrease_products
 
     if status == Order.statuses[0]
       or_id = order.id
-      odata = Odata.find_by_id(or_id)
-      if odata.nil?
+      copy = Odata.find_by_id(or_id)
+      if copy.nil?
         attrs = order.attributes
         attrs.delete('created_at')
         attrs.delete('updated_at')
-        odata = Odata.create(attrs)
-        odata.save
+        copy = Odata.create(attrs)
+        copy.save
       end
     end
   end
