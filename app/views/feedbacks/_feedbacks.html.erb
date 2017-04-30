@@ -59,7 +59,7 @@
           <%= is_buyer ? link_to(seller.name, vitrine_path(seller.id)) : link_to(buyer.first_name, user_path(buyer.id)) %>
         <% else %>
 
- <%= is_buyer ? feedback.seller_name : feedback.buyer_name %>
+          <b><%= is_buyer ? feedback.seller_name : feedback.buyer_name %></b>
 <% end %>
 
       </td>

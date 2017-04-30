@@ -179,7 +179,7 @@
               <li>Vendedor:
                 <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
             <% else %>
-
+Vendedor:
               <li><%= order.seller_name %></li>
           <% end %>
         <% end %>
@@ -192,7 +192,7 @@
 
                 <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
             <% else %>
-
+Comprador:
                <li><%= order.buyer_name %></li>
              <% end %>
           <% end %>

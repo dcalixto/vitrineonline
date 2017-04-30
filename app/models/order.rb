@@ -43,6 +43,7 @@ class Order < ActiveRecord::Base
 
   after_commit  :create_pdata, on: :update
 
+ after_commit  :create_odata, on: :update
 
 
 after_commit :createcode, on: :create
@@ -99,6 +100,7 @@ def decrease_products
         data.average_rating = product.average_rating
         data.total_feedbacks = product.total_feedbacks
         data.colors = product.colors
+        data.vitrine_name = product.vitrine.name
         data.sizes =  product.sizes
           
         data.save
@@ -111,6 +113,32 @@ def decrease_products
     prod = Pdata.find_by_id(attributes['product_id']) if prod.nil?
     prod
   end
+
+
+
+
+
+
+
+
+ def create_odata
+      order = Order.find_by_id(attributes['id'])
+
+    if status == Order.statuses[0]
+      or_id = order.id
+      odata = Odata.find_by_id(or_id)
+      if odata.nil?
+        attrs = order.attributes
+        attrs.delete('created_at')
+        attrs.delete('updated_at')
+        odata = Odata.create(attrs)
+        odata.save
+      end
+    end
+  end
+
+
+
 
   def shipping_cost=(shipping_cost)
     write_attribute(:shipping_cost, shipping_cost.tr(',', '.'))
