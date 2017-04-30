@@ -124,17 +124,17 @@ def decrease_products
  def create_odata
       order = Order.find_by_id(attributes['id'])
 
-    if status == Order.statuses[0]
+  #  if status == Order.statuses[0]
       or_id = order.id
-      copy = Odata.find_by_id(or_id)
-      if copy.nil?
+      od = Odata.find_by_id(or_id)
+      if od.nil?
         attrs = order.attributes
         attrs.delete('created_at')
         attrs.delete('updated_at')
-        copy = Odata.create(attrs)
-        copy.save
+        od = Odata.create(attrs)
+        od.save
       end
-    end
+   # end
   end
 
 
