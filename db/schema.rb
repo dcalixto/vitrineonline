@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170428194601) do
+ActiveRecord::Schema.define(:version => 20170430025710) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -261,6 +261,43 @@ ActiveRecord::Schema.define(:version => 20170428194601) do
   end
 
   add_index "obrands", ["slug"], :name => "index_obrands_on_slug"
+
+  create_table "odata", :force => true do |t|
+    t.integer  "cart_id"
+    t.integer  "seller_id"
+    t.integer  "buyer_id"
+    t.integer  "product_id"
+    t.integer  "pdata_id"
+    t.integer  "quantity",                                         :default => 0
+    t.decimal  "shipping_cost",      :precision => 9, :scale => 2
+    t.string   "shipping_method"
+    t.string   "transaction_status"
+    t.string   "status"
+    t.integer  "feedback_id"
+    t.string   "track_number"
+    t.integer  "brand_id"
+    t.integer  "obrand_id"
+    t.integer  "material_id"
+    t.integer  "condition_id"
+    t.integer  "color_id"
+    t.integer  "size_id"
+    t.string   "seller_name"
+    t.string   "buyer_name"
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
+  end
+
+  add_index "odata", ["brand_id"], :name => "index_odata_on_brand_id"
+  add_index "odata", ["buyer_id"], :name => "index_odata_on_buyer_id"
+  add_index "odata", ["cart_id"], :name => "index_odata_on_cart_id"
+  add_index "odata", ["color_id"], :name => "index_odata_on_color_id"
+  add_index "odata", ["condition_id"], :name => "index_odata_on_condition_id"
+  add_index "odata", ["feedback_id"], :name => "index_odata_on_feedback_id"
+  add_index "odata", ["material_id"], :name => "index_odata_on_material_id"
+  add_index "odata", ["obrand_id"], :name => "index_odata_on_obrand_id"
+  add_index "odata", ["product_id"], :name => "index_odata_on_product_id"
+  add_index "odata", ["seller_id"], :name => "index_odata_on_seller_id"
+  add_index "odata", ["size_id"], :name => "index_odata_on_size_id"
 
   create_table "orders", :force => true do |t|
     t.integer  "cart_id"

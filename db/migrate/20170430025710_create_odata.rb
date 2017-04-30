@@ -30,21 +30,21 @@ class CreateOdata < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :orders, :product_id
-    add_index :orders, :cart_id
-    add_index :orders, :seller_id
-    add_index :orders, :buyer_id
-    add_index :orders, :feedback_id
+    add_index :odata, :product_id
+    add_index :odata, :cart_id
+    add_index :odata, :seller_id
+    add_index :odata, :buyer_id
+    add_index :odata, :feedback_id
 
-    add_index :orders, :brand_id
-     add_index :orders, :obrand_id
+    add_index :odata, :brand_id
+     add_index :odata, :obrand_id
 
-    add_index :orders, :color_id
-    add_index :orders, :size_id
+    add_index :odata, :color_id
+    add_index :odata, :size_id
 
 
-    add_index :orders, :material_id
-    add_index :orders, :condition_id
+    add_index :odata, :material_id
+    add_index :odata, :condition_id
 
 
   end
