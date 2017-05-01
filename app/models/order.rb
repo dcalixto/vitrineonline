@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
 
   belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
   belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User'
-  belongs_to :product, touch: true
+  belongs_to :product, touch: true, dependent: :destroy
 
   belongs_to :cart
   belongs_to :feedback
@@ -44,11 +44,9 @@ class Order < ActiveRecord::Base
   after_commit  :create_pdata, on: :update
 
   after_commit  :create_odata, on: :create
-  after_commit  :update_odata, on: :update
-
-
+  #after_commit  :update_odata, on: :update
+  after_update  :update_odata
   after_commit :createcode, on: :create
-
 
 
   def decrease_products
@@ -133,7 +131,6 @@ class Order < ActiveRecord::Base
       od.quantity = order.quantity
       od.save
     end
-    # end
   end
 
 
@@ -141,14 +138,7 @@ class Order < ActiveRecord::Base
 
   def update_odata
     order = Order.find_by_id(attributes['id'])
-
-    if status == Order.statuses[0] 
-      #   or_id = order.id
       od = Odata.find_by_id(attributes['order_id'])
-   
-        od.cart_id = order.cart_id
-        od.product_id = order.product_id
-        od.quantity = order.quantity
         od.shipping_cost = order.shipping_cost
         od.shipping_method  = order.shipping_method
         od.status  = order.status
@@ -156,10 +146,8 @@ class Order < ActiveRecord::Base
         od.track_number  = order.track_number
         od.seller_name  = order.seller_name
         od.buyer_name  = order.buyer_name
-
-        od.save
+       od.save
  
-    end
   end
 
 
