@@ -44,6 +44,7 @@ class Order < ActiveRecord::Base
   after_commit  :create_pdata, on: :update
 
   after_commit  :create_odata, on: :create
+  after_commit  :update_odata, on: :update
 
 
   after_commit :createcode, on: :create
@@ -127,6 +128,7 @@ class Order < ActiveRecord::Base
       attrs.delete('updated_at')
       od = Odata.create(attrs)
       od.cart_id = order.cart_id
+      od.order_id = order.id
       od.product_id = order.product_id
       od.quantity = order.quantity
       od.save
