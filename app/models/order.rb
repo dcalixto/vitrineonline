@@ -9,26 +9,26 @@ class Order < ActiveRecord::Base
 
   belongs_to :cart
   belongs_to :feedback
- 
+
   has_one    :transaction
- 
-  
-   belongs_to :color
-   belongs_to :size
+
+
+  belongs_to :color
+  belongs_to :size
 
   belongs_to :brand,  foreign_key: 'brand_id', class_name: 'Brand'
- 
 
 
- belongs_to :material, foreign_key: 'material_id', class_name: 'Material'
 
- 
+  belongs_to :material, foreign_key: 'material_id', class_name: 'Material'
+
+
 
   belongs_to :condition, foreign_key: 'condition_id', class_name: 'Condition'
 
 
   accepts_nested_attributes_for :size,  :brand, :material,
-     :condition, :transaction
+    :condition, :transaction
 
 
   attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
@@ -43,18 +43,18 @@ class Order < ActiveRecord::Base
 
   after_commit  :create_pdata, on: :update
 
- after_commit  :create_odata, on: :create
+  after_commit  :create_odata, on: :create
 
 
-after_commit :createcode, on: :create
+  after_commit :createcode, on: :create
 
 
 
-def decrease_products
-   
+  def decrease_products
+
     product.quantity -= quantity
     product.save
-   
+
   end
 
 
@@ -62,7 +62,7 @@ def decrease_products
   def createcode
     if code.blank?
 
-    self.code = rand(36**8).to_s(36)
+      self.code = rand(36**8).to_s(36)
     end
   end
 
@@ -76,8 +76,8 @@ def decrease_products
 
 
 
-#include PublicActivity::Model
-#  tracked owner: ->(controller, model) { controller && controller.current_user }
+  #include PublicActivity::Model
+  #  tracked owner: ->(controller, model) { controller && controller.current_user }
 
 
 
@@ -85,7 +85,7 @@ def decrease_products
 
 
   def create_pdata
-      product = Product.find_by_id(attributes['product_id'])
+    product = Product.find_by_id(attributes['product_id'])
 
     if status == Order.statuses[0]
       pr_id = product.id
@@ -102,7 +102,7 @@ def decrease_products
         data.colors = product.colors
         data.vitrine_name = product.vitrine.name
         data.sizes =  product.sizes
-          
+
         data.save
       end
     end
@@ -115,34 +115,34 @@ def decrease_products
   end
 
 
- def create_odata
-      order = Order.find_by_id(attributes['id'])
+  def create_odata
+    order = Order.find_by_id(attributes['id'])
 
-  #  if status == Order.statuses[0]
-      or_id = order.id
-      od = Odata.find_by_id(or_id)
-      if od.nil?
-        attrs = order.attributes
-        attrs.delete('created_at')
-        attrs.delete('updated_at')
-        od = Odata.create(order.attributes.slice(Order.attribute_names))
-        od.cart_id = order.cart_id
-        od.product_id = order.product_id
-        od.quantity = order.quantity
-        od.save
-      end
-   # end
+    #  if status == Order.statuses[0]
+    or_id = order.id
+    od = Odata.find_by_id(or_id)
+    if od.nil?
+      attrs = order.attributes
+      attrs.delete('created_at')
+      attrs.delete('updated_at')
+      od = Odata.create(attrs)
+      od.cart_id = order.cart_id
+      od.product_id = order.product_id
+      od.quantity = order.quantity
+      od.save
+    end
+    # end
   end
 
 
 
 
- def update_odata
-      order = Order.find_by_id(attributes['id'])
-   
-    if status == Order.statuses[0]
-      or_id = order.id
-      od = Odata.find_by_id(or_id)
+  def update_odata
+    order = Order.find_by_id(attributes['id'])
+
+    if status == Order.statuses[1]
+      #   or_id = order.id
+      od = Odata.find_by_id(attributes['order_id'])
       if od.nil?
         attrs = order.attributes
         attrs.delete('created_at')
@@ -152,10 +152,20 @@ def decrease_products
         od.cart_id = order.cart_id
         od.product_id = order.product_id
         od.quantity = order.quantity
+        od.shipping_cost = order.shipping_cost
+        od.shipping_method  = order.shipping_method
+        od.status  = order.status
+        od.feedback_id = order.feedback_id
+        od.track_number  = order.track_number
+        od.seller_name  = order.buyer_name
+
         od.save
       end
     end
   end
+
+
+
 
 
 
@@ -180,20 +190,20 @@ def decrease_products
     product.price * quantity
   end
 
-  
+
   def store_fee
     total_price * configatron.store_fee
   end
 
 
   def new_user_address_path
-  new_user_address_path
+    new_user_address_path
   end
 
 
 
 
-  
+
 
 
 
