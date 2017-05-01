@@ -35,24 +35,24 @@ class FeedbacksController < ApplicationController
       @order.feedback = feedback
       @order.save
 
-    if   current_user == @order.buyer
+      if   current_user == @order.buyer
 
-   proback = Proback.new
-    proback.product_id = @order.product_id
-    proback.pdata_id = @order.product_id
-    proback.feedback_id = feedback.id
-    proback.user_id = feedback.user_id
-    proback.buyer_comment  = feedback.buyer_comment
-    proback.buyer_rating   = feedback.buyer_rating
-   proback.buyer_feedback_date   = feedback.buyer_feedback_date
-    proback.buyer_name   = feedback.buyer_name
-    proback.save
-    end
-    
+        proback = Proback.new
+        proback.product_id = @order.product_id
+        proback.pdata_id = @order.product_id
+        proback.feedback_id = feedback.id
+        proback.user_id = feedback.user_id
+        proback.buyer_comment  = feedback.buyer_comment
+        proback.buyer_rating   = feedback.buyer_rating
+        proback.buyer_feedback_date   = feedback.buyer_feedback_date
+        proback.buyer_name   = feedback.buyer_name
+        proback.save
+      end
+
     else
       flash[:error] = 'Erro'
     end
-    
+
 
 
 
