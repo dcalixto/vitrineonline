@@ -139,17 +139,9 @@ class Order < ActiveRecord::Base
 
 
   def update_odata
-    order = Order.find_by_id(attributes['id'])
-     if status == Order.statuses[0]
-        order = Order.find_by_id(attributes['id'])
-        od = Odata.find_by_id(attributes['order_id'])
-      if od.nil?
-        attrs = order.attributes
-        attrs.delete('created_at')
-        attrs.delete('updated_at')
-        od = Odata.update(attrs)
-    
-        od.shipping_cost = order.shipping_cost
+      order = Order.find(params[:id])
+       od = Odata.find_by(order_id: order.id)
+       od.shipping_cost = order.shipping_cost
         od.shipping_method  = order.shipping_method
         od.status  = order.status
         od.feedback_id = order.feedback_id
@@ -158,10 +150,7 @@ class Order < ActiveRecord::Base
         od.buyer_name  = order.buyer_name
        od.save
  
-  end
-
-     end
-  end
+   end
 
 
 
