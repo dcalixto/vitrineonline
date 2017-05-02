@@ -140,7 +140,7 @@ class Order < ActiveRecord::Base
 
   def update_odata
      order = Order.find_by_id(attributes['id'])
-       od = Odata.find_by(order_id: order.id)
+       od = Odata.find_by_id(order_id: order.id)
        od.shipping_cost = order.shipping_cost
         od.shipping_method  = order.shipping_method
         od.status  = order.status
