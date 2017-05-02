@@ -12,6 +12,8 @@ class Order < ActiveRecord::Base
 
   has_one    :transaction
 
+  has_many :odatas
+
 
   belongs_to :color
   belongs_to :size
@@ -138,7 +140,15 @@ class Order < ActiveRecord::Base
 
   def update_odata
     order = Order.find_by_id(attributes['id'])
-      od = Odata.find_by_id(attributes['order_id'])
+     if status == Order.statuses[0]
+        order = Order.find_by_id(attributes['id'])
+        odata = Odata.find_by_id(attributes['order_id'])
+      if odata.nil?
+        attrs = order.attributes
+        attrs.delete('created_at')
+        attrs.delete('updated_at')
+        odata = Odata.update(attrs)
+    
         od.shipping_cost = order.shipping_cost
         od.shipping_method  = order.shipping_method
         od.status  = order.status
@@ -150,7 +160,8 @@ class Order < ActiveRecord::Base
  
   end
 
-
+     end
+  end
 
 
 
