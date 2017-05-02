@@ -142,12 +142,12 @@ class Order < ActiveRecord::Base
     order = Order.find_by_id(attributes['id'])
      if status == Order.statuses[0]
         order = Order.find_by_id(attributes['id'])
-        odata = Odata.find_by_id(attributes['order_id'])
-      if odata.nil?
+        od = Odata.find_by_id(attributes['order_id'])
+      if od.nil?
         attrs = order.attributes
         attrs.delete('created_at')
         attrs.delete('updated_at')
-        odata = Odata.update(attrs)
+        od = Odata.update(attrs)
     
         od.shipping_cost = order.shipping_cost
         od.shipping_method  = order.shipping_method
