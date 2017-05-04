@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
 
   has_one    :transaction
 
-  has_many :odatas
+  has_one :odata
 
 
   belongs_to :color

@@ -100,8 +100,9 @@ class OrdersController < ApplicationController
               { success: 'Frete Salvo.' }
 
 
-
-        od = Odata.find_by(order_id: order.id)
+        order = Order.find(params[:id])
+        od = order.odata
+       # od = Odata.find_by(order_id: order.id)
         od.shipping_cost = order.shipping_cost
         od.shipping_method  = order.shipping_method
         od.seller_name  = order.seller_name
