@@ -1,6 +1,6 @@
 # encoding: utf-8
 class SessionsController < ApplicationController
-  
+ 
   def new
     redirect_to root_url if current_user
   end

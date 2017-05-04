@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
   protect_from_forgery except: [:ipn_notification]
 
+ cache_sweeper :order_sweeper
 
 
   def purchased
@@ -97,6 +98,20 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     flash = if order.update_attributes(params[:order])
               { success: 'Frete Salvo.' }
+
+
+
+        od = Odata.find_by(order_id: order.id)
+        od.shipping_cost = order.shipping_cost
+        od.shipping_method  = order.shipping_method
+        od.seller_name  = order.seller_name
+        od.buyer_name  = order.buyer_name
+        od.save
+ 
+
+
+
+
             else
               { error: 'Preço Inválido.' }
             end
@@ -117,15 +132,7 @@ class OrdersController < ApplicationController
 
 
 
-  
-  def decrease_products_count
-     order = Order.find(params[:id])
 
-    product = order.product
-    product.quantity -= quantity
-    product.save
-   
-  end
 
 
 
@@ -223,8 +230,15 @@ class OrdersController < ApplicationController
           order.save
          
           OrderMailer.order_confirmation(order).deliver
-          
-          
+
+        
+        
+        od = Odata.find_by(order_id: order.id)
+        od.status = order.status
+        od.save
+ 
+
+        
         end
       end
 

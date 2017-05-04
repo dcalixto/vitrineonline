@@ -36,7 +36,7 @@ config.autoload_paths += %W(#{config.root}/app/sweepers)
     config.i18n.locale = 'pt-BR'
     config.time_zone = 'Brasilia'
     config.active_record.observers = [:message_observer]
-    config.active_record.observers = [:user_sweeper, :vitrine_sweeper]
+    config.active_record.observers = [:user_sweeper, :vitrine_sweeper,  :order_sweeper]
 
 
     # config.i18n.enforce_available_locales = true

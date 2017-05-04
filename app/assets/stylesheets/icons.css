@@ -1,13 +1,12 @@
-
-/* glue: 0.11.1 hash: 26347a4ee5 */
+/* glue: 0.11.1 hash: bd9015e1e9 */
         .sprite-icons-paypal_cards,
 .sprite-icons-paypal_protect,
 .sprite-icons-paypal-icon,
 .sprite-icons-logo_big,
 .sprite-icons-paypal_icon2,
 .sprite-icons-logo,
-.sprite-icons-5star,
 .sprite-icons-logo_small,
+.sprite-icons-5star,
 .sprite-icons-comodo_secure,
 .sprite-icons-shipping,
 .sprite-icons-4star,
@@ -34,7 +33,7 @@
 .sprite-icons-small_avatar {
             background-image: url('icons.png');
             background-repeat: no-repeat;
-            display: inline-block;
+             display: inline-block;
 
         }
         
@@ -59,31 +58,37 @@
         .sprite-icons-logo_big {
             background-position: 0 -189px;
             width: 178px;
-            height: 37px;
+            height: 35px;
         }
         
         .sprite-icons-paypal_icon2 {
-            background-position: 0 -226px;
+            background-position: 0 -224px;
             width: 163px;
             height: 50px;
         }
         
         .sprite-icons-logo {
-            background-position: -163px -226px;
+            background-position: -163px -224px;
             width: 147px;
-            height: 32px;
+            height: 29px;
+
+/* width: 160px;
+            height: 35px;
+
+
+             background-image: url('logo3.png');*/
+                 }
+        
+        .sprite-icons-logo_small {
+            background-position: -191px -160px;
+            width: 100px;
+            height: 19px;
         }
         
         .sprite-icons-5star {
-            background-position: -191px -160px;
+            background-position: -178px -189px;
             width: 100px;
             height: 20px;
-        }
-        
-        .sprite-icons-logo_small {
-            background-position: -178px -189px;
-            width: 99px;
-            height: 21px;
         }
         
         .sprite-icons-comodo_secure {
@@ -204,10 +209,11 @@
             background-position: -399px -69px;
             width: 15px;
             height: 15px;
-          position: absolute;
+                      position: absolute;
   left: 0;
   top: 0;
   margin-top: 8px;
+
         }
         
         .sprite-icons-small_vitrine {
@@ -233,6 +239,7 @@
             width: 14px;
             height: 13px;
         }
+        
 
 
 
