@@ -102,6 +102,7 @@ class OrdersController < ApplicationController
         od = order.odata
         od.shipping_cost = order.shipping_cost
         od.shipping_method  = order.shipping_method
+        od.pdata_id  = order.pdata_id
         od.save
  
 
