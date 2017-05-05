@@ -79,12 +79,9 @@ class Order < ActiveRecord::Base
 
 
 
-
-
-
   def create_pdata
     product = Product.find_by_id(attributes['product_id'])
-order = Order.dind_by_id(attributes['id'])
+
 
     if status == Order.statuses[0]
       pr_id = product.id
@@ -105,8 +102,8 @@ order = Order.dind_by_id(attributes['id'])
         data.save
       end
 
-order.pdata_id = data.id
-order.save
+      
+
 
     end
   end
