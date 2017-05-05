@@ -36,9 +36,9 @@ class FeedbacksController < ApplicationController
       @order.save
 
 
-    odata = @order.odata
-    odata.feedback_id = @order.feedback_id
-    odata.save
+    od = @order.odata
+    od.feedback_id = @order.feedback_id
+    od.save
 
 
 
@@ -54,6 +54,7 @@ class FeedbacksController < ApplicationController
         proback.buyer_feedback_date   = feedback.buyer_feedback_date
         proback.buyer_name   = feedback.buyer_name
         proback.save
+
       end
 
     else
