@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
   belongs_to :subcategory
   belongs_to :transaction
 
-  has_many :images,inverse_of: :product, dependent: :destroy 
+  has_many :images,inverse_of: :product #, dependent: :destroy 
   has_many :orders, dependent: :destroy
   has_many :feedbacks, through: :orders#, inverse_of: :product
   
