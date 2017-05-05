@@ -17,9 +17,11 @@
       <% order = feedback.order %>
       <% if order.present? %>
         <% product = order.product %>
-        <% end %>
+      <% else %>
 
-
+    <% pdata = odata.pdata %>
+  <% end %>
+    
     <% buyer = feedback.user %>
     <% seller = feedback.vitrine %>
     <% is_buyer = @user.nil? ? false : @user.id == buyer.id %>
