@@ -214,7 +214,7 @@ class OrdersController < ApplicationController
       logger.info("IPN message: VERIFIED")
       order = Order.find(params[:id])
        product = order.product
-        pdata = Pdata.find(params[:id])
+        @pdata = Pdata.find(params[:id])
 
 
 
@@ -232,7 +232,7 @@ class OrdersController < ApplicationController
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
-          order.pdata_id = pdata.id
+          order.pdata_id = @pdata.id
           order.save
          
         od = order.odata
