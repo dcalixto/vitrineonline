@@ -23,17 +23,24 @@ class FeedbacksController < ApplicationController
 
   def create
     @order = Order.find_by_id(params[:order_id])
-    feedback = @order.feedback.nil? ? Feedback.new : @order.feedback
+       feedback = @order.feedback.nil? ? Feedback.new : @order.feedback
     feedback.attributes = params[:feedback]
     feedback.user = @order.buyer
     feedback.vitrine = @order.seller
     feedback.buyer_name = @order.buyer_name
     feedback.seller_name = @order.seller_name
-
+     
     if feedback.save
       flash[:success] = 'Avaliação Salva'
       @order.feedback = feedback
       @order.save
+
+
+    odata = @order.odata
+    odata.feedback_id = @order.feedback_id
+    odata.save
+
+
 
       if   current_user == @order.buyer
 

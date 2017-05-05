@@ -3,6 +3,7 @@ class Feedback < ActiveRecord::Base
   belongs_to :user
   belongs_to :vitrine
   has_one :order
+  has_one :odata
   has_one :product, through: :order#,  inverse_of: :feedback
 
 
