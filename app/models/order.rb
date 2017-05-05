@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
 
   belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
   belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User'
-  belongs_to :product, touch: true, dependent: :destroy
+  belongs_to :product, touch: true
 
   belongs_to :cart
   belongs_to :feedback

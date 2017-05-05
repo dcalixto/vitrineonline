@@ -19,7 +19,7 @@ has_one :brand
 
   has_many :feedbacks 
 
-  has_many :orders, foreign_key: 'seller_id'
+  has_many :orders, foreign_key: 'seller_id',  dependent: :destroy
   has_many :invoices, through: :orders, source: :transaction
 
   has_many :announcements, dependent: :destroy
