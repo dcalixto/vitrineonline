@@ -14,8 +14,14 @@
 
   <tbody>
     <% @feedbacks.each do |feedback| %>
-    <% order = feedback.order %>
-    <% product = order.product %>
+      <% order = feedback.order %>
+      <% if order.present? %>
+        <% product = order.product %>
+      <% else %>
+        <% product = odata.product %>
+      <% end %>
+
+
     <% buyer = feedback.user %>
     <% seller = feedback.vitrine %>
     <% is_buyer = @user.nil? ? false : @user.id == buyer.id %>
