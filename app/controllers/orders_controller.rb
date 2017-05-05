@@ -97,19 +97,19 @@ class OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     flash = if order.update_attributes(params[:order])
-              { success: 'Frete Salvo.' }
 
 
-        order = Order.find(params[:id])
         od = order.odata
-       # od = Odata.find_by(order_id: order.id)
         od.shipping_cost = order.shipping_cost
         od.shipping_method  = order.shipping_method
-        od.seller_name  = order.seller_name
-        od.buyer_name  = order.buyer_name
         od.save
  
 
+
+              { success: 'Frete Salvo.' }
+
+
+          
 
 
 
@@ -230,13 +230,18 @@ class OrdersController < ApplicationController
           order.transaction = transaction
           order.save
          
+        od = order.odata
+        od.transaction_id = order.transaction.transaction_id
+        od.status = order.status
+        od.save
+ 
+
+
+
           OrderMailer.order_confirmation(order).deliver
 
         
-        
-        od = Odata.find_by(order_id: order.id)
-        od.status = order.status
-        od.save
+  
  
 
         

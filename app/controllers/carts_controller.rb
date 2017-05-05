@@ -36,15 +36,44 @@ class CartsController < ApplicationController
           order.brand = product.brand
          
           current_user.cart.orders << order
+
+   
+
+
+
         else # increase quantity
           order.quantity += quantity
           order.save
+
+
+  
+
         end
+
+ od = Odata.new
+      od.cart_id = order.cart_id
+      od.order_id = order.id
+      od.product_id = order.product_id
+      od.quantity = order.quantity
+      od.seller_name = order.seller_name
+      od.buyer_name = order.buyer_name
+      od.buyer_id = order.buyer_id
+      od.seller_id = order.seller_id
+     od.color_id = order.color_id
+      od.size_id = order.size_id
+od.brand_id = order.brand_id
+      od.condition_id = order.condition_id
+
+
+      od.save
+
+
 
         redirect_to product_path(product)
         flash[:success] = "#{product.name} adicionado(a) a sacola"
 
-#  flash[:success] =   %Q[#{product.name} adicionado(a) a sacola <a href="/carts">ir para o carrinho</a>]
+
+
 
               else
         redirect_to product_path(product)

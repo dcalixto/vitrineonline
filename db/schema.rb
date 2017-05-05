@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170430025710) do
+ActiveRecord::Schema.define(:version => 20170505012231) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -285,6 +285,8 @@ ActiveRecord::Schema.define(:version => 20170430025710) do
     t.string   "buyer_name"
     t.datetime "created_at",                                                      :null => false
     t.datetime "updated_at",                                                      :null => false
+    t.integer  "order_id"
+    t.string   "transaction_id"
   end
 
   add_index "odata", ["brand_id"], :name => "index_odata_on_brand_id"

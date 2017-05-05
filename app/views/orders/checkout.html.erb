@@ -17,7 +17,7 @@
   <div class="block_empty margin_top">
 
   
-    <table class="checkout_product">
+    <table class="checkout_product font_size">
       <% product = @order.product %>
       <thead>
         <tr>
@@ -107,7 +107,7 @@
  <div class="box11">
  <div class="block_empty margin_top">
 
-<table class="checkout_product">
+<table class="checkout_product font_size">
          <thead>
         <tr>
                   <th>
@@ -188,7 +188,7 @@
 
 
 
-                      <table class="checkout_total">
+                      <table class="checkout_total greybox">
                         <thead>
                           <tr>
                             <th>
@@ -205,7 +205,7 @@
                           
                           </td>
                           <td>
-                            <b><%= number_to_currency @order.total_price %></b>
+                            <h2><%= number_to_currency @order.total_price %></h2>
                           </td>
                         </tr>
                         <tr class="shipping_cost">
@@ -214,8 +214,8 @@
                           </td>
                           <td>
                             <% unless @order.shipping_cost.nil? %>
-                            <b>
-                              <%= number_to_currency( @order.shipping_cost) %></b>
+                            <h2>
+                              <%= number_to_currency( @order.shipping_cost) %></h2>
                             <% end %>
                           </td>
                         </tr>

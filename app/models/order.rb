@@ -45,9 +45,6 @@ class Order < ActiveRecord::Base
 
   after_commit  :create_pdata, on: :update
 
-  after_commit  :create_odata, on: :create
-  #after_commit  :update_odata, on: :update
-  #after_update  :update_odata
   after_commit :createcode, on: :create
 
 
@@ -116,50 +113,29 @@ class Order < ActiveRecord::Base
   end
 
 
-def attributes_for_odata
-    %w{ shipping_cost shipping_method status feedback_id track_number seller_name buyer_name }
-  end
-
-  def update_order_data
-    odata.update attributes.slice(*attributes_for_odata)
-  end
 
 
-  def create_odata
-    order = Order.find_by_id(attributes['id'])
+
+#  def create_odata
+#    order = Order.find_by_id(attributes['id'])
 
     #  if status == Order.statuses[0]
-    or_id = order.id
-    od = Odata.find_by_id(or_id)
-    if od.nil?
-      attrs = order.attributes
-      attrs.delete('created_at')
-      attrs.delete('updated_at')
-      od = Odata.create(attrs)
-      od.cart_id = order.cart_id
-      od.order_id = order.id
-      od.product_id = order.product_id
-      od.quantity = order.quantity
-      od.save
-    end
-  end
+  #  or_id = order.id
+  #  od = Odata.find_by_id(or_id)
+  #  if od.nil?
+   #   attrs = order.attributes
+   #   attrs.delete('created_at')
+   #   attrs.delete('updated_at')
+   #   od = Odata.create(attrs)
+    #  od.cart_id = order.cart_id
+    #  od.order_id = order.id
+    #  od.product_id = order.product_id
+    #  od.quantity = order.quantity
+    #  od.save
+   # end
+ # end
 
 
-
-
- # def update_odata
-  #   order = Order.find_by_id(attributes['id'])
-  #     od = Odata.find_by_id(order_id: order.id)
-   #    od.shipping_cost = order.shipping_cost
-   #     od.shipping_method  = order.shipping_method
-   #     od.status  = order.status
-   #     od.feedback_id = order.feedback_id
-    #    od.track_number  = order.track_number
-    #    od.seller_name  = order.seller_name
-    #    od.buyer_name  = order.buyer_name
-    #   od.save
- 
- #  end
 
 
 
