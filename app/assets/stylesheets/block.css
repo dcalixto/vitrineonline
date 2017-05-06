@@ -100,10 +100,7 @@ overflow:hidden;
 
 .block_search {
    margin-bottom: -18px;
-    background: -webkit-linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent);
-    background: linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent);
-    z-index: 0;
-    zoom: 1;
+ border-bottom: 1px solid #e5e5e5;
 
     margin-bottom: 5px;
 

@@ -68,15 +68,15 @@
         }
         
         .sprite-icons-logo {
-            background-position: -163px -224px;
-            width: 147px;
-            height: 29px;
+           /* background-position: -163px -224px;*/
+          /*  width: 147px;
+            height: 29px;*/
 
-/* width: 160px;
+ width: 160px;
             height: 35px;
 
 
-             background-image: url('logo3.png');*/
+             background-image: url('logo2.png');
                  }
         
         .sprite-icons-logo_small {

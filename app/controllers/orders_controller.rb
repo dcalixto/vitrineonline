@@ -96,15 +96,18 @@ class OrdersController < ApplicationController
 
   def update
     order = Order.find(params[:id])
+    @product = Product.find(params[:id])
+
     flash = if order.update_attributes(params[:order])
 
 
         od = order.odata
         od.shipping_cost = order.shipping_cost
         od.shipping_method  = order.shipping_method
-        od.pdata_id  = order.pdata_id
         od.save
- 
+
+# od.pdata_id  = order.pdata_id
+
 
 
               { success: 'Frete Salvo.' }
@@ -214,8 +217,7 @@ class OrdersController < ApplicationController
       logger.info("IPN message: VERIFIED")
       order = Order.find(params[:id])
        product = order.product
-        @pdata = Pdata.find(params[:id])
-
+     
 
 
       if order
@@ -232,8 +234,7 @@ class OrdersController < ApplicationController
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
-          order.pdata_id = @pdata.id
-          order.save
+                    order.save
          
         od = order.odata
         od.transaction_id = order.transaction.transaction_id

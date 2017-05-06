@@ -5,8 +5,9 @@ class CartsController < ApplicationController
 
   def add
     product = Product.find(params[:id])
+   # pdata = Pdata.find_by_id(params[:id])
 
-    if product
+     if product
       if product.buyable?(current_user)
         current_user.cart = Cart.new if current_user.cart.nil?
         condition = Condition.find_by_id(params[:condition_id])
@@ -24,6 +25,8 @@ class CartsController < ApplicationController
 
           order = Order.new
           order.product = product
+       
+
           order.seller = product.vitrine
           order.seller_name = product.vitrine.name
           order.buyer = current_user
@@ -49,8 +52,11 @@ class CartsController < ApplicationController
   
 
         end
+#@pdata = Pdata.find_by_id(params[:id])
 
  od = Odata.new
+ #od.pdata = @pdata
+
       od.cart_id = order.cart_id
       od.order_id = order.id
       od.product_id = order.product_id

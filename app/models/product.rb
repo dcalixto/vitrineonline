@@ -40,7 +40,7 @@ class Product < ActiveRecord::Base
     :vitrine_id, :products, :price,
     :size_ids, :color_ids,  :tag_list, :is_shared_on_facebook,
     :is_shared_on_twitter,:images_attributes, 
-    :brand_id, :obrand_id, :condition_id
+    :brand_id, :obrand_id, :condition_id, :height, :width, :diamenter, :length, :weight
 
   validates :name, presence: true, length: { maximum: 140 }
   validates :price, presence: true
@@ -51,6 +51,7 @@ class Product < ActiveRecord::Base
 
   
    before_create  :createcode
+   after_create  :create_pdata
 
  def createcode
     if code.blank?
@@ -100,6 +101,42 @@ class Product < ActiveRecord::Base
 
 
   after_commit :flush_cache
+
+
+
+  def create_pdata
+    product = Product.find_by_id(attributes['id'])
+
+  #  if status == Order.statuses[0]
+      pr_id = product.id
+      data = Pdata.find_by_id(pr_id)
+      if data.nil?
+        attrs = product.attributes
+        attrs.delete('created_at')
+        attrs.delete('updated_at')
+        data = Pdata.create(attrs)
+
+            
+        data.save
+     # end
+      
+
+    end
+
+
+  end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   def fetch_images

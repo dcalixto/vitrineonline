@@ -2,6 +2,7 @@ class Odata < ActiveRecord::Base
   # attr_accessible :title, :body
 
 belongs_to :order
+belongs_to :pdata
 belongs_to :feedback
 
   attr_accessible :cart_id, :product_id, :purchased_at, :quantity,

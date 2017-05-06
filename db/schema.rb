@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170505055453) do
+ActiveRecord::Schema.define(:version => 20170505102234) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -339,41 +339,61 @@ ActiveRecord::Schema.define(:version => 20170505055453) do
 
   create_table "pdata", :force => true do |t|
     t.string   "slug"
-    t.integer  "vitrine_id",                                                             :null => false
+    t.integer  "vitrine_id",                                                               :null => false
     t.string   "f1"
     t.text     "detail"
     t.integer  "category_id"
     t.integer  "gender_id"
     t.integer  "subcategory_id"
     t.integer  "color_id"
-    t.integer  "size_id"
     t.integer  "material_id"
     t.integer  "condition_id"
     t.integer  "brand_id"
     t.string   "meta_keywords"
-    t.datetime "created_at",                                                             :null => false
-    t.datetime "updated_at",                                                             :null => false
+    t.datetime "created_at",                                                               :null => false
+    t.datetime "updated_at",                                                               :null => false
     t.string   "status"
     t.string   "current_step"
     t.string   "name"
-    t.decimal  "price",                 :precision => 9, :scale => 2
-    t.integer  "quantity",                                            :default => 0
-    t.boolean  "is_shared_on_facebook",                               :default => false
-    t.boolean  "is_shared_on_twitter",                                :default => false
-    t.integer  "total_feedbacks",                                     :default => 0
-    t.float    "average_rating",                                      :default => 0.0
+    t.decimal  "price",                   :precision => 9, :scale => 2
+    t.integer  "quantity",                                              :default => 0
+    t.boolean  "is_shared_on_facebook",                                 :default => false
+    t.boolean  "is_shared_on_twitter",                                  :default => false
+    t.integer  "total_feedbacks",                                       :default => 0
+    t.float    "average_rating",                                        :default => 0.0
     t.integer  "user_id"
     t.string   "vitrine_name"
     t.string   "user_name"
+    t.integer  "impressions_count"
+    t.integer  "cached_votes_total",                                    :default => 0
+    t.integer  "cached_votes_score",                                    :default => 0
+    t.integer  "cached_votes_up",                                       :default => 0
+    t.integer  "cached_votes_down",                                     :default => 0
+    t.integer  "cached_weighted_score",                                 :default => 0
+    t.integer  "cached_weighted_total",                                 :default => 0
+    t.float    "cached_weighted_average",                               :default => 0.0
+    t.float    "weight"
+    t.float    "lenght"
+    t.float    "width"
+    t.float    "height"
+    t.float    "diamenter"
+    t.string   "code"
+    t.float    "length"
   end
 
   add_index "pdata", ["brand_id"], :name => "index_pdata_on_brand_id"
+  add_index "pdata", ["cached_votes_down"], :name => "index_pdata_on_cached_votes_down"
+  add_index "pdata", ["cached_votes_score"], :name => "index_pdata_on_cached_votes_score"
+  add_index "pdata", ["cached_votes_total"], :name => "index_pdata_on_cached_votes_total"
+  add_index "pdata", ["cached_votes_up"], :name => "index_pdata_on_cached_votes_up"
+  add_index "pdata", ["cached_weighted_average"], :name => "index_pdata_on_cached_weighted_average"
+  add_index "pdata", ["cached_weighted_score"], :name => "index_pdata_on_cached_weighted_score"
+  add_index "pdata", ["cached_weighted_total"], :name => "index_pdata_on_cached_weighted_total"
   add_index "pdata", ["category_id"], :name => "index_pdata_on_category_id"
   add_index "pdata", ["color_id"], :name => "index_pdata_on_color_id"
   add_index "pdata", ["condition_id"], :name => "index_pdata_on_condition_id"
   add_index "pdata", ["gender_id"], :name => "index_pdata_on_gender_id"
   add_index "pdata", ["material_id"], :name => "index_pdata_on_material_id"
-  add_index "pdata", ["size_id"], :name => "index_pdata_on_size_id"
   add_index "pdata", ["slug"], :name => "index_pdata_on_slug"
   add_index "pdata", ["subcategory_id"], :name => "index_pdata_on_subcategory_id"
   add_index "pdata", ["vitrine_id"], :name => "index_pdata_on_vitrine_id"
@@ -470,7 +490,6 @@ ActiveRecord::Schema.define(:version => 20170505055453) do
     t.integer  "subcategory_id",                                                           :null => false
     t.integer  "impressions_count"
     t.integer  "color_id"
-    t.integer  "size_d"
     t.integer  "brand_id"
     t.integer  "material_id"
     t.integer  "condition_id"
@@ -489,15 +508,8 @@ ActiveRecord::Schema.define(:version => 20170505055453) do
     t.integer  "cached_weighted_score",                                 :default => 0
     t.integer  "cached_weighted_total",                                 :default => 0
     t.float    "cached_weighted_average",                               :default => 0.0
-    t.integer  "buyer_rating"
-    t.integer  "transaction_id"
-    t.datetime "buyer_feedback_date"
-    t.integer  "feedback_counter",                                      :default => 0
-    t.integer  "rate_from_buyers",                                      :default => 0
     t.integer  "total_feedbacks",                                       :default => 0
     t.integer  "average_rating",                                        :default => 0
-    t.integer  "obrand_id"
-    t.boolean  "branded",                                               :default => false
     t.float    "weight"
     t.float    "length"
     t.float    "width"

@@ -6,6 +6,7 @@ class Order < ActiveRecord::Base
   belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
   belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User'
   belongs_to :product, touch: true
+ belongs_to :pdata
 
   belongs_to :cart
   belongs_to :feedback
@@ -30,7 +31,7 @@ class Order < ActiveRecord::Base
 
 
   accepts_nested_attributes_for :size,  :brand, :material,
-    :condition, :transaction
+    :condition, :transaction, :pdata
 
 
   attr_accessible :cart_id, :product_id, :purchased_at, :quantity,
@@ -43,9 +44,11 @@ class Order < ActiveRecord::Base
 
   scope :awaiting_feedback, ->(user) { joins('left join feedbacks on feedbacks.id = orders.feedback_id').where('(buyer_id = ? and buyer_feedback_date is null) or (seller_id = ? and seller_feedback_date is null)', user.id, user.vitrine ? user.vitrine.id : 0).where('status is not null').order(:created_at) }
 
- ## after_commit  :create_pdata, on: :update
-after_commit  :create_pdata, on: :create
-
+# after_commit  :create_pdata, on: :update
+#after_commit  :create_pdata, on: :create
+ after_update  :create_pdata
+ #after_create  :create_pdata
+ #after_update  :addp
 
   after_commit :createcode, on: :create
 
@@ -76,47 +79,103 @@ after_commit  :create_pdata, on: :create
 
 
 
-  #include PublicActivity::Model
-  #  tracked owner: ->(controller, model) { controller && controller.current_user }
+def create_pdata 
+ # pdata = Pdata.find_by_id(product)
 
 
+unless pdata
+attrs = product.attributes.slice(
+"color_id", "name", "code",
+"vitrine_id","gender_id", "category_id", "subcategory_id",
+"quantity","price", "brand_id", "condition_id"
 
-  def create_pdata
-    product = Product.find_by_id(attributes['product_id'])
+)
+puts attrs
+pdata = Pdata.create!(attrs)
+update_column :pdata_id, pdata.id
+end
+rescue => e
+puts e.inspect
+raise e
+end
+
+#def create_pdata 
+ #   pdata = Pdata.find_by_id(product)
+  #  order = Order.find_by_id(id)
+   # unless pdata
+    #  attrs = product.attributes.slice(
+      
+     #  :impressions_count, :color_id, :size_id, :current_step, :is_shared_on_facebook, :is_shared_on_twitter, 
+  #:cached_votes_total, :cached_votes_score, :cached_votes_up, :cached_votes_down, :cached_weighted_score, 
+  
+  #:cached_weighted_total, :cached_weighted_average, :buyer_rating, :transaction_id, :buyer_feedback_date, 
+  #:feedback_counter, :rate_from_buyers, :total_feedbacks, :average_rating, :obrand_id, :branded, :weight, 
+  #:length, :width, :height, :diamenter, :code,
+  #:id, :vitrine_id, :slug, :name, :price, :detail, :gender_id, :category_id, :subcategory_id, 
+  #:brand_id, :material_id, :condition_id, :meta_keywords, :quantity, :status
+      
+      
+   #   )
+    #  pdata = Pdata.create(attrs)
+     # self.pdata = pdata
+      #order = pdata.id
+
+      #self.save
+    #end
+  #end
 
 
+ # def create_pdata
+ #   product = Product.find_by_id(attributes['product_id'])
+  
   #  if status == Order.statuses[0]
-      pr_id = product.id
-      data = Pdata.find_by_id(pr_id)
-      if data.nil?
-        attrs = product.attributes
-        attrs.delete('created_at')
-        attrs.delete('updated_at')
-        data = Pdata.create(attrs)
-        data.vitrine_name = vitrine.name
-        data.f1 = product.images.first.ifoto.url
-        data.average_rating = product.average_rating
-        data.total_feedbacks = product.total_feedbacks
-        data.colors = product.colors
-        data.vitrine_name = product.vitrine.name
-        data.sizes =  product.sizes
+  #   pr_id = product.id
+  #    data = Pdata.find_by_id(pr_id)
+  #    unless data
+     #   attrs = product.attributes
+       # attrs.delete('created_at')
+    #    attrs.delete('updated_at')
+    #   data = Pdata.create(attrs)
 
-        data.save
+     #   data = data.or_id
+
+       # data.save
+      #  update_column :pdata_id, pdata.id
      # end
-
       
 
+   # end
 
-    end
-  end
+
+ # end
 
   def product
+  
     prod = Product.find_by_id(attributes['product_id'])
     prod = Pdata.find_by_id(attributes['product_id']) if prod.nil?
     prod
+
   end
 
 
+ def addp
+    od = Order.find_by_id(attributes['id'])
+
+ #      pro = Pdata.find_by_id(attributes['product_id']) #if pro.nil?
+   # pro
+
+od.pdata_id = pro.id
+
+od.save
+
+
+  
+  #  if status == Order.statuses[0]
+      or_id = order.id
+      data = Pdata.find_by_id(pr_id)
+
+
+  end
 
 
 
