@@ -1,6 +1,9 @@
 class Odata < ActiveRecord::Base
   # attr_accessible :title, :body
 
+  belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
+  belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User'
+
 belongs_to :order
 belongs_to :pdata
 belongs_to :feedback
