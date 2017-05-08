@@ -102,14 +102,26 @@
 <li>
 <%=current_vitrine.postal_code %>
 <li>
-<% unless current_user.city.blank? %>
-<li><%=current_user.city.name %>
-</li>
-<% end %>
-<% unless current_user.state.blank? %>
-<li><%=current_user.state.name %>
-</li>
-<% end %>
+
+
+
+
+ <li>
+<div class="form-group">
+  <%= ad.label :state_id, 'Estado' %>&nbsp;
+  <%= dynamic_collection_select :user, :state_id, :city, State.all, :id, :code,
+{ include_blank: false, submit_with_form: true, :prompt => 'Selecionar Estado'  }, { class: 'form-control' } %>
+</div>
+ </li>
+
+ <li>
+
+<div class="form-group">
+  <%= ad.label :city_id, 'Cidade' %>&nbsp;
+  <%= ad.collection_select :city_id, [], :name,  {include_blank: false, :prompt => 'Selecionar Cidade'}, { class: 'form-control' } %>
+</div>
+ </li>
+
 </ul>
 
 </div>

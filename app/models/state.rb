@@ -5,8 +5,8 @@ class State < ActiveRecord::Base
   attr_accessible  :code,:name
   has_many :cities
   has_many :users
-
-  accepts_nested_attributes_for :users
+has_many :vitrines
+  accepts_nested_attributes_for :users, :vitrines
 
 #  after_commit :flush_cache
 

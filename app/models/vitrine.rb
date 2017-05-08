@@ -17,6 +17,9 @@ has_many :impressions,  as: :impressionable, dependent: :destroy
 has_one :brand
 
 
+ belongs_to :city, touch: true
+  belongs_to :state, touch: true
+
   has_many :feedbacks 
 
   has_many :orders, foreign_key: 'seller_id',  dependent: :destroy
