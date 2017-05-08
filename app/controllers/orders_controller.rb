@@ -21,6 +21,8 @@ class OrdersController < ApplicationController
 
 
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
+    
+    
     @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
 
 
@@ -240,6 +242,7 @@ class OrdersController < ApplicationController
         od = order.odata
         od.transaction_id = order.transaction.transaction_id
         od.status = order.status
+         od.tcreated_at = order.transaction.created_at
         od.save
  
 

@@ -46,7 +46,7 @@
 
 
 
-    <% if odata.seller == current_vitrine or odata.buyer == current_user  %>
+    <#% if odata.seller == current_vitrine or odata.buyer == current_user  %>
       <td>
         <ul>
           <li>
@@ -69,7 +69,7 @@
       </td>
       <td>
         <ul>
-          <li>Pedido: <b><%= odata.transaction.transaction_id %></b></li>
+          <li>Pedido: <b><%= odata.transaction_id %></b></li>
 
 
 
@@ -101,7 +101,7 @@ Comprador:
 
           <li>Comprado:
             <b>
-              <%= timeago_tag(odata.transaction.created_at, :nojs => true, :date_only => true)%>
+              <%= timeago_tag(odata.tcreated_at, :nojs => true, :date_only => true)%>
             </b>
           </li>
           <li>Frete:
@@ -132,11 +132,9 @@ Comprador:
 
             Enviado em:
             <b>
-              <% if odata.transaction.present? %>
-
-                <%= timeago_tag(odata.transaction.updated_at, :nojs => true, :date_only => true)%></b>
-          <% end %>
-        <% end %>
+           
+                <%= timeago_tag(odata.tupdated_at, :nojs => true, :date_only => true)%></b>
+               <% end %>
 
           </li>
 
@@ -146,8 +144,7 @@ Comprador:
        
         </ul>
       </td>
-    <% end %>
-  </tr>
+    </tr>
 <% end %>
 </tbody>
 
