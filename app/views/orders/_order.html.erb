@@ -147,7 +147,7 @@
 
 
 
-    <% if order.seller == current_vitrine or order.buyer == current_user  %>
+    <% if order.seller == current_vitrine  %>
       <td>
         <ul>
           <li>
@@ -166,6 +166,37 @@
         </ul>
       </td>
       <td>
+
+      <% end %>
+
+
+      <% if order.buyer == current_user %>
+
+
+
+ <td>
+        <ul>
+          <li>
+
+          </li>
+          <li><b><%= order.seller.vitrine_name %></b></li>
+          <li>
+            <%= order.seller.vitrine_address if order.seller.vitrine_address %></li>
+          <li>
+            <%= order.seller.vitrine_neighborhood if order.seller.vitrine_neighborhood%></li>
+          <li>
+            <%= order.seller.vitrine_city if order.seller.vitrine_city and order.seller.vitrine_state %>
+          </li>
+          <li><%= order.seller.vitrine_postal_code if  order.seller.vitrine_postal_code %></li>
+               </ul>
+      </td>
+      <td>
+      <% end %>
+
+
+
+
+
         <ul>
           <li>Pedido: <b><%= order.transaction.transaction_id %></b></li>
 

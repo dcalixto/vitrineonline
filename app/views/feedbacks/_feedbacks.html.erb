@@ -14,7 +14,7 @@
 
   <tbody>
     <% @feedbacks.each do |feedback| %>
-      <% if order.present? %>
+      <% if order.present?  && product.present?  %>
       <% order = feedback.order %>
       <% product = order.product %>
       <% else %>

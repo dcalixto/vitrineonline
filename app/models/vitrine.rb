@@ -110,8 +110,15 @@ validates_associated :policy, presence: true
   end
 
   def vitrine_city
-    "#{city.name}, #{state.code}"
+    "#{city.name}"
   end
+
+
+  def vitrine_state
+    "#{state.code}"
+  end
+
+
 
   def vitrine_neighborhood
     neighborhood.to_s
