@@ -44,14 +44,11 @@ class Order < ActiveRecord::Base
 
   scope :awaiting_feedback, ->(user) { joins('left join feedbacks on feedbacks.id = orders.feedback_id').where('(buyer_id = ? and buyer_feedback_date is null) or (seller_id = ? and seller_feedback_date is null)', user.id, user.vitrine ? user.vitrine.id : 0).where('status is not null').order(:created_at) }
 
-# after_commit  :create_pdata, on: :update
-#after_commit  :create_pdata, on: :create
+
+
  after_create  :create_pdata
- #after_create  :create_pdata
- #after_update  :addp
-
   after_commit :createcode, on: :create
-
+ after_commit  :update_odata, on: :update
 
   def decrease_products
 
@@ -80,9 +77,7 @@ class Order < ActiveRecord::Base
 
 
 def create_pdata 
- # pdata = Pdata.find_by_id(product)
-
-
+ 
 unless pdata
 attrs = product.attributes.slice(
 "color_id", "name", "code",
@@ -99,55 +94,29 @@ puts e.inspect
 raise e
 end
 
-#def create_pdata 
- #   pdata = Pdata.find_by_id(product)
-  #  order = Order.find_by_id(id)
-   # unless pdata
-    #  attrs = product.attributes.slice(
-      
-     #  :impressions_count, :color_id, :size_id, :current_step, :is_shared_on_facebook, :is_shared_on_twitter, 
-  #:cached_votes_total, :cached_votes_score, :cached_votes_up, :cached_votes_down, :cached_weighted_score, 
-  
-  #:cached_weighted_total, :cached_weighted_average, :buyer_rating, :transaction_id, :buyer_feedback_date, 
-  #:feedback_counter, :rate_from_buyers, :total_feedbacks, :average_rating, :obrand_id, :branded, :weight, 
-  #:length, :width, :height, :diamenter, :code,
-  #:id, :vitrine_id, :slug, :name, :price, :detail, :gender_id, :category_id, :subcategory_id, 
-  #:brand_id, :material_id, :condition_id, :meta_keywords, :quantity, :status
-      
-      
-   #   )
-    #  pdata = Pdata.create(attrs)
-     # self.pdata = pdata
-      #order = pdata.id
-
-      #self.save
-    #end
-  #end
 
 
- # def create_pdata
- #   product = Product.find_by_id(attributes['product_id'])
-  
-  #  if status == Order.statuses[0]
-  #   pr_id = product.id
-  #    data = Pdata.find_by_id(pr_id)
-  #    unless data
-     #   attrs = product.attributes
-       # attrs.delete('created_at')
-    #    attrs.delete('updated_at')
-    #   data = Pdata.create(attrs)
-
-     #   data = data.or_id
-
-       # data.save
-      #  update_column :pdata_id, pdata.id
-     # end
-      
-
-   # end
+def update_odata
+ 
+unless odata
+attrs = order.attributes.slice(
+"pdata_id"
+)
+puts attrs
+odata = Odata.update!(attrs)
+end
+rescue => e
+puts e.inspect
+raise e
+end
 
 
- # end
+
+
+
+
+
+
 
   def product
   
