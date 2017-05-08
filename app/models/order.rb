@@ -48,7 +48,7 @@ class Order < ActiveRecord::Base
 
  after_create  :create_pdata
   after_commit :createcode, on: :create
- after_commit  :update_odata, on: :update
+# after_commit  :update_odata, on: :update
 
   def decrease_products
 
@@ -96,19 +96,19 @@ end
 
 
 
-def update_odata
+#def update_odata
  
-unless odata
-attrs = order.attributes.slice(
-"pdata_id"
-)
-puts attrs
-odata = Odata.update!(attrs)
-end
-rescue => e
-puts e.inspect
-raise e
-end
+#unless odata
+#attrs = order.attributes.slice(
+#"pdata_id"
+#)
+#puts attrs
+#odata = Odata.update!(attrs)
+#end
+#rescue => e
+#puts e.inspect
+#raise e
+#end
 
 
 

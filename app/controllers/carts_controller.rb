@@ -69,7 +69,8 @@ class CartsController < ApplicationController
       od.size_id = order.size_id
 od.brand_id = order.brand_id
       od.condition_id = order.condition_id
-# 
+od.pdata_id  = order.pdata_id
+
       od.save
 
 

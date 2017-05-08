@@ -96,7 +96,7 @@ class OrdersController < ApplicationController
 
   def update
     order = Order.find(params[:id])
-    @product = Product.find(params[:id])
+   
 
     flash = if order.update_attributes(params[:order])
 
