@@ -62,24 +62,48 @@
 </div>
 </div>
 </div>
+
+
+
 <div class="square_box">
   <h2>Endereço</h2>
 <div class="subcontent">
 
-<p class="tip">Fique a vontade para atualizar o endereço de sua vitrine</p>
-<%=semantic_form_for(@vitrine, html: { id: 'address_vitrine' }) do |form| %>
-<%=form.inputs do %>
-<%=form.input :address, :label=> "Endereço" %>
-<%=form.input :neighborhood, :label=> "Bairro"%>
-<%=form.input :postal_code, :label=> "CEP"%>
-<%=form.input :address_supplement, :as=> :text, :label => "Complemento" %>
-<%=form.actions do %>
-<%=form.action(:submit, :label=> "Salvar", :button_html => { :class => "btn", id: 'button_address'}) %>
-<% end %>
-<% end %>
-<% end %>
+
+  <hr class="line"></hr>
+
+  <h2>Endereço</h2>
+<p class="tip">Adicione o seu endereço da sua vitrine para facilitar a vida do comprador</p>
+<%=form_for @vitrine, :method=> :put do |ad| %>
+  <ul class="address_list">
+    <li> <%= label_tag :address, "Endereço", :class=>"label" %><%= ad.text_field  :address, :label=> "Endereço" %></li>
+  <li> <%= label_tag :neighborhood, "Bairro", :class=>"label" %><%=ad.text_field  :neighborhood, :label=> "Bairro"%></li>
+
+ <li> <%= label_tag :postal_code, "CEP", :class=>"label" %><%=ad.text_field  :postal_code, :label=> "CEP"%></li>
+
+ <li> <%= label_tag :address_supplement, "Complemento", :class=>"label" %><%=ad.text_area  :address_supplement, :as=> :text, :label => "Complemento" %></li>
+  
+ <li>
+<div class="form-group">
+  <%= ad.label :state_id, 'Estado' %>&nbsp;
+  <%= dynamic_collection_select :user, :state_id, :city, State.all, :id, :code,
+{ include_blank: false, submit_with_form: true, :prompt => 'Selecionar Estado'  }, { class: 'form-control' } %>
 </div>
+ </li>
+
+ <li>
+
+<div class="form-group">
+  <%= ad.label :city_id, 'Cidade' %>&nbsp;
+  <%= ad.collection_select :city_id, [], :name,  {include_blank: false, :prompt => 'Selecionar Cidade'}, { class: 'form-control' } %>
 </div>
+ </li>
+</ul>
+
+<%=ad.submit"Salvar",  :class => "btn" %>
+<% end %>
+
+
 </div>
 
 </div>
@@ -105,22 +129,6 @@
 
 
 
-
- <li>
-<div class="form-group">
-  <%= ad.label :state_id, 'Estado' %>&nbsp;
-  <%= dynamic_collection_select :user, :state_id, :city, State.all, :id, :code,
-{ include_blank: false, submit_with_form: true, :prompt => 'Selecionar Estado'  }, { class: 'form-control' } %>
-</div>
- </li>
-
- <li>
-
-<div class="form-group">
-  <%= ad.label :city_id, 'Cidade' %>&nbsp;
-  <%= ad.collection_select :city_id, [], :name,  {include_blank: false, :prompt => 'Selecionar Cidade'}, { class: 'form-control' } %>
-</div>
- </li>
 
 </ul>
 
