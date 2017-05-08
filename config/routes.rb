@@ -195,6 +195,14 @@ post  '/orders/:id/checkout', to: 'orders#checkout', as: :calculate_ship
 
 resources :transactions, only: [:show] 
 
+  resources :odatas, only: [:index] do
+
+ collection do
+      match :sold
+      match :purchased
+ end
+  end
+
   resources :carts, only: [:index] 
    resources :orders, only: [:index, :update, :destroy] do
     resources :stocks, only: [:index, :destroy] do
