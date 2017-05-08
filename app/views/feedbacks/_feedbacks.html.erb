@@ -14,12 +14,12 @@
 
   <tbody>
     <% @feedbacks.each do |feedback| %>
-      <% order = feedback.order %>
       <% if order.present? %>
-        <% product = order.product %>
+      <% order = feedback.order %>
+      <% product = order.product %>
       <% else %>
-
-    <% pdata = odata.pdata %>
+<% odata = feedback.odata %>
+  <% pdata = odata.pdata %>
   <% end %>
     
     <% buyer = feedback.user %>
