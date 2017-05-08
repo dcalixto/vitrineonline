@@ -27,6 +27,8 @@
     <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
     </p>
 
+<%= link_to 'Registro', purchased_odatas_path %>
+
     <%if  current_user.cart %>
 
     <% if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
@@ -48,7 +50,7 @@
         <td>
 
     <%= link_to 'Registro', purchased_odatas_path %>
-
+        </td>
       </tr>
     </table>
 
