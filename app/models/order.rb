@@ -96,20 +96,6 @@ end
 
 
 
-#def update_odata
- 
-#unless odata
-#attrs = order.attributes.slice(
-#"pdata_id"
-#)
-#puts attrs
-#odata = Odata.update!(attrs)
-#end
-#rescue => e
-#puts e.inspect
-#raise e
-#end
-
 
 
 
@@ -126,25 +112,6 @@ end
 
   end
 
-
- def addp
-    od = Order.find_by_id(attributes['id'])
-
- #      pro = Pdata.find_by_id(attributes['product_id']) #if pro.nil?
-   # pro
-
-od.pdata_id = pro.id
-
-od.save
-
-
-  
-  #  if status == Order.statuses[0]
-      or_id = order.id
-      data = Pdata.find_by_id(pr_id)
-
-
-  end
 
 
 

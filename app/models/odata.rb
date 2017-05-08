@@ -9,6 +9,10 @@ belongs_to :feedback
     :buyer_id, :quantity, :seller_id, :shipping_cost, :shipping_method, 
     :status,  :color_id, :size_id,  :brand_id, :material_id,:condition_id, :track_number
 
+  def total_price
+    pdata.price * quantity
+  end
+
 
 
 end

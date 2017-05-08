@@ -52,17 +52,20 @@
           <li>
 
           </li>
-          <li><b><%= odata.buyer.full_name %></b></li>
+          <li><b><%= odata.buyer_name %></b></li>
           <li>
-            <%= odata.buyer.user_address if odata.buyer.address %></li>
+            <%= odata.user_address %></li>
           <li>
-            <%= odata.buyer.user_neighborhood if odata.buyer.neighborhood%></li>
+            <%= odata.user_neighborhood %></li>
           <li>
-            <%= odata.buyer.user_city if odata.buyer.city and odata.buyer.state %>
+            <%= odata.user_city  %>
           </li>
-          <li><%= odata.buyer.user_postal_code if  odata.buyer.postal_code %></li>
-          <li><%= odata.buyer.user_address_supplement if odata.buyer.address_supplement %></li>
-        </ul>
+          <li>
+              <%=  odata.user_state %>
+          </li>
+
+          <li><%= odata.user_postal_code %></li>
+                  </ul>
       </td>
       <td>
         <ul>

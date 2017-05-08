@@ -83,14 +83,14 @@
          
               <div id="rating_line">
 
-                <%=link_to  probacks_pdata_path(:id=> @pdata.id)  do %>
+                <#%=link_to  probacks_pdata_path(:id=> @pdata.id)  do %>
 
                   <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @pdata.average_rating  %>">
                     <span class="feedCounter"><%= @pdata.total_feedbacks %>
                     Avaliações</span>
                   </div>
 
-                <% end %>
+                <#% end %>
               </div>
 
           
@@ -196,39 +196,6 @@
 
 
 
-  <div class="box11">
-    <div class="content">
-      <h2>Seções
-      </h2>
-      <span class="link_tag">
-
-        <ul>
-<% if @pdata.vitrine.present?  %>
-
-          <% @pdata.vitrine.tag_list.take(22).each do |tag| %>
-            <li>
-              <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @pdata.vitrine.id) %>
-            </li>
-
-        <% end %>
-         <% end %>
-
-        </ul>
-      </span>
-
-
-<% if @pdata.vitrine.present?  %>
-
-
-      <% unless @pdata.vitrine.user.city.blank? %>
-        <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@pdata.vitrine.address}" %>
-      <% end %>
-          <% end %>
-
-
-    </div>
-
-  </div>
 </div>
 
 

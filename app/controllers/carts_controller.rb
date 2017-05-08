@@ -5,9 +5,9 @@ class CartsController < ApplicationController
 
   def add
     product = Product.find(params[:id])
-   # pdata = Pdata.find_by_id(params[:id])
+    # pdata = Pdata.find_by_id(params[:id])
 
-     if product
+    if product
       if product.buyable?(current_user)
         current_user.cart = Cart.new if current_user.cart.nil?
         condition = Condition.find_by_id(params[:condition_id])
@@ -15,7 +15,7 @@ class CartsController < ApplicationController
         size = Size.find_by_id(params[:size_id])
         material = Material.find_by_id(params[:material_id])
         brand = Brand.find_by_id(params[:brand_id])
-       
+
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
 
         order = current_user.cart.orders.find_by_product_id_and_status_and_color_id_and_size_id(product.id, nil, color.nil? ? nil : color.id, size.nil? ? nil : size.id)
@@ -25,7 +25,7 @@ class CartsController < ApplicationController
 
           order = Order.new
           order.product = product
-       
+
 
           order.seller = product.vitrine
           order.seller_name = product.vitrine.name
@@ -37,10 +37,10 @@ class CartsController < ApplicationController
           order.condition = product.condition
           order.material = product.material
           order.brand = product.brand
-         
+
           current_user.cart.orders << order
 
-   
+
 
 
 
@@ -49,29 +49,36 @@ class CartsController < ApplicationController
           order.save
 
 
-  
+
 
         end
-#@pdata = Pdata.find_by_id(params[:id])
+        #@pdata = Pdata.find_by_id(params[:id])
 
- od = Odata.new
- #od.pdata = @pdata
+        od = Odata.new
+        #od.pdata = @pdata
 
-      od.cart_id = order.cart_id
-      od.order_id = order.id
-      od.product_id = order.product_id
-      od.quantity = order.quantity
-      od.seller_name = order.seller_name
-      od.buyer_name = order.buyer_name
-      od.buyer_id = order.buyer_id
-      od.seller_id = order.seller_id
-     od.color_id = order.color_id
-      od.size_id = order.size_id
-od.brand_id = order.brand_id
-      od.condition_id = order.condition_id
-od.pdata_id  = order.pdata_id
+        od.cart_id = order.cart_id
+        od.order_id = order.id
+        od.product_id = order.product_id
+        od.quantity = order.quantity
+        od.seller_name = order.seller_name
+        od.buyer_name = order.buyer_name
+        od.buyer_id = order.buyer_id
+        od.seller_id = order.seller_id
+        od.color_id = order.color_id
+        od.size_id = order.size_id
+        od.brand_id = order.brand_id
+        od.condition_id = order.condition_id
+        od.pdata_id  = order.pdata_id
+        od.user_address = order.buyer.address
+        od.user_neighborhood = order.buyer.neighborhood
+        od.user_city = order.buyer.user_city
+        od.user_postal_code =  order.buyer.postal_code
+        od.save
 
-      od.save
+
+
+
 
 
 
@@ -81,7 +88,7 @@ od.pdata_id  = order.pdata_id
 
 
 
-              else
+      else
         redirect_to product_path(product)
         flash[:error] = " Erro ao adicionar #{product.name} a sacola"
 
@@ -114,17 +121,17 @@ od.pdata_id  = order.pdata_id
     @suggestions = Product.unscoped.for_ids_with_order(ids)
   end
 
- # def user_address
- #   @user = current_user
+  # def user_address
+  #   @user = current_user
 
- #   if @user.update_attributes(params[:user])
+  #   if @user.update_attributes(params[:user])
   #    redirect_to carts_path
   #    flash[:notice] = 'Conta atualiazada'
   #  else
-   #   redirect_to carts_path
-   #   flash[:error] = 'erro'
-   # end
- # end
+  #   redirect_to carts_path
+  #   flash[:error] = 'erro'
+  # end
+  # end
 
 
 
