@@ -46,7 +46,7 @@ class Order < ActiveRecord::Base
 
 # after_commit  :create_pdata, on: :update
 #after_commit  :create_pdata, on: :create
- after_update  :create_pdata
+ after_create  :create_pdata
  #after_create  :create_pdata
  #after_update  :addp
 
