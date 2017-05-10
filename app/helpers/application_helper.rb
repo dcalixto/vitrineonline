@@ -114,6 +114,13 @@ module ApplicationHelper
 
 
 
+def display_image(pdata)  
+    unless pdata.nil? 
+      image_tag(pdata.image) 
+    else
+      image_tag("/assets/fallback/small_foto.png")
+     end    
+end
 
 
 end

@@ -47,8 +47,8 @@
       
         <%= link_to  pdata_path(pdata.id), :title => pdata.name do %>
        
-        <%= image_tag pdata.f1.to_s, :alt => pdata.name %>
-      
+            <%= image_tag pdata.image.url.to_s, :alt => pdata.name %>
+ 
         <%=  pdata.name  %>
         <% end %>
       </td>

@@ -31,4 +31,5 @@ attr_accessible :impressions_count, :color_id, :size_id, :current_step, :is_shar
 
 
 
+
 end

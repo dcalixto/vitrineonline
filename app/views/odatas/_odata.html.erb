@@ -16,7 +16,7 @@
 
         <%= link_to  product_path(pdata.id) do %>
 
-          <%= image_tag pdata.images.first.ifoto.url(:small).to_s %>
+          <%= image_tag pdata.image.url.to_s %>
           <%=  pdata.name  %>
         <% end %>
 

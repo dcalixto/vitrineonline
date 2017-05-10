@@ -121,7 +121,14 @@
 <%=current_vitrine.postal_code %>
 <li>
 
-
+<% unless current_vitine.city.blank? %>
+<li><%=current_vitrine.city.name %>
+</li>
+<% end %>
+<% unless current_vitrine.state.blank? %>
+<li><%=current_vitrine.state.name %>
+</li>
+<% end %>
 
 
 </ul>
