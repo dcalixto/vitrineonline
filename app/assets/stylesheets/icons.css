@@ -68,9 +68,16 @@
         }
         
         .sprite-icons-logo {
-            background-position: -163px -224px;
+          /*  background-position: -163px -224px;
             width: 147px;
-            height: 29px;
+            height: 29px;*/
+
+
+width:170px;
+height:35px;
+
+display: block;
+background:url(/assets/logo2.png) no-repeat;
 
                  }
         

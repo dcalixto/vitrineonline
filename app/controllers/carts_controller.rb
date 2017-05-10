@@ -72,7 +72,8 @@ class CartsController < ApplicationController
         od.pdata_id  = order.pdata_id
         od.user_address = order.buyer.address
         od.user_neighborhood = order.buyer.neighborhood
-        od.user_city = order.buyer.user_city
+        od.user_city = order.buyer.city
+        od.user_state = order.buyer.state
         od.user_postal_code =  order.buyer.postal_code
         od.save
 
