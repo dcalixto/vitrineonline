@@ -7,10 +7,11 @@
   <%= render 'shared/flash_messages' %>
   <div class="block margin_top">
 
-  <div class="square_box">
     <h1>Recuperar Senha</h1>
 
     <div class="content">
+        <div class="grey_box">
+
       Coloque seu email e nós lhe enviaremos um link para fazer uma nova senha
 
       <%= form_tag password_resets_path, :method => :post do %>

@@ -9,10 +9,10 @@
     <%= render 'shared/flash_messages' %>
   </div>
   <div class="block">
-  <div class="square_box">
+
      <h1>Mudar Password</h1>
     <div class="content">
-
+ <div class="grey_box">
       <%= semantic_form_for @user, :url => password_reset_path(params[:id]), :method => :put  do |f| %>
       <%= f.inputs do %>
       <%= f.input :password, :as => :password, :label =>"Novo Password", :required=>true %>
