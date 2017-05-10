@@ -113,12 +113,14 @@ validates_associated :policy, presence: true
   end
 
   def vitrine_city
-    "#{city.name}"
+    city.name.to_s
+
   end
 
 
   def vitrine_state
-    "#{state.code}"
+    state.code.to_s
+
   end
 
 
