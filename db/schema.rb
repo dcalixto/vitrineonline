@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170508190955) do
+ActiveRecord::Schema.define(:version => 20170510202307) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -268,8 +268,8 @@ ActiveRecord::Schema.define(:version => 20170508190955) do
     t.integer  "buyer_id"
     t.integer  "product_id"
     t.integer  "pdata_id"
-    t.integer  "quantity",                                         :default => 0
-    t.decimal  "shipping_cost",      :precision => 9, :scale => 2
+    t.integer  "quantity",                                           :default => 0
+    t.decimal  "shipping_cost",        :precision => 9, :scale => 2
     t.string   "shipping_method"
     t.string   "transaction_status"
     t.string   "status"
@@ -283,8 +283,8 @@ ActiveRecord::Schema.define(:version => 20170508190955) do
     t.integer  "size_id"
     t.string   "seller_name"
     t.string   "buyer_name"
-    t.datetime "created_at",                                                      :null => false
-    t.datetime "updated_at",                                                      :null => false
+    t.datetime "created_at",                                                        :null => false
+    t.datetime "updated_at",                                                        :null => false
     t.integer  "order_id"
     t.string   "transaction_id"
     t.string   "user_address"
@@ -294,6 +294,11 @@ ActiveRecord::Schema.define(:version => 20170508190955) do
     t.string   "user_postal_code"
     t.datetime "tcreated_at"
     t.datetime "tupdated_at"
+    t.string   "vitrine_address"
+    t.string   "vitrine_neighborhood"
+    t.string   "vitrine_city"
+    t.string   "vitrine_state"
+    t.string   "vitrine_postal_code"
   end
 
   add_index "odata", ["brand_id"], :name => "index_odata_on_brand_id"

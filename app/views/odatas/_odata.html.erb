@@ -5,7 +5,6 @@
 
 
 
-<% unless odata.status.nil? %>
 <tbody>
 
 
@@ -13,15 +12,13 @@
 
 
       <td>
-      <% if pdata.images.present? %>
-
+     
 
         <%= link_to  product_path(pdata.id) do %>
 
           <%= image_tag pdata.images.first.ifoto.url(:small).to_s %>
           <%=  pdata.name  %>
         <% end %>
-<% end %>
 
       </td>
 
@@ -46,7 +43,7 @@
 
 
 
-    <#% if odata.seller == current_vitrine or odata.buyer == current_user  %>
+    <% if odata.seller == current_vitrine   %>
       <td>
         <ul>
           <li>
@@ -67,6 +64,39 @@
           <li><%= odata.user_postal_code %></li>
                   </ul>
       </td>
+
+    <% end %>
+
+   <% if   odata.buyer == current_user  %>
+
+
+
+<td>
+        <ul>
+          <li>
+
+          </li>
+          <li><b><%= odata.vitrine_name %></b></li>
+          <li>
+            <%= odata.vitrine_address %></li>
+          <li>
+            <%= odata.vitrine_neighborhood %></li>
+          <li>
+            <%= odata.vitrine_city  %>
+          </li>
+          <li>
+              <%=  odata.vitrine_state %>
+          </li>
+
+          <li><%= odata.vitrine_postal_code %></li>
+                  </ul>
+      </td>
+
+
+   <% end %>
+
+
+
       <td>
         <ul>
           <li>Pedido: <b><%= odata.transaction_id %></b></li>
@@ -145,7 +175,6 @@ Comprador:
         </ul>
       </td>
     </tr>
-<% end %>
 </tbody>
 
 

@@ -21,6 +21,9 @@
     <div class="subcontent">
       <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
       </p>
+      
+      
+         <%= link_to 'Registro', sold_odatas_path %>
       <% if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
 
 
@@ -39,7 +42,7 @@
           <td>
             <td>
 
-        <%= link_to 'Registro', sold_odatas_path %>
+     
     </td>
 
         </tr>
