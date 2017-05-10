@@ -110,7 +110,7 @@ Comprador:
           <li>Custo:
             <b><%= number_to_currency odata.shipping_cost %></b>
           </li>
-          <% if params[:status] == odata.statuses[0] %>
+          <% if params[:status] == "paid" %>
 
             <li>Estado:
               <span class="sendship">A Enviar</span>
@@ -118,7 +118,7 @@ Comprador:
           <% end %>
 
 
-          <% if params[:status] == odata.statuses[1] %>
+          <% if params[:status] == "sent" %>
 
             <li>Estado:
               <span class="sendship_sent">Enviado</span>
@@ -128,7 +128,7 @@ Comprador:
 
 
 
-          <li><% if params[:status] == odata.statuses[1] %>
+          <li><% if params[:status] ==  "sent" %>
 
             Enviado em:
             <b>
