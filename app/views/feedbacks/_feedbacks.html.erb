@@ -16,11 +16,11 @@
     <% @feedbacks.each do |feedback| %>
 
   <% if (order = feedback.order).present? && (product = feedback.product).present? %>
-    <%= order.title %>
-    <%= product.title %>
+    <% order = feedback.order %>
+    <% product = order.product %>
   <% else %>
-    <%= (odata = feedback.odata).name %>
-    <%= odata.pdata.name %>
+    <% odata = feedback.odata %>
+    <% pdata = odata.pdata %>
   <% end %>
 
     
