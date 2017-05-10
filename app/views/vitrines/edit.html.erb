@@ -13,23 +13,23 @@
 
 
 <div class="block margin_top">
-
-
-  <div class="square_box">
 <h1>Configuração <%=link_to @vitrine.user.first_name, vitrine_path(current_vitrine) %> </h1>
 
+  <div class="subcontent">
 
-<div class="subcontent">
+
+
+
+
 <% unless current_vitrine.user.city.blank? %>
 <%=image_tag "http://maps.google.com/maps/api/staticmap?size=550x150&sensor=false&zoom=16&markers=#{ current_vitrine.address}" %>
 <% end %>
 </div>
-</div>
 
-<div class="square_box">
+
+
+ <div class="subcontent">
   <h2>Logo</h2>
-<div class="subcontent">
-
 <ul class="image_info">
 <li>
 <%=image_tag current_vitrine.logo.url(:thumb).to_s %>
@@ -44,11 +44,8 @@
 </div>
 <% end %>
 </div>
-</div>
-<div class="square_box">
-  <h2>Sobre</h2>
 <div class="subcontent">
-
+  <h2>Sobre</h2>
 <p class="tip">Descreva sua vitrine</p>
 <p clas="tip">Para inserir emojis no texto acesse
 <%=link_to nil, "http://www.emoji-cheat-sheet.com" %></p>
@@ -61,18 +58,14 @@
 <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
 </div>
 </div>
-</div>
 
 
 
-<div class="square_box">
-  <h2>Endereço</h2>
 <div class="subcontent">
-
-
-  <hr class="line"></hr>
-
+<div class="grey_box">
   <h2>Endereço</h2>
+
+
 <p class="tip">Adicione o seu endereço da sua vitrine para facilitar a vida do comprador</p>
 <%=form_for @vitrine, :method=> :put do |ad| %>
   <ul class="address_list">
@@ -107,7 +100,8 @@
 </div>
 
 </div>
-
+</div>
+</div>
 
 <div class="box11 margin_top">
   <div class="block">

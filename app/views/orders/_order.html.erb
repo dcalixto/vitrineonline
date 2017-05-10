@@ -185,7 +185,9 @@
           <li>
             <%= order.seller.vitrine_neighborhood if order.seller.vitrine_neighborhood%></li>
           <li>
-            <%= order.seller.vitrine_city if order.seller.vitrine_city and order.seller.vitrine_state %>
+            <% if order.seller.vitrine_city %>
+              <%= order.seller.vitrine_city if order.seller.vitrine_city and order.seller.vitrine_state %>
+            <% end %>
           </li>
           <li><%= order.seller.vitrine_postal_code if  order.seller.vitrine_postal_code %></li>
                </ul>

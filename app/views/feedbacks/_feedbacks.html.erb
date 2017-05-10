@@ -14,16 +14,15 @@
 
   <tbody>
     <% @feedbacks.each do |feedback| %>
- 
-<% if (order = feedback.order).present? && (product = feedback.product).present? %>
-    <%= order %>
-    <%= product %>
 
-
-      <% else %>
-<% odata = feedback.odata %>
-  <% pdata = odata.pdata %>
+  <% if (order = feedback.order).present? && (product = feedback.product).present? %>
+    <%= order.title %>
+    <%= product.title %>
+  <% else %>
+    <%= (odata = feedback.odata).name %>
+    <%= odata.pdata.name %>
   <% end %>
+
     
     <% buyer = feedback.user %>
     <% seller = feedback.vitrine %>

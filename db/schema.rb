@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170505102234) do
+ActiveRecord::Schema.define(:version => 20170508190955) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -287,6 +287,13 @@ ActiveRecord::Schema.define(:version => 20170505102234) do
     t.datetime "updated_at",                                                      :null => false
     t.integer  "order_id"
     t.string   "transaction_id"
+    t.string   "user_address"
+    t.string   "user_neighborhood"
+    t.string   "user_city"
+    t.string   "user_state"
+    t.string   "user_postal_code"
+    t.datetime "tcreated_at"
+    t.datetime "tupdated_at"
   end
 
   add_index "odata", ["brand_id"], :name => "index_odata_on_brand_id"
@@ -728,6 +735,8 @@ ActiveRecord::Schema.define(:version => 20170505102234) do
     t.float    "cached_weighted_average", :default => 0.0
     t.boolean  "branded",                 :default => false
     t.string   "code"
+    t.integer  "city_id"
+    t.integer  "state_id"
   end
 
   add_index "vitrines", ["cached_votes_down"], :name => "index_vitrines_on_cached_votes_down"
