@@ -79,7 +79,7 @@
  <li>
 <div class="form-group">
   <%= ad.label :state_id, 'Estado' %>&nbsp;
-  <%= dynamic_collection_select :user, :state_id, :city, State.all, :id, :code,
+  <%= dynamic_collection_select :vitrine, :state_id, :city, State.all, :id, :code,
 { include_blank: false, submit_with_form: true, :prompt => 'Selecionar Estado'  }, { class: 'form-control' } %>
 </div>
  </li>
