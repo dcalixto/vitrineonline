@@ -75,6 +75,13 @@ class CartsController < ApplicationController
         od.user_city = order.buyer.city
         od.user_state = order.buyer.state
         od.user_postal_code =  order.buyer.postal_code
+
+ od.vitrine_address = order.seller.address
+        od.vitrine_neighborhood = order.seller.neighborhood
+        od.vitrine_city = order.seller.city
+        od.vitrine_state = order.seller.state
+        od.vitrine_postal_code =  order.seller.postal_code
+
         od.save
 
 

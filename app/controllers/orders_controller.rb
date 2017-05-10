@@ -82,6 +82,12 @@ class OrdersController < ApplicationController
       order.transaction.update_attribute(:updated_at, Time.zone.now)
 
       order.save
+
+  od = order.odata
+  od.status = order.status
+  od.save
+
+
       redirect_to "#{sold_orders_path}?status=#{Order.statuses[1]}",
       flash: { success: 'Estado Mudado' }
       OrderMailer.order_track(order).deliver 
@@ -240,6 +246,7 @@ class OrdersController < ApplicationController
                     order.save
          
         od = order.odata
+      
         od.transaction_id = order.transaction.transaction_id
         od.status = order.status
          od.tcreated_at = order.transaction.created_at

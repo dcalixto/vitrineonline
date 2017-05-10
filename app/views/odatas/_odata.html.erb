@@ -110,31 +110,31 @@ Comprador:
           <li>Custo:
             <b><%= number_to_currency odata.shipping_cost %></b>
           </li>
-          <#% if params[:status] == odata.statuses[0] %>
+          <% if params[:status] == odata.statuses[0] %>
 
             <li>Estado:
               <span class="sendship">A Enviar</span>
             </li>
-          <#% end %>
+          <% end %>
 
 
-          <#% if params[:status] == odata.statuses[1] %>
+          <% if params[:status] == odata.statuses[1] %>
 
             <li>Estado:
               <span class="sendship_sent">Enviado</span>
             </li>
-          <#% end %>
+          <% end %>
 
 
 
 
-          <li><#% if params[:status] == odata.statuses[1] %>
+          <li><% if params[:status] == odata.statuses[1] %>
 
             Enviado em:
             <b>
            
                 <%= timeago_tag(odata.tupdated_at, :nojs => true, :date_only => true)%></b>
-               <#% end %>
+               <% end %>
 
           </li>
 

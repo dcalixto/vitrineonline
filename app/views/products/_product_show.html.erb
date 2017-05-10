@@ -98,6 +98,80 @@
           </li>
         <% end %>
 
+  <% if @product.height.present? %>
+
+          <li>
+            <span>Altura:</span>
+               <b><%= @product.height%></b>
+
+          </li>
+            <% end %>
+
+     <li>
+
+
+   
+     
+  <% if @product.width.present? %>
+
+          <li>
+            <span>Largura:</span>
+               <b><%= @product.width%></b>
+
+          </li>
+            <% end %>
+
+     
+     
+     
+     </li>
+
+    <li>
+  
+    
+  <% if @product.diamenter.present? %>
+
+          <li>
+            <span>Diâmetro:</span>
+               <b><%= @product.diamenter%></b>
+
+          </li>
+            <% end %>
+
+    
+    
+    
+    </li>
+
+ <li>
+ 
+ 
+ 
+  <% if @product.length.present? %>
+
+          <li>
+            <span>Comprimento:</span>
+               <b><%= @product.length%></b>
+
+          </li>
+            <% end %>
+
+ 
+ </li>
+
+    <li>
+
+
+
+  <% if @product.weight.present? %>
+
+          <li>
+            <span>Peso:</span>
+               <b><%= @product.weight%></b>
+
+          </li>
+            <% end %>
+
 
 
 

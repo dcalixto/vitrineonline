@@ -17,6 +17,16 @@ belongs_to :feedback
     pdata.price * quantity
   end
 
+  STATUSES.each do |method|
+    define_method "#{method}?" do
+      status == method
+    end
+  end
+
+  def self.statuses
+    STATUSES
+  end
+
 
 
 end
