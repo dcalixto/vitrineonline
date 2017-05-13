@@ -186,8 +186,10 @@ gem 'redis-rails'
 gem "redis-rack-cache"
 gem 'hiredis'
 gem 'redis-namespace'
+gem 'rack-contrib'
 
 gem 'soulmate', :require => 'soulmate/server'
+
 gem "selectize-rails"
 
 #RESQUE

@@ -562,6 +562,7 @@ DEPENDENCIES
   predictor
   private_pub
   rack-attack
+  rack-contrib
   rack-secure_headers!
   rails (= 3.2.22)
   rails-timeago
