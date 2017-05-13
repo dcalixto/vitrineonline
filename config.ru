@@ -3,6 +3,7 @@ use Rack::Deflater
 
 
 require 'rack'
+require 'rack/contrib'
 require 'rack/cache'
 require 'redis-rack-cache'
 
