@@ -53,6 +53,12 @@ class Product < ActiveRecord::Base
    before_create  :createcode
    after_create  :create_pdata
 
+
+   after_save :load_into_soulmate
+	before_destroy :remove_from_soulmate
+
+
+
  def createcode
     if code.blank?
     self.code = rand(36**8).to_s(36)
@@ -312,6 +318,22 @@ class Product < ActiveRecord::Base
 
 
 
+
+
+
+
+
+	def load_into_soulmate
+		loader = Soulmate::Loader.new("products")
+		loader.add("term" => name, "id" => self.id, "data" => {
+			"link" => Rails.application.routes.url_helpers.product_path(self)
+	   	})
+	end
+
+	def remove_from_soulmate
+		loader = Soulmate::Loader.new("products")
+	    loader.remove("id" => self.id)
+	end
 
 
 

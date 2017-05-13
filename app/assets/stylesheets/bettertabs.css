@@ -38,7 +38,7 @@ border-bottom: none;
 color: #555;
 
 cursor: default; }
-div.bettertabs ul.tabs li.active a.active  { color: #0047b7; font-weight:bold; border-bottom:2px solid #e5b900}
+div.bettertabs ul.tabs li.active a.active  { color: #3255a0; font-weight:bold; border-bottom:2px solid #e5b900}
 
 div.bettertabs ul.tabs li a {  text-decoration: none; float: left; }
 div.bettertabs ul.tabs li a:link,

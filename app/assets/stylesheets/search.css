@@ -55,8 +55,7 @@ background-color: #fff;
     border-radius: 2px;
 
    
-     border:solid 1px #091f76;
- 
+    border: 1px solid #3b5998;
      
 }
 
@@ -87,8 +86,7 @@ box-shadow: none;
 
 
  #search_input:hover {
-     outline:none;    border: 1px solid #dbc10d;
-
+     outline:none;        border: 1px solid #3b5998;
 
 
 
@@ -162,8 +160,11 @@ z-index: 1;
 
 
 
+li.soulmate-suggestion{
+	text-align: left;
 
 
+}
 
 
 a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {

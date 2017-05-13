@@ -47,7 +47,8 @@
       
         <%= link_to  pdata_path(pdata.id), :title => pdata.name do %>
        
-            <%= image_tag pdata.image.to_s, :alt => pdata.name %>
+          <%= image_tag "fallback/small_foto.png" %>
+
  
         <%=  pdata.name  %>
         <% end %>

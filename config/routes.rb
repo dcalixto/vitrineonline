@@ -6,6 +6,8 @@ mount Logster::Web => "/logs"
 
 get "/opensearch",  to: "application#opensearch"
 
+ mount Soulmate::Server, :at => "/autocomplete"
+
    # ADMIN
 
   scope 'dcalixto84abcd152567' do

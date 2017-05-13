@@ -443,6 +443,11 @@ GEM
       rack-test
       sinatra (~> 1.3.0)
       tilt (~> 1.3)
+    soulmate (1.1.0)
+      multi_json (>= 1.0)
+      redis (>= 3.0)
+      sinatra (>= 1.0)
+      vegas (>= 0.1.0)
     sprockets (2.2.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -483,6 +488,8 @@ GEM
     unicode-display_width (1.1.3)
     unicode_utils (1.4.0)
     uniform_notifier (1.10.0)
+    vegas (0.1.11)
+      rack (>= 1.0.0)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -573,6 +580,7 @@ DEPENDENCIES
   sinatra
   sinatra-contrib (~> 1.3.2)
   social-share-button!
+  soulmate
   sqlite3
   test-unit (~> 3.0)
   therubyracer

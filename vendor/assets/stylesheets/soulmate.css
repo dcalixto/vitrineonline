@@ -1,0 +1,63 @@
+#soulmate {
+  background-color: #fff;
+  display: none;
+  font: 14px;
+  font-weight: normal;
+  list-style: none;
+   padding: 0;
+   text-shadow: 0 0 0 white;
+   z-index: 1000;
+  border: none;
+    
+  
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+      border: 1px solid #ccc;
+    border-top-color: #d9d9d9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: default;
+
+        width: 319px;
+    top: 30px;
+    position: absolute;
+    text-align: left;
+    left: 0px;
+}
+  
+  
+      #soulmate .soulmate-type-container:first-child {
+      border-top: none; }
+  #soulmate .soulmate-type-suggestions {
+       float: right;
+    list-style: none;
+       width: 319px;
+    letter-spacing: 0.5px; }
+  #soulmate .soulmate-suggestion {
+    color: #111;
+    cursor: pointer;
+       font-size: 15px;
+       text-decoration: none; 
+   padding-left:8px}
+    #soulmate .soulmate-suggestion.focus {
+      color: #111;
+           position: relative;
+          z-index: 1;
+       background: #fbf3cb;
+    }
+
+
+
+     #soulmate .soulmate-type {
+    background-color: white;
+    color: #333;
+     font-size: 9px;
+    letter-spacing: 0.5px;
+     padding: 3px;
+    text-align: right;
+    text-transform: capitalize;
+      zoom: 1; }
+    #soulmate .soulmate-type:before, #soulmate .soulmate-type:after {
+      content: "";
+      display: table; }
+    #soulmate .soulmate-type:after {
+      clear: both; }

@@ -7,7 +7,10 @@ development:
 
 production:
   port: 9292
-  server: "http://52.87.228.48:80/faye/faye"
+  server: "https://52.87.228.48:443/faye/faye"
   secret_token: "d2f2f7d32e82677504b3bf101b09be369eb2139"
   signature_expiration: 86400 # one day
+
+
+
 

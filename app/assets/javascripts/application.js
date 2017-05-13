@@ -18,8 +18,10 @@
 //= require selectize
 
 //= require nprogress
+//= require jquery.soulmate
+//= home
 
-//= require_tree .
+////= require_tree .
 
 
 
