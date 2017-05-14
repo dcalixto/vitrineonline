@@ -1,0 +1,23 @@
+
+<div class="box6">
+  <div class="block_white">
+  </div>
+</div>
+
+<div class="box4">
+  <div class="block_white">
+
+    <h1> Parabéns <%=current_user.first_name %>!</h1>
+    <p>O endereço da sua Vitrine é <b>https:vitrineonline.com/<%=current_vitrine.name %></b></p>
+
+    <p><b><%=current_user.first_name %></b>  obrigado por criar sua vitrine na Vitrineonline. Use-a para divulgar, compartilhar, e vender seus produtos em suas redes sociais e muito mais.</p>
+
+
+<%= button_to "Prosseguir para Vitrine", edit_vitrine_path(current_vitrine), :class=> "btn margin_bottom", :method => "get"  %>
+
+
+  </div>
+</div>
+
+
+
