@@ -1,0 +1,206 @@
+
+<div class="container">
+
+
+  <!-- Imagens do pdata   -->
+
+
+  <div class="box9">
+    <div class="deleted">
+      <h1>Produto fora do sistema</h1>
+
+    </div>
+
+    <div id="placeholder" >
+      <% if @pdata.f1 %>
+         <div id="big_img" > 
+      <a href="">
+    
+         <%= image_tag @pdata.f1.url(:big).to_s, :id => 'mainImage', :data => { :img => 'img'} %>
+        </a>
+        </div>
+
+                    <% end %>
+    </div>
+
+  </div>
+
+  <div class="box9  white">
+        <div class"content">
+
+
+        <div>
+          <h1 id="item_name"><%= @pdata.name %></h1>
+        </div>
+
+
+
+
+
+ <% if @pdata.vitrine.present?  %>
+
+        <div class="status_line">
+          <ul>
+            <li>   <%= content_tag(:span, nil, :class =>"sprite-icons-small_vitrine") %>
+            <%=link_to @pdata.vitrine.name, vitrine_path(@pdata.vitrine),  :title => "Nome" %>
+            </li>
+            <li>
+              <% if @pdata.vitrine.user.online? == true %>
+                <span class="status_online"> Online </span>
+              <% else %>
+                <span class="status_offline"> Offline </span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+ <% end %>
+
+
+        <!-- Fim-->
+
+        <!--Descrição   -->
+        <ul class="detail_price">
+
+
+          <li>
+            <hr class="line"></hr>
+
+            <span>Preço:
+              <strong class="bigger"><%= number_to_currency(@pdata.price, :unit => "R$") %></strong></span>
+          </li>
+
+
+          <li>
+
+            <span>Disponível:
+              <strong><%= @pdata.quantity%></strong>
+            </span>
+          </li>
+
+
+
+
+
+          <li>
+
+
+         
+              <div id="rating_line">
+
+                
+
+                  <div class="feedback_stars_rating" data-read-only="true" data-score="<%= @pdata.average_rating  %>">
+                    <span class="feedCounter"><%= @pdata.total_feedbacks %>
+                    Avaliações</span>
+                  </div>
+
+            
+              </div>
+
+          
+          </li>
+
+
+
+          <span class="span">ID</span>
+          <b class="span">
+            #<%= @pdata.id %></b>
+          </li>
+          <li>
+            Site:
+            
+ <% if @pdata.vitrine.present?  %>
+
+            <% if @pdata.vitrine.marketing.url%>
+              <%=link_to  "#{@pdata.vitrine.marketing.url}", url_with_protocol(@pdata.vitrine.marketing.url), :target => '_blank' %>
+            <% end %>
+              <% end %>
+
+          </li>
+
+
+
+
+
+
+        </ul>
+
+
+      </div>
+
+      <div class="content">
+        <%= link_to  "https://www.paypal.com/br"  do %>
+
+          <%= content_tag(:span, nil, :class => 'sprite-icons-paypal_protect') %>
+
+        <% end %>
+
+        Saiba mais em:
+        <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+      </div>
+
+
+       
+
+  </div>
+
+
+  <div class="box10">
+
+
+    <div class="block">
+
+      <div class="tip_box wrapper div_select ">
+
+
+
+
+
+        <ul>
+          <li>
+ <%= label_tag "Preço:" %>
+            <h3 id="item_price"><%= number_to_currency(@pdata.price, :unit => "R$") %></h3>
+          </li>
+
+        </ul>
+
+     
+
+
+
+
+      </div>
+                    
+    </div>
+
+
+
+
+    <!-- Fim-->
+  </div>
+
+
+
+  <div class="box4">
+    <div class ="block">
+
+      <%= bettertabs :simpletabs do |tab| %>
+        <%= tab.link :product_show, 'Resumo' do %>
+          <%= render 'product_show' %>
+        <% end %>
+        <%= tab.link :feedbacks, "Avaliações" "(#{@pdata.probacks.size})"  do %>
+          <%= render 'probacks' %>
+        <% end %>
+                  <% end %>
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+

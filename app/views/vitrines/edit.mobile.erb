@@ -5,7 +5,7 @@
 
 
 
-<div class="box5">
+<div class="box6">
 <div class="flash_box">
 <%=render 'shared/flash_messages' %>
 <%=render 'shared/error_messages', :target=> @vitrine %>
@@ -13,23 +13,23 @@
 
 
 <div class="block margin_top">
-
-
-  <div class="square_box">
 <h1>Configuração <%=link_to @vitrine.user.first_name, vitrine_path(current_vitrine) %> </h1>
 
+  <div class="subcontent">
 
-<div class="subcontent">
+
+
+
+
 <% unless current_vitrine.user.city.blank? %>
 <%=image_tag "http://maps.google.com/maps/api/staticmap?size=550x150&sensor=false&zoom=16&markers=#{ current_vitrine.address}" %>
 <% end %>
 </div>
-</div>
 
-<div class="square_box">
-  <h4>Logo</h4>
-<div class="subcontent">
 
+
+ <div class="subcontent">
+  <h2>Logo</h2>
 <ul class="image_info">
 <li>
 <%=image_tag current_vitrine.logo.url(:thumb).to_s %>
@@ -44,11 +44,8 @@
 </div>
 <% end %>
 </div>
-</div>
-<div class="square_box">
-  <h4>Sobre</h4>
 <div class="subcontent">
-
+  <h2>Sobre</h2>
 <p class="tip">Descreva sua vitrine</p>
 <p clas="tip">Para inserir emojis no texto acesse
 <%=link_to nil, "http://www.emoji-cheat-sheet.com" %></p>
@@ -61,35 +58,57 @@
 <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
 </div>
 </div>
-</div>
-<div class="square_box">
-  <h4>Endereço</h4>
+
+
+
 <div class="subcontent">
+<div class="grey_box">
+  <h2>Endereço</h2>
 
-<p class="tip">Fique a vontade para atualizar o endereço de sua vitrine</p>
-<%=semantic_form_for(@vitrine, html: { id: 'address_vitrine' }) do |form| %>
-<%=form.inputs do %>
-<%=form.input :address, :label=> "Endereço" %>
-<%=form.input :neighborhood, :label=> "Bairro"%>
-<%=form.input :postal_code, :label=> "CEP"%>
-<%=form.input :address_supplement, :as=> :text, :label => "Complemento" %>
-<%=form.actions do %>
-<%=form.action(:submit, :label=> "Salvar", :button_html => { :class => "btn", id: 'button_address'}) %>
-<% end %>
-<% end %>
-<% end %>
+
+<p class="tip">Adicione o seu endereço da sua vitrine para facilitar a vida do comprador</p>
+<%=form_for @vitrine, :method=> :put do |ad| %>
+  <ul class="address_list">
+    <li> <%= label_tag :address, "Endereço", :class=>"label" %><%= ad.text_field  :address, :label=> "Endereço" %></li>
+  <li> <%= label_tag :neighborhood, "Bairro", :class=>"label" %><%=ad.text_field  :neighborhood, :label=> "Bairro"%></li>
+
+ <li> <%= label_tag :postal_code, "CEP", :class=>"label" %><%=ad.text_field  :postal_code, :label=> "CEP"%></li>
+
+ <li> <%= label_tag :address_supplement, "Complemento", :class=>"label" %><%=ad.text_area  :address_supplement, :as=> :text, :label => "Complemento" %></li>
+  
+ <li>
+<div class="form-group">
+  <%= ad.label :state_id, 'Estado' %>&nbsp;
+  <%= dynamic_collection_select :vitrine, :state_id, :city, State.all, :id, :code,
+{ include_blank: false, submit_with_form: true, :prompt => 'Selecionar Estado'  }, { class: 'form-control' } %>
 </div>
+ </li>
+
+ <li>
+
+<div class="form-group">
+  <%= ad.label :city_id, 'Cidade' %>&nbsp;
+  <%= ad.collection_select :city_id, [], :name,  {include_blank: false, :prompt => 'Selecionar Cidade'}, { class: 'form-control' } %>
 </div>
-</div>
+ </li>
+</ul>
+
+<%=ad.submit"Salvar",  :class => "btn" %>
+<% end %>
+
 
 </div>
 
+</div>
+</div>
+</div>
 
 <div class="box11 margin_top">
   <div class="block">
-  <div class="square_box">
-    <h4>Endereço</h4>
-<div class="content">
+
+   
+    <div class="content">
+       <h2>Endereço</h2>
 <ul>
   <li><%=current_vitrine.name %></li>
 <li>
@@ -101,16 +120,19 @@
 <li>
 <%=current_vitrine.postal_code %>
 <li>
-<% unless current_user.city.blank? %>
-<li><%=current_user.city.name %>
+
+<% unless current_vitrine.city.blank? %>
+<li><%=current_vitrine.city.name %>
 </li>
 <% end %>
-<% unless current_user.state.blank? %>
-<li><%=current_user.state.name %>
+<% unless current_vitrine.state.blank? %>
+<li><%=current_vitrine.state.name %>
 </li>
 <% end %>
+
+
 </ul>
-</div>
+
 </div>
 </div>
 </div>

@@ -1,0 +1,44 @@
+
+<div class="content">
+
+  <table class="blank_table">
+    <tr>
+
+         <td>
+        <b>Produto Adicionado em:</b>
+        <span class="lista-time">
+          <%= timeago_tag(@product.created_at, :nojs => true, :date_only => false)%>
+
+        </span>
+         </td>
+            <td>
+
+ <%=link_to  probacks_product_path(:id=> @product.id)  do %>
+
+
+        <b>Média de Avaliações</b><div class="feedback_stars_rating" data-read-only="true" data-score="<%= @product.average_rating %>"></div>
+      <% end %>
+      </td>
+
+    </tr>
+  </table>
+
+
+  <table class="block_search">
+    <tr>
+           <td>
+
+        <%= render :partial => 'shared/sort_proback'%>
+      </td>
+                </tr>
+  </table>
+
+  <%= render :partial => 'probacks/probacks' %>
+
+
+  <%= render :partial => 'shared/proback_pagination'%>
+</div>
+
+
+
+

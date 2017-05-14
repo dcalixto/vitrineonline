@@ -14,8 +14,8 @@
       xkey: 'day',
       ykeys: ['count'],
       labels: ['Visitantes'],
-      lineColors: ['#F29C33'],
-      pointFillColors: ['#d98825']
+     lineColors: ['#e4d226'],
+      pointFillColors: ['#c7b612']
     });
   };
 
@@ -33,13 +33,7 @@
 
 
 
-
-
-
-
-
-
-<div class="box5">
+<div class="box6">
 
   <div class="block  margin_top">
     <div class="flash_box">
@@ -47,12 +41,17 @@
     </div>
 
 
-    <div class="square_box">
+    <div class="content">
     <h1>Visualizações</h1>
-<div class="tip_box">
-          
-
-        
+  <table class="zebra_branca">
+          <tbody>
+              <tr>
+                  <td>
+ <%= link_to  vitrine_path(current_vitrine) do %>
+         <%= image_tag @current_vitrine.logo.url(:thumb).to_s %>
+          <% end %>
+                  </td>
+                  <td>
 <div id="visitors_chart_options">
             <strong>&nbsp;Período:</strong>
             <select id="chart_options" name="chart_options">
@@ -60,12 +59,23 @@
               <option value="1">Mês Passado</option>
             </select>
             <br/><br/>
-          </div>
+
 </div>
+
+                  </td>
+              </tr>
+          </tbody>
+  </table>
+</div>
+
+
+
+
+
       <div class="subcontent">
         <p class="tip">A visualisação lhe ajudará a compreender e posicionar melhor sua vitrine e produtos</p>
 
-        <h4><%=link_to current_vitrine.name, vitrine_path(current_vitrine),  :title => "Nome" %></h4>
+        <b><%=link_to current_vitrine.name, vitrine_path(current_vitrine),  :title => "Nome" %></b>
 
         <!-- CHART CONTAINER  -->
         <div id="visitors_chart"></div>
@@ -76,15 +86,17 @@
       <div class="subcontent">
         <table class="block_search">
           <tr>
+               <%= search_form_for @q, url:    views_vitrine_views_path, method: :post  do |f| %>
             <td>
 
-              <%= search_form_for @q, url:    views_vitrine_views_path, method: :post  do |f| %>
+           
 
               <%= f.text_field :id_cont %>
+            </td>
+            <td>
               <%= f.submit "Buscar", :class=>"btn_grey" %>
 
-              <% end %>
-            </td>
+                        </td>
             <td class="sort">
 
               Ordernar Por
@@ -92,13 +104,15 @@
               |
               <%= sort_link @q, :created_at, "Data" %>
             </td>
+              <% end %>
+
           </tr>
         </table>
 
         <table class="zebra_branca">
           <tbody>
             <th>Produto</th>
-            <th>Visitantes</th>
+            <th>Visualisações</th>
 
 
 
@@ -110,7 +124,7 @@
             <% @products.each do |e| %>
             <tr>
               <td>
-                <%= link_to  product_path(e.id) do %>
+                <%= link_to  views_product_path(e.id) do %>
                 <% if e.images.present? %>
                 <%= image_tag e.images.first.ifoto.url(:small).to_s %>
                 <% end %>

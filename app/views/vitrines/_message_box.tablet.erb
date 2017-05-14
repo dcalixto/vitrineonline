@@ -1,0 +1,22 @@
+<div class="subcontent">
+  <div class="block">
+       <% @conversation = Conversation.new %>
+    <%= form_for @conversation, :html => {:class => "conversation_form"}  do |f| %>
+    <div class="doubt">
+   
+         
+      <%= hidden_field :conversation_participants, :vitrine_id, :value => @vitrine.user_id %>
+      <ul>
+        <li><%= text_area :message, :body,class: 'form-control span5',data: { emojiable: true }, :rows => 5, :placeholder => "Mensagem" %></li>
+      </ul>
+    </div>
+    <div><%= f.button 'Enviar', :class => 'btn' %></div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+ 
+

@@ -15,21 +15,24 @@
     <h1>Itens adicionados</h1>
 
 
-    <div class="subcontent">
-      <p>Total
+
+ <p>Total
         <%= current_vitrine.products.count %>
         Produtos adicionados</p>
       <table class="block_search">
         <tr>
+             <%= search_form_for @q, url: products_order_stocks_path, method: :post  do |f| %>
           <td>
 
-            <%= search_form_for @q, url: products_order_stocks_path, method: :post  do |f| %>
+         
 
             <%= f.text_field :name_cont %>
+             </td>
+  <td>
+
             <%= f.submit "Buscar", :class=>"btn_grey" %>
 
-            <% end %>
-          </td>
+                    </td>
           <td class="sort">
 
             Ordernar Por
@@ -40,8 +43,13 @@
             <%= sort_link @q, :quantity, "Quantidade" %>
 
           </td>
+            <% end %>
+
         </tr>
       </table>
+
+    <div class="subcontent">
+     
 
       <table class="zebra_branca margin_top" id="stock_vitrine">
 
@@ -79,3 +87,4 @@
 </div>
 </div>
 </div>
+

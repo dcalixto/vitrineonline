@@ -1,0 +1,16 @@
+<div id="showcase">
+  <ul>
+
+    <% unless @product.images.blank? %>
+  <%  @product.images.first(4).each do |i| %>
+    <li>
+    <a href="<%= i.ifoto.url.to_s %>"> 
+        <%= image_tag(i.ifoto.url(:small).to_s, :class => 'thumbnail',  :'data-href' => i.ifoto.url(:big).to_s) %>
+    </a> 
+    </li>
+       <% end %>
+
+ <% end %>
+  </ul>
+</div>
+

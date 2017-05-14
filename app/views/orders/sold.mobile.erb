@@ -6,22 +6,24 @@
 <% end %>
 <%= render "shared/order_menu" %>
 
-<div class="box5">
+<div class="box3">
     <div class="flash_box">
       <%= render 'shared/flash_messages' %>
     </div>
 
   <div class="block  margin_top">
-  <div class="square_box">
 
 
-    <%= "<h4>Produtos Vendidos </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
-    <%= "<h4>Produtos Enviados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
+    <%= "<h1>Produtos Vendidos </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+    <%= "<h1>Produtos Enviados </h1>".html_safe if  params[:status].nil? || params[:status] == Order.statuses[1]  %>
 
 
     <div class="subcontent">
       <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
       </p>
+      
+      
+         <%= link_to 'Registro', sold_odatas_path %>
       <% if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
 
 
@@ -35,10 +37,14 @@
 
             |
             <%= sort_link @q, :created_at, "Data" %>
-            |
-            <%= sort_link @q, :transaction_status, "Pagamento" %>
-
+          
           </td>
+          <td>
+            <td>
+
+     
+    </td>
+
         </tr>
       </table>
 
@@ -56,23 +62,67 @@
 
             |
             <%= sort_link @q, :created_at, "Data" %>
-            |
-            <%= sort_link @q, :track_number, "Rastreamento" %>
-
+           
           </td>
+    
+
+
         </tr>
       </table>
 
       <% end %>
 
+ <div class="content">
+
+<table class="cart">
+      <thead>
+        <tr>
+          <th>
+            Item
+          </th>
+          <th>
+            Quantidade
+          </th>
+          <th>
+Preço
+          </th>
+    
+           <th>
+
+           Comprador
+           </th>
+            <th>
+            Estado
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+
+
+
       <%= render  partial: 'orders/order', collection: @orders %>
+  
+    
+    
+    
+ </tbody>
+    </table>
+ 
     </div>
+
+    </div>
+
+
+
+
+
     <div class="block_pagination">
       <div class="digg_pagination">
         <%= will_paginate @orders, previous_label: h('« Voltar'), next_label: h('Próximo »') %>
       </div>
     </div>
   </div>
-  </div>
-</div>
+ </div>
 

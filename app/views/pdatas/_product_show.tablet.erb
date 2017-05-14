@@ -1,0 +1,203 @@
+
+<div class="content">
+
+
+
+  <div class="subcontent_top">
+
+
+    <ul>
+
+      <% unless @pdata.images.blank? %>
+        <%  @pdata.images.offset(4).each do |i| %>
+          <li>
+           
+
+
+ <a href="<%= i.ifoto.url.to_s %>"> 
+        <%= image_tag(i.ifoto.url(:big).to_s) %>
+    </a> 
+
+          </li>
+        <% end %>
+
+      <% end %>
+    </ul>
+  </div>
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="subcontent">
+    
+<hr class="line"></hr>
+
+
+    <h2>Descrições do Produto</h2>
+    <p><% if @pdata.detail.present? %>
+    <%= markdown(@pdata.detail) %>
+  <% end %></p>
+  </div>
+
+
+
+  <div class="subcontent">
+    
+<hr class="line"></hr>
+
+
+    <h2>Detalhes do produto</h2>
+    <div class="left_info">
+      <ul>
+        <% if @pdata.condition.present? %>
+          <li>
+            <span>Condição:
+            </span>
+            <b><%= @pdata.condition.condition%></b>
+          </li>
+        <%end %>
+        <% if @pdata.material.present? %>
+
+          <li>
+            <span>Material:</span>
+            <b><%= @pdata.material.name %></b>
+          </li>
+        <% end %>
+
+
+        <% if @pdata.brand.present? %>
+
+          <li>
+            <span>Marca:</span>
+            <b><%= @pdata.brand.name%></b>
+          </li>
+        <% end %>
+
+
+
+
+      </ul>
+
+    </div>
+
+
+  </div>
+
+
+
+  <div class="subcontent">
+
+<hr class="line"></hr>
+
+
+    <h2>Formas de Pagamento</h2>
+
+    <%= link_to  "https://www.paypal.com/br"  do %>
+
+      <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
+    <% end %>
+
+      </div>
+
+  <div class="subcontent">
+
+<hr class="line"></hr>
+
+
+    <h2>Formas de Envio</h2>
+
+    <ul>
+
+      <li>
+        <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+      </li>
+
+         </ul>
+
+  </div>
+
+  <div class="subcontent">
+
+<hr class="line"></hr>
+
+
+    <h2>Garantias do Vendedor </h2>
+
+  
+  </div>
+
+  <div class="subcontent">
+
+<hr class="line"></hr>
+
+
+    <h2>Avaliação dos usuários</h2>
+
+
+<div class="content">
+
+  <table class="blank_table">
+    <tr>
+
+         <td>
+        <b>Produto Adicionado em:</b>
+        <span class="lista-time">
+          <%= timeago_tag(@pdata.created_at, :nojs => true, :date_only => false)%>
+
+        </span>
+         </td>
+            <td>
+
+        <b>Média de Avaliações</b><div class="feedback_stars_rating" data-read-only="true" data-score="<%= @pdata.average_rating %>"></div>
+  
+      </td>
+
+    </tr>
+  </table>
+
+
+  <table class="block_search">
+    <tr>
+     
+      <td>
+
+        
+      </td>
+         
+
+    </tr>
+  </table>
+
+
+
+
+</div>
+
+
+   
+
+  </div>
+
+
+
+
+
+
+</div>
+
+
+
+

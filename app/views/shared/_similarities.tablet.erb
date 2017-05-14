@@ -1,0 +1,52 @@
+
+ <div class="similar_carousel liquid" >
+
+      <span class="previous"></span>
+
+      <div class="wrapper">
+       
+
+
+      <ul>
+
+        <%  @similarities.each do |item| %>
+          <li>
+            <%= link_to product_path(item),  :class=>"product" do  %>
+              <%= image_tag item.images.first.ifoto.url(:thumb).to_s, :class=>"productImg" %>
+            <span class="productName">
+
+              <%= item.name %>
+            </span>
+
+             <span class="price">
+                            <%=number_to_currency(item.price, :unit=> "R$") %>
+             </span>
+
+
+                    <div class="productFeeback">
+                      <div class="feedback_stars_rating" data-read-only="true" data-score="<%= item.average_rating%>"></div>
+                      <%=item.total_feedbacks %>
+                    </div>
+                    
+
+                                   <span class="by">Por
+                    <%=item.vitrine.name %>
+                  </span>
+               
+
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+
+
+    </div>
+      <span class="next"></span>
+    </div>
+
+
+
+    
+
+

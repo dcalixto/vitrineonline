@@ -1,0 +1,93 @@
+<% title "Itens Vendidos" %>
+<%= render "shared/order_menu" %>
+
+<div class="box3">
+    <div class="flash_box">
+      <%= render 'shared/flash_messages' %>
+    </div>
+
+  <div class="block  margin_top">
+
+
+    <h1>Registro das compras </h1>
+ 
+
+    <div class="subcontent">
+      <p class="tip">Caso o vendedor delete sua conta o registro das compras está aqui para qualquer eventualidade      </p>
+   
+
+
+      <table class="block_search">
+        <tr>
+         
+          <td class="sort">
+
+            Ordernar Por
+
+            |
+            <%= sort_link @q, :created_at, "Data" %>
+          
+          </td>
+        </tr>
+      </table>
+
+
+
+      
+ 
+ <div class="content">
+
+<table class="cart">
+      <thead>
+        <tr>
+          <th>
+            Item
+          </th>
+          <th>
+            Quantidade
+          </th>
+          <th>
+Preço
+          </th>
+    
+           <th>
+
+           Comprador
+           </th>
+            <th>
+            Estado
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+
+
+
+      <%= render  partial: 'odatas/odata', collection: @odatas %>
+  
+    
+    
+    
+ </tbody>
+    </table>
+ 
+    </div>
+
+    </div>
+
+
+
+
+
+    <div class="block_pagination">
+      <div class="digg_pagination">
+        <%= will_paginate @odatas, previous_label: h('« Voltar'), next_label: h('Próximo »') %>
+      </div>
+    </div>
+  </div>
+ </div>
+
+
+

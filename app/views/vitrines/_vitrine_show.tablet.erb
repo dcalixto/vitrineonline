@@ -1,0 +1,212 @@
+
+
+
+<div class="content">
+
+
+  <div class="subcontent_top">
+
+    <%= render 'announcements/announcement_for_all' %>
+
+  </div>
+
+
+
+
+  <div class="subcontent">
+    <h2>Produtos Similares aos da <%= @vitrine.name %></h2>
+
+
+    <%= render :partial => 'shared/similarities'%>
+
+
+
+
+  </div>
+
+
+  <div class="subcontent">
+    
+<hr class="line"></hr>
+
+
+    <h2>Produtos Adicionados recentemente pela <%=@vitrine.name %></h2>
+
+
+
+    <p>Total
+    <%= @vitrine.products.count %>
+    Produtos</p>
+
+
+    <table class="block_search">
+      <tr>
+         <%= search_form_for @q, url:search_products_vitrines_path, method: :post  do |f| %>
+
+        <td>
+
+         
+            <%= f.text_field :name_cont %>
+
+              </td>
+<td >
+
+  <%= f.submit "Buscar", :class=>"btn_grey" %>
+  </td>
+
+          <% end %>
+      
+
+
+
+
+
+
+
+        <%= render :partial => 'shared/sort_feedback'%>
+
+      </tr>
+
+ 
+
+
+    </table>
+
+
+ <%= render :partial => "shared/product_table" %>
+
+
+
+
+  <%= render :partial => 'shared/product_pagination'%>
+
+
+
+
+  </div>
+
+
+
+
+
+
+  <div class="subcontent">
+    <h2>Avaliações recebidas recentemente
+    </h2>
+
+
+
+
+
+
+
+<div class="content">
+
+  <table class="blank_table">
+    <tr>
+
+         <td>
+        <b>Vitrine Criada em:</b>
+        <span class="lista-time">
+          <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => false)%>
+
+        </span>
+         </td>
+            <td>
+ <%=link_to  feedbacks_vitrine_path(:id=> @vitrine.id)  do %>
+        <b>Média de Avaliações</b><div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+      <% end %>
+      </td>
+
+    </tr>
+  </table>
+
+
+  <table class="block_search">
+    <tr>
+    
+
+
+      <td>
+
+        <%= render :partial => 'shared/sort_feedback'%>
+      </td>
+
+        
+
+    </tr>
+  </table>
+
+  <%= render :partial => 'feedbacks/feedbacks' %>
+
+
+  <%= render :partial => 'shared/feedback_pagination'%>
+</div>
+
+
+
+   </div>
+
+
+  <div class="subcontent">
+    
+<hr class="line"></hr>
+
+
+    <h2>Formas de Pagamentos disponível</h2>
+    <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
+    <% unless @vitrine.policy.blank? %>
+    </div>
+
+    <div class="subcontent">
+
+<hr class="line"></hr>
+
+
+      <h2>Formas de Envio disponível</h2>
+
+      <ul>
+
+        <li>
+          <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+        </li>
+
+        <% @vitrine.policy.shippings.each do |shipping| %>
+          <li>
+            <b><%= shipping.kind %></b>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+
+    <div class="subcontent">
+      
+<hr class="line"></hr>
+
+
+      <h2>Garantias Oferecidas pelo Vendedor</h2>
+      <p><%= markdown(@vitrine.policy.guarantee) %></p>
+    <% end %>
+
+    </div>
+
+
+
+
+    <div class="subcontent">
+      
+<hr class="line"></hr>
+
+
+      <h2>Veja Também</h2>
+
+      <%= render :partial => 'shared/suggestion'%>
+
+
+    </div>
+
+
+</div>
+
+

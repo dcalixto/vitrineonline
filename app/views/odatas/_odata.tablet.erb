@@ -1,0 +1,187 @@
+
+
+
+<% pdata = odata.pdata %>
+
+
+
+<tbody>
+
+
+  <tr>
+
+
+      <td>
+     
+
+        <%= link_to  pdata_path(pdata.id) do %>
+
+               <%= image_tag "fallback/small_foto.png" %>
+          <%=  pdata.name  %>
+        <% end %>
+
+      </td>
+
+
+
+
+    
+    <td>
+      <%= odata.quantity %>
+    </td>
+
+
+
+
+
+    <td>
+      <b class="lista-preco bigger"><%= number_to_currency(odata.total_price) %></b>
+
+
+    </td>
+
+
+
+
+    <% if odata.seller == current_vitrine   %>
+      <td>
+        <ul>
+          <li>
+
+          </li>
+          <li><b><%= odata.buyer_name %></b></li>
+          <li>
+            <%= odata.user_address %></li>
+          <li>
+            <%= odata.user_neighborhood %></li>
+          <li>
+            <%= odata.user_city  %>
+          </li>
+          <li>
+              <%=  odata.user_state %>
+          </li>
+
+          <li><%= odata.user_postal_code %></li>
+                  </ul>
+      </td>
+
+    <% end %>
+
+   <% if   odata.buyer == current_user  %>
+
+
+
+<td>
+        <ul>
+          <li>
+
+          </li>
+          <li><b><%= odata.seller_name %></b></li>
+          <li>
+            <%= odata.vitrine_address %></li>
+          <li>
+            <%= odata.vitrine_neighborhood %></li>
+          <li>
+            <%= odata.vitrine_city  %>
+          </li>
+          <li>
+              <%=  odata.vitrine_state %>
+          </li>
+
+          <li><%= odata.vitrine_postal_code %></li>
+                  </ul>
+      </td>
+
+
+   <% end %>
+
+
+
+      <td>
+        <ul>
+          <li>Pedido: <b><%= odata.transaction_id %></b></li>
+
+
+
+          <% if  params[:action] == "purchased" %>
+
+            <% if odata.seller.present? %>
+
+              <li>Vendedor:
+                <%= link_to odata.seller.name, vitrine_path(odata.seller.id) %></li>
+            <% else %>
+Vendedor:
+              <li><%= odata.seller_name %></li>
+          <% end %>
+        <% end %>
+
+          <% if  params[:action] == "sold" %>
+
+            <% if odata.buyer.present? %>
+
+              <li>Comprador:
+
+                <%= link_to odata.buyer.first_name, user_path(odata.buyer.id) %></li>
+            <% else %>
+Comprador:
+               <li><%= odata.buyer_name %></li>
+             <% end %>
+          <% end %>
+
+
+          <li>Comprado:
+            <b>
+              <%= timeago_tag(odata.tcreated_at, :nojs => true, :date_only => true)%>
+            </b>
+          </li>
+          <li>Frete:
+            <b><%= odata.shipping_method %></b>
+          </li>
+          <li>Custo:
+            <b><%= number_to_currency odata.shipping_cost %></b>
+          </li>
+          <% if params[:status] == "paid" %>
+
+            <li>Estado:
+              <span class="sendship">A Enviar</span>
+            </li>
+          <% end %>
+
+
+          <% if params[:status] == "sent" %>
+
+            <li>Estado:
+              <span class="sendship_sent">Enviado</span>
+            </li>
+          <% end %>
+
+
+
+
+          <li><% if params[:status] ==  "sent" %>
+
+            Enviado em:
+            <b>
+           
+                <%= timeago_tag(odata.tupdated_at, :nojs => true, :date_only => true)%></b>
+               <% end %>
+
+          </li>
+
+                   <li>Rastreio:
+              <b><%=odata.track_number %></b></li>
+
+       
+        </ul>
+      </td>
+    </tr>
+</tbody>
+
+
+
+
+
+
+  
+
+

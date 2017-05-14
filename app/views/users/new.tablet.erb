@@ -23,10 +23,14 @@
   <%= render 'shared/error_messages', :target => @user %>
 
   <div class="block margin_top">
-      <div class="square_box">
-    <h2>Criar Conta
-    </h2>
+        
     <div class="subcontent">
+       <div class="grey_box"> 
+
+<h2>Inscreva-se na Vitrineonline
+</h2>
+
+ <%=link_to 'Já tem uma conta?', login_path %>
 
       <%= semantic_form_for(@user, :validate => true) do |f| %>
       <%= f.inputs do %>
@@ -50,12 +54,14 @@
       </div>
 
       <%= f.actions do %>
-      <%= f.action :submit, :label => "Criar Conta", :button_html => { :class => "btn_orange btn_big"} %>
+      <%= f.action :submit, :label => "Criar Conta", :button_html => { :class => "btn_green btn_big margin_bottom"} %>
       <% end %>
       <% end %>
-      <% end %>
-    </div>
-  </div>
+    <% end %>
+               </div>
       </div>
+
+  </div>
+     
 </div>
 

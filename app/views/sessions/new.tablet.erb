@@ -9,13 +9,12 @@
 
   <div class=" block margin_top">
 
-      <div class="square_box">
-    <h4>Entrar</h4>
+   
     <div class="content">
-      <%= link_to   "/auth/facebook" do  %>
+      <div class="grey_box"> 
 
-        <%= content_tag( :i,nil, :class => "sprite-icons-fb_button")  %>
-        <% end %>
+    <h2>Entrar</h2>
+
       <%= form_tag  sessions_path,  :method => :post  do |f| %>
       <ul>
 
@@ -35,17 +34,23 @@
           <%= link_to "Esqueceu o password?", new_password_reset_path %>
 
           <%= password_field_tag :password, params[:password]%>
+     
+     
+
+
+        
         </li>
 
         <li class="space"></li>
 
 
-        <li><%= submit_tag "Entrar",  :class => "btn btn_big" %></li>
+        <li><%= submit_tag "Entrar",  :class => "btn btn_big margin_bottom" %></li>
       </ul>
 
       <% end %>
-    </div>
-    </div>
+        </div>
+          </div>
+ 
   </div>
 
 </div>
@@ -55,16 +60,17 @@
   <div class="block margin_top">
 
     <div class="content ul_disc" id="session_list">
-      <h1>Sou um novo cliente</h1>
+      <h1>Veja também</h1>
       <ul>
         <li>Acompanhe as suas encomendas on-line</li>
         <li>Descubra novas vitrines e marcas</li>
         <li>Veja o histórico de seus pedidos e mais</li>
+        <li>  <%=  link_to 'Ainda não tem sua conta?', signup_path%></li>
 
       </ul>
 
-      <%=  button_to 'Criar Conta', signup_path, :class => 'btn_orange  btn_big', :method => "get"%>
-
+    
     </div>
   </div>
 </div>
+

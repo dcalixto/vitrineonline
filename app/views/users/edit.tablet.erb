@@ -1,0 +1,52 @@
+<% title "Configurar Conta" %>
+<%=render "shared/user_menu" %>
+<div class="box5">
+<div class="margin_top">
+<%=render 'shared/flash_messages' %>
+<%=render 'shared/error_messages', :target=> @user %>
+</div>
+</div>
+
+
+
+<%=render "users/edit" %>
+
+
+
+
+
+
+
+<div class="box11 margin_top">
+  <div class="block ">
+   
+   
+  <div class="content">
+   <h2>Endereço</h2>
+<ul>
+  <li><%=current_user.first_name %><% current_user.last_name%></li>
+<li>
+<%=current_user.address %>
+</li>
+<li>
+<%=current_user.neighborhood %>
+</li>
+<li>
+<%=current_user.postal_code %>
+<li>
+<li><%=current_user.address_supplement %>
+</li>
+<% unless current_user.city.blank? %>
+<li><%=current_user.city.name %>
+</li>
+<% end %>
+<% unless current_user.state.blank? %>
+<li><%=current_user.state.name %>
+</li>
+<% end %>
+</ul>
+</div>
+</div>
+</div>
+
+

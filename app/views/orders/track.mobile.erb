@@ -1,0 +1,172 @@
+<% title "Número de Rastreio" %>
+
+<%= render "shared/order_menu" %>
+
+<div class="box3">
+    <div class="flash_box">
+      <%= render 'shared/flash_messages' %>
+    </div>
+
+  <div class="block  margin_top">
+
+
+
+    <div class="subcontent">
+      <h1>Adionar Rastreio</h1>
+
+      <p class="tip">Mesmo com o endereço em mãos, sempre confirme com o comprador o endereço de entrega
+      </p>
+           <%if  params[:status].nil? || params[:status] == Order.statuses[0]  %>
+          <% if current_seller%>
+
+            <%= form_for @order, :url => track_done_order_path(@order), method: :put,  html: { class: 'form-inline' } do |f| %>
+
+
+ <div class="content">
+
+<table class="cart">
+      <thead>
+        <tr>
+          <th>
+            Item
+          </th>
+          <th>
+            Quantidade
+          </th>
+          <th>
+Preço
+          </th>
+           <th>
+
+           Comprador
+           </th>
+            <th>
+            Estado
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+
+
+  <% product = order.product %>
+ 
+
+<% unless order.status.nil? %>
+ 
+        <tr>
+          <td>
+            <% if product.images.present? %>
+              <%= link_to  product_path(product.id) do %>
+
+
+                <%= image_tag product.images.first.ifoto.url(:small).to_s %>
+              <% end %>
+            <% end %>
+            
+                <%= link_to product.name, product_path(product.id) %>
+              </td>
+              <td>
+                <%= order.quantity %>
+              </td>
+              <td>
+                <b class="lista-preco"><%= number_to_currency(order.total_price) %></b>
+              
+            
+          </td>
+          <% if order.seller == current_vitrine  %>
+            <td>
+              <ul>
+                <li>
+                
+                </li>
+                <li><b><%= order.buyer.full_name %></b></li>
+                <li>
+                  <%= order.buyer.user_address if order.buyer.address %></li>
+                <li>
+                  <%= order.buyer.user_neighborhood if order.buyer.neighborhood%></li>
+                <li>
+                  <%= order.buyer.user_city if order.buyer.city and order.buyer.state %>
+                </li>
+                <li><%= order.buyer.user_postal_code if  order.buyer.postal_code %></li>
+                <li><%= order.buyer.user_address_supplement if order.buyer.address_supplement %></li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+
+                                   <% if order.transaction.present? %>
+
+                     <li>Prdido: <b><%= order.transaction.transaction_id %></b></li>
+                       
+                
+                              <li>Comprador:
+                    <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
+                              <li>Vendido Em:
+                  <b>
+                    <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => true)%>
+                  </b>
+                </li>
+                <li>Frete:
+                  <b><%= order.shipping_method %></b>
+                </li>
+                <li>Custo:
+                  <b><%= number_to_currency order.shipping_cost %></b>
+                </li>
+                          
+                    <li>
+                  
+Código:
+<b> <%=order.track_number %></b></li> 
+                                                               <li>
+                                               
+                                 
+               <%= f.text_field   :track_number %> 
+</li>
+                             </li>
+                <li>
+                                     <%= f.submit "Adicionar",  class: "btn_green" %>
+                                          </li>
+                 
+              </ul>
+            </td>
+                </tr>
+     
+
+     
+
+
+     
+
+
+
+
+
+  
+    
+    
+    
+ </tbody>
+    </table>
+ 
+    </div>
+  <% end %>
+    <% end %> 
+                        <% end %> 
+                                               
+                      <% end %> 
+                    <% end %> 
+
+   <% end %>                     
+                                           Marcar como:
+                <%= button_to "Enviado", track_sent_order_path(order), :class => ' btn margin_bottom', :method => "put" %>
+
+    </div>
+
+
+
+  </div>
+ </div>
+
+

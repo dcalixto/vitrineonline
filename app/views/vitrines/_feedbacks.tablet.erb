@@ -1,0 +1,57 @@
+
+
+
+
+
+<div class="content">
+
+  <table class="blank_table">
+    <tr>
+
+         <td>
+        <b>Vitrine Criada em:</b>
+        <span class="lista-time">
+          <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => false)%>
+
+        </span>
+         </td>
+            <td>
+
+                <%=link_to  feedbacks_vitrine_path(:id=> @vitrine.id)  do %>
+
+        <b>Média de Avaliações</b><div class="feedback_stars_rating" data-read-only="true" data-score="<%= @average_rating_from_buyers %>"></div>
+
+ <% end %>
+
+
+
+           
+
+
+      </td>
+
+    </tr>
+  </table>
+
+
+  <table class="block_search">
+    <tr>
+     
+
+  
+      <td>
+
+        <%= render :partial => 'shared/sort_feedback'%>
+      </td>
+           </tr>
+  </table>
+
+  <%= render :partial => 'feedbacks/feedbacks' %>
+
+
+  <%= render :partial => 'shared/feedback_pagination'%>
+</div>
+
+
+
+

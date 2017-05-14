@@ -1,0 +1,74 @@
+<% title "Editar #{@product.name}" %>
+
+<%= render "shared/order_menu" %>
+
+<div class="box5">
+  <%= render 'shared/flash_messages' %>
+  <%= render 'shared/error_messages', :target => @product %>
+</div>
+
+
+
+
+  <div class="box5">
+
+ 
+<%= semantic_form_for @product  do |p| %>
+   <div class="block ">
+
+  
+
+
+ <%= p.inputs do %>
+
+
+
+
+
+
+ 
+ 
+
+    <h1>
+      <%= link_to @product.name, product_path(@product) %>
+    </h1>
+
+
+
+      <% if @product.images.present? %>
+
+
+  <%= image_tag(@product.images.first.ifoto.url(:big).to_s) %>
+
+<% end %>
+
+
+
+      <span>
+        <b>Tamanho</b>
+      </span>
+      <%= p.input :sizes, :as => :check_boxes,  :collection => Size.select('id, size as name'), :label => '' %>
+      <span>
+        <b>Cor</b>
+      </span>
+      <%= p.input :colors, :as => :check_boxes, :collection => Color.order(:name), :label => '' %>
+
+
+            <%= p.input :quantity, :label =>"Quantidade", :as => :number %>
+
+      <%= p.actions do %>
+      <%= p.action :submit, :label => "Atualizar", :button_html => { :class => "btn margin_bottom"} %>
+    <% end %>
+
+              
+ <% end %>
+
+   
+  </div>
+  
+         
+<% end %>
+
+  </div>
+     
+

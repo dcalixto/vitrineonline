@@ -7,43 +7,93 @@
     <%= render 'shared/error_messages', :target => @conversation  %>
 
   </div>
-
-  <div class="block margin_top">
-    <div class="chatboxhead">
-    <h1>Conversa</h1>
-  </div>
-<div id="message_box" class="content">
-
-
-
-
-
-    <div class="chatboxcontent" id="conversation_<%= @conversation.id %>">
-      <%= render partial: 'messages/message', collection: @messages  %>
-    </div>
-
-
-  </div>
-
-
 </div>
-</div>
+
+
+
+
+
 
 
 <div class="box1">
+
   <div class="block margin_top">
-<div class="chatboxinput">
+
+
+
+    <div class="row chat-window ">
+      <div class="panel panel-default">
+          <div class=" panel-heading top-bar
+">
+
+          </div>
+
+    <div  class="chatboxhead"><span>Conversa</span></div>
+  <div id="message_box" class="content">
+    
+
+
+    <table class="chatboxcontent panel-body msg_container_base" id="conversation_<%= @conversation.id %>">
+        
+      <tbody class="panel-body msg_container_base">
+      <%= render partial: 'messages/message', collection: @messages  %>
+      </tbody>
+    </table>
+
+  </div>
+<div class="chatboxinput panel-footer">
   <%= semantic_form_for  [@conversation,  @new_message] do |f| %>
 
   <%= f.inputs do %>
   <%= f.input :body, :as => :text, class: 'form-control',data: { emojiable: true },:placeholder => false, :label => false %>
   <%= f.actions do %>
-  <%= f.action :submit, :label => "Enviar", :button_html => { :class => "btn"} %>
+  <%= f.action :submit, :label => "Enviar", :button_html => { :class => "btn right"} %>
   <% end %>
   <% end %>
   <% end %>
 
 </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 </div>
+
+</div>
+
 

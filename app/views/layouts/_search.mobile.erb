@@ -3,8 +3,14 @@
 <%=form_tag products_path,method: :get, :id=> "search_box" do %>
 <div id="search_container">
 <div id="search_input">
-<%=text_field_tag :query, params[:query], :id=> "product_search", :title=>"Busque Itens", :placeholder => "Buscar" %>
+  
 
+ 
+
+ <%=text_field_tag  :query, params[:query], :name => "search", :id=> "search", :title=>"Busque Itens", :placeholder => "Buscar", autocomplete: :off %>
+
+
+ 
 </div>
 <div id="search_btn">
 <%=button_tag "Buscar", :value => "Buscar", :name=> nil do %>

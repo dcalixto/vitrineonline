@@ -1,0 +1,230 @@
+<% title  @vitrine.name %>
+<div class="container">
+
+  <div class="box11">
+    <%= render 'shared/flash_messages' %>
+
+    <div >
+
+      <%= image_tag(@vitrine.logo.url(:show).to_s) %>
+    </div>
+
+    <div >
+
+      <h2>
+
+        <%=link_to vitrine_path(@vitrine) do %>
+        <%=@vitrine.name %>
+      <% end %>
+
+      </h2>
+
+
+      <ul class="profile_list">
+
+
+ 
+
+
+
+        <ul>
+
+
+          <li>
+            <%= content_tag(:span, nil, :class =>"sprite-icons-location") %>
+            <% if @vitrine.user.city%>
+
+              <span>
+                <%= @vitrine.user.city.name %>,</span>
+            <% end %>
+
+            <% if @vitrine.user.state %>
+              <b>
+                <%= @vitrine.user.state.code %>
+              </b>
+            <% end %>
+
+          </li>
+          <li>
+            <% if @vitrine.feedbacks %>
+              <%= content_tag(:span, nil, :class =>"sprite-icons-small_star") %>
+
+              <div><%=@total_from_buyers %></div>
+            <% end %>
+
+          </li>
+
+          <li>
+            <%= content_tag(:span, nil, :class =>"sprite-icons-small_avatar") %>
+            <%=link_to @vitrine.user.first_name, user_path(@vitrine.user) %>
+          </li>
+
+          <li>
+            <% if @vitrine.marketing.url%>
+              <%=link_to  "#{@vitrine.marketing.url}", url_with_protocol(@vitrine.marketing.url), :target => '_blank' %>
+            <% end %>
+
+          </li>
+
+
+
+        <li>
+          <%if @vitrine.marketing.facebook%>
+
+            <%=link_to "https://www.facebook.com/#{@vitrine.marketing.facebook}" do %>
+              <%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+
+
+        <li>
+          <%if @vitrine.marketing.twitter %>
+
+            <%=link_to "https://www.twitter.com/#{@vitrine.marketing.twitter}" do %>
+              <%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+
+
+
+
+
+
+          <li>
+            <% if @vitrine.user.online? == true %>
+              <span class="status_online">
+                Online
+              </span>
+            <% else %>
+              <span class="status_offline">
+                Offline
+              </span>
+            <% end %>
+          </li>
+
+          <li><%= @vitrine.get_likes.size %> Curtidas</li>
+
+
+          <% if current_user  %>
+
+            <li>
+
+              <% if  current_user.voted_as_when_voted_for @vitrine %>
+
+
+                <%= link_to  dislike_vitrine_path(@vitrine, type: "down"), :class=> "btn_grey", method: "put" do %>
+                  <%= content_tag(:span, nil, :class =>"sprite-icons-small_like") %>
+                  Descutir
+                <%end %>
+              <% else %>
+
+
+                <%= link_to   like_vitrine_path(@vitrine, type: "up"),:class=> "btn_grey",  method: "put" do %>
+                  <%= content_tag(:span, nil, :class =>"sprite-icons-small_like") %>
+                  Curtir
+
+                <% end %>
+
+              <% end %>
+            </li>
+
+          <% end %>
+
+           <li>
+   Código: <b><%=@vitrine.code %></b>
+
+
+        </li>
+          <li>Criada em: <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => true)  %></li>
+
+
+
+
+          <li>
+            Compartilhe:<%= social_share_button_tag(truncate(@vitrine.user.first_name, :length => 20), :url => url_for(:action => :show, :id => @vitrine.user.id, :only_path => false))  %>
+        </li>
+
+        </ul>
+    </div>
+
+
+    <div>
+
+
+      <h2>Seções
+      </h2>
+      <span class="link_tag">
+
+        <ul>
+
+          <% @vitrine.tag_list.take(50).each do |tag| %>
+            <li>
+              <%= raw link_to tag.name, tags_path(:tag => tag.name, :vitrine => @vitrine.id) %>
+            </li>
+
+          <% end %>
+        </ul>
+      </span>
+
+    </div>
+    <div>
+
+      <% unless @vitrine.user.city.blank? %>
+        <%=image_tag "http://maps.google.com/maps/api/staticmap?size=170x400&sensor=false&zoom=16&markers=#{@vitrine.address}" %>
+      <% end %>
+
+    </div>
+  </div>
+
+
+
+  <div class="box4">
+
+
+
+
+    <div class="block">
+
+      <%= bettertabs :simpletabs do |tab| %>
+        <%= tab.link :vitrine_show, 'Resumo' do %>
+          <%= render 'vitrine_show' %>
+        <% end %>
+        <%= tab.link :products, "Produtos" "(#{@vitrine.products.size})"  do %>
+          <%=render 'products' %>
+        <% end %>
+
+
+        <%= tab.link :feedbacks, "Avaliações" "(#{@vitrine.feedbacks.size})"  do %>
+          <%= render 'feedbacks' %>
+        <% end %>
+
+        <%= tab.link :about, 'Sobre' do %>
+          <%=render 'about' %>
+        <% end %>
+           <%if current_user %>
+
+        <%= tab.link :message, 'Mensagem' do %>
+          <%=render 'message_box' %>
+        <% end %>
+    <% end %>
+
+
+      <% end %>
+    </div>
+
+  </div>
+
+
+</div>
+
+

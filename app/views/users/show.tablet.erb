@@ -34,14 +34,14 @@
    </h2>
 
 
-   <ul>
+   <ul class="profile_list">
 <li>
-           <#%if @user.facebook %>
+           <%if @user.facebook %>
 
-          <#%=link_to "https://www.facebook.com/#{@user.facebook}" do %>
-<#%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
-<#% end %>
-<#% end %>
+          <%=link_to "https://www.facebook.com/#{@user.facebook}" do %>
+<%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
+<% end %>
+<% end %>
 
       
         
@@ -50,12 +50,12 @@
 
 
    <li>
-           <#%if @user.twitter %>
+           <%if @user.twitter %>
 
-          <#%=link_to "https://www.twitter.com/#{@user.twitter}" do %>
-<#%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
-<#% end %>
-<#% end %>
+          <%=link_to "https://www.twitter.com/#{@user.twitter}" do %>
+<%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
+<% end %>
+<% end %>
 
       
         
@@ -99,7 +99,16 @@
    
    <%end %>
 
-     
+
+ <li>
+            <% if @user.feedbacks %>
+              <%= content_tag(:span, nil, :class =>"sprite-icons-small_star") %>
+
+              <div><%=@total_from_sellers %></div>
+            <% end %>
+
+          </li>
+
 
 <% end %>
 
@@ -110,6 +119,9 @@
        <span class="status_offline"> Offline </span>
        <% end %>
      </li>
+
+  Código: <b><%=@user.code %></b>
+
 <li>Criado(a) em: <%= timeago_tag(@user.created_at, :nojs => true, :date_only => true)  %></li>
      </ul>
  </div>
@@ -117,12 +129,14 @@
 
 
 
-
+<% unless @user.city.blank? %>
+    <%=image_tag "http://maps.google.com/maps/api/staticmap?size=170x400&sensor=false&zoom=16&markers=#{@user.address}" %>
+    <% end %>
 
 </div>
 
 
-<div class="box3">
+<div class="box4">
 
 
 
@@ -147,70 +161,28 @@
     <%= bettertabs :simpletabs do |tab| %>
       <%= tab.link :feedbacks, 'Resumo' do %>
       <%= render 'user_show' %>
-      <% end %>
-           <%= tab.link :vitrines,  "Vitrines Curtidas" do %>
+    <% end %>
+
+                <%= tab.link :vitrines,  "Vitrines Curtidas"   do %>
       <%=render 'users/vitrines' %>
-      <% end %>
+    <% end %>
+    <% if current_user %>
       <%= tab.link :message, 'Mensagem'  do %>
       <%=render 'message_box' %>
-      <% end %>
+    <% end %>
+        <% end %>
+
     <% end %>
   </div>
 
 
 </div>
 
-<div class="box11">
-    <% unless @user.city.blank? %>
-    <%=image_tag "http://maps.google.com/maps/api/staticmap?size=190x400&sensor=false&zoom=16&markers=#{@user.address}" %>
-    <% end %>
-</div>
-
-
-
-
-<div class="box1">
-  <div class="block">
-      <div class="content">
-        <div class="subcontent">
-    <h2>Veja Também</h2>
-
-
-
-
-  <div class="sugestion_carousel liquid" >
-	<span class="previous"></span>
-	<div class="wrapper">
-     <ul>
-
-            <% @suggestions.each do |item| %>
-              <li>
-            <%= link_to product_path(item) do  %>
-            <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
-            <%= item.name %>
-              <%= item.price %>
-            <% end %>
-            </li>
-            <% end %>
-  </ul>
-
- 	</div>
-	<span class="next"></span>
-</div>
 
 
 
 
 
-</div>
-
-
-
-    </div>
-
-  </div>
-
-  </div>
 </div>
 </div>
 

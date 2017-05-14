@@ -1,0 +1,46 @@
+<% title "#{params[:tag]} Produtos" %>
+<div class="box1">
+  <% breadcrumb :products, @products %>
+</div>
+
+<!-- PRODUCTS TAGGED BY params[:tag] FOR VITRINE params[:vitrine] -->
+
+
+
+
+<div class="box5">
+  <div class="block">
+
+    <div class="square_box">
+
+
+  <%= render :partial => 'shared/sort_by'%>
+
+     
+      <div class="content">
+
+
+        <%= render :partial => 'products/list'%>
+
+
+      </div>
+
+      <div >
+
+      </div>
+    </div>
+
+
+
+
+
+      <%= render :partial => 'shared/product_pagination'%>
+
+
+</div>
+
+
+  </div>
+
+</div>
+
