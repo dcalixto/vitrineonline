@@ -7,7 +7,7 @@ class CreateDisputes < ActiveRecord::Migration
       t.integer :seller_name
       t.integer :buyer_name
       t.string :status
-      t.sring :transaction_id
+      t.string :transaction_id
       t.decimal :amount, precision: 9, scale: 2
       t.string :motive
       t.string :solution
