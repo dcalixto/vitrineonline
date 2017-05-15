@@ -205,6 +205,7 @@ resources :transactions, only: [:show]
  end
   end
 
+resources :disputes
   resources :carts, only: [:index] 
    resources :orders, only: [:index, :update, :destroy] do
     resources :stocks, only: [:index, :destroy] do

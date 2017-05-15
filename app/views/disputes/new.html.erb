@@ -1,0 +1,87 @@
+<% title  "Criar Conta"  %>
+
+<!--MARKETING  -->
+
+<div class="box8">
+  <div class="margin_top" id="marketing">
+    <h1>A Vitrineonline ajudará você a:</h1>
+    <ul>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Montar sua vitrine e poste seus produtos sem custo</li>
+    </ul>
+    <ul>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Estilizar e administrar sua vitrine com facilidade</li>
+    </ul>
+    <ul>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Ter exposição 24hrs por dia além da capacidade de criar e fortalecer sua marca</li>
+    </ul>
+  </div>
+</div>
+
+<!--USER CREATE  -->
+<div class="box8">
+
+  <%= render 'shared/error_messages', :target => @user %>
+
+  <div class="block margin_top">
+        
+    <div class="subcontent">
+       <div class="grey_box"> 
+
+<h2>Contestar Pedido 
+</h2>
+
+
+      <%= semantic_form_for(@dispute, :validate => true) do |f| %>
+      <%= f.inputs do %>
+
+          <h2>Eu quero</h2>
+ 
+<%= f.input :solution, :as => :radio, :label => "Eu quero",
+          :collection => [["Retorno do dinheiro", "RM"], ["Reenvio", "RS"], ["Trocar Produto", "CP"],
+      
+      ["Cancelar Pedido", "CO"]
+      ], :required=>true %>
+
+
+
+          <h2>Você já recebeu o item?</h2>
+
+      <%= f.input :item_received, :as => :boolean, :label => "Product já foi recebido?", :required=>true   %>
+
+      <h2>Qual o movito?</h2>
+
+      <%= f.input :motive, :as => :radio, :label => "Motivos para a contestação",
+          :collection => [["Ainda não recebi", "NR"], ["Recebi um item que não corresponde à descrição do vendedor", "ND"], ["Item Danificado", "DP"],
+      
+      ["Concorcamos em cancelar a transação", "CT"]
+      ], :required=>true %>
+
+  <h2>Quantia a ser retornada</h2>
+
+  <%= f.input :amount, :as => :number, :label => "Quantia" %>
+               <h2>Descreva e detalhe sua contextação</h2>
+
+
+  <%= f.input :buyer_comment, :as => :text, :label =>  "Detalhe o que aconteceu", :required=>true %>
+
+
+
+<h2>Adicione foto ou video do item</h2>
+
+
+
+
+
+
+      <%= f.actions do %>
+      <%= f.action :submit, :label => "Criar Conta", :button_html => { :class => "btn_green btn_big margin_bottom"} %>
+      <% end %>
+      <% end %>
+    <% end %>
+               </div>
+      </div>
+
+  </div>
+     
+</div>
+

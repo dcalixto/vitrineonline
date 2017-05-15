@@ -56,6 +56,22 @@ class OrdersController < ApplicationController
 
 
 
+
+  def dispute
+    @order = current_user.cart.orders.find(params[:id])
+    if current_user.address.blank?
+      redirect_to edit_user_path
+
+      flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
+    else
+@dispute = Dispute.new
+
+
+      
+    end
+  end
+
+
   def track_done
     @order = Order.find(params[:id])
     if order.update_attributes(params[:order])

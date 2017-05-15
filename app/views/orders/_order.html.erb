@@ -253,10 +253,14 @@ Comprador:
               <span class="sendship_sent">Enviado</span>
             </li>
           <% end %>
+  <% if order.buyer == current_user %>
 
 
+          <li><%=link_to"Contestar Pedido", new_dispute %></li>
 
-
+        <% end %>
+          
+          
           <li><% if params[:status] == Order.statuses[1] %>
 
             Enviado em:
