@@ -23,7 +23,7 @@
 
           <h2>Eu quero</h2>
  
-<%= f.input :solution, :as => :radio, :label => "Eu quero",
+<%= f.input :solution, :as => :radio, :label  =>false,
           :collection => [["Retorno do dinheiro", "RM"], ["Reenvio", "RS"], ["Trocar Produto", "CP"],
       
       ["Cancelar Pedido", "CO"]
@@ -33,11 +33,11 @@
 
           <h2>Você já recebeu o item?</h2>
 
-      <%= f.input :item_received, :as => :boolean, :label => "Product já foi recebido?", :required=>true   %>
+      <%= f.input :item_received, :as => :boolean, :label =>"sim", :required=>true   %>
 
       <h2>Qual o movito?</h2>
 
-      <%= f.input :motive, :as => :radio, :label => "Motivos para a contestação",
+      <%= f.input :motive, :as => :radio, :label   =>false,
           :collection => [["Ainda não recebi", "NR"], ["Recebi um item que não corresponde à descrição do vendedor", "ND"], ["Item Danificado", "DP"],
       
       ["Concorcamos em cancelar a transação", "CT"]

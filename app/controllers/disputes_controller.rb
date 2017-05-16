@@ -20,7 +20,7 @@ class DisputesController < ApplicationController
 
 def create
 
- @order = Order.find_by_id(params[:order_id])
+ @order = Order.find(params[:id])
 
   if   current_user == @order.buyer
 
