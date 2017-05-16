@@ -106,8 +106,7 @@ class OrdersController < ApplicationController
 
  def dispute
 
-    current_user == @order.buyer
-
+    
    @order = current_user.orders.find(params[:id])
 
     if current_user.address.blank?
