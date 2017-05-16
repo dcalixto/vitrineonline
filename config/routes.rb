@@ -227,6 +227,10 @@ get :track
 put :track_done
 put :track_sent
 
+get :dispute
+post :dispute_sent
+put :dispute_done
+
     end
 
     collection do
