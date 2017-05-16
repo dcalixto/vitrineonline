@@ -106,8 +106,9 @@ class OrdersController < ApplicationController
 
  def dispute
 
-   @current_buyer = current_user.orders
-    @order = current_buyer.orders.find(params[:id])
+    current_user == @order.buyer
+
+   @order = current_user.orders.find(params[:id])
 
     if current_user.address.blank?
       redirect_to edit_user_path
