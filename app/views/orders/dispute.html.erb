@@ -7,7 +7,7 @@
 <!--USER CREATE  -->
 <div class="box8">
 
-  <%= render 'shared/error_messages', :target => @dispute %>
+  <%= render 'shared/error_messages', :target => @order.dispute %>
 
   <div class="block margin_top">
         
@@ -17,9 +17,11 @@
 <h2>Contestar Pedido 
 </h2>
 
-
-      <%= semantic_form_for(@dispute, :validate => true) do |f| %>
-      <%= f.inputs do %>
+  <%= semantic_form_for :dispute, @dispute, :url => dispute_sent_order_path(@order), :html => {:method => :post} do |f| %>
+    
+               
+          
+          <%= f.inputs do %>
 
           <h2>Eu quero</h2>
  
