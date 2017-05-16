@@ -125,7 +125,7 @@ class OrdersController < ApplicationController
 
 def dispute_sent
 
- @order = Order.find(params[:id])
+@order = current_user.orders.find(params[:id])
 
   if   current_user == @order.buyer
 
