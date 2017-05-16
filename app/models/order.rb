@@ -15,6 +15,8 @@ class Order < ActiveRecord::Base
 
   has_one :odata
 
+  has_one :dispute
+
 
   belongs_to :color
   belongs_to :size
