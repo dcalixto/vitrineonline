@@ -28,8 +28,8 @@ def create
 
     dispute = @order.dispute.nil? ? Dispute.new : @order.dispute
     dispute.attributes = params[:dispute]
-    dispute.user = @order.buyer
-    dispute.vitrine = @order.seller
+    dispute.buyer = @order.buyer
+    dispute.seller = @order.seller
     dispute.buyer_name = @order.buyer_name
     dispute.seller_name = @order.seller_name
     dispute.trasanction_id = @order.order.transaction.transaction_id
