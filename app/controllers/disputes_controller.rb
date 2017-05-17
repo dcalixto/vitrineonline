@@ -26,6 +26,8 @@ def create
 
   if   current_user == @order.buyer
 
+ 
+
     dispute = @order.dispute.nil? ? Dispute.new : @order.dispute
     dispute.attributes = params[:dispute]
     dispute.buyer = @order.buyer
@@ -34,8 +36,14 @@ def create
     dispute.seller_name = @order.seller_name
     dispute.transaction_id = @order.transaction.transaction_id
 
+    if params[:status] == 'Open'
+      dispute.status = dispute.statuses[0]
+    end
 
     if dispute.save
+
+       redirect_to order_dispute_path(@dispute)
+
       flash[:success] = 'Contestação Criada'
 
     end
