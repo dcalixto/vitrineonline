@@ -37,15 +37,11 @@ def create
 
     if dispute.save
 
-       redirect_to order_dispute_path(@order)
-
+       redirect_to order_dispute_path(@order, @dispute)
       flash[:success] = 'Contestação Criada'
-
 
   else
     flash[:error] = 'Erro'
-
-
   redirect_to :back
 end
 
