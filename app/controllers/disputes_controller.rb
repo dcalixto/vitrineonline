@@ -60,7 +60,7 @@ end
 
 def update
    @dispute = @order.dispute
-    if @dipute.update_attributes(params[:dispute])
+    if @dispute.update_attributes(params[:dispute])
       redirect_to :back
       flash[:success] = 'Reclamação atualizada'
     else
