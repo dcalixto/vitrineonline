@@ -41,18 +41,16 @@ def create
 
       flash[:success] = 'Contestação Criada'
 
-    end
-
 
   else
     flash[:error] = 'Erro'
-  end
 
 
   redirect_to :back
 end
 
-
+  end
+end
 
 
 
