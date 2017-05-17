@@ -17,9 +17,11 @@
 <h2>Contestar Pedido 
 </h2>
 
-
-      <%= semantic_form_for(@dispute, :validate => true) do |f| %>
-      <%= f.inputs do %>
+       <%= semantic_form_for :dispute, @dispute, :url => order_dispute_path(@order) do |f| %>
+    
+        
+        
+        <%= f.inputs do %>
 
           <h2>Eu quero</h2>
  
