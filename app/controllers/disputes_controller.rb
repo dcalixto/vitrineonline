@@ -59,6 +59,15 @@ end
 
 
 
+
+
+def show
+
+  @dispute = Dispute.find(params[:id])
+end
+
+
+
 private
 
 def set_order
