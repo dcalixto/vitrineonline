@@ -25,6 +25,7 @@ def create
 
     dispute = @order.dispute.nil? ? Dispute.new : @order.dispute
     dispute.attributes = params[:dispute]
+    dispute.order = @order
     dispute.buyer = @order.buyer
     dispute.seller = @order.seller
     dispute.buyer_name = @order.buyer_name
