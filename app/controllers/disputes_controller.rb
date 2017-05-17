@@ -32,7 +32,7 @@ def create
     dispute.seller = @order.seller
     dispute.buyer_name = @order.buyer_name
     dispute.seller_name = @order.seller_name
-    dispute.trasanction_id = @order.order.transaction.transaction_id
+    dispute.trasanction_id = @order.transaction.transaction_id
 
 
     if dispute.save
