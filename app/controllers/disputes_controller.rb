@@ -3,9 +3,6 @@ class DisputesController < ApplicationController
 before_filter :set_order
 
   def new
-
- # @order = Order.find_by_id(params[:order_id])
-#@order = Order.find params[:order_id]
     if current_user.address.blank?
       redirect_to edit_user_path
 
@@ -21,8 +18,6 @@ before_filter :set_order
 
 
 def create
-
-#@order = Order.find params[:order_id]
 
   if   current_user == @order.buyer
 
@@ -42,7 +37,7 @@ def create
 
     if dispute.save
 
-       redirect_to order_dispute_path(@dispute)
+       redirect_to order_dispute_path(@order)
 
       flash[:success] = 'Contestação Criada'
 
