@@ -55,6 +55,10 @@ def show
   @dispute = @order.dispute
 end
 
+def edit
+  @dispute = @order.dispute
+end
+
 
 
 
