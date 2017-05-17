@@ -1,6 +1,6 @@
 class DisputesController < ApplicationController
 
-before_action :set_order
+before_filter :set_order
 
   def new
 
@@ -50,6 +50,8 @@ def create
 end
 
 
+
+private
 
 def set_order
 @order = Order.find params[:order_id]
