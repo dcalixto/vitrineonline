@@ -50,7 +50,7 @@
 
 </div>
 
-  <%= semantic_form_for @dispute, :url => order_dispute_path(@order),  :method => :put  do |f| %>
+  <%= semantic_form_for @dispute, :url => order_dispute_path,  :method => :put  do |f| %>
 <%  if   current_user == @order.buyer %>
   <div class="grey_box"> 
 
