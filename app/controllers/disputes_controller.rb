@@ -65,7 +65,7 @@ end
 def update
    @dispute = @order.dispute
     if @dispute.update_attributes(params[:dispute])
-      redirect_to  purchased_order_path
+      redirect_to  purchased_orders_path
       flash[:success] = 'Reclamação atualizada'
     else
       render :show
