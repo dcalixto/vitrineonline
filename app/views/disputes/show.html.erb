@@ -1,0 +1,124 @@
+<% title  "Contestação"  %>
+
+<!--MARKETING  -->
+
+
+
+<!--USER CREATE  -->
+<div class="box8">
+
+  <%= render 'shared/error_messages', :target => @dispute %>
+
+  <div class="block margin_top">
+
+    <div class="subcontent">
+      
+<h2>Contestar Pedido 
+</h2>
+
+<%= @dispute.status %>
+
+     <h2>Eu quero</h2>
+
+<%= @dispute.dolution %>
+
+   <h2>Você já recebeu o item?</h2>
+
+   <%= @dispute.item_received %>
+
+
+
+<h2>Qual o movito?</h2>
+
+   <%= @dispute.motive %>
+
+
+
+
+  <h2>Quantia a ser retornada</h2>
+<%= @dispute.amount %>
+
+
+
+   <h2>Contestação do comprador</h2>
+<%= @dispute.buyer_comment %>
+
+
+   <h2>Contestação do vendedor</h2>
+<%= @dispute.seller_comment %>
+
+
+</div>
+
+  <%= semantic_form_for @dispute, :url => order_dispute_path(@order) do |f| %>
+
+<%  if   current_user == @order.buyer %>
+  <div class="grey_box"> 
+
+
+
+         
+        
+        
+     
+  <%= f.input :buyer_comment, :as => :text, :label =>  "Detalhe o que aconteceu", :required=>true %>
+
+
+
+<h2>Adicione foto ou video do item</h2>
+
+
+
+
+
+
+      <%= f.actions do %>
+      <%= f.action :submit, :label => "Postar", :button_html => { :class => "btn_green btn_big margin_bottom"} %>
+      <% end %>
+      <% end %>
+       
+  </div>
+
+
+
+
+
+<%  if   current_user == @order.seller %>
+  <div class="grey_box"> 
+
+
+
+      
+        
+        
+     
+  <%= f.input :seller_comment, :as => :text, :label =>  "Detalhe o que aconteceu", :required=>true %>
+
+
+
+<h2>Adicione foto ou video do item</h2>
+
+
+
+
+
+
+      <%= f.actions do %>
+      <%= f.action :submit, :label => "Postar", :button_html => { :class => "btn_green btn_big margin_bottom"} %>
+      <% end %>
+      <% end %>
+    <% end %>
+       
+
+
+
+
+
+
+  </div>
+     
+</div>
+ </div>
+ </div>
+
+
