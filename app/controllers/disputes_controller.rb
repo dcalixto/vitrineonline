@@ -2,7 +2,7 @@ class DisputesController < ApplicationController
 
   def new
 
-  @order = Order.find_by_id(params[:order_id])
+ # @order = Order.find_by_id(params[:order_id])
   
     if current_user.address.blank?
       redirect_to edit_user_path
