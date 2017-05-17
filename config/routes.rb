@@ -205,9 +205,11 @@ resources :transactions, only: [:show]
  end
   end
 
-resources :disputes
+
   resources :carts, only: [:index] 
    resources :orders, only: [:index, :update, :destroy] do
+   resource :dispute
+  
     resources :stocks, only: [:index, :destroy] do
       collection do
         match '/' => 'stocks#index', via: [:get, :post], as: :products
@@ -227,9 +229,9 @@ get :track
 put :track_done
 put :track_sent
 
-get :dispute
-post :dispute_sent
-put :dispute_done
+#get :dispute
+#post :dispute_sent
+#put :dispute_done
 
     end
 

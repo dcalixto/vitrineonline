@@ -256,7 +256,7 @@ Comprador:
   <% if order.buyer == current_user %>
 
 
-          <li><%=link_to"Contestar Pedido", dispute_order_path(order) %></li>
+          <li><%=link_to"Contestar Pedido", new_order_dispute_path(order) %></li>
 
         <% end %>
           
