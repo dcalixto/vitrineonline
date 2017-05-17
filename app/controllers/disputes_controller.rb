@@ -52,7 +52,8 @@ end
 
 def show
 
-  @dispute = Dispute.find(params[:id])
+ # @dispute = Dispute.find(params[:id])
+  @dispute = @order.dispute
 end
 
 
