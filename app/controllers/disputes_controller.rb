@@ -39,7 +39,7 @@ def create
     if dispute.save
 
        redirect_to order_dispute_path(@order, @dispute)
-      flash[:success] = 'Contestação Criada'
+      flash[:success] = 'Reclamação Criada'
 
   else
     flash[:error] = 'Erro'
@@ -52,10 +52,21 @@ end
 
 
 def show
-
- # @dispute = Dispute.find(params[:id])
   @dispute = @order.dispute
 end
+
+
+
+
+def update
+   @dispute = @order.dispute
+    if @dipute.update_attributes(params[:dispute])
+      redirect_to :back
+      flash[:success] = 'Reclamação atualizada'
+    else
+      render :show
+    end
+  end
 
 
 
