@@ -1,5 +1,7 @@
 class DisputesController < ApplicationController
 
+before_action :set_order
+
   def new
 
  # @order = Order.find_by_id(params[:order_id])
@@ -20,10 +22,9 @@ class DisputesController < ApplicationController
 
 def create
 
-@order = Order.find params[:order_id]
+#@order = Order.find params[:order_id]
 
   if   current_user == @order.buyer
-
 
     dispute = @order.dispute.nil? ? Dispute.new : @order.dispute
     dispute.attributes = params[:dispute]
@@ -37,13 +38,7 @@ def create
     if dispute.save
       flash[:success] = 'Contestação Criada'
 
-
-
-
     end
-
-
-
 
 
   else
@@ -51,10 +46,15 @@ def create
   end
 
 
-
-
   redirect_to :back
 end
+
+
+
+def set_order
+@order = Order.find params[:order_id]
+end
+
 end
 
 
