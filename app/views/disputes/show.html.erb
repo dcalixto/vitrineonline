@@ -1,13 +1,13 @@
-<% title  "Contestação"  %>
+<% title  "Reclamação"  %>
 
 <!--MARKETING  -->
 
-<% @dispute = @order.dispute %>
+<% if @dispute.present? %>
 
 <!--USER CREATE  -->
 <div class="box8">
 
-  <%= render 'shared/error_messages', :target => @order.dispute %>
+  <%= render 'shared/error_messages', :target => @dispute %>
 
   <div class="block margin_top">
 
@@ -105,7 +105,8 @@
 
       <%= f.actions do %>
       <%= f.action :submit, :label => "Postar", :button_html => { :class => "btn_green btn_big margin_bottom"} %>
-      <% end %>
+  <% end %>
+
       <% end %>
     <% end %>
        
@@ -120,5 +121,6 @@
 </div>
  </div>
  </div>
+ <% end %>
 
 

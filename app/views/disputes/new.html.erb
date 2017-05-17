@@ -1,4 +1,4 @@
-<% title  "Criar Contestação"  %>
+<% title  "Criar Reclamação"  %>
 
 <!--MARKETING  -->
 
@@ -14,7 +14,7 @@
     <div class="subcontent">
        <div class="grey_box"> 
 
-<h2>Contestar Pedido 
+<h2>Reclamar Pedido 
 </h2>
 
        <%= semantic_form_for @dispute, :url => order_dispute_path(@order) do |f| %>
@@ -63,7 +63,7 @@
 
 
       <%= f.actions do %>
-      <%= f.action :submit, :label => "Criar Contestação", :button_html => { :class => "btn_green btn_big margin_bottom"} %>
+      <%= f.action :submit, :label => "Postar", :button_html => { :class => "btn_green btn_big margin_bottom"} %>
       <% end %>
       <% end %>
     <% end %>
