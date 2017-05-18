@@ -14,7 +14,7 @@ add_template_helper(EmailHelper)
 
     mail(to: @dispute.buyer.email, subject: 'Reclamação Enviada', &:html)
  
-  mail(to: @dispute.seller.email, subject: 'Comprador abriu uma Reclamação', &:html)
+ # mail(to: @dispute.seller.email, subject: 'Comprador abriu uma Reclamação', &:html)
 
   
   end

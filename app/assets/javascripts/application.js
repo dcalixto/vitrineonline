@@ -9,6 +9,8 @@
 //= dropzone_avatar
 //= dropzone_images
 //= dropzone_logo
+//= buyer_dropzone
+//= seller_dropzone
 //= require social-share-button
 //= require jquery.bettertabs.min
 //= require url.min

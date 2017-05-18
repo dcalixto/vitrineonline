@@ -9,8 +9,9 @@ $(document).ready(function(){
 	paramName: "dipute[seller_file]", // Rails expects the file upload to be something like model[field_name]
 	addRemoveLinks: true, // Don't show remove links on dropzone itself.
     dictRemoveFile: 'Remover',
-    acceptedFiles: "image/*"
-    acceptedFiles: ".mp4,.mkv,.avi"
+    acceptedFiles: "image/*, .mp4,.mkv,.avi"
+
+   
   });
   });
 
