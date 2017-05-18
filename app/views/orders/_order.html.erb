@@ -268,9 +268,12 @@ Comprador:
         <% end %>
           
 
-<% if order.seller == current_user %>
+<% if order.seller == current_vitrine %>
+
+    <%if order.dispute.present? %>
 
  <li><%=link_to "Checar reclamação",  order_dispute_path(order)  %></li>
+ <% end %>
 
 <% end %>
 
