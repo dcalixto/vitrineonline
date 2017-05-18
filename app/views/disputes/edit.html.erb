@@ -13,7 +13,10 @@
 
     <div class="subcontent">
 <%= @dispute.updated_at.strftime("%d %m %Y") %>
-      <h2>Reclamação do pedido </h2>: <h1><%= @dispute.transaction_id %></h1>
+<h1>Reclamação do pedido </h1>
+
+
+<h2><%= @dispute.transaction_id %></h2>
 
 <%= @dispute.status %>
 
@@ -50,40 +53,21 @@
 
 
 
-  <%  if   current_user == @order.buyer %>
+  <%  if   current_user == @order.buyer or current_vitrine == @order.seller  %>
+
     <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
 
+          <ul class="image_info">
+            <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
+          
+          </ul>
 
-<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<%=form_for(@dispute, :url => order_dispute_path,   :method=> :put, html: { multipart: true, class: "dropzone", id: "buyer_dropzone"}) do |f| %>
-<div class="fallback">
-<%=f.file_field :buyer_file %><br>
-<%=f.submit "Salvar" %>
-</div>
-<% end %>
-
-
-<% end %>
+          <div class="dropzone" id="prova" data-update-url="<%=  order_dispute_path + '?authenticity_token=' + form_authenticity_token %>"></div>
 
 
 
-  <%  if   current_vitrine == @order.seller %>
-    <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
-
-
-<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<%=form_for(@dispute, :url => order_dispute_path,  :method=> :put, html: { multipart: true, class: "dropzone", id: "seller_dropzone"}) do |f| %>
-<div class="fallback">
-<%=f.file_field :seller_file %><br>
-<%=f.submit "Salvar" %>
-</div>
-<% end %>
 
 <% end %>
-
-
-
-
 
 
 
@@ -149,19 +133,31 @@
  <% end %>
 
 
- <div class="box8">
+ <div class="box9">
    <div class="block">
-   <h2>Imagens e videos do comprador</h2>
+   <h2>Imagens e videos da reclamação</h2>
 
-   <%=@dispute.buyer_file %>
+<ul>
+
+      <% unless @dispute.images.blank? %>
+        <%  @dispute.images.offset(4).each do |i| %>
+          <li>
+           
+
+
+ <a href="<%= i.prova.url.to_s %>"> 
+        <%= image_tag(i.prova.url(:big).to_s) %>
+    </a> 
+
+          </li>
+
+        <% end %>
+
+      <% end %>
+    </ul>
    </div>
 
 
- <div class="block">
-   <h2>Imagens e videos do vendedor</h2>
-
-   <%=@dispute.seller_file %>
-   </div>
 
 
  </div>

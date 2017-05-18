@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170510202307) do
+ActiveRecord::Schema.define(:version => 20170518221405) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -139,6 +139,30 @@ ActiveRecord::Schema.define(:version => 20170510202307) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "disputes", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "seller_id"
+    t.integer  "buyer_id"
+    t.integer  "seller_name"
+    t.integer  "buyer_name"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.decimal  "amount",         :precision => 9, :scale => 2
+    t.string   "motive"
+    t.string   "solution"
+    t.text     "buyer_comment"
+    t.text     "seller_comment"
+    t.string   "buyer_file"
+    t.string   "seller_file"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+    t.boolean  "item_received"
+    t.string   "product_name"
+    t.decimal  "product_price"
+    t.string   "product_image"
+    t.string   "shipping_cost"
+  end
+
   create_table "feedbacks", :force => true do |t|
     t.integer  "feedbackable_id"
     t.string   "feedbackable_type"
@@ -204,6 +228,7 @@ ActiveRecord::Schema.define(:version => 20170510202307) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "pdata_id"
+    t.integer  "dispute_id"
   end
 
   add_index "images", ["product_data_id"], :name => "index_images_on_product_data_id"
@@ -391,6 +416,7 @@ ActiveRecord::Schema.define(:version => 20170510202307) do
     t.float    "diamenter"
     t.string   "code"
     t.float    "length"
+    t.string   "image"
   end
 
   add_index "pdata", ["brand_id"], :name => "index_pdata_on_brand_id"

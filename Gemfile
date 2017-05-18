@@ -152,7 +152,7 @@ gem 'no_cache_control',     github: "dcalixto/no_cache_control"
 # IMAGE
 gem 'carrierwave','~> 0.9.0'
 gem 'mini_magick'
-#gem 'dropzonejs-rails'
+gem 'carrierwave-video'
 
 
 

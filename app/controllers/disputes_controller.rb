@@ -32,9 +32,10 @@ def create
     dispute.buyer_name = @order.buyer_name
     dispute.seller_name = @order.seller_name
     dispute.transaction_id = @order.transaction.transaction_id
-    dispute.status =  params[:status] == 'open'
+    dispute.status =  params[:status] == 'Open'
     
     if dispute.save
+ DisputeMailer.dispute_confirmation(@dispute).deliver
 
        redirect_to order_dispute_path(@order, @dispute)
       flash[:success] = 'Reclamação Criada'
@@ -43,7 +44,6 @@ def create
     flash[:error] = 'Erro'
   redirect_to :back
 end
- #DisputeMailer.dispute_confirmation(dispute).deliver
   end
 end
 
@@ -63,8 +63,10 @@ end
 def update
    @dispute = @order.dispute
     if @dispute.update_attributes(params[:dispute])
-      redirect_to  edit_order_dispute_path
+      redirect_to  edit_order_dispute_path(@order, @dispute)
+
       flash[:success] = 'Reclamação atualizada'
+      
     else
       render :show
     end
