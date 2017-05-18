@@ -13,7 +13,7 @@
 
     <div class="subcontent">
       
-      <h2>Reclamação do pedido <%= @dispute.transaction_id %></h2>
+      <h2>Reclamação do pedido </h2>: <h1><%= @dispute.transaction_id %></h1>
 
 <%= @dispute.status %>
 
@@ -44,7 +44,52 @@
 <%= @dispute.seller_comment %>
 
 
+    </div>
+
+
+
+
+
+  <%  if   current_user == @order.buyer %>
+    <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
+
+
+<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
+<%=form_for(@dispute, :url => order_dispute_path,   :method=> :put, html: { multipart: true, class: "dropzone", id: "buyer_dropzone"}) do |f| %>
+<div class="fallback">
+<%=f.file_field :buyer_file %><br>
+<%=f.submit "Salvar" %>
 </div>
+<% end %>
+
+
+<% end %>
+
+
+
+  <%  if   current_vitrine == @order.seller %>
+    <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
+
+
+<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
+<%=form_for(@dispute, :url => order_dispute_path,  :method=> :put, html: { multipart: true, class: "dropzone", id: "seller_dropzone"}) do |f| %>
+<div class="fallback">
+<%=f.file_field :seller_file %><br>
+<%=f.submit "Salvar" %>
+</div>
+<% end %>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
    <%= semantic_form_for @dispute, :url => order_dispute_path,  :method => :put  do |f| %>
 
    <div class="grey_box"> 
@@ -91,36 +136,7 @@
   </div>
 
 
-  <%  if   current_user == @order.buyer %>
-    <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
 
-
-<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<%=form_for(@dispute, :url => order_dispute_path,   :method=> :put, html: { multipart: true, class: "dropzone", id: "buyer_dropzone"}) do |f| %>
-<div class="fallback">
-<%=f.file_field :buyer_file %><br>
-<%=f.submit "Salvar" %>
-</div>
-<% end %>
-
-
-<% end %>
-
-
-
-  <%  if   current_vitrine == @order.seller %>
-    <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
-
-
-<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<%=form_for(@dispute, :url => order_dispute_path,  :method=> :put, html: { multipart: true, class: "dropzone", id: "seller_dropzone"}) do |f| %>
-<div class="fallback">
-<%=f.file_field :seller_file %><br>
-<%=f.submit "Salvar" %>
-</div>
-<% end %>
-
-<% end %>
 
 
 
