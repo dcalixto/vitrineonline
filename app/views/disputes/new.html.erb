@@ -26,9 +26,9 @@
           <h2>Eu quero</h2>
  
 <%= f.input :solution, :as => :radio, :label  =>false,
-          :collection => [["Retorno do dinheiro", "RM"], ["Reenvio", "RS"], ["Trocar Produto", "CP"],
+          :collection => [["Retorno do dinheiro"], ["Reenvio"], ["Trocar Produto"],
       
-      ["Cancelar Pedido", "CO"]
+      ["Cancelar Pedido"]
       ], :required=>true %>
 
 
@@ -40,9 +40,10 @@
       <h2>Qual o movito?</h2>
 
       <%= f.input :motive, :as => :radio, :label   =>false,
-          :collection => [["Ainda não recebi", "NR"], ["Recebi um item que não corresponde à descrição do vendedor", "ND"], ["Item Danificado", "DP"],
+        :collection => [["Ainda não recebi"], ["Recebi um item que não corresponde à descrição do vendedor"], 
+                        ["Item Danificado"],
       
-      ["Concorcamos em cancelar a transação", "CT"]
+      ["Concorcamos em cancelar a transação"]
       ], :required=>true %>
 
   <h2>Quantia a ser retornada</h2>
