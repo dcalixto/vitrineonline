@@ -96,7 +96,7 @@
 
 
 <span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<%=form_for(@dispute, :method=> :put, html: { multipart: true, class: "dropzone", id: "buyer_dropzone"}) do |f| %>
+<%=form_for(@dispute, :url => order_dispute_path,   :method=> :put, html: { multipart: true, class: "dropzone", id: "buyer_dropzone"}) do |f| %>
 <div class="fallback">
 <%=f.file_field :buyer_file %><br>
 <%=f.submit "Salvar" %>
@@ -113,7 +113,7 @@
 
 
 <span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<%=form_for(@dispute, :method=> :put, html: { multipart: true, class: "dropzone", id: "seller_dropzone"}) do |f| %>
+<%=form_for(@dispute, :url => order_dispute_path,  :method=> :put, html: { multipart: true, class: "dropzone", id: "seller_dropzone"}) do |f| %>
 <div class="fallback">
 <%=f.file_field :seller_file %><br>
 <%=f.submit "Salvar" %>

@@ -32,10 +32,7 @@ def create
     dispute.buyer_name = @order.buyer_name
     dispute.seller_name = @order.seller_name
     dispute.transaction_id = @order.transaction.transaction_id
-
-    if params[:status] == 'Open'
     dispute.status = dispute.statuses.open!
-  end
 
     if dispute.save
 
