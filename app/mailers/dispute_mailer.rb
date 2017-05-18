@@ -8,7 +8,7 @@ add_template_helper(EmailHelper)
 
 
   def dispute_confirmation(dispute)
-  @order = order 
+  @order = order
     @dispute = @order.dispute
   
 
