@@ -38,12 +38,12 @@ def create
 
        redirect_to order_dispute_path(@order, @dispute)
       flash[:success] = 'Reclamação Criada'
-   DisputeMailer.dispute_confirmation(dispute).deliver
+  
   else
     flash[:error] = 'Erro'
   redirect_to :back
 end
-
+ DisputeMailer.dispute_confirmation(dispute).deliver
   end
 end
 
