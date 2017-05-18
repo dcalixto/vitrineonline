@@ -31,6 +31,9 @@ def create
     dispute.seller = @order.seller
     dispute.buyer_name = @order.buyer_name
     dispute.seller_name = @order.seller_name
+      dispute.buyer_email = @order.buyer.email
+       dispute.seller_email = @order.seller.email
+
     dispute.transaction_id = @order.transaction.transaction_id
     dispute.status =  params[:status] == 'Open'
     

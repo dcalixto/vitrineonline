@@ -10,9 +10,8 @@ add_template_helper(EmailHelper)
   def dispute_confirmation(dispute)
     @dispute = dispute
   
- @order = order
 
-    mail(to: @dispute.order.buyer.email, subject: 'Reclamação Enviada', &:html)
+    mail(to: @dispute.buyer_email, subject: 'Reclamação Enviada', &:html)
  
  # mail(to: @dispute.seller.email, subject: 'Comprador abriu uma Reclamação', &:html)
 
