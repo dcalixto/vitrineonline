@@ -12,10 +12,31 @@
   <div class="block margin_top">
         
     <div class="subcontent">
-       <div class="grey_box"> 
 
-<h2>Reclamar Pedido 
-</h2>
+      <h1>Reclamação e Acordo</h1>
+
+      <p>Nessa seção você poderá resgitrar o problema  que houve com a transação, e se ambas as partes não chegarem
+      a um acordo por meio dessa seção ambas das partes devem levar essa reclamação para o paypal</p>
+
+     
+
+  <div class="content">
+        <%= link_to  "https://www.paypal.com/br"  do %>
+
+          <%= content_tag(:span, nil, :class => 'sprite-icons-paypal_protect') %>
+
+        <% end %>
+
+        <p> O paypal oferece proteção para o comprador e vendedor</p>
+   Saiba mais em:
+        <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+      </div>
+
+
+
+
+
+       <div class="grey_box"> 
 
        <%= semantic_form_for @dispute, :url => order_dispute_path(@order) do |f| %>
     
@@ -52,12 +73,7 @@
                <h2>Descreva e detalhe sua contextação</h2>
 
 
-  <%= f.input :buyer_comment, :as => :text, :label =>  "Detalhe o que aconteceu", :required=>true %>
-
-
-
-<h2>Adicione foto ou video do item</h2>
-
+  <%= f.input :buyer_comment, :as => :text, :label =>  "Descreva o problema", :required=>true %>
 
 
 

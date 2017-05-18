@@ -24,7 +24,8 @@ def create
  
 
     dispute = @order.dispute.nil? ? Dispute.new : @order.dispute
-    dispute.attributes = params[:dispute]
+   dispute.attributes = params[:dispute]
+   
     dispute.order = @order
     dispute.buyer = @order.buyer
     dispute.seller = @order.seller
@@ -33,14 +34,14 @@ def create
     dispute.transaction_id = @order.transaction.transaction_id
 
     if params[:status] == 'Open'
-      dispute.status = dispute.statuses[0]
-    end
+    dispute.status = dispute.statuses.open!
+  end
 
     if dispute.save
 
        redirect_to order_dispute_path(@order, @dispute)
       flash[:success] = 'Reclamação Criada'
-
+   DisputeMailer.dispute_confirmation(dispute).deliver
   else
     flash[:error] = 'Erro'
   redirect_to :back

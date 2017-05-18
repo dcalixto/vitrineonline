@@ -13,8 +13,7 @@
 
     <div class="subcontent">
       
-<h2>Contestar Pedido 
-</h2>
+      <h2>Reclamação do pedido <%= @dispute.transaction_id %></h2>
 
 <%= @dispute.status %>
 
@@ -33,79 +32,50 @@
    <%= @dispute.motive %>
 
 
-
-
   <h2>Quantia a ser retornada</h2>
 <%= @dispute.amount %>
 
 
-
-   <h2>Contestação do comprador</h2>
+   <h2>Reclamação do comprador</h2>
 <%= @dispute.buyer_comment %>
 
 
-   <h2>Contestação do vendedor</h2>
+   <h2>Reclamação do vendedor</h2>
 <%= @dispute.seller_comment %>
 
 
 </div>
+   <%= semantic_form_for @dispute, :url => order_dispute_path,  :method => :put  do |f| %>
 
-  <%= semantic_form_for @dispute, :url => order_dispute_path,  :method => :put  do |f| %>
-<%  if   current_user == @order.buyer %>
-  <div class="grey_box"> 
+   <div class="grey_box"> 
+   <%  if   current_user == @order.buyer %>
 
-
-
-         
-        
-        
-     
   <%= f.input :buyer_comment, :as => :text, :label =>  "Detalhe o que aconteceu", :required=>true %>
-
-
-
-<h2>Adicione foto ou video do item</h2>
-
-
-
-
 
 
       <%= f.actions do %>
       <%= f.action :submit, :label => "Postar", :button_html => { :class => "btn_green btn_big margin_bottom"} %>
       <% end %>
       <% end %>
-       
+
+
+
+
+
   </div>
 
 
 
 
-
-<%  if   current_user == @order.seller %>
   <div class="grey_box"> 
+<%  if   current_vitrine == @order.seller %>
 
-
-
-      
-        
-        
-     
   <%= f.input :seller_comment, :as => :text, :label =>  "Detalhe o que aconteceu", :required=>true %>
-
-
-
-<h2>Adicione foto ou video do item</h2>
-
-
-
-
 
 
       <%= f.actions do %>
       <%= f.action :submit, :label => "Postar", :button_html => { :class => "btn_green btn_big margin_bottom"} %>
   <% end %>
-
       <% end %>
     <% end %>
        
@@ -115,9 +85,49 @@
 
 
 
+
   </div>
      
+  </div>
+
+
+  <%  if   current_user == @order.buyer %>
+    <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
+
+
+<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
+<%=form_for(@dispute, :method=> :put, html: { multipart: true, class: "dropzone", id: "buyer_dropzone"}) do |f| %>
+<div class="fallback">
+<%=f.file_field :buyer_file %><br>
+<%=f.submit "Salvar" %>
 </div>
+<% end %>
+
+
+<% end %>
+
+
+
+  <%  if   current_vitrine == @order.seller %>
+    <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
+
+
+<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
+<%=form_for(@dispute, :method=> :put, html: { multipart: true, class: "dropzone", id: "seller_dropzone"}) do |f| %>
+<div class="fallback">
+<%=f.file_field :seller_file %><br>
+<%=f.submit "Salvar" %>
+</div>
+<% end %>
+
+<% end %>
+
+
+
+
+
+
+
  </div>
  </div>
  <% end %>
