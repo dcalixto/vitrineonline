@@ -12,7 +12,7 @@
   <div class="block margin_top">
 
     <div class="subcontent">
-      
+<%= @dispute.updated_at.strftime("%d %m %Y") %>
       <h2>Reclamação do pedido </h2>: <h1><%= @dispute.transaction_id %></h1>
 
 <%= @dispute.status %>

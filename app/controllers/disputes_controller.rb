@@ -43,7 +43,7 @@ def create
     flash[:error] = 'Erro'
   redirect_to :back
 end
- DisputeMailer.dispute_confirmation(dispute).deliver
+ #DisputeMailer.dispute_confirmation(dispute).deliver
   end
 end
 
@@ -63,7 +63,7 @@ end
 def update
    @dispute = @order.dispute
     if @dispute.update_attributes(params[:dispute])
-      redirect_to  purchased_orders_path
+      redirect_to  edit_order_dispute_path
       flash[:success] = 'Reclamação atualizada'
     else
       render :show
