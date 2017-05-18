@@ -8,8 +8,8 @@ add_template_helper(EmailHelper)
 
 
   def dispute_confirmation(dispute)
-  
-    @dispute = dispute
+  @order = order 
+    @dispute = @order.dispute
   
 
     mail(to: @dispute.buyer.email, subject: 'Reclamação Enviada', &:html)
