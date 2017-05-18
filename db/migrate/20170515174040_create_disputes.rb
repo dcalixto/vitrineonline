@@ -4,8 +4,8 @@ class CreateDisputes < ActiveRecord::Migration
       t.integer :order_id
       t.integer :seller_id
       t.integer :buyer_id
-      t.integer :seller_name
-      t.integer :buyer_name
+      t.string :seller_name
+      t.string :buyer_name
       t.string :status
       t.string :transaction_id
       t.decimal :amount, precision: 9, scale: 2
