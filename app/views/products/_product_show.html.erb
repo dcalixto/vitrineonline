@@ -225,8 +225,11 @@
 
   <div class="subcontent">
 
-<hr class="line"></hr>
-
+    <hr class="line"></hr>
+    <ul>
+      <li>Política Atualizada em:<%= @product.vitrine.policy.updated_at.strftime("%d/%m/%Y") %></li>
+      <li>Código Atualizado em:<%= @product.vitrine.policy.code %></li>
+    </ul>
 
     <h2>Garantias do Vendedor </h2>
 

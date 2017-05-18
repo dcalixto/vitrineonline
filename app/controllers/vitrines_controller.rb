@@ -114,20 +114,6 @@ class VitrinesController < ApplicationController
 
 
 
- def branded
-    @brand = current_vitrine.build_brand(params[:brand])
-  end
-  
-  def branded_true
-    @brand = current_vitrine.build_brand(params[:brand])
-    if @brand.update_attributes(params[:brand])
-      redirect_to "#{root_path}?branded=#{Vitrine.branded[true]}"
-
-
-    end
-
-  end
-
 
 
   def user_votes
@@ -196,7 +182,11 @@ class VitrinesController < ApplicationController
 
   def create
     @vitrine = current_user.build_vitrine(params[:vitrine])
+
+    @vitrine.email = @user.email
     if @vitrine.save
+
+
       redirect_to  page_path('welcome_vitrine')
 
       else

@@ -18,4 +18,21 @@ class Policy < ActiveRecord::Base
 
 
  validates_presence_of :vitrine
+
+
+
+
+
+ before_update  :createcode
+  
+
+ def createcode
+    if code.blank?
+    self.code = rand(36**8).to_s(36)
+    end
+  end
+
+
+
+
 end
