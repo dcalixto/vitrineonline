@@ -39,6 +39,7 @@ def create
     
     if dispute.save
  
+DisputeMailer.dispute_confirmation(@dispute).deliver
 
        redirect_to order_dispute_path(@order, @dispute)
       flash[:success] = 'Reclamação Criada'
@@ -66,7 +67,7 @@ end
 def update
    @dispute = @order.dispute
     if @dispute.update_attributes(params[:dispute])
-      redirect_to  edit_order_dispute_path(@order, @dispute)
+      redirect_to  edit_order_dispute_path#(@order, @dispute)
 DisputeMailer.dispute_confirmation(@dispute).deliver
       flash[:success] = 'Reclamação atualizada'
       
