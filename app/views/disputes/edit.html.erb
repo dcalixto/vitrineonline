@@ -28,7 +28,7 @@
 
    <h2>Você já recebeu o item?</h2>
 
-   <#%= @dispute.item_received %>
+  
 
 <%= human_boolean(:item_received ) %>
 
@@ -59,9 +59,6 @@
     <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
 
 
-<%= f.input :bf, :as => :file, :label =>  "Adicionar arquivo", :required=>true %>
-
-
 
 
  
@@ -73,7 +70,7 @@
    <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
 
 
-<%= f.input :buyer_seller, :as => :file, :label =>  "Adicionar arquivo", :required=>true %>
+
 
 
 <% end %>

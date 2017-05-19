@@ -35,8 +35,8 @@ class DisputesController < ApplicationController
       dispute.seller_email = @order.seller.email
 
       dispute.transaction_id = @order.transaction.transaction_id
-        params[:status]== 'Open'
-      if dispute.save
+      dispute.status = !dispute.status
+             if dispute.save
 
 
         redirect_to order_dispute_path(@order, @dispute)
@@ -53,6 +53,7 @@ class DisputesController < ApplicationController
 
   def show
     @dispute = @order.dispute
+      @dispute.status ?  @dispute.status : ( @dispute.status == 'open')
   end
 
   def edit
@@ -64,8 +65,7 @@ class DisputesController < ApplicationController
 
 
     @dispute = @order.dispute
-    dispute.status =  params[:status] == 'Finish'
-
+        dispute.status = !dispute.status
     if dispute.save
 
       DisputeMailer.dispute_finish(@dispute).deliver
