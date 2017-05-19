@@ -12,8 +12,9 @@ class Dispute < ActiveRecord::Base
   
   
     attr_accessible :order_id,:seller_id,:buyer_id,:buyer_name,:seller_name,:transaction_id,:status,
-:amount,:motive,:solution,:buyer_comment,:seller_comment,:buyer_email, :seller_email
- mount_uploader :file, FileUploader
+:amount,:motive,:solution,:buyer_comment,:seller_comment,:buyer_email, :seller_email, :buyer_file,:seller_file
+
+    mount_uploader :buyer_file, BuyerFileUploader
 
 
 after_create :send_dispute_confirmation
