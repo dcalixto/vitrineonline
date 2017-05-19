@@ -48,8 +48,8 @@
 <%= f.select :solution, ['Retorno do dinheiro', 'Reenvio',  'Trocar Produto',  'Cancelar Pedido'] %>
 
           <h2>Você já recebeu o item?</h2>
-<%= human_boolean(:item_received) %>
-
+<%= f.radio_button :item_received, "0" %>
+<%= f.radio_button :item_received, "1" %>
 
       <h2>Qual o movito?</h2>
 
