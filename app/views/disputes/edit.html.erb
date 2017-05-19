@@ -2,10 +2,10 @@
 
 <!--MARKETING  -->
 
-<% if @dispute.present? %>
 
 <!--USER CREATE  -->
 <div class="box8">
+<% if @dispute.present? %>
 
   <%= render 'shared/error_messages', :target => @dispute %>
 
@@ -28,8 +28,9 @@
 
    <h2>Você já recebeu o item?</h2>
 
+   <#%= @dispute.item_received %>
 
-<%= human_boolean(item_received) %>
+<%= human_boolean(:item_received ) %>
 
 <h2>Qual o movito?</h2>
 
@@ -121,14 +122,21 @@
 
   </div>
      
- 
+  </div>
+
+
+
+
+
+
+
 
 
 
 </div>
+ <% end %>
 
  </div>
- <% end %>
 
 
  <div class="box10">
