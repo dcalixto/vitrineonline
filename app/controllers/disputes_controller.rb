@@ -1,6 +1,6 @@
 class DisputesController < ApplicationController
 
-before_filter :set_order
+  before_filter :set_order
 
   def new
     if current_user.address.blank?
@@ -17,61 +17,80 @@ before_filter :set_order
 
 
 
-def create
+  def create
 
-  if   current_user == @order.buyer
+    if   current_user == @order.buyer
 
- 
 
-    dispute = @order.dispute.nil? ? Dispute.new : @order.dispute
-   dispute.attributes = params[:dispute]
-   
-    dispute.order = @order
-    dispute.buyer = @order.buyer
-    dispute.seller = @order.seller
-    dispute.buyer_name = @order.buyer_name
-    dispute.seller_name = @order.seller_name
+
+      dispute = @order.dispute.nil? ? Dispute.new : @order.dispute
+      dispute.attributes = params[:dispute]
+
+      dispute.order = @order
+      dispute.buyer = @order.buyer
+      dispute.seller = @order.seller
+      dispute.buyer_name = @order.buyer_name
+      dispute.seller_name = @order.seller_name
       dispute.buyer_email = @order.buyer.email
-       dispute.seller_email = @order.seller.email
+      dispute.seller_email = @order.seller.email
 
-    dispute.transaction_id = @order.transaction.transaction_id
-    dispute.status =  params[:status] == 'Open'
-    
-    if dispute.save
- 
+      dispute.transaction_id = @order.transaction.transaction_id
+      dispute.status =  params[:status] == 'Open'
 
-       redirect_to order_dispute_path(@order, @dispute)
-      flash[:success] = 'Reclamação Criada'
-  
-  else
-    flash[:error] = 'Erro'
-  redirect_to :back
-end
+      if dispute.save
+
+
+        redirect_to order_dispute_path(@order, @dispute)
+        flash[:success] = 'Reclamação Criada'
+
+      else
+        flash[:error] = 'Erro'
+        redirect_to :back
+      end
+    end
   end
-  #DisputeMailer.dispute_confirmation(@dispute).deliver
-
-end
 
 
 
-def show
-  @dispute = @order.dispute
-end
+  def show
+    @dispute = @order.dispute
+  end
 
-def edit
-  @dispute = @order.dispute
-end
-
-
+  def edit
+    @dispute = @order.dispute
+  end
 
 
-def update
-   @dispute = @order.dispute
+  def finish
+
+
+    @dispute = @order.dispute
+    dispute.status =  params[:status] == 'Finish'
+
+    if dispute.save
+
+      DisputeMailer.dispute_finish(@dispute).deliver
+
+      redirect_to orders_path
+
+
+
+
+      flash[:success] = 'Reclamação terminada'
+
+    else
+      render :show
+    end
+  end
+
+
+  def update
+    @dispute = @order.dispute
     if @dispute.update_attributes(params[:dispute])
       redirect_to  edit_order_dispute_path#(@order, @dispute)
-DisputeMailer.dispute_confirmation(@dispute).deliver
+      DisputeMailer.dispute_update(@dispute).deliver
       flash[:success] = 'Reclamação atualizada'
-      
+
     else
       render :show
     end
@@ -79,11 +98,11 @@ DisputeMailer.dispute_confirmation(@dispute).deliver
 
 
 
-private
+  private
 
-def set_order
-@order = Order.find params[:order_id]
-end
+  def set_order
+    @order = Order.find params[:order_id]
+  end
 
 end
 

@@ -2,10 +2,10 @@
 
 <!--MARKETING  -->
 
-<% if @dispute.present? %>
 
 <!--USER CREATE  -->
 <div class="box8">
+<% if @dispute.present? %>
 
   <%= render 'shared/error_messages', :target => @dispute %>
 
@@ -50,31 +50,35 @@
     </div>
 
 
+   <%= semantic_form_for @dispute, :url => order_dispute_path,  :method => :put  do |f| %>
 
 
-
-  <%  if   current_user == @order.buyer or current_vitrine == @order.seller  %>
+  <%  if   current_user == @order.buyer%>
 
     <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
 
-          <ul class="image_info">
-            <li class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</li>
-          
-          </ul>
 
-          <div class="dropzone" id="prova" data-update-url="<%=  order_dispute_path + '?authenticity_token=' + form_authenticity_token %>"></div>
+<%= f.input :buyer_file, :as => :file, :label =>  "Adicionar arquivo", :required=>true %>
 
 
+
+
+ 
+<% end %>
+
+
+<% if current_vitrine == @order.seller %>
+
+   <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
+
+
+<%= f.input :buyer_seller, :as => :file, :label =>  "Adicionar arquivo", :required=>true %>
 
 
 <% end %>
 
 
 
-
-
-
-   <%= semantic_form_for @dispute, :url => order_dispute_path,  :method => :put  do |f| %>
 
    <div class="grey_box"> 
    <%  if   current_user == @order.buyer %>
@@ -128,32 +132,19 @@
 
 
 
- </div>
- </div>
+</div>
  <% end %>
 
+ </div>
 
- <div class="box9">
+
+ <div class="box10">
    <div class="block">
    <h2>Imagens e videos da reclamação</h2>
 
 <ul>
 
-      <% unless @dispute.images.blank? %>
-        <%  @dispute.images.offset(4).each do |i| %>
-          <li>
-           
-
-
- <a href="<%= i.prova.url.to_s %>"> 
-        <%= image_tag(i.prova.url(:big).to_s) %>
-    </a> 
-
-          </li>
-
-        <% end %>
-
-      <% end %>
+    
     </ul>
    </div>
 

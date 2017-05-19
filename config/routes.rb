@@ -208,7 +208,11 @@ resources :transactions, only: [:show]
 
   resources :carts, only: [:index] 
    resources :orders, only: [:index, :update, :destroy] do
-   resource :dispute
+   resource :dispute, only: [:new, :create,:edit,:update] do
+     member do
+       post :finish
+     end
+   end
   
     resources :stocks, only: [:index, :destroy] do
       collection do

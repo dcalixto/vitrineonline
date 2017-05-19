@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'carrierwave/orm/activerecord'
-class ProvaUploader < CarrierWave::Uploader::Base
+class FileUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
   include Sprockets::Helpers::RailsHelper
