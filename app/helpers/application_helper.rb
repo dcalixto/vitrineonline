@@ -123,4 +123,8 @@ def display_image(pdata)
 end
 
 
+def human_boolean(boolean)
+    boolean ? 'Sim' : 'Não'
+end
+
 end

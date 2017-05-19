@@ -38,52 +38,46 @@
 
        <div class="grey_box"> 
 
-       <%= semantic_form_for @dispute, :url => order_dispute_path(@order) do |f| %>
+       <%= form_for @dispute, :url => order_dispute_path(@order) do |f| %>
     
         
         
-        <%= f.inputs do %>
-
+  
           <h2>Eu quero</h2>
- 
-<%= f.input :solution, :as => :radio, :label  =>false,
-          :collection => [["Retorno do dinheiro"], ["Reenvio"], ["Trocar Produto"],
-      
-      ["Cancelar Pedido"]
-      ], :required=>true %>
 
-
+<%= f.select :solution, ['Retorno do dinheiro', 'Reenvio',  'Trocar Produto',  'Cancelar Pedido'] %>
 
           <h2>Você já recebeu o item?</h2>
+<%= human_boolean(:item_received) %>
 
-      <%= f.input :item_received, :as => :boolean,:label  =>false, :required=>true   %>
 
       <h2>Qual o movito?</h2>
 
-      <%= f.input :motive, :as => :radio, :label   =>false,
-        :collection => [["Ainda não recebi"], ["Recebi um item que não corresponde à descrição do vendedor"], 
-                        ["Item Danificado"],
-      
-      ["Concorcamos em cancelar a transação"]
-      ], :required=>true %>
+    
+<%= f.select :solution, ['Ainda não recebi', 'Reenvio',  'Recebi um item que não corresponde à descrição do vendedor',  'Item Danificado', 'Concorcamos em cancelar a transação'] %>
+
+
+
+
+
 
   <h2>Quantia a ser retornada</h2>
 
-  <%= f.input :amount, :as => :number, :label => "Quantia" %>
+  
+
+ <%= f.number_field :amount, :class => 'text_field' %>
+
                <h2>Descreva e detalhe sua contextação</h2>
 
 
-  <%= f.input :buyer_comment, :as => :text, :label =>  "Descreva o problema", :required=>true %>
+ 
+
+ <%= f.text_field  :buyer_comment, :class => 'text_field' %>
 
 
 
-
-
-      <%= f.actions do %>
-      <%= f.action :submit, :label => "Postar", :button_html => { :class => "btn_green btn_big margin_bottom"} %>
+           <%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
       <% end %>
-      <% end %>
-    <% end %>
                </div>
       </div>
 

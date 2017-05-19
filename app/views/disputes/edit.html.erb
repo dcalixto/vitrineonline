@@ -38,9 +38,8 @@
 
 
   <h2>Quantia a ser retornada</h2>
-<%= @dispute.amount %>
 
-
+<%= number_to_currency(@dispute.amount, :unit => "R$") %>
    <h2>Reclamação do comprador</h2>
 <%= @dispute.buyer_comment %>
 
