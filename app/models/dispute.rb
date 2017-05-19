@@ -26,7 +26,7 @@ has_many :images
 after_create :send_dispute_confirmation
 
 def send_dispute_confirmation
- DisputeMailer.dispute_confirmation(dispute).deliver
+ DisputeMailer.dispute_confirmation(self).deliver
 
 end
 
