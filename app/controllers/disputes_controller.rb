@@ -48,7 +48,7 @@ def create
   redirect_to :back
 end
   end
-  DisputeMailer.dispute_confirmation(@dispute).deliver
+  #DisputeMailer.dispute_confirmation(@dispute).deliver
 
 end
 

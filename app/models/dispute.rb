@@ -23,6 +23,15 @@ has_many :images
     end
 
 
+after_create :send_dispute_confirmation
+
+def send_dispute_confirmation
+ DisputeMailer.dispute_confirmation(dispute).deliver
+
+end
+
+
+
   STATUSES.each do |method|
     define_method "#{method}?" do
       status == method
