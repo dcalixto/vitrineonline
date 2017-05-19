@@ -39,7 +39,6 @@ def create
     
     if dispute.save
  
-DisputeMailer.dispute_confirmation(@dispute).deliver
 
        redirect_to order_dispute_path(@order, @dispute)
       flash[:success] = 'Reclamação Criada'
@@ -49,6 +48,8 @@ DisputeMailer.dispute_confirmation(@dispute).deliver
   redirect_to :back
 end
   end
+  DisputeMailer.dispute_confirmation(@dispute).deliver
+
 end
 
 
