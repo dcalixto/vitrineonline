@@ -29,7 +29,7 @@ class BfUploader < CarrierWave::Uploader::Base
   end
 
 
-  process encode_video: [:mp4, resolution: "640x360"]
+#  process encode_video: [:mp4, resolution: "640x360"]
 
   version :thumb do
     process resize_to_fit: [150, 150]
