@@ -7,9 +7,9 @@ class BfUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::IsolatedHelper
 
  
- include CarrierWave::Video
+# include CarrierWave::Video
 
-  process encode_video: [:mp4, callbacks: { after_transcode: :set_success } ]
+# process encode_video: [:mp4, callbacks: { after_transcode: :set_success } ]
 
 
 
