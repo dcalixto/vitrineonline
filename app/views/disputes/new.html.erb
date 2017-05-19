@@ -47,14 +47,26 @@
 
 <%= f.select :solution, ['Retorno do dinheiro', 'Reenvio',  'Trocar Produto',  'Cancelar Pedido'] %>
 
-          <h2>Você já recebeu o item?</h2>
-<%= f.radio_button :item_received, "0" %>
-<%= f.radio_button :item_received, "1" %>
+<h2>Você já recebeu o item?</h2>
+
+<ul>
+  <li>
+    <%= f.label :item_received, 'Sim' %>
+    <%= f.radio_button :item_received, "0" %>
+  </li>
+  <li>
+      <%= f.label :item_received, 'Não' %>
+
+    <%= f.radio_button :item_received, "1" %>
+  </li>
+</ul>
+
+
 
       <h2>Qual o movito?</h2>
 
     
-<%= f.select :solution, ['Ainda não recebi', 'Reenvio',  'Recebi um item que não corresponde à descrição do vendedor',  'Item Danificado', 'Concorcamos em cancelar a transação'] %>
+<%= f.select :motive, ['Ainda não recebi', 'Reenvio',  'Recebi um item que não corresponde à descrição do vendedor',  'Item Danificado', 'Concorcamos em cancelar a transação'] %>
 
 
 

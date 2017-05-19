@@ -35,8 +35,7 @@ class DisputesController < ApplicationController
       dispute.seller_email = @order.seller.email
 
       dispute.transaction_id = @order.transaction.transaction_id
-      dispute.status =  params[:status] == 'Open'
-
+        params[:status]== 'Open'
       if dispute.save
 
 

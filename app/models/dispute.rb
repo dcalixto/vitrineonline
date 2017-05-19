@@ -26,6 +26,8 @@ end
 
 
 
+
+
   STATUSES.each do |method|
     define_method "#{method}?" do
       status == method
