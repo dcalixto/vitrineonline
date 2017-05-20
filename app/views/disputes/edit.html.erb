@@ -73,11 +73,10 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
 
 <div class="grey_box"> 
   
-  <div id="comments<%= @dispute %>" class="comments">
+  <div id="comments" class="comments">
           <%= render :partial => 'comments', :locals => {dispute: @dispute} %>
         </div>
-          <%= hidden_field_tag 'dispute_id', @dispute.id%>
-           <%= f.text_field 'comment_input', '', :class => 'comment_input'%>
+                     <%= f.text_field 'comment_input', '', :class => 'comment_input'%>
            <%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
 <% end %>
 
@@ -86,11 +85,10 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
 <div class="grey_box"> 
 
 
-  <div id="comments<%= @dispute %>" class="comments">
+  <div id="comments" class="comments">
           <%= render :partial => 'comments', :locals => {dispute: @dispute} %>
         </div>
-          <%= hidden_field_tag 'dispute_id', @dispute.id%>
-           <%= f.text_field 'comment_input', '', :class => 'comment_input'%>
+            <%= f.text_field 'comment_input', '', :class => 'comment_input'%>
            <%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
 
   </div>
