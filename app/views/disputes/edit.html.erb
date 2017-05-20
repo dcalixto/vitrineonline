@@ -89,12 +89,12 @@
 
 
 
-  <div id="comments<%= dispute.id %>" class="comments">
+  <div id="comments<%= @dispute %>" class="comments">
           <%= render :partial => 'comments', :locals => {dispute: dispute} %>
         </div>
         <% if current_user %>
           <div class="controls">
-            <%= hidden_field_tag 'dispute_id', dispute.id %>
+            <%= hidden_field_tag 'dispute_id', @dispute.id%>
             <%= text_field_tag 'comment_input', '', :class => 'comment_input'%>
             <br/>
            
