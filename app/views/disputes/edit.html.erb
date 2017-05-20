@@ -13,18 +13,21 @@
 
     <div class="subcontent">
 
-<%= @dispute.updated_at.strftime("%d/%m/%Y") %>
 
 <h1>Reclamação do pedido </h1>
 
 
 <h2><%= @dispute.transaction_id %></h2>
 
- <% if params[:status] == "open" %>
+Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
 
-                         <span class="sendship_sent">Aberto</span>
+
+
+ <% if  @dispute.status == "open" %>
+
+  <span class="sendship_sent">Aberto</span>
           
-                       <% end %>
+   <% end %>
 
 
 
@@ -78,56 +81,41 @@
 
 <% if current_vitrine == @order.seller %>
 
-   <h2>Adicione fotos ou videos que possa confirmar sua reclamação</h2>
+
+<div class="grey_box"> 
+  
+  <div id="comments<%= @dispute %>" class="comments">
+          <%= render :partial => 'comments', :locals => {dispute: @dispute} %>
+        </div>
+          <%= hidden_field_tag 'dispute_id', @dispute.id%>
+           <%= f.text_field 'comment_input', '', :class => 'comment_input'%>
+           <%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
+              
 
 
 
 
+
+  
 
 <% end %>
 
+  <%  if   current_user == @order.buyer %>
 
+<div class="grey_box"> 
 
 
   <div id="comments<%= @dispute %>" class="comments">
           <%= render :partial => 'comments', :locals => {dispute: @dispute} %>
         </div>
-        <% if current_user %>
-          <div class="controls">
-            <%= hidden_field_tag 'dispute_id', @dispute.id%>
-            <%= text_field_tag 'comment_input', '', :class => 'comment_input'%>
-            <br/>
-           
-          </div>
-        <% end %>
-
-
-   <div class="grey_box"> 
-   <%  if   current_user == @order.buyer %>
-
-  <%= f.text_area :buyer_comment  %>
-
+          <%= hidden_field_tag 'dispute_id', @dispute.id%>
+           <%= f.text_field 'comment_input', '', :class => 'comment_input'%>
            <%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
-    
-     <% end %>
-
-
-
 
   </div>
 
 
-
-
-  <div class="grey_box"> 
-<%  if   current_vitrine == @order.seller %>
-<%= f.text_area :seller_comment  %>
-
-           <%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
-    
-         <% end %>
-
- <% end %>
+   <% end %>
 
 
 
@@ -135,8 +123,6 @@
     <%= link_to @dispute.status_name, finish_order_dispute_path(@dispute) %>
 
 
-
-  </div>
      
   </div>
 
