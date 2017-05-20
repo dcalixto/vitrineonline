@@ -28,11 +28,11 @@ end
             :presence => { :if => 'item_received.nil?' }
 
 
-def open!
+def status_open!
     update_attribute :status, "open"
   end
 
-  def finished!
+  def statuts_finished!
     update_attribute :status, "finished"
   end
 
