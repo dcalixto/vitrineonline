@@ -11,8 +11,8 @@ gem 'rails', '3.2.22'
 #DATE
 #gem 'stamp'
 
-#PROGRESSBAR
-#gem 'nprogress-rails'
+
+
 
 #TABS
 gem 'bettertabs', github: "dcalixto/bettertabs"
@@ -88,7 +88,7 @@ gem 'mail_form'
 #SELECT
 
 gem 'dynamic_selectable', github: "dcalixto/dynamic_selectable"
-#gem "select2-rails"
+
 
 #FOREMAN
 
@@ -218,7 +218,8 @@ gem 'wicked'
 
 
 
-
+# COMMENTABLE SYSTEM
+gem 'acts_as_commentable', '3.0.1'
 
 
 
@@ -264,10 +265,6 @@ group :production do
   gem 'pg'
 end
 
-
-
-#ACTIVITY
-#gem 'public_activity'#,  github: "dcalixto/public_activity", :tag => '5.4.3'
 
 
 #WAI-ARIA

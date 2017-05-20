@@ -89,6 +89,19 @@
 
 
 
+  <div id="comments<%= dispute.id %>" class="comments">
+          <%= render :partial => 'comments', :locals => {dispute: dispute} %>
+        </div>
+        <% if current_user %>
+          <div class="controls">
+            <%= hidden_field_tag 'dispute_id', dispute.id %>
+            <%= text_field_tag 'comment_input', '', :class => 'comment_input'%>
+            <br/>
+           
+          </div>
+        <% end %>
+
+
    <div class="grey_box"> 
    <%  if   current_user == @order.buyer %>
 

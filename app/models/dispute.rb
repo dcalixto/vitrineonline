@@ -13,15 +13,16 @@ class Dispute < ActiveRecord::Base
   
     attr_accessible :order_id,:seller_id,:buyer_id,:buyer_name,:seller_name,:transaction_id,:status,
 :amount,:motive,:solution,:buyer_comment,:seller_comment,:buyer_email, :seller_email, :item_received
-    mount_uploader :bf, BfUploader
-
-
+  
 after_create :send_dispute_confirmation, :status_open
 
 def send_dispute_confirmation
  DisputeMailer.dispute_confirmation(self).deliver
 
 end
+
+
+ acts_as_commentable
 
 #link_to 'Approve', request_path(request, request: {status: 'approved'}), method: put.
  validates :item_received,
