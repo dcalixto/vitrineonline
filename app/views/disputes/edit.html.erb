@@ -68,7 +68,7 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
    <%= form_for @dispute, :url => order_dispute_path,  :method => :put  do |f| %>
 
 
-<% if current_vitrine == @order.seller || current_user == @order.buyer  %>
+<#% if current_vitrine == @order.seller || current_user == @order.buyer  %>
 
 
 <div class="grey_box"> 
@@ -78,7 +78,7 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
         </div>
                      <%= f.text_field 'comment_input', '', :class => 'comment_input'%>
            <%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
-<% end %>
+<#% end %>
 
 
 
