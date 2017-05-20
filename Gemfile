@@ -11,7 +11,8 @@ gem 'rails', '3.2.22'
 #DATE
 #gem 'stamp'
 
-
+#BOOLEAN HUMANIZE
+gem 'humanize_boolean'
 
 
 #TABS

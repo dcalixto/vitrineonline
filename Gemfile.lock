@@ -237,6 +237,8 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
+    humanize_boolean (0.0.2)
+      i18n
     i18n (0.8.1)
     i18n-country-translations (1.2.3)
       i18n (~> 0.5)
@@ -543,6 +545,7 @@ DEPENDENCIES
   gretel
   high_voltage
   hiredis
+  humanize_boolean
   i18n_country_select
   inherited_resources
   jquery-raty-rails
