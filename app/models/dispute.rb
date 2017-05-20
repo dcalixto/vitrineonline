@@ -28,7 +28,7 @@ end
             :presence => { :if => 'item_received.nil?' }
 
 
-def status_open!
+def status_open
     update_attribute :status, "open"
   end
 
