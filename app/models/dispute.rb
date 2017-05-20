@@ -36,6 +36,11 @@ def status_open
     update_attribute :status, "finished"
   end
 
+#link_to (@problem.status ? "Yes" : "No"), flop_problem_path(@problem)
+
+def status_name
+        status ? "open" : "finished"
+    end
 
 
 

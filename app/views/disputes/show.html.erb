@@ -15,9 +15,11 @@
 <h2>Reclamação 
 </h2>
 <%= @dispute.transaction_id %>
+ <% if params[:status] == "open" %>
 
-<%= @dispute.status %>
-
+                         <span class="sendship_sent">Aberto</span>
+          
+                       <% end %>
 
 <%= link_to "Ver Reclamação", edit_order_dispute_path %>
   </div>

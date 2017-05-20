@@ -53,7 +53,7 @@ class DisputesController < ApplicationController
 
   def show
     @dispute = @order.dispute
-      @dispute.status ?  @dispute.status : ( @dispute.status == 'open')
+     
   end
 
   def edit
