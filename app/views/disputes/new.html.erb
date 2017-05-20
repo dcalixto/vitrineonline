@@ -48,9 +48,18 @@
 <%= f.select :solution, ['Retorno do dinheiro', 'Reenvio',  'Trocar Produto',  'Cancelar Pedido'] %>
 
 <h2>Você já recebeu o item?</h2>
-<%= f.label :item_received, '?' %>
+<ul>
+  <li>
+<%= f.label :item_received, 'Não' %>
 
-<%= f.check_box :item_received %>
+<%= f.radio_button  :item_received, false%>
+  </li>
+  <il>
+<%= f.label :item_received, 'Sim' %>
+
+<%= f.radio_button  :item_received, true%>
+</li>
+</ul>
 
 
       <h2>Qual o movito?</h2>

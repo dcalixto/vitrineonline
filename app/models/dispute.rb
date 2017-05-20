@@ -12,18 +12,29 @@ class Dispute < ActiveRecord::Base
   
   
     attr_accessible :order_id,:seller_id,:buyer_id,:buyer_name,:seller_name,:transaction_id,:status,
-:amount,:motive,:solution,:buyer_comment,:seller_comment,:buyer_email, :seller_email, :bf,:sf
-
+:amount,:motive,:solution,:buyer_comment,:seller_comment,:buyer_email, :seller_email, :item_received
     mount_uploader :bf, BfUploader
 
 
-after_create :send_dispute_confirmation
+after_create :send_dispute_confirmation, :status_open
 
 def send_dispute_confirmation
  DisputeMailer.dispute_confirmation(self).deliver
 
 end
 
+#link_to 'Approve', request_path(request, request: {status: 'approved'}), method: put.
+ validates :item_received,
+            :presence => { :if => 'item_received.nil?' }
+
+
+def open!
+    update_attribute :status, "open"
+  end
+
+  def finished!
+    update_attribute :status, "finished"
+  end
 
 
 

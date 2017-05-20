@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
 
-  STATUSES = %w(paid sent).freeze
+  STATUSES = %w(paid sent canceled).freeze
 
 
   belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
