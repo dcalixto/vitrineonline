@@ -50,7 +50,12 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
   <h2>Quantia a ser retornada</h2>
 
 <%= number_to_currency(@dispute.amount, :unit => "R$") %>
+   <h2>Reclamação do comprador</h2>
+<%= @dispute.buyer_comment %>
 
+
+   <h2>Reclamação do vendedor</h2>
+<%= @dispute.seller_comment %>
 
 
 <h2>Imagens da reclamação</h2>
@@ -68,27 +73,20 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
 
 
  <div id="comments" class="comments">
-<% if @dispute.comments.present? %>
+<% if @comments.present? %>
   <%= render :partial => 'disputes/comments'%>
 <% end %>
           
         </div>
 
 
-  <h2>Descreva e detalhe sua contextação</h2>
-
-
- <#%= f.text_area :comment, :class => 'text_field' %>
-
-
-
 <div class="grey_box"> 
   
  
-<% form_for [ @dispute, @comment], :url =>  comment_order_dispute_path  do |f|-%>
+<%= form_for [ @dispute, @comment], :url =>  new_order_dispute_comment_path  do |f|-%>
   <%= f.text_area :comment %>
   <%= f.submit %>
-<% end -%>
+<% end %>
 
 
 
@@ -111,6 +109,8 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
  <% end %>
 
  </div>
+
+
 
 
 
