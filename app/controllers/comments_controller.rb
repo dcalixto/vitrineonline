@@ -7,7 +7,7 @@ def create
   @comment = @dispute.comments.new params[:comment]
   @comment.user = current_user
   if @comment.save
-   redirect_to order_dispute_path(@order, @dispute)
+   redirect_to order_dispute_path
   end
 end
 end
