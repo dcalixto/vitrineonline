@@ -73,9 +73,9 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
 
 
  <div id="comments" class="comments">
-             
+<% if @dispute.comment.present? %>
   <%= render :partial => 'disputes/comments'%>
-
+<% end %>
           
         </div>
 
