@@ -14,56 +14,54 @@
     <div class="subcontent">
 
 
-<h1>Reclamação do pedido </h1>
+      <h1>Reclamação do pedido </h1>
+      <ul>
 
-
-<h2><%= @dispute.transaction_id %></h2>
-
-Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
+        <li>Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b></li>
 
 
 
- <% if  @dispute.status == "open" %>
+        <li>Estado: <% if  @dispute.status == "open" %>
 
   <span class="sendship_sent">Aberto</span>
           
-   <% end %>
+<% end %></li>
+      </ul>
+
+
+
+<p>O <b><%= @order.buyer.name %></b> Abriu uma reclação relativa ao pedido: <b><%= @dispute.transaction_id %></b></p>
 
 
 
 
 
-     <h2>Eu quero</h2>
+
+     <h2>Requisição</h2>
 
 <%= @dispute.solution %>
 
-   <h2>Você já recebeu o item?</h2>
+   <h2>O item já foi recebido?</h2>
 
   
 <%= @dispute.item_received.humanize %>
 
-<h2>Qual o movito?</h2>
+<h2>Motivo</h2>
 
    <%= @dispute.motive %>
 
 
-  <h2>Quantia a ser retornada</h2>
+  <h2>Quantia requerida</h2>
 
 <%= number_to_currency(@dispute.amount, :unit => "R$") %>
 
 
 
-<h2>Imagens da reclamação</h2>
+<h2>Imagens</h2>
 
 
 
     </div>
-
-
-   <##%= form_for @dispute, :url => order_dispute_path,  :method => :put  do |f| %>
-
-<#%= form_for Comment.new, :url =>  comment_order_dispute do |f| %>
-<#% if current_vitrine == @order.seller || current_user == @order.buyer  %>
 
 
 
@@ -80,25 +78,16 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
  
 <%= form_for [ @dispute, @comment], :url =>  order_dispute_comments_path  do |f|-%>
   <%= f.text_area :comment %>
-  <%= f.submit %>
+  <%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
 <% end -%>
 
 
 
-                     <#%= f.text_area  'comment_input', '', :class => 'comment_input'%>
-           <#%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
-<#% end %>
-
-
-
-
-    
-  <#x% end %>
-<%= link_to @dispute.status_name, finish_order_dispute_path(@dispute) %>
 
      
   </div>
 
+  <%= link_to @dispute.status_name, finish_order_dispute_path(@dispute) %>
 
 </div>
  <% end %>
