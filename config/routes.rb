@@ -208,9 +208,15 @@ resources :transactions, only: [:show]
 
   resources :carts, only: [:index] 
    resources :orders, only: [:index, :update, :destroy] do
-   resource :dispute do
-resources :comments
-   end
+  
+     
+     resource :dispute do
+    collection do
+      post :comment
+      get :comments
+    end        
+     
+     end
 
 
      member do
@@ -237,6 +243,9 @@ resources :comments
       get :purchased
       get :sent
       get :paid
+       get :canceled
+
+
 get :track
 put :track_done
 put :track_sent
