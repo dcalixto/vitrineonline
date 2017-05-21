@@ -59,7 +59,7 @@ class DisputesController < ApplicationController
   def edit
     @dispute = @order.dispute
     #@comment = @dispute.comments.new
-    @comments = @post.comments.all
+    @comments = @dispute.comments.all
   end
 
 
