@@ -56,7 +56,9 @@ class DisputesController < ApplicationController
   def show
     @dispute = @order.dispute
     @comments = @dispute.comments.all
-    @comment = @dispute.comments.new
+    
+@comment = @dispute.comments.build(params[:comment])
+    @comment.user = current_user
   end
 
   def edit
