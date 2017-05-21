@@ -71,32 +71,25 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
 <#% if current_vitrine == @order.seller || current_user == @order.buyer  %>
 
 
+
+ <div id="comments" class="comments">
+             
+  <%= render :partial => 'disputes/comments'%>
+
+          
+        </div>
+
+
 <div class="grey_box"> 
   
-  <div id="comments" class="comments">
-             
-          <#%= render :partial => 'disputes/comments'%>
-
-
-<% @dispute.comments.each do |comment| %>
-    <div class="comment">
-      <#%= image_tag comment.user.avatar.message %>
-      <%= link_to comment.user.full_name, user_path(comment.user) %>
-      <%= comment.comment %>
-     
-    </div>
-<% end %>
-
-<% form_for [ @dispute, @comment], :url =>  comment_order_dispute  do |f|-%>
+ 
+<% form_for [ @dispute, @comment], :url =>  comment_order_dispute_path  do |f|-%>
   <%= f.text_area :comment %>
-  <%= f.submit -%>
+  <%= f.submit %>
 <% end -%>
 
 
 
-
-          
-          </div>
                      <#%= f.text_area  'comment_input', '', :class => 'comment_input'%>
            <#%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
 <#% end %>
