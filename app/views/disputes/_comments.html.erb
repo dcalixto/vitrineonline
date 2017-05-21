@@ -1,11 +1,11 @@
 <% @comments.each do |comment| %>
     <div class="comment">
            
-                    
+             <%= image_tag  comment.user.avatar.url(:mobile).to_s %>        
       
-      <%= link_to comment.user.first_name, user_path(comment.user) do %>
-          <%= image_tag  comment.user.avatar.url(:mobile).to_s %>
-        <% end %>
+      <%= link_to comment.user.first_name, user_path(comment.user) %>
+         
+        
       <%= comment.comment %>
      
     </div>
