@@ -83,7 +83,7 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
 <div class="grey_box"> 
   
  
-<%= form_for [ @dispute, @comment], :url =>  new_order_dispute_comment_path  do |f|-%>
+<%= form_for [ @dispute, @comment], :url =>  order_dispute_comments_path  do |f|-%>
   <%= f.text_area :comment %>
   <%= f.submit %>
 <% end -%>
