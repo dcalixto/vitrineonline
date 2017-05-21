@@ -211,12 +211,9 @@ resources :transactions, only: [:show]
   
      
      resource :dispute do
-    collection do
-      post :comment
-      get :comments
-    end        
-     
-     end
+
+     resources :comments
+ 
 
 
      member do
