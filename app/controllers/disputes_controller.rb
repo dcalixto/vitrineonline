@@ -9,7 +9,7 @@ class DisputesController < ApplicationController
       flash[:error] = 'Antes de prosseguir por favor, preencha o seu endereço'
     else
       @dispute = Dispute.new
-
+@comment = @dispute.comments.new
 
 
     end
@@ -37,6 +37,9 @@ class DisputesController < ApplicationController
       dispute.transaction_id = @order.transaction.transaction_id
       dispute.status = !dispute.status
              if dispute.save
+
+ @comment = @dispute.comments.new params[:comment]
+  @comment.user = current_user
 
 
         redirect_to order_dispute_path(@order, @dispute)

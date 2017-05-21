@@ -209,11 +209,8 @@ resources :transactions, only: [:show]
   resources :carts, only: [:index] 
    resources :orders, only: [:index, :update, :destroy] do
    resource :dispute do
-
- collection do
-      post :comment
-      get :comments
-    end
+resources :comments
+   end
 
 
      member do
