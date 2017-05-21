@@ -50,12 +50,7 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
   <h2>Quantia a ser retornada</h2>
 
 <%= number_to_currency(@dispute.amount, :unit => "R$") %>
-   <h2>Reclamação do comprador</h2>
-<%= @dispute.buyer_comment %>
 
-
-   <h2>Reclamação do vendedor</h2>
-<%= @dispute.seller_comment %>
 
 
 <h2>Imagens da reclamação</h2>
@@ -78,6 +73,13 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
 <% end %>
           
         </div>
+
+
+  <h2>Descreva e detalhe sua contextação</h2>
+
+
+ <#%= f.text_area :comment, :class => 'text_field' %>
+
 
 
 <div class="grey_box"> 

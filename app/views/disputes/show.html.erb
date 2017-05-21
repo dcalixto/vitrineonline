@@ -2,34 +2,114 @@
 
 <!--MARKETING  -->
 
-<% if @dispute.present? %>
 
 <!--USER CREATE  -->
-<div class="box8">
+<div class="box5">
+<% if @dispute.present? %>
+
+  <%= render 'shared/error_messages', :target => @dispute %>
 
   <div class="block margin_top">
-         <div class="subcontent">
 
- <div class="grey_box"> 
-       
-<h2>Reclamação 
-</h2>
-<%= @dispute.transaction_id %>
- <% if params[:status] == "open" %>
+    <div class="subcontent">
 
-                         <span class="sendship_sent">Aberto</span>
+
+<h1>Reclamação do pedido </h1>
+
+
+<h2><%= @dispute.transaction_id %></h2>
+
+Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
+
+
+
+ <% if  @dispute.status == "open" %>
+
+  <span class="sendship_sent">Aberto</span>
           
-                       <% end %>
-
-<%= link_to "Ver Reclamação", edit_order_dispute_path %>
-  </div>
+   <% end %>
 
 
-  </div>
+
+
+
+     <h2>Eu quero</h2>
+
+<%= @dispute.solution %>
+
+   <h2>Você já recebeu o item?</h2>
+
+  
+<%= @dispute.item_received.humanize %>
+
+<h2>Qual o movito?</h2>
+
+   <%= @dispute.motive %>
+
+
+  <h2>Quantia a ser retornada</h2>
+
+<%= number_to_currency(@dispute.amount, :unit => "R$") %>
+   <h2>Reclamação do comprador</h2>
+<%= @dispute.buyer_comment %>
+
+
+   <h2>Reclamação do vendedor</h2>
+<%= @dispute.seller_comment %>
+
+
+<h2>Imagens da reclamação</h2>
+
+
+
+    </div>
+
+
+   <##%= form_for @dispute, :url => order_dispute_path,  :method => :put  do |f| %>
+
+<#%= form_for Comment.new, :url =>  comment_order_dispute do |f| %>
+<#% if current_vitrine == @order.seller || current_user == @order.buyer  %>
+
+
+
+ <div id="comments" class="comments">
+<% if @comments.present? %>
+  <%= render :partial => 'disputes/comments'%>
+<% end %>
+          
+        </div>
+
+
+<div class="grey_box"> 
+  
+ 
+<% form_for [ @dispute, @comment], :url =>  order_dispute_comments_path  do |f|-%>
+  <%= f.text_area :comment %>
+  <%= f.submit %>
+<% end -%>
+
+
+
+                     <#%= f.text_area  'comment_input', '', :class => 'comment_input'%>
+           <#%= f.submit "Postar", :class => "btn_green btn_big margin_bottom" %>
+<#% end %>
+
+
+
+
+    
+  <#x% end %>
+<%= link_to @dispute.status_name, finish_order_dispute_path(@dispute) %>
+
      
+  </div>
+
+
 </div>
- </div>
- </div>
  <% end %>
+
+ </div>
+
+
 
 
