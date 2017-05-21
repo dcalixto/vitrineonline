@@ -50,12 +50,7 @@ Data: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b>
   <h2>Quantia a ser retornada</h2>
 
 <%= number_to_currency(@dispute.amount, :unit => "R$") %>
-   <h2>Reclamação do comprador</h2>
-<%= @dispute.buyer_comment %>
 
-
-   <h2>Reclamação do vendedor</h2>
-<%= @dispute.seller_comment %>
 
 
 <h2>Imagens da reclamação</h2>
