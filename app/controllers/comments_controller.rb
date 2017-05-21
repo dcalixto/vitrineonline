@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
 def create
  # @dispute = @dispute.find params[:dispute_id]
-   @dispute  = Dispute.find_by(id: params[:id])
+  @dispute = @order.dispute
   @comment = @dispute.comments.new params[:comment]
   @comment.user = current_user
   if @comment.save
