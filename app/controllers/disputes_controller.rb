@@ -58,6 +58,7 @@ class DisputesController < ApplicationController
 
   def edit
     @dispute = @order.dispute
+    @comment = @dispute.comments.new
   end
 
 

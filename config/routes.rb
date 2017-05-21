@@ -107,7 +107,7 @@ get :feedbacks
     resources :policies, only: [:edit, :update, :new, :create]
 
     resources :announcements, only: [:new, :create]
-    resources :coupons, only: [:new, :create, :index]
+   # resources :coupons, only: [:new, :create, :index]
     resources :marketings, only: [:edit, :update]
 
     resources :invoices, only: [:index, :show] do
@@ -209,9 +209,20 @@ resources :transactions, only: [:show]
   resources :carts, only: [:index] 
    resources :orders, only: [:index, :update, :destroy] do
    resource :dispute do
+
+ collection do
+      post :comment
+      get :comments
+    end
+
+
      member do
        post :finish
      end
+
+
+
+
    end
   
     resources :stocks, only: [:index, :destroy] do
