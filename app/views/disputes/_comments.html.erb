@@ -1,4 +1,4 @@
-<% @dispute.comments.each do |comment| %>
+<% @comments.each do |comment| %>
     <div class="comment">
       <#%= image_tag comment.user.avatar.message %>
       <%= link_to comment.user.first_name, user_path(comment.user) %>
