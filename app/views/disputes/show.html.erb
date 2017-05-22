@@ -65,9 +65,15 @@
 
    <%  @dispute.proofs.first(4).each do |i| %>
     <li>
-    <a href="<%= i.file.url.to_s %>"> 
-        <%= image_tag(i.file.url(:small).to_s, :class => 'thumbnail',  :'data-href' => i.file.url(:big).to_s) %>
-    </a> 
+      <a href="<#%= i.file.url.to_s %>"> 
+  <@%= link_to image_tag(i.file.url(:thumb).to_s, :'data-href' => i.file.url(:big).to_s) %>
+     
+      <%= link_to i.file_url(:big).to_s do %>
+      <%= image_tag(i.file.url(:thumb).to_s) %>
+<% end %>
+      
+      
+      </a> 
     </li>
        <% end %>
 
@@ -94,17 +100,17 @@
 <div class="preview-template">
 </div>
 <span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<#%=form_for(@dispute, :url => order_dispute_path, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
-  <##%= f.fields_for :images do |p| %>
+<%=form_for(@dispute, :url => order_dispute_path, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
+  <%= f.fields_for :proofs do |p| %>
 
   <div class="fallback">
-<#%=p.file_field :file %><br>
-<#%=f.submit "Salvar" %>
+<%=p.file_field :file %><br>
+<%=f.submit "Salvar" %>
 </div>
-<#% end %>
+<% end %>
 </div>
 
-<#% end %>
+<% end %>
 
 
 
