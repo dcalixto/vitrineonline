@@ -117,25 +117,49 @@ class DisputesController < ApplicationController
 
 
 
+  def update
+    @product = Product.find(params[:id])
+
+
+
+
+    respond_to do |format|
+      format.html do
+        if @product.update_attributes(params[:product])
+          Product.reindex
+
+          redirect_to(action: :show, id: @product, only_path: true)
+          flash[:success] = "#{@product.name} atualizado"
+        else
+          render :edit
+        end
+      end
+      format.json do
+        if params[:images] && params[:images][:ifoto]
+          params[:images][:ifoto].values.each do |ifoto|
+            image = @product.images.build
+            image.ifoto = ifoto
+            image.save
+          end
+        end
+        render :nothing => true
+      end
+    end
+  end
+
+
 
   def update
     @dispute = @order.dispute
 
-   # @.photos << Photo.find(params[:photos].split(","))
+  
+    respond_to do |format|
+      format.html do
 
     if @dispute.update_attributes(params[:dispute])
-    
-      
-      
- params[:proofs]['file'].each do |a|
-          @proof = @dispute.proofs.create!(:file => a)
-       end
-
-
-      
-      
-      
-      
+ #params[:proofs]['file'].each do |a|
+     #     @proof = @dispute.proofs.create!(:file => a)
+     #  end
       redirect_to order_dispute_path#(@order, @dispute)
       DisputeMailer.dispute_update(@dispute).deliver
       flash[:success] = 'Reclamação atualizada'
@@ -143,13 +167,20 @@ class DisputesController < ApplicationController
     else
       render :show
     end
+    end
+       format.json do
 
-
-
-
+  if @dispute.update_attributes(params[:dispute])
+ params[:proofs]['file'].each do |a|
+          @proof = @dispute.proofs.create!(:file => a)
+       end
 
   end
+   render :nothing => true
 
+       end
+    end
+  end
 
 
   private
