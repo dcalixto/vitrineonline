@@ -41,8 +41,8 @@ class DisputesController < ApplicationController
 
              if dispute.save
 
-  @comment = @dispute.comments.build(params[:comment])
-    @comment.user = current_use
+#  @comment = @dispute.comments.build(params[:comment])
+   # @comment.user = current_use
    @image = @dispute.images.build(params[:image])
 
 
