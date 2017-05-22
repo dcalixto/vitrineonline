@@ -14,7 +14,8 @@ has_many :images
     attr_accessible :order_id,:seller_id,:buyer_id,:buyer_name,:seller_name,:transaction_id,:status,
 :amount,:motive,:solution,:buyer_comment,:seller_comment,:buyer_email, :seller_email, :item_received
   
-after_create :send_dispute_confirmation, :status_open
+after_create :send_dispute_confirmation, :status_open, :images_build
+
 
 before_create ->{ images.build }
 
@@ -62,13 +63,13 @@ def status_name
   end
 
 
- #  private
+   private
 
-#  def images_build
+  def images_build
   #  build_policy
- #   images.build
+    images.build
 
-  #  true
- # end
+    true
+  end
 
 end
