@@ -12,7 +12,7 @@ class DisputesController < ApplicationController
 
 @comment = @dispute.comments.build(params[:comment])
     @comment.user = current_user
-   @image = @dispute.dispute_images.build
+   @image = @dispute.images.build
     end
   end 
 
