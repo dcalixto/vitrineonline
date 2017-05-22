@@ -43,8 +43,7 @@ class DisputesController < ApplicationController
 
 #  @comment = @dispute.comments.build(params[:comment])
    # @comment.user = current_use
-   @image = @dispute.images.build(params[:image])
-
+   
 
         redirect_to order_dispute_path(@order, @dispute)
         flash[:success] = 'Reclamação Criada'
@@ -64,6 +63,7 @@ class DisputesController < ApplicationController
     
 @comment = @dispute.comments.build(params[:comment])
     @comment.user = current_user
+@image = @dispute.images.build(params[:image])
 
  params[:images]['file'].each do |a|
           @image = @dispute.images.create!(:file => a)
