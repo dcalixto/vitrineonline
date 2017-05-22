@@ -65,16 +65,13 @@
 
    <%  @dispute.proofs.first(4).each do |i| %>
     <li>
-      <a href="<#%= i.file.url.to_s %>"> 
-  <@%= link_to image_tag(i.file.url(:thumb).to_s, :'data-href' => i.file.url(:big).to_s) %>
-     
+        
       <%= link_to i.file_url(:big).to_s do %>
       <%= image_tag(i.file.url(:thumb).to_s) %>
 <% end %>
       
       
-      </a> 
-    </li>
+        </li>
        <% end %>
 
   </ul>
@@ -84,16 +81,16 @@
 
 
 
-<%= form_for(@dispute, :url =>  order_dispute_path, :html => { :multipart => true }) do |f| %>
-<%= f.fields_for :proofs do |p| %>
+<#%= form_for(@dispute, :url =>  order_dispute_path, :html => { :multipart => true }) do |f| %>
+<#%= f.fields_for :proofs do |p| %>
      <div class="field">
-       <%= p.label :file %><br>
-       <%= p.file_field :file, :multiple => true, name: "proofs[file][]" %>
+       <#%= p.label :file %><br>
+       <#%= p.file_field :file, :multiple => true, name: "proofs[file][]" %>
      </div>
-   <% end %>
-<%=f.submit "Salvar" %>
+   <#% end %>
+<#%=f.submit "Salvar" %>
 
- <% end %>
+ <#% end %>
 
 
 
