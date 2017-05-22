@@ -12,7 +12,7 @@ has_many :proofs
   
   
     attr_accessible :order_id,:seller_id,:buyer_id,:buyer_name,:seller_name,:transaction_id,:status,
-:amount,:motive,:solution,:buyer_comment,:seller_comment,:buyer_email, :seller_email, :item_received
+:amount,:motive,:solution,:comment,:buyer_email, :seller_email, :item_received, :proofs_attributes
   
 after_create :send_dispute_confirmation, :status_open
 
