@@ -31,6 +31,13 @@ class FileUploader < CarrierWave::Uploader::Base
 
 #  process encode_video: [:mp4, resolution: "640x360"]
 
+ version :small do
+    process resize_to_fit: [80, 80]
+    process quality: 80
+    process :strip
+  end
+
+
   version :thumb do
     process resize_to_fit: [150, 150]
     process quality: 80
