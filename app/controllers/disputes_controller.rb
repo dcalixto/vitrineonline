@@ -118,7 +118,7 @@ class DisputesController < ApplicationController
   def update
     @dispute = @order.dispute
     if @dispute.update_attributes(params[:dispute])
-      redirect_to order_dispute_path_path#(@order, @dispute)
+      redirect_to order_dispute_path#(@order, @dispute)
       DisputeMailer.dispute_update(@dispute).deliver
       flash[:success] = 'Reclamação atualizada'
 
