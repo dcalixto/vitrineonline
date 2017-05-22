@@ -78,7 +78,7 @@
 
 
 
-<%= form_for(@dispute, :url =>  order_dispute_path, :html => { :multipart => true }) do |f| %>
+<%= form_for(@dispute, :url =>  new_order_dispute_proof_path, :html => { :multipart => true }) do |f| %>
 <%= f.fields_for :proofs do |p| %>
      <div class="field">
        <%= p.label :file %><br>
