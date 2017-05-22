@@ -5,7 +5,10 @@ class Image < ActiveRecord::Base
   belongs_to :pdata, inverse_of: :images
 
 
-
+ belongs_to :dispute, inverse_of: :images
 
   mount_uploader :ifoto, FotoUploader
+
+  mount_uploader :file, FileUploader
+
 end

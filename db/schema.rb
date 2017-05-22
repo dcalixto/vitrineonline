@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170518221405) do
+ActiveRecord::Schema.define(:version => 20170522002958) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -161,6 +161,10 @@ ActiveRecord::Schema.define(:version => 20170518221405) do
     t.decimal  "product_price"
     t.string   "product_image"
     t.string   "shipping_cost"
+    t.string   "buyer_email"
+    t.string   "seller_email"
+    t.string   "bf"
+    t.string   "sf"
   end
 
   create_table "feedbacks", :force => true do |t|
@@ -229,6 +233,7 @@ ActiveRecord::Schema.define(:version => 20170518221405) do
     t.datetime "updated_at",      :null => false
     t.integer  "pdata_id"
     t.integer  "dispute_id"
+    t.string   "file"
   end
 
   add_index "images", ["product_data_id"], :name => "index_images_on_product_data_id"
@@ -447,6 +452,7 @@ ActiveRecord::Schema.define(:version => 20170518221405) do
     t.string   "return"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "code"
   end
 
   add_index "policies", ["policieable_id", "policieable_type"], :name => "index_policies_on_policieable_id_and_policieable_type"
@@ -768,6 +774,7 @@ ActiveRecord::Schema.define(:version => 20170518221405) do
     t.string   "code"
     t.integer  "city_id"
     t.integer  "state_id"
+    t.string   "email"
   end
 
   add_index "vitrines", ["cached_votes_down"], :name => "index_vitrines_on_cached_votes_down"

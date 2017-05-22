@@ -58,11 +58,37 @@
 
 
 <h2>Imagens</h2>
+<#%= form_for(@dispute, :html => { :multipart => true }) do |f| %>
+<#%= f.fields_for :images do |p| %>
+     <div class="field">
+       <#%= p.label :file %><br>
+       <@%= p.file_field :file, :multiple => true, name: "images[file][]" %>
+     </div>
+   <#% end %>
+
+ <#% end %>
 
 
 
-    </div>
+<div class="preview-template">
+</div>
+<span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
+<%=form_for(@dispute, :method=> :put, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
+  <%= f.fields_for :images do |p| %>
 
+  <div class="fallback">
+<%=p.file_field :file %><br>
+<%=f.submit "Salvar" %>
+</div>
+<% end %>
+</div>
+
+
+
+
+
+
+    
 
 
  <div id="comments" class="comments">

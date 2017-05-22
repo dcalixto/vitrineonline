@@ -38,7 +38,7 @@
 
        <div class="grey_box"> 
 
-       <%= form_for @dispute, :url => order_dispute_path(@order) do |f| %>
+       <%= form_for @dispute, :html => { :multipart => true }, :url => order_dispute_path(@order) do |f| %>
     
         
         

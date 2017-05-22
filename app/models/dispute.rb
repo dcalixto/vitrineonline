@@ -7,7 +7,7 @@ class Dispute < ActiveRecord::Base
   belongs_to :order
     belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
   belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User' 
-
+has_many :images
   
   
   
@@ -15,6 +15,9 @@ class Dispute < ActiveRecord::Base
 :amount,:motive,:solution,:buyer_comment,:seller_comment,:buyer_email, :seller_email, :item_received
   
 after_create :send_dispute_confirmation, :status_open
+
+
+accepts_nested_attributes_for :images
 
 def send_dispute_confirmation
  DisputeMailer.dispute_confirmation(self).deliver
