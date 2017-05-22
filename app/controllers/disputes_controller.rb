@@ -128,7 +128,7 @@ class DisputesController < ApplicationController
       
       
  params[:proofs]['file'].each do |a|
-          @proof = @dispute.images.create!(:file => a)
+          @proof = @dispute.proofs.create!(:file => a)
        end
 
 
