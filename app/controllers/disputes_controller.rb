@@ -37,15 +37,13 @@ class DisputesController < ApplicationController
 
       dispute.transaction_id = @order.transaction.transaction_id
       dispute.status = !dispute.status
-      @comment = @dispute.comments.build(params[:comment])
-    @comment.user = current_user
-
-
-   @image = @dispute.images.build(params[:image])
-
-
+    
 
              if dispute.save
+
+  @comment = @dispute.comments.build(params[:comment])
+    @comment.user = current_use
+   @image = @dispute.images.build(params[:image])
 
 
         redirect_to order_dispute_path(@order, @dispute)
