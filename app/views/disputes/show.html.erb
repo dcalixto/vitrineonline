@@ -78,32 +78,33 @@
 
 
 
-<#%= form_for(@dispute, :html => { :multipart => true }) do |f| %>
-<#%= f.fields_for :images do |p| %>
+<%= form_for(@dispute, :url => order_dispute_path, :html => { :multipart => true }) do |f| %>
+<%= f.fields_for :images do |p| %>
      <div class="field">
-       <#%= p.label :file %><br>
-       <@%= p.file_field :file, :multiple => true, name: "images[file][]" %>
+       <%= p.label :file %><br>
+       <%= p.file_field :file, :multiple => true, name: "images[file][]" %>
      </div>
-   <#% end %>
+   <% end %>
+<%=f.submit "Salvar" %>
 
- <#% end %>
+ <% end %>
 
 
 
 <div class="preview-template">
 </div>
 <span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<%=form_for(@dispute, :url => order_dispute_path, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
-  <%= f.fields_for :images do |p| %>
+<#%=form_for(@dispute, :url => order_dispute_path, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
+  <##%= f.fields_for :images do |p| %>
 
   <div class="fallback">
-<%=p.file_field :file %><br>
-<%=f.submit "Salvar" %>
+<#%=p.file_field :file %><br>
+<#%=f.submit "Salvar" %>
 </div>
-<% end %>
+<#% end %>
 </div>
 
-<% end %>
+<#% end %>
 
 
 
