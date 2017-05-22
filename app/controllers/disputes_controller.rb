@@ -10,7 +10,7 @@ class DisputesController < ApplicationController
     else
       @dispute = Dispute.new
 
-@comment = @dispute.comments.build(params[:comment])
+@comment = @dispute.comments.build#(params[:comment])
     @comment.user = current_user
    @image = @dispute.images.build
     end
