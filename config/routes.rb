@@ -214,7 +214,7 @@ resources :transactions, only: [:show]
 
      resources :comments
  
- resources :proofs
+post 'upload'=>'dispute#upload'
 
      member do
        post :finish

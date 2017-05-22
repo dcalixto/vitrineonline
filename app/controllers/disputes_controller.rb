@@ -183,6 +183,25 @@ class DisputesController < ApplicationController
   end
 
 
+
+
+
+def upload
+
+  if @dispute.update_attributes(params[:dispute])
+ params[:proofs]['file'].each do |a|
+          @proof = @dispute.proofs.create!(:file => a)
+       end
+
+
+
+
+end
+
+
+
+
+
   private
 
   def set_order
