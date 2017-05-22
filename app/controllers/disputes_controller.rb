@@ -134,7 +134,7 @@ class DisputesController < ApplicationController
 
 if params[:proofs] && params[:proofs][:file]
           params[:proofs][:file].values.each do |file|
-            proof = @dispute.proofs.build
+            proof = @dispute.proofs#.build
             proof.file = file
             proof.save
           end
