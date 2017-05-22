@@ -101,7 +101,7 @@
   <%= f.fields_for :proofs do |p| %>
 
   <div class="fallback">
-<%=p.file_field :file, name: "proofs[file]" %><br>
+<%=p.file_field :file, name: "proofs[file][]" %><br>
 <%=f.submit "Salvar" %>
 </div>
 <% end %>
