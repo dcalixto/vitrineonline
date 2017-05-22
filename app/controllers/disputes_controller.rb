@@ -115,8 +115,14 @@ class DisputesController < ApplicationController
 
 
 
+
+
+
   def update
     @dispute = @order.dispute
+
+   # @.photos << Photo.find(params[:photos].split(","))
+
     if @dispute.update_attributes(params[:dispute])
       redirect_to order_dispute_path#(@order, @dispute)
       DisputeMailer.dispute_update(@dispute).deliver
@@ -125,6 +131,17 @@ class DisputesController < ApplicationController
     else
       render :show
     end
+
+if params[:proofs] && params[:proofs][:file]
+          params[:proofs][:file].values.each do |file|
+            proof = @dispute.proofs.build
+            proof.file = file
+            proof.save
+          end
+        end
+
+
+
   end
 
 

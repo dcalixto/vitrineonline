@@ -214,7 +214,7 @@ resources :transactions, only: [:show]
 
      resources :comments
  
-
+ resources :proofs
 
      member do
        post :finish
