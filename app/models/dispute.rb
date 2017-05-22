@@ -48,6 +48,8 @@ def status_name
 
 
 
+
+
   STATUSES.each do |method|
     define_method "#{method}?" do
       status == method
@@ -57,4 +59,15 @@ def status_name
   def self.statuses
     STATUSES
   end
+
+
+   private
+
+  def build_default_models
+  #  build_policy
+    images.build
+
+    true
+  end
+
 end

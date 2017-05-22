@@ -29,7 +29,7 @@ has_one :brand
 
   accepts_nested_attributes_for :policy
 validates_associated :policy, presence: true
-   attr_accessible  :policy_attributes, :branded
+   attr_accessible  :policy_attributes
 
   before_create  :create_code
 
