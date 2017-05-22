@@ -65,9 +65,9 @@ class DisputesController < ApplicationController
     @comment.user = current_user
 @image = @dispute.images.build(params[:image])
 
- params[:images]['file'].each do |a|
-          @image = @dispute.images.create!(:file => a)
-       end
+# params[:images]['file'].each do |a|
+ #         @image = @dispute.images.create!(:file => a)
+   #    end
 
 
   end
