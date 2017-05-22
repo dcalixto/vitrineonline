@@ -12,7 +12,7 @@ class DisputesController < ApplicationController
 
 @comment = @dispute.comments.build#(params[:comment])
     @comment.user = current_user
-   @image = @dispute.images.build
+   @proof = @dispute.proofs.build
     end
   end 
 
@@ -63,7 +63,7 @@ class DisputesController < ApplicationController
     
 @comment = @dispute.comments.build(params[:comment])
     @comment.user = current_user
-@image = @dispute.images.build(params[:image])
+@proof = @dispute.proofs.build(params[:proof])
 
 # params[:images]['file'].each do |a|
  #         @image = @dispute.images.create!(:file => a)

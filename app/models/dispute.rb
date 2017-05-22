@@ -7,7 +7,7 @@ class Dispute < ActiveRecord::Base
   belongs_to :order
     belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
   belongs_to :buyer, foreign_key: 'buyer_id', class_name: 'User' 
-has_many :images
+has_many :proofs
   
   
   
@@ -17,7 +17,7 @@ has_many :images
 after_create :send_dispute_confirmation, :status_open, :images_build
 
 
-before_create ->{ images.build }
+before_create ->{ proofs.build }
 
 accepts_nested_attributes_for :images
 
