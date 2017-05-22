@@ -73,7 +73,7 @@
 <div class="preview-template">
 </div>
 <span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<%=form_for(@dispute, :method=> :put, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
+<%=form_for(@dispute, :url => order_dispute_path, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
   <%= f.fields_for :images do |p| %>
 
   <div class="fallback">
