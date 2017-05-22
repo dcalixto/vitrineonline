@@ -19,7 +19,7 @@ after_create :send_dispute_confirmation, :status_open, :images_build
 
 before_create ->{ proofs.build }
 
-accepts_nested_attributes_for :images
+accepts_nested_attributes_for :proofs
 
 def send_dispute_confirmation
  DisputeMailer.dispute_confirmation(self).deliver
