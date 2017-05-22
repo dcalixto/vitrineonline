@@ -97,20 +97,20 @@
 <div class="preview-template">
 </div>
 <span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<#%=form_for(@dispute, :url => order_dispute_path, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
-  <#%= f.fields_for :proofs do |p| %>
+<%=form_for(@dispute, :url => order_dispute_path, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
+  <%= f.fields_for :proofs do |p| %>
 
   <div class="fallback">
-<#%=p.file_field :file, name: "proofs[file][]" %><br>
-<#%=f.submit "Salvar" %>
+<%=p.file_field :file, name: "proofs[file]" %><br>
+<%=f.submit "Salvar" %>
 </div>
-<#% end %>
+<% end %>
 </div>
 
-<#% end %>
+<% end %>
 
 
- <div class="dropzone" id="file" data-update-url="<%=  order_dispute_path  %>"></div>
+ <div class="ropzone" id="ile" data-update-url="<#%=  order_dispute_path  %>"></div>
 
 
 
