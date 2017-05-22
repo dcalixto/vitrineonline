@@ -58,6 +58,26 @@
 
 
 <h2>Imagens</h2>
+
+
+
+  <ul>
+
+   <%  @dispute.images.first(4).each do |i| %>
+    <li>
+    <a href="<%= i.file.url.to_s %>"> 
+        <%= image_tag(i.file.url(:small).to_s, :class => 'thumbnail',  :'data-href' => i.file.url(:big).to_s) %>
+    </a> 
+    </li>
+       <% end %>
+
+  </ul>
+
+
+
+
+
+
 <#%= form_for(@dispute, :html => { :multipart => true }) do |f| %>
 <#%= f.fields_for :images do |p| %>
      <div class="field">
