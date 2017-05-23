@@ -142,7 +142,8 @@
      
   </div>
 
-  <%= link_to @dispute.status_name, finish_order_dispute_path(@dispute) %>
+  <%= link_to 'Terminar',  finish_order_dispute_path(dispute, dispute: {status: 'finished'}), method: post %>
+
 
 </div>
  <% end %>
