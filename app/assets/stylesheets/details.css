@@ -187,6 +187,15 @@ label.checkbox {
 }
 
 
+
+.closed {padding: 2px;
+;width:80px;height:15px; background:red;color:#fff;
+  -webkit-border-radius: 3px 3px 3px 3px;
+    border-radius: 3px 3px 3px 3px
+
+}
+
+
 .greybox {background:#f8f8f8}
 .font_size {font-size:14px}
 .deleted {border:solid 2px red; padding:20px; color: red}

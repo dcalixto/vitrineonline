@@ -107,229 +107,238 @@
 
 
 <% unless order.status.nil? %>
-<tbody>
+  <tbody>
 
 
-  <tr>
+    <tr>
 
 
       <td>
-      <% if product.images.present? %>
+        <% if product.images.present? %>
 
 
-        <%= link_to  product_path(product.id) do %>
+          <%= link_to  product_path(product.id) do %>
 
-          <%= image_tag product.images.first.ifoto.url(:small).to_s %>
-          <%=  product.name  %>
-        <% end %>
-<% end %>
-
-      </td>
-
-
-
-
-    
-    <td>
-      <%= order.quantity %>
-    </td>
-
-
-
-
-
-    <td>
-      <b class="lista-preco bigger"><%= number_to_currency(order.total_price) %></b>
-
-
-    </td>
-
-
-
-
-    <% if order.seller == current_vitrine  %>
-      <td>
-        <ul>
-          <li>
-
-          </li>
-          <li><b><%= order.buyer.full_name %></b></li>
-          <li>
-            <%= order.buyer.user_address if order.buyer.address %></li>
-          <li>
-            <%= order.buyer.user_neighborhood if order.buyer.neighborhood%></li>
-          <li>
-            <%= order.buyer.user_city if order.buyer.city and order.buyer.state %>
-          </li>
-          <li><%= order.buyer.user_postal_code if  order.buyer.postal_code %></li>
-          <li><%= order.buyer.user_address_supplement if order.buyer.address_supplement %></li>
-        </ul>
-      </td>
-      <td>
-
-      <% end %>
-
-
-      <% if order.buyer == current_user %>
-
-
-
- <td>
-        <ul>
-          <li>
-
-          </li>
-          <li><b><%= order.seller.vitrine_name %></b></li>
-          <li>
-            <%= order.seller.vitrine_address if order.seller.vitrine_address %></li>
-          <li>
-            <%= order.seller.vitrine_neighborhood if order.seller.vitrine_neighborhood%></li>
-          <li>
-            <%= order.seller.vitrine_city if order.seller.city and order.seller.state %>
-                    </li>
-          <li><%= order.seller.vitrine_postal_code if  order.seller.vitrine_postal_code %></li>
-               </ul>
-      </td>
-      <td>
-      <% end %>
-
-
-
-
-
-        <ul>
-          <li>Pedido: <b><%= order.transaction.transaction_id %></b></li>
-
-
-
-          <% if  params[:action] == "purchased" %>
-
-            <% if order.seller.present? %>
-
-              <li>Vendedor:
-                <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
-            <% else %>
-Vendedor:
-              <li><%= order.seller_name %></li>
+            <%= image_tag product.images.first.ifoto.url(:small).to_s %>
+            <%=  product.name  %>
           <% end %>
         <% end %>
 
-          <% if  params[:action] == "sold" %>
-
-            <% if order.buyer.present? %>
-
-              <li>Comprador:
-
-                <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
-            <% else %>
-Comprador:
-               <li><%= order.buyer_name %></li>
-             <% end %>
-          <% end %>
+      </td>
 
 
-          <li>Comprado:
-            <b>
-              <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => true)%>
-            </b>
-          </li>
-          <li>Frete:
-            <b><%= order.shipping_method %></b>
-          </li>
-          <li>Custo:
-            <b><%= number_to_currency order.shipping_cost %></b>
-          </li>
-          <% if params[:status] == Order.statuses[0] %>
 
-            <li>Estado:
-              <span class="sendship">A Enviar</span>
+
+
+      <td>
+        <%= order.quantity %>
+      </td>
+
+
+
+
+
+      <td>
+        <b class="lista-preco bigger"><%= number_to_currency(order.total_price) %></b>
+
+
+      </td>
+
+
+
+
+      <% if order.seller == current_vitrine  %>
+        <td>
+          <ul>
+            <li>
+
             </li>
-          <% end %>
-
-
-          <% if params[:status] == Order.statuses[1] %>
-
-            <li>Estado:
-              <span class="sendship_sent">Enviado</span>
+            <li><b><%= order.buyer.full_name %></b></li>
+            <li>
+              <%= order.buyer.user_address if order.buyer.address %></li>
+            <li>
+              <%= order.buyer.user_neighborhood if order.buyer.neighborhood%></li>
+            <li>
+              <%= order.buyer.user_city if order.buyer.city and order.buyer.state %>
             </li>
-          <% end %>
-  <% if order.buyer == current_user %>
-
-    <%if order.dispute.present? %>
-
- <li>  <%= button_to 'Checar Reclamação',  order_dispute_path(order), method: :get, class: 'btn_grey' %>
-</li>
-
-
- 
-              
-
-        <% else %>
-
-
-          <li>
-            
-            
-                <%= button_to 'Reclamação e Acordo',  new_order_dispute_path(order), method: :get, class: 'btn_grey' %>
-
-            
-           </li>
+            <li><%= order.buyer.user_postal_code if  order.buyer.postal_code %></li>
+            <li><%= order.buyer.user_address_supplement if order.buyer.address_supplement %></li>
+          </ul>
+        </td>
+        <td>
 
         <% end %>
-        <% end %>
-          
-
-<% if order.seller == current_vitrine %>
-
-    <%if order.dispute.present? %>
-
- <li>  <%= button_to 'Checar reclamação',  order_dispute_path(order), method: :get, class: 'btn_grey' %>
-</li>
- <% end %>
-
-<% end %>
 
 
-          <li><% if params[:status] == Order.statuses[1] %>
-
-            Enviado em:
-            <b>
-              <% if order.transaction.present? %>
-
-                <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => true)%></b>
-          <% end %>
-        <% end %>
-
-          </li>
-
-          <% if  params[:action] == "sold" and params[:status] == Order.statuses[0] %>
-            <% if current_seller%>
+        <% if order.buyer == current_user %>
 
 
+
+          <td>
+            <ul>
               <li>
 
-                <%= button_to 'Adicionar Rastreio', track_order_path(order), method: :get, class: 'btn' %>
+              </li>
+              <li><b><%= order.seller.vitrine_name %></b></li>
+              <li>
+                <%= order.seller.vitrine_address if order.seller.vitrine_address %></li>
+              <li>
+                <%= order.seller.vitrine_neighborhood if order.seller.vitrine_neighborhood%></li>
+              <li>
+                <%= order.seller.vitrine_city if order.seller.city and order.seller.state %>
+              </li>
+              <li><%= order.seller.vitrine_postal_code if  order.seller.vitrine_postal_code %></li>
+            </ul>
+          </td>
+          <td>
+          <% end %>
+
+
+
+
+
+          <ul>
+            <li>Pedido: <b><%= order.transaction.transaction_id %></b></li>
+
+
+
+            <% if  params[:action] == "purchased" %>
+
+              <% if order.seller.present? %>
+
+                <li>Vendedor:
+                  <%= link_to order.seller.name, vitrine_path(order.seller.id) %></li>
+              <% else %>
+                Vendedor:
+                <li><%= order.seller_name %></li>
+              <% end %>
+            <% end %>
+
+            <% if  params[:action] == "sold" %>
+
+              <% if order.buyer.present? %>
+
+                <li>Comprador:
+
+                  <%= link_to order.buyer.first_name, user_path(order.buyer.id) %></li>
+              <% else %>
+                Comprador:
+                <li><%= order.buyer_name %></li>
+              <% end %>
+            <% end %>
+
+
+            <li>Comprado:
+              <b>
+                <%= timeago_tag(order.transaction.created_at, :nojs => true, :date_only => true)%>
+              </b>
+            </li>
+            <li>Frete:
+              <b><%= order.shipping_method %></b>
+            </li>
+            <li>Custo:
+              <b><%= number_to_currency order.shipping_cost %></b>
+            </li>
+            <% if params[:status] == Order.statuses[0] %>
+
+              <li>Estado:
+                <span class="sendship">A Enviar</span>
+              </li>
+            <% end %>
+
+
+            <% if params[:status] == Order.statuses[1] %>
+
+              <li>Estado:
+                <span class="sendship_sent">Enviado</span>
+              </li>
+            <% end %>
+            <% if order.buyer == current_user %>
+
+              <%if order.dispute.status == "open" %>
+
+
+                <li>  <%= button_to 'Checar Reclamação',  order_dispute_path(order), method: :get, class: 'btn_grey' %>
+              </li>
+
+
+            <% elsif %>
+            <li>
+            <%= button_to 'Reclamação e Acordo',  new_order_dispute_path(order), method: :get, class: 'btn_grey' %>
+
 
               </li>
 
-            <% end %>  
-          <% end %> 
-
-          <% if   params[:status] == Order.statuses[1] %>
-            <li>Rastreio:
-              <b><%=order.track_number %></b></li>
-
-          <%end%>
-        </ul>
-      </td>
-   
-  </tr>
-<% end %>
-</tbody>
+            <% else %>
+              <li>
 
 
+                <%= button_to 'Reclamação fechada',  closed_order_dispute_path, method: :get, class: 'btn_grey' %>
+
+
+              </li>
+
+            <% end %>
+          <% end %>
+
+
+          <% if order.seller == current_vitrine %>
+
+            <%if order.dispute.status == "open" %>
+
+              <li>  <%= button_to 'Checar reclamação',  order_dispute_path(order), method: :get, class: 'btn_grey' %>
+            </li>
+          <% else %>
+
+            <li>  <%= button_to 'Reclamação fechada',  closed_order_dispute_path, method: :get, class: 'btn_grey' %>
+          </li>
 
 
 
 
-  
+        <% end %>
+
+
+        <li><% if params[:status] == Order.statuses[1] %>
+
+          Enviado em:
+          <b>
+            <% if order.transaction.present? %>
+
+              <%= timeago_tag(order.transaction.updated_at, :nojs => true, :date_only => true)%></b>
+        <% end %>
+      <% end %>
+
+        </li>
+
+        <% if  params[:action] == "sold" and params[:status] == Order.statuses[0] %>
+          <% if current_seller%>
+
+
+            <li>
+
+              <%= button_to 'Adicionar Rastreio', track_order_path(order), method: :get, class: 'btn' %>
+
+            </li>
+
+          <% end %>  
+        <% end %> 
+
+        <% if   params[:status] == Order.statuses[1] %>
+          <li>Rastreio:
+            <b><%=order.track_number %></b></li>
+
+        <%end%>
+          </ul>
+          </td>
+
+    </tr>
+  <% end %>
+  </tbody>
+
+
+
+
+
+
+

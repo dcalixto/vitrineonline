@@ -81,16 +81,16 @@
 
 
 
-<#%= form_for(@dispute, :url =>  order_dispute_path, :html => { :multipart => true }) do |f| %>
-<#%= f.fields_for :proofs do |p| %>
+<%= form_for(@dispute, :url =>  order_dispute_path, :html => { :multipart => true }) do |f| %>
+<%= f.fields_for :proofs do |p| %>
      <div class="field">
-       <#%= p.label :file %><br>
-       <#%= p.file_field :file, :multiple => true, name: "proofs[file][]" %>
+       <%= p.label :file %><br>
+       <%= p.file_field :file, :multiple => true, name: "proofs[file][]" %>
      </div>
-   <#% end %>
-<#%=f.submit "Salvar" %>
+   <% end %>
+<%=f.submit "Salvar" %>
 
- <#% end %>
+ <% end %>
 
 
 
@@ -109,7 +109,7 @@
 
 <#% end %>
 
-          <div class="dropzone" id="file" data-update-url="<%= order_dispute_path + '?authenticity_token=' + form_authenticity_token %>"></div>
+          <div class="dropzone" id="file" data-update-url="<#%= order_dispute_path + '?authenticity_token=' + form_authenticity_token %>"></div>
 
 
 
@@ -135,13 +135,13 @@
 <% end -%>
 
 
+<%= button_to 'Terminar', finish_order_dispute_path( dispute: {status: 'closed'}), :class=> "btn", method: :post %>
 
 
      
   </div>
 
-  <%= link_to 'Terminar',  finish_order_dispute_path( dispute: {status: 'closed'}), method: :post %>
-
+  
 
 </div>
  <% end %>

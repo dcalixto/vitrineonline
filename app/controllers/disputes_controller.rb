@@ -103,16 +103,7 @@ class DisputesController < ApplicationController
 
 
 
-  def comment
-    dispute = Dispute.find(params[:dispute_id])
-    dispute.comments.create(:comment => params[:comment], :user => current_user)
-    render :nothing => true
-  end
 
-  def comments
-    dispute = Dispute.find(params[:dispute_id])
-    render :partial => 'comments', :locals => {dispute: dispute}
-  end
 
 
 
