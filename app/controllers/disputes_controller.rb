@@ -89,7 +89,7 @@ class DisputesController < ApplicationController
   params[:status] == 'finished'
     
     
-    if dispute.save
+    if @dispute.save
 
       DisputeMailer.dispute_finish(@dispute).deliver
 
