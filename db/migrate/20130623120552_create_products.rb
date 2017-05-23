@@ -44,7 +44,7 @@ t.string :code
    add_index :products, :impressions_count
 
        add_index :products, :brand_id
-        add_index :products, :obrand_id
+      
 
     add_index :products, :material_id
     add_index :products, :condition_id
