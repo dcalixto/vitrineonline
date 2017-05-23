@@ -1,0 +1,123 @@
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>VITRINEONLINE</title>
+    <style type="text/css">
+body, td {
+  color: #000000;
+  font-size: 14px;
+  font-family:  Helvetica, Arial;
+}
+    .divider {
+      background-color: #ddd;
+      height: 1px;
+    }
+    .cell h2 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    .cell p {
+      margin: 8px 0;
+    }
+    .cell .duration {
+      font-size: 11px;
+      color: #555555;
+    }
+    #footer {
+      font-size: 11px;
+      color: #555555;
+    }
+    #footer a {
+      color: #555555;
+    }
+    </style>
+  </head>
+  <body>
+    <table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
+      <tr><td  valign="top">
+          <table width="650" id="main" border="0" cellpadding="0" cellspacing="20">
+            <tr>
+              <td id="header" colspan="2">
+                <a href="http://vitrineonline.com/"><%= email_image_tag("logo.png") %></a>
+              </td>
+            </tr>
+
+
+            <tr class="cell">
+              <td valign="top">
+                <h2>Olá <%= @dispute.buyer_name %></h2>
+
+                <p>O comprador <%= @dispute.buyer_name %> atualizou a reclmação  <b><%= @dispute.transaction_id %></b>
+                
+                as: <%= @dispute.updated_at.strftime("%d/%m/%Y") %>
+
+                </p>
+              
+              
+              <p>Por favor acessem:</p>
+              
+              <a href="https://vitrineonline.com/orders/ <%= @dispute.order_id %>/dispute"</a>
+
+              para esclarecerem essa situação
+
+              
+
+                </td>
+                Atenciosamente,
+
+               Suporte
+
+
+            </tr>
+          
+
+
+
+
+            <tr>
+              <td id="footer" colspan="2" >
+                <p>Vitrineonline &copy; 2016
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td></tr>
+    </table>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
