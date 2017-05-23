@@ -23,17 +23,14 @@ class CreatePdata < ActiveRecord::Migration
       t.integer  "quantity",                                     :default => 0
       t.boolean :is_shared_on_facebook,  default: false
       t.boolean  :is_shared_on_twitter, default: false
-
       t.float   :average_rating,  default: 0
-
       t.integer :total_feedbacks,  default: 0
-     t.integer :user_id
-t.string  :user_name
-t.string  :vitrine_name
-
-t.integer :impressions_count
-t.string :image
-
+      t.integer :user_id
+      t.string  :user_name
+      t.string  :vitrine_name
+      t.integer :impressions_count
+      t.string :image
+      t.string :code
       t.float  :weight
       t.float  :length
       t.float  :width
