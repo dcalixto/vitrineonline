@@ -29,7 +29,7 @@ class CreateOdata < ActiveRecord::Migration
       t.string :user_city
       t.string :user_state
       t.string :user_postal_code
-      ts.tring :vitrine_postal_code
+      t.string :vitrine_postal_code
       t.string :vitrine_address
       t.string :vitrine_neighborhood
       t.string :vitrine_city
