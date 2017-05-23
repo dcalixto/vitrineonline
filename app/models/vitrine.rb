@@ -168,7 +168,8 @@ validates_associated :policy, presence: true
                    length: { within: 1..70 }
 
   attr_accessible :name, :about,:codigo, :logo, :banner, :ad, :slogan,
-                  :address, :neighborhood, :latitude, :longitude, :neighborhood, :postal_code, :address_supplement, :code, :about
+                  :address, :neighborhood, :latitude, :longitude, :neighborhood, 
+                  :postal_code, :address_supplement, :code, :about, :branded
 
   # CACHE
   #
@@ -178,6 +179,7 @@ validates_associated :policy, presence: true
     self.code = rand(36**8).to_s(36)
     end
   end
+
 
 
 

@@ -153,7 +153,7 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       #  get :update_vitrine_select, as: :update_vitrine_select
       get :report
       get :tag
-     # get :branded
+      get :branded
      # put :branded_true
       #  match :feedbacks
     end

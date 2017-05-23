@@ -85,13 +85,6 @@ class VitrinesController < ApplicationController
 
 
 
-   def branded
-
-@current_vitrine.brand
-
-
-   end
-
 
 
 
@@ -195,11 +188,11 @@ class VitrinesController < ApplicationController
 
   def create
     @vitrine = current_user.build_vitrine(params[:vitrine])
- @vitrine.email = current_user.email
+ 
 
        if @vitrine.save
 
-
+@vitrine.email = current_user.email
       redirect_to  page_path('welcome_vitrine')
 
       else
