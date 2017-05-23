@@ -262,7 +262,7 @@
               </li>
 
 
-            <% elsif %>
+            <% elsif order.dispute.nil? %>
             <li>
             <%= button_to 'Reclamação e Acordo',  new_order_dispute_path(order), method: :get, class: 'btn_grey' %>
 
