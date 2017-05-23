@@ -82,6 +82,19 @@ class VitrinesController < ApplicationController
 
   end
 
+
+
+
+   def branded
+
+@current_vitrine.brand
+
+
+   end
+
+
+
+
   def vitrine_products
 
     @vitrine = Vitrine.cached_find(params[:id])
