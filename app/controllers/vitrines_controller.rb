@@ -182,9 +182,9 @@ class VitrinesController < ApplicationController
 
   def create
     @vitrine = current_user.build_vitrine(params[:vitrine])
+ @vitrine.email = current_user.email
 
-    @vitrine.email = @user.email
-    if @vitrine.save
+       if @vitrine.save
 
 
       redirect_to  page_path('welcome_vitrine')
