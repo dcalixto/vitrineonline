@@ -84,7 +84,7 @@ class DisputesController < ApplicationController
 
     @dispute = @order.dispute
       @dispute.status  == "closed"
-    
+   @dispute.status = Dispute.statuses[1]
     if @dispute.save#(:validate=> false)
 
       DisputeMailer.dispute_finish(@dispute).deliver
@@ -117,7 +117,10 @@ class DisputesController < ApplicationController
 
 
 
+def closed
+  @dispute = @order.dispute
 
+end
 
 
 
