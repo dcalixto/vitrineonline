@@ -32,6 +32,10 @@ include ActsAsTaggableOn::TagsHelper
   end
 
 
+ def branded
+ @current_vitrine.branded
+ end
+
 
 
   def fetch_vitrines
