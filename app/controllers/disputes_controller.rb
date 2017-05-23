@@ -117,35 +117,7 @@ class DisputesController < ApplicationController
 
 
 
-  def update
-    @product = Product.find(params[:id])
 
-
-
-
-    respond_to do |format|
-      format.html do
-        if @product.update_attributes(params[:product])
-          Product.reindex
-
-          redirect_to(action: :show, id: @product, only_path: true)
-          flash[:success] = "#{@product.name} atualizado"
-        else
-          render :edit
-        end
-      end
-      format.json do
-        if params[:images] && params[:images][:ifoto]
-          params[:images][:ifoto].values.each do |ifoto|
-            image = @product.images.build
-            image.ifoto = ifoto
-            image.save
-          end
-        end
-        render :nothing => true
-      end
-    end
-  end
 
 
 
@@ -197,7 +169,7 @@ def upload
 
 
 end
-
+end
 
 
 
