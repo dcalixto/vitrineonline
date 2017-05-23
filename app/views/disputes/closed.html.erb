@@ -1,0 +1,43 @@
+<% title  "Reclamação"  %>
+
+<!--MARKETING  -->
+
+
+<!--USER CREATE  -->
+<div class="box5">
+
+
+  <div class="block margin_top">
+
+    <div class="subcontent">
+<div class="grey_box"> 
+
+      <h1>Reclamação do pedido </h1>
+      <ul>
+
+       <li>Id: <b><%= @dispute.transaction_id %></b></li>
+
+
+        <li>Fechada em: <b><%= @dispute.updated_at.strftime("%d/%m/%Y") %></b></li>
+
+
+
+        <li>Estado: <% if  @dispute.status == "finished" %>
+
+            <span class="sendship">Fechado</span>
+            <% end %>
+            </li>
+
+
+</ul>
+
+  </div>
+
+
+ </div>
+ </div>
+
+
+
+
+

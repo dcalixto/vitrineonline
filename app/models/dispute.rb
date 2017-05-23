@@ -2,7 +2,7 @@ class Dispute < ActiveRecord::Base
   # attr_accessible :title, :body
   
 
-  STATUSES = %w(open finished).freeze
+  STATUSES = %w(open closed).freeze
 
   belongs_to :order
     belongs_to :seller, foreign_key: 'seller_id', class_name: 'Vitrine'
@@ -37,14 +37,11 @@ def status_open
     update_attribute :status, "open"
   end
 
-  def statuts_finished!
-    update_attribute :status, "finished"
-  end
-
+ 
 #link_to (@problem.status ? "Yes" : "No"), flop_problem_path(@problem)
 
 def status_name
-        status ? "open" : "finished"
+        status ? "open" : "closed"
     end
 
 

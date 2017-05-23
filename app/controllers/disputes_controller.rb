@@ -86,14 +86,14 @@ class DisputesController < ApplicationController
    # dispute.status = !dispute.status
     #
   #  @dispute.update_attributes(status: "finished")
-  params[:status] == 'finished'
-    
+ # params[:status] == 'finished'
+     @dispute = params[:status] == "closed"
     
     if @dispute.save
 
       DisputeMailer.dispute_finish(@dispute).deliver
 
-      redirect_to orders_path
+      redirect_to closed_order_dispute_path
 
 
 

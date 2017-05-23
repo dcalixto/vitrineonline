@@ -218,6 +218,7 @@ post 'upload'=>'dispute#upload'
 
      member do
        post :finish
+      get :closed
      end
 
 

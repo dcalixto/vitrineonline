@@ -30,9 +30,9 @@
         uploadMultiple: true,
        method: 'post',
        acceptedFiles: "image/*",
-        url: $('#file').data('post-url')
+       // url: $('#file').data('post-url')
 
-    // url: "<%=  uploadfiles_order_dispute_url %>"
+     url: "<%=  uploadfiles_order_dispute_url %>"
 
 
     });

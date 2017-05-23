@@ -17,6 +17,9 @@ class CreateFeedbacks < ActiveRecord::Migration
       t.integer  :cached_buyer_rating_total
       t.integer  :cached_seller_rating_total
       t.float    :cached_weighted_average
+      t.string   :buyer_name
+     t.string   :seller_name
+
 
       t.timestamps
     end
