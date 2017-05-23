@@ -97,23 +97,18 @@
 <div class="preview-template">
 </div>
 <span class="tip">JPG, GIF ou PNG, tamanho máximo: 2MB</span>
-<#%=form_for(@dispute, :url => order_dispute_path, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
-  <#%= f.fields_for :proofs do |p| %>
+<%=form_for(@dispute, :url => order_dispute_path, html: { multipart: true, class: "dropzone", id: "file"}) do |f| %>
+  <%= f.fields_for :proofs do |p| %>
 
   <div class="fallback">
-<#%=p.file_field :file, name: "proofs[file][]" %><br>
-<#%=f.submit "Salvar" %>
+<%=p.file_field :file, name: "proofs[file][]" %><br>
+<%=f.submit "Salvar" %>
 </div>
-<#% end %>
+<% end %>
 </div>
 
-<#% end %>
+<% end %>
 
-
- <div class="ropzone" id=ile" data-post-url="<#%=  upload_order_dispute_path  %>"></div>
-
-
- <div class="dropzone" id="file" data-post-url="<%=  upload_order_dispute_path + '?authenticity_token=' + form_authenticity_token %>"></div>
 
 
 
@@ -142,7 +137,7 @@
      
   </div>
 
-  <%= link_to 'Terminar',  finish_order_dispute_path( dispute: {status: 'finished'}), method: :post %>
+  <%= link_to 'Terminar',  finish_order_dispute_path( dispute: {status: 'closed'}), method: :post %>
 
 
 </div>

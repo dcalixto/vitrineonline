@@ -83,13 +83,9 @@ class DisputesController < ApplicationController
 
 
     @dispute = @order.dispute
-   # dispute.status = !dispute.status
-    #
-  #  @dispute.update_attributes(status: "finished")
- # params[:status] == 'finished'
-     @dispute = params[:status] == "closed"
+      @dispute = params[:status] == "closed"
     
-    if @dispute.save
+    if @dispute.save(:validate=> false)
 
       DisputeMailer.dispute_finish(@dispute).deliver
 
