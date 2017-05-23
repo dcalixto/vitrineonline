@@ -10,7 +10,7 @@ class CreateImages < ActiveRecord::Migration
 
     end
      add_index :images, :product_id
-     add_index :images, :product_data_id
+   
 
   end
 end
