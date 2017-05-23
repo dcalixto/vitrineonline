@@ -10,7 +10,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer  :category_id,                                                 :null => false
       t.integer  :subcategory_id,                                              :null => false
       t.integer   :impressions_count
-  t.integer  :obrand_id       
+  
 
       t.integer  :brand_id                                             
       t.integer  :material_id
@@ -21,7 +21,19 @@ class CreateProducts < ActiveRecord::Migration
       t.integer  :quantity,                                                     :default => 0
       t.string   :status
       t.string   :current_step
-      
+      t.float   :average_rating,  default: 0
+     t.integer :total_feedbacks,   default: 0
+
+      t.float  :weight
+      t.float  :length
+      t.float  :width
+      t.float  :height
+      t.float  :diameter
+
+
+t.string :code
+
+
       t.timestamps
     end
     add_index :products, :slug

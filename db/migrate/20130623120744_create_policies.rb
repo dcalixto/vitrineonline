@@ -9,6 +9,8 @@ class CreatePolicies < ActiveRecord::Migration
       t.text     :guarantee
       t.string :parcelamento
       t.string :return
+     t.string :code
+
       t.timestamps
     end
     add_index :policies, :vitrine_id

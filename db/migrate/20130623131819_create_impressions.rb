@@ -4,6 +4,7 @@ class CreateImpressions < ActiveRecord::Migration
       t.string :ip_address
       t.integer :product_id
       t.integer :vitrine_id
+      t.integer :user_id
       t.timestamps
    t.string   :impressionable_type,  polymorphic: true
    t.integer  :impressionable_id, polymorphic: true    

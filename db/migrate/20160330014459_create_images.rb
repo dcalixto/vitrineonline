@@ -3,7 +3,7 @@ class CreateImages < ActiveRecord::Migration
     create_table :images do |t|
      t.string   :ifoto
       t.integer  :product_id,   :null => false
-      t.integer  :product_data_id
+ t.integer   :pdata_id
       t.timestamps
 
 

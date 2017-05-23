@@ -36,7 +36,7 @@ class CreateUsers < ActiveRecord::Migration
       t.float :longitude
       t.string :facebook
       t.string :twitter 
-
+t.string :code
 
       t.timestamps
     end

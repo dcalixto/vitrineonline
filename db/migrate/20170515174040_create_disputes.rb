@@ -15,6 +15,13 @@ class CreateDisputes < ActiveRecord::Migration
       t.text :seller_comment
       t.string :buyer_file
       t.string :seller_file
+      t.boolean  :item_received,    :default => false
+t.string :product_name
+t.decimal :product_price
+t.string :product_image
+t.string :shipping_cost
+t.string  :buyer_email
+t.string :seller_email
       t.timestamps
     end
   end

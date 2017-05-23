@@ -22,7 +22,11 @@ class CreateOrders < ActiveRecord::Migration
       t.integer  :color_id
       t.integer  :size_id
 
+ t.string :buyer_name
+t.string :code
 
+t.integer :pdata_id
+ t.string :seller_name
 
 
       t.timestamps
