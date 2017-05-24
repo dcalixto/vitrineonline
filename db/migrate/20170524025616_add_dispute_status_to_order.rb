@@ -1,5 +1,5 @@
 class AddDisputeStatusToOrder < ActiveRecord::Migration
   def change
-    add_column :orders, :dispute_status, :string
+    add_column :orders, :dispute_status, :boolean, :default => false
   end
 end

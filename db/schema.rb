@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170522031405) do
+ActiveRecord::Schema.define(:version => 20170524025616) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -360,12 +360,13 @@ ActiveRecord::Schema.define(:version => 20170522031405) do
     t.integer  "condition_id"
     t.integer  "color_id"
     t.integer  "size_id"
-    t.datetime "created_at",                                                      :null => false
-    t.datetime "updated_at",                                                      :null => false
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
     t.string   "code"
     t.string   "seller_name"
     t.string   "buyer_name"
     t.integer  "pdata_id"
+    t.boolean  "dispute_status",                                   :default => false
   end
 
   add_index "orders", ["brand_id"], :name => "index_orders_on_brand_id"

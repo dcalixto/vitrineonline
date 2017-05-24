@@ -255,9 +255,7 @@
             <% end %>
             <% if order.buyer == current_user %>
 
-              <%if order.dispute_status == "open" %>
-
-
+              <%if order.dispute_status == true %>
                 <li>  <%= button_to 'Checar Reclamação',  order_dispute_path(order), method: :get, class: 'btn_grey' %>
               </li>
 
@@ -284,8 +282,7 @@
   <% end %>
 
           <% if order.seller == current_vitrine %>
-
-          <%if order.dispute_status == "open" %>
+   <%if order.dispute_status == true %>
 
               <li>  <%= button_to 'Checar reclamação',  order_dispute_path(order), method: :get, class: 'btn_grey' %>
             </li>
