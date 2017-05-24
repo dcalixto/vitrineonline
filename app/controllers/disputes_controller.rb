@@ -38,10 +38,10 @@ class DisputesController < ApplicationController
       dispute.transaction_id = @order.transaction.transaction_id
       #dispute.status = !dispute.status
       
-     
-      if dispute.save
- @order.dispute = dispute.status
+      @order.dispute_status = dispute.status
 
+
+      if dispute.save
 
         #  @comment = @dispute.comments.build(params[:comment])
         # @comment.user = current_use
