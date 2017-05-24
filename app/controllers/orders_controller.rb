@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 
   def purchased
    
-      @dispute = Dispute.find(params[:dispute_id])
+      
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
 
@@ -17,6 +17,11 @@ class OrdersController < ApplicationController
       # @q = Order.where('buyer_id = ? and status = ?', current_user.id, params[:status] || Order.statuses[0]).ransack(params[:q])
       @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
     end
+
+
+
+@dispute = order.dispute
+
   end
 
   def sold
