@@ -124,8 +124,9 @@ class OrdersController < ApplicationController
 
   def confirmation
    
-  #@order = Order.find(params[:id])
   
+@current_user.transactions
+
   end
 
   def update

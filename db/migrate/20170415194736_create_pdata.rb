@@ -3,7 +3,6 @@ class CreatePdata < ActiveRecord::Migration
     create_table :pdata do |t|
       t.string   "slug"
       t.integer  "vitrine_id",                                                  :null => false
-      t.string   "f1"
       t.text     "detail"
       t.integer  "category_id"
       t.integer  "gender_id"
@@ -29,7 +28,6 @@ class CreatePdata < ActiveRecord::Migration
       t.string  :user_name
       t.string  :vitrine_name
       t.integer :impressions_count
-      t.string :image
       t.string :code
       t.float  :weight
       t.float  :length
