@@ -18,8 +18,8 @@ class OrdersController < ApplicationController
       @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
     end
 
-@order = Order.find_by_id(params[:id])
-@dispute = @order.dispute
+order = Order.find(params[:id])
+dispute = order.dispute
 
   end
 
