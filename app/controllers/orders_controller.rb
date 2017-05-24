@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 
   def purchased
    
-    @dispute = @order.dispute
+    @dispute = @orders.dispute
     
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
