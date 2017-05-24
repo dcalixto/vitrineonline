@@ -3,7 +3,7 @@ class DisputesController < ApplicationController
   before_filter :set_order
 
   def new
-    @order = find(params[:order_id])
+    
 
     if current_user.address.blank?
       redirect_to edit_user_path
@@ -21,7 +21,7 @@ class DisputesController < ApplicationController
 
 
   def create
-     
+    @order = Order.find_by_id(params[:order_id])
     if   current_user == @order.buyer
 
 
