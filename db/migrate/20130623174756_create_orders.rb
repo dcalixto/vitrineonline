@@ -28,7 +28,8 @@ t.string :code
 t.integer :pdata_id
  t.string :seller_name
 
-
+t.boolean :dispute_status, :default => false
+  end
       t.timestamps
     end
     add_index :orders, :product_id
