@@ -16,10 +16,10 @@ class CreateVitrines < ActiveRecord::Migration
       t.float    :longitude
       t.integer   :impressions_count
       t.boolean  :branded,    :default => false
-t.string :code
-t.integer :city_id
-t.integer :state_id
-t.string :email
+      t.string :code
+      t.integer :city_id
+      t.integer :state_id
+      t.string :email
 
       t.timestamps
     end
