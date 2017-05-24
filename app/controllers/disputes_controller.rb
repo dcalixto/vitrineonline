@@ -38,11 +38,11 @@ class DisputesController < ApplicationController
       dispute.transaction_id = @order.transaction.transaction_id
       #dispute.status = !dispute.status
      
-#@order = params[:dispute_status] == "1"
+@order = params[:dispute_status] == "1"
  
       if dispute.save
 
-          @order.update_attributes(:dispute_status => true)
+        #  @order.update_attributes(:dispute_status => true)
 
         
         redirect_to order_dispute_path(@order, @dispute)
