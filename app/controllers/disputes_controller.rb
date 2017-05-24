@@ -3,6 +3,8 @@ class DisputesController < ApplicationController
   before_filter :set_order
 
   def new
+    @order = find(params[:order_id])
+
     if current_user.address.blank?
       redirect_to edit_user_path
 
@@ -20,7 +22,6 @@ class DisputesController < ApplicationController
 
   def create
      
-@order = find(params[:order_id])
     if   current_user == @order.buyer
 
 
@@ -39,9 +40,9 @@ class DisputesController < ApplicationController
       dispute.transaction_id = @order.transaction.transaction_id
       #dispute.status = !dispute.status
      
-@order = params[:dispute_status] == "1"
  
       if dispute.save
+@order = params[:dispute_status] == "1"
 
         #  @order.update_attributes(:dispute_status => true)
 
