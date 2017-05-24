@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
 
 
-@dispute = order.dispute
+@dispute = @order.dispute
 
   end
 
