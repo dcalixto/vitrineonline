@@ -1,4 +1,6 @@
-.sprite-icons-paypal_cards,
+
+/* glue: 0.11.1 hash: 52f6415cb3 */
+        .sprite-icons-paypal_cards,
 .sprite-icons-paypal_protect,
 .sprite-icons-paypal-icon,
 .sprite-icons-logo_big,
@@ -56,19 +58,18 @@
         
         .sprite-icons-logo_big {
             background-position: 0 -189px;
-            width: 175px;
+            width: 176px;
             height: 30px;
         }
         
         .sprite-icons-logo {
-           /* background-position: 0 -219px;*/
+            background-position: 0 -219px;
             width: 168px;
-            height: 35px;
-            background:url(/assets/logo3.png) no-repeat; 
+            height: 29px;
         }
         
         .sprite-icons-paypal_icon2 {
-            background-position: 0 -247px;
+            background-position: 0 -248px;
             width: 163px;
             height: 50px;
         }
@@ -80,7 +81,7 @@
         }
         
         .sprite-icons-logo_small {
-            background-position: -175px -189px;
+            background-position: -176px -189px;
             width: 99px;
             height: 17px;
         }
@@ -203,7 +204,7 @@
             background-position: -399px -69px;
             width: 15px;
             height: 15px;
-       position: absolute;
+                position: absolute;
   left: 0;
   top: 0;
   margin-top: 8px;
@@ -233,7 +234,8 @@
             background-position: -319px -266px;
             width: 14px;
             height: 13px;
-        }        
+        }
+        
 
 
 
