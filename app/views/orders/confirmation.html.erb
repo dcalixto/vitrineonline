@@ -8,13 +8,13 @@
    <div class="block  margin_top">
 
      <h1>Obrigado pela sua compra </h1>
-     <% if @current_user.transactions.present? %>
+    
      <ul>
-       <li> Data da compra:   <b><%= @current_user.transactions.last.created_at.strftime('%d/%m/%Y') %></b></li>
-       <li> Número da compra:     <b><%= @current_user.transactions.last.transaction_id %></b></li>
+       <li> Data da compra:   <b><%= current_user.transactions.last.created_at.strftime('%d/%m/%Y') %></b></li>
+       <li> Número da compra:     <b><%=current_user.transactions.last.transaction_id %></b></li>
      </ul>
-  <% end %>
-       <p>Um email de confirmação foi enviado para <b><%=@current_user.email %></b> quando o vendedor marcar como enviado outro email com o número de rastreio 
+  
+       <p>Um email de confirmação foi enviado para <b><%=current_user.email %></b> quando o vendedor marcar como enviado outro email com o número de rastreio 
        será enviado para seu email</p>
 
        <ul>

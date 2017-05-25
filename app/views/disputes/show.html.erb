@@ -83,12 +83,11 @@
 
 <%= form_for(@dispute, :url =>  order_dispute_path, :html => { :multipart => true }) do |f| %>
 <%= f.fields_for :proofs do |p| %>
-     <div class="field">
-       <%= p.label :file %><br>
+    
        <%= p.file_field :file, :multiple => true, name: "proofs[file][]" %>
-     </div>
+  
    <% end %>
-<%=f.submit "Salvar" %>
+<%=f.submit "Salvar", :class=> "btn" %>
 
  <% end %>
 
@@ -96,6 +95,7 @@
 
 
     
+  </div>
 
 
  <div id="comments" class="comments">
