@@ -21,7 +21,6 @@ class DisputesController < ApplicationController
 
 
   def create
-    @order = Order.find_by_id(params[:order_id])
     if   current_user == @order.buyer
 
 
@@ -42,9 +41,9 @@ class DisputesController < ApplicationController
      
  
       if dispute.save
-@order = params[:dispute_status] == "1"
+@order = params[:dispute_status] == "true"
 
-        #  @order.update_attributes(:dispute_status => true)
+       #  @order.update_attributes(:dispute_status => true)
 
         
         redirect_to order_dispute_path(@order, @dispute)
