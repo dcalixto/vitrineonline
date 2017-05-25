@@ -117,34 +117,20 @@ end
   def update
     @dispute = @order.dispute
 
-
-    respond_to do |format|
-      format.html do
-
         if @dispute.update_attributes(params[:dispute])
-          #params[:proofs]['file'].each do |a|
-          #     @proof = @dispute.proofs.create!(:file => a)
-          #  end
+          params[:proofs]['file'].each do |a|
+              @proof = @dispute.proofs.create!(:file => a)
+           end
           redirect_to order_dispute_path#(@order, @dispute)
           DisputeMailer.dispute_update(@dispute).deliver
           flash[:success] = 'Reclamação atualizada'
 
+
         else
           render :show
         end
-      end
-      format.json do
-
-        if @dispute.update_attributes(params[:dispute])
-          params[:proofs]['file'].each do |a|
-            @proof = @dispute.proofs.create!(:file => a)
-          end
-
-        end
-        render :nothing => true
-
-      end
-    end
+      
+     
   end
 
 
