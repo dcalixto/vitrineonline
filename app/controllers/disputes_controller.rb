@@ -41,12 +41,9 @@ class DisputesController < ApplicationController
      
  
       if dispute.save
-#@order = params[:dispute_status] == "true"
 
-         @order.dispute_status = true
 
-        # @order.update_attributes(:dispute_status => true)
-         @order.save
+       
         
         redirect_to order_dispute_path(@order, @dispute)
         flash[:success] = 'Reclamação Criada'
@@ -89,6 +86,12 @@ class DisputesController < ApplicationController
       @dispute.status  == "closed"
    @dispute.status = Dispute.statuses[1]
     if @dispute.save#(:validate=> false)
+
+
+  @order.dispute_status = true
+
+    
+         @order.save
 
       DisputeMailer.dispute_finish(@dispute).deliver
 

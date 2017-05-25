@@ -256,8 +256,11 @@
             <% if order.buyer == current_user %>
 
               <%if order.dispute_status == true %>
-                <li>  <%= button_to 'Checar Reclamação',  order_dispute_path(order), method: :get, class: 'btn_grey' %>
-              </li>
+                <li> 
+                  
+                <%= button_to 'Reclamação fechada',  closed_order_dispute_path(order), method: :get, class: 'btn_grey' %>
+                  
+                 </li>
 
 
             <% elsif order.dispute.nil? %>
@@ -271,7 +274,8 @@
               <li>
 
 
-                <%= button_to 'Reclamação fechada',  closed_order_dispute_path(order), method: :get, class: 'btn_grey' %>
+                <%= button_to 'Checar Reclamação',  order_dispute_path(order), method: :get, class: 'btn_grey' %>
+
 
 
               </li>
@@ -284,12 +288,17 @@
           <% if order.seller == current_vitrine %>
    <%if order.dispute_status == true %>
 
-              <li>  <%= button_to 'Checar reclamação',  order_dispute_path(order), method: :get, class: 'btn_grey' %>
+              <li>           
+             <%= button_to 'Reclamação fechada',  closed_order_dispute_path(order), method: :get, class: 'btn_grey' %>
+
             </li>
           <% else %>
 
-            <li>  <%= button_to 'Reclamação fechada',  closed_order_dispute_path(order), method: :get, class: 'btn_grey' %>
-          </li>
+            <li>          
+            
+             <%= button_to 'Checar reclamação',  order_dispute_path(order), method: :get, class: 'btn_grey' %>
+
+            </li>
 
 
 
