@@ -43,7 +43,9 @@ class DisputesController < ApplicationController
       if dispute.save
 #@order = params[:dispute_status] == "true"
 
-         @order.update_attributes(:dispute_status => true)
+         @order.dispute_status = true
+
+        # @order.update_attributes(:dispute_status => true)
          @order.save
         
         redirect_to order_dispute_path(@order, @dispute)
