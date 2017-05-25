@@ -44,7 +44,7 @@ class DisputesController < ApplicationController
 #@order = params[:dispute_status] == "true"
 
          @order.update_attributes(:dispute_status => true)
-
+         @order.save
         
         redirect_to order_dispute_path(@order, @dispute)
         flash[:success] = 'Reclamação Criada'
