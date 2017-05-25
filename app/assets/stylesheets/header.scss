@@ -72,11 +72,8 @@ $desktop: min-width 1200px;
 
 
 
-
-background:#3a5da8;
-
-background:#1A49AB;
 background:#3057a7;
+background:#3e71ab;
 
 
 
@@ -109,11 +106,17 @@ background:#1A49AB
 
 
             
-            background:#4d79d2;
-          
+                   
    background:#e7edf5;
+background: #ffffff;
+background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%);
+background: -webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+background: linear-gradient(to bottom, #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 );
 
- }
+
+
+}
 
 
 
