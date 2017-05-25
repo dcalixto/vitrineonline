@@ -64,7 +64,7 @@ class DisputesController < ApplicationController
     if @dispute.save#(:validate=> false)
 
 
-  @order.dispute_status = true
+  @order.dispute_closed = true
 
     
          @order.save

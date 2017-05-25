@@ -24,7 +24,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string :code
       t.integer :pdata_id
       t.string :seller_name
-      t.boolean :dispute_status, :default => false
+      t.boolean :dispute_closed, :default => false
     
     t.timestamps
   end

@@ -255,7 +255,7 @@
             <% end %>
             <% if order.buyer == current_user %>
 
-              <#%if order.dispute_status == true %>
+              <%if order.dispute_closed == true %>
                 <li> 
                   
                 <%= button_to 'Reclamação fechada',  closed_order_dispute_path(order), method: :get, class: 'btn_grey' %>
@@ -263,14 +263,14 @@
                  </li>
 
 
-            <#% elsif order.dispute.nil? %>
+            <% elsif order.dispute.nil? %>
             <li>
             <%= button_to 'Reclamação e Acordo',  new_order_dispute_path(order), method: :get, class: 'btn_grey' %>
 
 
               </li>
 
-            <#% else %>
+            <% else %>
               <li>
 
 
@@ -280,13 +280,13 @@
 
               </li>
 
-            <#% end %>
+            <% end %>
           <% end %>
 
   <% end %>
 
           <% if order.seller == current_vitrine %>
-   <%if order.dispute_status == true %>
+   <%if order.dispute_closed == true %>
 
               <li>           
              <%= button_to 'Reclamação fechada',  closed_order_dispute_path(order), method: :get, class: 'btn_grey' %>
