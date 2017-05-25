@@ -10,8 +10,15 @@ class StocksController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     if @product.destroy
-      redirect_to :back
+      redirect_to order_stocks_path(current_vitrine.id)
       flash[:success] = "#{@product.name} removido"
     end
   end
+
+
+
+ 
+
+
+
 end
