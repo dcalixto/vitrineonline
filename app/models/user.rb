@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
   before_create :set_last_read_messages_at
 
   before_create { generate_token(:auth_token) }
- #after_commit :send_user_welcome, :on => :create
- ##before_create :confirmation_token
+  #after_commit :send_user_welcome, :on => :create
+  ##before_create :confirmation_token
 
-after_commit  :confirmation_token, :on => :create
+  after_commit  :confirmation_token, :on => :create
   has_one :vitrine, dependent: :destroy, :inverse_of => :user
 
 
@@ -24,7 +24,7 @@ after_commit  :confirmation_token, :on => :create
 
   has_many :conversation_participants
   has_many :conversations,
-           through: :conversation_participants
+    through: :conversation_participants
 
   has_many :feedbacks, :inverse_of => :user
 
@@ -44,7 +44,7 @@ after_commit  :confirmation_token, :on => :create
       obj.city.name = geo.city
       obj.state.code = geo.state_code
       obj.postal_code = geo.postal_code
-         end
+    end
   end
 
   #  def online?
@@ -59,7 +59,7 @@ after_commit  :confirmation_token, :on => :create
 
 
 
-acts_as_voter
+  acts_as_voter
 
 
   after_validation :fetch_address
@@ -67,7 +67,7 @@ acts_as_voter
   after_commit :flush_cache
 
 
-   before_create  :create_code
+  before_create  :create_code
 
 
   def self.cached_find(id)
@@ -111,33 +111,33 @@ acts_as_voter
   end
 
   mount_uploader :avatar, AvatarUploader
- 
+
 
   validates_format_of :postal_code, with: /\A(\d{5})([-]{0,1})(\d{3})\Z/, allow_blank: true
 
   accepts_nested_attributes_for :vitrine, allow_destroy: true
 
   attr_accessible :email, :confirm_token, :email_confirmation, :email_confirmed, :password, :password_confirmation, :first_name,
-                  :last_name, :avatar, :avatar_id, :gender, :vitrine_attributes, :address, :state_id,
-                  :city_id, :postal_code, :neighborhood, :address_supplement, :about, :phone
+    :last_name, :avatar, :avatar_id, :gender, :vitrine_attributes, :address, :state_id,
+    :city_id, :postal_code, :neighborhood, :address_supplement, :about, :phone
 
   has_secure_password
 
   validates_presence_of :email, :password, :first_name, :last_name, :gender, on: :create
 
   validates :email, email: true,
-                    uniqueness: { case_sensitive: false }
+    uniqueness: { case_sensitive: false }
 
   validates :password, length: { within: 6..60 },
-                       format: { with: /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/, message: "Deve ter pelo menos 6 caracteres e incluir um número e uma letra" },
-                       confirmation: true,
-                       if: :is_password_validation_needed?
+    format: { with: /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/, message: "Deve ter pelo menos 6 caracteres e incluir um número e uma letra" },
+    confirmation: true,
+    if: :is_password_validation_needed?
 
   validates :first_name, :last_name, length: { within: 1..70 }
 
   validates :email, confirmation: true,
-                    email: true,
-                    on: :update
+    email: true,
+    on: :update
 
   # Two Factor Authentication
 
@@ -151,9 +151,9 @@ acts_as_voter
   #    SendCode.new.send_sms(:to => self.phone, :body => "Codigo #{self.otp_code}")
   #  end
 
- # def send_user_welcome
- #   UserMailer.user_welcome(self).deliver
- # end
+  # def send_user_welcome
+  #   UserMailer.user_welcome(self).deliver
+  # end
 
   def send_password_reset
     generate_token(:password_reset_token)
@@ -163,7 +163,7 @@ acts_as_voter
   end
 
 
- def send_password_change
+  def send_password_change
     self.password_change_at = Time.zone.now
     save!
     UserMailer.password_change(self).deliver
@@ -199,15 +199,15 @@ acts_as_voter
   def email_activate
     self.email_confirmed = true
     self.confirm_token = nil
-   # send_user_welcome
+    # send_user_welcome
     save!(validate: false)
-    end
+  end
 
 
-   def create_code
+  def create_code
     if code.blank?
 
-    self.code = rand(36**8).to_s(36)
+      self.code = rand(36**8).to_s(36)
     end
   end
 
@@ -223,5 +223,5 @@ acts_as_voter
     if confirm_token.blank?
       self.confirm_token = SecureRandom.urlsafe_base64.to_s
     end
-end
+  end
 end

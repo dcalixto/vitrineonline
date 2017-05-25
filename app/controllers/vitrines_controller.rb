@@ -11,14 +11,14 @@ class VitrinesController < ApplicationController
 
   def show
     @vitrine = Vitrine.cached_find(params[:id])
-  
+
     canonical_url url_for(@vitrine)
-  
 
-  @total_from_buyers = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).count
- 
 
- @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
+    @total_from_buyers = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).count
+
+
+    @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
 
 
     @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
@@ -43,19 +43,19 @@ class VitrinesController < ApplicationController
   def feedbacks
 
 
-   
-      @vitrine = Vitrine.cached_find(params[:id])
-  
-   
-  #   @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
-      @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
-      @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
-      @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
-      
-      
-      
 
- 
+    @vitrine = Vitrine.cached_find(params[:id])
+
+
+    #   @feedbacks = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
+    @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
+    @feedbacks = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
+    @average_rating_from_buyers = Feedback.average_rating(@vitrine.user, Feedback::FROM_BUYERS)
+
+
+
+
+
 
 
 
@@ -72,11 +72,11 @@ class VitrinesController < ApplicationController
   def vitrine_feedbacks
     @vitrine = Vitrine.cached_find(params[:id])
 
-   respond_to do |format|
-   format.html { render 'feedbacks'}
-  end
+    respond_to do |format|
+      format.html { render 'feedbacks'}
+    end
 
-   @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
+    @q = Feedback.by_participant(@vitrine.user, Feedback::FROM_BUYERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
 
 
@@ -159,14 +159,14 @@ class VitrinesController < ApplicationController
   def upvote
     @vitrine = Vitrine.cached_find(params[:id])
     @vitrine.upvote_by current_user
-   
+
     redirect_to :back
   end
 
   def downvote
     @vitrine = Vitrine.cached_find(params[:id])
     @vitrine.downvote_by current_user
-   
+
     redirect_to :back
   end
 
@@ -188,14 +188,14 @@ class VitrinesController < ApplicationController
 
   def create
     @vitrine = current_user.build_vitrine(params[:vitrine])
- 
 
-       if @vitrine.save
 
-@vitrine.email = current_user.email
+    if @vitrine.save
+
+      @vitrine.email = current_user.email
       redirect_to  page_path('welcome_vitrine')
 
-      else
+    else
       render :new
     end
   end
@@ -271,12 +271,12 @@ class VitrinesController < ApplicationController
 
 
 
-def log_impression
-   @vitrine = Vitrine.cached_find(params[:id])
-  # this assumes you have a current_user method in your authentication system
-  @vitrine.impressions.create(ip_address: request.remote_ip)
+  def log_impression
+    @vitrine = Vitrine.cached_find(params[:id])
+    # this assumes you have a current_user method in your authentication system
+    @vitrine.impressions.create(ip_address: request.remote_ip)
 
-end
+  end
 
 
 

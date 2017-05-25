@@ -13,15 +13,10 @@ class UsersController < ApplicationController
     @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
 
 
+    # @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
 
 
- # @total_feedbacks = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').count
-
-
-  #  @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
-
-
-
+    #  @average_rating_from_buyers = Feedback.joins(:product).where('products.id = ?', @product.id).where('buyer_feedback_date is not null').rated(Feedback::FROM_BUYERS).average(:buyer_rating)
 
     @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
     @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])    # suggestions for current visitor
@@ -44,16 +39,16 @@ class UsersController < ApplicationController
 
 
 
- def feedbacks
-  
-      @user = User.cached_find(params[:id])
-       @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
-       
-    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
-#  @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
-  
+  def feedbacks
 
-        @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
+    @user = User.cached_find(params[:id])
+    @q = Feedback.by_participant(@user, Feedback::FROM_SELLERS).ransack(params[:q])
+
+    @feedbacks = @q.result(distinct: true).paginate(per_page: 22, page: params[:page])
+    #  @feedbacks = Feedback.by_participant(@user, Feedback::FROM_SELLERS).paginate(:per_page => 22, :page => params[:page]).order('created_at DESC')
+
+
+    @average_rating_from_sellers = Feedback.average_rating(@user, Feedback::FROM_SELLERS)
 
 
 
@@ -68,7 +63,7 @@ class UsersController < ApplicationController
 
 
 
-  
+
 
 
 
@@ -88,7 +83,7 @@ class UsersController < ApplicationController
     end
   end
 
- 
+
 
   def new
     @user = User.new
@@ -100,7 +95,7 @@ class UsersController < ApplicationController
     @vitrine = Vitrine.new(params[:vitrine])
 
     if @user.save
-     UserMailer.registration_confirmation(@user).deliver
+      UserMailer.registration_confirmation(@user).deliver
 
 
 
@@ -120,8 +115,8 @@ class UsersController < ApplicationController
 
   def confirm_email
     user = User.find_by_confirm_token(params[:id])
-   
-    
+
+
     if user
       user.email_activate
       flash[:success] = "Bem vindo a Vitrineonline  Seu email foi confirmado.

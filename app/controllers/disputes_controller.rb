@@ -3,7 +3,7 @@ class DisputesController < ApplicationController
   before_filter :set_order
 
   def new
-    
+
 
     if current_user.address.blank?
       redirect_to edit_user_path
@@ -38,13 +38,13 @@ class DisputesController < ApplicationController
 
       dispute.transaction_id = @order.transaction.transaction_id
       #dispute.status = !dispute.status
-     
- 
+
+
       if dispute.save
 
 
-       
-        
+
+
         redirect_to order_dispute_path(@order, @dispute)
         flash[:success] = 'Reclamação Criada'
 
@@ -59,15 +59,15 @@ class DisputesController < ApplicationController
 
 
     @dispute = @order.dispute
-      @dispute.status  == "closed"
-   @dispute.status = Dispute.statuses[1]
+    @dispute.status  == "closed"
+    @dispute.status = Dispute.statuses[1]
     if @dispute.save#(:validate=> false)
 
 
-  @order.dispute_closed = true
+      @order.dispute_closed = true
 
-    
-         @order.save
+
+      @order.save
 
       DisputeMailer.dispute_finish(@dispute).deliver
 
@@ -93,9 +93,7 @@ class DisputesController < ApplicationController
 
     @comment = @dispute.comments.build(params[:comment])
     @comment.user = current_user
-   
-    
-    
+
     @proof = @dispute.proofs.build(params[:proof])
 
 
@@ -103,13 +101,10 @@ class DisputesController < ApplicationController
 
 
 
+  def closed
+    @dispute = @order.dispute
 
-
-
-def closed
-  @dispute = @order.dispute
-
-end
+  end
 
 
 
@@ -117,20 +112,20 @@ end
   def update
     @dispute = @order.dispute
 
-        if @dispute.update_attributes(params[:dispute])
-          params[:proofs]['file'].each do |a|
-              @proof = @dispute.proofs.create!(:file => a)
-           end
-          redirect_to order_dispute_path#(@order, @dispute)
-          DisputeMailer.dispute_update(@dispute).deliver
-          flash[:success] = 'Reclamação atualizada'
+    if @dispute.update_attributes(params[:dispute])
+      params[:proofs]['file'].each do |a|
+        @proof = @dispute.proofs.create!(:file => a)
+      end
+      redirect_to order_dispute_path#(@order, @dispute)
+      DisputeMailer.dispute_update(@dispute).deliver
+      flash[:success] = 'Reclamação atualizada'
 
 
-        else
-          render :show
-        end
-      
-     
+    else
+      render :show
+    end
+
+
   end
 
 

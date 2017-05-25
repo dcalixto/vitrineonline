@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   include VitrinesHelper
   include AnnouncementsHelper
 
- include EmailHelper
+  include EmailHelper
 
 
 
@@ -21,19 +21,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
- 
+
   after_filter :user_activity
 
 
- def opensearch
+  def opensearch
     response.headers['Content-Type'] = 'application/opensearchdescription+xml; charset=utf-8'
-render :layout => false
- end
-
-
-
-
-
+    render :layout => false
+  end
 
 
   private
@@ -50,12 +45,12 @@ render :layout => false
 
   helper_method :current_user
   helper_method :current_vitrine
-   helper_method :current_seller
+  helper_method :current_seller
 
   helper_method :vitrine
   helper_method :current_announcement
 
-  
+
 
   def authorize
     if current_user.nil?

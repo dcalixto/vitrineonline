@@ -26,7 +26,6 @@ class CartsController < ApplicationController
           order = Order.new
           order.product = product
 
-
           order.seller = product.vitrine
           order.seller_name = product.vitrine.name
           order.buyer = current_user
@@ -41,15 +40,9 @@ class CartsController < ApplicationController
           current_user.cart.orders << order
 
 
-
-
-
         else # increase quantity
           order.quantity += quantity
           order.save
-
-
-
 
         end
         #@pdata = Pdata.find_by_id(params[:id])
@@ -76,7 +69,7 @@ class CartsController < ApplicationController
         od.user_state = order.buyer.state
         od.user_postal_code =  order.buyer.postal_code
 
- od.vitrine_address = order.seller.address
+        od.vitrine_address = order.seller.address
         od.vitrine_neighborhood = order.seller.neighborhood
         od.vitrine_city = order.seller.city
         od.vitrine_state = order.seller.state
@@ -85,16 +78,8 @@ class CartsController < ApplicationController
         od.save
 
 
-
-
-
-
-
         redirect_to product_path(product)
         flash[:success] = "#{product.name} adicionado(a) a sacola"
-
-
-
 
       else
         redirect_to product_path(product)
@@ -106,14 +91,7 @@ class CartsController < ApplicationController
     end
 
 
-
-
   end
-
-
-
-
-
 
 
 
@@ -128,18 +106,6 @@ class CartsController < ApplicationController
     ids = ProductRecommender.instance.predictions_for(request.remote_ip, matrix_label: :impressions)
     @suggestions = Product.unscoped.for_ids_with_order(ids)
   end
-
-  # def user_address
-  #   @user = current_user
-
-  #   if @user.update_attributes(params[:user])
-  #    redirect_to carts_path
-  #    flash[:notice] = 'Conta atualiazada'
-  #  else
-  #   redirect_to carts_path
-  #   flash[:error] = 'erro'
-  # end
-  # end
 
 
 

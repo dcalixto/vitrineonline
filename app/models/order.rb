@@ -87,7 +87,7 @@ attrs = product.attributes.slice(
 "quantity","price", "brand_id", "condition_id"
 
 )
-puts attrs
+
 pdata = Pdata.create!(attrs)
 update_column :pdata_id, pdata.id
 end

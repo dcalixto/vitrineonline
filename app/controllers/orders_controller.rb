@@ -3,12 +3,12 @@ class OrdersController < ApplicationController
   skip_before_filter :authorize, only: :ipn_notification
   protect_from_forgery except: [:ipn_notification]
 
- cache_sweeper :order_sweeper
+  cache_sweeper :order_sweeper
 
 
   def purchased
-   
-      
+
+
     if current_user.cart
       # @orders = current_user.cart.orders.where('status = ?', params[:status] || Order.statuses[0]).paginate(:per_page => 22, :page => params[:page])
 
@@ -23,12 +23,9 @@ class OrdersController < ApplicationController
 
   def sold
 
-
     @q = Order.where('seller_id = ? and status = ?', current_vitrine.id, params[:status] || Order.statuses[0]).ransack(params[:q])
-    
-    
-    @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
 
+    @orders = @q.result(distinct: true).paginate(page: params[:page], per_page: 22).order('created_at DESC')
 
   end
 
@@ -89,9 +86,9 @@ class OrdersController < ApplicationController
 
       order.save
 
-  od = order.odata
-  od.status = order.status
-  od.save
+      od = order.odata
+      od.status = order.status
+      od.save
 
 
       redirect_to "#{sold_orders_path}?status=#{Order.statuses[1]}",
@@ -102,44 +99,27 @@ class OrdersController < ApplicationController
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   def confirmation
-   
-  
-@current_user.transactions
+
+
+    current_user.transactions
 
   end
 
+
+
+
   def update
     order = Order.find(params[:id])
-   
+
 
     flash = if order.update_attributes(params[:order])
 
 
-        od = order.odata
-        od.shipping_cost = order.shipping_cost
-        od.shipping_method  = order.shipping_method
-          #od.pdata_id  = order.pdata_id
+              od = order.odata
+              od.shipping_cost = order.shipping_cost
+              od.shipping_method  = order.shipping_method
+              #od.pdata_id  = order.pdata_id
 
               od.save
 
@@ -149,7 +129,7 @@ class OrdersController < ApplicationController
               { success: 'Frete Salvo.' }
 
 
-          
+
 
 
 
@@ -179,9 +159,6 @@ class OrdersController < ApplicationController
 
   def buy
     order = Order.find(params[:id])
-
-
-
 
     store_amount = (order.total_price * configatron.store_fee).round(2)
     seller_amount = (order.total_price - store_amount) + order.shipping_cost
@@ -239,10 +216,6 @@ class OrdersController < ApplicationController
 
 
 
-
-
-
-
   def ipn_notification
     logger.info("We've got an IPN!! raw_post object:")
     logger.info(request.raw_post)
@@ -252,14 +225,14 @@ class OrdersController < ApplicationController
     if PayPal::SDK::Core::API::IPN.valid?(request.raw_post)
       logger.info("IPN message: VERIFIED")
       order = Order.find(params[:id])
-       product = order.product
-     
+      product = order.product
+
 
 
       if order
         if params[:status] == 'COMPLETED'
           order.status = Order.statuses[0]
-         # order.decrease_products_count
+          # order.decrease_products_count
           product = order.product
           quantity = product.quantity
           product.quantity -= order.quantity
@@ -270,28 +243,14 @@ class OrdersController < ApplicationController
           transaction.transaction_id = params[:transaction]['0']['.id_for_sender_txn']
           transaction.status = params[:status]
           order.transaction = transaction
-                    order.save
-         
-        od = order.odata
-      
-        od.transaction_id = order.transaction.transaction_id
-        od.status = order.status
-         od.tcreated_at = order.transaction.created_at
-        od.save
- 
-
-
-
-        
-
-
+          order.save
+          od = order.odata
+          od.transaction_id = order.transaction.transaction_id
+          od.status = order.status
+          od.tcreated_at = order.transaction.created_at
+          od.save
           OrderMailer.order_confirmation(order).deliver
 
-        
-  
- 
-
-        
         end
       end
 
@@ -327,15 +286,15 @@ class OrdersController < ApplicationController
   def calculate_ship
     frete = Correios::Frete::Calculador.new :cep_origem => "23970-000",         # cep_origem: "#{@order.seller.post_code}",
       #:peso => "#{@order.product.weight}",
-     # :comprimento =>  "#{@order.product.weight}",
-     # :largura =>  "#{@order.product.weight}",
-     # :altura =>  "#{@order.product.weight}",
-   # cep_destino: params[:post_code]    #{params[:cep]}"
-    cep_destino:   "#{params[:code]}"
-           servicos = frete.calcular :sedex, :pac
+      # :comprimento =>  "#{@order.product.weight}",
+      # :largura =>  "#{@order.product.weight}",
+      # :altura =>  "#{@order.product.weight}",
+      # cep_destino: params[:post_code]    #{params[:cep]}"
+      cep_destino:   "#{params[:code]}"
+    servicos = frete.calcular :sedex, :pac
     @pac = servicos[:pac].valor
     @sedex = servicos[:sedex].valor
-   # render '/orders/:id/checkout'
+    # render '/orders/:id/checkout'
     render :action => :calculate_ship
 
   end

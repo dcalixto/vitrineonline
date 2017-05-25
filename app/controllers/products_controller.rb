@@ -18,9 +18,6 @@ class ProductsController < ApplicationController
     @suggestions = Product.unscoped.for_ids_with_order(ids)
 
 
-
-
-
   end
 
   def new
@@ -136,14 +133,14 @@ class ProductsController < ApplicationController
 
     @product = Product.find(params[:id])
 
-     @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
+    @q = Proback.joins(:product).where('products.id = ?', @product.id).ransack(params[:q])
     @probacks = @q.result(distinct: true).includes(:user).paginate(per_page: 22, page: params[:page]).order('created_at DESC')
 
-   # @probacks =  Proback.joins(:product).where('products.id = ?', @product.id)#.paginate(:per_page => 22, :page => params[:page])
- # @probacks = Proback.by_participant(@product.boutique.user, Feedback::FROM_SELLERS).paginate(:page => params[:page])
+    # @probacks =  Proback.joins(:product).where('products.id = ?', @product.id)#.paginate(:per_page => 22, :page => params[:page])
+    # @probacks = Proback.by_participant(@product.boutique.user, Feedback::FROM_SELLERS).paginate(:page => params[:page])
 
 
-  
+
   end
 
 
@@ -198,11 +195,11 @@ class ProductsController < ApplicationController
 
 
 
-def log_impression
-   @product = Product.cached_find(params[:id])
-  # this assumes you have a current_user method in your authentication system
-  @product.impressions.create(ip_address: request.remote_ip)
-end
+  def log_impression
+    @product = Product.cached_find(params[:id])
+    # this assumes you have a current_user method in your authentication system
+    @product.impressions.create(ip_address: request.remote_ip)
+  end
 
 
 
