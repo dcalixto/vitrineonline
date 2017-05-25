@@ -102,7 +102,7 @@ class OrdersController < ApplicationController
   def confirmation
 
 
-    current_user.transactions
+    @current_user.transactions
 
   end
 
