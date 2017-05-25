@@ -1,5 +1,5 @@
 
-/* glue: 0.11.1 hash: 52f6415cb3 */
+/* glue: 0.11.1 hash: 28ad3b3530 */
         .sprite-icons-paypal_cards,
 .sprite-icons-paypal_protect,
 .sprite-icons-paypal-icon,
@@ -34,7 +34,7 @@
 .sprite-icons-small_avatar {
             background-image: url('icons.png');
             background-repeat: no-repeat;
-             display: inline-block;
+            display: inline-block;
 
         }
         
@@ -58,18 +58,18 @@
         
         .sprite-icons-logo_big {
             background-position: 0 -189px;
-            width: 176px;
-            height: 30px;
+            width: 177px;
+            height: 28px;
         }
         
         .sprite-icons-logo {
-            background-position: 0 -219px;
+            background-position: 0 -217px;
             width: 168px;
-            height: 29px;
+            height: 27px;
         }
         
         .sprite-icons-paypal_icon2 {
-            background-position: 0 -248px;
+            background-position: 0 -244px;
             width: 163px;
             height: 50px;
         }
@@ -81,9 +81,9 @@
         }
         
         .sprite-icons-logo_small {
-            background-position: -176px -189px;
-            width: 99px;
-            height: 17px;
+            background-position: -177px -189px;
+            width: 97px;
+            height: 16px;
         }
         
         .sprite-icons-comodo_secure {
@@ -204,11 +204,10 @@
             background-position: -399px -69px;
             width: 15px;
             height: 15px;
-                position: absolute;
+              position: absolute;
   left: 0;
   top: 0;
   margin-top: 8px;
-
 
         }
         
@@ -236,10 +235,6 @@
             height: 13px;
         }
         
-
-
-
-
 
 
 
