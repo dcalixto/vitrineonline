@@ -55,30 +55,6 @@ class DisputesController < ApplicationController
     end
   end
 
-
-
-  def show
-    @dispute = @order.dispute
-    @comments = @dispute.comments.all
-
-    @comment = @dispute.comments.build(params[:comment])
-    @comment.user = current_user
-    @proof = @dispute.proofs.build(params[:proof])
-
-    # params[:images]['file'].each do |a|
-    #         @image = @dispute.images.create!(:file => a)
-    #    end
-
-
-  end
-
-  def edit
-    @dispute = @order.dispute
-    #@comment = @dispute.comments.new
-    @comments = @dispute.comments.all
-  end
-
-
   def finish
 
 
@@ -108,6 +84,22 @@ class DisputesController < ApplicationController
   end
 
 
+
+
+
+  def show
+    @dispute = @order.dispute
+    @comments = @dispute.comments.all
+
+    @comment = @dispute.comments.build(params[:comment])
+    @comment.user = current_user
+   
+    
+    
+    @proof = @dispute.proofs.build(params[:proof])
+
+
+  end
 
 
 
