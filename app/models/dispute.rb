@@ -20,7 +20,7 @@ before_create ->{ proofs.build }
 
 
 
-after_update :send_update_seller
+#after_update :send_update_seller
 
 
 
@@ -39,10 +39,10 @@ end
 #end
 
 
-def send_update_seller
- DisputeMailer.update_seller(self).deliver
+#def send_update_seller
+ #DisputeMailer.update_seller(self).deliver
 
-end
+#end
 
 
 
