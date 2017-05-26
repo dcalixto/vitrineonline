@@ -19,6 +19,19 @@ class DisputeMailer < ActionMailer::Base
   end
 
 
+
+def dispute_seller(dispute)
+    @dispute = dispute
+
+
+ 
+   mail(to: @dispute.seller.email, subject: 'Comprador abriu uma Reclamação', &:html)
+
+
+  end
+
+
+
   def dispute_update(dispute)
 
     @dispute = dispute

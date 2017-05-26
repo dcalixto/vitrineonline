@@ -91,7 +91,7 @@ class DisputesController < ApplicationController
     @dispute = @order.dispute
     @comments = @dispute.comments.all
 
-    @comment = @dispute.comments.build(params[:comment])
+    @comment = @dispute.comments.create!(params[:comment])
     @comment.user = current_user
 
     @proof = @dispute.proofs.build(params[:proof])
