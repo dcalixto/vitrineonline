@@ -5,6 +5,8 @@ def create
     @order = Order.find(params[:order_id])
   @dispute = @order.dispute
   @comment = @dispute.comments.new params[:comment]
+   # @comment = @dispute.comments.create!(params[:comment])
+
   @comment.user = current_user
 
 
@@ -13,3 +15,5 @@ def create
   end
 end
 end
+
+
