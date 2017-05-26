@@ -35,12 +35,13 @@ class DisputesController < ApplicationController
       dispute.seller_email = @order.seller.email
 
       dispute.transaction_id = @order.transaction.transaction_id
-      #dispute.status = !dispute.status
+     
 
 
       if dispute.save
 
 
+ DisputeMailer.confirmation_seller(@dispute).deliver
 
 
         redirect_to order_dispute_path(@order, @dispute)
@@ -114,6 +115,12 @@ class DisputesController < ApplicationController
       end
       redirect_to order_dispute_path#(@order, @dispute)
       DisputeMailer.dispute_update(@dispute).deliver
+    
+      
+      
+      
+      
+      
       flash[:success] = 'Reclamação atualizada'
 
 
@@ -125,23 +132,6 @@ class DisputesController < ApplicationController
   end
 
 
-
-
-
-  def upload
-    @dispute = @order.dispute
-    respond_to do |format|
-      format.json do
-        if @dispute.update_attributes(params[:dispute])
-          params[:proofs]['file'].each do |a|
-            @proof = @dispute.proofs.create!(:file => a)
-          end
-        end
-        render :nothing => true
-      end
-
-    end
-  end
 
 
   private

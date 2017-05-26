@@ -13,7 +13,9 @@
         
         <%= comment.comment %>
       </td>
-     
+      <td>
+        <%= timeago_tag(comment.created_at, :nojs => true, :date_only => true) %>
+      </td>
       <tr>
   <% end %>
   
