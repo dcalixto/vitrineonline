@@ -14,8 +14,7 @@ has_many :proofs
     attr_accessible :order_id,:seller_id,:buyer_id,:buyer_name,:seller_name,:transaction_id,:status,
 :amount,:motive,:solution,:comment,:buyer_email, :seller_email, :item_received, :proofs_attributes
   
-after_create :send_dispute_confirmation, :status_open,:send_confirmation_seller
-
+after_create :send_dispute_confirmation, :status_open
 
 before_create ->{ proofs.build }
 
@@ -34,10 +33,10 @@ end
 
 
 
-def send_confirmation_seller
- DisputeMailer.confirmation_seller(self).deliver
+#def send_confirmation_seller
+# DisputeMailer.confirmation_seller(self).deliver
 
-end
+#end
 
 
 def send_update_seller
