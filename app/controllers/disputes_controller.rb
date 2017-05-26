@@ -41,7 +41,7 @@ class DisputesController < ApplicationController
       if dispute.save
 
 
- DisputeMailer.confirmation_seller(@dispute).deliver
+
 
 
         redirect_to order_dispute_path(@order, @dispute)
@@ -69,7 +69,7 @@ class DisputesController < ApplicationController
       @order.save
 
       DisputeMailer.dispute_finish(@dispute).deliver
-
+DisputeMailer.finish_seller(@dispute).deliver
       redirect_to closed_order_dispute_path
 
 

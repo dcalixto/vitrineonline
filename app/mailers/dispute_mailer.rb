@@ -43,9 +43,28 @@ def confirmation_seller(dispute)
 
   end
 
+
+
+def update_seller(dispute)
+    @dispute = dispute
+
+
+ 
+   mail(to: @dispute.seller_email, subject: 'Reclamação Atualizada', &:html)
+
+
+  end
+
+
   def dispute_finish(dispute)
     @dispute = dispute
     mail(to: @dispute.buyer_email, subject: ' Reclamação Finalizada', &:html)
+  end
+
+
+  def finish_seller(dispute)
+    @dispute = dispute
+    mail(to: @dispute.seller_email, subject: ' Reclamação Finalizada', &:html)
   end
 
 
