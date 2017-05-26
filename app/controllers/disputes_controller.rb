@@ -12,9 +12,7 @@ class DisputesController < ApplicationController
     else
       @dispute = Dispute.new
 
-      @comment = @dispute.comments.build(params[:comment])
-      @comment.user = current_user
-      @proof = @dispute.proofs.build
+        @proof = @dispute.proofs.build
     end
   end 
 
@@ -92,7 +90,8 @@ class DisputesController < ApplicationController
     @comments = @dispute.comments.all
 
       @proof = @dispute.proofs.build(params[:proof])
-
+@comment = @dispute.comments.build(params[:comment])
+      @comment.user = current_user
 
   end
 
