@@ -24,9 +24,9 @@ class FileUploader < CarrierWave::Uploader::Base
   end
 
 
-  def default_url
-    '/assets/fallback/' + [version_name, 'prova.png'].compact.join('_')
-  end
+#  def default_url
+#    '/assets/fallback/' + [version_name, 'prova.png'].compact.join('_')
+#  end
 
 
 #  process encode_video: [:mp4, resolution: "640x360"]
