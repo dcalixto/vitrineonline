@@ -13,7 +13,7 @@ class DisputeMailer < ActionMailer::Base
 
     mail(to: @dispute.buyer_email, subject: 'Reclamação Aberta', &:html)
 
-     mail(to: @dispute.seller.email, subject: 'Comprador abriu uma Reclamação', &:html)
+     mail(to: @dispute.seller_email, subject: 'Comprador abriu uma Reclamação', &:html)
 
 
   end
