@@ -61,7 +61,7 @@ after_create :get_email
 
   def get_email
 
-    self.email = self.user.email.dup
+    self.email = self.policy.paypal.dup
 
 
   end
