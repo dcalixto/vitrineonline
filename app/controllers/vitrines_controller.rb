@@ -198,8 +198,6 @@ class VitrinesController < ApplicationController
     else
       render :new
     end
-
-    @vitrine.email = @vitrine.policy.paypal
   
   end
 
