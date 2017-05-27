@@ -33,8 +33,10 @@ validates_associated :policy, presence: true
 
   before_create  :create_code
 
-after_create :get_email
-  acts_as_votable
+before_create :get_email
+
+
+acts_as_votable
   
 
   
@@ -61,8 +63,7 @@ after_create :get_email
 
   def get_email
 
-    self.email = self.policy.paypal.dup
-
+    self.email = self.user.email
 
   end
 
