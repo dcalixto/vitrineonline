@@ -47,9 +47,12 @@ body, td {
 
             <tr class="cell">
               <td valign="top">
-                <h2>Olá <%= @dispute.buyer_name %></h2>
+                <h2>Olá  <%= @dispute.buyer_email %> e <%= @dispute.seller_email %></h2>
 
-                <p>Você entrou com uma reclamção para o pedido:  <b><%= @dispute.transaction_id %></b></p>
+
+
+
+           <p>Uma reclamção foi abetra para o pedido:  <b><%= @dispute.transaction_id %></b></p>
               
               
               <p>Por favor acesse:</p>
