@@ -11,9 +11,9 @@ class DisputeMailer < ActionMailer::Base
     @dispute = dispute
 
 
-  #  mail(to: @dispute.buyer_email, subject: 'Reclamação Aberta', &:html)
+    mail(to: @dispute.buyer_email, subject: 'Reclamação Aberta', &:html)
 
-     mail(to: @dispute.seller_email, subject: 'Comprador abriu uma Reclamação', &:html)
+   #  mail(to: @dispute.seller_email, subject: 'Comprador abriu uma Reclamação', &:html)
 
 
   end
@@ -43,12 +43,6 @@ class DisputeMailer < ActionMailer::Base
   def dispute_finish(dispute)
     @dispute = dispute
     mail(to: @dispute.buyer_email, subject: ' Reclamação Finalizada', &:html)
-  end
-
-
-  def finish_seller(dispute)
-    @dispute = dispute
-    mail(to: @dispute.seller_email, subject: ' Reclamação Finalizada', &:html)
   end
 
 
