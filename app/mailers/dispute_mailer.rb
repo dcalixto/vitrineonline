@@ -28,43 +28,20 @@ class DisputeMailer < ActionMailer::Base
 
     mail(to: @dispute.buyer_email, subject: 'Reclamação Atualizada', &:html)
 
-
-
-  end
-
-
-
-
- def update_seller(dispute)
-
-    @dispute = dispute
-
-
     mail(to: @dispute.seller_email, subject: 'Reclamação Atualizada', &:html)
 
-
-
   end
 
 
-
-
-def finish_seller(dispute)
-
-    @dispute = dispute
-
-
-    mail(to: @dispute.seller_email, subject: 'Reclamação Finalizada', &:html)
-
-
-
-  end
 
 
 
   def dispute_finish(dispute)
     @dispute = dispute
     mail(to: @dispute.buyer_email, subject: ' Reclamação Finalizada', &:html)
+
+      mail(to: @dispute.seller_email, subject: 'Reclamação Finalizada', &:html)
+  
   end
 
 

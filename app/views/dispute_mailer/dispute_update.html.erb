@@ -47,9 +47,9 @@ body, td {
 
             <tr class="cell">
               <td valign="top">
-                <h2>Olá <%= @dispute.buyer_name %></h2>
+                <h2>Olá <%= @dispute.buyer_name %>, <%= @dispute.seller_name %></h2>
 
-                <p>Você  atualizou a reclmação  <b><%= @dispute.transaction_id %></b>
+                <p>A reclamção foi atualiazada <b><%= @dispute.transaction_id %></b>
                 
                 as: <%= @dispute.updated_at.strftime("%d/%m/%Y") %>
 
