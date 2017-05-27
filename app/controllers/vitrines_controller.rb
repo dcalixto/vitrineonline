@@ -199,7 +199,7 @@ class VitrinesController < ApplicationController
       render :new
     end
 
-    @vitrine.email = @vitrine.policy.email
+    @vitrine.email = @vitrine.policy.paypal
   
   end
 
