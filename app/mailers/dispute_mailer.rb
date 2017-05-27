@@ -13,15 +13,17 @@ class DisputeMailer < ActionMailer::Base
 
     mail(to: @dispute.buyer_email, subject: 'Reclamação Aberta', &:html)
 
-   #  mail(to: @dispute.seller_email, subject: 'Comprador abriu uma Reclamação', &:html)
+    
 
 
   end
 
+ def confirmation_seller
+   @dispute = dispute
 
 
-
-
+ mail(to: @dispute.seller_email, subject: 'Comprador abriu uma Reclamação', &:html)
+ end
 
 
   def dispute_update(dispute)
@@ -37,6 +39,31 @@ class DisputeMailer < ActionMailer::Base
 
 
 
+
+ def update_seller(dispute)
+
+    @dispute = dispute
+
+
+    mail(to: @dispute.seller_email, subject: 'Reclamação Atualizada', &:html)
+
+
+
+  end
+
+
+
+
+def finish_seller(dispute)
+
+    @dispute = dispute
+
+
+    mail(to: @dispute.seller_email, subject: 'Reclamação Finalizada', &:html)
+
+
+
+  end
 
 
 

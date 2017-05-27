@@ -115,9 +115,11 @@
 <% end -%>
 
 
+   <% if order.buyer == current_user %>
+
 <%= button_to 'Terminar', finish_order_dispute_path( dispute: {status: 'closed'}), :class=> "btn", method: :post %>
 
-
+<% end %>
      
   </div>
 

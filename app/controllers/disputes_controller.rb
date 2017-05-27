@@ -69,8 +69,9 @@ class DisputesController < ApplicationController
       @order.save
 
       DisputeMailer.dispute_finish(@dispute).deliver
-
-      redirect_to closed_order_dispute_path
+  DisputeMailer.finish_seller(@dispute).deliver
+    
+  redirect_to closed_order_dispute_path
 
 
 
