@@ -192,8 +192,9 @@ class VitrinesController < ApplicationController
 
     if @vitrine.save
 
-      @vitrine.email = current_user.email
-      redirect_to  page_path('welcome_vitrine')
+ @vitrine.email = @vitrine.policy.paypal
+
+           redirect_to  page_path('welcome_vitrine')
 
     else
       render :new
