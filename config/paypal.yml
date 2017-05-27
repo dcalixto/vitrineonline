@@ -5,12 +5,12 @@ development: &default
   #client_secret: EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM
 
   # Mode can be 'live' or 'sandbox'
-  # mode: sandbox
-  #  app_id: APP-80W284485P519543T
-  # username: contato_paypal_api1.vitrineonline.com
-  # password: RVPUV7CCQTBNW2WM
-  # signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AlSGupNbH5aLBBuAMSlTB5Gd87v5
-  # sandbox_email_address: contato_paypal_api1.vitrineonline.com
+   mode: sandbox
+    app_id: APP-80W284485P519543T
+   username: contato_paypal_api1.vitrineonline.com
+   password: RVPUV7CCQTBNW2WM
+   signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AlSGupNbH5aLBBuAMSlTB5Gd87v5
+   sandbox_email_address: contato_paypal_api1.vitrineonline.com
 
 
 test:
