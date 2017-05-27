@@ -19,11 +19,6 @@ class DisputeMailer < ActionMailer::Base
 
   end
 
-# def confirmation_seller
-#   @dispute = dispute
-
-
- #end
 
 
   def dispute_update(dispute)
