@@ -71,12 +71,9 @@ $desktop: min-width 1200px;
    height:50px;
 
 
-
-background:#3057a7;
-background:#265aa2;
-
-
-
+/*background:#265aa2;*/
+background:#fff;
+    border-bottom: 1px solid #ebebeb;
 
                               }
  .inner_blue  {
@@ -107,7 +104,7 @@ background:#1A49AB
 
             
                    
-   background:#e7edf5;
+   background:#f1f1f1;
    
 }
 
@@ -400,7 +397,7 @@ margin-right:5px;
    vertical-align: middle;
    float: right;
    font-weight:bold;
- color:#fff 
+ /*color:#fff */
    }
  .help {
    margin-right: 10px;
