@@ -24,7 +24,7 @@ config.action_dispatch.rack_cache = {
 }
 
 
-config.action_controller.default_url_options = { host: '52.87.228.48' }
+#config.action_controller.default_url_options = { host: 'vitrineonline.com' }
   config.lograge.enabled = true
 
  config.lograge.custom_options = lambda do |event|
@@ -43,7 +43,7 @@ config.action_controller.default_url_options = { host: '52.87.228.48' }
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-config.action_mailer.default_url_options = { host: '52.87.228.48'  }
+config.action_mailer.default_url_options = { host: 'vitrineonline.com'  }
 
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.gmail.com',
