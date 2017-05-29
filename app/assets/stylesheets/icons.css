@@ -1,10 +1,14 @@
 
+
+
+
+/* glue: 0.11.1 hash: 40ccbc0cc1 */
         .sprite-icons-paypal_cards,
 .sprite-icons-paypal_protect,
 .sprite-icons-paypal-icon,
 .sprite-icons-logo_big,
-.sprite-icons-paypal_icon2,
 .sprite-icons-logo,
+.sprite-icons-paypal_icon2,
 .sprite-icons-5star,
 .sprite-icons-logo_small,
 .sprite-icons-comodo_secure,
@@ -33,7 +37,7 @@
 .sprite-icons-small_avatar {
             background-image: url('icons.png');
             background-repeat: no-repeat;
-            display: inline-block;
+              display: inline-block;
 
         }
         
@@ -57,20 +61,20 @@
         
         .sprite-icons-logo_big {
             background-position: 0 -189px;
-            width: 176px;
-            height: 46px;
-        }
-        
-        .sprite-icons-paypal_icon2 {
-            background-position: 0 -235px;
-            width: 163px;
-            height: 50px;
+            width: 178px;
+            height: 20px;
         }
         
         .sprite-icons-logo {
-            background-position: -176px -189px;
-            width: 128px;
-            height: 33px;
+            background-position: 0 -209px;
+            width: 177px;
+            height: 20px;
+        }
+        
+        .sprite-icons-paypal_icon2 {
+            background-position: 0 -229px;
+            width: 163px;
+            height: 50px;
         }
         
         .sprite-icons-5star {
@@ -80,9 +84,9 @@
         }
         
         .sprite-icons-logo_small {
-            background-position: -163px -235px;
-            width: 96px;
-            height: 25px;
+            background-position: -178px -189px;
+            width: 98px;
+            height: 12px;
         }
         
         .sprite-icons-comodo_secure {
@@ -203,7 +207,7 @@
             background-position: -399px -69px;
             width: 15px;
             height: 15px;
-                                      position: absolute;
+                                                  position: absolute;
   left: 0;
   top: 0;
   margin-top: 8px;
@@ -233,8 +237,6 @@
             width: 14px;
             height: 13px;
         }
-
-
 
 
 ul.social_list li {
