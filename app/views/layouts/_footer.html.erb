@@ -82,8 +82,9 @@
 <td>
 
 
-
-<%=link_to( image_tag("comodo_secure.png"), "/assets/images/comodo_secure.png" )%>
+<%=link_to "https://www.comodo.com" do %>
+<%=content_tag(:span, nil, :class=> 'sprite-icons-comodo_secure') %>
+<% end %>
 
 </td>
 </tr>
