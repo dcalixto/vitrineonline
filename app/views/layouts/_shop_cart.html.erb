@@ -21,8 +21,15 @@
  <% if current_user.nil? %>
 
 
-<div id="helper_link">
-        <%=link_to 'Ajuda?', page_path("comprar")%>
+   <div id="helper_link">
+     <ul>
+     
+
+       <li> <%=link_to 'Proteção', page_path("protection")%></li>
+       <li>
+         <%=link_to 'Dúvidas?', page_path("comprar")%></li>
+         <li> <%=link_to 'Vender', page_path("sell")%></li>
+     </ul>
 </div>
 
 <% end %>
