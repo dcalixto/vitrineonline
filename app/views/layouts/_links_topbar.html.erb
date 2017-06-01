@@ -65,6 +65,8 @@
         <%=button_to 'Cadastre-se', signup_path, :class=> "btn_green",method: :get %>
         <span></span>
       </li>
+             <li> <%= link_to "Entrar", "/auth/facebook", :class=> "btn" %></li>
+        
       <li>
         <%=button_to 'Entrar', login_path, :class=> "btn_orange",method: :get %>
         <span></span>
