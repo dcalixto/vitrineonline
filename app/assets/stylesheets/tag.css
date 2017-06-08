@@ -112,10 +112,10 @@ width:130px;
 }
 .jq-dropdown .jq-dropdown-menu li a:hover,
 .jq-dropdown .jq-dropdown-menu label:hover {
-  background-color: #e4d226;
+  background-color: #1042AF;
   color: inherit;
   cursor: pointer;
-  color:#111
+  color:#fff
 }
 
 

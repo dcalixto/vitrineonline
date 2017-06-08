@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170524025616) do
+ActiveRecord::Schema.define(:version => 20170606072410) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -454,6 +454,10 @@ ActiveRecord::Schema.define(:version => 20170524025616) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.string   "code"
+    t.string   "installment"
+    t.string   "off"
+    t.float    "poff"
+    t.integer  "pinstallment"
   end
 
   add_index "policies", ["policieable_id", "policieable_type"], :name => "index_policies_on_policieable_id_and_policieable_type"
@@ -561,6 +565,7 @@ ActiveRecord::Schema.define(:version => 20170524025616) do
     t.float    "height"
     t.float    "diamenter"
     t.string   "code"
+    t.boolean  "freeship",                                              :default => false
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"

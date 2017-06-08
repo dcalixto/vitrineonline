@@ -1,12 +1,43 @@
 <h1><% title "Produtos" %></h1>
 <div class="box1">
   <% breadcrumb :products, @products %>
+
+
+<div class="safe_banner">
+<div>
+    <%= link_to  "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security"  do %>
+
+          <%= content_tag(:span, nil, :class => 'sprite-icons-protection_banner') %>
+
+        <% end %> 
+ 
 </div>
+  
+<div>
+  <ul>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Reembolso Total: se você não receber seu pedido</li>
+    </ul>
+    <ul>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Reembolsar ou Manter itens diferentes do descrito</li>
+    </ul>
+    <ul>
+         </ul>
+  <%= link_to "Saiba mais", "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
 <%=render 'shared/filtro_product' %>
 
 
 
-<div class="box5">
+<div class="box3">
   <div class="block">
 
     <div class="content">

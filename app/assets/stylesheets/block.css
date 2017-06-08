@@ -85,13 +85,14 @@ clear:both;
     white-space: normal;
     display: block;
  
-
+background:#fff;
     margin: 0px auto;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
       
 overflow:hidden;
+
    
 }
 
@@ -299,3 +300,23 @@ clear:both;
 
 
 .profile_list li {margin-bottom: 7px}
+
+
+.safe_banner {
+padding:15px;
+background-color:rgb(245, 245, 245);
+border-bottom-color:rgb(221, 221, 221);
+border-radius:5px;
+border-style:solid;
+border-width:1px;
+border-left-color:rgb(221, 221, 221);
+border-right-color:rgb(221, 221, 221);
+border-top-color:rgb(221, 221, 221);
+box-sizing:border-box;
+color:rgb(0, 0, 0);
+display:block;
+overflow:auto
+
+}
+
+.safe_banner div {float:left;display:inline-block}

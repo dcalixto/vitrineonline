@@ -11,29 +11,51 @@
    
 
 
+      <div class="banners">
+
+ <div class="ban1">
 
 
 <ul class="slider" id="slider">
   <li>
    
-      <%= image_tag('front_banner.png')  %>
+      <%= image_tag('ban1.jpg')  %>
   </li>
   <li>
    
-      <%= image_tag('front_banner.png')  %>
+      <%= image_tag('ban2.jpg')  %>
   </li>
   <li>
   
-      <%= image_tag('front_banner.png')  %>
+      <%= image_tag('ban3.jpg')  %>
   </li>
 </ul>
-  
-
-    </div>
 
   </div>
 
+<div class="safe_banner">
+    <%= link_to  "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security"  do %>
+
+          <%= content_tag(:span, nil, :class => 'sprite-icons-protection_banner') %>
+
+        <% end %> 
+   <%= link_to "Saiba mais", "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+
 </div>
+  
+
+
+
+   </div>
+
+
+    </div>
+ 
+
+   </div>
+
+   </div>
+
 
 
 <div class="box3">
@@ -74,9 +96,49 @@
                       <%=product.total_feedbacks %>
                     </div>
                 
-                  <span class="by">Por
+              
+
+  <% if  product.vitrine.policy.installment.present? %>
+          
+              <span class="greennow">
+                
+                 <%= content_tag(:span, nil, :class => 'sprite-icons-small_card') %>
+
+                
+                <%= product.vitrine.policy.installment %>x de
+           <%=  number_to_currency(product.price.to_f / product.vitrine.policy.pinstallment,  :unit => "R$") %>
+          
+           
+           
+           
+         
+
+          
+          sem juros</span>
+        
+                   
+          
+        
+
+        <% end %>
+
+
+
+
+<% if product.freeship == true %>
+        <span class="greennow">
+    <%= content_tag(:span, nil, :class => 'sprite-icons-small_truck') %>
+    
+    Frete Grátis</span>
+
+<% end %>
+
+    <span class="by">Por
                     <%=product.vitrine.name %></span>
                 <% end %>
+
+
+
               </td>
             <% end %>
           </tr>
@@ -157,6 +219,11 @@
 
 <div class="box11">
   <div class="content">
+
+
+  
+
+
     <h2>Seções
     </h2>
     <div class="tags">

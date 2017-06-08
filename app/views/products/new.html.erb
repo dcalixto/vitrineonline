@@ -46,6 +46,10 @@
 </div>
 
 
+
+
+
+
 </td>
 <td>
 
@@ -67,8 +71,51 @@
 
 
 </td>
+
+
+
+
     </tr>
   </table>
+
+
+
+
+
+  <table>
+    <tr>
+      <td>
+     <h2>Frete Grátis</h2>
+
+  <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+
+ <ul>
+   <li>
+     <%= p.label :freeship, 'Não' %>
+    
+
+<%= p.radio_button  :freeship, false%>
+          </li>
+
+          <li>
+              <%= p.label :freeship, 'Sim' %>
+
+            <%= p.radio_button  :freeship, true%>
+          </li>
+
+
+   </td>
+
+
+
+
+    </tr>
+  </table>
+
+
+
+
+
 
 
 <div class=" horizonal_list ">
@@ -86,10 +133,6 @@
     </li>
   </ul>
 </div>
-
-
-
-
 
 
 

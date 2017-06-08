@@ -1,75 +1,78 @@
 <h1><% title "Produtos" %></h1>
 <div class="box1">
-<% breadcrumb :products, @products %>
+  <% breadcrumb :products, @products %>
+
+
+<div class="safe_banner">
+<div>
+    <%= link_to  "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security"  do %>
+
+          <%= content_tag(:span, nil, :class => 'sprite-icons-protection_banner') %>
+
+        <% end %> 
+ 
 </div>
+  
+<div>
+  <ul>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Reembolso Total: se você não receber seu pedido</li>
+    </ul>
+    <ul>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Reembolsar ou Manter itens diferentes do descrito</li>
+    </ul>
+    <ul>
+         </ul>
+  <%= link_to "Saiba mais", "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
 <%=render 'shared/filtro_product' %>
-<div class="box6">
-<div class="subcontent_top">
-<p>
-<p><%=@products.total_entries %> Produtos achados</p>
 
 
-    <div class="episode_views">
-    
- <table class="block_search">
-        <tr>
-          <td>
 
-                  </td>
-          <td class="sort">
+<div class="box3">
+  <div class="block">
 
-            Ordernar Por
-            <%= select_tag 'order_by', options_for_select([['Preço: Mais Baratos', 'price:asc'], ['Preço: Mais Caros', 'price:desc'], ['Média de Avaliações', 'average_customer_rating:desc'], ['Postado Recentemente', 'created_at:desc']], params[:order_by] || 'created_at:desc') %>
-   
+    <div class="content">
+    <%= render :partial => 'shared/sort_by'%>
+ 
 
-          </td>
-        </tr>
-      </table>  
+      <div class="content">
 
+
+        <%= render :partial => 'products/list'%>
+
+
+      </div>
+
+      <div >
+
+      </div>
     </div>
 
 
-<div class="content">
-<%= render :partial => 'products/list'%>
-</div>
+ <%= render :partial => 'shared/product_pagination'%>
+
+  </div>
 
 
 
-<div class="block_pagination">
-<div class="digg_pagination">
-<%=will_paginate @products,:container=> false, previous_label: h('« Voltar'), next_label: h('Próximo »'),:page_gap => "......", :inner_window => 1, :outer_window => 1 %>
-</div>
-</div>
-</div>
-
-
-
-<div class="block">
+  <div class="block">
     <h2>Confira Também</h2>
 
 
-  <div class="sugestion_carousel liquid" >
-	<span class="previous"></span>
-	<div class="wrapper">
-  <ul>
-
-            <% @suggestions.each do |item| %>
-              <li>
-            <%= link_to product_path(item) do  %>
-            <%= image_tag item.images.first.ifoto.url(:thumb).to_s %>
-            <%= item.name %>
-              <%= item.price %>
-            <% end %>
-            </li>
-            <% end %>
-  </ul>
+   <%= render :partial => 'shared/suggestion'%>
 
 
- 	</div>
-	<span class="next"></span>
-</div>
 
-</div>
+  </div>
 
 </div>
 

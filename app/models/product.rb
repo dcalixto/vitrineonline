@@ -40,8 +40,8 @@ class Product < ActiveRecord::Base
     :vitrine_id, :products, :price,
     :size_ids, :color_ids,  :tag_list, :is_shared_on_facebook,
     :is_shared_on_twitter,:images_attributes, 
-    :brand_id, :obrand_id, :condition_id, :height, :width, :diamenter, :length, :weight
-
+    :brand_id, :obrand_id, :condition_id, :height, :width, :diamenter, :length, :weight, :freeship
+    
   validates :name, presence: true, length: { maximum: 140 }
   validates :price, presence: true
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -81,7 +81,9 @@ class Product < ActiveRecord::Base
 
   attr_accessor :form_step
 
-
+ def percent_of(n)
+    self.to_f / n.to_f * 100.0
+  end
 
 
   def required_for_step?(step)

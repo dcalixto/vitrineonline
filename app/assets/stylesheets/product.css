@@ -223,7 +223,7 @@ img#rating_line  {display: inline;
 
 
  
-#searchResults_list  .productName_list{color: #167ac6; font-size:14px;
+#searchResults_list  .productName_list{color: #167ac6; font-size:16px;
 
      display: block;
     line-height: 1.3em;
@@ -266,7 +266,6 @@ font-weight:bold;
     max-height: 35px;      /* fallback */
    -webkit-line-clamp: 2; /* number of lines to show */
    -webkit-box-orient: vertical;
-
 
 }
 
@@ -327,7 +326,6 @@ margin-top:5px;
 
 
 .product span.price {
-
 
 
  color: #b12704;

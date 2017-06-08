@@ -1,6 +1,6 @@
 <% title "Políticas" %>
 <%= render "shared/vitrine_menu" %>
-<div class="box5">
+<div class="box6">
   <div class="flash_box  margin_top">
     <%= render 'shared/flash_messages' %>
     <%= render 'shared/error_messages', :target => @policy %>
@@ -8,11 +8,10 @@
   </div>
 
   <div class="block margin_top">
-  <div class="square_box">
-    <h1>Política</h1>
+     <h1>Política</h1>
 
       <div class="subcontent">
-        <h4>Pagamento</h4>
+        <h2>Pagamento</h2>
         <ul>
           <li>
             <!--PAYPAL -->
@@ -28,6 +27,11 @@
             <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
           </li>
 
+          <li> <p>Para dar a opcão de parcelamento e desconto visite:</p>
+            <%= link_to nil,  "https://www.paypal.com/br/selfhelp/article/como-crio-um-plano-de-parcelamento-faq1732" %>
+          </li>
+
+
           <li class="space"></li>
           <li>
               <%= form_for @policy, :url => vitrine_policy_path(@policy), :method => :put do |e| %>
@@ -39,29 +43,37 @@
           </li>
         </ul>
 
-      </div>
-      </div>
+        </div>
 
         <div class="square_box">
-            <h4>Envio</h4>
-      <div class="subcontent">
+          <h2>Envio</h2>
+
+          <%= form_for @policy, :url => vitrine_policy_path, :method => :put do |s| %>
+            <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+
+      <div class="subcontent horizonal_list ">
 
 
         <p class="tip">Indique as formas de envio disponível</p>
-          <%= form_for @policy, :url => vitrine_policy_path, :method => :put do |s| %>
-        <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+
+                      <ul>
         <%= hidden_field_tag "policy[shipping_ids][]", nil %>
         <% Shipping.all.each do |shipping| %>
+          <li>
         <%= check_box_tag "policy[shipping_ids][]", shipping.id, @policy.shipping_ids.include?(shipping.id), id: dom_id(shipping)%>
         <%= label_tag dom_id(shipping), shipping.kind %>
+          </li>
         <% end %>
-        <%= s.submit "Salvar", :class => 'btn' %>
-            <% end %>
+            </ul>
+             
+
       </div>
+       <%= s.submit "Salvar", :class => 'btn' %>
+                <% end %>
+
       </div>
 
-      <div class="square_box">
-          <h4>Garantias</h4>
+              <h2>Garantias</h2>
       <div class="subcontent">
 
 
@@ -89,10 +101,10 @@
 
 
               </div>
-      </div>
-       
+        
     </div>
   </div>
 
 </div>
 <!-- FIM DO CONTAINER-->
+

@@ -240,7 +240,7 @@ class VitrinesController < ApplicationController
     product_info = current_vitrine.invoices.products_stats(end_time - 30.days..end_time).first
     unless product_info.nil?
       @most_sold_product = Product.find_by_id(product_info.product_id)
-      @most_sold_product = ProductData.find_by_id(product_info.product_id) if @most_sold_product.nil?
+      @most_sold_product = Pdata.find_by_id(product_info.product_id) if @most_sold_product.nil?
       week_product_stats = prepare_stats(end_time - 6.days, end_time, product_info.product_id)
       month_product_stats = prepare_stats(end_time - 30.days, end_time, product_info.product_id)
 

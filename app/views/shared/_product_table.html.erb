@@ -25,8 +25,54 @@
 
                   
                   
-                  <span class="by">Por
-                    <%=product.vitrine.name %></span>
+                
+
+
+
+
+
+<% if  product.vitrine.policy.installment.present? %>
+          
+              <span class="greennow">
+                
+                 <%= content_tag(:span, nil, :class => 'sprite-icons-small_card') %>
+
+                
+                <%= product.vitrine.policy.installment %>x de
+           <%=  number_to_currency(product.price.to_f / product.vitrine.policy.pinstallment,  :unit => "R$") %>
+          
+           
+           
+           
+         
+
+          
+          sem juros</span>
+        
+                   
+          
+        
+
+        <% end %>
+
+
+
+
+<% if product.freeship == true %>
+        <span class="greennow">
+    <%= content_tag(:span, nil, :class => 'sprite-icons-small_truck') %>
+    
+    Frete Grátis</span>
+
+<% end %>
+
+
+
+
+
+
+
+
                 <% end %>
               </td>
             <% end %>

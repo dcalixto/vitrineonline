@@ -24,7 +24,6 @@ $desktop: min-width 1200px;
   left: 0;
   z-index: 998;
 
-
  }
 
 
@@ -74,19 +73,27 @@ $desktop: min-width 1200px;
 
  .blue_bar {      
    height:50px;
+  
+   
+background:rgb(38, 90, 162)
+;
 
 
-background:#265aa2;
-
-
- background:#2b6ea2;
-    background-color: #fafafa;                              }
+  
+  }
  .inner_blue  {
 
    height:45px;
      width:100%;
    display: block;
-    background: #fafafa; }
+  
+background:rgb(38, 90, 162)
+; 
+
+
+
+
+  }
 
  .icons_bar  {
 
@@ -105,10 +112,7 @@ background:#265aa2;
 
 
             
-                   
-     background: #265AA2;   
-     background:#26618e;
-           background-color: #fafafa;
+                          background:#e8edf5;
 
 }
 
@@ -401,6 +405,7 @@ margin-right:5px;
    vertical-align: middle;
    float: right;
    font-weight:bold;
+color:#fff 
 
    }
  .help {
@@ -413,12 +418,14 @@ margin-right:5px;
    vertical-align: middle;
    float: right;
    list-style: outside none none;
-  margin-right:10px 
+  margin-right:10px;
+   
  }
  .top_links {
    padding-top: 1px;
-   float: right
- }
+   float: right;
+    font-weight:bold;
+      }
 
 
 #helper_link ul { display: block;

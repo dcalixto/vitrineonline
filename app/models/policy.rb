@@ -11,7 +11,9 @@ class Policy < ActiveRecord::Base
   # has_many :policyable
   # has_many :products, through: :policyable
 
-  attr_accessible :kind, :paypal, :guarantee, :shipping_ids
+  attr_accessible :kind, :paypal, :guarantee, :shipping_ids, :installment, :off,
+    :pinstallment, :poff
+
 
   validates :paypal, uniqueness: { case_sensitive: false },
                      length: { within: 1..70 }

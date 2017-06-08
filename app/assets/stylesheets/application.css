@@ -105,3 +105,9 @@ a.morelink {
 #menu-box-product  span a {
 
     color: #0254EB;}
+
+
+.banners div {display: inline-block;
+    vertical-align: middle;}
+
+.ban2 {margin-left:10px}    

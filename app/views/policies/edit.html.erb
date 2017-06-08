@@ -18,14 +18,20 @@
             <p class="tip">Indique seu email do paypal para recebimento</p>
           </li>
           <li>
-            <%= link_to  "https://www.paypal.com/br"  do %>
+            <%= link_to  "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security"  do %>
             <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
             <% end %>
           </li>
           <li>
-            <p class="tip">Saiba mais sobre o sistema de proteção ao vendedor</p>
-            <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+          <%= link_to "Saiba mais sobre o sistema de proteção ao vendedor" , "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
           </li>
+
+          <li> 
+            
+              <%= content_tag(:span, nil, :class => 'sprite-icons-small_card') %>
+            <%= link_to "Saiba mais sobre a opcão de parcelamento e desconto",  "https://www.paypal.com/br/selfhelp/article/como-crio-um-plano-de-parcelamento-faq1732" %>
+          </li>
+
 
           <li class="space"></li>
           <li>
@@ -39,6 +45,42 @@
         </ul>
 
         </div>
+
+
+
+
+   <div class="square_box">
+          <h2>Parcelamento</h2>
+
+          <p> O Parcelamento e desconto aparacerão em todos os produtos que você postar</p>
+
+<%= form_for @policy, :url => vitrine_policy_path, :method => :put do |f| %>
+  <ul>
+    <li>Parcelamento
+        
+    
+<%= f.select :pinstallment, ((0..12).map {|i| [i,i] } << ["Parcelamento",nil]) %>
+
+
+
+    </li>
+  
+
+
+
+ <%= f.submit "Salvar", :class => 'btn' %>
+                <% end %>
+
+      </div>
+
+
+
+
+
+
+
+
+
 
         <div class="square_box">
           <h2>Envio</h2>

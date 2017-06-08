@@ -1,6 +1,6 @@
 <% title "Políticas" %>
 <%= render "shared/vitrine_menu" %>
-<div class="box5">
+<div class="box6">
   <div class="flash_box  margin_top">
     <%= render 'shared/flash_messages' %>
     <%= render 'shared/error_messages', :target => @policy %>
@@ -8,12 +8,9 @@
   </div>
 
   <div class="block margin_top">
+     <h1>Política</h1>
 
-    <h1>Política</h1>
-
-
-    <div class="content">
-      <div class="subcontent_top">
+      <div class="subcontent">
         <h2>Pagamento</h2>
         <ul>
           <li>
@@ -22,13 +19,18 @@
           </li>
           <li>
             <%= link_to  "https://www.paypal.com/br"  do %>
-            <%= content_tag(:span, nil, :class => 'paypal_logo') %>
+            <%= content_tag(:span, nil, :class => 'sprite-icons-paypal-icon') %>
             <% end %>
           </li>
           <li>
             <p class="tip">Saiba mais sobre o sistema de proteção ao vendedor</p>
             <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
           </li>
+
+          <li> <p>Para dar a opcão de parcelamento e desconto visite:</p>
+            <%= link_to nil,  "https://www.paypal.com/br/selfhelp/article/como-crio-um-plano-de-parcelamento-faq1732" %>
+          </li>
+
 
           <li class="space"></li>
           <li>
@@ -41,30 +43,45 @@
           </li>
         </ul>
 
-      </div>
+        </div>
 
-      <div class="subcontent">
+        <div class="square_box">
+          <h2>Envio</h2>
 
-        <h2>Envio</h2>
-        <p class="tip">Indique as formas de envio disponível</p>
           <%= form_for @policy, :url => vitrine_policy_path, :method => :put do |s| %>
-        <%= content_tag(:span, nil, :class => 'shipping') %>
+            <%= content_tag(:span, nil, :class => 'sprite-icons-shipping') %>
+
+      <div class="subcontent horizonal_list ">
+
+
+        <p class="tip">Indique as formas de envio disponível</p>
+
+                      <ul>
         <%= hidden_field_tag "policy[shipping_ids][]", nil %>
         <% Shipping.all.each do |shipping| %>
+          <li>
         <%= check_box_tag "policy[shipping_ids][]", shipping.id, @policy.shipping_ids.include?(shipping.id), id: dom_id(shipping)%>
         <%= label_tag dom_id(shipping), shipping.kind %>
+          </li>
         <% end %>
-        <%= s.submit "Salvar", :class => 'btn' %>
-            <% end %>
+            </ul>
+             
+
       </div>
+       <%= s.submit "Salvar", :class => 'btn' %>
+                <% end %>
+
+      </div>
+
+              <h2>Garantias</h2>
       <div class="subcontent">
-        <h2>Garantias</h2>
+
 
 
         <p class="tip">Garantias como prazo de devoluação e cancelamento do pedido são sempre bem vindos</p>
 
         <p clas="tip">Para inserir emojis no texto acesse
-          <%= link_to  "http://www.emoji-cheat-sheet.com"   %></p>
+          <%= link_to nil, "http://www.emoji-cheat-sheet.com"   %></p>
 
 <div class="caixa">
               <div class="wmd-panel">
@@ -81,11 +98,13 @@
          <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
 
        </div>
-</div>
 
-      </div>
+
+              </div>
+        
     </div>
   </div>
 
 </div>
 <!-- FIM DO CONTAINER-->
+
