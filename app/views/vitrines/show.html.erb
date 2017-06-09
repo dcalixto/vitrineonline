@@ -68,11 +68,14 @@
 
 
 
-        <li>
+       <li>
+            <ul class="social_media">
+              <li>
+
           <%if @vitrine.marketing.facebook%>
 
             <%=link_to "https://www.facebook.com/#{@vitrine.marketing.facebook}" do %>
-              <%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_facebook") %>
             <% end %>
           <% end %>
 
@@ -86,7 +89,19 @@
           <%if @vitrine.marketing.twitter %>
 
             <%=link_to "https://www.twitter.com/#{@vitrine.marketing.twitter}" do %>
-              <%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_twitter") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+  <li>
+          <%if @vitrine.marketing.youtube %>
+
+            <%=link_to "https://www.youtube.com/#{@vitrine.marketing.youtube}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_youtube") %>
             <% end %>
           <% end %>
 
@@ -95,6 +110,19 @@
         </li>
 
 
+
+
+  <li>
+          <%if @vitrine.marketing.instagram %>
+
+            <%=link_to "https://www.instagram.com/#{@vitrine.marketing.instagram}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_instagram") %>
+            <% end %>
+          <% end %>
+  </li>
+
+            </ul>
+        </li>
 
 
 

@@ -1,5 +1,5 @@
 class AddInstallmentToPolicy < ActiveRecord::Migration
   def change
-    add_column :policies, :installment, :string
+    add_column :policies, :installment, :integer
   end
 end

@@ -336,6 +336,34 @@ margin-top:5px;
 }
 
 
+.price_cell ul { 
+
+margin: 0; /* retira o recuo para alguns browsers */
+padding:0; /* retira o recuo para outros browsers */
+overflow: auto;
+
+
+}
+
+
+
+.price_me {
+   color: #b12704;
+   font-size: 15px;
+   line-height: 19px !important;
+    text-decoration: none;
+    font-weight:bold
+}
+
+ul.price_cell  li { float:left;
+             float:left;
+           display:block;
+           border:solid 1px red
+
+
+}
+
+
 
 
 

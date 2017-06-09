@@ -50,6 +50,42 @@
     filter: alpha(opacity=80);
 }
 
+
+
+.btn_facebook {
+
+
+
+
+
+ padding: 5px 10px 5px 10px;
+font-size: 12px;
+
+background: #436bbe;
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  font-family: Arial;
+  color: #ffffff;
+    text-decoration: none;
+
+
+
+      border: solid 1px #3255a0;
+  text-decoration: none;
+
+
+
+
+
+
+}
+
+
+
+
+
+
 .btn {
 
 

@@ -205,3 +205,21 @@ label.checkbox {
 .rednow {color:red}
 
 .greennow {color:green}
+
+
+
+.social_media {
+     list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+     }
+
+.social_media li {
+   float: left;
+   margin-right:5px
+  }
+
+
+
+

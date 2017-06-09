@@ -1,5 +1,5 @@
 class AddOffToPolicy < ActiveRecord::Migration
   def change
-    add_column :policies, :off, :string
+    add_column :policies, :off, :integer
   end
 end

@@ -6,7 +6,7 @@
   <h1>Confirme sua compra</h1>
     <p>O seu pedido ainda não foi finalizado. Certifique-se de conferir seu pedido cuidadosamente e com precisão antes de tomar o último passo ao enviar para nosso sistema</p>
 
-
+    <p>No caso de Frete Grátis por favor adicione valores como 1 ou 5 centavos para concluir o pedido até resolver-mos isso</p> 
 
     
   </div>
@@ -201,8 +201,7 @@
                         <tbody class="greybox">
                         <tr class="subtotal">
                           <td class="bigger" >
-                            Subtotal <%= @order.quantity %>
-                          
+                            Subtotal                           
                           </td>
                           <td>
                             <h2><%= number_to_currency @order.total_price %></h2>

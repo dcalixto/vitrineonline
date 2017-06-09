@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170606072410) do
+ActiveRecord::Schema.define(:version => 20170609004600) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -262,6 +262,7 @@ ActiveRecord::Schema.define(:version => 20170606072410) do
     t.string   "instagram"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "youtube"
   end
 
   add_index "marketings", ["vitrine_id"], :name => "index_marketings_on_vitrine_id"
@@ -566,6 +567,7 @@ ActiveRecord::Schema.define(:version => 20170606072410) do
     t.float    "diamenter"
     t.string   "code"
     t.boolean  "freeship",                                              :default => false
+    t.float    "diameter"
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"

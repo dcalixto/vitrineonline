@@ -72,15 +72,60 @@
           <li>
           
 
-            <span>Preço:
-              <strong class="bigger"><%= number_to_currency(@product.price, :unit => "R$") %></strong></span>
+                         <h1 ><%= number_to_currency(@product.price, :unit => "R$") %></h1>
           </li>
 
 
+          <li> <%= @product.vitrine.invoices.count %> vendidos </li>
+
+
+          <% if  @product.vitrine.policy.installment.present? %>
+            <li >
+              <span class="greennow">
+                
+                 <%= content_tag(:span, nil, :class => 'sprite-icons-card') %>
+
+                
+                <%= @product.vitrine.policy.installment %>x de
+           <%=  number_to_currency(@product.price.to_f / @product.vitrine.policy.pinstallment,  :unit => "R$") %>
+          
+           
+           
+           
+         
+
+          
+          sem juros</span>
+        
+                   
+          
+          </li>
+
+
+
+        <% end %>
+
+
+
+
+
+
+
+<% if @product.freeship == true %>
+  <li>
+       <span class="greennow">
+      <%= content_tag(:span, nil, :class => 'sprite-icons-truck_product') %>
+    
+    Frete Grátis</span>
+
+  </li>
+<% end %>
+
           <li>
 
-            <span>Disponível:
-              <strong><%= @product.quantity%></strong>
+            <span  class="rednow">Apenas  <strong><%= @product.quantity%></strong>
+              Disponível
+
             </span>
           </li>
 
@@ -128,11 +173,14 @@
 
 
 
-   <li>
+          <li>
+            <ul class="social_media">
+              <li>
+
           <%if @product.vitrine.marketing.facebook%>
 
             <%=link_to "https://www.facebook.com/#{@product.vitrine.marketing.facebook}" do %>
-              <%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_facebook") %>
             <% end %>
           <% end %>
 
@@ -146,7 +194,19 @@
           <%if @product.vitrine.marketing.twitter %>
 
             <%=link_to "https://www.twitter.com/#{@product.vitrine.marketing.twitter}" do %>
-              <%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_twitter") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+  <li>
+          <%if @product.vitrine.marketing.youtube %>
+
+            <%=link_to "https://www.youtube.com/#{@product.vitrine.marketing.youtube}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_youtube") %>
             <% end %>
           <% end %>
 
@@ -157,11 +217,23 @@
 
 
 
+  <li>
+          <%if @product.vitrine.marketing.instagram %>
+
+            <%=link_to "https://www.instagram.com/#{@product.vitrine.marketing.instagram}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_instagram") %>
+            <% end %>
+          <% end %>
+  </li>
+
+            </ul>
+        </li>
 
 
 
 
-          <li>Visualizações: <b><%=@product.unique_impression_count %></b></li>
+
+          <li class="greennow">Visualizado por <b><%=@product.unique_impression_count %></b> pessoas</li>
 
 
 
@@ -172,14 +244,31 @@
       </div>
 
       <div class="content">
-        <%= link_to  "https://www.paypal.com/br"  do %>
+        <ul>
+          <li>
+        <%= link_to  "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security"  do %>
 
           <%= content_tag(:span, nil, :class => 'sprite-icons-paypal_protect') %>
 
         <% end %>
+          </li>
+          <li>
+        
+            <%= link_to "Saiba mais", "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+          </li>
+        </ul>
 
-        Saiba mais em:
-        <%= link_to nil, "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+ <ul>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Reembolso Total: se você não receber seu pedido</li>
+    </ul>
+    <ul>
+      <li><%=content_tag(:span, nil, :class =>"sprite-icons-criar-check")%>Reembolso Total: se o produto recebido for diferente do descrito</li>
+    </ul>
+    <ul>
+
+
+
+
       </div>
 
 
@@ -210,8 +299,16 @@
           <li>
  <%= label_tag "Preço:" %>
             <h3 id="item_price"><%= number_to_currency(@product.price, :unit => "R$") %></h3>
+         
+          
           </li>
 
+
+
+          <li>
+
+
+                      </li>
         </ul>
 
         <div class="left_info item_information">

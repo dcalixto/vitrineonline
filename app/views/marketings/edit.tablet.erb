@@ -10,6 +10,7 @@
 
 
 
+  <div class="content">
 
 <h1>Site e Social</h1>
 
@@ -20,7 +21,10 @@
       <div class="subcontent">
 
 
-    <h4>Site</h4>
+      <p>Com as mídias sociais não há a necessidade de colocar www.midiasocial.com/</p>
+
+
+    <b>Site</b>
 
        
   
@@ -31,21 +35,21 @@
 
   
       <div class="subcontent">
-  <h4>Facebook</h4>
+  <b>Facebook</b>
 
              <%= mkt.input :facebook, :label => "Facebook da sua vitrine" %>
            </div>
 
 
     <div class="subcontent">
-  <h4>Youtube</h4>
+  <b>Youtube</b>
         <%= mkt.input :youtube, :label => "Seu Canal" %>
          </div>
 
 
 
   <div class="subcontent">
-  <h4>Instagram</h4>
+  <b>Instagram</b>
 
             <%= mkt.input :instagram, :label => "Seu Instagram" %>
           </div>
@@ -54,10 +58,18 @@
 
   
       <div class="subcontent">
-  <h4>Twitter</h4>
+  <b>Twitter</b>
 
                <%= mkt.input :twitter, :label => "Twitter da sua vitrine" %>
-     
+
+
+
+               <%= mkt.actions do %>
+        <%= mkt.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
+        <% end %>
+        <% end %>
+        <% end %>
+
       </div>
 
 
@@ -68,11 +80,8 @@
 
   </div>
 
-     <%= mkt.actions do %>
-        <%= mkt.action :submit, :label => "Salvar", :button_html => { :class => "btn"} %>
-        <% end %>
-        <% end %>
-        <% end %>
-
-</div>
+  </div>
+  
+     
+  </div>
 

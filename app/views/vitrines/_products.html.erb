@@ -73,14 +73,20 @@
 </td>
 
 
+</td>
 
-<td  >
+
+<td class="price_cell"  >
 
 
   <ul>
     <li>
-      <span class="price"><%=number_to_currency(product.price, :unit=> "R$") %></span>
-   
+      <span class="price_me"><%=number_to_currency(product.price, :unit=> "R$") %></span>
+</li>
+
+
+  <li>
+
           <% if  product.vitrine.policy.installment.present? %>
           
               <span class="greennow">
@@ -107,20 +113,120 @@
     </li>
     <li>
 
-
+      <div>
 <% if product.freeship == true %>
         <span class="greennow">
     <%= content_tag(:span, nil, :class => 'sprite-icons-small_truck') %>
     
-    Frete Grátis</span>
+    Frete Grátis
+        
+        </span>
 
 <% end %>
 
     </li>
-    </li>
+    <li>
+                <span>
      <%= product.vitrine.invoices.count %>
      vendidos
-     </li>
+          </span>
+     
+
+    </li>
+
+    <li>
+      
+<% if product.vitrine.city.present? %>
+
+     <span>
+     <%= product.vitrine.city.name %>
+               </span>
+        <% end %>
+
+
+
+<% if product.vitrine.state.present? %>
+
+                <span>
+                  <b><%= product.vitrine.state.code %></b>
+               </span>
+     <% end %>
+
+
+
+  </li>
+
+
+<li>
+            <% if product.vitrine.marketing.url%>
+              <%=link_to  "#{product.vitrine.marketing.url}", url_with_protocol(product.vitrine.marketing.url), :target => '_blank' %>
+            <% end %>
+
+          </li>
+
+
+
+         <li>
+            <ul class="social_media">
+              <li>
+
+          <%if product.vitrine.marketing.facebook%>
+
+            <%=link_to "https://www.facebook.com/#{product.vitrine.marketing.facebook}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_facebook") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+
+
+        <li>
+          <%if product.vitrine.marketing.twitter %>
+
+            <%=link_to "https://www.twitter.com/#{product.vitrine.marketing.twitter}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_twitter") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+  <li>
+          <%if product.vitrine.marketing.youtube %>
+
+            <%=link_to "https://www.youtube.com/#{product.vitrine.marketing.youtube}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_youtube") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+
+
+
+  <li>
+          <%if product.vitrine.marketing.instagram %>
+
+            <%=link_to "https://www.instagram.com/#{product.vitrine.marketing.instagram}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_instagram") %>
+            <% end %>
+          <% end %>
+  </li>
+
+            </ul>
+        </li>
+
+
+
+
+
+
   </ul>
 
 </td>
