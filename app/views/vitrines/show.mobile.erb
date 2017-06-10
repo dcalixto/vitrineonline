@@ -25,36 +25,9 @@
 
 
       <ul class="profile_list">
-        <li>
-          <%if @vitrine.marketing.facebook %>
-
-            <%=link_to "https://www.facebook.com/#{@vitrine.marketing.facebook}" do %>
-              <%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
-            <% end %>
-          <% end %>
+     
 
 
-
-        </li>
-
-
-
-        <li>
-          <%if @vitrine.marketing.twitter %>
-
-            <%=link_to "https://www.twitter.com/#{@vitrine.marketing.twitter}" do %>
-              <%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
-            <% end %>
-          <% end %>
-
-
-
-        </li>
-
-
-
-
-        <ul>
 
 
           <li>
@@ -95,6 +68,66 @@
 
 
 
+       <li>
+            <ul class="social_media">
+              <li>
+
+          <%if @vitrine.marketing.facebook%>
+
+            <%=link_to "https://www.facebook.com/#{@vitrine.marketing.facebook}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_facebook") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+
+
+        <li>
+          <%if @vitrine.marketing.twitter %>
+
+            <%=link_to "https://www.twitter.com/#{@vitrine.marketing.twitter}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_twitter") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+  <li>
+          <%if @vitrine.marketing.youtube %>
+
+            <%=link_to "https://www.youtube.com/#{@vitrine.marketing.youtube}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_youtube") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+
+
+
+  <li>
+          <%if @vitrine.marketing.instagram %>
+
+            <%=link_to "https://www.instagram.com/#{@vitrine.marketing.instagram}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_instagram") %>
+            <% end %>
+          <% end %>
+  </li>
+
+            </ul>
+        </li>
+
+
+
+
+
           <li>
             <% if @vitrine.user.online? == true %>
               <span class="status_online">
@@ -107,7 +140,7 @@
             <% end %>
           </li>
 
-
+          <li><%= @vitrine.get_likes.size %> Curtidas</li>
 
 
           <% if current_user  %>
@@ -135,6 +168,11 @@
 
           <% end %>
 
+           <li>
+   Código: <b><%=@vitrine.code %></b>
+
+
+        </li>
           <li>Criada em: <%= timeago_tag(@vitrine.created_at, :nojs => true, :date_only => true)  %></li>
 
 
@@ -145,6 +183,10 @@
         </li>
 
         </ul>
+
+
+
+
     </div>
     </td>
     </tr>

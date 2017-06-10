@@ -5681,6 +5681,11 @@
 
 
 
+
+
+
+
+
 gm = Gender.create(:gender => 'Masculino')
 gm.categories.create(:name => "Roupas")
 gm.categories.create(:name => "Calçados")
@@ -6054,6 +6059,120 @@ imf.subcategories.create(:name => "Casacos e Jaquetas")
 imf.subcategories.create(:name => "Bolsas e Mochilas" )
 imf.subcategories.create(:name => "Leggings" )
 end
+
+
+
+eletronic_list = [
+"Cellphone",
+"Tablet",
+"Telephone",
+"Notebook",
+"Desktop",
+"Gps",
+"Videogame",
+"TV",
+"Mp3",
+"Cameras",
+"DVD",
+"Blueray",
+"Apeakers",
+"Adpter",
+"Psource",
+"Battery",
+"Antenna",
+"Amplifier",
+"Projector",
+"Headphone",
+"Microphone",
+
+
+]
+
+
+eletronic_list.each do |el|
+  Eletronic.create( item: item )
+end
+
+
+
+
+ebrand_list = [
+"SONY",
+"JBL",
+"Apple",
+"SAMSUNG",
+"DELL",
+"HTC",
+"Logitech",
+"Pyle",
+"Pioneer",
+"BOSS",
+"Blackweb",
+"Alienware",
+"VIZIO",
+"FileMate",
+"Panasonic",
+"Philips",
+"Genius",
+"Befree Sound",
+"Beats by Dr. Dre",
+"Altec Lancing",
+"Axess",
+"iLive",
+"ION Audio",
+
+"Sonos",
+"GEMs",
+]
+
+
+ebrand_list.each do |el|
+  Eletronic.create( name: name )
+end
+
+
+
+
+
+supplement_list = [
+  "Multivitamin",
+  "Antioxidant",
+  "BCAA",
+  "Propolis",
+  "Calcium",
+  "Coconut Oil",
+  "Chia Seed",
+  "Coenzyma q10",
+   "Collagen",
+
+    "Creatine",
+      "Curcumin",
+ "DHA",
+
+ "Enzymes",
+ "EPA",
+
+ "Fiber",
+ "Fish Oil",
+ "Flex Seed",
+ "Superfoods",
+
+
+ "Spirulina",
+ "Probiotics",
+ "Resveratrol",
+
+
+
+]
+
+supplement_list.each do |kind|
+  Supplement.create( kind: kind )
+end
+
+
+
+
 
 
 

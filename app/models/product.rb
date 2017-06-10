@@ -10,6 +10,10 @@ class Product < ActiveRecord::Base
   belongs_to :subcategory
   belongs_to :transaction
 
+ belongs_to :eletronic
+
+
+
   has_many :images,inverse_of: :product #, dependent: :destroy 
   has_many :orders, dependent: :destroy
   has_many :feedbacks, through: :orders#, inverse_of: :product
@@ -269,7 +273,8 @@ class Product < ActiveRecord::Base
       conditions[:material_id] = params[:material_id] if params[:material_id].present?
       conditions[:condition_id] = params[:condition_id] if params[:condition_id].present?
       conditions[:brand_id] = params[:brand_id] if params[:brand_id].present?
-    
+     conditions[:eletronic_id] = params[:eletronic_id] if params[:eletronic_id].present?
+
 
       conditions[:quantity] = { gt: 0 } # quantity should be greather than 0
 
@@ -279,7 +284,7 @@ class Product < ActiveRecord::Base
 
       products = Product.search query, fields: [{ name: :word_start }], where: conditions,
         include: [:images, :feedbacks,:vitrine],
-        aggs: [:gender_id, :vitrine_id, :category_id, :subcategory_id, :size_id, :color_id, :material_id, :condition_id, :brand_id],
+        aggs: [:gender_id, :vitrine_id, :category_id, :subcategory_id, :size_id, :color_id, :material_id, :condition_id, :brand_id, :eletronic_id],
         page: params[:page], suggest: true, highlight: true, per_page: 22, order: [order_options, {created_at: {order: 'desc', ignore_unmapped: true}}]
 
       products
@@ -298,6 +303,8 @@ class Product < ActiveRecord::Base
         color_id: colors.map(&:id),
         material_id: material_id,
         brand_id: brand_id,
+        eletronic_id: brand_id,
+
         condition_id: condition_id,
         created_at: created_at,
         average_customer_rating: average_customer_rating

@@ -33,13 +33,18 @@
 
   </div>
 
-<div class="ban2">
+<div class="safe_banner">
+    <%= link_to  "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security"  do %>
 
-  <%=link_to  page_path("protection") do %>
-    <%= image_tag('secu.png')  %>
-  <% end %>
+          <%= content_tag(:span, nil, :class => 'sprite-icons-protection_banner') %>
 
-  </div>
+        <% end %> 
+   <%= link_to "Saiba mais", "https://www.paypal.com/br/webapps/mpp/paypal-safety-and-security" %>
+
+</div>
+  
+
+
 
    </div>
 
@@ -47,11 +52,10 @@
     </div>
  
 
+   </div>
 
+   </div>
 
-  </div>
-
-</div>
 
 
 <div class="box3">
@@ -92,9 +96,49 @@
                       <%=product.total_feedbacks %>
                     </div>
                 
-                  <span class="by">Por
+              
+
+  <% if  product.vitrine.policy.installment.present? %>
+          
+              <span class="greennow">
+                
+                 <%= content_tag(:span, nil, :class => 'sprite-icons-small_card') %>
+
+                
+                <%= product.vitrine.policy.installment %>x de
+           <%=  number_to_currency(product.price.to_f / product.vitrine.policy.pinstallment,  :unit => "R$") %>
+          
+           
+           
+           
+         
+
+          
+          sem juros</span>
+        
+                   
+          
+        
+
+        <% end %>
+
+
+
+
+<% if product.freeship == true %>
+        <span class="greennow">
+    <%= content_tag(:span, nil, :class => 'sprite-icons-small_truck') %>
+    
+    Frete Grátis</span>
+
+<% end %>
+
+    <span class="by">Por
                     <%=product.vitrine.name %></span>
                 <% end %>
+
+
+
               </td>
             <% end %>
           </tr>

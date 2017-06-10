@@ -166,25 +166,60 @@
 
 
 
-          <li>
-            <span>
+         <li>
+            <ul class="social_media">
+              <li>
+
           <%if product.vitrine.marketing.facebook%>
 
             <%=link_to "https://www.facebook.com/#{product.vitrine.marketing.facebook}" do %>
-              <%=content_tag(:span, nil, :class=>"social-share-button-facebook") %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_facebook") %>
             <% end %>
           <% end %>
 
 
- <%if product.vitrine.marketing.twitter %>
+
+        </li>
+
+
+
+        <li>
+          <%if product.vitrine.marketing.twitter %>
 
             <%=link_to "https://www.twitter.com/#{product.vitrine.marketing.twitter}" do %>
-              <%=content_tag(:span, nil, :class=>"social-share-button-twitter") %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_twitter") %>
             <% end %>
           <% end %>
-         
 
-            </span>
+
+
+        </li>
+
+  <li>
+          <%if product.vitrine.marketing.youtube %>
+
+            <%=link_to "https://www.youtube.com/#{product.vitrine.marketing.youtube}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_youtube") %>
+            <% end %>
+          <% end %>
+
+
+
+        </li>
+
+
+
+
+  <li>
+          <%if product.vitrine.marketing.instagram %>
+
+            <%=link_to "https://www.instagram.com/#{product.vitrine.marketing.instagram}" do %>
+              <%=content_tag(:span, nil, :class=>"sprite-icons-small_instagram") %>
+            <% end %>
+          <% end %>
+  </li>
+
+            </ul>
         </li>
 
 
