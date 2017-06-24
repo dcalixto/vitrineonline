@@ -1,0 +1,22 @@
+<div class="content">
+
+  <%= render 'shared/error_messages', :target => @contact %>
+    <%= render 'shared/flash_messages' %>
+
+     Deixe uma mensagem que responderemos em breve.
+      <br>
+      <%= semantic_form_for(@contact )  do |c| %>
+      <%= c.inputs do %>
+      <%= c.input :name, :placeholder => "Nome", :label => false,:required=>true %>
+
+      <%= c.input :email, :as => :email, :placeholder => "Email", :label => false,:required=>true %>
+      <%= c.input :subject, :placeholder => "Assunto", :label => false,:required=>true %>
+      <%= c.input :message, :as => :text, :placeholder => "Mensagem", :label => false,:required=>true %>
+
+      <%= c.actions do %>
+      <%= c.action :submit, :label => "Enviar", :button_html => { :class => "btn"} %>
+      <% end %>
+      <% end %>
+      <% end %>
+
+    </div>

@@ -1,19 +1,19 @@
 Vitrineonline::Application.routes.draw do
 
 
-mount Logster::Web => "/logs" 
+  mount Logster::Web => "/logs" 
 
 
-get "/opensearch",  to: "application#opensearch"
+  get "/opensearch",  to: "application#opensearch"
 
- mount Soulmate::Server, :at => "/autocomplete"
+  mount Soulmate::Server, :at => "/autocomplete"
 
-   # ADMIN
+  # ADMIN
 
   scope 'dcalixto84abcd152567' do
-          #mount Resque::Server => "/resque"
- 
- 
+    #mount Resque::Server => "/resque"
+
+
     namespace :admin do
 
 
@@ -42,19 +42,19 @@ get "/opensearch",  to: "application#opensearch"
 
 
   # USER
-get 'welcome', to: 'users#welcome', as: 'welcome'
+  get 'welcome', to: 'users#welcome', as: 'welcome'
 
   resources :users, only: [:new, :create, :edit, :update, :show, :destroy] do
     resources :passwords,only: [:new, :create]
-      
-       member do
+
+    member do
       #  get :products
       get :confirm_email
       get :report
       get :message
       get :message_user
 
-get :feedbacks
+      get :feedbacks
 
 
     end
@@ -62,21 +62,34 @@ get :feedbacks
 
     collection do
       get :feedbacks
- post '/:id/feedbacks', to: 'users#feedbacks', as: :search_feedbacks
-  post '/:id', to: 'users#show', as: :feedbacks_search
- 
-  
- 
+      post '/:id/feedbacks', to: 'users#feedbacks', as: :search_feedbacks
+      post '/:id', to: 'users#show', as: :feedbacks_search
 
 
-
-
-    
-    
-           
-    
     end
   end
+
+
+
+
+
+  #BLOCKS
+      resources :blocks, only: [:show]
+      resources :eletronics, only: [:index, :show]
+      resources :supplements, only: [:index, :show]
+      resources :sports, only: [:index, :show]
+      resources :autos, only: [:index, :show]
+      resources :foods, only: [:index, :show]
+      resources :books, only: [:index, :show]
+      resources :houses, only: [:index, :show]
+      resources :arts, only: [:index, :show]
+      resources :tools, only: [:index, :show]
+      resources :virtuals, only: [:index, :show]
+
+
+
+
+
 
   # FEEDBACKS
   resources :feedbacks, only: [:create] do
@@ -99,7 +112,7 @@ get :feedbacks
       get :participants
       get :fail
     end
-   
+
   end
 
   # VITRINE
@@ -107,7 +120,7 @@ get :feedbacks
     resources :policies, only: [:edit, :update, :new, :create]
 
     resources :announcements, only: [:new, :create]
-   # resources :coupons, only: [:new, :create, :index]
+    # resources :coupons, only: [:new, :create, :index]
     resources :marketings, only: [:edit, :update]
 
     resources :invoices, only: [:index, :show] do
@@ -123,21 +136,21 @@ get :feedbacks
     end
 
     member do
-      
+
       get :feedbacks
 
       get :policy
       get :message
       get :message_box
       put "like", to: "vitrines#upvote"
-    put "dislike", to: "vitrines#downvote"
+      put "dislike", to: "vitrines#downvote"
     end
 
     collection do
-    #  match '/:id?view=feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :vitrine_feedbacks
+      #  match '/:id?view=feedbacks' => 'vitrines#feedbacks', via: [:get, :post], as: :vitrine_feedbacks
 
- post '/:id/feedbacks', to: 'vitrines#feedbacks', as: :search_feedbacks
-post '/:id/products', to: 'vitrines#products', as: :search_products
+      post '/:id/feedbacks', to: 'vitrines#feedbacks', as: :search_feedbacks
+      post '/:id/products', to: 'vitrines#products', as: :search_products
 
 
 
@@ -154,27 +167,27 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
       get :report
       get :tag
       get :branded
-     # put :branded_true
+      # put :branded_true
       #  match :feedbacks
     end
 
 
- 
+
   end
 
 
- resources :brands, only: [:new,:create] 
+  resources :brands, only: [:new,:create] 
 
 
 
-#get '/vitrines/branded', to: 'vitrines#branded', as: :branded
-#put '/vitrines/branded_true', to: 'vitrines#branded_true', as: :branded_true
+  #get '/vitrines/branded', to: 'vitrines#branded', as: :branded
+  #put '/vitrines/branded_true', to: 'vitrines#branded_true', as: :branded_true
 
 
 
 
 
-#TODO CHANGE FEEDBACK VITRINE
+  #TODO CHANGE FEEDBACK VITRINE
   post '/vitrines/:id' => 'vitrines#show'
 
 
@@ -188,44 +201,44 @@ post '/:id/products', to: 'vitrines#products', as: :search_products
   # ORDER & CART & TRANSACTION
   post '/carts/add/:id', to: 'carts#add', as: :add_to_carts
 
- # put '/carts/user_address/', to: 'carts#user_address', as: :user_address
+  # put '/carts/user_address/', to: 'carts#user_address', as: :user_address
 
-post  '/orders/:id/checkout', to: 'orders#checkout', as: :calculate_ship
+  post  '/orders/:id/checkout', to: 'orders#checkout', as: :calculate_ship
 
- #post "/orders/:id/checkout" , as: "calculate_ship"
+  #post "/orders/:id/checkout" , as: "calculate_ship"
 
 
-resources :transactions, only: [:show] 
+  resources :transactions, only: [:show] 
 
   resources :odatas, only: [:index] do
 
- collection do
+    collection do
       match :sold
       match :purchased
- end
+    end
   end
 
 
   resources :carts, only: [:index] 
-   resources :orders, only: [:index, :update, :destroy] do
-  
-     
-     resource :dispute do
-
-     resources :comments
- 
-post 'upload'=>'dispute#upload'
-
-     member do
-       post :finish
-      get :closed
-     end
+  resources :orders, only: [:index, :update, :destroy] do
 
 
+    resource :dispute do
+
+      resources :comments
+
+      post 'upload'=>'dispute#upload'
+
+      member do
+        post :finish
+        get :closed
+      end
 
 
-   end
-  
+
+
+    end
+
     resources :stocks, only: [:index, :destroy] do
       collection do
         match '/' => 'stocks#index', via: [:get, :post], as: :products
@@ -241,16 +254,16 @@ post 'upload'=>'dispute#upload'
       get :purchased
       get :sent
       get :paid
-       get :canceled
+      get :canceled
 
 
-get :track
-put :track_done
-put :track_sent
+      get :track
+      put :track_done
+      put :track_sent
 
-#get :dispute
-#post :dispute_sent
-#put :dispute_done
+      #get :dispute
+      #post :dispute_sent
+      #put :dispute_done
 
     end
 
@@ -258,23 +271,23 @@ put :track_sent
       match :sold
       match :purchased
       match :sent
-  
+
       match :paid
       match '/sold?status=sent ' => 'orders#sold', via: [:get,  :post], as: :vitrine_sent
       match '/sold?status=paid ' => 'orders#sold', via: [:get, :post], as: :vitrine_sold
-     
 
-    
+
+
       match '/purchased?status=paid' => 'orders#purchased', via: [:get, :post], as: :user_paid
       match '/purchased?status=sent' => 'orders#purchased', via: [:get, :post], as: :user_sent
     end
   end
 
-get '/orders/confirmation', to: 'orders#confirmation' #, as: :vitrine_sent
+  get '/orders/confirmation', to: 'orders#confirmation' #, as: :vitrine_sent
 
   get '/orders/:id/sent', to: 'orders#sent' #, as: :vitrine_sent
 
- 
+
 
   # CATEGORIES
   resources :genders, only: [:show]
@@ -287,12 +300,12 @@ get '/orders/confirmation', to: 'orders#confirmation' #, as: :vitrine_sent
   get 'products/tags' => 'products#tags', :as => :tags
 
 
-resources :pdatas, only: [:show]
+  resources :pdatas, only: [:show]
 
 
 
 
-    # PRODUCTS
+  # PRODUCTS
   resources :products do
     member do
       get :sold_info
@@ -311,15 +324,15 @@ resources :pdatas, only: [:show]
 
     collection do
       get :created_at
-     # post '/:id', to: 'products#show', as: :feedbacks_search
+      # post '/:id', to: 'products#show', as: :feedbacks_search
       #post '/:id/feedbacks', to: 'products#feedbacks', as: :search_feedbacks
-     
+
 
       post '/:id', to: 'products#show', as: :probacks_search
       post '/:id/probacks', to: 'products#probacks', as: :search_probacks
 
-      
-      
+
+
       # get 'search'
       get :autocomplete
       get 'auth/:provider/callback', to: 'products#omniauth_callback'
@@ -344,7 +357,19 @@ resources :pdatas, only: [:show]
   namespace :dynamic_selectable do
     get 'categories/:category_id/subcategories', to: 'category_subcategories#index', as: :category_subcategories
     get 'gender/:gender_id/categories', to: 'gender_categories#index', as: :gender_categories
+
     get 'state/:state_id/cities', to: 'state_cities#index', as: :state_cities
+
+    get 'block/:block_id/genders', to: 'block_genders#index', as: :block_genders
+    get 'block/:block_id/eletronics', to: 'block_eletronics#index', as: :block_eletronics
+    get 'block/:block_id/supplements', to: 'block_supplements#index', as: :block_supplements
+    get 'block/:block_id/houses', to: 'block_houses#index', as: :block_houses
+    get 'block/:block_id/autos', to: 'block_autos#index', as: :block_autos
+    get 'block/:block_id/sports', to: 'block_sports#index', as: :block_sports
+    get 'block/:block_id/tools', to: 'block_tools#index', as: :block_tools
+    get 'block/:block_id/arts', to: 'block_arts#index', as: :block_arts
+    get 'block/:block_id/virtuals', to: 'block_virtuals#index', as: :block_virtuals
+
   end
 
   resources :departments, only: [:index]
@@ -357,8 +382,8 @@ resources :pdatas, only: [:show]
   resources :images, only: [:new, :create, :edit,:update]
   resources :logo, only: [:edit, :update]
   resources :avatar, only: [:edit, :update]
-  
- 
+
+
   # MISC
   root to: 'home#index'
 

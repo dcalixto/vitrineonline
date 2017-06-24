@@ -22,17 +22,169 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @genders = Gender.all
+    #  @genders = Gender.all
+
+
+    @blocks = Block.all
+    @genders = Gender.where('block_id = ?', Block.first.id)
     @categories = Category.where('gender_id = ?', Gender.first.id)
     @subcategories = Subcategory.where('category_id = ?', Category.first.id)
+    @eletronics = Eletronic.where('block_id = ?', Block.first.id)
+    @supplements = Supplement.where('block_id = ?', Block.first.id)
+    @sports = Sport.where('block_id = ?', Block.first.id)
+    @foods = Food.where('block_id = ?', Block.first.id)
+
+    @tools = Tool.where('block_id = ?', Block.first.id)
+    @houses = House.where('block_id = ?', Block.first.id)
+    @arts = Art.where('block_id = ?', Block.first.id)
+    @books = Book.where('block_id = ?', Block.first.id)
+    @virtuals = Virtual.where('block_id = ?', Block.first.id)
+
+
     @brands = Brand.all
-
     @conditions = Condition.all
-
     @materials = Material.all
-
-
     @product = current_vitrine.products.build(params[:product])
+
+
+
+
+ # creating data arrays for selects
+    @blocks = Block.all
+    @blocks_for_dropdown = []
+    @blocks.each do |i|
+      @blocks_for_dropdown << [i.category, i.id]
+    end
+
+
+
+
+ # creating data arrays for selects
+    @genders = Gender.all
+    @genders_for_dropdown = []
+    @genders.each do |i|
+      @genders_for_dropdown << [i.gender, i.id, {class: i.block.id}]
+    end
+
+
+
+
+    # creating data arrays for selects
+    @categories = Category.all
+    @categories_for_dropdown = []
+    @categories.each do |i|
+      @categories_for_dropdown << [i.name, i.id, {class: i.gender.id}]
+    end
+
+    @subcategories = Subcategory.all
+    @subcategories_for_dropdown = []
+    @subcategories.each do |i|
+      # class of dependent option must be equal to id of parent one
+      @subcategories_for_dropdown << [i.name, i.id, {class: i.category.id}]
+    end
+
+
+
+
+
+
+# creating data arrays for selects
+    @eletronics = Eletronic.all
+    @eletronics_for_dropdown = []
+    @eletronics.each do |i|
+    @eletronics_for_dropdown << [i.item, i.id, {class: i.block.id}]
+    end
+
+
+
+
+# creating data arrays for selects
+    @supplements = Supplement.all
+    @supplements_for_dropdown = []
+    @supplements.each do |i|
+    @supplements_for_dropdown << [i.name, i.id, {class: i.block.id}]
+    end
+
+
+# creating data arrays for selects
+    @sports = Sport.all
+    @sports_for_dropdown = []
+    @sports.each do |i|
+    @sports_for_dropdown << [i.category, i.id, {class: i.block.id}]
+    end
+
+
+# creating data arrays for selects
+    @autos = Auto.all
+    @autos_for_dropdown = []
+    @autos.each do |i|
+    @autos_for_dropdown << [i.item, i.id, {class: i.block.id}]
+    end
+
+
+
+
+# creating data arrays for selects
+    @tools = Tool.all
+    @tools_for_dropdown = []
+    @tools.each do |i|
+    @tools_for_dropdown << [i.name, i.id, {class: i.block.id}]
+    end
+
+
+
+
+
+
+
+# creating data arrays for selects
+    @houses = House.all
+    @houses_for_dropdown = []
+    @houses.each do |i|
+    @houses_for_dropdown << [i.name, i.id, {class: i.block.id}]
+    end
+
+
+# creating data arrays for selects
+    @foods = Food.all
+    @foods_for_dropdown = []
+    @foods.each do |i|
+    @foods_for_dropdown << [i.name, i.id, {class: i.block.id}]
+    end
+
+
+
+
+
+# creating data arrays for selects
+    @arts = Art.all
+    @arts_for_dropdown = []
+    @arts.each do |i|
+    @arts_for_dropdown << [i.name, i.id, {class: i.block.id}]
+    end
+
+
+# creating data arrays for selects
+    @books = Book.all
+    @books_for_dropdown = []
+    @books.each do |i|
+    @books_for_dropdown << [i.name, i.id, {class: i.block.id}]
+    end
+
+
+
+
+
+
+    # creating data arrays for selects
+    @virtuals = Virtual.all
+    @virtuals_for_dropdown = []
+    @virtuals.each do |i|
+    @virtuals_for_dropdown << [i.name, i.id, {class: i.block.id}]
+    end
+
+
+
 
   end
 

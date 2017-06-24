@@ -1,0 +1,10 @@
+class CreateAutos < ActiveRecord::Migration
+  def change
+    create_table :autos do |t|
+      t.string :item
+      t.integer :block_id
+
+      t.timestamps
+    end
+  end
+end

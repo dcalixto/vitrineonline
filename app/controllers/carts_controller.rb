@@ -14,7 +14,7 @@ class CartsController < ApplicationController
         color = Color.find_by_id(params[:color_id])
         size = Size.find_by_id(params[:size_id])
         material = Material.find_by_id(params[:material_id])
-        brand = Brand.find_by_id(params[:brand_id])
+       
 
         quantity = params[:quantity].to_i > 0 ? params[:quantity].to_i : 1
 
@@ -35,7 +35,7 @@ class CartsController < ApplicationController
           order.size = size         
           order.condition = product.condition
           order.material = product.material
-          order.brand = product.brand
+        
 
           current_user.cart.orders << order
 
@@ -60,7 +60,7 @@ class CartsController < ApplicationController
         od.seller_id = order.seller_id
         od.color_id = order.color_id
         od.size_id = order.size_id
-        od.brand_id = order.brand_id
+       
         od.condition_id = order.condition_id
         od.pdata_id  = order.pdata_id
         od.user_address = order.buyer.address

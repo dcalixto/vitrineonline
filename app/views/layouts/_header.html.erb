@@ -9,6 +9,11 @@
 <% end %>
 
 <%=render :partial=> "layouts/search" %>
+
+<% if current_user %>
+<%=render :partial=> "layouts/user_nav" %>
+<%end %>
+
 <%=render :partial=>"layouts/links_topbar" %>
 <%=render "layouts/shop_cart" %>
 
@@ -20,9 +25,6 @@
 <%=render "layouts/drop" %>
 
 <div class="desktop_nav">
-<% if current_user %>
-<%=render :partial=> "layouts/user_nav" %>
-<%end %>
 </div>
 </div>
 </div>

@@ -11,24 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170609004600) do
-
-  create_table "activities", :force => true do |t|
-    t.integer  "trackable_id"
-    t.string   "trackable_type"
-    t.integer  "owner_id"
-    t.string   "owner_type"
-    t.string   "key"
-    t.text     "parameters"
-    t.integer  "recipient_id"
-    t.string   "recipient_type"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  add_index "activities", ["owner_id", "owner_type"], :name => "index_activities_on_owner_id_and_owner_type"
-  add_index "activities", ["recipient_id", "recipient_type"], :name => "index_activities_on_recipient_id_and_recipient_type"
-  add_index "activities", ["trackable_id", "trackable_type"], :name => "index_activities_on_trackable_id_and_trackable_type"
+ActiveRecord::Schema.define(:version => 20170616041817) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -39,13 +22,39 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
 
   add_index "announcements", ["vitrine_id"], :name => "index_announcements_on_vitrine_id"
 
+  create_table "arts", :force => true do |t|
+    t.string   "name"
+    t.integer  "block_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "autos", :force => true do |t|
+    t.string   "item"
+    t.integer  "block_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "blocks", :force => true do |t|
+    t.string   "category"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "books", :force => true do |t|
+    t.string   "name"
+    t.integer  "block_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "brands", :force => true do |t|
     t.string   "name"
     t.string   "slug"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
     t.integer  "vitrine_id"
-    t.boolean  "branded",    :default => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "brands", ["slug"], :name => "index_brands_on_slug"
@@ -64,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "gender_id",  :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "block_id"
   end
 
   add_index "categories", ["gender_id"], :name => "index_categories_on_gender_id"
@@ -88,7 +98,6 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "product_id",      :null => false
     t.integer  "product_data_id"
     t.integer  "color_id",        :null => false
-    t.integer  "order_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -99,13 +108,11 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
     t.text     "comment"
-    t.boolean  "read",                           :default => false
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
-    t.string   "role",                           :default => "comments"
-    t.datetime "created_at",                                             :null => false
-    t.datetime "updated_at",                                             :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -143,8 +150,8 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "order_id"
     t.integer  "seller_id"
     t.integer  "buyer_id"
-    t.integer  "seller_name"
-    t.integer  "buyer_name"
+    t.string   "seller_name"
+    t.string   "buyer_name"
     t.string   "status"
     t.string   "transaction_id"
     t.decimal  "amount",         :precision => 9, :scale => 2
@@ -154,22 +161,31 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.text     "seller_comment"
     t.string   "buyer_file"
     t.string   "seller_file"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
-    t.boolean  "item_received"
+    t.boolean  "item_received",                                :default => false
     t.string   "product_name"
     t.decimal  "product_price"
     t.string   "product_image"
     t.string   "shipping_cost"
     t.string   "buyer_email"
     t.string   "seller_email"
-    t.string   "bf"
-    t.string   "sf"
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
+  end
+
+  create_table "ebrands", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "eletronics", :force => true do |t|
+    t.string   "item"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "block_id"
   end
 
   create_table "feedbacks", :force => true do |t|
-    t.integer  "feedbackable_id"
-    t.string   "feedbackable_type"
     t.text     "seller_comment"
     t.text     "buyer_comment"
     t.integer  "user_id"
@@ -182,28 +198,22 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "cached_buyer_rating_total"
     t.integer  "cached_seller_rating_total"
     t.float    "cached_weighted_average"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
     t.string   "buyer_name"
     t.string   "seller_name"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
-  add_index "feedbacks", ["feedbackable_id", "feedbackable_type"], :name => "index_feedbacks_on_feedbackable_id_and_feedbackable_type"
   add_index "feedbacks", ["product_id"], :name => "index_feedbacks_on_product_id"
   add_index "feedbacks", ["user_id"], :name => "index_feedbacks_on_user_id"
   add_index "feedbacks", ["vitrine_id"], :name => "index_feedbacks_on_vitrine_id"
 
-  create_table "feedbackships", :force => true do |t|
-    t.integer  "product_id"
-    t.integer  "feedback_id"
-    t.integer  "order_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+  create_table "foods", :force => true do |t|
+    t.string   "name"
+    t.integer  "block_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "feedbackships", ["feedback_id"], :name => "index_feedbackships_on_feedback_id"
-  add_index "feedbackships", ["order_id"], :name => "index_feedbackships_on_order_id"
-  add_index "feedbackships", ["product_id"], :name => "index_feedbackships_on_product_id"
 
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false
@@ -221,33 +231,37 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.string   "gender"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "block_id"
   end
 
   add_index "genders", ["slug"], :name => "index_genders_on_slug"
 
-  create_table "images", :force => true do |t|
-    t.string   "ifoto"
-    t.integer  "product_id",      :null => false
-    t.integer  "product_data_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "pdata_id"
-    t.integer  "dispute_id"
-    t.string   "file"
+  create_table "houses", :force => true do |t|
+    t.string   "name"
+    t.integer  "block_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "images", ["product_data_id"], :name => "index_images_on_product_data_id"
+  create_table "images", :force => true do |t|
+    t.string   "ifoto"
+    t.integer  "product_id", :null => false
+    t.integer  "pdata_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   add_index "images", ["product_id"], :name => "index_images_on_product_id"
 
   create_table "impressions", :force => true do |t|
     t.string   "ip_address"
     t.integer  "product_id"
     t.integer  "vitrine_id"
+    t.integer  "user_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "impressionable_type"
     t.integer  "impressionable_id"
-    t.integer  "user_id"
   end
 
   add_index "impressions", ["impressionable_id", "impressionable_type"], :name => "index_impressions_on_impressionable_id_and_impressionable_type"
@@ -260,9 +274,10 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.string   "facebook"
     t.string   "twitter"
     t.string   "instagram"
+    t.string   "pinterest"
+    t.string   "youtube"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "youtube"
   end
 
   add_index "marketings", ["vitrine_id"], :name => "index_marketings_on_vitrine_id"
@@ -283,15 +298,6 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
 
   add_index "messages", ["conversation_id"], :name => "index_messages_on_conversation_id"
   add_index "messages", ["conversation_participant_id"], :name => "index_messages_on_conversation_participant_id"
-
-  create_table "obrands", :force => true do |t|
-    t.string   "name"
-    t.string   "slug"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "obrands", ["slug"], :name => "index_obrands_on_slug"
 
   create_table "odata", :force => true do |t|
     t.integer  "cart_id"
@@ -314,8 +320,6 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "size_id"
     t.string   "seller_name"
     t.string   "buyer_name"
-    t.datetime "created_at",                                                        :null => false
-    t.datetime "updated_at",                                                        :null => false
     t.integer  "order_id"
     t.string   "transaction_id"
     t.string   "user_address"
@@ -323,13 +327,15 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.string   "user_city"
     t.string   "user_state"
     t.string   "user_postal_code"
-    t.datetime "tcreated_at"
-    t.datetime "tupdated_at"
+    t.string   "vitrine_postal_code"
     t.string   "vitrine_address"
     t.string   "vitrine_neighborhood"
     t.string   "vitrine_city"
     t.string   "vitrine_state"
-    t.string   "vitrine_postal_code"
+    t.datetime "tcreated_at"
+    t.datetime "tupdated_at"
+    t.datetime "created_at",                                                        :null => false
+    t.datetime "updated_at",                                                        :null => false
   end
 
   add_index "odata", ["brand_id"], :name => "index_odata_on_brand_id"
@@ -357,17 +363,18 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "feedback_id"
     t.string   "track_number"
     t.integer  "brand_id"
+    t.integer  "obrand_id"
     t.integer  "material_id"
     t.integer  "condition_id"
     t.integer  "color_id"
     t.integer  "size_id"
+    t.string   "buyer_name"
+    t.string   "code"
+    t.integer  "pdata_id"
+    t.string   "seller_name"
+    t.boolean  "dispute_closed",                                   :default => false
     t.datetime "created_at",                                                          :null => false
     t.datetime "updated_at",                                                          :null => false
-    t.string   "code"
-    t.string   "seller_name"
-    t.string   "buyer_name"
-    t.integer  "pdata_id"
-    t.boolean  "dispute_status",                                   :default => false
   end
 
   add_index "orders", ["brand_id"], :name => "index_orders_on_brand_id"
@@ -377,6 +384,7 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
   add_index "orders", ["condition_id"], :name => "index_orders_on_condition_id"
   add_index "orders", ["feedback_id"], :name => "index_orders_on_feedback_id"
   add_index "orders", ["material_id"], :name => "index_orders_on_material_id"
+  add_index "orders", ["obrand_id"], :name => "index_orders_on_obrand_id"
   add_index "orders", ["product_id"], :name => "index_orders_on_product_id"
   add_index "orders", ["seller_id"], :name => "index_orders_on_seller_id"
   add_index "orders", ["size_id"], :name => "index_orders_on_size_id"
@@ -384,12 +392,12 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
   create_table "pdata", :force => true do |t|
     t.string   "slug"
     t.integer  "vitrine_id",                                                               :null => false
-    t.string   "f1"
     t.text     "detail"
     t.integer  "category_id"
     t.integer  "gender_id"
     t.integer  "subcategory_id"
     t.integer  "color_id"
+    t.integer  "size_id"
     t.integer  "material_id"
     t.integer  "condition_id"
     t.integer  "brand_id"
@@ -403,12 +411,19 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "quantity",                                              :default => 0
     t.boolean  "is_shared_on_facebook",                                 :default => false
     t.boolean  "is_shared_on_twitter",                                  :default => false
-    t.integer  "total_feedbacks",                                       :default => 0
     t.float    "average_rating",                                        :default => 0.0
+    t.integer  "total_feedbacks",                                       :default => 0
     t.integer  "user_id"
-    t.string   "vitrine_name"
     t.string   "user_name"
+    t.string   "vitrine_name"
     t.integer  "impressions_count"
+    t.string   "code"
+    t.float    "weight"
+    t.float    "length"
+    t.float    "width"
+    t.float    "height"
+    t.float    "diameter"
+    t.boolean  "freeship",                                              :default => false
     t.integer  "cached_votes_total",                                    :default => 0
     t.integer  "cached_votes_score",                                    :default => 0
     t.integer  "cached_votes_up",                                       :default => 0
@@ -416,14 +431,15 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "cached_weighted_score",                                 :default => 0
     t.integer  "cached_weighted_total",                                 :default => 0
     t.float    "cached_weighted_average",                               :default => 0.0
-    t.float    "weight"
-    t.float    "lenght"
-    t.float    "width"
-    t.float    "height"
-    t.float    "diamenter"
-    t.string   "code"
-    t.float    "length"
-    t.string   "image"
+    t.integer  "block_id"
+    t.integer  "eletronic_id"
+    t.integer  "supplement_id"
+    t.integer  "sport_id"
+    t.integer  "auto_id"
+    t.integer  "house_id"
+    t.integer  "food_id"
+    t.integer  "art_id"
+    t.integer  "virtual_id"
   end
 
   add_index "pdata", ["brand_id"], :name => "index_pdata_on_brand_id"
@@ -439,6 +455,7 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
   add_index "pdata", ["condition_id"], :name => "index_pdata_on_condition_id"
   add_index "pdata", ["gender_id"], :name => "index_pdata_on_gender_id"
   add_index "pdata", ["material_id"], :name => "index_pdata_on_material_id"
+  add_index "pdata", ["size_id"], :name => "index_pdata_on_size_id"
   add_index "pdata", ["slug"], :name => "index_pdata_on_slug"
   add_index "pdata", ["subcategory_id"], :name => "index_pdata_on_subcategory_id"
   add_index "pdata", ["vitrine_id"], :name => "index_pdata_on_vitrine_id"
@@ -452,13 +469,12 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.text     "guarantee"
     t.string   "parcelamento"
     t.string   "return"
+    t.string   "code"
+    t.integer  "installment"
+    t.integer  "pinstallment"
+    t.integer  "off"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.string   "code"
-    t.string   "installment"
-    t.string   "off"
-    t.float    "poff"
-    t.integer  "pinstallment"
   end
 
   add_index "policies", ["policieable_id", "policieable_type"], :name => "index_policies_on_policieable_id_and_policieable_type"
@@ -471,63 +487,17 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "product_id"
     t.integer  "buyer_rating"
     t.datetime "buyer_feedback_date"
+    t.integer  "pdata_id"
+    t.string   "buyer_name"
+    t.float    "average_rating",      :default => 0.0
+    t.integer  "total_feedbacks",     :default => 0
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
-    t.integer  "pdata_id"
-    t.integer  "total_feedbacks",     :default => 0
-    t.float    "average_rating",      :default => 0.0
-    t.string   "buyer_name"
   end
 
   add_index "probacks", ["feedback_id"], :name => "index_probacks_on_feedback_id"
   add_index "probacks", ["product_id"], :name => "index_probacks_on_product_id"
   add_index "probacks", ["user_id"], :name => "index_probacks_on_user_id"
-
-  create_table "prodbacks", :force => true do |t|
-    t.text     "buyer_comment"
-    t.integer  "product_id"
-    t.integer  "order_id"
-    t.integer  "buyer_rating"
-    t.datetime "buyer_feedback_date"
-    t.integer  "cached_buyer_rating_total"
-    t.float    "cached_weighted_average"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-  end
-
-  add_index "prodbacks", ["product_id"], :name => "index_prodbacks_on_product_id"
-
-  create_table "product_data", :force => true do |t|
-    t.string   "slug"
-    t.integer  "vitrine_id",                                                  :null => false
-    t.text     "detail"
-    t.integer  "category_id"
-    t.integer  "gender_id"
-    t.integer  "subcategory_id"
-    t.integer  "color_id"
-    t.integer  "size_id"
-    t.integer  "material_id"
-    t.integer  "condition_id"
-    t.integer  "brand_id"
-    t.datetime "created_at",                                                  :null => false
-    t.datetime "updated_at",                                                  :null => false
-    t.string   "status"
-    t.string   "name"
-    t.decimal  "price",          :precision => 9, :scale => 2
-    t.integer  "quantity",                                     :default => 0
-    t.string   "f1"
-    t.string   "vitrine_name"
-  end
-
-  add_index "product_data", ["category_id"], :name => "index_product_data_on_category_id"
-  add_index "product_data", ["color_id"], :name => "index_product_data_on_color_id"
-  add_index "product_data", ["condition_id"], :name => "index_product_data_on_condition_id"
-  add_index "product_data", ["gender_id"], :name => "index_product_data_on_gender_id"
-  add_index "product_data", ["material_id"], :name => "index_product_data_on_material_id"
-  add_index "product_data", ["size_id"], :name => "index_product_data_on_size_id"
-  add_index "product_data", ["slug"], :name => "index_product_data_on_slug"
-  add_index "product_data", ["subcategory_id"], :name => "index_product_data_on_subcategory_id"
-  add_index "product_data", ["vitrine_id"], :name => "index_product_data_on_vitrine_id"
 
   create_table "products", :force => true do |t|
     t.integer  "vitrine_id",                                                               :null => false
@@ -535,22 +505,30 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.string   "name",                                                                     :null => false
     t.decimal  "price",                   :precision => 9, :scale => 2
     t.text     "detail"
-    t.integer  "gender_id",                                                                :null => false
-    t.integer  "category_id",                                                              :null => false
-    t.integer  "subcategory_id",                                                           :null => false
+    t.integer  "gender_id"
+    t.integer  "category_id"
+    t.integer  "subcategory_id"
     t.integer  "impressions_count"
-    t.integer  "color_id"
     t.integer  "brand_id"
     t.integer  "material_id"
     t.integer  "condition_id"
+    t.boolean  "is_shared_on_facebook",                                 :default => false
+    t.boolean  "is_shared_on_twitter",                                  :default => false
     t.string   "meta_keywords"
     t.integer  "quantity",                                              :default => 0
     t.string   "status"
     t.string   "current_step"
+    t.float    "average_rating",                                        :default => 0.0
+    t.integer  "total_feedbacks",                                       :default => 0
+    t.float    "weight"
+    t.float    "length"
+    t.float    "width"
+    t.float    "height"
+    t.float    "diameter"
+    t.boolean  "freeship",                                              :default => false
+    t.string   "code"
     t.datetime "created_at",                                                               :null => false
     t.datetime "updated_at",                                                               :null => false
-    t.boolean  "is_shared_on_facebook",                                 :default => false
-    t.boolean  "is_shared_on_twitter",                                  :default => false
     t.integer  "cached_votes_total",                                    :default => 0
     t.integer  "cached_votes_score",                                    :default => 0
     t.integer  "cached_votes_up",                                       :default => 0
@@ -558,16 +536,17 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "cached_weighted_score",                                 :default => 0
     t.integer  "cached_weighted_total",                                 :default => 0
     t.float    "cached_weighted_average",                               :default => 0.0
-    t.integer  "total_feedbacks",                                       :default => 0
-    t.integer  "average_rating",                                        :default => 0
-    t.float    "weight"
-    t.float    "length"
-    t.float    "width"
-    t.float    "height"
-    t.float    "diamenter"
-    t.string   "code"
-    t.boolean  "freeship",                                              :default => false
-    t.float    "diameter"
+    t.integer  "block_id"
+    t.integer  "eletronic_id"
+    t.integer  "supplement_id"
+    t.integer  "sport_id"
+    t.integer  "auto_id"
+    t.integer  "house_id"
+    t.integer  "food_id"
+    t.integer  "art_id"
+    t.integer  "book_id"
+    t.integer  "tool_id"
+    t.integer  "virtual_id"
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
@@ -607,6 +586,12 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
   end
 
   add_index "reports", ["reportable_id", "reportable_type"], :name => "index_reports_on_reportable_id_and_reportable_type"
+
+  create_table "sbrands", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "send_codes", :force => true do |t|
     t.string   "account_sid"
@@ -654,13 +639,19 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "product_id",      :null => false
     t.integer  "product_data_id"
     t.integer  "size_id",         :null => false
-    t.integer  "order_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
 
   add_index "sizeships", ["product_id"], :name => "index_sizeships_on_product_id"
   add_index "sizeships", ["size_id"], :name => "index_sizeships_on_size_id"
+
+  create_table "sports", :force => true do |t|
+    t.string   "category"
+    t.integer  "block_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "states", :force => true do |t|
     t.string   "code"
@@ -675,9 +666,17 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "block_id"
   end
 
   add_index "subcategories", ["category_id"], :name => "index_subcategories_on_category_id"
+
+  create_table "supplements", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "block_id"
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -699,14 +698,21 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
 
   add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
 
+  create_table "tools", :force => true do |t|
+    t.string   "name"
+    t.integer  "block_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "transactions", :force => true do |t|
     t.integer  "order_id",                                     :null => false
     t.decimal  "store_fee",      :precision => 9, :scale => 2
     t.string   "transaction_id",                               :null => false
     t.string   "status"
+    t.integer  "user_id"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
-    t.integer  "user_id"
   end
 
   add_index "transactions", ["order_id"], :name => "index_transactions_on_order_id"
@@ -746,9 +752,9 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.float    "longitude"
     t.string   "facebook"
     t.string   "twitter"
+    t.string   "code"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
-    t.string   "code"
   end
 
   add_index "users", ["auth_token"], :name => "index_users_on_auth_token", :unique => true
@@ -761,6 +767,13 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
   add_index "users", ["phone"], :name => "index_users_on_phone"
   add_index "users", ["slug"], :name => "index_users_on_slug"
   add_index "users", ["state_id"], :name => "index_users_on_state_id"
+
+  create_table "virtuals", :force => true do |t|
+    t.string   "name"
+    t.integer  "block_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "vitrines", :force => true do |t|
     t.string   "logo"
@@ -776,6 +789,11 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "impressions_count"
+    t.boolean  "branded",                 :default => false
+    t.string   "code"
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.string   "email"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.integer  "cached_votes_total",      :default => 0
@@ -785,11 +803,6 @@ ActiveRecord::Schema.define(:version => 20170609004600) do
     t.integer  "cached_weighted_score",   :default => 0
     t.integer  "cached_weighted_total",   :default => 0
     t.float    "cached_weighted_average", :default => 0.0
-    t.boolean  "branded",                 :default => false
-    t.string   "code"
-    t.integer  "city_id"
-    t.integer  "state_id"
-    t.string   "email"
   end
 
   add_index "vitrines", ["cached_votes_down"], :name => "index_vitrines_on_cached_votes_down"

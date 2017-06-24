@@ -9,51 +9,51 @@
  * compiled file, but it's generally better to create a new file per style scope.
 
 
-*= require_self
+ *= require_self
 
-*= require morris
-*= require chat
-*= require social-share-button
-*= require help
-*= require nav_bar
-*= require block
-*= require buton
-*= require website_menu
-*= require feedbacks
-*= require flash
-*= require formstatic
-*= require container
-*= require order
-*= require tables
-*= require footer
-*= require header
-*= require icons
-*= require product
-*= require vitrine
-*= require will_paginate
-*= require shopcart
-*= require search
-*= require details
-*= require jquery.raty
-*= require tipsy
-*= require breakpoints
-*= require dropzone
-*= require markdown
-*= require stretchtext
-*= require carousel
-*= require bettertabs
-*= require responsive_tabs
-*= require tag
-*= require tags
-*= require liquidcarousel
-*= require product_tag
-*= require main
-*= require normalize
-*= require nprogress
+ *= require morris
+ *= require chat
+ *= require social-share-button
+ *= require help
+ *= require nav_bar
+ *= require block
+ *= require buton
+ *= require website_menu
+ *= require feedbacks
+ *= require flash
+ *= require formstatic
+ *= require container
+ *= require order
+ *= require tables
+ *= require footer
+ *= require header
+ *= require icons
+ *= require product
+ *= require vitrine
+ *= require will_paginate
+ *= require shopcart
+ *= require search
+ *= require details
+ *= require jquery.raty
+ *= require tipsy
 
-*= require soulmate
+ *= require dropzone
+ *= require markdown
+ *= require stretchtext
+ *= require carousel
+ *= require bettertabs
+ *= require responsive_tabs
+ *= require tag
+ *= require tags
+ *= require liquidcarousel
+ *= require product_tag
+ *= require main
+ *= require normalize
+ *= require nprogress
 
-*= require slider
+ *= require soulmate
+
+ *= require slider
  */
 
 
@@ -94,20 +94,256 @@
 
 
 a.morelink {
-	text-decoration:none;
-	outline: none;
-        color:red
+  text-decoration:none;
+  outline: none;
+  color:red
 }
 .morecontent span {
-	display: none;
+  display: none;
 }
 
 #menu-box-product  span a {
 
-    color: #0254EB;}
+color: #0254EB;}
 
 
 .banners div {display: inline-block;
-    vertical-align: middle;}
+vertical-align: middle;}
 
-.ban2 {margin-left:10px}    
+.ban2 {margin-left:10px}
+
+
+
+
+
+
+
+
+
+/* global styles */
+
+
+/* Vertu - Simple Mega Menu */
+.vertu{
+
+  background:rgb(235, 235, 235);
+
+
+  width: 700px;
+  position: relative;
+  height:30px;
+  /*	border: 1px solid #001119;
+  -moz-box-shadow:inset 0px 0px 1px #f6f6f6;  
+  -webkit-box-shadow:inset 0px 0px 1px #f6f6f6;  
+  box-shadow:inset 0px 0px 1px #f6f6f6;*/
+
+
+margin: 0px auto;
+min-width: 1000px;
+max-width: 1000px;
+box-sizing: border-box;
+display: block;
+height: 33px;
+
+
+}
+.vertu ul {
+  list-style: none;
+}
+.vertu ul li {
+  float: left;
+  display: block;
+  font-size: 12px;
+  line-height: 30px;
+}
+.vertu ul li a {
+  display: block;
+  color: #111;
+  margin: 0 0 0 0px;
+  padding: 0px 12px 0px 12px;
+}
+.vertu ul li:hover a {
+  background: #F4F4F4;
+  color:#000;
+  text-decoration:none;
+}
+.vertu ul li .down {
+  width: 960px;
+  width: 700px;
+
+  display: none;
+  position: absolute;
+  left:-1px;
+  z-index: 999;
+  border-bottom: 1px solid #001119;
+  border-left: 1px solid #001119;
+  border-right:1px solid #001119;
+  background:#F4F4F4;
+  margin-bottom:5px;
+}
+.vertu ul li:hover .down {
+  display: block;
+  border-top: none;
+}
+
+/* Drop Item */
+.vertu ul li .drop{
+  padding-right:21px; 
+  background: url(../img/white.png) no-repeat right 7px;
+  text-decoration:none; 
+}
+
+.vertu ul li:hover .drop {  
+  background: #F4F4F4 url(../img/black.png) no-repeat right 8px; 
+  color:#000;
+  text-decoration:none; 
+}
+/* end Drop Item */
+
+
+
+/* SubMenu Item */
+.vertu ul li .submenu {
+  width: 960px;
+  width: 700px;
+
+  display: none;
+  position: absolute;
+  left:-1px;
+  z-index: 999;
+  border-bottom: 1px solid #001119;
+  border-left: 1px solid #001119;
+  border-right:1px solid #001119;
+  background:#F4F4F4;
+  margin-bottom:5px;
+}
+.vertu ul li:hover .submenu{
+  display: block;
+  border-top: none;
+}
+.vertu .submenu ul li a {
+  display: inline;
+  color: #000000;
+  margin-left:5px;
+}
+.vertu .submenu ul li a:hover {
+  display: inline;
+  background-color:#3B3B3B;
+  color:#F4F4F4;
+
+}
+/* end SubMenu Item */
+
+/* right-aligned menu item */
+.vertu .right {
+  float: right;
+}
+.vertu .right .submenu {
+
+}
+
+.cleaner{display:block;clear:both;content:'.';visibility:hidden;height:0;font-size:0;line-height:0}
+
+/* Columns */
+
+.vertu p{font-size:12px}
+/* end Columns */
+
+
+
+
+/* Metro columns */
+.vertu ul li .submetro {
+  width: 960px;
+  width: 700px;
+
+  display: none;
+  position: absolute;
+  left:-1px;
+  z-index: 999;
+  border-bottom: 1px solid #001119;
+  border-left: 1px solid #001119;
+  border-right:1px solid #001119;
+  background:#F4F4F4;
+  margin-bottom:5px;
+  height:410px;
+}
+.vertu ul li:hover .submetro {
+  display: block;
+  border-top: none;
+}
+
+/* end Metro columns */
+
+/* 4Levels menu */
+#nav,
+.nav, 
+#nav .nav li { margin:0px; padding:0px; }
+#nav li{
+  float:left; 
+  display:inline;
+  cursor:pointer;
+  list-style:none;
+  position:relative;
+
+}
+#nav li ul.first {
+  left:-1px; 
+  top:100%;
+}
+
+li, li a {
+
+  text-decoration:none;
+  color:#000;
+
+}
+#nav .nav li {
+  width:100%; 
+  text-indent:10px;  
+  line-height:30px; 
+  margin-right:10px;
+  border-left:none; 
+  border-top: 1px solid #001119;
+  border-right:none; 
+  background:#F4F4F4;
+}
+#nav li a {
+  display:block; 
+  width:inherit;
+  height:inherit;
+}
+ul.nav {
+display:none; }
+#nav li:hover > a{ 
+  color:#000; 
+  background:#F4F4F4;
+  background: #F4F4F4 url(../img/black.png) no-repeat right 8px; 
+}
+#nav li:hover { 
+  color:#FFF; 
+  background:#3B3B3B;
+
+}
+li:hover > .nav { 
+  display:block; 
+  position:absolute; 
+  width:200px; 
+  top:0; 
+  left:50%; 
+  z-index:1000; 
+  border-bottom: 1px solid #001119;
+  border-left: 1px solid #001119;
+  border-right:1px solid #001119;
+} 
+/* end 4Levels menu */
+
+
+
+/* end Social */
+/* end Vertu - Simple Mega Menu */
+
+
+
+
+.list_left li {float:left;display:block;border:solid 1px #000;width:250px}

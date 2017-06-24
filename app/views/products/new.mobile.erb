@@ -25,25 +25,178 @@
   <table>
     <tr>
       <td>
-<h2>Selecione as categorias</h2>
-<div class="form-group">
-<%=p.label :gender_id, 'Genero' %>&nbsp;
-<%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control select_item' } %>
+        <h2>Selecione as categorias</h2>
+
+
+<%= select("block", "name", options_for_select(@blocks_for_dropdown), {prompt: 'Selecionar Seção'}, {class: 'chained-select'}) %>
+
 
       
-</div>
- </br>
+  <ul>
+         
 
-<div class="form-group">
-<%=p.label :category_id, 'Categoria' %>&nbsp;
-<%=dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Categoria' }, { class: 'form-control select_item' } %>
-</div>
- </br>
+    <li>
+       <%= link_to "Roupas", "#roupas", :class=>"a" %>
+  <div class="b" hidden="hidden">
 
-<div class="form-group">
-<%=p.label :subcategory_id, 'Subcategoria' %>&nbsp;
-<%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control select_item' } %>
+ <%= select("gender", "name", options_for_select(@genders_for_dropdown), {prompt: 'Selecionar Generos'}, {class: 'chained-select'}) %>
+  
+
+   <%= select("category", "name", options_for_select(@categories_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+
+   <%= select("subcategory", "name", options_for_select(@subcategories_for_dropdown), {prompt: 'Selecionar Subcategoris'}, {class: 'chained-select'}) %>
+
+  
+        
+          </div>
+        
+        </li>
+        
+        
+        
+        
+        <li>
+      <%= link_to "Eletronicos", "#eletronicos", :class=>"a" %>
+
+<div class="b" hidden="hidden">
+
+
+<%= select("eletronic", "name", options_for_select(@eletronics_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
 </div>
+        </li>
+        <li>
+ <%= link_to "Supplementos", "#supplementos", :class=>"a" %>
+
+
+<div class="b" hidden="hidden">
+
+<%= select("supplement", "name", options_for_select(@supplements_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+    </div>
+        
+
+      </li>
+
+
+      <li>
+         <%= link_to "Esportes", "#esportes", :class=>"a" %>
+
+        <div class="b" hidden="hidden">
+
+<%= select("sport", "name", options_for_select(@sports_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+        </div>
+      </li>
+
+
+
+
+<li>
+         <%= link_to "Autopeças", "#auto", :class=>"a" %>
+<div class="b" hidden="hidden">
+
+<%= select("auto", "name", options_for_select(@autos_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+ </div>
+
+      </li>
+
+
+
+<li>
+         <%= link_to "Casa e Jardim", "#casa", :class=>"a" %>
+<div class="b" hidden="hidden">
+
+<%= select("house", "name", options_for_select(@houses_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+ </div>
+
+      </li>
+
+
+
+<li>
+         <%= link_to "Alimentos", "#food", :class=>"a" %>
+<div class="b" hidden="hidden">
+
+<%= select("food", "name", options_for_select(@foods_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+ </div>
+
+      </li>
+
+   <li>
+          <%= link_to "Papelaria e Artesatanos", "#arts", :class=>"a" %>
+
+      <div class="b" hidden="hidden">
+
+<%= select("art", "name", options_for_select(@arts_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+ </div>
+
+      </li>
+
+
+  <li>
+          <%= link_to "Música e Livros", "#books", :class=>"a" %>
+
+      <div class="b" hidden="hidden">
+
+<%= select("book", "name", options_for_select(@books_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+ </div>
+
+      </li>
+      <li>
+  <%= link_to "Ferramentas", "#ferramentas", :class=>"a" %>
+<div class="b" hidden="hidden">
+
+
+       <%= select("tool", "name", options_for_select(@tools_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+ </div>
+
+      </li>
+
+   
+
+
+
+ 
+
+
+
+
+<li>
+  <%= link_to "Virtuais", "#virtuais", :class=>"a" %>
+  <div class="b" hidden="hidden">
+
+
+<%= select("virtual", "name", options_for_select(@virtuals_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+ </div>
+
+      </li>
+
+
+
+
+  </ul>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

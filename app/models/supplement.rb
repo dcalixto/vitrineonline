@@ -1,3 +1,7 @@
 class Supplement < ActiveRecord::Base
-  # attr_accessible :title, :body
+   attr_accessible :name
+
+has_many :products
+belongs_to :block
+
 end

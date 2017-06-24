@@ -11,8 +11,13 @@ class Product < ActiveRecord::Base
   belongs_to :transaction
 
  belongs_to :eletronic
+ belongs_to :supplement
+belongs_to :auto
+belongs_to :house
+belongs_to :book
 
-
+belongs_to :art
+belongs_to :virtual
 
   has_many :images,inverse_of: :product #, dependent: :destroy 
   has_many :orders, dependent: :destroy
@@ -44,7 +49,15 @@ class Product < ActiveRecord::Base
     :vitrine_id, :products, :price,
     :size_ids, :color_ids,  :tag_list, :is_shared_on_facebook,
     :is_shared_on_twitter,:images_attributes, 
-    :brand_id, :obrand_id, :condition_id, :height, :width, :diamenter, :length, :weight, :freeship
+    :brand_id, :obrand_id, :condition_id, :height, :width, :diamenter, :length, :weight, :freeship,
+    :block_id, :eletronic_id,
+    :supplement_id, :sport_id, :auto_id, :house_id, :food_id, :art_id, :book_id, :tool_id, :virtual_id,
+    :diameter
+
+    
+
+
+
     
   validates :name, presence: true, length: { maximum: 140 }
   validates :price, presence: true
@@ -55,7 +68,7 @@ class Product < ActiveRecord::Base
 
   
    before_create  :createcode
-   after_create  :create_pdata
+ #  after_create  :create_pdata
 
 
    after_save :load_into_soulmate
@@ -96,9 +109,8 @@ class Product < ActiveRecord::Base
 
 
   end
-  validates :size_ids, :presence => true, :if => :active?
   validates :color_ids, :presence => true, :if => :active?
-  validates :material_id, :presence => true, :if => :active?
+  #validates :eletronic_id, :presence => true, :if => :active?
   validates :condition_id, :presence => true, :if => :active?
 
   validates :images, :presence => true, :if => :active?
@@ -116,27 +128,27 @@ class Product < ActiveRecord::Base
 
 
 
-  def create_pdata
-    product = Product.find_by_id(attributes['id'])
+#  def create_pdata
+#    product = Product.find_by_id(attributes['id'])
 
   #  if status == Order.statuses[0]
-      pr_id = product.id
-      data = Pdata.find_by_id(pr_id)
-      if data.nil?
-        attrs = product.attributes
-        attrs.delete('created_at')
-        attrs.delete('updated_at')
-        data = Pdata.create(attrs)
+  #    pr_id = product.id
+  #    data = Pdata.find_by_id(pr_id)
+    #  if data.nil?
+    #    attrs = product.attributes
+    #    attrs.delete('created_at')
+    #    attrs.delete('updated_at')
+    #    data = Pdata.create(attrs)
 
             
-        data.save
+    #    data.save
      # end
       
+#
+  #  end
 
-    end
 
-
-  end
+#  end
 
 
 

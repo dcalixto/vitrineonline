@@ -9,7 +9,10 @@ class CreatePolicies < ActiveRecord::Migration
       t.text     :guarantee
       t.string :parcelamento
       t.string :return
-     t.string :code
+      t.string :code
+      t.integer :installment
+      t.integer :pinstallment
+      t.integer :off
 
       t.timestamps
     end

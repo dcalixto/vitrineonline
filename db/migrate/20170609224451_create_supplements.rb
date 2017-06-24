@@ -1,7 +1,7 @@
 class CreateSupplements < ActiveRecord::Migration
   def change
     create_table :supplements do |t|
-t.string :kind
+     t.string :name
       t.timestamps
     end
   end

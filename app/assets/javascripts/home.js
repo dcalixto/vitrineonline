@@ -33,3 +33,8 @@ $(document).ready(ready);
 
 // if using turbolinks, listen to the page:load event and fire our ready function
 $(document).on('page:load', ready);
+
+
+
+
+

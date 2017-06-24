@@ -113,6 +113,19 @@ class ApplicationController < ActionController::Base
   def load_categories
     @genders = Gender.includes(:categories).all
     @categories = Category.includes(:subcategories).all
+    @eletronics = Eletronic.all
+ @blocks = Block.all
+
+ @autos = Auto.all
+ @houses = House.all
+ @tools = Tool.all
+ @sports = Sport.all
+
+
+     @supplements = Supplement.all
+
+@contact = Contact.new
+
   end
 
   def banned?

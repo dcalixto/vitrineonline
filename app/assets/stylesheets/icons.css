@@ -89,9 +89,9 @@
         }
         
         .sprite-icons-logo {
-            background-position: -319px -37px;
-            width: 165px;
-            height: 30px;
+                        width: 175px;
+            height: 35px;
+background:url(/assets/ahlogo.png) no-repeat;   
                  }
         
         .sprite-icons-paypal_icon2 {

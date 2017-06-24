@@ -180,7 +180,8 @@ acts_as_votable
 
   attr_accessible :name, :about,:codigo, :logo, :banner, :ad, :slogan,
                   :address, :neighborhood, :latitude, :longitude, :neighborhood, 
-                  :postal_code, :address_supplement, :code, :about, :state_id, :city_id
+                  :postal_code, :address_supplement, :code, :about, 
+                  :state_id, :city_id, :branded
 
   # CACHE
   #

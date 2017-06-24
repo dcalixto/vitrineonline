@@ -1,47 +1,178 @@
-<% cache "drop" do %>
-  <div id="main-nav">
-<ul>
 
-<% @genders.each do |gender| %>
 
-  <li class="parentnav">
 
-    <%= link_to  content_tag(:span, gender.gender),  gender_path(:id => gender.id), :class => "tab" %>
-<ul class="subnav">
 
-  <div class="panel box">
- <% gender.categories.each do |category| %>
+<div class="vertu">
+  <ul>
+    <% b =  @blocks[0]  %>
 
-<div class="divider">
-<h3 title="<%=category.name %>"><%= link_to category.name, category_path(:id => category.id )  %></h3>
+    <li >
 
-   <% category.subcategories.each do |subcategory| %>
-   <ul>
-  <li title="<%=subcategory.name %>">
-    <%= link_to subcategory.name, subcategory_path(:id => subcategory.id ) %></li>
+      <%= link_to  content_tag(:span, b.category),  products_path, :class => "drop" %>
+
+      <div class="down">
+
+        <ul>
+
+          <% @genders.each do |gender| %>
+
+            <li>
+
+              <h3> <%= link_to  content_tag(:span, gender.gender),  gender_path(:id => gender.id) %></h3>
+
+              <ul class="subna">
+                <div class="pane bo">
+                  <% gender.categories.each do |category| %>
+
+                    <div class="divid">
+
+                      <ul class="list_left">
+                        <li>
+
+                      <%= link_to category.name, category_path(:id => category.id )  %>
+                        </li>
+                      </ul>
+                    </div>
+                  <% end %>
+                </div>
+              </ul>
+            </li>
+
+          <% end %>
+
+        </ul>
+
+
+
+
+
+      </div>
+
+
+    </li>      
+
+
+
+    <% e =  @blocks[1]  %>
+    <li >
+
+      <%= link_to  content_tag(:span, e.category),  eletronics_path, :class => "drop" %>
+
+
+      <div class="down">
+
+        <ul class="list_left">
+          <% @eletronics.each do |eletronic| %>
+
+            <li>
+
+
+
+
+              <%= link_to  content_tag(:span, eletronic.item),  eletronic_path(:id => eletronic.id) %>
+            </li>
+          <% end %>
+
+        </ul>
+
+
+      </div>               </li>
+
+
+
+
+
+
+      <% s =  @blocks[2]  %>
+      <li >
+
+        <%= link_to  content_tag(:span, b.category),  supplements_path, :class => "drop" %>
+
+
+        <div class="down">
+
+          <ul class="list_left">
+            <% @supplements.each do |sup| %>
+
+              <li>
+
+                <%= link_to  content_tag(:span, sup.name),  supplement_path(:id => sup.id) %>
+              </li>
+            <% end %>
+
+          </ul>
+
+
+        </div>               </li>
+
+
+
+
+
+
+
+        <% s =  @blocks[3]  %>
+        <li >
+
+          <%= link_to  content_tag(:span, s.category),  sports_path(:id => s.id), :class => "drop" %>
+
+
+          <div class="down">
+
+            <ul class="list_left">
+              <% @sports.each do |sp| %>
+
+                <li>
+
+                  <%= link_to  content_tag(:span, sp.category),  sport_path(:id => sp.id) %>
+                </li>
+              <% end %>
+
+            </ul>
+
+
+          </div>               </li>
+
+
+
+
+
+
+
+          <% a =  @blocks[4]  %>
+          <li >
+
+            <%= link_to  content_tag(:span, a.category),  autos_path, :class => "drop" %>
+
+
+            <div class="down">
+
+              <ul class="list_left">
+                <% @autos.each do |auto| %>
+
+                  <li>
+
+                    <%= link_to  content_tag(:span, auto.item),  auto_path(:id => auto.id) %>
+                  </li>
+                <% end %>
+
+              </ul>
+
+
+            </div>               </li>
+
+
+
+            <li>
+              <%= link_to  "Mais", departments_path%>
+            </li>
+
+
+
+            <!--end Contact form-->
   </ul>
-    <% end %>
-     </div>
- <% end %>
- </div>
-</ul>
-</li>
-<% end %>
-
-</ul>
 </div>
-
-<% end %>
-
+<!-- end Vertu MegaMenu -->
 
 
 
-
-
-
-
-
-
-
-
-          <!-- Fim -->

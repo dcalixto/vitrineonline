@@ -5682,54 +5682,198 @@
 
 
 
+bl = Block.create(:category => 'Roupas, Calçados e acessórios')
+bl.genders.create(:gender => "Masculino")
+bl.genders.create(:gender => "Feminino")
+bl.genders.create(:gender => "Infantil")
+bl.genders.create(:gender => "Bagagem")
+
+
+bl = Block.create(:category => 'Eletrônicos e Computadores')
+bl.eletronics.create(:item => "Celulares & Accessórios")
+bl.eletronics.create(:item => "Acessórios para carro")
+bl.eletronics.create(:item => "Instrumentos Musicais")
+
+bl.eletronics.create(:item => "Computadores e Tablets")
+bl.eletronics.create(:item => "Monitores")
+bl.eletronics.create(:item => "Acessórios e adaptadores")
+bl.eletronics.create(:item => "Rede")
+bl.eletronics.create(:item => "HD e Armazenamento")
+bl.eletronics.create(:item => "TV & Video")
+bl.eletronics.create(:item => "Camera, Foto & Video")
+bl.eletronics.create(:item => "Peças e Componentes de Computador")
+bl.eletronics.create(:item => "Softwares")
+bl.eletronics.create(:item => "Impressoras e Tintas")
+
+bl.eletronics.create(:item => "Telefones")
+bl.eletronics.create(:item => "Videogames")
+bl.eletronics.create(:item => "Alto-Falantes")
+bl.eletronics.create(:item => "Antenas")
+bl.eletronics.create(:item => "Microfones")
+bl.eletronics.create(:item => "Headfones")
 
 
 
 
-gm = Gender.create(:gender => 'Masculino')
+
+bl = Block.create(:category => 'Beleza e Suplementos')
+bl.supplements.create(:name => "Vitaminas e Suplementos")
+bl.supplements.create(:name => "Cuidados Familiares e do Bebe")
+bl.supplements.create(:name => "Higene Bucal")
+bl.supplements.create(:name => "Produtos Naturais")
+bl.supplements.create(:name => "Corpo e Banho")
+bl.supplements.create(:name => "Manicure e Acessórios")
+bl.supplements.create(:name => "Maquiagem")
+bl.supplements.create(:name => "Cuidados com a Pele")
+bl.supplements.create(:name => "Desodorantes e Perfumes")
+
+
+bs = Block.create(:category => 'Esportes e Equipamentos')
+bs.sports.create(:category => "Roupas Masculino")
+bs.sports.create(:category => "Roupas Feminino")
+bs.sports.create(:category => "Infantil")
+bs.sports.create(:category => "Acessórios Masculino")
+bs.sports.create(:category => "Acessórios Feminino")
+bs.sports.create(:category => "Tênis Masculino")
+bs.sports.create(:category => "Tênis Feminino")
+
+bs.sports.create(:category => "Protetores Esportivos")
+bs.sports.create(:category => "Camping")
+bs.sports.create(:category => "Futebol")
+
+bs.sports.create(:category => "Esportes ao ar livre")
+bs.sports.create(:category => "Esportes de Contato")
+
+
+bl = Block.create(:category => 'Automóveis e Autopeças')
+bl.autos.create(:item => "Acessórios e GPS")
+bl.autos.create(:item => "Áudio e Vídeo")
+bl.autos.create(:item => "Iluminação")
+bl.autos.create(:item => "Produtos de Limpeza")
+bl.autos.create(:item => "Pneus")
+bl.autos.create(:item => "Ferramentas e Equipamentos")
+
+
+
+
+bl = Block.create(:category => 'Casa e Jardim')
+bl.houses.create(:name => "Alimentos e Bebidas")
+bl.houses.create(:name => "Cama, Mesa e Banho")
+bl.houses.create(:name => "Eletrodomésticos")
+bl.houses.create(:name => "Ferramentas e Jardim")
+bl.houses.create(:name => "Móveis e Decoração")
+bl.houses.create(:name => "Produtos para Limpeza")
+bl.houses.create(:name => "Utilidades Domésticas")
+bl.houses.create(:name => "Moveis e Mobilia")
+
+
+
+bl = Block.create(:category => 'Alimentos e Bebidas')
+bl.foods.create(:name => "Água e Refrigerantes")
+bl.foods.create(:name => "Cafés e Sucos")
+bl.foods.create(:name => "Macarrão e Elatados")
+bl.foods.create(:name => "Bolos e Biscoitos")
+bl.foods.create(:name => "Cervejas e Vinhos")
+bl.foods.create(:name => "Doçes e Cereais")
+bl.foods.create(:name => "Sopas e Codimentos")
+
+
+
+bl = Block.create(:category => 'Papelaria e Artesanato')
+bl.arts.create(:name => "Cadernos e Canetas")
+bl.arts.create(:name => "Ceramicas e Caixas")
+bl.arts.create(:name => "Decoração e Esculturas")
+bl.arts.create(:name => "Gravura e Pintura")
+bl.arts.create(:name => "Retalhos")
+
+
+bl = Block.create(:category => 'Música e Livros')
+bl.books.create(:name => "Livros")
+bl.books.create(:name => "Cds")
+bl.books.create(:name => "DVD")
+bl.books.create(:name => "Jogos")
+
+
+bl = Block.create(:category => 'Ferramentas e Construção ')
+bl.tools.create(:name => "Máquinas")
+bl.tools.create(:name => "Escadas")
+bl.tools.create(:name => "Lonas")
+bl.tools.create(:name => "Material de Construção")
+bl.tools.create(:name => "Ferramenta Elétricas e Manuais")
+bl.tools.create(:name => "Geradores e Motores")
+bl.tools.create(:name => "Cabos e Fios")
+bl.tools.create(:name => "Caixas e Disjuntores")
+
+bl = Block.create(:category => 'Produtos Virtuais')
+bl.virtuals.create(:name => "Bitcoins")
+bl.virtuals.create(:name => "Arquivos")
+
+
+
+gm = Gender.joins(:block).where("category = ? and gender = ?", 'Roupas, Calçados e acessórios', 'Masculino').first
+if gm.present?
 gm.categories.create(:name => "Roupas")
 gm.categories.create(:name => "Calçados")
 gm.categories.create(:name => "Acessórios")
 gm.categories.create(:name => "Roupas Íntimas")
 gm.categories.create(:name => "Roupas Social")
-gm.categories.create(:name => "Roupas Esportivas")
-gm.categories.create(:name => "Equipamentos")
+gm.categories.create(:name => "Moda Praia")
 
-gf = Gender.create(:gender => 'Feminino')
-gf.categories.create(:name => "Roupas")
-gf.categories.create(:name => "Calçados")
-gf.categories.create(:name => "Acessórios")
-gf.categories.create(:name => "Roupas Íntimas")
-gf.categories.create(:name => "Roupas Social")
-gf.categories.create(:name => "Roupas Esportivas")
-gf.categories.create(:name => "Equipamentos")
-
-gim = Gender.create(:gender => 'Infantil Masculino')
-gim.categories.create(:name => "Roupas")
-gim.categories.create(:name => "Calçados")
-gim.categories.create(:name => "Acessórios")
-gim.categories.create(:name => "Roupas Íntimas")
-
-gim.categories.create(:name => "Roupas Social")
-gim.categories.create(:name => "Roupas Esportivas")
+end
 
 
-gif = Gender.create(:gender => 'Infantil Feminino')
-gif.categories.create(:name => "Roupas")
-gif.categories.create(:name => "Calçados")
-gif.categories.create(:name => "Acessórios")
-gif.categories.create(:name => "Roupas Íntimas")
-gif.categories.create(:name => "Roupas Social")
-gif.categories.create(:name => "Roupas Esportivas")
+
+
+
+bf = Gender.joins(:block).where("category = ? and gender = ?", 'Roupas, Calçados e acessórios', 'Feminino').first
+if bf.present?
+bf.categories.create(:name => "Roupas")
+bf.categories.create(:name => "Calçados")
+bf.categories.create(:name => "Acessórios")
+bf.categories.create(:name => "Roupas Íntimas")
+bf.categories.create(:name => "Roupas Social")
+bf.categories.create(:name => "Moda Praia")
+
+end
+
+bi = Gender.joins(:block).where("category = ? and gender = ?", 'Roupas, Calçados e acessórios', 'Infantil').first
+if bi.present?
+bi.categories.create(:name => "Roupas")
+bi.categories.create(:name => "Calçados")
+bi.categories.create(:name => "Acessórios")
+bi.categories.create(:name => "Roupas Íntimas")
+bi.categories.create(:name => "Roupas Social")
+bi.categories.create(:name => "Moda Praia")
+
+end
+
+
+
+
+bb = Gender.joins(:block).where("category = ? and gender = ?", 'Roupas, Calçados e acessórios', 'Bagagem').first
+if bb.present?
+bb.categories.create(:name => "Bagagem de mão")
+bb.categories.create(:name => "Malas de viagem")
+bb.categories.create(:name => "Sacolas de viagem")
+bb.categories.create(:name => "Mochilas")
+bb.categories.create(:name => "Bolsas")
+bb.categories.create(:name => "Bagagem infantil")
+
+
+end
+
+
+
+
 
 
 
 m = Category.joins(:gender).where("gender = ? and name = ?", 'Masculino', 'Roupas').first
 if m.present?
-m.subcategories.create(:name => "Camisas" )
+m.subcategories.create(:name => "Camisas e Camisetas" )
 m.subcategories.create(:name => "Bermudas e Shorts" )
 m.subcategories.create(:name => "Calças")
-m.subcategories.create(:name => "Camisetas" )
+m.subcategories.create(:name => "Coletes" )
 m.subcategories.create(:name => "Moletons e Hoodies" )
 m.subcategories.create(:name => "Regatas" )
 m.subcategories.create(:name => "Casacos e Jaquetas" )
@@ -5744,7 +5888,6 @@ m.subcategories.create(:name => "Tênis")
 m.subcategories.create(:name => "Botas" )
 m.subcategories.create(:name => "Sneakers")
 m.subcategories.create(:name => "Sapatilhas" )
-m.subcategories.create(:name => "Chuteiras" )
 m.subcategories.create(:name => "Sapatos" )
 m.subcategories.create(:name => "Sandálias e Chinelos" )
 end
@@ -5789,40 +5932,26 @@ m.subcategories.create(:name => "Calças" )
 m.subcategories.create(:name => "Sapatos")
 end
 
-m = Category.joins(:gender).where("gender = ? and name = ?", 'Masculino', 'Roupas Esportivas').first
+
+
+m = Category.joins(:gender).where("gender = ? and name = ?", 'Masculino', 'Moda Praia').first
 if m.present?
-m.subcategories.create(:name => "Camisas" )
-m.subcategories.create(:name => "Bermudas" )
-m.subcategories.create(:name => "Casacos e Jaquetas")
-m.subcategories.create(:name => "Bolsas e Mochilas" )
-m.subcategories.create(:name => "Leggings" )
+m.subcategories.create(:name => "Sungas" )
+m.subcategories.create(:name => "Bermudas e Shorts" )
 end
 
-m = Category.joins(:gender).where("gender = ? and name = ?", 'Masculino', 'Equipamentos').first
-if m.present?
-m.subcategories.create(:name => "Capacetes" )
-m.subcategories.create(:name => "Neoprenes" )
-m.subcategories.create(:name => "Decks")
-m.subcategories.create(:name => "Caneleiras" )
-m.subcategories.create(:name => "Joelheiras" )
-m.subcategories.create(:name => "Dilatador Nasal" )
-m.subcategories.create(:name => "Munhequeiras" )
-m.subcategories.create(:name => "Bandagens")
-m.subcategories.create(:name => "Palmilhas" )
-m.subcategories.create(:name => "Raquetes" )
-m.subcategories.create(:name => "Pranchas")
-m.subcategories.create(:name => "Skates" )
-m.subcategories.create(:name => "Tornozeleiras" )
-m.subcategories.create(:name => "Cotoveleiras" )
-end
+
+
+
+
 
 
 f = Category.joins(:gender).where("gender = ? and name = ?", 'Feminino', 'Roupas').first
 if f.present?
-f.subcategories.create(:name => "Camisas" )
+f.subcategories.create(:name => "Camisas e Camisetas" )
 f.subcategories.create(:name => "Bermudas e Shorts" )
 f.subcategories.create(:name => "Calças")
-f.subcategories.create(:name => "Camisetas e Tops" )
+f.subcategories.create(:name => "Coletes e Tops" )
 f.subcategories.create(:name => "Moletons e Hoodies" )
 f.subcategories.create(:name => "Regatas" )
 f.subcategories.create(:name => "Casacos e Jaquetas" )
@@ -5883,36 +6012,20 @@ f.subcategories.create(:name => "Sapatos")
 f.subcategories.create(:name => "Saias")
 end
 
-f = Category.joins(:gender).where("gender = ? and name = ?", 'Feminino', 'Roupas Esportivas').first
+
+f = Category.joins(:gender).where("gender = ? and name = ?", 'Feminino', 'Moda Praia').first
 if f.present?
-f.subcategories.create(:name => "Camisas e Camisetas" )
-f.subcategories.create(:name => "Shorts" )
-f.subcategories.create(:name => "Casacos e Jaquetas")
-f.subcategories.create(:name => "Bolsas e Mochilas" )
-f.subcategories.create(:name => "Leggings" )
+f.subcategories.create(:name => "Biquínis" )
 f.subcategories.create(:name => "Maiôs" )
-end
-f = Category.joins(:gender).where("gender = ? and name = ?", 'Feminino', 'Equipamentos').first
-if f.present?
-f.subcategories.create(:name => "Capacetes" )
-f.subcategories.create(:name => "Neoprenes" )
-f.subcategories.create(:name => "Decks")
-f.subcategories.create(:name => "Caneleiras" )
-f.subcategories.create(:name => "Joelheiras" )
-f.subcategories.create(:name => "Dilatador Nasal" )
-f.subcategories.create(:name => "Munhequeiras" )
-f.subcategories.create(:name => "Bandagens")
-f.subcategories.create(:name => "Palmilhas" )
-f.subcategories.create(:name => "Raquetes" )
-f.subcategories.create(:name => "Pranchas")
-f.subcategories.create(:name => "Skates" )
-f.subcategories.create(:name => "Tornozeleiras" )
-f.subcategories.create(:name => "Cotoveleiras" )
+f.subcategories.create(:name => "Cangas e Saídas de praia")
 end
 
 
 
-im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Masculino', 'Roupas').first
+
+
+
+im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil', 'Roupas').first
 if im.present?
 im.subcategories.create(:name => "Camisas" )
 im.subcategories.create(:name => "Bermudas e Shorts" )
@@ -5924,7 +6037,7 @@ im.subcategories.create(:name => "Casacos e Jaquetas" )
 end
 
 
-im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Masculino', 'Calçados').first
+im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil', 'Calçados').first
 if im.present?
 im.subcategories.create(:name => "Tênis" )
 im.subcategories.create(:name => "Botas" )
@@ -5935,7 +6048,7 @@ im.subcategories.create(:name => "Sapatos" )
 im.subcategories.create(:name => "Sandálias e Chinelos" )
 end
 
-im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Masculino', 'Acessórios').first
+im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil', 'Acessórios').first
 if im.present?
 im.subcategories.create(:name => "Alargadores" )
 im.subcategories.create(:name => "Anéis" )
@@ -5956,7 +6069,7 @@ im.subcategories.create(:name => "Pulseiras" )
 im.subcategories.create(:name => "Tornozeleiras" )
 end
 
-im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Masculino', 'Roupas Íntimas').first
+im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil', 'Roupas Íntimas').first
 if im.present?
 im.subcategories.create(:name => "Cuecas" )
 im.subcategories.create(:name => "Fraldas" )
@@ -5965,7 +6078,7 @@ im.subcategories.create(:name => "Pijamas")
 im.subcategories.create(:name => "Roupões" )
 end
 
-im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Masculino', 'Roupas Social').first
+im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil', 'Roupas Social').first
 if im.present?
 im.subcategories.create(:name => "Camisas" )
 im.subcategories.create(:name => "Ternos" )
@@ -5974,124 +6087,9 @@ im.subcategories.create(:name => "Calças" )
 im.subcategories.create(:name => "Sapatos")
 end
 
-im = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Masculino', 'Roupas Esportivas').first
-if im.present?
-im.subcategories.create(:name => "Camisas" )
-im.subcategories.create(:name => "Bermudas" )
-im.subcategories.create(:name => "Casacos e Jaquetas")
-im.subcategories.create(:name => "Bolsas e Mochilas" )
-im.subcategories.create(:name => "Leggings" )
-end
 
 
 
-
-imf = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Feminino', 'Roupas').first
-if imf.present?
-imf.subcategories.create(:name => "Camisas" )
-imf.subcategories.create(:name => "Bermudas e Shorts" )
-imf.subcategories.create(:name => "Calças")
-imf.subcategories.create(:name => "Camisetas" )
-imf.subcategories.create(:name => "Moletons e Hoodies" )
-imf.subcategories.create(:name => "Regatas" )
-imf.subcategories.create(:name => "Casacos e Jaquetas" )
-imf.subcategories.create(:name => "Saias" )
-imf.subcategories.create(:name => "Vestidos" )
-end
-
-
-imf = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Feminino', 'Calçados').first
-
-if imf.present?
-imf.subcategories.create(:name => "Tênis" )
-imf.subcategories.create(:name => "Botas" )
-imf.subcategories.create(:name => "Sneakers")
-imf.subcategories.create(:name => "Sapatilhas" )
-imf.subcategories.create(:name => "Chuteiras" )
-imf.subcategories.create(:name => "Sapatos" )
-imf.subcategories.create(:name => "Sandálias e Chinelos" )
-end
-
-imf = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Feminino', 'Acessórios').first
-if imf.present?
-imf.subcategories.create(:name => "Alargadores" )
-imf.subcategories.create(:name => "Anéis" )
-imf.subcategories.create(:name => "Brincos")
-imf.subcategories.create(:name => "Bonés" )
-imf.subcategories.create(:name => "Óculos" )
-imf.subcategories.create(:name => "Gorros" )
-imf.subcategories.create(:name => "Bolsas" )
-imf.subcategories.create(:name => "Mochilas" )
-imf.subcategories.create(:name => "Malas" )
-imf.subcategories.create(:name => "Cachecol" )
-imf.subcategories.create(:name => "Carteiras" )
-imf.subcategories.create(:name => "Chapéus" )
-imf.subcategories.create(:name => "Cintos" )
-imf.subcategories.create(:name => "Luvas" )
-imf.subcategories.create(:name => "Relógios" )
-imf.subcategories.create(:name => "Pulseiras" )
-imf.subcategories.create(:name => "Tornozeleiras" )
-end
-
-imf = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Feminino', 'Roupas Íntimas').first
-if imf.present?
-imf.subcategories.create(:name => "Calcinhas" )
-imf.subcategories.create(:name => "Meias" )
-imf.subcategories.create(:name => "Fraldas" )
-imf.subcategories.create(:name => "Pijamas")
-imf.subcategories.create(:name => "Roupões" )
-end
-
-imf = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Feminino', 'Roupas Social').first
-if imf.present?
-imf.subcategories.create(:name => "Camisas" )
-imf.subcategories.create(:name => "Ternos" )
-imf.subcategories.create(:name => "Gravatas")
-imf.subcategories.create(:name => "Calças" )
-imf.subcategories.create(:name => "Sapatos")
-end
-
-imf = Category.joins(:gender).where("gender = ? and name = ?", 'Infantil Feminino', 'Roupas Esportivas').first
-if imf.present?
-imf.subcategories.create(:name => "Camisas" )
-imf.subcategories.create(:name => "Bermudas" )
-imf.subcategories.create(:name => "Casacos e Jaquetas")
-imf.subcategories.create(:name => "Bolsas e Mochilas" )
-imf.subcategories.create(:name => "Leggings" )
-end
-
-
-
-eletronic_list = [
-"Cellphone",
-"Tablet",
-"Telephone",
-"Notebook",
-"Desktop",
-"Gps",
-"Videogame",
-"TV",
-"Mp3",
-"Cameras",
-"DVD",
-"Blueray",
-"Apeakers",
-"Adpter",
-"Psource",
-"Battery",
-"Antenna",
-"Amplifier",
-"Projector",
-"Headphone",
-"Microphone",
-
-
-]
-
-
-eletronic_list.each do |el|
-  Eletronic.create( item: item )
-end
 
 
 
@@ -6126,49 +6124,16 @@ ebrand_list = [
 ]
 
 
-ebrand_list.each do |el|
-  Eletronic.create( name: name )
+ebrand_list.each do |name|
+  Ebrand.create( name: name )
 end
 
 
 
 
 
-supplement_list = [
-  "Multivitamin",
-  "Antioxidant",
-  "BCAA",
-  "Propolis",
-  "Calcium",
-  "Coconut Oil",
-  "Chia Seed",
-  "Coenzyma q10",
-   "Collagen",
-
-    "Creatine",
-      "Curcumin",
- "DHA",
-
- "Enzymes",
- "EPA",
-
- "Fiber",
- "Fish Oil",
- "Flex Seed",
- "Superfoods",
 
 
- "Spirulina",
- "Probiotics",
- "Resveratrol",
-
-
-
-]
-
-supplement_list.each do |kind|
-  Supplement.create( kind: kind )
-end
 
 
 

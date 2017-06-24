@@ -5,7 +5,7 @@ class Gender < ActiveRecord::Base
   has_many :categories
   has_many :subcategories, through: :categories
   has_many :products
-
+belongs_to :block
  
   accepts_nested_attributes_for :categories
   accepts_nested_attributes_for :products

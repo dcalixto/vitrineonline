@@ -12,8 +12,8 @@
 [epub\:type="stretchsummary"]:hover,
 .stretchsummary:hover {
 	/*border-style: solid;*/
-	background: #a4bad6;
-	color:#fff
+	background: #FFEC33;
+	color:#111
 }
 
 [epub-type="stretchsummary"]::after,
@@ -121,6 +121,11 @@ vertical-align:top*/
 	margin-right: 1em;
 	float: left;
 }
+
+
+.slinky-menu .tab {width:100%}
+.slinky-menu .tab span {color:#6eb300;}
+
 
 .slinky-menu {background:#ebf3fd;}
  .stretchsummary {display:inline-block;vertical-align:top;width:100%;border-bottom: 1px dashed #c9dcf2;}

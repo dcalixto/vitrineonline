@@ -34,9 +34,9 @@ class CreatePdata < ActiveRecord::Migration
       t.float  :width
       t.float  :height
       t.float  :diameter
+       t.boolean :freeship, :default => false
       t.timestamps
     end
-
 
     add_index :pdata, :slug
     add_index :pdata, :vitrine_id

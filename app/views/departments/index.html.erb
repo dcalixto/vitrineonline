@@ -7,38 +7,150 @@
 
 
 
-  <% @genders.each do |gender| %>
+  <% @blocks.each do |b| %>
 
-    <%= link_to  content_tag(:span, gender.gender),  gender_path(:id => gender.id), :class => "tab" %> <span class="stretchsummary">Abrir</span>
+    <%= link_to  content_tag(:span, b.category),  block_path(:id => b.id), :class => "tab" %> <span class="stretchsummary">Abrir</span>
 
 
 
   <span class="stretchdetail ">
 
 
-   <% gender.categories.each do |category| %>
+   <% b.genders.each do |g| %>
 
 
 
-    <%= link_to category.name, category_path(:id => category.id ), :class => "tab"  %><span class="stretchsummary">Abrir</span>
-
+    <%= link_to g.gender, gender_path(:id => g.id ), :class => "tab"  %><span class="stretchsummary">Abrir</span>
 
 
 
   <span class="stretchdetail">
 
-     <% category.subcategories.each do |subcategory| %>
+     <% g.categories.each do |c| %>
 
-      <%= link_to subcategory.name, subcategory_path(:id => subcategory.id ) %>
+      <%= link_to c.name, category_path(:id => c.id ),:class => "tab"  %><span class="stretchsummary">Abrir</span>
+
+
+
+       
+
+
+ <span class="stretchdetail">
+
+     <% c.subcategories.each do |s| %>
+
+      <%= link_to s.name, subcategory_path(:id => s.id ) %>
 
 
       <% end %>
 
-       </span>
+  </span>
+
+
+
+<% end %>
+ </span>
+
+
+
    <% end %>
 
 
+
+
+ <% b.eletronics.each do |e| %>
+
+      <%= link_to e.item, eletronic_path(:id => e.id )  %>
+
+
+      <% end %>
+
+
+      <% b.supplements.each do |su| %>
+
+      <%= link_to su.name, supplement_path(:id => su.id )  %>
+
+
+      <% end %>
+
+
+      <% b.sports.each do |sp| %>
+
+      <%= link_to sp.category, sport_path(:id => sp.id )  %>
+
+
+      <% end %>
+
+
+
+      <% b.autos.each do |au| %>
+
+      <%= link_to au.item, auto_path(:id => au.id )  %>
+
+
+      <% end %>
+
+
+       <% b.houses.each do |ho| %>
+
+      <%= link_to ho.name, house_path(:id => ho.id )  %>
+
+
+      <% end %>
+
+
+        <% b.foods.each do |fo| %>
+
+      <%= link_to fo.name, food_path(:id => fo.id )  %>
+
+
+      <% end %>
+
+
+
+ <% b.arts.each do |art| %>
+
+      <%= link_to art.name, art_path(:id => art.id )  %>
+
+
+      <% end %>
+
+
+
+
+ <% b.books.each do |book| %>
+
+      <%= link_to book.name, book_path(:id => book.id )  %>
+
+
+      <% end %>
+
+ <% b.tools.each do |to| %>
+
+      <%= link_to to.name, tool_path(:id => to.id )  %>
+
+
+      <% end %>
+
+
+
+ <% b.virtuals.each do |vi| %>
+
+      <%= link_to vi.name, virtual_path(:id => vi.id )  %>
+
+
+      <% end %>
+
+
+
 </span>
+
+
+
+
+
+
+
 
 
   <% end %>
@@ -51,3 +163,4 @@
 
 
           <!-- Fim -->
+

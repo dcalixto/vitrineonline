@@ -6,11 +6,11 @@ class CreateProducts < ActiveRecord::Migration
       t.string   :name,                                                        :null => false
       t.decimal  :price,                                          :precision => 9, :scale => 2
       t.text     :detail
-      t.integer  :gender_id,                                                   :null => false                                                  
-      t.integer  :category_id,                                                 :null => false
-      t.integer  :subcategory_id,                                              :null => false
+      t.integer  :gender_id                                                                                                
+      t.integer  :category_id                                               
+      t.integer  :subcategory_id                                             
       t.integer   :impressions_count
-  
+
 
       t.integer  :brand_id                                             
       t.integer  :material_id
@@ -22,7 +22,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string   :status
       t.string   :current_step
       t.float   :average_rating,  default: 0
-     t.integer :total_feedbacks,   default: 0
+      t.integer :total_feedbacks,   default: 0
 
       t.float  :weight
       t.float  :length
@@ -30,8 +30,8 @@ class CreateProducts < ActiveRecord::Migration
       t.float  :height
       t.float  :diameter
 
-
-t.string :code
+      t.boolean :freeship, :default => false
+      t.string :code
 
 
       t.timestamps
@@ -40,15 +40,15 @@ t.string :code
     add_index :products, :vitrine_id
     add_index :products, :category_id
     add_index :products, :subcategory_id
-     add_index :products, :gender_id
-   add_index :products, :impressions_count
+    add_index :products, :gender_id
+    add_index :products, :impressions_count
 
-       add_index :products, :brand_id
-      
+    add_index :products, :brand_id
+
 
     add_index :products, :material_id
     add_index :products, :condition_id
 
-  
+
   end
 end

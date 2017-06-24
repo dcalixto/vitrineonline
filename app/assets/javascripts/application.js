@@ -27,10 +27,44 @@
 
 
 
+
+
 jQuery(function($) {
     $('script').attr('defer', 'defer');
 });
 
+
+
+
+$(document).ready(function(e) {
+	$('#toggle').click(function(e) {
+        $('#box').toggleClass('max');
+    });
+	$('#close').click(function(e) {
+      /*  $('#box').remove();*/
+    });
+});
+
+
+
+$(document).ready(function(){
+    $('select#subcategory_name').chainedTo('select#category_name');
+    $('select#category_name').chainedTo('select#gender_name');
+    $('select#gender_name').chainedTo('select#block_name');
+    $('#eletronic').chained('#block');
+    $('select#supplement_name').chainedTo('select#block_name');
+    $('select#sport_name').chainedTo('select#block_name');
+    $('select#auto_name').chainedTo('select#block_name');
+    $('select#tool_name').chainedTo('select#block_name');
+    $('select#house_name').chainedTo('select#block_name');
+     $('select#food_name').chainedTo('select#block_name');
+
+    $('select#art_name').chainedTo('select#block_name');
+     $('select#book_name').chainedTo('select#block_name');
+
+    $('select#virtual_name').chainedTo('select#block_name');
+
+}); 
 
 
 $(document).ready(function() {
@@ -42,8 +76,21 @@ $(document).ready(function() {
 
 });
 
+//  HIDE SHOW DIV ON PRODUCT NEW
 
 
+
+$(document).ready(function () {
+    $('.a').click(function () {
+        var bOBJ = $(this).next('.b');
+        if (bOBJ.is(":visible")) {
+            bOBJ.hide();
+        } else {
+            bOBJ.show();
+        }
+        return false;
+    });
+});
 
 
 
@@ -122,14 +169,6 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-
-
-// SELECT2 (TAGS)
 
 
 
@@ -365,11 +404,23 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 
-$("#slider").slider({
-  speed : 600,
-  delay : 3500,
-  navigation : false,
-  width : '600px'
+    $("#slider").slider({
+        speed : 600,
+        delay : 3500,
+        navigation : false,
+        width : '600px'
+    });
 });
-});
+
+
+
+
+
+
+
+
+
+
+
+
 

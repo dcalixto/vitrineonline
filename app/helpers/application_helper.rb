@@ -45,10 +45,21 @@ module ApplicationHelper
   def default_meta_tags
     {
 
-      title: 'Vitrineonline - Monte sua Vitrine desenvolva sua marca',
-      description: 'Monte sua vitrine, desenvolva sua marca, compre e venda roupas, calçados, acessórios e equipamentos',
+      title: 'Vitrineonline - Compre agora eletrônicos, roupas, supplementos, produtos para casa & jardim e automotivos',
+      
+      description: 'Comprar online, produtos automotivos, acessórios para telefone, computador, eletrônicos,
+      roupa, beleza, saúde,  supplementos, casa e jardim, brinquedos, esportes, casamento, eventos,
+      Monte sua vitrine agora na vitrineonline e anuncie  para todo Brasil.',
 
-      keywords: 'vitrine, social, ofertas, oferta, loja, estilo, moda, calçados, camisas, cordões, pulseiras, brincos, comprar, roupas, vender, ecommerce, loja virtual, online'
+      keywords: 'Vitrineonline, social, ofertas, oferta, loja, camisas, comprar, roupas, vender, ecommerce, loja online, celular, camisetas,
+      iphone, samsung, whey, spirulina, coenzyma q10, supplemento, supplementos, nike, facebook, Twitter, instagram,
+      camisa polo, smartphone, smartfone, camisas masculinas, camisas femininas, BCAA, Creatina, Optimum Nutrition Opti-Men,
+      Gopro, Maca, Colágeno,
+      Compras online, Comprar online, Marketing online, Automotivo, Telefones, Acessórios, Computadores, PlayStation,xbox,
+      Eletrônicos, Moda, Beleza, Saúde, Casa, Jardim, Brinquedos, Esportes, Casamento, Eventos'
+
+      
+      
 
     }
   end
@@ -133,3 +144,6 @@ def percent_of(n)
     self.to_f / n.to_f * 100.0
   end
 end
+
+
+
