@@ -3,6 +3,7 @@ class CreateTools < ActiveRecord::Migration
     create_table :tools do |t|
       t.string :name
       t.integer :block_id
+       t.string :slug
       t.timestamps
     end
   end

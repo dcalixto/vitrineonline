@@ -45,16 +45,16 @@ module ApplicationHelper
   def default_meta_tags
     {
 
-      title: 'Vitrineonline - Compre agora eletrônicos, roupas, supplementos, produtos para casa & jardim e automotivos',
+      title: 'Vitrineonline - Compre agora eletrônicos, roupas, supplementos, produtos para casa & jardim, automotivos e serviços',
       
       description: 'Comprar online, produtos automotivos, acessórios para telefone, computador, eletrônicos,
-      roupa, beleza, saúde,  supplementos, casa e jardim, brinquedos, esportes, casamento, eventos,
+      roupa, beleza, saúde,  supplementos, casa e jardim, brinquedos, esportes, casamento, eventos, serviços,
       Monte sua vitrine agora na vitrineonline e anuncie  para todo Brasil.',
 
       keywords: 'Vitrineonline, social, ofertas, oferta, loja, camisas, comprar, roupas, vender, ecommerce, loja online, celular, camisetas,
       iphone, samsung, whey, spirulina, coenzyma q10, supplemento, supplementos, nike, facebook, Twitter, instagram,
       camisa polo, smartphone, smartfone, camisas masculinas, camisas femininas, BCAA, Creatina, Optimum Nutrition Opti-Men,
-      Gopro, Maca, Colágeno,
+      Gopro, Maca, Colágeno,serviços,
       Compras online, Comprar online, Marketing online, Automotivo, Telefones, Acessórios, Computadores, PlayStation,xbox,
       Eletrônicos, Moda, Beleza, Saúde, Casa, Jardim, Brinquedos, Esportes, Casamento, Eventos'
 

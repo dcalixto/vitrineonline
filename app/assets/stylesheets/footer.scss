@@ -20,14 +20,15 @@ $desktop: min-width 1200px;
   display: block;
   font-size: 11px;
   padding-bottom: 162px;
-  background: #fff;
+  background: #444;
   width: 100%;
   border-top: 1px solid #ddd;
-  color:#333
+  color:#fff;
+  margin-top:300px
 
   }
 
-#footer a { color:#333
+#footer a { color:#fff
 }
 #footer ul {
   margin: 0;
@@ -164,7 +165,7 @@ background:#fff;
 		padding:4px;
 		cursor:pointer;
 width:100%;
-border:solid 1px red;
+
 display:block
 }
 .min {

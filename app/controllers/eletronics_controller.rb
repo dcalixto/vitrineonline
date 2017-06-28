@@ -4,10 +4,6 @@ class EletronicsController < ApplicationController
  # include GenderHelper
 
 
- def index
-@eletronics = Eltronic.all
- end
-
   def show
     @eletronic = Eletronic.find(params[:id])
     @products = Product.aggs_search(params.merge(eletronic_id: @eletronic.id))

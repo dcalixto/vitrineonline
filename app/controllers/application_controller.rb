@@ -126,6 +126,9 @@ class ApplicationController < ActionController::Base
 
 @contact = Contact.new
 
+@user = User.new
+
+
   end
 
   def banned?

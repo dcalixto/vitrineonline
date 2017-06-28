@@ -1,4 +1,4 @@
-<div class="content">
+<div class="block_contact">
 
   <%= render 'shared/error_messages', :target => @contact %>
     <%= render 'shared/flash_messages' %>
@@ -14,7 +14,7 @@
       <%= c.input :message, :as => :text, :placeholder => "Mensagem", :label => false,:required=>true %>
 
       <%= c.actions do %>
-      <%= c.action :submit, :label => "Enviar", :button_html => { :class => "btn"} %>
+      <%= c.action :submit, :label => "Enviar", :button_html => { :class => "btn btn_large"} %>
       <% end %>
       <% end %>
       <% end %>

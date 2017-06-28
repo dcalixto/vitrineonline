@@ -5810,6 +5810,212 @@ bl.virtuals.create(:name => "Arquivos")
 
 
 
+
+bl = Block.create(:category => 'Serviços')
+bl.services.create(:name => "Academia e Esportes")
+bl.services.create(:name => "Animais")
+bl.services.create(:name => "Beleza, Estética e Bem estar")
+bl.services.create(:name => "Educação")
+bl.services.create(:name => "Festas e Eventos")
+bl.services.create(:name => "Gastronomia")
+bl.services.create(:name => "Domésticos e Manutenção")
+bl.services.create(:name => "Marketing e Internet")
+bl.services.create(:name => "Segurança e Monitoramento")
+bl.services.create(:name => "Saúde")
+bl.services.create(:name => "Suporte Técnico")
+bl.services.create(:name => "Veículos e Transportes")
+bl.services.create(:name => "Vestuário")
+bl.services.create(:name => "Viagens e Turismo")
+
+
+
+s = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Academia e Esportes').first
+if s.present?
+s.categories.create(:name => "Academias")
+s.categories.create(:name => "Aulas e Cursos Esportivos")
+s.categories.create(:name => "Equipamento Esportivo")
+s.categories.create(:name => "Personal Trainer")
+s.categories.create(:name => "Quadras Esportivas")
+
+end
+
+
+
+sa = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Animais').first
+if sa.present?
+sa.categories.create(:name => "Adestramento")
+sa.categories.create(:name => "Pet Shops")
+sa.categories.create(:name => "Transporte")
+sa.categories.create(:name => "Veterinário")
+sa.categories.create(:name => "Hotel e Canil")
+
+end
+
+
+
+sb = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Beleza, Estética e Bem Estar').first
+if sb.present?
+sb.categories.create(:name => "Acupuntura")
+sb.categories.create(:name => "Massagista")
+sb.categories.create(:name => "Clínicas de Estética")
+sb.categories.create(:name => "Cursos em Beleza")
+sb.categories.create(:name => "Salão de Beleza")
+sb.categories.create(:name => "Spar")
+
+end
+
+
+se = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Educação').first
+if se.present?
+se.categories.create(:name => "Aulas Particulares")
+se.categories.create(:name => "Berçário e Creche")
+se.categories.create(:name => "Colégios e Escolas")
+se.categories.create(:name => "Cursos")
+se.categories.create(:name => "Faculdades e Universidades")
+
+end
+
+
+sf = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Festas e Eventos').first
+if sf.present?
+sf.categories.create(:name => "Aluguel de Equipamento")
+sf.categories.create(:name => "Comida e Bebida")
+sf.categories.create(:name => "Decoração")
+sf.categories.create(:name => "Entretenimento")
+sf.categories.create(:name => "Salões")
+
+end
+
+
+sg = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Gastrônomia').first
+if sg.present?
+sg.categories.create(:name => "Bares")
+sg.categories.create(:name => "Buffet")
+sg.categories.create(:name => "Café")
+sg.categories.create(:name => "FastFood")
+sg.categories.create(:name => "Restaurantes")
+
+end
+
+
+sm = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Domésticos e Manutenção').first
+if sm.present?
+sm.categories.create(:name => "Limpeza")
+sm.categories.create(:name => "Marcenaria")
+sm.categories.create(:name => "Hidraulica")
+sm.categories.create(:name => "Eletricista")
+sm.categories.create(:name => "Construção")
+
+end
+
+
+
+
+si = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Marketing e Internet').first
+if si.present?
+si.categories.create(:name => "Comunicação")
+si.categories.create(:name => "Programação")
+si.categories.create(:name => "Webdesign")
+si.categories.create(:name => "Provedores")
+si.categories.create(:name => "Desenvolvedor Web")
+si.categories.create(:name => "Desenvolvedor Mobile")
+si.categories.create(:name => "SEO")
+si.categories.create(:name => "Aumento de Tráfego")
+si.categories.create(:name => "Email Marketing")
+si.categories.create(:name => "Supporte")
+si.categories.create(:name => "Analise de dados")
+si.categories.create(:name => "Beta Tester")
+
+end
+
+
+
+
+
+
+ss = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Segurança e Monitoramento').first
+if ss.present?
+ss.categories.create(:name => "Segurança")
+ss.categories.create(:name => "Guardacosta")
+ss.categories.create(:name => "Artista Marcial")
+
+end
+
+
+su = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Saude').first
+if su.present?
+su.categories.create(:name => "Enfermeiros")
+su.categories.create(:name => "Planos de Saúde")
+su.categories.create(:name => "Podólogo")
+su.categories.create(:name => "Psicólogo")
+su.categories.create(:name => "Terapia Alternativa")
+
+end
+
+
+sup = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Suporte Técnico').first
+if sup.present?
+sup.categories.create(:name => "Áudio, Vídeo e Câmera")
+sup.categories.create(:name => "Celulares e Telefonia")
+sup.categories.create(:name => "Eletrodomésticos")
+sup.categories.create(:name => "Eletrônicos")
+sup.categories.create(:name => "Informática")
+sup.categories.create(:name => "Instrumentos Musicais")
+sup.categories.create(:name => "Joias e Relógios")
+sup.categories.create(:name => "Máquinas de Empresa")
+sup.categories.create(:name => "Vídeogame")
+
+end
+
+
+svt = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Veículos e Transportes').first
+if svt.present?
+
+svt.categories.create(:name => "Aluguel")
+svt.categories.create(:name => "Funilaria e Pintura")
+svt.categories.create(:name => "Mudança")
+svt.categories.create(:name => "Serviço de Táxi e Uber")
+svt.categories.create(:name => "Serviço de Centro Automotivos e Mecânicas")
+
+svt.categories.create(:name => "Transportadora")
+
+end
+
+
+
+
+
+sv = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Vestuário').first
+if sv.present?
+
+sv.categories.create(:name => "Confecção e Alfaiate")
+sv.categories.create(:name => "Lojas")
+sv.categories.create(:name => "Reparos")
+
+
+end
+
+
+
+
+
+sg = Service.joins(:block).where("category = ? and name = ?", 'Serviços', 'Viagens e Turismo').first
+if sg.present?
+
+sg.categories.create(:name => "Agências de Turismo")
+
+sg.categories.create(:name => "Parques e Passeios")
+sg.categories.create(:name => "Pousadas e Hotéis")
+
+
+end
+
+
+
+
+
+
+
 gm = Gender.joins(:block).where("category = ? and gender = ?", 'Roupas, Calçados e acessórios', 'Masculino').first
 if gm.present?
 gm.categories.create(:name => "Roupas")
@@ -6094,40 +6300,6 @@ end
 
 
 
-ebrand_list = [
-"SONY",
-"JBL",
-"Apple",
-"SAMSUNG",
-"DELL",
-"HTC",
-"Logitech",
-"Pyle",
-"Pioneer",
-"BOSS",
-"Blackweb",
-"Alienware",
-"VIZIO",
-"FileMate",
-"Panasonic",
-"Philips",
-"Genius",
-"Befree Sound",
-"Beats by Dr. Dre",
-"Altec Lancing",
-"Axess",
-"iLive",
-"ION Audio",
-
-"Sonos",
-"GEMs",
-]
-
-
-ebrand_list.each do |name|
-  Ebrand.create( name: name )
-end
-
 
 
 
@@ -6233,1292 +6405,4 @@ end
 
 
 
-brand_list = [
 
-
-  "10 Crosby Derek Lam",
-  "2(X)IST",
-  "2 Lips Too",
-  "2XU",
-  "3.1 Phillip Lim",
-  "525 america",
-  "686",
-  "7 Diamonds",
-   "7 For All Mankind",
-
-   "a. testoni",
-    "A Gold E",
-    "ABS Allen Schwartz",
-    "Acorn",
-    "adidas",
-    "Adrianna Papell",
-    "Adrienne Vittadini",
-    "Aerin",
-    "Aerosoles",
-    "Aetrex",
-    "Affliction",
-    "AG Adriano Goldschmied",
-    "Agave Denim",
-    "Agent Provocateur",
-    "AHAVA",
-    "Ahnu",
-    "Aidan Mattox",
-    "AIGLE",
-    "Akomplice",
-    "ALDO",
-    "Alegria",
-    "Alejandra Sky",
-    "Alex and Ani",
-    "Alexander McQueen",
-    "Alexis Bittar",
-    "Ali & Kris",
-    "Alice + Olivia",
-    "Alivio",
-    "Allen Allen",
-    "Allen-Edmonds",
-    "ALO",
-    "ALOR",
-    "Alpha Industries",
-    "Alpinestars",
-    "Alp-n-Rock",
-    "Alpro",
-    "Alternative",
-    "Altra Zero Drop Footwear",
-    "Amalfi by Rangoni",
-    "Amanda Uprichard",
-    "American West",
-    "Amiana",
-    "Amuse Society",
-    "Andrew Marc x Richard Chai",
-    "Angie",
-    "Anita",
-    "Ann Marino",
-    "Anna Beck",
-    "Anne Klein",
-    "Annie",
-    "Antique Rivet",
-    "Antonio Zengara",
-    "Anuschka Handbags",
-    "Anyi Lu",
-    "Apepazza",
-    "Appaman Kids",
-    "Aquatalia",
-    "ara",
-    "Aravon",
-    "Arc'teryx",
-    "Arche",
-    "Arcopedico",
-    "Ariat",
-    "Armani Jeans",
-    "Armani Junior",
-    "Arnette",
-    "article nº",
-    "Aryn K",
-    "ASH",
-    "Ashworth",
-    "ASICS",
-    "Asolo",
-    "Aster Kids",
-    "Athalon",
-    "Athena",
-    "Athena Alexander",
-    "Authentic Apparel",
-    "Autumn Cashmere",
-    "Aventura Clothing",
-    "Avia",
-
-    "b.o.c.",
-    "b.tempt'd",
-    "Baby Deer",
-    "Badgley Mischka",
-    "Baffin",
-    "Baggallini",
-    "Bailey 44",
-    "Band of Outsiders",
-    "Bandolino",
-    "Bardot",
-    "Bare Traps",
-    "Base London",
-    "Bass",
-    "Basta",
-    "Bates Footwear",
-    "Bates Riding Collection",
-    "BB Dakota",
-    "BC Footwear",
-    "BCBGeneration",
-    "BCBGMAXAZRIA",
-    "Beach Bunny",
-    "Beach Riot",
-    "Bearpaw",
-    "Beats By Dre",
-    "BECCA by Rebecca Virtue",
-    "Bed Stu",
-    "BedHead",
-    "Bedroom Athletics",
-    "Beeko",
-    "Bella-Vita",
-    "Ben Sherman",
-    "Bench",
-    "Bern",
-    "Bernardo",
-    "bernie mev.",
-    "Betsey Johnson",
-    "Betula Licensed by Birkenstock",
-    "Big Buddha",
-    "Big Star",
-    "Bikkembergs",
-    "Bill Adler 1981",
-    "Billabong",
-    "Billy Reid",
-    "Bindya",
-    "Bionica",
-    "Birkenstock",
-    "Biscotti",
-    "Black Diamond",
-    "Blank NYC",
-    "Bleu Rod Beattie",
-    "Blind",
-    "Bloch",
-    "Blondo",
-    "Blowfish",
-    "Blundstone",
-    "Boast",
-    "Bobeau",
-    "Bobux Kids",
-    "Body Glove",
-    "Bogner",
-    "Bogner Fire + Ice",
-    "Bogs",
-    "BOOTIGHTS",
-    "Born",
-    "BOSS Hugo Boss",
-    "Bostonian",
-    "Bottega Veneta",
-    "BOTTOMS O.U.T GAL",
-    "Bouquets",
-    "Boutique 9",
-    "Breil Milano",
-    "Brenthaven",
-    "Brette Sandler",
-    "Bric's Milano",
-    "Briggs & Riley",
-    "Brighton",
-    "Brigitte Bailey",
-    "Brixton",
-    "Brooks",
-    "Bruno Magli",
-    "Buffalo David Bitton",
-    "Bugatchi",
-    "BUKS by Walk-Over",
-    "BULA",
-    "Bulova",
-    "Bumbums & Baubles",
-    "Burton",
-    "Bvlgari",
-
-
-
-    "C Label",
-    "C&C California",
-    "Call it SPRING",
-    "Callaway",
-    "Calphalon",
-    "Calvin Klein",
-    "Camper",
-    "Caparros",
-    "Capezio",
-    "Carhartt",
-    "CARLOS by Carlos Santana",
-    "Carole Hochman",
-    "Carrera",
-    "Carters",
-    "Carve Designs",
-    "Caterpillar",
-    "CATHERINE Catherine Malandrino",
-    "Catherine Malandrino",
-    "Celtek",
-    "CEP",
-    "Cesare Paciotti",
-    "Chaco",
-    "Champion",
-    "Chan Luu",
-
-
-    "Charles Albert",
-    "Charles by Charles David",
-    "Charlotte Olympia",
-    "Chaser",
-    "Cheap Monday",
-    "Chinese Laundry",
-    "Chippewa",
-    "Chloe",
-    "Chooka",
-    "CHOOZE",
-    "Christin Michaels",
-    "Christopher Blue",
-    "Chrome",
-    "Cienta Kids Shoes",
-    "Cinch",
-    "Circa",
-    "Circa Joan & David",
-    "CJ by Cookie Johnson",
-    "CL By Laundry",
-    "Clae",
-    "Clarks",
-    "Cliché Mode",
-    "Cliffs by White Mountain",
-    "COACH",
-    "Coal",
-    "Cobb Hill",
-    "Cobian",
-    "Coconinno by Eva Franco",
-    "Cole Haan",
-    "Coloriffics",
-    "Columbia",
-    "Commando",
-    "Converse",
-    "Coobie",
-    "COOLA Suncare",
-    "Cordani",
-    "Corso Como",
-    "Cosabella",
-    "CoSTUME NATIONAL",
-    "COWBOYSBELT",
-    "COZY ORANGE",
-    "Creative Recreation",
-    "Crocs",
-    "Crooks & Castles",
-    "Croscill",
-    "Cruel",
-    "Crumpler",
-    "Cufflinks Inc.",
-    "Culture Phit",
-    "Cushe",
-    "Cutter & Buck",
-    "CW-X",
-    "Cycleur de Luxe",
-
-
-    "Dakine",
-    "Dale of Norway",
-    "Dan Post",
-    "Daniel Green",
-    "Danner",
-    "Dansko",
-    "Darkstar",
-    "David Tate",
-    "David Tutera",
-    "DBYD",
-    "DC",
-    "De Soto",
-    "Deborah Lippmann",
-    "Dee Berkley",
-    "Deer Stags",
-    "Dekline",
-    "DeLatori",
-    "Delivering Happiness",
-    "Delman",
-    "Delsey",
-    "Derek Lam",
-    "Descendant Of Thieves",
-    "Desigual",
-    "Deus Ex Machina",
-    "Deux Lux",
-    "Dezario",
-    "DI NERO MILANO",
-    "Diadora",
-    "Diane von Furstenberg",
-    "Diba",
-    "Diesel",
-    "Dimmi Footwear",
-    "Dingo",
-    "Dirty Laundry",
-    "Disguise",
-    "Dittos",
-    "DKNY",
-    "DL1961",
-    "Dockers",
-    "Dogeared",
-    "Dolce & Gabbana",
-    "DOLCE by Mojo Moxy",
-    "Dolce Vita",
-    "dollhouse",
-    "Donald J Pliner",
-    "Donna Karan",
-    "Donna Morgan",
-    "Dooney & Bourke",
-    "Double D Ranchwear",
-    "DOUBLE ZERO",
-    "Doucal's",
-    "Dr. Martens",
-    "Dr. Scholl's",
-    "Dragon Alliance",
-    "Drymax Sport",
-    "DSQUARED2",
-    "Dune London",
-    "Dunham",
-    "Durango",
-    "Dusters",
-    "DV8",
-    "DVS Shoe Company",
-    "Dyeables",
-    "Dylan by True Grit",
-
-    "E! Live from the Red Carpet",
-    "Earth",
-    "Eastland",
-    "Eastland 1955 Edition",
-    "Easy Spirit",
-    "Easy Street",
-    "Eberjey",
-    "ECCO",
-    "Echo Design",
-    "Eco Swim by Aqua Green",
-    "Ecoths",
-    "Eileen Fisher",
-    "Eileen West",
-    "El Naturalista",
-    "Electric Eyewear",
-    "Element",
-    "Elephantito",
-    "Eleven Paris",
-    "Elie Tahari",
-    "Elite",
-    "Eliza J",
-    "Elizabeth and James",
-    "Ella Moss",
-    "Ellen Tracy",
-    "Elliott Lucca",
-    "Emerica",
-    "EMMA COOK",
-    "Emma Fox",
-    "Emporio Armani",
-    "EMU Australia",
-    "English Laundry",
-    "Enzo Angiolini",
-    "EQUIPMENT",
-    "Eric Michael",
-    "Esprit",
-    "Essie",
-    "etnies",
-    "Etro",
-    "Eugenia Kim",
-    "EuroSoft",
-    "EVOLV",
-    "ExOfficio",
-    "eyebobs",
-
-
-
-
-    "Fairway Fox",
-    "Falke",
-    "Fallen",
-    "Famous Stars & Straps",
-    "Faviana",
-    "Favorite Characters",
-    "Feetures",
-    "Feiyue Kids",
-    "Fendi Kids",
-    "Fergie",
-    "Fidji",
-    "FIEL",
-    "FIG Clothing",
-    "Fila",
-    "Finn Comfort",
-    "Fisher Price",
-    "FitFlop",
-    "Fitzwell",
-    "Five Ten",
-    "fiveloaves twofish",
-    "Fjällräven",
-    "Flexus",
-    "Flogg",
-    "Flojos",
-    "Florsheim",
-    "Foamtreads",
-    "Foley & Corinna",
-    "FootJoy",
-    "FootMates",
-    "For Love and Lemons",
-    "Fossil",
-    "Fox",
-    "Fox River",
-    "Franchi Handbags",
-    "Francine",
-    "Franco Sarto",
-    "Fratelli Rossetti",
-    "Fred Perry",
-    "Free Country",
-    "Free People",
-    "Freebird",
-
-    "Freestyle",
-    "Freewaters",
-    "French Connection",
-    "French Sole",
-    "Fresh Brand",
-    "Fresh Produce",
-    "Frye",
-    "FUL",
-    "Furla",
-
-
-
-
-    "G.E.T.",
-    "G by GUESS",
-    "Gabor",
-    "Gabriella Rocha",
-    "Gaiam",
-    "Gant Rugger",
-    "GBX",
-    "Generic Surplus",
-    "Genetic Denim",
-    "Gentle Souls",
-    "George Gina & Lucy",
-    "Geox",
-    "Giles & Brother",
-    "Giorgio Brutini",
-    "Giro",
-    "Giuseppe Zanotti",
-    "Givenchy",
-    "Globe",
-    "Gnu",
-    "Gola",
-    "Gold Coast",
-    "Goodhew",
-    "Goorin Brothers",
-    "Gordon Rush",
-    "Gorilla",
-    "gorjana",
-    "Grace Hats",
-    "Graham and Spencer",
-    "Gravati",
-    "Grazie",
-    "Grenson",
-    "Grey City",
-    "G-Star",
-    "GUESS",
-    "GX By Gwen Stefani",
-    "Gypsy SOULE",
-
-
-    "Haculla",
-    "Hadaki",
-    "Haflinger",
-    "Hale Bob",
-    "Halston Heritage",
-    "Hanky Panky",
-    "Hanna Andersson",
-    "Hanro",
-    "Hanwag",
-    "Harley-Davidson",
-    "Harveys Seatbelt Bag",
-    "Hat Attack",
-    "Hatley",
-    "Haurex Italy",
-    "Havaianas",
-    "Heather Grey",
-    "Heelys",
-    "Helle Comfort",
-    "Helly Hansen",
-    "HELMUT LANG",
-    "Henry & Belle",
-    "Herschel Supply Co.",
-    "HEX",
-    "High Sierra",
-    "Hi-Tec",
-    "Hobo",
-    "Hoka One One",
-    "Home Source International",
-    "Hot Chillys",
-    "House of Harlow 1960",
-    "Howe",
-    "Hudson",
-    "HUE",
-    "HUF",
-    "Hunter",
-    "Hurley",
-    "Hush Puppies",
-
-
-    "Icebreaker",
-    "IKKS",
-    "Incase",
-    "Injinji",
-    "inov-8",
-    "Ipath",
-    "Irish Setter",
-    "Isaac Mizrahi New York",
-    "Isola",
-    "ISOTONER Signature",
-    "Italia Independent",
-    "Ivanka Trump",
-    "IVI",
-    "Ivy & Blu Maggy Boutique",
-    "IVY KIRZHNER",
-    "IZOD",
-
-    "J. Renee",
-    "J. Shoes",
-    "J.A.C.H.S.",
-    "J Brand",
-    "J-41",
-    "Jack Rogers",
-    "Jack Spade",
-    "Jack Wolfskin",
-    "Jag Jeans",
-    "Jambu",
-    "James Jeans",
-    "Jamie Sadock",
-    "Jane & Bleecker",
-    "JanSport",
-    "Jantzen",
-    "JBU",
-    "JD Fisk",
-    "Jean Paul Gaultier",
-    "Jefferies Socks",
-    "Jeffery-West",
-    "Jellypop",
-    "Jessica Howard",
-    "Jessica McClintock",
-    "Jessica Simpson",
-    "Jet Lag",
-    "JILL JILL STUART",
-    "Jimmy Choo",
-    "Joan & David",
-    "Jockey",
-    "Joe's Jeans",
-    "Jofit",
-    "John Deere",
-    "John Varvatos",
-    "Johnston & Murphy",
-    "Joie",
-    "Jonathan Adler",
-    "Jones New York",
-    "Josef Seibel",
-    "Josie",
-    "Judith Jack",
-    "Juicy Couture",
-    "Julbo Eyewear",
-    "julia jordan",
-    "Jumping Jacks Kids",
-    "Just Cavalli",
-    "Justin",
-
-    "Kaenon",
-    "KAMALIKULTURE by Norma Kamali",
-    "Kamik",
-    "KangaROOS",
-    "Kangol",
-    "Karen Kane",
-    "Karen Neuburger",
-    "KAS New York",
-    "Kassatex",
-    "Kat Maconie",
-    "Kate Mack",
-    "Kate Spade New York",
-    "KAVU",
-    "KC Collections",
-    "Keds",
-    "Keen",
-    "Kelsi Dagger",
-    "Kelty",
-    "Kendra Scott",
-    "Kennel & Schmenger",
-    "Kenneth Cole",
-    "Kenneth Cole Reaction",
-    "Kenneth Jay Lane",
-    "kensie",
-    "Khombu",
-    "Kickers",
-    "Kid Express",
-    "Kier + J",
-    "Kim & Zozi",
-    "KINETIX",
-    "King Baby Studio",
-    "Kiyonna",
-    "Klogs Footwear",
-    "KNOMO London",
-    "Kooba",
-    "Koolaburra",
-    "Kork-Ease",
-    "KR3W",
-    "Kroon",
-    "K-Swiss",
-    "Kuhl",
-    "Kurt Geiger",
-    "KUT from the Kloth",
-    "K-WAY",
-
-
-
-    "L.A.M.B.",
-    "L.B. Evans",
-    "L*Space",
-    "La Bella Donna",
-    "La Blanca",
-    "La Canadienne",
-    "La Plume",
-    "La Sportiva",
-    "Lacoste",
-    "Lakai",
-    "LAmade",
-    "Lamo",
-    "Lanvin",
-
-
-
-    "Laredo",
-    "Larry Levine",
-    "Lassen",
-    "Laundry by Shelli Segal",
-    "Laura Ashley",
-    "LAUREN by Ralph Lauren",
-    "Lauren Lorraine",
-    "Layla",
-    "Le Chameau",
-    "Le Mystere",
-    "Le Specs",
-    "le top",
-    "Leatherock",
-    "LEGO Kids",
-    "Lelli Kelly Kids",
-    "Leslie Danzis",
-    "LeSportsac",
-    "Level 99",
-    "Levi's®",
-    "Levi's® Made & Crafted",
-    "Lib Tech",
-    "Liebeskind",
-    "Life is good",
-    "LifeStride",
-    "Lifetime Collective",
-    "Lightning Bolt",
-    "LIJA",
-    "Lilly Pulitzer",
-    "Lindbergh",
-    "Linea Pelle",
-    "Lipault Paris",
-    "Little Giraffe",
-    "Liverpool",
-    "Livie & Luca",
-    "Lloyd",
-    "LNA",
-    "Lobo Solo",
-    "Lodis Accessories",
-    "Loeffler Randall",
-    "Lole",
-    "Lolli",
-    "London Fog",
-    "London Times",
-    "Lotus",
-    "Loudmouth Golf",
-    "Louis Garneau",
-    "LOVE Moschino",
-    "Love Quotes",
-    "Lowa",
-    "L-R-G",
-    "Lucchese",
-    "Lucky Brand",
-    "Lucy",
-    "Lucy Love",
-    "Lugz",
-    "Luichiny",
-    "Luli Fama",
-    "Lumiani International Collection",
-    "Luna Luna Copenhagen",
-    "Luv Betsey",
-    "Luxury Rebel",
-    "Lysse",
-
-
-
-    "M&F Western",
-    "Maaji",
-    "Macbeth",
-    "Madden Girl",
-    "MadPax",
-    "Maggy London",
-    "Magicsuit",
-    "Magnanni",
-    "Magnum",
-    "Maidenform",
-    "Maine Woods",
-    "Majorica",
-    "Manduka",
-    "Manhattan Portage",
-    "Manoukian",
-    "Manzella",
-    "Mara and Mine",
-    "Mara Hoffman",
-    "Marca Própria",
-    "Marc by Marc Jacobs",
-    "Marc Ecko",
-    "Marc Fisher LTD",
-    "Marc Jacobs",
-    "Marc New York by Andrew Marc",
-    "Marciano",
-    "Margaritaville",
-    "Marika Curves",
-    "Mark McNairy New Amsterdam",
-    "Markus Lupfer",
-    "Marmot",
-    "Marshall Artist",
-    "Marvin K",
-    "Mary Frances",
-    "Massimo Matteo",
-    "Matisse",
-    "Matix Clothing Company",
-    "Matt Bernson",
-    "Mavi Jeans",
-    "McQ",
-    "Mel by Melissa",
-    "Melissa Odabash",
-    "Melissa Shoes",
-    "Members Only",
-    "Mephisto",
-    "Merrell",
-    "Messico",
-    "Mezlan",
-    "MIA",
-    "Michael Antonio",
-    "Michael Kors",
-    "Michael Stars",
-    "Michele",
-    "Mighty Purse",
-    "Miista",
-    "MIKOH SWIMWEAR",
-    "Mini Melissa",
-    "MINKPINK",
-    "Minnetonka",
-    "Miraclebody Jeans",
-    "Miraclesuit",
-    "Missoni",
-    "Miz Mooz",
-    "Mizuno",
-    "MM6 Maison Margiela",
-    "Mod8",
-    "Mod-o-doc",
-    "Mojo Moxy",
-    "Momentum by St. Moritz",
-    "Montrail",
-    "Moods of Norway",
-    "Mootsies Tootsies",
-    "Morgan&Milo Kids",
-    "Moschino",
-    "Mosey",
-    "Mountain Hardwear",
-    "Mountain Khakis",
-    "Moving Comfort",
-    "MOZO",
-    "MPG Sport",
-    "Mr.Turk",
-    "MUK LUKS",
-    "Munro American",
-    "My Flat In London",
-    "Mynt 1792",
-
-
-
-    "Nally & Millie",
-    "Nanette Lepore",
-    "Naot Footwear",
-    "Native Eyewear",
-    "Native Shoes",
-    "Natori",
-    "Naturalizer",
-    "Naturino",
-    "NAU",
-    "Naughty Monkey",
-    "Nautica",
-    "Naya",
-    "Neff",
-    "Neil Barrett",
-    "Neil M.",
-    "Nevados",
-    "New Balance",
-    "New Era",
-    "Newton Running",
-    "Next by Athena",
-    "NIC+ZOE",
-    "Nicole",
-    "Nicole Miller",
-    "Nightcap",
-    "Nike",
-    "Nikita",
-    "Nina",
-    "Nina Originals",
-    "Nine West",
-    "Nixon",
-    "NOMAD",
-    "Northside",
-    "Not Rated",
-    "Nunn Bush",
-    "Nurse Mates",
-    "NUX",
-    "NYDJ",
-
-
-      "O'Neill",
-      "Oakley",
-      "Obermeyer",
-      "Obey",
-      "Oenophilia",
-      "OGIO",
-      "Oh! Shoes",
-      "Oil & Water",
-      "Old Friend",
-      "Old Gringo",
-      "Old Soles",
-      "Old West Boots",
-      "Olga",
-      "Oliberte",
-      "Olive & Oak",
-      "Oliver Peoples West",
-      "OluKai",
-      "On",
-      "Onex",
-
-
-        "OnGossamer",
-        "ONLY",
-        "Onzie",
-        "Original Penguin",
-        "Orla Kiely",
-        "ORLY",
-        "Oscar de la Renta",
-        "OshKosh",
-        "Osiris",
-        "Osprey",
-        "OTBT",
-        "OTZ",
-        "Outdoor Research",
-
-
-          "P.J. Salvage",
-          "Pablosky Kids",
-          "Pacsafe",
-          "PACT",
-          "Paige",
-          "Pajar CANADA",
-          "Palladium",
-          "Pampili",
-          "Parker",
-          "Patagonia",
-          "Patricia Green",
-          "Patricia Nash",
-          "PATRIZIA",
-          "Patterson J Kincaid",
-          "Paul Green",
-          "Paul Smith",
-          "Paula Dorf",
-          "Pazitos",
-          "Peace Love World",
-          "Pearl Izumi",
-          "pediped",
-          "Pedro Garcia",
-          "Pendleton",
-          "Penelope Chilvers",
-          "Penfield",
-          "Penny Loves Kenny",
-          "Perry Ellis",
-          "petunia pickle bottom",
-          "PF Flyers",
-          "Philip Stein",
-          "Philipp Plein",
-          "Pierre Balmain",
-          "Pikolinos",
-          "Pink & Pepper",
-          "Pink Lotus",
-          "Pink Rose",
-          "Pippa & Julie",
-          "Pistil",
-          "Pleaser USA",
-          "Plomo",
-          "Plush",
-          "Polaroid Eyewear",
-          "Poler",
-          "Polo Ralph Lauren",
-          "Poppy & Bloom",
-          "Pour La Victoire",
-          "Prabal Gurung",
-          "Prana",
-          "Primigi Kids",
-          "PRIVATE STOCK",
-          "Proenza Schouler",
-          "Profile Design",
-          "Project Canvas",
-          "PROJEK RAW",
-          "Propet",
-          "Prps Goods & Co",
-          "Publish",
-          "PUMA",
-          "Pumpkin Patch Kids",
-          "purminerals",
-
-
-  "Quiksilver",
-
-
-
-    "Rachel Kids",
-    "Rachel Pally",
-    "Rachel Roy",
-    "Rachel Zoe",
-    "radii Footwear",
-    "RAEN Optics",
-    "Rafe New York",
-    "Rafters",
-    "rag & bone",
-    "Rainforest",
-    "Ralph Lauren Collection",
-    "Rampage",
-    "Randolph",
-    "Ray-Ban",
-    "Razor",
-    "Rebecca Minkoff",
-    "Rebecca Taylor",
-    "Rebels",
-    "RED VALENTINO",
-    "Reebok",
-    "Reef",
-    "Relic",
-    "Repetto",
-    "Report",
-    "Report Collection",
-    "Request",
-    "Reyn Spooner",
-    "Rialto",
-    "Riedel",
-    "Rieker",
-    "Riller & Fount",
-    "Rip Curl",
-    "Robeez",
-    "Robert Clergerie",
-    "Robert Graham",
-    "Robert Lee Morris",
-    "Robert Rodriguez",
-    "Robert Wayne",
-    "Roberto Cavalli",
-    "Roberto Coin",
-    "Rock and Roll Cowboy",
-    "Rock and Roll Cowgirl",
-    "Rock Revival",
-    "Rocket Dog",
-    "Rockport",
-    "Rodd & Gunn",
-    "Rogue",
-    "Romantic Soles",
-    "Romika",
-    "Ron White",
-    "Roper",
-    "Ros Hommerson",
-    "Rosetti",
-    "Roxy",
-    "Royal Luxe",
-    "Royal Robbins",
-    "rsvp",
-    "Ruffwear",
-    "RVCA",
-    "Ryka",
-
-
-
-    "SAINT & LIBERTINE",
-    "SALEWA",
-    "Salomon",
-    "Salvatore Ferragamo",
-    "Sam Edelman",
-    "San Diego Hat Company",
-    "Sanctuary",
-    "Sangria",
-    "Sanita",
-    "Santoni",
-    "Sanuk",
-    "Saucony",
-    "Sbicca",
-    "SCALA",
-    "Scarpa",
-    "School Issue",
-    "Schutz",
-    "Scotch & Soda",
-    "Scott Hawaii",
-    "Scott James",
-    "Scully",
-    "Seafolly",
-    "SeaVees",
-    "Sebago",
-    "See by Chloe",
-    "See Kai Run Kids",
-    "Seirus",
-    "Sergio Rossi",
-    "Sesto Meucci",
-    "Seven7 Jeans",
-    "Seychelles",
-    "She + Lo",
-    "SHEEX",
-    "Shellys London",
-    "Sherpani",
-    "Shimano",
-    "Shock Absorber",
-    "Shoshanna",
-    "Sigerson Morrison",
-    "Silver Jeans Co.",
-    "Simply Petals",
-    "Siwy Denim",
-    "SJP by Sarah Jessica Parker",
-    "SKECHERS",
-    "Skip Hop",
-    "Skirt Sports",
-    "Skullcandy",
-    "Slap",
-    "SLVR",
-    "Smartwool",
-    "Smith Optics",
-    "Sockwell",
-    "Sofft",
-    "Soft Style",
-    "Softspots",
-    "Soft-Tex",
-    "SoftWalk",
-    "SOL Republic",
-    "SOLD Design Lab",
-    "SOLE",
-    "Soludos",
-    "SOREL",
-    "Sovereign Code",
-    "Soybu",
-    "Spacecraft",
-    "Spalding",
-    "Spanx",
-
-
-
-    "SpaRitual",
-    "Special Blend",
-    "Speedo",
-    "Spenco",
-    "Sperry Top-Sider",
-    "Spiewak",
-    "Spira",
-    "Splendid",
-    "Sporto",
-    "Spring Step",
-    "Spy Optic",
-    "Spyder",
-    "Stacy Adams",
-    "Stance",
-    "Staple",
-    "Stella McCartney",
-    "Steptronic",
-    "Stetson",
-    "Steve Madden",
-    "STM Bags",
-    "Stonewear Designs",
-    "Stonz",
-    "Stop Staring!",
-    "Streetcars",
-    "Stride Rite",
-    "Stuart Weitzman",
-    "StyleStalker",
-    "Sugoi",
-    "Summit White Mountain",
-    "Super",
-    "Superfit",
-    "Superga",
-    "Supra",
-    "Susana Monaco",
-    "SWEAR",
-    "Swedish Hasbeens",
-    "Swiss Military",
-
-      "T Tahari",
-      "Tahari",
-      "Tahari by ASL",
-      "Tail Activewear",
-      "Tailgate Clothing Co.",
-      "Tamaris",
-      "taos Footwear",
-      "Tart",
-      "Taryn Rose",
-      "tasc Performance",
-      "Tasha Polizzi",
-      "Tavik",
-      "Taylor Made",
-      "Tbags Los Angeles",
-      "Tecnica",
-      "Ted Baker",
-      "Terramar",
-      "Teva",
-      "THAKOON ADDITION",
-      "The Cool People",
-      "The FLEXX",
-      "The Kooples",
-      "The North Face",
-      "The Original Retro Brand",
-      "The Sak",
-      "Theory",
-      "Think!",
-      "thirtytwo",
-      "Thomas Dean & Co.",
-      "Thorlos",
-      "Thorocraft",
-      "Thorogood",
-      "Threads 4 Thought",
-      "Three Dots",
-      "tibi",
-      "Tifosi Optics",
-      "Timberland",
-      "Timbuk2",
-      "Timex",
-      "tipsy elves",
-      "Tkees",
-      "To Boot New York",
-      "Toad&Co",
-      "Toes on the Nose",
-      "Tolani",
-      "Tommy Bahama",
-      "Tommy Hilfiger",
-      "TOMS",
-      "Tonic",
-      "Tony Lama",
-      "Toobydoo",
-      "Tori Praver",
-      "Torino Leather Co.",
-      "Totes",
-      "Touch Ups",
-      "Townsen",
-      "Trafalgar",
-      "Trask",
-      "Travelpro",
-      "TravisMathew",
-      "Tretorn",
-      "Trina Turk",
-      "Triple Eight",
-      "Trotters",
-      "True Religion",
-      "Tsubo",
-      "Tsukihoshi Kids",
-      "Tubbs",
-      "Tucker",
-      "Tuf Cooper by Panhandle",
-      "Tumi",
-      "Tundra Boots",
-      "Twig Kids",
-      "Two Lips",
-      "Type Z",
-      "TYR",
-
-
-
-
-        "U.S. POLO ASSN.",
-        "UGG",
-        "Ukala Sydney",
-        "Umi Kids",
-        "Unbelievable Testing Laboratory Kids",
-        "Under Armour",
-        "UNIONBAY",
-        "Unique Vintage",
-        "United Colors of Benetton Kids",
-        "Us Angels",
-
-
-        "Valentino",
-        "Valentino Bags by Mario Valentino",
-        "Vaneli",
-        "Vanessa Mooney",
-        "Vanity Fair",
-        "Vans",
-        "Vasque",
-        "Velvet by Graham & Spencer",
-        "Venettini Kids",
-        "Vera Bradley",
-        "Vera Wang",
-        "Versace",
-        "Vibram FiveFingers",
-        "Victorinox",
-        "Vidorreta",
-        "Vigotti",
-        "Viktor & Rolf",
-        "Vince",
-        "Vince Camuto",
-        "Vineyard Vines",
-        "VIONIC",
-        "VISSLA",
-        "Vitamin A Swimwear",
-        "Vivanz",
-        "Vivienne Westwood",
-        "Vivobarefoot",
-        "Vix",
-        "Vogue",
-        "VOLATILE",
-        "Volcom",
-        "Volley Australia",
-        "VonZipper",
-
-
-
-
-        "würkin stiffs",
-        "Wacoal",
-        "Waechtersbach",
-        "Walking Cradles",
-        "Walk-Over",
-        "Wanted",
-        "Ward's Boxing Club NYC",
-        "Weatherproof",
-        "WeSC",
-        "Westcomb",
-        "Western Chief",
-        "Western Chief Kids",
-        "White Mountain",
-        "White Sierra",
-        "Whitney Eve",
-        "Wigwam",
-        "Wildfox",
-        "Will Leather Goods",
-        "William Rast",
-        "Wilson",
-        "Wolford",
-        "Wolky",
-        "Wolverine",
-        "Woolrich",
-        "Worishofer",
-        "WXYZ",
-
-
-
-        "XCEL Wetsuits",
-        "XCVI",
-        "XOXO",
-
-
-
-        "Y's by Yohji Yamamoto",
-"YakTrax",
-"Yellow Box",
-"Yosi Samra",
-"Young & Reckless",
-"Young Fabulous & Broke",
-"Yumi",
-"Yummie by Heather Thomson",
-
-
-
-
-"Zac Posen",
-"ZAC Zac Posen",
-"Zanerobe",
-"Zeal Optics",
-"Zensah",
-"Zero Restriction",
-"Zobha",
-"Zoot Sports",
-]
-
-brand_list.each do |name|
-  Brand.create( name: name )
-end

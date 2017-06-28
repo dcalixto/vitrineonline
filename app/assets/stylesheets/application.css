@@ -36,7 +36,7 @@
  *= require details
  *= require jquery.raty
  *= require tipsy
-
+*= require modal
  *= require dropzone
  *= require markdown
  *= require stretchtext
@@ -128,14 +128,12 @@ vertical-align: middle;}
 
   background:rgb(235, 235, 235);
 
+background:#fff;
 
   width: 700px;
   position: relative;
   height:30px;
-  /*	border: 1px solid #001119;
-  -moz-box-shadow:inset 0px 0px 1px #f6f6f6;  
-  -webkit-box-shadow:inset 0px 0px 1px #f6f6f6;  
-  box-shadow:inset 0px 0px 1px #f6f6f6;*/
+
 
 
 margin: 0px auto;
@@ -163,8 +161,8 @@ height: 33px;
   padding: 0px 12px 0px 12px;
 }
 .vertu ul li:hover a {
-  background: #F4F4F4;
-  color:#000;
+  background: #1F4390;
+  color:#fff;
   text-decoration:none;
 }
 .vertu ul li .down {
@@ -178,7 +176,7 @@ height: 33px;
   border-bottom: 1px solid #001119;
   border-left: 1px solid #001119;
   border-right:1px solid #001119;
-  background:#F4F4F4;
+  background:#1F4390;
   margin-bottom:5px;
 }
 .vertu ul li:hover .down {
@@ -189,13 +187,12 @@ height: 33px;
 /* Drop Item */
 .vertu ul li .drop{
   padding-right:21px; 
-  background: url(../img/white.png) no-repeat right 7px;
-  text-decoration:none; 
+    text-decoration:none; 
 }
 
 .vertu ul li:hover .drop {  
-  background: #F4F4F4 url(../img/black.png) no-repeat right 8px; 
-  color:#000;
+  background: #1F4390 ; 
+  color:#fff;
   text-decoration:none; 
 }
 /* end Drop Item */
@@ -214,7 +211,7 @@ height: 33px;
   border-bottom: 1px solid #001119;
   border-left: 1px solid #001119;
   border-right:1px solid #001119;
-  background:#F4F4F4;
+  background:#1F4390;
   margin-bottom:5px;
 }
 .vertu ul li:hover .submenu{
@@ -264,7 +261,7 @@ height: 33px;
   border-bottom: 1px solid #001119;
   border-left: 1px solid #001119;
   border-right:1px solid #001119;
-  background:#F4F4F4;
+  background:#1F4390;
   margin-bottom:5px;
   height:410px;
 }
@@ -306,7 +303,7 @@ li, li a {
   border-left:none; 
   border-top: 1px solid #001119;
   border-right:none; 
-  background:#F4F4F4;
+  background:#1F4390;
 }
 #nav li a {
   display:block; 
@@ -318,7 +315,7 @@ display:none; }
 #nav li:hover > a{ 
   color:#000; 
   background:#F4F4F4;
-  background: #F4F4F4 url(../img/black.png) no-repeat right 8px; 
+  background: #F4F4F4 ; 
 }
 #nav li:hover { 
   color:#FFF; 
@@ -345,5 +342,4 @@ li:hover > .nav {
 
 
 
-
-.list_left li {float:left;display:block;border:solid 1px #000;width:250px}
+.list_left li {float:left;display:block;width:250px}

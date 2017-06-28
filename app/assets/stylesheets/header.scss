@@ -73,13 +73,12 @@ $desktop: min-width 1200px;
 
  .blue_bar {      
    height:50px;
-  
-/*background:#2e5eae;
-background-color: #3364c8;*/
+
     background-color: #fafafa;
     border-bottom: 1px solid #ebebeb;
+    background-color: #f1f1f1;
 
-  }
+    }
  .inner_blue  {
 
    height:45px;
@@ -104,7 +103,6 @@ background-color: #3364c8;*/
    height: 33px;
 
  
- 
 
         border-bottom: 1px solid #f1f1f1;
     outline-width: 0;
@@ -114,6 +112,8 @@ background-color: #3364c8;*/
             
                          background:rgb(235, 235, 235)
 ;
+ 
+ background:#fff
 
                         }
 

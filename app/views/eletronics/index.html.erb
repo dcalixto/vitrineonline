@@ -1,0 +1,68 @@
+<h1><% title "Produtos" %></h1>
+<div class="box1">
+  <% breadcrumb :gender, @gender %>
+</div>
+<%=render 'shared/filtro_eletronic' %>
+
+
+
+<div class="box5">
+  <div class="block">
+
+    <div class="square_box">
+   <%= render :partial => 'shared/sort_by'%>
+ 
+      </table>  
+
+      <div class="content">
+
+
+        <%= render :partial => 'products/list'%>
+
+
+      </div>
+
+      <div >
+
+      </div>
+    </div>
+
+
+   <%= render :partial => 'shared/product_pagination'%>
+
+  </div>
+
+
+
+
+  <div class="block_white">
+    <h2>Confira Também</h2>
+
+
+    <%= render :partial => 'shared/suggestion'%>
+
+
+
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

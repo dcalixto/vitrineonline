@@ -39,12 +39,12 @@
        <%= link_to "Roupas", "#roupas", :class=>"a" %>
   <div class="b" hidden="hidden">
 
- <%= p.select("gender_id", options_for_select(@genders_for_dropdown), {prompt: 'Selecionar Generos'}, {class: 'chained-select'}) %>
+ <%= p.select("gender_id", options_for_select(@genders_for_dropdown), {prompt: 'Selecionar Generos'}, {class: 'chained-select', :id => 'gender'}) %>
   
 
-   <%= p.select("category_id",options_for_select(@categories_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+   <%= p.select("category_id",options_for_select(@categories_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select', :id => 'category'}) %>
 
-   <%= p.select("subcategory_id",  options_for_select(@subcategories_for_dropdown), {prompt: 'Selecionar Subcategoris'}, {class: 'chained-select'}) %>
+   <%= p.select("subcategory_id",  options_for_select(@subcategories_for_dropdown), {prompt: 'Selecionar Subcategoris'}, {class: 'chained-select', :id => 'subcategory'}) %>
 
   
         
@@ -70,7 +70,7 @@
 
 <div class="b" hidden="hidden">
 
-<%= p.select("supplement_id",  options_for_select(@supplements_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+<%= p.select("supplement_id",  options_for_select(@supplements_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select', :id => 'supplement'}) %>
     </div>
         
 
@@ -82,7 +82,7 @@
 
         <div class="b" hidden="hidden">
 
-<%= p.select("sport_id", options_for_select(@sports_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+<%= p.select("sport_id", options_for_select(@sports_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select', :id => 'sport'}) %>
         </div>
       </li>
 
@@ -93,7 +93,7 @@
          <%= link_to "Autopeças", "#auto", :class=>"a" %>
 <div class="b" hidden="hidden">
 
-<%= p.select("auto_id", options_for_select(@autos_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+<%= p.select("auto_id", options_for_select(@autos_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select', :id => 'auto'}) %>
  </div>
 
       </li>
@@ -104,7 +104,7 @@
          <%= link_to "Casa e Jardim", "#casa", :class=>"a" %>
 <div class="b" hidden="hidden">
 
-<%= p.select("house_id",options_for_select(@houses_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+<%= p.select("house_id",options_for_select(@houses_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select', :id => 'house'}) %>
  </div>
 
       </li>
@@ -115,17 +115,17 @@
          <%= link_to "Alimentos", "#food", :class=>"a" %>
 <div class="b" hidden="hidden">
 
-<%= p.select("food_id", options_for_select(@foods_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+<%= p.select("food_id", options_for_select(@foods_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select', :id => 'food'}) %>
  </div>
 
       </li>
 
    <li>
-          <%= link_to "Papelaria e Artesatanos", "#arts", :class=>"a" %>
+          <%= link_to "Papelaria e Artesatanos", "#art", :class=>"a" %>
 
       <div class="b" hidden="hidden">
 
-<%= select("art_id", options_for_select(@arts_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+<%= select("art_id", options_for_select(@arts_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select', :id => 'art'}) %>
  </div>
 
       </li>
@@ -136,7 +136,7 @@
 
       <div class="b" hidden="hidden">
 
-<%= p.select("book_id",  options_for_select(@books_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+<%= p.select("book_id",  options_for_select(@books_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select',:id => 'book'}) %>
  </div>
 
       </li>
@@ -145,7 +145,7 @@
 <div class="b" hidden="hidden">
 
 
-       <%= p.select("tool_id",options_for_select(@tools_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+       <%= p.select("tool_id",options_for_select(@tools_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select', :id => 'tool'}) %>
  </div>
 
       </li>
@@ -164,7 +164,7 @@
   <div class="b" hidden="hidden">
 
 
-<%= p.select("virtual_id", options_for_select(@virtuals_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select'}) %>
+<%= p.select("virtual_id", options_for_select(@virtuals_for_dropdown), {prompt: 'Selecionar Categoria'}, {class: 'chained-select', :id => 'virtual'}) %>
  </div>
 
       </li>

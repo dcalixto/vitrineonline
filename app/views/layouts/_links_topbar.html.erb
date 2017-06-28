@@ -57,42 +57,187 @@
 
 
     <% else %>
+
+
+
+
+
+
+
+
+
 <div class="log_topbar_before">
 
   <ul>
+    <li>
+       <a href="#ex2" rel="modal:open"> Entrar
+</a>
+         
+    
+    </li>
+    </li>     
+    
+     <a href="#ex3" rel="modal:open"> Cadastre-se
+</a>
+
       
-      <li>
-        <%=button_to 'Cadastre-se', signup_path, :class=> "btn_green",method: :get %>
-        <span></span>
-      </li>
+    </li>
+  </ul>
+
+
+
+
+
+
+
+  <div class="login_form modal" id="ex2" style="display:none;">
+  <%= render 'shared/flash_messages' %>
+  <h3>Entrar</h3>
+     <div class="block_modal">
+        
+ 
+   
+      <%= form_tag  sessions_path,  :method => :post  do |f| %>
+      <ul>
+        <li><b><a href="#ex2" rel="modal:open">Ainda não é cadastrado?</a></b></li>
+
+        <li >
+          <%= label_tag :email, "Email", :class=>"label" %>
+          
+        </li>
+
+        <li>
+          <%= email_field_tag :email, params[:email] %></li>
+
+        <li class="space"></li>
+
+        <li >
+        <%= label_tag :password, "Passord", :class=>"label" %>
+
+
+                   <%= password_field_tag :password, params[:password]%>
      
-      
-      
-      
-      <li>
-        
-        
-                 
-        
-                <%= link_to "/auth/facebook", :class=> "btn_facebook" do %>
-        
-        
-                  <%= content_tag(:span, nil, :class =>"sprite-icons-facebook") %>
-                  Entrar
-  <%end %>
+     
+
 
         
         </li>
+
+
+
+        <li><a href="#ex6" rel="modal:open">Esqueceu o password?</a></li>
+
+
+        <li class="space"></li>
+
+
+        <li><%= submit_tag "Entrar",  :class => "btn btn_large margin_bottom" %></li>
+
+
+
+        <li>
+          
+     <%= link_to "/auth/facebook", :class=> "btn_facebook" do %>
         
-      <li>
-        <%=button_to 'Entrar', login_path, :class=> "btn_orange",method: :get %>
-        <span></span>
-      </li>
+        
+                  <%= content_tag(:span, nil, :class =>"sprite-icons-facebook") %>
+                  Entrar com Facebook
+  <%end %>
+
+        </li>
+
+      </ul>
+
+      <% end %>
+        </div>
+   </div>
 
 
 
 
-     </ul>
+
+<div class="login_form modal" id="ex6" style="display:none;">
+
+    <%= render 'shared/flash_messages' %>
+
+    <h3>Recuperar Senha           <a href="#ex2" rel="modal:open">Voltar</a>
+</h3>
+     
+
+    <div class="block_modal">
+      
+      Coloque seu email e nós lhe enviaremos um link para fazer uma nova senha
+
+      <%= form_tag password_resets_path, :method => :post do %>
+
+      <%= label_tag :email, "Email", :class=>"label" %>
+      <%= email_field_tag :email, params[:email], :id => "UserEmail" %>
+      <%= submit_tag "Enviar", :class => "btn btn_large" %>
+      <% end %>
+     </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+  <div class="login_form modal" id="ex3" style="display:none;">
+
+    <h3>Cadastre-se</h3>
+
+  <%= render 'shared/error_messages', :target => @user %>
+
+  <div class="block_modal">
+        
+    
+
+      <%= semantic_form_for(@user, :validate => true) do |f| %>
+      <%= f.inputs do %>
+      <%= f.input :first_name,  :label => "Nome",:required=>true %>
+      <%= f.input :last_name, :label => "Sobrenome", :required=>true %>
+
+      <%= f.input :email, :as => :email, :label => "Email",:required=>true %>
+   
+      <%= f.input :password, :as => :password, :label =>  "Password", :required=>true %>
+
+      <%= f.input :password_confirmation, :as => :password, :label => "Confirmar Password", :required=>true   %>
+
+      <%= f.input :gender, :as => :radio, :label => false,
+        :collection => [["Masculino", "M"], ["Feminino", "F"], ["Prefiro não dizer", "I"]], :required=>true %>
+
+      <div class="acordo">
+        <p>Clicando em criar conta você estará aceitando nossos
+          <%= link_to 'Termos e Condições', page_path('termos') %>, nossa
+          <%= link_to 'Políticas de Privacidade', page_path('privacidade')%>
+          e declarando que tem ao menos 18 anos de idade.</p>
+      </div>
+
+      <%= f.actions do %>
+      <%= f.action :submit, :label => "Criar Conta", :button_html => { :class => "btn_green btn_large"} %>
+      <% end %>
+      <% end %>
+    <% end %>
+               </div>
+   
+ 
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
  <% end %>
 

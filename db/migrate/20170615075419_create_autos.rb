@@ -3,6 +3,7 @@ class CreateAutos < ActiveRecord::Migration
     create_table :autos do |t|
       t.string :item
       t.integer :block_id
+       t.string :slug
 
       t.timestamps
     end

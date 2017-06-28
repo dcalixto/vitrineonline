@@ -43,10 +43,17 @@
  <div id="horizontalTab">
         <ul>
                       <li><a href="#tab-1">Imagem e descrição</a></li>
-            <li><a href="#tab-2">Seções e Marcas</a></li>
-            <li><a href="#tab-3">Tamanho e Cor</a></li>
+                      <li><a href="#tab-2">Seções</a></li>
+
+    <% if @product.gender.present? %>
+
+
+      <li><a href="#tab-3">Tamanho e Cor</a></li>
+    <% end %>
+
+
             <li><a href="#tab-4">Material e Condição</a></li>
-            <li><a href="#tab-5">Primeiro passo</a></li>
+            <li><a href="#tab-5">Dimensões e Peso</a></li>
 
                     </ul>
 
@@ -118,23 +125,13 @@
 
                 </div>
 
-                <h2>Marca</h2>
-
-          <div class="subcontent">
-
            
-            <#%=  p.collection_select(:brand_id, Brand.all, :id, :name, {},{id: 'brand_list', :multiple => false}) %>
-       
-                 
-          
-            
-          
-          
-          </div>
 
         
         
         </div>
+
+        <% if @product.gender.present? %>
         <div id="tab-3">
    <h2>Tamanho</h2>
 
@@ -167,49 +164,12 @@
           </div>
 
 
-           <h2>Dimensões e peso</h2>
-
-          <div class="subcontent horizonal_list">
-            <ul>
-              <li>
-                <%=label_tag "Altura" %>
-<%=p.text_field  :height, :label=>"Altura" %>
-     </li>
- <li>
-  <%=label_tag "Largura" %>
-
-   <%=p.text_field  :width, :label=>"Largura" %>
-  </li>
-
-    <li>
-  <%=label_tag "Diâmetro" %>
-
-<%=p.text_field  :diameter, :label=>"Diâmetro" %>
-  </li>
-
- <li>
-  <%=label_tag "Comprimento" %>
-   <%=p.text_field  :length, :label=>"Comprimento" %>
-     </li>
-
-    <li>
- <%=label_tag "Peso" %>
-
-<%=p.text_field  :weight, :label=>"Peso" %>
-
-
-
-                                </li>
-
-             
-            </ul>
-          </div>
-
+        
 
 
         
         
-        
+        <% end %>
         
         
         
@@ -256,82 +216,52 @@
 <div class="content">
 
   <div class="subcontent_top">
-    <p> Caso você queria revisar ou modificar o nome, categoria, quantidade e se compartilha antes de realmente postar seu item</p>
-<h2>Nome do seu produto</h2>
-<%=p.text_field :name, :label=>"Nome"%>
-</div>
-<div class="subcontent">
+  
+  
+  
+     <h2>Dimensões e peso</h2>
 
-  <table>
-    <tr>
-      <td>
-<h2>Selecione as categorias</h2>
-<div class="form-group">
-<%=p.label :gender_id, 'Genero' %>&nbsp;
-<%=dynamic_collection_select :product, :gender_id, :category, Gender.all, :id, :gender, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Genero' }, { class: 'form-control select_item' } %>
+          <div class="subcontent horizonal_list">
+            <ul>
+              <li>
+                <%=label_tag "Altura" %>
+<%=p.text_field  :height, :label=>"Altura" %>
+     </li>
+ <li>
+  <%=label_tag "Largura" %>
 
-      
-</div>
- </br>
+   <%=p.text_field  :width, :label=>"Largura" %>
+  </li>
 
-<div class="form-group">
-<%=p.label :category_id, 'Categoria' %>&nbsp;
-<%=dynamic_collection_select :product, :category_id, :subcategory, [], :id, :name, { include_blank: false, submit_with_form: true, :prompt=> 'Selecionar Categoria' }, { class: 'form-control select_item' } %>
-</div>
- </br>
+    <li>
+  <%=label_tag "Diâmetro" %>
 
-<div class="form-group">
-<%=p.label :subcategory_id, 'Subcategoria' %>&nbsp;
-<%=p.collection_select :subcategory_id, [], :id, :name, {include_blank: false, :prompt=> 'Selecionar Subcategoria'}, { class: 'form-control select_item' } %>
-</div>
+<%=p.text_field  :diameter, :label=>"Diâmetro" %>
+  </li>
 
-</div>
+ <li>
+  <%=label_tag "Comprimento" %>
+   <%=p.text_field  :length, :label=>"Comprimento" %>
+     </li>
 
-</td>
-<td>
+    <li>
+ <%=label_tag "Peso" %>
 
+<%=p.text_field  :weight, :label=>"Peso" %>
+
+
+
+                                </li>
+
+             
+            </ul>
+          </div>
 
   
-
-<h2>Preço e Quantidade</h2>
-<ul>
-  <li>
-    <%=p.label :quantity, 'Quantidade' %>&nbsp;
-<%=p.number_field :quantity, :label=>"Quantidade" %>
-  </li>
-  </br>
-<li>
-  <%=p.label :price, 'Preço' %>&nbsp;
-
-<%=p.text_field  :price, :label=>"Preço R$" %>
-</li>
-</ul>
-
-
-</td>
-    </tr>
-  </table>
-
-
-</div>
-
-
-
-
-<div class="subcontent  horizonal_list ">
-  <h2>Compartilhe</h2>
-  <ul><li>
-  <%= p.check_box :is_shared_on_facebook %>
-  <span class="social-share-button-facebook"></span>
-    </li>
-    <li>
-  &nbsp;&nbsp;&nbsp;
-  <%= p.check_box :is_shared_on_twitter %>
-  <span class="social-share-button-twitter"></span>
-    </li>
-  </ul>
-</div>
-</div>
+  
+  
+  
+  </div>
 </div>
 
 

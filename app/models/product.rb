@@ -109,9 +109,9 @@ belongs_to :virtual
 
 
   end
-  validates :color_ids, :presence => true, :if => :active?
+  #validates :color_ids, :presence => true, :if => :active?
   #validates :eletronic_id, :presence => true, :if => :active?
-  validates :condition_id, :presence => true, :if => :active?
+ # validates :condition_id, :presence => true, :if => :active?
 
   validates :images, :presence => true, :if => :active?
   def active?

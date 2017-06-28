@@ -9,11 +9,12 @@
   width: auto;
   word-wrap: break-word;
   color: #666;
+background-color: #f1f1f1;
 
- background:#fff;
  display:block;
  margin-bottom:5px;
- font-size:13px
+ font-size:13px;
+
     }
 
 

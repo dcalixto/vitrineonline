@@ -318,6 +318,8 @@
               <%= select_tag  :quantity, options_for_select((1..@product.quantity).collect{ |q| [q, q]})%>
 
             </li>
+
+            <% if @product.gender.present? %>
             <li >
               <%= label_tag "Cor:" %>
 
@@ -335,7 +337,7 @@
               <%= select_tag :size_id, options_for_select(@sizes_for_dropdown.unshift(['Selecionar', nil]))%>
 
             </li>
-
+          <%end %>
 
           </ul>
 
@@ -383,10 +385,21 @@
       </div>
                     
     </div>
+    <div>
+        <p><%=  @pac %></p>
+      <p><%= @sedex  %></p>
+
+    <%= form_tag  calculate_ship_path,  :method => :get do |f| %>
 
 
 
 
+      <%= text_field_tag :porra %>
+      <%= submit_tag "Checar",  :class => "btn btn_big margin_bottom" %>
+
+
+    <% end %>
+    </div>
     <!-- Fim-->
   </div>
 

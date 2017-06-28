@@ -23,6 +23,7 @@
 //= require jquery.soulmate
 //= home
 //= slider
+//= require modal
 //= require_tree .
 
 
@@ -48,21 +49,21 @@ $(document).ready(function(e) {
 
 
 $(document).ready(function(){
-    $('select#subcategory_name').chainedTo('select#category_name');
-    $('select#category_name').chainedTo('select#gender_name');
-    $('select#gender_name').chainedTo('select#block_name');
+    $('#subcategory').chained('#category');
+    $('#category').chained('#gender');
+    $('#gender').chained('#block');
     $('#eletronic').chained('#block');
-    $('select#supplement_name').chainedTo('select#block_name');
-    $('select#sport_name').chainedTo('select#block_name');
-    $('select#auto_name').chainedTo('select#block_name');
-    $('select#tool_name').chainedTo('select#block_name');
-    $('select#house_name').chainedTo('select#block_name');
-     $('select#food_name').chainedTo('select#block_name');
+    $('#supplement').chained('#block');
+    $('#sport').chained('#block');
+    $('#auto').chained('#block');
+    $('#tool').chained('#block');
+    $('#house').chained('#block');
+     $('#food').chained('#block');
 
-    $('select#art_name').chainedTo('select#block_name');
-     $('select#book_name').chainedTo('select#block_name');
+    $('#art').chained('#block');
+     $('#book').chained('#block');
 
-    $('select#virtual_name').chainedTo('select#block_name');
+    $('#virtual').chained('#block');
 
 }); 
 

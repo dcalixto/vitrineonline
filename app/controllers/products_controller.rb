@@ -2,7 +2,7 @@
 
 require 'product_recommender'
 
-
+require 'correios-frete'
 class ProductsController < ApplicationController
   before_filter :log_impression, only: [:show]
   before_filter :correct_product, only: [:edit, :destroy]
@@ -337,6 +337,44 @@ class ProductsController < ApplicationController
     cookies[params[:provider] + '_auth_token'] = { value: params[:access_token]}
     render :nothing => true
   end
+
+
+
+
+ def calculate_ship
+
+
+
+
+frete = Correios::Frete::Calculador.new :cep_origem => "23970-000",
+:cep_destino => params[:porra],
+:peso => 0.3,
+:comprimento => 30,
+:largura => 15,
+:altura => 2
+
+ servicos = frete.calcular :sedex, :pac
+if @pac = servicos[:pac].valor
+  @sedex = servicos[:sedex].valor
+
+  
+render :action => :show
+
+
+
+else
+
+   redirect_to(action: :index)
+end
+
+
+ end
+
+
+
+
+
+
 
   protected
 

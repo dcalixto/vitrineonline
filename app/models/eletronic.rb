@@ -3,7 +3,8 @@ class Eletronic < ActiveRecord::Base
  attr_accessible :item, :slug
 
 
-
+ extend FriendlyId
+  friendly_id :gender, use: [:slugged, :history]
 has_many :products
 
 belongs_to :ebrand

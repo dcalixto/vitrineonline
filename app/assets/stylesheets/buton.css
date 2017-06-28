@@ -102,13 +102,13 @@ background: #436bbe;
 
 
 
- padding: 5px 10px 5px 10px;
+/* padding: 5px 10px 5px 10px;*/
 font-size: 12px;
 
 background: #1042AF;
-  -webkit-border-radius: 4;
-  -moz-border-radius: 4;
-  border-radius: 4px;
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
   font-family: Arial;
   color: #ffffff;
     text-decoration: none;
@@ -201,6 +201,20 @@ background: #1042AF;
     font-size: .8rem;
     font-weight: 700;
 }
+
+
+
+
+.btn_large {
+      width: 100%;
+    padding: 10px;
+    -webkit-appearance: none;
+    display: block;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+}
+
 
 
 

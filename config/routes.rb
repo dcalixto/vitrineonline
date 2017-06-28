@@ -74,7 +74,7 @@ Vitrineonline::Application.routes.draw do
 
 
   #BLOCKS
-      resources :blocks, only: [:show]
+      resources :blocks, only: [:show, :index]
       resources :eletronics, only: [:index, :show]
       resources :supplements, only: [:index, :show]
       resources :sports, only: [:index, :show]
@@ -85,7 +85,7 @@ Vitrineonline::Application.routes.draw do
       resources :arts, only: [:index, :show]
       resources :tools, only: [:index, :show]
       resources :virtuals, only: [:index, :show]
-
+      resources :services, only: [:index, :show]
 
 
 
@@ -208,6 +208,9 @@ Vitrineonline::Application.routes.draw do
   #post "/orders/:id/checkout" , as: "calculate_ship"
 
 
+
+
+
   resources :transactions, only: [:show] 
 
   resources :odatas, only: [:index] do
@@ -305,6 +308,8 @@ Vitrineonline::Application.routes.draw do
 
 
 
+
+
   # PRODUCTS
   resources :products do
     member do
@@ -351,25 +356,17 @@ Vitrineonline::Application.routes.draw do
 
 
 
+ get  'products/:id', to: 'products#show', as: :calculate_ship
 
 
 
   namespace :dynamic_selectable do
-    get 'categories/:category_id/subcategories', to: 'category_subcategories#index', as: :category_subcategories
-    get 'gender/:gender_id/categories', to: 'gender_categories#index', as: :gender_categories
+    #get 'categories/:category_id/subcategories', to: 'category_subcategories#index', as: :category_subcategories
+    #get 'gender/:gender_id/categories', to: 'gender_categories#index', as: :gender_categories
 
     get 'state/:state_id/cities', to: 'state_cities#index', as: :state_cities
 
-    get 'block/:block_id/genders', to: 'block_genders#index', as: :block_genders
-    get 'block/:block_id/eletronics', to: 'block_eletronics#index', as: :block_eletronics
-    get 'block/:block_id/supplements', to: 'block_supplements#index', as: :block_supplements
-    get 'block/:block_id/houses', to: 'block_houses#index', as: :block_houses
-    get 'block/:block_id/autos', to: 'block_autos#index', as: :block_autos
-    get 'block/:block_id/sports', to: 'block_sports#index', as: :block_sports
-    get 'block/:block_id/tools', to: 'block_tools#index', as: :block_tools
-    get 'block/:block_id/arts', to: 'block_arts#index', as: :block_arts
-    get 'block/:block_id/virtuals', to: 'block_virtuals#index', as: :block_virtuals
-
+ 
   end
 
   resources :departments, only: [:index]

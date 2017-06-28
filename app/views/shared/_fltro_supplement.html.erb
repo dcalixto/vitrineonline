@@ -1,0 +1,72 @@
+
+<div class="box11">
+  <div id="menu-box-product">
+    <div class="menu_content">
+  <p>
+       <%= link_to 'Limpar todos os filtros', request.path %>
+  </p>
+
+
+  <%if @products.aggs['supplement_id']['buckets'].present? %>
+    <div class="filtro">
+      <span class="ftitle">Categoria</span>
+       
+      <ul>
+        <% @products.aggs['supplement_id']['buckets'].each do |bucket| %>
+            <li>
+              <%
+                 supplement = Supplement.find(bucket['key'])
+                 params_to_merge = controller.controller_name == SupplementsController.controller_name ? {id: supplement.slug} : {supplement_id: bucket['key']}
+              %>
+              <%= link_to_if params[:id] != supplement.slug && params[:supplement_id] != bucket['key'].to_s, supplement.name, params.merge(params_to_merge) %> <%= bucket['doc_count'] %>
+            </li>
+        <% end %>
+      </ul>
+      
+    </div>
+  <% end %>
+
+  <%if @products.aggs['vitrine_id']['buckets'].present? %>
+    <div class="filtro">
+      <span class="ftitle">Vitrines</span>
+      <ul>
+        <% @products.aggs['vitrine_id']['buckets'].each do |bucket| %>
+          <li>
+            <%= link_to_unless_current Vitrine.find(bucket['key']).vitrine_name, params.merge(vitrine_id: bucket['key']) %> <%= bucket['doc_count'] %>
+        
+          
+          
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
+
+
+  <%if @products.aggs['condition_id']['buckets'].present? %>
+    <div class="filtro">
+      <span class="ftitle">Condição</span>
+      <ul>
+        <% @products.aggs['condition_id']['buckets'].each do |bucket| %>
+          <li>
+            <%= link_to_unless_current Condition.find(bucket['key']).condition, params.merge(condition_id: bucket['key']) %> <%= bucket['doc_count'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
